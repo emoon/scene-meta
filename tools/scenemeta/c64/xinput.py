@@ -13,6 +13,8 @@ import subprocess
 import sys
 import time
 
+from ..core.config import TOOLS
+
 _x = ctypes.CDLL(ctypes.util.find_library("X11"))
 _t = ctypes.CDLL(ctypes.util.find_library("Xtst"))
 _x.XOpenDisplay.restype = ctypes.c_void_p
@@ -30,6 +32,11 @@ _t.XTestFakeMotionEvent.argtypes = [ctypes.c_void_p, ctypes.c_int,
 
 HOLD = 0.4        # wall seconds a key stays down (the emulator is running)
 SETTLE = 0.3      # wall seconds to run on after the release
+
+# A press runs this module in a process of its own, started where the package
+# can be imported.
+HELPER = [sys.executable, "-m", __name__]
+HELPER_CWD = TOOLS
 
 
 def _environ_of(pid):
@@ -107,9 +114,9 @@ class Keys:
             env["XAUTHORITY"] = self.auth
         self.vice.resume()
         time.sleep(0.1)
-        subprocess.run([sys.executable, "-m", "scenemeta.xinput", self.display,
+        subprocess.run([*HELPER, self.display,
                         self.SYMS[key], "" if self.numlock_set else "numlock"],
-                       env=env, cwd=os.path.dirname(os.path.dirname(__file__)),
+                       env=env, cwd=HELPER_CWD,
                        check=False, capture_output=True)
         self.numlock_set = True
         time.sleep(SETTLE)    # the release has to be processed before a sample
