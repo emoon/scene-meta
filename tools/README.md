@@ -6,6 +6,7 @@
 | `scenemeta/core/` | what every platform's sweeper shares |
 | `scenemeta/amiga/`, `scenemeta/c64/` | the platforms |
 | `amiga/`, `c64/` | what a platform keeps outside the code: its emulator, ROMs, work directory, sweep database, notes |
+| `../build/` | everything that is built (Amiberry and its build log), git-ignored |
 | `tests/` | the tests: `test_merge.py` and `test_validate.py` for the data files, a directory per sweeper part |
 
 ```bash

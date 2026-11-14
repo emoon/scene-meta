@@ -6,6 +6,8 @@ import os
 import pathlib
 
 TOOLS = pathlib.Path(__file__).resolve().parents[2]
+# Everything that is built (a platform's emulator), git-ignored.
+BUILD = TOOLS.parent / "build"
 
 NAS = pathlib.Path(os.environ.get("SCENEMETA_NAS", "/mnt/nas/demoscene/demoscene"))
 INDEX_DB = NAS / "meta" / "index.sqlite"

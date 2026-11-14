@@ -94,15 +94,16 @@ them, which shows whether the keys are needed. Without `--ids` it plays
 every entry that has a key on a swap. Left mouse button only so far, and
 swapped disks always go into DF0.
 
-Build Amiberry:
+Build Amiberry, from the top of the repo. Everything built goes into
+`build/`, which is git-ignored (`SCENEMETA_AMIBERRY` overrides the binary):
 
 ```bash
-cd amiberry
-CC=clang CXX=clang++ cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release \
+CC=clang CXX=clang++ cmake -S tools/amiga/amiberry -B build/amiberry -G Ninja \
+    -DCMAKE_BUILD_TYPE=Release \
     -DUSE_PCEM=OFF -DUSE_PPC=OFF -DUSE_QEMU_PPC=OFF -DUSE_LIBSERIALPORT=OFF \
     -DUSE_LIBENET=OFF -DUSE_PORTMIDI=OFF -DUSE_LIBMPEG2=OFF -DUSE_MPG123=OFF \
     -DUSE_UAENET_PCAP=OFF -DUSE_UAENET_TAP=OFF -DUSE_ZSTD=OFF
-cmake --build build
+cmake --build build/amiberry
 ```
 
 ## Known limits

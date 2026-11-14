@@ -24,6 +24,7 @@ data/<platform>/<bucket>.toml    productions
 tools/scenemeta/                 validator, merge, and the sweepers: core/ and one subpackage per platform
 tools/amiga/                     the Amiga sweeper's patched Amiberry, ROMs, notes
 tools/c64/                       the C64 sweeper's ROMs and notes (drives stock VICE)
+build/                           everything that is built (Amiberry), git-ignored
 ```
 
 One licence per directory: `data/` is CC0, each emulator keeps its own, the

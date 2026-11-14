@@ -293,13 +293,13 @@ behind `#ifdef WITH_MIDIEMU` (off in our build).
 macOS/Linux, from the repo root (Linux is the primary target):
 
 ```bash
-cd amiberry
-CC=clang CXX=clang++ cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release \
+CC=clang CXX=clang++ cmake -S tools/amiga/amiberry -B build/amiberry -G Ninja \
+    -DCMAKE_BUILD_TYPE=Release \
     -DUSE_PCEM=OFF -DUSE_PPC=OFF -DUSE_QEMU_PPC=OFF \
     -DUSE_LIBSERIALPORT=OFF -DUSE_LIBENET=OFF -DUSE_PORTMIDI=OFF \
     -DUSE_LIBMPEG2=OFF -DUSE_MPG123=OFF -DUSE_UAENET_PCAP=OFF \
     -DUSE_UAENET_TAP=OFF -DUSE_ZSTD=OFF
-cmake --build build          # -> amiberry/build/amiberry
+cmake --build build/amiberry # -> build/amiberry/amiberry
 ```
 
 Deps (all via Homebrew on macOS / distro packages on Linux): **SDL3**,
@@ -311,7 +311,7 @@ Bridgeboard, PowerPC, serial, netplay, MIDI, CD32 FMV, MP3, uaenet, CHD/zstd).
 Scripted run (headless batch protocol):
 
 ```bash
-./build/amiberry -f config.uae \
+build/amiberry/amiberry -f config.uae \
     --dbg "warp on" --dbg "run frames=2500" --dbg "screenshot /tmp/shot.png"
 ```
 
