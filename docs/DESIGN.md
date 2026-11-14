@@ -6,14 +6,15 @@ repo for every platform, starting with Amiga and C64.
 
 ## Principles
 
-- **The TOML is the truth.** The sweepers' sqlite databases are their private
-  run logs (one schema for every platform, `tools/README.md`). Nothing is compiled from the TOML; consumers read it as they like.
-- **Emulator agnostic.** Entries state hardware facts and what the production
-  needs. No emulator names, no emulator options.
-- **Only what Amiga and C64 need today.** Adding a TOML field later breaks
-  nothing, so nothing is added ahead of a concrete need (patches, click
-  positions, download URLs and other platforms all wait).
-- **TOML 1.0 only**, so any parser can read the files.
+- The TOML is the truth. The sweepers' sqlite databases are their private
+  run logs (one schema for every platform, `tools/README.md`). Nothing is
+  compiled from the TOML; consumers read it as they like.
+- Entries are emulator agnostic. They state hardware facts and what the
+  production needs. No emulator names, no emulator options.
+- The files hold only what Amiga and C64 need today. Adding a TOML field
+  later breaks nothing, so nothing is added ahead of a concrete need
+  (patches, click positions, download URLs and other platforms all wait).
+- TOML 1.0 only, so any parser can read the files.
 
 ## Layout
 

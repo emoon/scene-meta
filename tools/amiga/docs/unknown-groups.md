@@ -20,7 +20,7 @@ returned to the prompt, and Gurus whose reboot ended at the prompt.
 * PowerPacker stubs (`Nupowerpacker.library` string, 6/154 HD): adding
   powerpacker.library flips 3/4 reruns to running (21693, 22839, 21723); 22095
   opens only dos.library and exits.
-* The full BootPartition Libs set changed **0/24** sampled variants: lib
+* The full BootPartition Libs set changed 0/24 sampled variants: lib
   population is not the cause of the `1>` cluster in general.
 * 129/154 HD variants are single-file trees (standalone exe): not a wrong pick.
 
@@ -29,7 +29,7 @@ returned to the prompt, and Gurus whose reboot ended at the prompt.
 Task is the Initial CLI waiting on a DOS packet = the program reads stdin
 (console handler) or waits for a key/click, with nothing printed.
 Probe (RETURN, then LMB, 6 HD variants): 5/6 react (3 reach a Guru
-0B03800C, 1 a random-dot screen), 1 ends at `1>`. So mostly **needs-input**
+0B03800C, 1 a random-dot screen), 1 ends at `1>`. So mostly needs-input
 programs (issue input), some of which then Guru like the family above.
 
 ## Tools / caveats
