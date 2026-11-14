@@ -774,14 +774,14 @@ title = "Impulse"
 group = "Tilt"
 source = "script"
 disks = ["TILT-ImpulseA.DMS", "TILT-ImpulseB.DMS"]
-swaps = [{ disk = 2, at = 72.5, key = "lmb" }]
+swaps = [{ disk = 2, at = 72.5 }]
 
 [demozoo.171972]
 title = "Impulse 2"
 group = "Old Bulls / Tilt"
 source = "script"
 disks = ["Tilt-Impulse2-a.dms", "Tilt-Impulse2-b.dms"]
-swaps = [{ disk = 2, at = 72.5, key = "lmb" }]
+swaps = [{ disk = 2, at = 72.5 }]
 
 [demozoo.70683]
 title = "Impulse 3.09"
@@ -3390,7 +3390,7 @@ group = "Scoopex"
 source = "script"
 machine = "a1200"
 disks = ["SCOOPEX-Iso_A.dms", "SCOOPEX-Iso_B.dms"]
-swaps = [{ disk = 2, at = 92.7, key = "lmb" }]
+swaps = [{ disk = 2, at = 92.7 }]
 
 [demozoo.295540]
 title = "IsoMessages"

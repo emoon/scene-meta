@@ -352,7 +352,7 @@ title = "Kefmania"
 group = "Cult"
 source = "script"
 disks = ["Cult.Kefmania-1.dms", "Cult.Kefmania-2.dms"]
-swaps = [{ disk = 2, at = 43.3, key = "lmb" }]
+swaps = [{ disk = 2, at = 43.3 }]
 
 [demozoo.248092]
 title = "Kefrens Demo"
@@ -689,7 +689,7 @@ source = "script"
 machine = "a1200"
 drives = 2
 disks = ["OXYRON-KillingTime-a.DMS", "OXYRON-KillingTime-b.DMS", "OXYRON-KillingTime-c.DMS", "OXYRON-KillingTime-d.DMS"]
-swaps = [{ disk = 3, at = 187.9, key = "lmb" }, { disk = 4, at = 334.3 }]
+swaps = [{ disk = 3, at = 187.9 }, { disk = 4, at = 334.3 }]
 
 [demozoo.24666]
 title = "Killtec"

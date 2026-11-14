@@ -587,7 +587,7 @@ group = "Lloret Free Byte"
 source = "script"
 machine = "a1200_fast"
 disks = ["LLFB-Genesis1.DMS", "LLFB-Genesis2.DMS", "LLFB-Genesis3.DMS", "LLFB-Genesis4.DMS"]
-swaps = [{ disk = 2, at = 81.1, key = "lmb" }, { disk = 3, at = 374.9 }, { disk = 4, at = 496.8, key = "lmb" }]
+swaps = [{ disk = 2, at = 81.1 }, { disk = 3, at = 374.9 }, { disk = 4, at = 496.8 }]
 
 [demozoo.196139]
 title = "Genesis"
@@ -1143,7 +1143,7 @@ title = "Glitch Demo"
 group = "Mystix"
 source = "script"
 disks = ["Mystix-GlitchA.adf", "Mystix-GlitchB.adf"]
-swaps = [{ disk = 2, at = 227.3, key = "lmb" }]
+swaps = [{ disk = 2, at = 227.3 }]
 
 [demozoo.194320]
 title = "Glitch My Bits Up"

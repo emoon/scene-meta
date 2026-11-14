@@ -968,7 +968,7 @@ group = "Batman Group"
 source = "script"
 machine = "a500_1mb"
 disks = ["Batman_Rises_disk1.adf", "Batman_Rises_disk2.adf"]
-swaps = [{ disk = 2, at = 281.6, key = "lmb" }]
+swaps = [{ disk = 2, at = 281.6 }]
 
 [demozoo.231961]
 title = "Batman Style"

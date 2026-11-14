@@ -2842,7 +2842,7 @@ title = "Alpha & Omega II: Downtown"
 group = "Pure Metal Coders"
 source = "script"
 disks = ["AlphaOmegaII-1.adf", "AlphaOmegaII-2.adf", "AlphaOmegaII-3.adf"]
-swaps = [{ disk = 2, at = 57.4, key = "lmb" }, { disk = 3, at = 294.3, key = "lmb" }]
+swaps = [{ disk = 2, at = 57.4 }, { disk = 3, at = 294.3 }]
 
 [demozoo.141979]
 title = "Alpha Complex Meeting Demo"
@@ -3508,7 +3508,7 @@ title = "Amos-Mega-Demo"
 group = "Dynamic Guys"
 source = "script"
 disks = ["DynamicGuys-MegademoD1.DMS", "DynamicGuys-MegademoD2.DMS"]
-swaps = [{ disk = 2, at = 39.2, key = "lmb" }]
+swaps = [{ disk = 2, at = 39.2 }]
 
 [demozoo.300065]
 title = "Amotrax Demo 1"

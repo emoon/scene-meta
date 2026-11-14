@@ -871,7 +871,7 @@ group = "Investation / Deform"
 source = "script"
 machine = "a1200_fast"
 disks = ["Deform&Investation-RayworldA.dms", "Deform&Investation-RayworldB.dms", "Deform&Investation-RayworldC.dms"]
-swaps = [{ disk = 2, at = 54.8, key = "lmb" }, { disk = 3, at = 347.0, key = "lmb" }]
+swaps = [{ disk = 2, at = 54.8 }, { disk = 3, at = 347.0 }]
 
 [demozoo.222917]
 title = "Razor 1911 and Illusion Summer Party Invitation"

@@ -1732,7 +1732,7 @@ group = "Access"
 source = "script"
 machine = "a1200_fast"
 disks = ["Access_AGA1.DMS", "Access_AGA2.DMS"]
-swaps = [{ disk = 2, at = 63.5, key = "lmb" }]
+swaps = [{ disk = 2, at = 63.5 }]
 
 [demozoo.219767]
 title = "First Ages of Darkness"
@@ -1882,7 +1882,7 @@ title = "First Comming"
 group = "Blasphemy"
 source = "script"
 disks = ["Blasphemy-FirstCommingA.adf", "Blasphemy-FirstCommingB.adf"]
-swaps = [{ disk = 2, at = 192.2, key = "lmb" }]
+swaps = [{ disk = 2, at = 192.2 }]
 
 [demozoo.230112]
 title = "First Contact"

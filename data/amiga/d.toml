@@ -769,7 +769,7 @@ title = "De Profundis"
 group = "The Deadliners / Lemon. / Oxygene"
 source = "script"
 disks = ["DeProfundis_d1.adf", "DeProfundis_d2.adf"]
-swaps = [{ disk = 2, at = 247.0, key = "lmb" }]
+swaps = [{ disk = 2, at = 247.0 }]
 
 [demozoo.372606]
 title = "Dead Ahead"
@@ -2474,7 +2474,7 @@ title = "Demon Download"
 group = "The Silents"
 source = "script"
 disks = ["SILENTS-DemonDownload-A.dms", "SILENTS-DemonDownload-B.dms"]
-swaps = [{ disk = 2, at = 82.2, key = "lmb" }]
+swaps = [{ disk = 2, at = 82.2 }]
 
 [demozoo.279966]
 title = "Demon Utils"
@@ -2903,10 +2903,9 @@ machine = "a1200"
 [demozoo.142]
 title = "Desert Dream"
 group = "Kefrens"
-source = "ai"
+source = "script"
 disks = ["Kefrens-DesertDreamA.adf", "Kefrens-DesertDreamB.dms"]
 swaps = [{ disk = 2, at = 536.9 }]
-note = "no click needed: disk 2 is read within 3 s of the insert, with or without one"
 
 [demozoo.355437]
 title = "Desert Warfare"

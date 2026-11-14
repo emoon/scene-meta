@@ -1736,7 +1736,7 @@ title = "Wicked Sensation"
 group = "Masque"
 source = "script"
 disks = ["TRSI-WickedSensationA.DMS", "TRSI-WickedSensationB.DMS"]
-swaps = [{ disk = 2, at = 131.7, key = "lmb" }]
+swaps = [{ disk = 2, at = 131.7 }]
 
 [demozoo.240056]
 title = "Wickeds Intro"

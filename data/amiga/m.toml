@@ -1317,7 +1317,7 @@ group = "Rage"
 source = "script"
 machine = "a1200"
 disks = ["RGE-MAX1.DMS", "RGE-MAX2.DMS"]
-swaps = [{ disk = 2, at = 47.3, key = "lmb" }]
+swaps = [{ disk = 2, at = 47.3 }]
 
 [demozoo.262819]
 title = "Maximum Overdrive"
@@ -1338,7 +1338,7 @@ group = "Rage"
 source = "script"
 machine = "a1200"
 disks = ["rage1.dms", "rage2.dms", "rage3.dms"]
-swaps = [{ disk = 2, at = 132.4, key = "lmb" }, { disk = 3, at = 191.4, key = "lmb" }]
+swaps = [{ disk = 2, at = 132.4 }, { disk = 3, at = 191.4 }]
 
 [demozoo.169004]
 title = "Maximum Pleasure Party Intro"
@@ -1878,7 +1878,7 @@ title = "Mega Demo"
 group = "Deathstar"
 source = "script"
 disks = ["Deathstar-MegademoA.dms", "Deathstar-MegademoB.dms"]
-swaps = [{ disk = 2, at = 25.7, key = "lmb" }]
+swaps = [{ disk = 2, at = 25.7 }]
 
 [demozoo.153783]
 title = "Mega Demo"
@@ -2668,7 +2668,7 @@ title = "Megademo"
 group = "Shadow"
 source = "script"
 disks = ["Shadow-MegademoA.adf", "Shadow-MegademoB.adf"]
-swaps = [{ disk = 2, at = 177.1, key = "lmb" }]
+swaps = [{ disk = 2, at = 177.1 }]
 
 [demozoo.321243]
 title = "Megademo"

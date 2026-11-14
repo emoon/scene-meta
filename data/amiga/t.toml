@@ -7916,7 +7916,7 @@ group = "Polka Brothers"
 source = "script"
 machine = "a1200_030"
 disks = ["PB-Twisted-A.DMS", "PB-Twisted-B.DMS", "PB-Twisted-C.DMS", "PB-Twisted-D.DMS"]
-swaps = [{ disk = 2, at = 54.1, key = "lmb" }, { disk = 3, at = 240.8, key = "lmb" }, { disk = 4, at = 344.2, key = "lmb" }]
+swaps = [{ disk = 2, at = 54.1 }, { disk = 3, at = 240.8 }, { disk = 4, at = 344.2 }]
 
 [demozoo.241767]
 title = "Twisted"

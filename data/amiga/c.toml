@@ -3382,7 +3382,7 @@ group = "Oxygene"
 source = "script"
 machine = "a1200"
 disks = ["control1.dms", "control2.dms"]
-swaps = [{ disk = 2, at = 65.4, key = "lmb" }]
+swaps = [{ disk = 2, at = 65.4 }]
 
 [demozoo.252053]
 title = "Controllable Sine Logo"

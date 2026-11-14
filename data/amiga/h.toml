@@ -258,7 +258,7 @@ title = "Hallucinations And Dreams"
 group = "Union"
 source = "script"
 disks = ["!Union-HallucinationsA.dms", "Union-HallucinationsB.dms"]
-swaps = [{ disk = 2, at = 148.2, key = "lmb" }]
+swaps = [{ disk = 2, at = 148.2 }]
 
 [demozoo.169398]
 title = "Hallucinations And Dreams Preview"
@@ -2465,7 +2465,7 @@ group = "The Flame Arrows / Team Hoi"
 source = "script"
 machine = "a1200"
 disks = ["TeamHoi-HoiSaga3A.dms", "TeamHoi-HoiSaga3B.dms", "TeamHoi-HoiSaga3C.dms"]
-swaps = [{ disk = 2, at = 455.9, key = "lmb" }, { disk = 3, at = 1033.4, key = "lmb" }]
+swaps = [{ disk = 2, at = 455.9 }, { disk = 3, at = 1033.4 }]
 
 [demozoo.199833]
 title = "Hokus Pokus Trailer"
@@ -3716,7 +3716,7 @@ title = "Hysteria"
 group = "Analogy"
 source = "script"
 disks = ["Analogy-HysteriaA.dms", "Analogy-HysteriaB.dms"]
-swaps = [{ disk = 2, at = 184.7, key = "lmb" }]
+swaps = [{ disk = 2, at = 184.7 }]
 
 [demozoo.165258]
 title = "Hysteria"
