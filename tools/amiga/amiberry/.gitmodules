@@ -1,0 +1,9 @@
+[submodule "libretro/libretro-common"]
+	path = libretro/libretro-common
+	url = https://github.com/libretro/libretro-common.git
+[submodule "libretro/libco"]
+	path = libretro/libco
+	url = https://github.com/higan-emu/libco.git
+[submodule "external/nativefiledialog-extended"]
+	path = external/nativefiledialog-extended
+	url = https://github.com/btzy/nativefiledialog-extended.git

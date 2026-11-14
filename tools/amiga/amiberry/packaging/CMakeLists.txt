@@ -1,0 +1,241 @@
+# Base package settings
+if (NOT CMAKE_SYSTEM_NAME MATCHES "Darwin" AND NOT WIN32)
+    set(CPACK_PACKAGING_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
+endif ()
+set(CPACK_VERBATIM_VARIABLES YES)
+set(CPACK_SOURCE_IGNORE_FILES .git/ .github/ .claude/ .sisyphus/ android/ _CPack_Packages/ build/ out/ cmake-build-.*)
+if (CMAKE_SYSTEM_NAME MATCHES "Darwin")
+    set(CPACK_PACKAGE_NAME ${AMIBERRY_DISPLAY_NAME})
+else()
+    set(CPACK_PACKAGE_NAME ${PROJECT_NAME})
+endif()
+set(CPACK_PACKAGE_VERSION_MAJOR ${PROJECT_VERSION_MAJOR})
+set(CPACK_PACKAGE_VERSION_MINOR ${PROJECT_VERSION_MINOR})
+set(CPACK_PACKAGE_VERSION_PATCH ${PROJECT_VERSION_PATCH})
+
+# Include pre-release suffix in the package version if set.
+# DEB uses ~ (sorts lower than release). RPM cannot have - or ~ in Version,
+# so the pre-release tag goes into CPACK_RPM_PACKAGE_RELEASE instead.
+if(VERSION_PRE_RELEASE)
+    set(CPACK_PACKAGE_VERSION "${PROJECT_VERSION}~pre${VERSION_PRE_RELEASE}")
+    set(CPACK_RPM_PACKAGE_VERSION "${PROJECT_VERSION}")
+    set(CPACK_RPM_PACKAGE_RELEASE "0.pre${VERSION_PRE_RELEASE}")
+else()
+    set(CPACK_PACKAGE_VERSION "${PROJECT_VERSION}")
+endif()
+
+# Append distro codename suffix for Linux packages when DISTRO_CODENAME is set.
+# DEB: appends +${DISTRO_CODENAME} to version (e.g., 8.0.0+noble)
+# RPM: appends .${DISTRO_CODENAME} to release (e.g., 0.pre30.noble or 1.noble)
+if(CMAKE_SYSTEM_NAME MATCHES "Linux" AND DISTRO_CODENAME)
+    string(APPEND CPACK_PACKAGE_VERSION "+${DISTRO_CODENAME}")
+    if(CPACK_RPM_PACKAGE_RELEASE)
+        string(APPEND CPACK_RPM_PACKAGE_RELEASE ".${DISTRO_CODENAME}")
+    else()
+        set(CPACK_RPM_PACKAGE_RELEASE "1.${DISTRO_CODENAME}")
+    endif()
+endif()
+
+set(CPACK_PACKAGE_VENDOR "BlitterStudio")
+set(CPACK_PACKAGE_CONTACT "Dimitris Panokostas <midwan@gmail.com>")
+set(CPACK_PACKAGE_DESCRIPTION
+        "Optimized Amiga emulator for various ARM64, AMD64 and RISC-V platforms.
+Amiberry is an optimized Amiga emulator for various platforms. It is based on
+the latest WinUAE and supports various Amiga models, including the A4000T,
+A4000D, A1200, A3000 and A600. Additionally, it includes several unique
+features, such as support for WHDLoad titles, RetroArch integration, custom
+Controller Mappings and more.")
+set(CPACK_PACKAGE_DESCRIPTION_FILE "${CMAKE_SOURCE_DIR}/packaging/Description.txt")
+
+# macOS settings for DragNDrop generator
+set(CPACK_DMG_SLA_USE_RESOURCE_FILE_LICENSE OFF)
+set(CPACK_DMG_VOLUME_NAME "${AMIBERRY_DISPLAY_NAME}")
+set(CPACK_DMG_BACKGROUND_IMAGE "${CMAKE_SOURCE_DIR}/packaging/dmg/AppDMGBackground.tiff")
+set(CPACK_DMG_DS_STORE_SETUP_SCRIPT "${CMAKE_SOURCE_DIR}/packaging/dmg/AppDMGSetup.scpt")
+
+# Detect package architecture once, map to DEB and RPM names
+if (CMAKE_SYSTEM_PROCESSOR MATCHES "aarch64" OR CMAKE_SYSTEM_PROCESSOR MATCHES "arm64")
+    set(_deb_arch "arm64")
+    set(_rpm_arch "aarch64")
+elseif(CMAKE_SYSTEM_PROCESSOR MATCHES "arm")
+    set(_deb_arch "armhf")
+    set(_rpm_arch "armhf")
+elseif(CMAKE_SYSTEM_PROCESSOR MATCHES "riscv64")
+    set(_deb_arch "riscv64")
+    set(_rpm_arch "riscv64")
+elseif(CMAKE_SYSTEM_PROCESSOR MATCHES "loongarch64")
+    set(_deb_arch "loong64")
+    set(_rpm_arch "loongarch64")
+else()
+    set(_deb_arch "amd64")
+    set(_rpm_arch "x86_64")
+endif()
+
+# Linux DEB settings - build dependency list conditionally based on enabled features
+# When BUNDLE_SDL is ON, SDL3 libs are shipped inside the package — no system dependency needed.
+if(BUNDLE_SDL)
+    set(_deb_deps "libc6, libstdc++6, flac, libpng16-16, zlib1g, libcurl4")
+else()
+    set(_deb_deps "libc6, libstdc++6, libsdl3-0, libsdl3-image0, flac, libpng16-16, zlib1g, libcurl4")
+endif()
+if(USE_PPC AND USE_QEMU_PPC)
+    string(APPEND _deb_deps ", libglib2.0-0")
+endif()
+if(USE_MPG123)
+    string(APPEND _deb_deps ", libmpg123-0")
+endif()
+if(USE_ZSTD)
+    string(APPEND _deb_deps ", libzstd1")
+endif()
+if(USE_LIBSERIALPORT)
+    string(APPEND _deb_deps ", libserialport0")
+endif()
+# PortMidi's runtime package follows its SONAME (libportmidi0, libportmidi2,
+# ...). Let dpkg-shlibdeps add the distro-correct dependency.
+if(USE_LIBENET)
+    string(APPEND _deb_deps ", libenet7")
+endif()
+if(USE_LIBMPEG2)
+    string(APPEND _deb_deps ", libmpeg2-4")
+endif()
+if(USE_UAENET_PCAP)
+    string(APPEND _deb_deps ", libpcap0.8")
+endif()
+set(CPACK_DEBIAN_FILE_NAME "DEB-DEFAULT")
+# Force the DEB payload to use a plain GNU tar format. PAX headers can carry
+# host extended attributes such as macOS com.apple.* metadata, which dpkg/tar
+# may warn about during install.
+set(CPACK_DEBIAN_ARCHIVE_TYPE "gnutar")
+set(CPACK_DEBIAN_PACKAGE_DEPENDS "${_deb_deps}")
+set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS ON)
+set(_deb_shlib_private_dirs "")
+foreach(_sdl_dir IN ITEMS "${SDL3_DIR}" "${SDL3_image_DIR}")
+    if(_sdl_dir)
+        cmake_path(GET _sdl_dir PARENT_PATH _sdl_cmake_dir)
+        cmake_path(GET _sdl_cmake_dir PARENT_PATH _sdl_lib_dir)
+        if(EXISTS "${_sdl_lib_dir}")
+            list(APPEND _deb_shlib_private_dirs "${_sdl_lib_dir}")
+        endif()
+    endif()
+endforeach()
+if(_deb_shlib_private_dirs)
+    list(REMOVE_DUPLICATES _deb_shlib_private_dirs)
+    list(JOIN _deb_shlib_private_dirs ";" CPACK_DEBIAN_PACKAGE_SHLIBDEPS_PRIVATE_DIRS)
+endif()
+set(CPACK_DEBIAN_PACKAGE_ARCHITECTURE "${_deb_arch}")
+set(CPACK_DEBIAN_PACKAGE_SECTION "otherosfs")
+set(CPACK_DEBIAN_PACKAGE_HOMEPAGE "https://amiberry.com")
+set(CPACK_DEBIAN_PACKAGE_CONTROL_EXTRA
+        "${CMAKE_SOURCE_DIR}/packaging/linux/scripts/postinst"
+        "${CMAKE_SOURCE_DIR}/packaging/linux/scripts/postrm")
+
+# Linux RPM settings - build dependency list conditionally based on enabled features
+if(BUNDLE_SDL)
+    set(_rpm_deps "glibc, libstdc++, flac, libpng, zlib, libcurl")
+else()
+    set(_rpm_deps "glibc, libstdc++, SDL3, SDL3_image, flac, libpng, zlib, libcurl")
+endif()
+if(USE_PPC AND USE_QEMU_PPC)
+    string(APPEND _rpm_deps ", glib2")
+endif()
+if(USE_MPG123)
+    string(APPEND _rpm_deps ", mpg123")
+endif()
+if(USE_ZSTD)
+    string(APPEND _rpm_deps ", zstd")
+endif()
+if(USE_LIBSERIALPORT)
+    string(APPEND _rpm_deps ", libserialport")
+endif()
+if(USE_PORTMIDI)
+    string(APPEND _rpm_deps ", portmidi")
+endif()
+if(USE_LIBENET)
+    string(APPEND _rpm_deps ", enet")
+endif()
+if(USE_LIBMPEG2)
+    string(APPEND _rpm_deps ", libmpeg2")
+endif()
+set(CPACK_RPM_FILE_NAME "RPM-DEFAULT")
+set(CPACK_RPM_PACKAGE_REQUIRES "${_rpm_deps}")
+set(CPACK_RPM_PACKAGE_LICENSE "GPL-3.0-or-later")
+set(CPACK_RPM_POST_INSTALL_SCRIPT_FILE "${CMAKE_SOURCE_DIR}/packaging/linux/scripts/rpm-postinst.sh")
+set(CPACK_RPM_POST_UNINSTALL_SCRIPT_FILE "${CMAKE_SOURCE_DIR}/packaging/linux/scripts/rpm-postrm.sh")
+set(CPACK_RPM_PACKAGE_ARCHITECTURE "${_rpm_arch}")
+
+# Package resources
+set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_SOURCE_DIR}/LICENSE")
+set(CPACK_RESOURCE_FILE_README "${CMAKE_SOURCE_DIR}/README.md")
+
+# Strip binaries
+set(CPACK_STRIP_FILES TRUE)
+
+if(CMAKE_VERSION VERSION_GREATER_EQUAL 3.19)
+    set(CPACK_PRE_BUILD_SCRIPTS
+            "${CMAKE_SOURCE_DIR}/cmake/package_strip_macos_metadata.cmake")
+endif()
+
+# Generator selection per platform
+if (CMAKE_SYSTEM_NAME MATCHES "Darwin")
+    set(CPACK_GENERATOR TGZ DragNDrop)
+elseif (CMAKE_SYSTEM_NAME MATCHES "Linux")
+    set(CPACK_GENERATOR TGZ DEB RPM)
+elseif (WIN32)
+    # Windows release ZIPs are produced separately from the installed tree so
+    # they can be explicit portable packages with an amiberry.portable marker.
+    set(CPACK_GENERATOR INNOSETUP)
+
+	# InnoSetup installer settings
+	# Use a version-free install directory so upgrades replace the existing
+	# installation instead of creating a separate folder per version.
+	set(CPACK_PACKAGE_INSTALL_DIRECTORY "${CPACK_PACKAGE_NAME}")
+	if (CMAKE_SYSTEM_PROCESSOR MATCHES "aarch64|arm64|ARM64")
+		set(CPACK_INNOSETUP_ARCHITECTURE arm64)
+		set(_innosetup_arch_suffix "arm64")
+	elseif (CMAKE_SIZEOF_VOID_P EQUAL 8)
+		set(CPACK_INNOSETUP_ARCHITECTURE x64)
+		# Allow the x64 installer to run on Windows 11 ARM64 under x64
+		# emulation. Plain "x64" excludes ARM64 machines.
+		set(CPACK_INNOSETUP_SETUP_ArchitecturesAllowed "x64compatible")
+		set(CPACK_INNOSETUP_SETUP_ArchitecturesInstallIn64BitMode "x64compatible")
+		set(_innosetup_arch_suffix "win64")
+	else()
+		set(CPACK_INNOSETUP_ARCHITECTURE x86)
+		set(_innosetup_arch_suffix "win32")
+	endif()
+	# Override CPack's default "<name>-<version>-win64.exe" so the ARM64
+	# installer doesn't get the misleading win64 suffix when produced on
+	# the same packaging code path.  Matches the portable-ZIP naming
+	# convention used by the CI workflow (windows-arm64 / windows-x64).
+	set(CPACK_PACKAGE_FILE_NAME
+		"${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION}-${_innosetup_arch_suffix}")
+    set(CPACK_INNOSETUP_SETUP_PrivilegesRequired "lowest")
+    set(CPACK_INNOSETUP_SETUP_PrivilegesRequiredOverridesAllowed "dialog")
+    # {autopf} expands to Program Files when the user elevates via the
+    # "Install for all users" dialog, and to {localappdata}\Programs
+    # when installing only for the current user.
+    set(CPACK_INNOSETUP_INSTALL_ROOT "{autopf}")
+    set(CPACK_INNOSETUP_PROGRAM_MENU_FOLDER "Amiberry")
+    set(CPACK_INNOSETUP_CREATE_UNINSTALL_LINK ON)
+    set(CPACK_PACKAGE_EXECUTABLES "Amiberry" "Amiberry")
+    set(CPACK_INNOSETUP_SETUP_AppPublisher "BlitterStudio")
+    set(CPACK_INNOSETUP_SETUP_AppPublisherURL "https://amiberry.com")
+    set(CPACK_INNOSETUP_SETUP_AppSupportURL "https://github.com/BlitterStudio/amiberry/issues")
+    set(CPACK_INNOSETUP_SETUP_AppUpdatesURL "https://github.com/BlitterStudio/amiberry/releases")
+    set(CPACK_INNOSETUP_SETUP_VersionInfoCompany "BlitterStudio")
+    set(CPACK_INNOSETUP_SETUP_VersionInfoDescription "Amiberry Installer")
+    set(CPACK_INNOSETUP_SETUP_VersionInfoProductName "Amiberry")
+    set(CPACK_INNOSETUP_SETUP_VersionInfoProductVersion "${AMIBERRY_PRODUCT_VERSION}")
+    set(CPACK_INNOSETUP_SETUP_VersionInfoVersion "${PROJECT_VERSION}.0")
+    if(EXISTS "${CMAKE_SOURCE_DIR}/data/amiberry.ico")
+        set(CPACK_INNOSETUP_ICON_FILE "${CMAKE_SOURCE_DIR}/data/amiberry.ico")
+    endif()
+    set(CPACK_INNOSETUP_EXTRA_SCRIPTS
+        "${CMAKE_SOURCE_DIR}/packaging/windows/fileassoc.iss"
+        "${CMAKE_SOURCE_DIR}/packaging/windows/portable_mode.iss")
+    set(CPACK_INNOSETUP_CODE_FILES "${CMAKE_SOURCE_DIR}/packaging/windows/shell_refresh.iss")
+else ()
+    set(CPACK_GENERATOR TGZ)
+endif ()
+
+include(CPack)

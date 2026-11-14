@@ -1,0 +1,10 @@
+# prod_id	class	what the screen shows (see classes.py)
+236341	menu	part list under the Meteli IV logo, scroller
+257354	menu	Scoopex Megademo II part list (preface, opening, ...)
+158307	menu	Zenith/Brain Wave musicdisk, tune scroller
+6961	broken-media	indigo1.dms is truncated (xdms: unexpected end of file); Software Failure after disk 2
+6952	use-hd	PB-ThePrey.LHA holds both disks (run "lorte land"); floppy wants PREY2: in with no prompt
+144	use-hd	TBL-Tint.LHA; the 6 floppies are installer disks (disk 1 does not boot)
+227140	use-hd	Falcons&TMH-Pogo.lha; disk 1 does not boot
+324902	separate-disks	v1, v2, v3 each boot alone to the same loader and play (a1200)
+194035	separate-disks	disk B (INC2) boots alone and plays (a500)

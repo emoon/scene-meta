@@ -1,0 +1,153 @@
+app-id: com.blitterstudio.amiberry
+runtime: org.freedesktop.Platform
+runtime-version: '25.08'
+sdk: org.freedesktop.Sdk
+command: amiberry
+rename-desktop-file: Amiberry.desktop
+rename-appdata-file: Amiberry.metainfo.xml
+rename-icon: amiberry
+finish-args:
+  - --device=all
+  # X11 + XShm access
+  - --share=ipc
+  # Wayland access
+  - --socket=wayland
+  - --socket=fallback-x11
+  # Needs to talk to the network:
+  - --share=network
+  # Allow bluetooth (e.g. controllers)
+  - --allow=bluetooth
+  # Play sounds using PulseAudio
+  - --socket=pulseaudio
+  # Filesystem access
+  - --filesystem=host
+cleanup:
+  - /include
+  - /lib/cmake
+  - /lib/pkgconfig
+  - /share/doc
+  - /share/man
+  - /share/pkgconfig
+  - '*.la'
+  - '*.a'
+
+modules:
+  - name: sdl3
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DSDL_STATIC=OFF
+    sources:
+      - type: git
+        url: https://github.com/libsdl-org/SDL.git
+        tag: release-3.4.10
+        commit: 8e37db5e797b6167f3a00d697d816a684bd259c7
+        x-checker-data:
+          type: git
+          tag-pattern: ^release-([\d.]+)$
+
+  - name: sdl3-image
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DSDL3IMAGE_INSTALL=ON
+    sources:
+      - type: git
+        url: https://github.com/libsdl-org/SDL_image.git
+        tag: release-3.4.4
+        commit: bec9134a26c7d0f31b36d6083c25296e04cabff5
+        x-checker-data:
+          type: git
+          tag-pattern: ^release-([\d.]+)$
+
+  - name: libpcap
+    buildsystem: autotools
+    sources:
+      - type: archive
+        url: https://www.tcpdump.org/release/libpcap-1.10.6.tar.gz
+        sha256: 872dd11337fe1ab02ad9d4fee047c9da244d695c6ddf34e2ebb733efd4ed8aa9
+        x-checker-data:
+          type: anitya
+          project-id: 1702
+          url-template: https://www.tcpdump.org/release/libpcap-$version.tar.gz
+
+  - name: libmpeg2
+    config-opts:
+      - --disable-static
+    rm-configure: true
+    sources:
+      - type: archive
+        url: https://web.archive.org/web/20250314123645/https://libmpeg2.sourceforge.io/files/libmpeg2-0.5.1.tar.gz
+        sha256: dee22e893cb5fc2b2b6ebd60b88478ab8556cb3b93f9a0d7ce8f3b61851871d4
+      - type: script
+        dest-filename: autogen.sh
+        commands:
+          - autoreconf -vfi
+    cleanup:
+      - /bin
+
+  - name: libserialport
+    buildsystem: autotools
+    sources:
+      - type: git
+        url: https://github.com/sigrokproject/libserialport
+        tag: libserialport-0.1.2
+        commit: bc8f88ef3399b76da7992a99badebada419d0e19
+        x-checker-data:
+          type: git
+          tag-pattern: ^libserialport-([\d.]+)$
+
+  - name: portmidi
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+    sources:
+      - type: git
+        url: https://github.com/PortMidi/portmidi.git
+        tag: v2.0.8
+        commit: 101dac9455e2718512c94e24cbcae6a6f34b908b
+        x-checker-data:
+          type: git
+          tag-pattern: ^v([\d.]+)$
+
+  - name: enet
+    sources:
+      - sha256: 28603c895f9ed24a846478180ee72c7376b39b4bb1287b73877e5eae7d96b0dd
+        type: archive
+        url: https://github.com/lsalzman/enet/archive/v1.3.18.tar.gz
+        x-checker-data:
+          type: anitya
+          project-id: 696
+          url-template: https://github.com/lsalzman/enet/archive/v$version.tar.gz
+      - type: script  # cf. https://github.com/lsalzman/enet/blob/master/README
+        dest-filename: autogen.sh
+        commands:
+          - autoreconf -ifv
+
+  - name: nlohmann-json
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DJSON_BuildTests=OFF
+    sources:
+      - type: archive
+        url: https://github.com/nlohmann/json/archive/refs/tags/v3.12.0.tar.gz
+        sha256: 4b92eb0c06d10683f7447ce9406cb97cd4b453be18d7279320f7b2f025c10187
+        x-checker-data:
+          type: anitya
+          project-id: 11152
+          url-template: https://github.com/nlohmann/json/archive/refs/tags/v$version.tar.gz
+
+  - name: amiberry
+    buildsystem: cmake-ninja
+    builddir: true
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+    sources:
+      - type: git
+        url: https://github.com/BlitterStudio/amiberry
+        tag: v8.2.2
+        commit: cbab68479b122f2c8b61345728b8303ebd97c677
+        x-checker-data:
+          type: git
+          tag-pattern: ^v([\d.]+)$

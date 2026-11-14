@@ -1,0 +1,160 @@
+set(CMAKE_ASM_COMPILER ${CMAKE_C_COMPILER})
+set(CMAKE_ASM_COMPILER_ARG1 ${CMAKE_C_COMPILER_ARG1})
+find_program(CCACHE_PROGRAM ccache)
+if(CCACHE_PROGRAM AND NOT CMAKE_C_COMPILER MATCHES "ccache")
+    set(CMAKE_C_COMPILER_LAUNCHER "${CCACHE_PROGRAM}")
+    set(CMAKE_CXX_COMPILER_LAUNCHER "${CCACHE_PROGRAM}")
+endif()
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Set build type to "Release" if user did not specify any build type yet
+# Other possible values: Debug and None.
+if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
+    set(CMAKE_BUILD_TYPE Release CACHE STRING "Build type" FORCE)
+endif()
+
+# Accumulate compile and link flags in variables.
+# These are applied to the amiberry target in SourceFiles.cmake after the target is created,
+# so they do not leak into third-party FetchContent builds.
+set(AMIBERRY_GNU_LIKE_COMPILER OFF)
+if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+    set(AMIBERRY_GNU_LIKE_COMPILER ON)
+endif()
+
+set(AMIBERRY_COMPILE_OPTIONS "")
+if(AMIBERRY_GNU_LIKE_COMPILER AND NOT WIN32)
+    list(APPEND AMIBERRY_COMPILE_OPTIONS "-pipe")
+endif()
+set(AMIBERRY_LINK_OPTIONS "")
+
+# Tune default Linux aarch64 builds for the slowest supported board
+# (Raspberry Pi 4 / Cortex-A72). -mtune only affects instruction scheduling;
+# the ISA baseline stays generic armv8-a. Leave WITH_OPTIMIZE builds alone so
+# their native CPU flags remain authoritative.
+if(AMIBERRY_GNU_LIKE_COMPILER
+        AND CMAKE_SYSTEM_NAME STREQUAL "Linux"
+        AND ARCH_LOWER MATCHES "aarch64|arm64")
+    set(AMIBERRY_ARM_TUNE "cortex-a72" CACHE STRING "CPU passed to -mtune for Linux aarch64 builds (set empty to disable)")
+    if(WITH_OPTIMIZE)
+        message(STATUS "Linux aarch64: WITH_OPTIMIZE enabled, not applying default -mtune=${AMIBERRY_ARM_TUNE}")
+    elseif(AMIBERRY_ARM_TUNE)
+        list(APPEND AMIBERRY_COMPILE_OPTIONS "-mtune=${AMIBERRY_ARM_TUNE}")
+        message(STATUS "Linux aarch64: adding -mtune=${AMIBERRY_ARM_TUNE}")
+    endif()
+endif()
+
+if(AMIBERRY_GNU_LIKE_COMPILER)
+    if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+        list(APPEND AMIBERRY_COMPILE_OPTIONS "-Og" "-funwind-tables" "-DDEBUG")
+
+        if(CMAKE_C_COMPILER_ID STREQUAL "GNU")
+            list(APPEND AMIBERRY_COMPILE_OPTIONS "-ggdb")
+        else()
+            list(APPEND AMIBERRY_COMPILE_OPTIONS "-g")
+        endif()
+    elseif(CMAKE_BUILD_TYPE STREQUAL "Release")
+        list(APPEND AMIBERRY_COMPILE_OPTIONS "-fdata-sections" "-ffunction-sections")
+    elseif(CMAKE_BUILD_TYPE)
+        list(APPEND AMIBERRY_COMPILE_OPTIONS "-O1")
+    endif()
+endif()
+
+# Platform-specific linker flags
+if(AMIBERRY_GNU_LIKE_COMPILER)
+    if(NOT CMAKE_SYSTEM_NAME MATCHES "Darwin" AND NOT IOS)
+        # ELF/PE linker flags (not for Apple platforms)
+        list(APPEND AMIBERRY_LINK_OPTIONS "-Wl,--no-undefined" "-Wl,--as-needed")
+
+        # ELF-specific flags (not available on Windows PE)
+        if(NOT WIN32)
+            list(APPEND AMIBERRY_LINK_OPTIONS "-Wl,-z,combreloc")
+        endif()
+
+        if(CMAKE_BUILD_TYPE STREQUAL "Release")
+            list(APPEND AMIBERRY_LINK_OPTIONS
+                "-Wl,--gc-sections"
+                "-Wl,--strip-all"
+                "-Wl,-O1"
+            )
+
+            # ELF-specific hardening flags (not available on Windows PE)
+            if(NOT WIN32)
+                list(APPEND AMIBERRY_LINK_OPTIONS
+                    "-Wl,-z,relro"
+                    "-Wl,-z,now"
+                )
+            endif()
+
+            # GNU ld-only flags (do not work on FreeBSD or Windows)
+            if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+                list(APPEND AMIBERRY_LINK_OPTIONS
+                    "-Wl,--sort-common=descending"
+                    "-Wl,--hash-style=gnu"
+                )
+            endif()
+        endif()
+    else()
+        if(CMAKE_BUILD_TYPE STREQUAL "Release")
+            list(APPEND AMIBERRY_LINK_OPTIONS "-Wl,-dead_strip")
+        endif()
+    endif()
+endif()
+
+if(WITH_OPTIMIZE)
+    if(CMAKE_BUILD_TYPE STREQUAL "Release")
+        if(AMIBERRY_GNU_LIKE_COMPILER)
+            include(${CMAKE_SOURCE_DIR}/cmake/optimize.cmake)
+        else()
+            message(FATAL_ERROR "WITH_OPTIMIZE requires a GNU-like C/C++ compiler")
+        endif()
+    else()
+        message(FATAL_ERROR "WITH_OPTIMIZE can only be used on Release builds")
+    endif()
+endif()
+
+if(WITH_LTO)
+	# ensure LTO links with lld on FreeBSD/clang.
+    if(CMAKE_SYSTEM_NAME STREQUAL "FreeBSD" AND CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+        string(APPEND CMAKE_EXE_LINKER_FLAGS " -fuse-ld=lld")
+        string(APPEND CMAKE_SHARED_LINKER_FLAGS " -fuse-ld=lld")
+        string(APPEND CMAKE_MODULE_LINKER_FLAGS " -fuse-ld=lld")
+    endif()
+
+    include(CheckIPOSupported)
+    check_ipo_supported(RESULT lto_supported OUTPUT lto_error)
+    if(lto_supported)
+        set(CMAKE_INTERPROCEDURAL_OPTIMIZATION TRUE)
+    else()
+        message(FATAL_ERROR "LTO is not supported: ${lto_error}")
+    endif()
+endif()
+
+# Platform-specific include/link paths and frameworks.
+# Stored in variables and applied to the target in SourceFiles.cmake.
+set(AMIBERRY_PLATFORM_INCLUDE_DIRS "")
+set(AMIBERRY_PLATFORM_LINK_DIRS "")
+set(AMIBERRY_PLATFORM_LIBS "")
+
+if(IOS)
+    # iOS: no Homebrew paths, different framework set (no IOKit/DiskArbitration)
+    list(APPEND AMIBERRY_PLATFORM_LIBS "-framework Foundation" "-framework CoreFoundation" "-framework UIKit" "-framework OpenGLES" "iconv")
+    list(APPEND AMIBERRY_COMPILE_OPTIONS "$<$<CONFIG:Debug>:-fno-omit-frame-pointer;-mno-omit-leaf-frame-pointer>")
+elseif(CMAKE_SYSTEM_NAME MATCHES "Darwin")
+    if(CMAKE_SYSTEM_PROCESSOR MATCHES "arm64")
+        list(APPEND AMIBERRY_PLATFORM_INCLUDE_DIRS "/opt/homebrew/include")
+        list(APPEND AMIBERRY_PLATFORM_LINK_DIRS "/opt/homebrew/lib")
+    else()
+        list(APPEND AMIBERRY_PLATFORM_INCLUDE_DIRS "/usr/local/include")
+        list(APPEND AMIBERRY_PLATFORM_LINK_DIRS "/usr/local/lib")
+    endif()
+
+    list(APPEND AMIBERRY_PLATFORM_LIBS "-framework IOKit" "-framework AppKit" "-framework Foundation" "-framework CoreFoundation" "-framework DiskArbitration" "iconv")
+
+    list(APPEND AMIBERRY_COMPILE_OPTIONS "$<$<CONFIG:Debug>:-fno-omit-frame-pointer;-mno-omit-leaf-frame-pointer>")
+endif()
+
+if(WIN32)
+    list(APPEND AMIBERRY_PLATFORM_LIBS ws2_32 winmm imm32 version setupapi shlwapi advapi32 iphlpapi)
+endif()

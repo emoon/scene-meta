@@ -1,0 +1,1634 @@
+#include "sysdeps.h"
+#include "options.h"
+#include "imgui.h"
+#include "imgui_internal.h"
+#include <algorithm>
+#include <SDL3/SDL.h>
+#include "gui/gui_handling.h"
+#include "imgui_panels.h"
+#include "filesys.h"
+#include "autoconf.h"
+#include "blkdev.h"
+#include "rommgr.h"
+#include "uae.h"
+
+// Enum for Dialog Modes (Modals)
+enum class HDDialogMode {
+    None,
+    AddDir,
+    AddHDF,
+    AddHardDrive,
+    CreateHDF,
+    EditEntry,
+    AddCD,
+    AddTape
+};
+
+static HDDialogMode current_hd_dialog_mode = HDDialogMode::None;
+static int edit_entry_index = -1;
+static int selected_row = -1; // Track selected drive in the list
+
+extern void default_fsvdlg(struct hardfiledata *hfd);
+extern void default_hfdlg(struct hardfiledata *hfd, bool rdb); 
+extern void updatehdfinfo(bool force, bool defaults, bool realdrive, std::string& txtHdfInfo, std::string& txtHdfInfo2);
+
+static std::string hdf_info_text1;
+static std::string hdf_info_text2;
+
+static bool show_virtual_filesys_modal = false;
+static bool show_hardfile_modal = false;
+static bool show_create_hdf_modal = false;
+static bool show_add_harddrive_modal = false;
+static bool show_cd_modal = false;
+static bool show_tape_modal = false;
+
+static int create_hdf_size_mb = 100;
+static bool create_hdf_dynamic = false;
+static bool create_hdf_rdb = false;
+static std::string harddrive_modal_error;
+
+// Cache get_filesys_unitconfig() results to avoid expensive per-frame I/O.
+// HDF: hdf_open()/hdf_close(). CD/TAPE: blkdev_get_info() opens+closes the
+// device, which triggers parse_image() and spams logs when the backing file
+// is missing (issue #1979). DIR is cheap and uncached.
+// CD/TAPE also use a short time-based refresh so live media state stays visible.
+static struct {
+	bool valid = false;
+	int type = -1;
+	struct mountedinfo mi{};
+	TCHAR rootdir[MAX_DPATH]{};
+	TCHAR cdslot_name[MAX_DPATH]{};
+	uint64_t refreshed_ms = 0;
+} hdf_cache[MOUNT_CONFIG_SIZE];
+static int hdf_cache_mount_count = -1;
+
+static void invalidate_hdf_cache()
+{
+	for (auto& c : hdf_cache)
+		c.valid = false;
+	hdf_cache_mount_count = -1;
+}
+
+static int cached_get_filesys_unitconfig(struct uae_prefs *p, int row, struct mountedinfo *mi)
+{
+	if (row < 0 || row >= MOUNT_CONFIG_SIZE)
+		return get_filesys_unitconfig(p, row, mi);
+
+	auto* ci = &p->mountconfig[row].ci;
+
+	// DIR is cheap — call directly. Everything else is cached.
+	if (ci->type == UAEDEV_DIR)
+		return get_filesys_unitconfig(p, row, mi);
+
+	// Invalidate all entries when mount list changes shape
+	if (hdf_cache_mount_count != p->mountitems) {
+		for (auto& c : hdf_cache)
+			c.valid = false;
+		hdf_cache_mount_count = p->mountitems;
+	}
+
+	auto& c = hdf_cache[row];
+
+	// For CD/TAPE the underlying CD image path lives in cdslots[unit].name,
+	// not ci->rootdir — track it separately so swapping the image invalidates.
+	const TCHAR* cdslot_name = _T("");
+	if (ci->type == UAEDEV_CD || ci->type == UAEDEV_TAPE) {
+		int unit = ci->device_emu_unit;
+		if (unit >= 0 && unit < MAX_TOTAL_SCSI_DEVICES)
+			cdslot_name = p->cdslots[unit].name;
+	}
+
+	if (c.valid && _tcscmp(c.rootdir, ci->rootdir) != 0)
+		c.valid = false;
+	if (c.valid && _tcscmp(c.cdslot_name, cdslot_name) != 0)
+		c.valid = false;
+
+	// Time-based refresh for CD/TAPE so physical-media insert/eject is visible.
+	if (c.valid && (ci->type == UAEDEV_CD || ci->type == UAEDEV_TAPE)) {
+		constexpr uint64_t cd_tape_refresh_ms = 2000;
+		if (SDL_GetTicks() - c.refreshed_ms > cd_tape_refresh_ms)
+			c.valid = false;
+	}
+
+	if (!c.valid) {
+		c.type = get_filesys_unitconfig(p, row, &c.mi);
+		_tcscpy(c.rootdir, ci->rootdir);
+		_tcscpy(c.cdslot_name, cdslot_name);
+		c.refreshed_ms = SDL_GetTicks();
+		c.valid = true;
+	}
+	memcpy(mi, &c.mi, sizeof(*mi));
+	return c.type;
+}
+
+static bool IsCdDevicePath(const char* path)
+{
+    return path && std::strncmp(path, "/dev/", 5) == 0;
+}
+
+static bool IsCdDevicePath(const std::string& path)
+{
+    return path.rfind("/dev/", 0) == 0;
+}
+
+static bool ValidatePhysicalDriveSelection(const uaedev_config_info& ci, std::string& error, bool* out_readonly = nullptr)
+{
+    if (!ci.rootdir[0]) {
+        error = "Select a physical drive first.";
+        return false;
+    }
+
+    struct hardfiledata hfd{};
+    memcpy(&hfd.ci, &ci, sizeof(struct uaedev_config_info));
+    if (hfd.ci.blocksize <= 0)
+        hfd.ci.blocksize = 512;
+
+    const bool opened = hdf_open(&hfd) > 0;
+    if (opened && out_readonly)
+        *out_readonly = hfd.ci.readonly;
+    hdf_close(&hfd);
+
+    if (opened)
+        return true;
+
+#ifdef AMIBERRY_MACOS
+    if (!_tcsncmp(ci.rootdir, _T("/dev/"), 5)) {
+        error = "Amiberry couldn't open this device. Unmount it first and make sure macOS allows raw disk access.";
+    } else {
+        error = "Amiberry couldn't open this hard drive path.";
+    }
+#else
+    error = "Amiberry couldn't open this hard drive path.";
+#endif
+    return false;
+}
+
+static void AddToMruCdList(const std::string& path)
+{
+    if (path.empty() || IsCdDevicePath(path))
+        return;
+
+    auto it = std::find(lstMRUCDList.begin(), lstMRUCDList.end(), path);
+    if (it != lstMRUCDList.end())
+        lstMRUCDList.erase(it);
+    lstMRUCDList.insert(lstMRUCDList.begin(), path);
+    if (lstMRUCDList.size() > 10)
+        lstMRUCDList.resize(10);
+}
+
+static std::string GetCdImageBrowseStartPath(const std::string& currentPath)
+{
+    if (IsCdDevicePath(currentPath))
+        return get_cdrom_browse_path();
+
+    return get_cdrom_browse_path(currentPath);
+}
+
+// Helper to handle TCHAR arrays in ImGui
+static bool InputTextT(const char* label, TCHAR* buf, size_t buf_size, ImGuiInputTextFlags flags = 0)
+{
+    size_t char_buf_size = buf_size * 3; 
+    char* tempbuffer = (char*)malloc(char_buf_size);
+    if (!tempbuffer) return false;
+    
+    // Copy TCHAR to char (UTF8/ANSI)
+    ua_copy(tempbuffer, char_buf_size, buf);
+    bool changed = ImGui::InputText(label, tempbuffer, char_buf_size, flags);
+    if (changed) {
+        // Copy char to TCHAR
+        au_copy(buf, buf_size, tempbuffer);
+    }
+    
+    free(tempbuffer);
+    return changed;
+}
+
+static void harddisktype(char* s, const struct uaedev_config_info* ci)
+{
+	switch (ci->type)
+	{
+	case UAEDEV_CD:
+		strcpy(s, "CD");
+		break;
+	case UAEDEV_TAPE:
+		strcpy(s, "TAPE");
+		break;
+	case UAEDEV_HDF:
+		strcpy(s, "HDF");
+		break;
+	default:
+		strcpy(s, "n/a");
+		break;
+	}
+}
+
+static std::string format_size(long long size) {
+    char buffer[32];
+    if (size >= 1024 * 1024 * 1024)
+        snprintf(buffer, sizeof(buffer), "%.1fG", (double)(size / (1024 * 1024)) / 1024.0);
+    else if (size < 10 * 1024 * 1024)
+        snprintf(buffer, sizeof(buffer), "%lldK", size / 1024);
+    else
+        snprintf(buffer, sizeof(buffer), "%.1fM", (double)(size / 1024) / 1024.0);
+    return {buffer};
+}
+
+static void RenderMountedDrives(float reserved_below)
+{
+    // WinUAE-style list: Device, Volume, Path, R/W, Size, BootPri
+    // No explicit Edit/Del columns. Selection -> Button action.
+
+    char mounted_label[64];
+    snprintf(mounted_label, sizeof(mounted_label), "Mounted Drives (%d/%d)", changed_prefs.mountitems, MOUNT_CONFIG_SIZE);
+    BeginGroupBox(mounted_label);
+
+    // Reserve space for action buttons + CD section + metadata checkboxes below.
+    // Caller computes the reservation so it scales with font/DPI.
+    ImGui::BeginChild("MountedDrivesList", ImVec2(0, -reserved_below), true);
+
+    if (ImGui::BeginTable("MountedDrivesTable", 6, ImGuiTableFlags_Borders | ImGuiTableFlags_RowBg | ImGuiTableFlags_SizingFixedFit | ImGuiTableFlags_ScrollY))
+    {
+        ImGui::TableSetupColumn("Device", ImGuiTableColumnFlags_WidthFixed, BUTTON_WIDTH);
+        ImGui::TableSetupColumn("Volume", ImGuiTableColumnFlags_WidthFixed, BUTTON_WIDTH);
+        ImGui::TableSetupColumn("Path", ImGuiTableColumnFlags_WidthStretch);
+        ImGui::TableSetupColumn("R/W", ImGuiTableColumnFlags_WidthFixed, BUTTON_WIDTH / 2);
+        ImGui::TableSetupColumn("Size", ImGuiTableColumnFlags_WidthFixed, BUTTON_WIDTH);
+        ImGui::TableSetupColumn("Boot", ImGuiTableColumnFlags_WidthFixed, BUTTON_WIDTH / 2);
+        ImGui::TableHeadersRow();
+
+        for (int row = 0; row < changed_prefs.mountitems; ++row)
+        {
+            ImGui::PushID(row);
+            auto* uci = &changed_prefs.mountconfig[row];
+            auto* const ci = &uci->ci;
+            
+            struct mountedinfo mi{};
+            int type = cached_get_filesys_unitconfig(&changed_prefs, row, &mi);
+            
+            bool nosize = false;
+            if (type < 0) {
+                type = (ci->type == UAEDEV_HDF || ci->type == UAEDEV_CD || ci->type == UAEDEV_TAPE) ? FILESYS_HARDFILE : FILESYS_VIRTUAL;
+                nosize = true;
+            }
+            if (mi.size < 0) nosize = true;
+
+            // Handle TCHAR rootdir
+            std::string rootdir_str;
+            char* tmp_root = ua(mi.rootdir[0] ? mi.rootdir : ci->rootdir);
+            if (tmp_root) {
+                rootdir_str = tmp_root;
+                xfree(tmp_root);
+            }
+            
+            if (rootdir_str.find("HD_") == 0) rootdir_str = rootdir_str.substr(3);
+            if (rootdir_str.size() > 1 && rootdir_str[0] == ':') {
+                 size_t colon = rootdir_str.find(':', 1);
+                 if (colon != std::string::npos) rootdir_str = rootdir_str.substr(1, colon - 1); 
+                 else rootdir_str = rootdir_str.substr(1);
+            }
+
+            char size_str[32];
+            if (nosize) strcpy(size_str, "n/a");
+            else strcpy(size_str, format_size(mi.size).c_str());
+
+            char devname_str[256];
+            char volname_str[256];
+            char bootpri_str[32];
+            
+            char* tmp_dev = ua(ci->devname);
+            char* tmp_vol = ua(ci->volname);
+            strncpy(devname_str, tmp_dev, sizeof(devname_str));
+            strncpy(volname_str, tmp_vol, sizeof(volname_str));
+            xfree(tmp_dev); xfree(tmp_vol);
+            
+            snprintf(bootpri_str, sizeof(bootpri_str), "%d", ci->bootpri);
+
+            int ctype = ci->controller_type;
+            if (ctype >= HD_CONTROLLER_TYPE_IDE_FIRST && ctype <= HD_CONTROLLER_TYPE_IDE_LAST) {
+                const struct expansionromtype* ert = get_unit_expansion_rom(ctype);
+                if (ert) {
+                    char* friendly = ua(ert->friendlyname);
+                    if (friendly) {
+                        if (ci->controller_type_unit == 0)
+                            snprintf(devname_str, sizeof(devname_str), "%s:%d", friendly, ci->controller_unit);
+                        else
+                            snprintf(devname_str, sizeof(devname_str), "%s:%d/%d", friendly, ci->controller_unit, ci->controller_type_unit + 1);
+                        xfree(friendly);
+                    } else {
+                         strcpy(devname_str, "Unknown");
+                    }
+                } else {
+                    const char* idedevs[] = { "IDE:%d", "A600/A1200/A4000:%d" };
+                    int idx = ctype - HD_CONTROLLER_TYPE_IDE_FIRST;
+                    if (idx >= 0 && idx < 2)
+                        snprintf(devname_str, sizeof(devname_str), idedevs[idx], ci->controller_unit);
+                    else
+                        snprintf(devname_str, sizeof(devname_str), "IDE:%d", ci->controller_unit);
+                }
+                harddisktype(volname_str, ci);
+                strcpy(bootpri_str, "n/a");
+            } 
+            else if (ctype >= HD_CONTROLLER_TYPE_SCSI_FIRST && ctype <= HD_CONTROLLER_TYPE_SCSI_LAST) {
+                const struct expansionromtype* ert = get_unit_expansion_rom(ctype);
+                char sid[32];
+                char* ert_name = ert ? ua(ert->name) : NULL;
+                
+                if (ci->controller_unit == 8 && ert_name && !strcmp(ert_name, "a2091")) strcpy(sid, "XT");
+                else if (ci->controller_unit == 8 && ert_name && !strcmp(ert_name, "a2090a")) strcpy(sid, "ST-506");
+                else snprintf(sid, sizeof(sid), "%d", ci->controller_unit);
+                
+                if (ert_name) xfree(ert_name);
+
+                if (ert) {
+                    char* friendly = ua(ert->friendlyname);
+                    if (friendly) {
+                        if (ci->controller_type_unit == 0)
+                            snprintf(devname_str, sizeof(devname_str), "%s:%s", friendly, sid);
+                        else
+                            snprintf(devname_str, sizeof(devname_str), "%s:%s/%d", friendly, sid, ci->controller_type_unit + 1);
+                        xfree(friendly);
+                    } else {
+                        strcpy(devname_str, "Unknown");
+                    }
+                } else {
+                     const char* scsidevs[] = { "SCSI:%s", "A3000:%s", "A4000T:%s", "CDTV:%s" };
+                     int idx = ctype - HD_CONTROLLER_TYPE_SCSI_FIRST;
+                     if (idx >= 0 && idx < 4)
+                        snprintf(devname_str, sizeof(devname_str), scsidevs[idx], sid);
+                     else
+                        snprintf(devname_str, sizeof(devname_str), "SCSI:%s", sid);
+                }
+                harddisktype(volname_str, ci);
+                strcpy(bootpri_str, "n/a");
+            }
+
+            ImGui::TableNextRow();
+            
+            // Selection logic
+            bool is_selected = (selected_row == row);
+            
+            ImGui::TableNextColumn();
+            if (ImGui::Selectable(devname_str, is_selected, ImGuiSelectableFlags_SpanAllColumns)) {
+                selected_row = row;
+            }
+            
+            ImGui::TableNextColumn(); ImGui::Text("%s", volname_str);
+            ImGui::TableNextColumn(); ImGui::Text("%s", rootdir_str.c_str());
+            ImGui::TableNextColumn(); ImGui::Text("%s", ci->readonly ? "RO" : "RW");
+            ImGui::TableNextColumn(); ImGui::Text("%s", size_str);
+            ImGui::TableNextColumn(); ImGui::Text("%s", bootpri_str);
+
+            ImGui::PopID();
+        }
+        ImGui::EndTable();
+    }
+    ImGui::EndChild();
+    EndGroupBox(mounted_label);
+}
+
+static void RenderActionButtons()
+{    
+    float avail = ImGui::GetContentRegionAvail().x;
+    float spacing = ImGui::GetStyle().ItemSpacing.x;
+    float btn_w = (avail - spacing * 2) / 3.0f;
+
+    const bool at_capacity = (changed_prefs.mountitems >= MOUNT_CONFIG_SIZE);
+
+    // Row 1: Add Directory, Add Hardfile, Add Hard Drive
+    ImGui::BeginDisabled(at_capacity);
+    if (AmigaButton(ICON_FA_PLUS " Add Directory...", ImVec2(btn_w, BUTTON_HEIGHT))) {
+        current_hd_dialog_mode = HDDialogMode::AddDir;
+    }
+    ImGui::SameLine();
+    if (AmigaButton(ICON_FA_PLUS " Add Hardfile...", ImVec2(btn_w, BUTTON_HEIGHT))) {
+        current_hd_dialog_mode = HDDialogMode::AddHDF;
+    }
+    ImGui::SameLine();
+    if (AmigaButton(ICON_FA_PLUS " Add Hard Drive...", ImVec2(btn_w, BUTTON_HEIGHT))) {
+        current_hd_dialog_mode = HDDialogMode::AddHardDrive;
+    }
+
+    // Row 2: Add CD Drive, Add Tape Drive
+    if (AmigaButton(ICON_FA_PLUS " Add CD Drive...", ImVec2(btn_w, BUTTON_HEIGHT))) {
+         current_hd_dialog_mode = HDDialogMode::AddCD;
+    }
+    ImGui::SameLine();
+    if (AmigaButton(ICON_FA_PLUS " Add Tape Drive...", ImVec2(btn_w, BUTTON_HEIGHT))) {
+         current_hd_dialog_mode = HDDialogMode::AddTape;
+    }
+    ImGui::EndDisabled();
+
+    // Create Hardfile is always available (creates file on disk, doesn't add mount entry)
+    ImGui::SameLine();
+    if (AmigaButton(ICON_FA_PLUS " Create Hardfile...", ImVec2(btn_w, BUTTON_HEIGHT))) {
+        current_hd_dialog_mode = HDDialogMode::CreateHDF;
+    }
+
+    // Row 3: Properties, Remove
+    ImGui::BeginDisabled(selected_row < 0 || selected_row >= changed_prefs.mountitems);
+    if (AmigaButton(ICON_FA_GEAR " Properties", ImVec2(btn_w, BUTTON_HEIGHT))) {
+        current_hd_dialog_mode = HDDialogMode::EditEntry;
+        edit_entry_index = selected_row;
+    }
+    ImGui::SameLine();
+    if (AmigaButton(ICON_FA_TRASH_CAN " Remove", ImVec2(btn_w, BUTTON_HEIGHT))) {
+        kill_filesys_unitconfig(&changed_prefs, selected_row);
+        invalidate_hdf_cache();
+        if (selected_row >= changed_prefs.mountitems) selected_row = changed_prefs.mountitems - 1;
+    }
+    ImGui::EndDisabled();
+}
+
+static void RenderCDSection()
+{
+    AmigaCheckbox("CDFS automount CD/DVD drives", &changed_prefs.automount_cddrives);
+    ShowHelpMarker("Automatically mount CD/DVD drives in the system");
+    ImGui::SameLine();
+    ImGui::Dummy(ImVec2(20, 0));
+    ImGui::SameLine();
+
+    bool turbo = (changed_prefs.cd_speed == 0);
+    if (AmigaCheckbox("Turbo CD speed", &turbo)) {
+        changed_prefs.cd_speed = turbo ? 0 : 100;
+    }
+    ShowHelpMarker("Read CDs faster than real hardware");
+    
+    ImGui::Spacing();
+
+    if (BeginGroupBox("CD Drive / Image", true)) {
+    
+    bool cd_enabled = changed_prefs.cdslots[0].inuse;
+    if (AmigaCheckbox("CD drive/image", &cd_enabled)) {
+        changed_prefs.cdslots[0].inuse = cd_enabled;
+        if (!cd_enabled) {
+            changed_prefs.cdslots[0].type = SCSI_UNIT_DISABLED;
+            changed_prefs.cdslots[0].name[0] = 0;
+        } else {
+            changed_prefs.cdslots[0].type = SCSI_UNIT_DEFAULT;
+        }
+    }
+
+    ImGui::BeginDisabled(!cd_enabled);
+    
+    ImGui::SameLine();
+    
+    // CD Image path as Dropdown (Combo)
+    char* cd_name = ua(changed_prefs.cdslots[0].name);
+    // Preview value
+    const char* preview_val = (cd_name && *cd_name) ? cd_name : "";
+
+    ImGui::PushItemWidth(-ImGui::GetStyle().ItemSpacing.x - BUTTON_WIDTH * 1.5f); // Reserve space for buttons
+    if (ImGui::BeginCombo("##CDPath", preview_val))
+    {
+        const auto cd_drives = get_cd_drives();
+        bool current_in_list = false;
+        int id_counter = 0;
+
+        for (const auto& drive : cd_drives) {
+            ImGui::PushID(id_counter++);
+            const bool is_selected = (cd_name && strcmp(cd_name, drive.c_str()) == 0);
+            if (is_selected) current_in_list = true;
+            if (ImGui::Selectable(drive.c_str(), is_selected)) {
+                au_copy(changed_prefs.cdslots[0].name, MAX_DPATH, drive.c_str());
+                changed_prefs.cdslots[0].inuse = true;
+                changed_prefs.cdslots[0].type = SCSI_UNIT_IOCTL;
+            }
+            if (is_selected) ImGui::SetItemDefaultFocus();
+            ImGui::PopID();
+        }
+
+        for (const auto& path : lstMRUCDList) {
+            if (path.empty()) continue;
+            ImGui::PushID(id_counter++);
+            const bool is_selected = (cd_name && strcmp(cd_name, path.c_str()) == 0);
+            if (is_selected) current_in_list = true;
+            if (ImGui::Selectable(path.c_str(), is_selected)) {
+                au_copy(changed_prefs.cdslots[0].name, MAX_DPATH, path.c_str());
+                changed_prefs.cdslots[0].inuse = true;
+                changed_prefs.cdslots[0].type = SCSI_UNIT_DEFAULT;
+                AddToMruCdList(path);
+            }
+            if (is_selected) ImGui::SetItemDefaultFocus();
+            ImGui::PopID();
+        }
+
+        if (!current_in_list && cd_name && *cd_name) {
+            ImGui::PushID(id_counter++);
+            const bool is_selected = true;
+            ImGui::PushStyleColor(ImGuiCol_Header, ImGui::GetStyle().Colors[ImGuiCol_HeaderActive]);
+            if (ImGui::Selectable(cd_name, is_selected)) {}
+            ImGui::PopStyleColor();
+            ImGui::SetItemDefaultFocus();
+            ImGui::PopID();
+        }
+        ImGui::EndCombo();
+    }
+    AmigaBevel(ImGui::GetItemRectMin(), ImGui::GetItemRectMax(), ImGui::IsItemActivated());
+    ImGui::PopItemWidth();
+
+    xfree(cd_name);
+
+    ImGui::SameLine();
+    ShowHelpMarker("Physical devices require OS permission to read /dev/...");
+    ImGui::SameLine();
+    if (AmigaButton(ICON_FA_EJECT " Eject", ImVec2(BUTTON_WIDTH, 0))) {
+        changed_prefs.cdslots[0].name[0] = 0;
+        changed_prefs.cdslots[0].type = SCSI_UNIT_DEFAULT;
+    }
+    ImGui::SameLine();
+    if (AmigaButton("...")) {
+         char* curr_path = ua(changed_prefs.cdslots[0].name);
+         const std::string startPath = GetCdImageBrowseStartPath(curr_path);
+         xfree(curr_path);
+         OpenFileDialogKey("HD_CD_SLOT", "Select CD image file", "CD Images (*.cue,*.iso,*.ccd,*.mds,*.chd,*.nrg){.cue,.iso,.ccd,.mds,.chd,.nrg},All Files (*){.*}", startPath);
+    }
+    
+    ImGui::EndDisabled();
+    ImGui::Spacing();
+
+    std::string result_path;
+    if (ConsumeFileDialogResultKey("HD_CD_SLOT", result_path)) {
+        if (!result_path.empty()) {
+             au_copy(changed_prefs.cdslots[0].name, MAX_DPATH, result_path.c_str());
+             changed_prefs.cdslots[0].inuse = true;
+             changed_prefs.cdslots[0].type = SCSI_UNIT_DEFAULT;
+             AddToMruCdList(result_path);
+        }
+    }
+
+    }
+    EndGroupBox("CD Drive / Image");
+}
+
+// Variables to track which dialog was opened so we can consume the result correctly
+static bool selecting_virtual_dir = false;
+static bool selecting_virtual_arch = false;
+static bool selecting_create_hdf_path = false;
+static bool selecting_hdf_path = false;
+static bool selecting_cd_image = false;
+static bool selecting_cd_modal_image = false;
+static bool selecting_tape_dir = false;
+static bool selecting_tape_file = false;
+
+static void ShowEditFilesysVirtualModal()
+{
+    if (ImGui::BeginPopupModal("Volume Settings", &show_virtual_filesys_modal, ImGuiWindowFlags_AlwaysAutoResize))
+    {
+        ImGui::BeginGroup();
+        ImGui::AlignTextToFramePadding();
+        ImGui::Text("Device Name:");
+        ImGui::SameLine();
+        ImGui::SetNextItemWidth(BUTTON_WIDTH);
+        InputTextT("##Device", current_fsvdlg.ci.devname, sizeof(current_fsvdlg.ci.devname));
+        AmigaBevel(ImGui::GetItemRectMin(), ImGui::GetItemRectMax(), true);
+
+        ImGui::AlignTextToFramePadding();
+        ImGui::Text("Volume Label:");
+        ImGui::SameLine();
+        ImGui::SetNextItemWidth(BUTTON_WIDTH);
+        InputTextT("##Volume", current_fsvdlg.ci.volname, sizeof(current_fsvdlg.ci.volname));
+        AmigaBevel(ImGui::GetItemRectMin(), ImGui::GetItemRectMax(), true);
+        ImGui::EndGroup();
+
+        ImGui::SameLine();
+        ImGui::BeginGroup();
+        ImGui::AlignTextToFramePadding();
+        ImGui::Text("Path:");
+        ImGui::SameLine();
+        InputTextT("##Path", current_fsvdlg.ci.rootdir, sizeof(current_fsvdlg.ci.rootdir));
+        AmigaBevel(ImGui::GetItemRectMin(), ImGui::GetItemRectMax(), true);
+        ImGui::SameLine();
+        if (AmigaButton("... Dir"))
+        {
+            char* current_root = ua(current_fsvdlg.ci.rootdir);
+            OpenDirDialogKey("HD_VDIR", get_harddrive_path());
+            xfree(current_root);
+            selecting_virtual_dir = true;
+            selecting_virtual_arch = false;
+        }
+        ImGui::SameLine();
+        if (AmigaButton("... Arch"))
+        {
+             char* current_root = ua(current_fsvdlg.ci.rootdir);
+             OpenFileDialogKey("HD_VARCH", "Select archive", "Archives (*.zip,*.7z,*.rar,*.lha,*.lzh,*.lzx){.zip,.7z,.rar,.lha,.lzh,.lzx},All Files (*){.*}", get_harddrive_path());
+             xfree(current_root);
+             selecting_virtual_dir = false;
+             selecting_virtual_arch = true;
+        }
+        ImGui::EndGroup();
+
+        // Consume dialog results
+        std::string result_path;
+        if (selecting_virtual_dir && ConsumeDirDialogResultKey("HD_VDIR", result_path)) {
+            if (!result_path.empty()) {
+                au_copy(current_fsvdlg.ci.rootdir, sizeof(current_fsvdlg.ci.rootdir), result_path.c_str());
+                if (current_fsvdlg.ci.devname[0] == 0) {
+                     char devname[256];
+                     CreateDefaultDevicename(devname); 
+                     au_copy(current_fsvdlg.ci.devname, sizeof(current_fsvdlg.ci.devname), devname);
+                }
+                if (current_fsvdlg.ci.volname[0] == 0) _tcscpy(current_fsvdlg.ci.volname, current_fsvdlg.ci.devname);
+            }
+            selecting_virtual_dir = false;
+        } else if (selecting_virtual_dir && !IsDirDialogOpenKey("HD_VDIR")) {
+            selecting_virtual_dir = false;
+        }
+        if (selecting_virtual_arch && ConsumeFileDialogResultKey("HD_VARCH", result_path)) {
+            if (!result_path.empty()) {
+                au_copy(current_fsvdlg.ci.rootdir, sizeof(current_fsvdlg.ci.rootdir), result_path.c_str());
+                if (current_fsvdlg.ci.devname[0] == 0) {
+                     char devname[256];
+                     CreateDefaultDevicename(devname); 
+                     au_copy(current_fsvdlg.ci.devname, sizeof(current_fsvdlg.ci.devname), devname);
+                }
+                if (current_fsvdlg.ci.volname[0] == 0) _tcscpy(current_fsvdlg.ci.volname, current_fsvdlg.ci.devname);
+            }
+            selecting_virtual_arch = false;
+        } else if (selecting_virtual_arch && !IsFileDialogOpenKey("HD_VARCH")) {
+            selecting_virtual_arch = false;
+        }
+
+        ImGui::Separator();
+
+        bool rw = !current_fsvdlg.ci.readonly;
+        if (AmigaCheckbox("Read/Write", &rw)) current_fsvdlg.ci.readonly = !rw;
+        ShowHelpMarker("Allow writing to this directory");
+
+        ImGui::SameLine();
+        bool bootable = (current_fsvdlg.ci.bootpri != BOOTPRI_NOAUTOBOOT);
+        if (AmigaCheckbox("Bootable", &bootable)) {
+             if (bootable) current_fsvdlg.ci.bootpri = 0;
+             else current_fsvdlg.ci.bootpri = BOOTPRI_NOAUTOBOOT;
+        }
+        ShowHelpMarker("Enable booting from this volume");
+
+        ImGui::SameLine();
+        ImGui::AlignTextToFramePadding();
+        ImGui::Text("Boot priority:");
+        ImGui::SameLine();
+        ImGui::SetNextItemWidth(BUTTON_WIDTH);
+        int bp = current_fsvdlg.ci.bootpri;
+        if (bp == BOOTPRI_NOAUTOBOOT) bp = -128;
+        if (ImGui::InputInt("##BootPri", &bp)) {
+            if (bp < -129) bp = -129;
+            if (bp > 127) bp = 127;
+            current_fsvdlg.ci.bootpri = bp;
+        }
+        AmigaBevel(ImGui::GetItemRectMin(), ImGui::GetItemRectMax(), true);
+
+        ImGui::Separator();
+
+        if (AmigaButton(ICON_FA_CHECK " OK", ImVec2(BUTTON_WIDTH, 0))) {
+            new_filesys(edit_entry_index);
+            invalidate_hdf_cache();
+            current_hd_dialog_mode = HDDialogMode::None;
+            ImGui::CloseCurrentPopup();
+            show_virtual_filesys_modal = false;
+        }
+        ImGui::SameLine();
+        if (AmigaButton(ICON_FA_XMARK " Cancel", ImVec2(BUTTON_WIDTH, 0))) {
+            current_hd_dialog_mode = HDDialogMode::None;
+            ImGui::CloseCurrentPopup();
+            show_virtual_filesys_modal = false;
+        }
+        
+        ImGui::EndPopup();
+    }
+}
+
+static void ShowEditFilesysHardfileModal()
+{
+    if (ImGui::BeginPopupModal("Hardfile Settings", &show_hardfile_modal, ImGuiWindowFlags_AlwaysAutoResize))
+    {
+        ImGui::AlignTextToFramePadding();
+        ImGui::Text("Path:");
+        ImGui::SameLine();
+        InputTextT("##HDFPath", current_hfdlg.ci.rootdir, sizeof(current_hfdlg.ci.rootdir));
+        AmigaBevel(ImGui::GetItemRectMin(), ImGui::GetItemRectMax(), true);
+        ImGui::SameLine();
+        if (AmigaButton("..."))
+        {
+             char* current_root = ua(current_hfdlg.ci.rootdir);
+             OpenFileDialogKey("HD_HDF", "Select hard disk file", "Hardfiles (*.hdf,*.hdz,*.hda,*.img,*.lha,*.zip,*.vhd,*.chd,*.7z){.hdf,.hdz,.hda,.img,.lha,.zip,.vhd,.chd,.7z},All Files (*){.*}", get_harddrive_path());
+             xfree(current_root);
+             selecting_hdf_path = true;
+        }
+        
+        std::string result_path;
+        if (selecting_hdf_path && ConsumeFileDialogResultKey("HD_HDF", result_path)) {
+             if (!result_path.empty()) {
+                  au_copy(current_hfdlg.ci.rootdir, sizeof(current_hfdlg.ci.rootdir), result_path.c_str());
+                  if (current_hfdlg.ci.devname[0] == 0) {
+                     char devname[256];
+                     CreateDefaultDevicename(devname);
+                     au_copy(current_hfdlg.ci.devname, sizeof(current_hfdlg.ci.devname), devname);
+                  }
+                  hardfile_testrdb(&current_hfdlg);
+                  updatehdfinfo(true, true, false, hdf_info_text1, hdf_info_text2);
+                  updatehdfinfo(false, false, false, hdf_info_text1, hdf_info_text2);
+             }
+             selecting_hdf_path = false;
+        } else if (selecting_hdf_path && !IsFileDialogOpenKey("HD_HDF")) {
+             selecting_hdf_path = false;
+        }
+
+        ImGui::Separator();
+
+        ImGui::BeginGroup();
+        ImGui::Text("Geometry");
+        
+        bool manual_geo = current_hfdlg.ci.physical_geometry;
+        if (AmigaCheckbox("Manual Geometry", &manual_geo)) {
+             current_hfdlg.ci.physical_geometry = manual_geo;
+             updatehdfinfo(true, false, false, hdf_info_text1, hdf_info_text2);
+        }
+        ShowHelpMarker("Manually specify the drive geometry parameters");
+
+        int surfaces = manual_geo ? current_hfdlg.ci.pheads : current_hfdlg.ci.surfaces;
+        int sectors = manual_geo ? current_hfdlg.ci.psecs : current_hfdlg.ci.sectors;
+        int reserved = manual_geo ? current_hfdlg.ci.pcyls : current_hfdlg.ci.reserved;
+        int blocksize = current_hfdlg.ci.blocksize;
+
+        bool geo_changed = false;
+        ImGui::AlignTextToFramePadding();
+        ImGui::Text("Surfaces:");
+        ImGui::SameLine();
+        ImGui::SetNextItemWidth(BUTTON_WIDTH);
+        if (ImGui::InputInt("##Surfaces", &surfaces)) {
+             if (manual_geo) current_hfdlg.ci.pheads = surfaces; else current_hfdlg.ci.surfaces = surfaces;
+             geo_changed = true;
+        }
+        AmigaBevel(ImGui::GetItemRectMin(), ImGui::GetItemRectMax(), true);
+
+        ImGui::AlignTextToFramePadding();
+        ImGui::Text("Sectors:");
+        ImGui::SameLine();
+        ImGui::SetNextItemWidth(BUTTON_WIDTH);
+        if (ImGui::InputInt("##Sectors", &sectors)) {
+             if (manual_geo) current_hfdlg.ci.psecs = sectors; else current_hfdlg.ci.sectors = sectors;
+             geo_changed = true;
+        }
+        AmigaBevel(ImGui::GetItemRectMin(), ImGui::GetItemRectMax(), true);
+
+        ImGui::AlignTextToFramePadding();
+        ImGui::Text("Reserved:");
+        ImGui::SameLine();
+        ImGui::SetNextItemWidth(BUTTON_WIDTH);
+        if (ImGui::InputInt("##Reserved", &reserved)) {
+             if (manual_geo) current_hfdlg.ci.pcyls = reserved; else current_hfdlg.ci.reserved = reserved;
+             geo_changed = true;
+        }
+        AmigaBevel(ImGui::GetItemRectMin(), ImGui::GetItemRectMax(), true);
+
+        ImGui::AlignTextToFramePadding();
+        ImGui::Text("Blocksize:");
+        ImGui::SameLine();
+        ImGui::SetNextItemWidth(BUTTON_WIDTH);
+        if (ImGui::InputInt("##Blocksize", &blocksize)) {
+             current_hfdlg.ci.blocksize = blocksize;
+             geo_changed = true;
+        }
+        AmigaBevel(ImGui::GetItemRectMin(), ImGui::GetItemRectMax(), true);
+        
+        if (geo_changed) {
+             updatehdfinfo(true, false, false, hdf_info_text1, hdf_info_text2);
+        }
+        ImGui::EndGroup();
+
+        ImGui::SameLine();
+        ImGui::BeginGroup();
+        ImGui::Text("Controller");
+        
+        if (controller.empty()) {
+            ImGui::AlignTextToFramePadding();
+            ImGui::Text("No controllers available");
+        } else {
+            int current_ctrl_idx = 0;
+            for (size_t i = 0; i < controller.size(); ++i) {
+                if (controller[i].type == current_hfdlg.ci.controller_type) {
+                    current_ctrl_idx = (int)i;
+                    break;
+                }
+            }
+
+            ImGui::AlignTextToFramePadding();
+            ImGui::Text("Interface:");
+            ImGui::SameLine();
+            ImGui::SetNextItemWidth(BUTTON_WIDTH * 2);
+            if (ImGui::BeginCombo("##Interface", controller[current_ctrl_idx].display.c_str())) {
+                for (size_t i = 0; i < controller.size(); ++i) {
+                    const bool is_selected = (current_ctrl_idx == i);
+                    if (is_selected)
+                        ImGui::PushStyleColor(ImGuiCol_Header, ImGui::GetStyle().Colors[ImGuiCol_HeaderActive]);
+                    if (ImGui::Selectable(controller[i].display.c_str(), is_selected)) {
+                        current_hfdlg.ci.controller_type = controller[i].type;
+                    }
+                    if (is_selected) {
+                        ImGui::PopStyleColor();
+                        ImGui::SetItemDefaultFocus();
+                    }
+                }
+                ImGui::EndCombo();
+            }
+            AmigaBevel(ImGui::GetItemRectMin(), ImGui::GetItemRectMax(), ImGui::IsItemActivated());
+        }
+
+        ImGui::AlignTextToFramePadding();
+        ImGui::Text("Unit:");
+        ImGui::SameLine();
+        ImGui::SetNextItemWidth(BUTTON_WIDTH);
+        ImGui::InputInt("##Unit", &current_hfdlg.ci.controller_unit);
+        AmigaBevel(ImGui::GetItemRectMin(), ImGui::GetItemRectMax(), true);
+
+        ImGui::AlignTextToFramePadding();
+        ImGui::Text("Device Name:");
+        ImGui::SameLine();
+        ImGui::SetNextItemWidth(BUTTON_WIDTH);
+        InputTextT("##DeviceName", current_hfdlg.ci.devname, sizeof(current_hfdlg.ci.devname));
+        AmigaBevel(ImGui::GetItemRectMin(), ImGui::GetItemRectMax(), true);
+        
+        ImGui::EndGroup();
+
+        ImGui::Separator();
+
+        bool rw = !current_hfdlg.ci.readonly;
+        if (AmigaCheckbox("Read/Write", &rw)) current_hfdlg.ci.readonly = !rw;
+        ShowHelpMarker("Allow writing to this hardfile");
+        ImGui::SameLine();
+        bool bootable = (current_hfdlg.ci.bootpri != BOOTPRI_NOAUTOBOOT);
+        if (AmigaCheckbox("Bootable", &bootable)) {
+             if (bootable) current_hfdlg.ci.bootpri = 0;
+             else current_hfdlg.ci.bootpri = BOOTPRI_NOAUTOBOOT;
+        }
+        ShowHelpMarker("Enable booting from this hard drive");
+
+        ImGui::SameLine();
+        ImGui::AlignTextToFramePadding();
+        ImGui::Text("Boot priority:");
+        ImGui::SameLine();
+        ImGui::SetNextItemWidth(BUTTON_WIDTH);
+        ImGui::InputInt("##BootPri", &current_hfdlg.ci.bootpri);
+        AmigaBevel(ImGui::GetItemRectMin(), ImGui::GetItemRectMax(), true);
+        ShowHelpMarker("Boot priority (-128 to 127, higher boots first)");
+
+        ImGui::Separator();
+        
+        ImGui::TextWrapped("%s", hdf_info_text1.c_str());
+        ImGui::TextWrapped("%s", hdf_info_text2.c_str());
+
+        ImGui::Separator();
+
+        if (AmigaButton(ICON_FA_CHECK " OK", ImVec2(BUTTON_WIDTH, 0))) {
+            new_hardfile(edit_entry_index);
+            invalidate_hdf_cache();
+            current_hd_dialog_mode = HDDialogMode::None;
+            ImGui::CloseCurrentPopup();
+            show_hardfile_modal = false;
+        }
+        ImGui::SameLine();
+        if (AmigaButton(ICON_FA_XMARK " Cancel", ImVec2(BUTTON_WIDTH, 0))) {
+            current_hd_dialog_mode = HDDialogMode::None;
+            ImGui::CloseCurrentPopup();
+            show_hardfile_modal = false;
+        }
+
+        ImGui::EndPopup();
+    }
+}
+
+static void ShowCreateHardfileModal()
+{
+    if (ImGui::BeginPopupModal("Create Hardfile", &show_create_hdf_modal, ImGuiWindowFlags_AlwaysAutoResize))
+    {
+        ImGui::BeginGroup();
+        ImGui::Text("Settings");
+        ImGui::Text("Size (MB):");
+        ImGui::SameLine();
+        ImGui::InputInt("##Size(MB)", &create_hdf_size_mb);
+        AmigaBevel(ImGui::GetItemRectMin(), ImGui::GetItemRectMax(), true);
+        AmigaCheckbox("Dynamic HDF (Sparse)", &create_hdf_dynamic);
+        ShowHelpMarker("Create a sparse file that grows as data is written");
+        AmigaCheckbox("RDB Mode", &create_hdf_rdb);
+        ShowHelpMarker("Create with Rigid Disk Block (partitionable)");
+        ImGui::EndGroup();
+
+        ImGui::Separator();
+        
+        ImGui::BeginGroup();
+        ImGui::Text("Path");
+        InputTextT("##CreatePath", current_hfdlg.ci.rootdir, sizeof(current_hfdlg.ci.rootdir));
+        AmigaBevel(ImGui::GetItemRectMin(), ImGui::GetItemRectMax(), true);
+        ImGui::SameLine();
+        if (AmigaButton("...")) {
+             char* current_root = ua(current_hfdlg.ci.rootdir);
+             // SelectFile for CREATE needs different handling? OpenFileDialog helper handles create too?
+             // Usually just picking a path is enough.
+             OpenFileDialogKey("HD_CREATE_HDF", "Select new hard disk file", "Hardfiles (*.hdf,*.hdz,*.hda,*.img,*.vhd,*.chd){.hdf,.hdz,.hda,.img,.vhd,.chd},All Files (*){.*}", get_harddrive_path(), true);
+             xfree(current_root);
+             selecting_create_hdf_path = true;
+        }
+        
+        std::string result_path;
+        if (selecting_create_hdf_path && ConsumeFileDialogResultKey("HD_CREATE_HDF", result_path)) {
+             if (!result_path.empty()) {
+                  au_copy(current_hfdlg.ci.rootdir, sizeof(current_hfdlg.ci.rootdir), result_path.c_str());
+             }
+             selecting_create_hdf_path = false;
+        } else if (selecting_create_hdf_path && !IsFileDialogOpenKey("HD_CREATE_HDF")) {
+             selecting_create_hdf_path = false;
+        }
+        
+        ImGui::EndGroup();
+
+        ImGui::Separator();
+
+        if (AmigaButton(ICON_FA_PLUS " Create", ImVec2(BUTTON_WIDTH, 0))) {
+            uae_u64 size_bytes = (uae_u64)create_hdf_size_mb * 1024 * 1024;
+            if (vhd_create(current_hfdlg.ci.rootdir, size_bytes, create_hdf_dynamic ? 1 : 0)) {
+                show_create_hdf_modal = false;
+                ImGui::CloseCurrentPopup();
+            }
+        }
+        ImGui::SameLine();
+        if (AmigaButton(ICON_FA_XMARK " Cancel", ImVec2(BUTTON_WIDTH, 0))) {
+            show_create_hdf_modal = false;
+            ImGui::CloseCurrentPopup();
+        }
+        ImGui::EndPopup();
+    }
+}
+
+static void ShowAddHardDriveModal()
+{
+    const ImVec2 display = ImGui::GetIO().DisplaySize;
+    const float modal_w = display.x * 0.75f;
+    ImGui::SetNextWindowSize(ImVec2(modal_w, 0.0f), ImGuiCond_Appearing);
+    if (ImGui::BeginPopupModal("Add Hard Drive", &show_add_harddrive_modal, ImGuiWindowFlags_AlwaysAutoResize))
+    {
+        ImGui::Text("Select Physical Drive:");
+        
+        static int selected_drive_idx = -1;
+        static std::vector<std::string> drive_names;
+        static std::vector<std::string> drive_paths;
+        static std::vector<int> drive_sector_sizes;
+        static std::vector<uae_u32> drive_flags;
+        auto rescan_drives = [&]() {
+            drive_names.clear();
+            drive_paths.clear();
+            drive_sector_sizes.clear();
+            drive_flags.clear();
+            selected_drive_idx = -1;
+            harddrive_modal_error.clear();
+            hdf_init_target();
+            inithdcontroller(current_hfdlg.ci.controller_type, current_hfdlg.ci.controller_type_unit, UAEDEV_HDF, current_hfdlg.ci.rootdir[0] != 0);
+            int num = hdf_getnumharddrives();
+            for (int i = 0; i < num; ++i) {
+                int sectorsize = 0;
+                int dangerous = 0;
+                uae_u32 flags = 0;
+                TCHAR* name = hdf_getnameharddrive(i, 0, &sectorsize, &dangerous, &flags);
+                TCHAR* path = hdf_getpathharddrive(i);
+                if (name && path) {
+                    char* tmp_name = ua(name);
+                    char* tmp_path = ua(path);
+                    drive_names.emplace_back(tmp_name ? tmp_name : "");
+                    drive_paths.emplace_back(tmp_path ? tmp_path : "");
+                    drive_sector_sizes.emplace_back(sectorsize > 0 ? sectorsize : 512);
+                    drive_flags.emplace_back(flags);
+                    if (tmp_path && current_hfdlg.ci.rootdir[0] && !_tcscmp(path, current_hfdlg.ci.rootdir)) {
+                        selected_drive_idx = (int)drive_names.size() - 1;
+                    }
+                    xfree(tmp_name);
+                    xfree(tmp_path);
+                }
+                if (path) xfree(path);
+                if (name) xfree(name);
+            }
+        };
+        if (ImGui::IsWindowAppearing()) {
+            rescan_drives();
+        }
+
+        if (ImGui::BeginListBox("##PhysicalDrives", ImVec2(-FLT_MIN, 200))) {
+            for (int i = 0; i < drive_names.size(); ++i) {
+                bool is_selected = (selected_drive_idx == i);
+                if (ImGui::Selectable(drive_names[i].c_str(), is_selected)) {
+                    selected_drive_idx = i;
+                    harddrive_modal_error.clear();
+                    if (selected_drive_idx >= 0 && selected_drive_idx < (int)drive_paths.size()) {
+                        au_copy(current_hfdlg.ci.rootdir, sizeof(current_hfdlg.ci.rootdir), drive_paths[selected_drive_idx].c_str());
+                        current_hfdlg.ci.blocksize = drive_sector_sizes[selected_drive_idx];
+                        current_hfdlg.forcedcylinders = 0;
+                        current_hfdlg.ci.cyls = 0;
+                        current_hfdlg.ci.highcyl = 0;
+                        current_hfdlg.ci.sectors = 0;
+                        current_hfdlg.ci.surfaces = 0;
+                        current_hfdlg.ci.reserved = 0;
+                        current_hfdlg.ci.geometry[0] = 0;
+                        updatehdfinfo(true, true, true, hdf_info_text1, hdf_info_text2);
+                    }
+                }
+                if (is_selected) ImGui::SetItemDefaultFocus();
+            }
+            ImGui::EndListBox();
+        }
+        if (drive_names.empty()) {
+            ImGui::TextDisabled("No devices found.");
+        }
+
+        if (AmigaButton(ICON_FA_ARROWS_ROTATE " Rescan")) {
+            rescan_drives();
+        }
+        ImGui::SameLine();
+        ImGui::TextDisabled("Refresh drive list after mounting/unmounting");
+
+        bool is_mounted = false;
+        bool access_denied = false;
+        if (selected_drive_idx >= 0 && selected_drive_idx < (int)drive_flags.size()) {
+            is_mounted = (drive_flags[selected_drive_idx] & HDF_DRIVEFLAG_MOUNTED) != 0;
+            access_denied = (drive_flags[selected_drive_idx] & HDF_DRIVEFLAG_ACCESS_DENIED) != 0;
+        }
+        if (is_mounted) {
+            ImGui::TextColored(ImVec4(1.0f, 0.6f, 0.2f, 1.0f), "Warning: selected device is mounted by the host.");
+#ifdef AMIBERRY_MACOS
+            ImGui::TextColored(ImVec4(1.0f, 0.6f, 0.2f, 1.0f), "macOS: unmount the drive before attaching (diskutil unmountDisk).");
+#endif
+        }
+        if (access_denied) {
+            ImGui::TextColored(ImVec4(1.0f, 0.4f, 0.4f, 1.0f), "Warning: Amiberry cannot currently open this device.");
+#ifdef AMIBERRY_MACOS
+            ImGui::TextWrapped("macOS denied raw /dev access for this disk. Amiberry will automatically prompt for authorization to attach eligible unmounted disks.");
+#endif
+        }
+
+        bool rw = !current_hfdlg.ci.readonly;
+        if (AmigaCheckbox("Read/Write", &rw)) current_hfdlg.ci.readonly = !rw;
+        ShowHelpMarker("Allow writing to this physical drive");
+        ImGui::SameLine();
+        bool bootable = (current_hfdlg.ci.bootpri != BOOTPRI_NOAUTOBOOT);
+        if (AmigaCheckbox("Bootable", &bootable)) {
+             if (bootable) current_hfdlg.ci.bootpri = 0;
+             else current_hfdlg.ci.bootpri = BOOTPRI_NOAUTOBOOT;
+        }
+        ShowHelpMarker("Enable booting from this physical drive");
+
+        ImGui::Separator();
+
+        ImGui::AlignTextToFramePadding();
+        ImGui::Text("Controller:");
+        ImGui::SameLine();
+        int current_ctrl_idx = 0;
+        for (size_t i = 0; i < controller.size(); ++i) {
+            if (controller[i].type == current_hfdlg.ci.controller_type) {
+                current_ctrl_idx = (int)i;
+                break;
+            }
+        }
+        ImGui::SetNextItemWidth(BUTTON_WIDTH * 2);
+        if (ImGui::BeginCombo("##HDInterface", controller.size() > 0 ? controller[current_ctrl_idx].display.c_str() : "None")) {
+            for (size_t i = 0; i < controller.size(); ++i) {
+                const bool is_selected = (current_ctrl_idx == (int)i);
+                if (is_selected)
+                    ImGui::PushStyleColor(ImGuiCol_Header, ImGui::GetStyle().Colors[ImGuiCol_HeaderActive]);
+                if (ImGui::Selectable(controller[i].display.c_str(), is_selected)) {
+                    current_hfdlg.ci.controller_type = controller[i].type;
+                    current_hfdlg.ci.controller_type_unit = 0;
+                    if (current_hfdlg.ci.controller_type > HD_CONTROLLER_TYPE_UAE) {
+                        current_hfdlg.ci.sectors = 0;
+                        current_hfdlg.ci.surfaces = 0;
+                        current_hfdlg.ci.reserved = 0;
+                    }
+                    inithdcontroller(current_hfdlg.ci.controller_type, current_hfdlg.ci.controller_type_unit, UAEDEV_HDF, current_hfdlg.ci.rootdir[0] != 0);
+                }
+                if (is_selected) {
+                    ImGui::PopStyleColor();
+                    ImGui::SetItemDefaultFocus();
+                }
+            }
+            ImGui::EndCombo();
+        }
+        AmigaBevel(ImGui::GetItemRectMin(), ImGui::GetItemRectMax(), ImGui::IsItemActivated());
+
+        ImGui::AlignTextToFramePadding();
+        ImGui::Text("Unit:");
+        ImGui::SameLine();
+        ImGui::SetNextItemWidth(BUTTON_WIDTH);
+        if (ImGui::BeginCombo("##HDUnit", std::to_string(current_hfdlg.ci.controller_unit).c_str())) {
+            for (int i = 0; i < (int)controller_unit.size(); ++i) {
+                const bool is_selected = (current_hfdlg.ci.controller_unit == i);
+                if (is_selected)
+                    ImGui::PushStyleColor(ImGuiCol_Header, ImGui::GetStyle().Colors[ImGuiCol_HeaderActive]);
+                if (ImGui::Selectable(controller_unit[i].c_str(), is_selected)) {
+                    current_hfdlg.ci.controller_unit = i;
+                }
+                if (is_selected) {
+                    ImGui::PopStyleColor();
+                    ImGui::SetItemDefaultFocus();
+                }
+            }
+            ImGui::EndCombo();
+        }
+        AmigaBevel(ImGui::GetItemRectMin(), ImGui::GetItemRectMax(), ImGui::IsItemActivated());
+
+        ImGui::Separator();
+
+        ImGui::TextWrapped("%s", hdf_info_text1.c_str());
+        ImGui::TextWrapped("%s", hdf_info_text2.c_str());
+        if (!harddrive_modal_error.empty()) {
+            ImGui::Separator();
+            ImGui::TextColored(ImVec4(1.0f, 0.4f, 0.4f, 1.0f), "%s", harddrive_modal_error.c_str());
+        }
+        ImGui::Separator();
+
+        if (AmigaButton(ICON_FA_CHECK " OK", ImVec2(BUTTON_WIDTH, 0))) {
+            if (selected_drive_idx >= 0 && selected_drive_idx < (int)drive_names.size()) {
+                au_copy(current_hfdlg.ci.rootdir, sizeof(current_hfdlg.ci.rootdir), drive_paths[selected_drive_idx].c_str());
+                current_hfdlg.ci.blocksize = drive_sector_sizes[selected_drive_idx];
+            }
+            if (current_hfdlg.ci.rootdir[0]) {
+                bool opened_readonly = current_hfdlg.ci.readonly;
+                if (is_mounted) {
+                    // Mounted disks are explicitly refused before validation
+                    harddrive_modal_error = "Unmount the drive before attaching (diskutil unmountDisk).";
+                    updatehdfinfo(true, true, true, hdf_info_text1, hdf_info_text2);
+                } else if (!ValidatePhysicalDriveSelection(current_hfdlg.ci, harddrive_modal_error, &opened_readonly)) {
+                    // Validation/open failed; if it's due to access denial, show a short auth error
+                    if (access_denied) {
+                        harddrive_modal_error = "Authorization denied to access this disk. Cancel to retry.";
+                    }
+                    updatehdfinfo(true, true, true, hdf_info_text1, hdf_info_text2);
+                } else {
+                    // Success path
+                    current_hfdlg.ci.readonly = opened_readonly;
+                    harddrive_modal_error.clear();
+                    if (current_hfdlg.ci.devname[0] == 0) {
+                        char devname[256];
+                        CreateDefaultDevicename(devname);
+                        au_copy(current_hfdlg.ci.devname, sizeof(current_hfdlg.ci.devname), devname);
+                    }
+                    new_harddrive(edit_entry_index);
+                    show_add_harddrive_modal = false;
+                    ImGui::CloseCurrentPopup();
+                }
+            }
+        }
+        ImGui::SameLine();
+        if (AmigaButton(ICON_FA_XMARK " Cancel", ImVec2(BUTTON_WIDTH, 0))) {
+            harddrive_modal_error.clear();
+            show_add_harddrive_modal = false;
+            ImGui::CloseCurrentPopup();
+        }
+        ImGui::EndPopup();
+    }
+}
+
+
+// Helper for CD/Tape Modals to find controller index
+static int GetControllerIndex(int type, int unit) {
+    int idx = 0;
+    for (const auto& c : controller) {
+        int ctype = c.type % HD_CONTROLLER_NEXT_UNIT;
+        int cunit = c.type / HD_CONTROLLER_NEXT_UNIT;
+        if (ctype == type && cunit == unit) {
+            return idx;
+        }
+        idx++;
+    }
+    return 0;
+}
+
+static void ShowEditCDDriveModal()
+{
+    if (ImGui::BeginPopupModal("CD Drive Settings", &show_cd_modal, ImGuiWindowFlags_AlwaysAutoResize))
+    {
+        static int selected_controller = 0;
+        static int selected_unit = 0;
+        static char path_buf[MAX_DPATH];
+        static bool initialized = false;
+
+        if (!initialized) {
+            strncpy(path_buf, current_cddlg.ci.rootdir, MAX_DPATH);
+            selected_controller = GetControllerIndex(current_cddlg.ci.controller_type, current_cddlg.ci.controller_type_unit);
+            selected_unit = current_cddlg.ci.controller_unit;
+            initialized = true;
+        } else if (!show_cd_modal) {
+             initialized = false; 
+        }
+
+        const auto cd_drives = get_cd_drives();
+        int device_index = -1;
+        for (int i = 0; i < (int)cd_drives.size(); ++i) {
+            if (strcmp(path_buf, cd_drives[i].c_str()) == 0) {
+                device_index = i;
+                break;
+            }
+        }
+
+        ImGui::AlignTextToFramePadding();
+        ImGui::Text("Physical device:");
+        ImGui::SameLine();
+        ImGui::SetNextItemWidth(BUTTON_WIDTH * 2);
+        const char* device_preview = (device_index >= 0 && device_index < (int)cd_drives.size()) ? cd_drives[device_index].c_str() : "<none>";
+        if (ImGui::BeginCombo("##CDDevice", device_preview)) {
+            const bool none_selected = (device_index == -1);
+            if (ImGui::Selectable("<none>", none_selected)) {
+                path_buf[0] = 0;
+            }
+            for (int i = 0; i < (int)cd_drives.size(); ++i) {
+                const bool is_selected = (device_index == i);
+                if (ImGui::Selectable(cd_drives[i].c_str(), is_selected)) {
+                    strncpy(path_buf, cd_drives[i].c_str(), MAX_DPATH);
+                    path_buf[MAX_DPATH - 1] = 0;
+                }
+                if (is_selected) ImGui::SetItemDefaultFocus();
+            }
+            ImGui::EndCombo();
+        }
+        AmigaBevel(ImGui::GetItemRectMin(), ImGui::GetItemRectMax(), ImGui::IsItemActive());
+        ImGui::SameLine();
+        ShowHelpMarker("Physical devices require OS permission to read /dev/...");
+
+        ImGui::AlignTextToFramePadding();
+        ImGui::Text("Path:");
+        ImGui::SameLine();
+        InputTextT("##Path", path_buf, MAX_DPATH);
+        AmigaBevel(ImGui::GetItemRectMin(), ImGui::GetItemRectMax(), true);
+        ImGui::SameLine();
+        if (AmigaButton("...")) {
+            OpenFileDialogKey("HD_CD_MODAL", "Select CD Image", "CD Images (*.cue,*.iso,*.ccd,*.mds,*.chd,*.nrg){.cue,.iso,.ccd,.mds,.chd,.nrg},All Files (*){.*}", GetCdImageBrowseStartPath(path_buf));
+            selecting_cd_modal_image = true;
+        }
+
+        std::string result_path;
+        if (selecting_cd_modal_image && ConsumeFileDialogResultKey("HD_CD_MODAL", result_path)) {
+             if (!result_path.empty()) strncpy(path_buf, result_path.c_str(), MAX_DPATH);
+             selecting_cd_modal_image = false;
+        } else if (selecting_cd_modal_image && !IsFileDialogOpenKey("HD_CD_MODAL")) {
+             selecting_cd_modal_image = false;
+        }
+
+        ImGui::AlignTextToFramePadding();
+        ImGui::Text("Controller:");
+        ImGui::SameLine();
+        if (ImGui::BeginCombo("##Controller", controller.size() > selected_controller ? controller[selected_controller].display.c_str() : "Unknown")) {
+             for (int i = 0; i < (int)controller.size(); ++i) {
+                 const bool is_selected = (selected_controller == i);
+                 if (is_selected)
+                     ImGui::PushStyleColor(ImGuiCol_Header, ImGui::GetStyle().Colors[ImGuiCol_HeaderActive]);
+                 if (ImGui::Selectable(controller[i].display.c_str(), is_selected)) {
+                     selected_controller = i;
+                 }
+                 if (is_selected) {
+                     ImGui::PopStyleColor();
+                     ImGui::SetItemDefaultFocus();
+                 }
+             }
+             ImGui::EndCombo();
+        }
+        AmigaBevel(ImGui::GetItemRectMin(), ImGui::GetItemRectMax(), ImGui::IsItemActive());
+
+        ImGui::AlignTextToFramePadding();
+        ImGui::Text("Unit:");
+        ImGui::SameLine();
+        ImGui::SetNextItemWidth(BUTTON_WIDTH);
+        if (ImGui::BeginCombo("##Unit", std::to_string(selected_unit).c_str())) {
+            for (int i = 0; i < 8; ++i) {
+                 const bool is_selected = (selected_unit == i);
+                 if (is_selected)
+                     ImGui::PushStyleColor(ImGuiCol_Header, ImGui::GetStyle().Colors[ImGuiCol_HeaderActive]);
+                 if (ImGui::Selectable(std::to_string(i).c_str(), is_selected)) {
+                     selected_unit = i;
+                 }
+                 if (is_selected) {
+                     ImGui::PopStyleColor();
+                     ImGui::SetItemDefaultFocus();
+                 }
+            }
+            ImGui::EndCombo();
+        }
+        AmigaBevel(ImGui::GetItemRectMin(), ImGui::GetItemRectMax(), ImGui::IsItemActive());
+
+        ImGui::Separator();
+
+        if (AmigaButton(ICON_FA_CHECK " OK", ImVec2(BUTTON_WIDTH, 0))) {
+            strncpy(current_cddlg.ci.rootdir, path_buf, MAX_DPATH);
+            current_cddlg.ci.controller_unit = selected_unit;
+            
+            if (selected_controller >= 0 && selected_controller < (int)controller.size()) {
+                int posn = controller[selected_controller].type;
+                current_cddlg.ci.controller_type = posn % HD_CONTROLLER_NEXT_UNIT;
+                current_cddlg.ci.controller_type_unit = posn / HD_CONTROLLER_NEXT_UNIT;
+            }
+            
+            inithdcontroller(current_cddlg.ci.controller_type, current_cddlg.ci.controller_type_unit, UAEDEV_CD, path_buf[0] != 0);
+
+            if (path_buf[0]) {
+                au_copy(changed_prefs.cdslots[0].name, MAX_DPATH, path_buf);
+                changed_prefs.cdslots[0].inuse = true;
+                changed_prefs.cdslots[0].type = IsCdDevicePath(path_buf) ? SCSI_UNIT_IOCTL : SCSI_UNIT_DEFAULT;
+                if (!IsCdDevicePath(path_buf))
+                    AddToMruCdList(path_buf);
+            }
+
+            new_cddrive(-1);
+            invalidate_hdf_cache();
+            gui_force_rtarea_hdchange(); 
+            ImGui::CloseCurrentPopup();
+            show_cd_modal = false;
+            initialized = false;
+        }
+        ImGui::SetItemDefaultFocus();
+        ImGui::SameLine();
+        if (AmigaButton(ICON_FA_XMARK " Cancel", ImVec2(BUTTON_WIDTH, 0))) {
+            ImGui::CloseCurrentPopup();
+            show_cd_modal = false;
+            initialized = false;
+        }
+
+        ImGui::EndPopup();
+    }
+}
+
+static void ShowEditTapeDriveModal()
+{
+    if (ImGui::BeginPopupModal("Tape Drive Settings", &show_tape_modal, ImGuiWindowFlags_AlwaysAutoResize))
+    {
+        static int selected_controller = 0;
+        static int selected_unit = 0;
+        static char path_buf[MAX_DPATH];
+        static bool initialized = false;
+
+        if (!initialized) {
+            strncpy(path_buf, current_tapedlg.ci.rootdir, MAX_DPATH);
+            selected_controller = GetControllerIndex(current_tapedlg.ci.controller_type, current_tapedlg.ci.controller_type_unit);
+            selected_unit = current_tapedlg.ci.controller_unit;
+            initialized = true;
+        }
+
+        ImGui::AlignTextToFramePadding();
+        ImGui::Text("Path:");
+        ImGui::SameLine();
+        InputTextT("##Path", path_buf, MAX_DPATH);
+        AmigaBevel(ImGui::GetItemRectMin(), ImGui::GetItemRectMax(), true);
+        ImGui::SameLine();
+        if (AmigaButton("... Dir")) {
+             char* current_root = ua(path_buf);
+             OpenDirDialogKey("HD_TAPE_DIR", get_harddrive_path());
+             xfree(current_root);
+             selecting_tape_dir = true; 
+        }
+        ImGui::SameLine();
+        if (AmigaButton("... File")) {
+            OpenFileDialogKey("HD_TAPE_FILE", "Select Tape Image", "All Files (*){.*}", get_harddrive_path());
+            selecting_tape_file = true;
+        }
+        
+        std::string result_path;
+        if (selecting_tape_dir && ConsumeDirDialogResultKey("HD_TAPE_DIR", result_path)) {
+             if (!result_path.empty()) strncpy(path_buf, result_path.c_str(), MAX_DPATH);
+             selecting_tape_dir = false;
+        } else if (selecting_tape_dir && !IsDirDialogOpenKey("HD_TAPE_DIR")) {
+             selecting_tape_dir = false;
+        }
+        if (selecting_tape_file && ConsumeFileDialogResultKey("HD_TAPE_FILE", result_path)) {
+             if (!result_path.empty()) strncpy(path_buf, result_path.c_str(), MAX_DPATH);
+             selecting_tape_file = false;
+        } else if (selecting_tape_file && !IsFileDialogOpenKey("HD_TAPE_FILE")) {
+             selecting_tape_file = false;
+        }
+
+        ImGui::AlignTextToFramePadding();
+        ImGui::Text("Controller:");
+        ImGui::SameLine();
+        ImGui::SetNextItemWidth(BUTTON_WIDTH * 2);
+        if (ImGui::BeginCombo("##Controller", controller.size() > selected_controller ? controller[selected_controller].display.c_str() : "Unknown")) {
+             for (int i = 0; i < (int)controller.size(); ++i) {
+                 const bool is_selected = (selected_controller == i);
+                 if (is_selected)
+                     ImGui::PushStyleColor(ImGuiCol_Header, ImGui::GetStyle().Colors[ImGuiCol_HeaderActive]);
+                 if (ImGui::Selectable(controller[i].display.c_str(), is_selected)) {
+                     selected_controller = i;
+                 }
+                 if (is_selected) {
+                     ImGui::PopStyleColor();
+                     ImGui::SetItemDefaultFocus();
+                 }
+             }
+             ImGui::EndCombo();
+        }
+        AmigaBevel(ImGui::GetItemRectMin(), ImGui::GetItemRectMax(), ImGui::IsItemActive());
+
+        ImGui::AlignTextToFramePadding();
+        ImGui::Text("Unit:");
+        ImGui::SameLine();
+        ImGui::SetNextItemWidth(BUTTON_WIDTH);
+        if (ImGui::BeginCombo("##Unit", std::to_string(selected_unit).c_str())) {
+            for (int i = 0; i < 8; ++i) {
+                 const bool is_selected = (selected_unit == i);
+                 if (is_selected)
+                     ImGui::PushStyleColor(ImGuiCol_Header, ImGui::GetStyle().Colors[ImGuiCol_HeaderActive]);
+                 if (ImGui::Selectable(std::to_string(i).c_str(), is_selected)) {
+                     selected_unit = i;
+                 }
+                 if (is_selected) {
+                     ImGui::PopStyleColor();
+                     ImGui::SetItemDefaultFocus();
+                 }
+            }
+            ImGui::EndCombo();
+        }
+        AmigaBevel(ImGui::GetItemRectMin(), ImGui::GetItemRectMax(), ImGui::IsItemActive());
+
+        ImGui::Separator();
+
+        if (AmigaButton(ICON_FA_CHECK " OK", ImVec2(BUTTON_WIDTH, 0))) {
+            if (path_buf[0] == 0) {
+                 // Warning?
+            } else {
+                strncpy(current_tapedlg.ci.rootdir, path_buf, MAX_DPATH);
+                current_tapedlg.ci.controller_unit = selected_unit;
+                
+                if (selected_controller >= 0 && selected_controller < (int)controller.size()) {
+                    int posn = controller[selected_controller].type;
+                    current_tapedlg.ci.controller_type = posn % HD_CONTROLLER_NEXT_UNIT;
+                    current_tapedlg.ci.controller_type_unit = posn / HD_CONTROLLER_NEXT_UNIT;
+                }
+                
+                inithdcontroller(current_tapedlg.ci.controller_type, current_tapedlg.ci.controller_type_unit, UAEDEV_TAPE, path_buf[0] != 0);
+
+                new_tapedrive(-1);
+                invalidate_hdf_cache();
+                gui_force_rtarea_hdchange(); 
+                ImGui::CloseCurrentPopup();
+                show_tape_modal = false;
+                initialized = false;
+            }
+        }
+        ImGui::SetItemDefaultFocus();
+        ImGui::SameLine();
+        if (AmigaButton(ICON_FA_XMARK " Cancel", ImVec2(BUTTON_WIDTH, 0))) {
+            ImGui::CloseCurrentPopup();
+            show_tape_modal = false;
+            initialized = false;
+        }
+
+        ImGui::EndPopup();
+    }
+}
+
+void render_panel_hd()
+{
+    ImGui::Indent(4.0f);
+
+    // Dynamically reserve space below the mounted drives list so that the
+    // action buttons, CD section, and .uaem/UAEFSDB checkboxes stay visible
+    // regardless of font size or DPI (was a fixed 280px that clipped on some
+    // setups — see issue #1979).
+    //   4 frame-height rows: action buttons, CD automount/turbo, CD slot, metadata checkboxes
+    //   plus spacings between sections and groupbox chrome around the CD section.
+    const float frame_h  = ImGui::GetFrameHeightWithSpacing();
+    const float spacing  = ImGui::GetStyle().ItemSpacing.y;
+    const float reserved = 7.0f * frame_h + 12.0f * spacing + 70.0f;
+
+    RenderMountedDrives(reserved);
+    ImGui::Spacing();
+    RenderActionButtons();
+    ImGui::Spacing();
+    RenderCDSection();
+    ImGui::Spacing();
+
+    AmigaCheckbox("Create .uaem metadata files", &changed_prefs.filesys_custom_uaefsdb);
+    ShowHelpMarker("When enabled, .uaem sidecar files are created alongside files in host directories to store Amiga file attributes, comments, and timestamps. Disable to prevent .uaem file creation.");
+    ImGui::SameLine();
+    ImGui::Dummy(ImVec2(20, 0));
+    ImGui::SameLine();
+    AmigaCheckbox("Disable UAEFSDB", &changed_prefs.filesys_no_uaefsdb);
+    ShowHelpMarker("When enabled, _UAEFSDB.___ binary metadata files are not created in host directories. This also disables filename translation for characters not supported by the host filesystem.");
+    ImGui::Spacing();
+
+    // Logic to open Modals - Add Directory
+    if (current_hd_dialog_mode == HDDialogMode::AddDir) {
+        default_fsvdlg(&current_fsvdlg);
+        char devname[256];
+        CreateDefaultDevicename(devname);
+        au_copy(current_fsvdlg.ci.devname, sizeof(current_fsvdlg.ci.devname), devname);
+        _tcscpy(current_fsvdlg.ci.volname, current_fsvdlg.ci.devname);
+        
+        edit_entry_index = -1;
+        ImGui::OpenPopup("Volume Settings");
+        show_virtual_filesys_modal = true;
+        current_hd_dialog_mode = HDDialogMode::None; 
+    }
+    
+    // Logic to open Modals - Add Hardfile
+    if (current_hd_dialog_mode == HDDialogMode::AddHDF) {
+        default_hfdlg(&current_hfdlg, false); // false = not rdb
+        char devname[256];
+        CreateDefaultDevicename(devname);
+        au_copy(current_hfdlg.ci.devname, sizeof(current_hfdlg.ci.devname), devname);
+
+        edit_entry_index = -1;
+        hdf_info_text1.clear(); hdf_info_text2.clear();
+
+        inithdcontroller(current_hfdlg.ci.controller_type, current_hfdlg.ci.controller_type_unit, UAEDEV_HDF, current_hfdlg.ci.rootdir[0] != 0);
+        ImGui::OpenPopup("Hardfile Settings");
+        show_hardfile_modal = true;
+        current_hd_dialog_mode = HDDialogMode::None;
+    }
+
+    // Logic to open Modals - Add Hard Drive
+    if (current_hd_dialog_mode == HDDialogMode::AddHardDrive) {
+        default_hfdlg(&current_hfdlg, true); 
+        char devname[256];
+        CreateDefaultDevicename(devname);
+        au_copy(current_hfdlg.ci.devname, sizeof(current_hfdlg.ci.devname), devname);
+        
+        edit_entry_index = -1;
+        hdf_info_text1.clear();
+        hdf_info_text2.clear();
+        
+        ImGui::OpenPopup("Add Hard Drive");
+        show_add_harddrive_modal = true;
+        current_hd_dialog_mode = HDDialogMode::None;
+    }
+
+    // Logic to open Modals - Create HDF
+    if (current_hd_dialog_mode == HDDialogMode::CreateHDF) {
+        default_hfdlg(&current_hfdlg, false);
+        current_hfdlg.ci.rootdir[0] = 0; 
+        
+        ImGui::OpenPopup("Create Hardfile");
+        show_create_hdf_modal = true;
+        current_hd_dialog_mode = HDDialogMode::None;
+    }
+
+    // Logic to open Modals - Add CD
+    if (current_hd_dialog_mode == HDDialogMode::AddCD) {
+        // Init default CD config similar to old EditCDDrive( -1 )
+        if (current_cddlg.ci.controller_type == HD_CONTROLLER_TYPE_UAE)
+            current_cddlg.ci.controller_type = (is_board_enabled(&changed_prefs, ROMTYPE_A2091, 0) ||
+                is_board_enabled(&changed_prefs, ROMTYPE_GVPS2, 0) || is_board_enabled(&changed_prefs, ROMTYPE_A4091, 0) ||
+                (changed_prefs.cs_mbdmac & 3)) ? HD_CONTROLLER_TYPE_SCSI_AUTO : HD_CONTROLLER_TYPE_IDE_AUTO;
+        inithdcontroller(current_cddlg.ci.controller_type, current_cddlg.ci.controller_type_unit, UAEDEV_CD, current_cddlg.ci.rootdir[0] != 0);
+        
+        ImGui::OpenPopup("CD Drive Settings");
+        show_cd_modal = true;
+        current_hd_dialog_mode = HDDialogMode::None;
+    }
+
+    // Logic to open Modals - Add Tape
+    if (current_hd_dialog_mode == HDDialogMode::AddTape) {
+        default_tapedlg(&current_tapedlg);
+        inithdcontroller(current_tapedlg.ci.controller_type, current_tapedlg.ci.controller_type_unit, UAEDEV_TAPE, current_tapedlg.ci.rootdir[0] != 0);
+
+        ImGui::OpenPopup("Tape Drive Settings");
+        show_tape_modal = true;
+        current_hd_dialog_mode = HDDialogMode::None;
+    }
+
+    // Handle opening Edit - existing logic needs update for CD/Tape edit?
+    if (current_hd_dialog_mode == HDDialogMode::EditEntry) {
+         struct uaedev_config_info* uci = &changed_prefs.mountconfig[edit_entry_index].ci;
+         struct mountedinfo mi{};
+         int type = get_filesys_unitconfig(&changed_prefs, edit_entry_index, &mi);
+         if (type < 0) type = (uci->type == UAEDEV_HDF) ? FILESYS_HARDFILE : FILESYS_VIRTUAL;
+         
+         if (uci->type == UAEDEV_CD) {
+             memcpy(&current_cddlg.ci, uci, sizeof(struct uaedev_config_info));
+             ImGui::OpenPopup("CD Drive Settings");
+             show_cd_modal = true;
+         }
+         else if (uci->type == UAEDEV_TAPE) {
+             memcpy(&current_tapedlg.ci, uci, sizeof(struct uaedev_config_info));
+             ImGui::OpenPopup("Tape Drive Settings");
+             show_tape_modal = true;
+         }
+         else if (type == FILESYS_VIRTUAL) {
+             memcpy(&current_fsvdlg.ci, uci, sizeof(struct uaedev_config_info));
+             ImGui::OpenPopup("Volume Settings");
+             show_virtual_filesys_modal = true;
+         }
+         else if (type == FILESYS_HARDFILE || type == FILESYS_HARDFILE_RDB) {
+             memcpy(&current_hfdlg.ci, uci, sizeof(struct uaedev_config_info));
+             updatehdfinfo(true, false, false, hdf_info_text1, hdf_info_text2);
+             inithdcontroller(current_hfdlg.ci.controller_type, current_hfdlg.ci.controller_type_unit, UAEDEV_HDF, current_hfdlg.ci.rootdir[0] != 0);
+             ImGui::OpenPopup("Hardfile Settings");
+             show_hardfile_modal = true;
+         }
+         else if (type == FILESYS_HARDDRIVE) {
+             memcpy(&current_hfdlg.ci, uci, sizeof(struct uaedev_config_info));
+             updatehdfinfo(true, true, true, hdf_info_text1, hdf_info_text2);
+             ImGui::OpenPopup("Add Hard Drive");
+             show_add_harddrive_modal = true;
+         }
+         
+         current_hd_dialog_mode = HDDialogMode::None;
+    }
+
+    ShowEditFilesysVirtualModal();
+    ShowEditFilesysHardfileModal();
+    ShowCreateHardfileModal();
+    ShowAddHardDriveModal();
+    ShowEditCDDriveModal();
+    ShowEditTapeDriveModal();
+}
