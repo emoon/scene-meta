@@ -11,7 +11,7 @@ import dataclasses
 import json
 import sys
 
-from .. import machines as presets, merge
+from .. import machines, merge
 
 
 @dataclasses.dataclass
@@ -56,12 +56,18 @@ def productions(store):
             yield prod, title, groups, found[prod]
 
 
+def presets(data):
+    """``(default, presets)`` of the platform's machines.toml, or exit when
+    the file is broken."""
+    default, found, problems = machines.load(data / machines.FILE)
+    if problems:
+        sys.exit(f"{data / machines.FILE}: {problems[0]}")
+    return default, found
+
+
 def default_machine(data):
     """The platform's default preset, or exit when its file is broken."""
-    default, _, problems = presets.load(data / presets.FILE)
-    if problems:
-        sys.exit(f"{data / presets.FILE}: {problems[0]}")
-    return default
+    return presets(data)[0]
 
 
 def run(data, entries):
