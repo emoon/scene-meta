@@ -207,6 +207,85 @@ class TryMachineTest(unittest.TestCase):
         self.assertTrue(any(kw.get("max_clicks") for kw in calls))
         self.assertTrue(any(kw.get("drives") == 2 for kw in calls), calls)
 
+
+class ClickNeededTest(unittest.TestCase):
+    """A swap's click is only kept when the run without it falls short."""
+
+    def run_try(self, without_click):
+        calls = []
+
+        def played(swaps, reached=2):
+            return sweep.Attempt("a500", 9000, verdict.Verdict("works", 20),
+                                 RunLog([], [], 0, False, ""), swaps,
+                                 reached=reached)
+
+        def fake(m, variant, frames, **kw):
+            calls.append(kw)
+            if kw.get("swap_click", True):
+                return played([(26845, 2, "poll+click")])
+            return without_click(played)
+
+        v = media.Variant("floppy", ["a.adf", "b.adf"])
+        with mock.patch.object(sweep, "attempt", fake):
+            tries = sweep.try_machine(machines.BY_NAME["a500"], v, 72000)
+        return calls, tries
+
+    def test_disk_that_loads_without_the_click(self):
+        # Desert Dream reads disk 2 slowly, from its low cylinders: the
+        # detector clicks 5 s after the insert, and the load that follows
+        # looks like the click's doing. Without the click it loads the same.
+        calls, tries = self.run_try(lambda played: played([(26845, 2, "poll")]))
+        self.assertEqual(calls, [{}, {"swap_click": False, "nudge_until": 26845,
+                                      "seed": emulator.DEFAULT_SEED}])
+        self.assertEqual(tries[-1].swaps, [(26845, 2, "poll")])
+
+    def test_disk_that_waits_for_the_click(self):
+        # Odyssey: "insert disk 2 and press left mouse button".
+        _, tries = self.run_try(lambda played: played([], reached=1))
+        self.assertEqual(tries[-1].swaps, [(26845, 2, "poll+click")])
+        self.assertEqual(len(tries), 2)
+
+    def test_run_that_also_clicks_every_30_s(self):
+        # Megademo III only asks for disk 2 on the retry that clicks every
+        # 30 s. Its disk goes in at 4028 and the next such click falls at
+        # 4500: the run without the swap click must not make that one
+        # either, or it shows nothing.
+        calls = []
+
+        def fake(m, variant, frames, **kw):
+            calls.append(kw)
+            got = kw.get("click_every") and kw.get("swap_click", True)
+            return sweep.Attempt(
+                "a500", 9000, verdict.Verdict("works", 20),
+                RunLog([], [], 0, False, ""),
+                [(4028, 2, "poll+click")] if got else [],
+                reached=2 if got else 1,
+                click_every=kw.get("click_every", 0))
+
+        v = media.Variant("floppy", ["a.adf", "b.adf"])
+        with mock.patch.object(sweep, "attempt", fake):
+            tries = sweep.try_machine(machines.BY_NAME["a500"], v, 72000)
+        again = [kw for kw in calls if not kw.get("swap_click", True)]
+        self.assertEqual(len(again), 1)
+        self.assertEqual(again[0]["click_every"], sweep.CLICK_EVERY)
+        self.assertEqual(again[0]["nudge_until"], 4028)
+        self.assertEqual(tries[-1].swaps, [(4028, 2, "poll+click")])
+
+    def test_no_click_no_second_run(self):
+        calls = []
+
+        def fake(m, variant, frames, **kw):
+            calls.append(kw)
+            return sweep.Attempt("a500", 9000, verdict.Verdict("works", 20),
+                                 RunLog([], [], 0, False, ""),
+                                 [(4000, 2, "poll")], reached=2)
+
+        v = media.Variant("floppy", ["a.adf", "b.adf"])
+        with mock.patch.object(sweep, "attempt", fake):
+            sweep.try_machine(machines.BY_NAME["a500"], v, 72000)
+        self.assertEqual(calls, [{}])
+
+
 class RungsTest(unittest.TestCase):
     def test_ffs_boot_disk_skips_kickstart_1(self):
         from scenedb import media

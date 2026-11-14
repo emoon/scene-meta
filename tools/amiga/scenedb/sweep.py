@@ -87,11 +87,12 @@ def clicks_to_start(a):
 
 def attempt(m, variant, frames, drives=1, triggers="", click_every=0,
             schedule=(), unit=0, detect=True, max_clicks=0, key_every=0,
-            seed=emulator.DEFAULT_SEED):
+            seed=emulator.DEFAULT_SEED, swap_click=True, nudge_until=0):
     log = emulator.run(m, variant, frames, drives=drives, triggers=triggers,
                        click_every=click_every, schedule=schedule, unit=unit,
                        detect=detect, max_clicks=max_clicks,
-                       key_every=key_every, seed=seed)
+                       key_every=key_every, seed=seed, swap_click=swap_click,
+                       nudge_until=nudge_until)
     log.events.append({"event": "seed", "seed": seed})
     v = verdict.classify(log, frames // 250)
     sw = verdict.swaps(log)
@@ -108,6 +109,7 @@ def try_machine(m, variant, frames):
     is the best."""
     n = len(variant.disks)
     tries = [attempt(m, variant, frames)]
+    asked = [{}]    # the arguments of each attempt, to run one again
 
     def short():
         # Swaps in runs that never got going are the OS mounting disks.
@@ -126,6 +128,7 @@ def try_machine(m, variant, frames):
             got = list(pool.map(
                 lambda kw: attempt(m, variant, frames, **kw), kws))
         tries.extend(got)
+        asked.extend(kws)
         return got
 
     first = []
@@ -195,9 +198,30 @@ def try_machine(m, variant, frames):
         # would be retried for ever.
         if not any(a.ran and a.reached > base.reached for a in got):
             break
-    best = max(tries, key=lambda a: a.rank)
-    tries.remove(best)
+    best, kw = max(zip(tries, asked), key=lambda t: t[0].rank)
+    at = clicked_swap(best)
+    if at is not None:
+        # The detector clicks whenever a new disk is not loaded from within
+        # 5 s, and a slow start then looks like the click's doing (Desert
+        # Dream). Only the same run without the click shows it was needed:
+        # with nothing pressed at all once that disk is in, a retry's own
+        # clicks included (Megademo III).
+        plain = wave(dict(kw, seed=best.seed, swap_click=False,
+                          nudge_until=at))[0]
+        if as_far(plain, best):
+            best = plain
+    tries = [a for a in tries if a is not best]
     return tries + [best]
+
+
+def clicked_swap(a):
+    """The insert frame of ``a``'s first swap that got a click, or None."""
+    return next((f for f, _, how in a.swaps if "click" in how), None)
+
+
+def as_far(a, b):
+    """Did ``a`` get as far as ``b``: running, the same disks, no new crash."""
+    return a.rank[:3] >= b.rank[:3]
 
 
 def swap_frames(a):

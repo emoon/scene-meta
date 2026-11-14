@@ -83,6 +83,16 @@ class ScriptTest(unittest.TestCase):
         self.assertEqual([c for c in cmds if c.startswith("input")],
                          ["input mouse click 0"] * 2)
 
+    def test_no_nudges_from_a_given_frame_on(self):
+        # The run that shows whether a swap's click was needed must not
+        # press anything once that disk is in.
+        cmds = self.script(frames=2000, click_every=500, nudge_until=1000)
+        self.assertEqual([c for c in cmds if c.startswith("input")],
+                         ["input mouse click 0"])
+        cmds = self.script(frames=2000, key_every=500, nudge_until=1000)
+        self.assertEqual([c for c in cmds if c.startswith("input")],
+                         ["input key 68 down", "input key 68 up"])
+
     def test_keys_cycle_every_period(self):
         # 257354's credits page only moves on Return; others want Space or
         # the fire button: one retry tries each in turn.
@@ -99,6 +109,21 @@ class ScriptTest(unittest.TestCase):
         i = cmds.index("input key 68 down")
         self.assertEqual(cmds[i + 1], f"run frames={emulator.KEY_HOLD_FRAMES}")
         self.assertEqual(cmds[i + 2], "input key 68 up")
+
+
+class AutoswapTest(unittest.TestCase):
+    def test_clicks_when_a_new_disk_is_not_picked_up(self):
+        self.assertTrue(emulator._autoswap().startswith("disk autoswap click "))
+
+    def test_without_the_click(self):
+        # The run that shows whether a swap's click was needed.
+        cmd = emulator._autoswap("reread", unit=1, swap_click=False)
+        self.assertTrue(cmd.startswith("disk autoswap on "))
+        self.assertTrue(cmd.endswith(" unit=1 reread"))
+
+    def test_detector_off(self):
+        self.assertEqual(emulator._autoswap("reread", detect=False),
+                         "disk autoswap off")
 
 
 if __name__ == "__main__":

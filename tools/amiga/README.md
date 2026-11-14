@@ -44,8 +44,11 @@ Disk sets are formed from file names (`scenedb/diskset.py`: `DemoA`/`DemoB`,
 `-1`/`-2`, `disk1`, `d2`, ...). Disk 1 boots in DF0, the rest go on the swap
 list, and the emulator's swap-wait detector inserts the next disk when the
 demo waits for it (CIA /CHNG polling with the drive idle, or a silent prompt;
-a mouse click is pressed if the new disk is not picked up). Each insert is
-stored with its frame in `swap`. A multi-disk run that goes quiet with disks
+a mouse click is pressed if the new disk is not picked up). A run chosen with
+such a click is run once more with nothing pressed from that insert on, and
+the click is only kept when that run falls short: a disk that is slow to
+load gets clicked too. Each
+insert is stored with its frame in `swap`. A multi-disk run that goes quiet with disks
 left to insert is retried with the idle trigger's head-position gate off
 (`anycyl`).
 

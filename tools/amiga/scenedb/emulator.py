@@ -160,7 +160,8 @@ def execbase(machine, kind="floppy"):
 
 def run(machine, variant, frames, interval=250, timeout=None, triggers="",
         drives=1, click_every=0, schedule=(), unit=0, detect=True,
-        max_clicks=0, key_every=0, seed=DEFAULT_SEED):
+        max_clicks=0, key_every=0, seed=DEFAULT_SEED, swap_click=True,
+        nudge_until=0):
     """Run ``variant`` on ``machine`` for ``frames`` frames, sampling every
     ``interval``. Returns a RunLog.
 
@@ -191,6 +192,11 @@ def run(machine, variant, frames, interval=250, timeout=None, triggers="",
     sample later (left and right in turn). The detector is off for such a
     run, and with ``detect=False``: a run that only shows where the demo
     stops reading.
+
+    ``swap_click=False`` leaves out the click the detector makes when a
+    disk it put in is not loaded from within 5 s, and ``nudge_until`` stops
+    the ``click_every`` and ``key_every`` presses from that frame on: for
+    the run that shows whether that click was needed.
     """
     # Warp runs well ahead of real time; slower than that means stuck, but
     # leave room for a loaded box (retries run several emulators at once).
@@ -205,9 +211,11 @@ def run(machine, variant, frames, interval=250, timeout=None, triggers="",
         shots = tmp / "shots"
         shots.mkdir()
 
-        cmds = ["warp on", _autoswap(triggers, unit, detect and not schedule)]
+        cmds = ["warp on", _autoswap(triggers, unit, detect and not schedule,
+                                        swap_click)]
         cmds += _script(frames, interval, alert_peek, shots, drives, swaps,
-                        schedule, unit, click_every, max_clicks, key_every)
+                        schedule, unit, click_every, max_clicks, key_every,
+                        nudge_until)
         argv = [str(config.AMIBERRY), "-f", str(cfg)]
         argv += [f"-diskswapper={d}" for d in swaps]
         for c in cmds:
@@ -218,13 +226,14 @@ def run(machine, variant, frames, interval=250, timeout=None, triggers="",
                       eb, alert_peek)
 
 
-def _autoswap(triggers="", unit=0, detect=True):
+def _autoswap(triggers="", unit=0, detect=True, swap_click=True):
     """The command that sets the swap-wait detector up for a run. It is
     armed even with one disk: its "exhausted" event is how a demo that asks
     for a disk we do not have shows up."""
     if not detect:
         return "disk autoswap off"
-    cmd = (f"disk autoswap click idle={AUTOSWAP_IDLE_SECONDS}"
+    cmd = (f"disk autoswap {'click' if swap_click else 'on'}"
+           f" idle={AUTOSWAP_IDLE_SECONDS}"
            f" tail={AUTOSWAP_TAIL_FRAMES} dead={DEAD_FRAMES}")
     if unit:
         cmd += f" unit={unit}"
@@ -232,7 +241,7 @@ def _autoswap(triggers="", unit=0, detect=True):
 
 
 def _script(frames, interval, alert_peek, shots, drives, swaps, schedule=(),
-            unit=0, click_every=0, max_clicks=0, key_every=0):
+            unit=0, click_every=0, max_clicks=0, key_every=0, nudge_until=0):
     """The batch commands of a run: per sample interval a status and a
     screenshot, plus the scheduled inserts and the input nudges."""
     cmds = []
@@ -246,6 +255,7 @@ def _script(frames, interval, alert_peek, shots, drives, swaps, schedule=(),
     pending.sort(key=lambda x: x[0])
     click_next, clicks, periodic, keys = False, 0, 0, 0
     for i in range(n):
+        nudge = not (nudge_until and (i + 1) * interval >= nudge_until)
         cmds += [f"run frames={interval}", "status", "peek 4 4", alert_peek,
                  f"screenshot {shots / f'{i:04d}.png'}",
                  "disk autoswap status"]
@@ -257,11 +267,11 @@ def _script(frames, interval, alert_peek, shots, drives, swaps, schedule=(),
             cmds.append(f"input mouse click {clicks % 2}")
             clicks += 1
             click_next = False
-        elif click_every and (i + 1) * interval % click_every == 0 \
+        elif nudge and click_every and (i + 1) * interval % click_every == 0 \
                 and not (max_clicks and periodic >= max_clicks):
             cmds.append("input mouse click 0")
             periodic += 1
-        elif key_every and (i + 1) * interval % key_every == 0:
+        elif nudge and key_every and (i + 1) * interval % key_every == 0:
             cmds += _press(NUDGE_KEYS[keys % len(NUDGE_KEYS)])
             keys += 1
         while pending and (i + 1) * interval >= pending[0][0]:
