@@ -20,6 +20,12 @@ LIBS_DIR = pathlib.Path(os.environ.get("SCENEDB_LIBS", ROOT / "libs"))
 WORK = pathlib.Path(os.environ.get("SCENEDB_WORK", ROOT / "work"))
 RESULTS_DB = pathlib.Path(os.environ.get("SCENEDB_DB", ROOT / "scene.db"))
 
+# The shared data files `scenedb export` merges the results into, and the
+# package that reads and writes them.
+DATA_DIR = pathlib.Path(os.environ.get(
+    "SCENEDB_DATA", ROOT.parent.parent / "data" / "amiga"))
+COMMON = ROOT.parent / "common"
+
 
 def prod_dir(prod_id):
     """The NAS mirror directory of one Demozoo production."""

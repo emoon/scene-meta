@@ -3,12 +3,13 @@
     python3 -m scenedb fetch [--ids ...] [--rate 1.0]
     python3 -m scenedb sweep [--ids ...] [--limit N] [--jobs N]
     python3 -m scenedb report
+    python3 -m scenedb export
 """
 
 import argparse
 import sys
 
-from . import catalog, classes, fetch, media, store, sweep
+from . import catalog, classes, export, fetch, media, store, sweep
 
 
 def _prods(args):
@@ -33,6 +34,7 @@ def main(argv=None):
             p.add_argument("--multi", action="store_true",
                            help="only multi-disk variants")
     sub.add_parser("report")
+    sub.add_parser("export", help="merge the results into the data files")
     args = ap.parse_args(argv)
 
     db = store.Store()
@@ -44,6 +46,8 @@ def main(argv=None):
                           multi_only=args.multi)
         elif args.cmd == "report":
             report(db)
+        elif args.cmd == "export":
+            export.run(db)
     finally:
         db.close()
 

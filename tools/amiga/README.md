@@ -61,13 +61,22 @@ python3 -m scenedb fetch                 # missing disks -> NAS
 python3 -m scenedb sweep --jobs 96       # resumable
 python3 -m scenedb sweep --ids 89 142    # specific productions
 python3 -m scenedb report
+python3 -m scenedb export                # scene.db -> ../../data/amiga
 python3 -m unittest discover -s tests -t .
 ```
 
-Results are in `scene.db` (sqlite). The `best` view gives one row per
-variant: the chosen machine, its verdict, and its swaps as
+The sweep's own log is `scene.db` (sqlite). The `best` view gives one row
+per variant: the chosen machine, its verdict, and its swaps as
 `frame:disk:trigger` (trigger `poll` or `idle`, `+click` when a click was
 needed).
+
+`export` (`scenedb/export.py`) merges that into the data files people edit,
+`../../data/amiga/*.toml` (format: `DESIGN.md` at the top of the repo). Each
+production becomes one entry, taken from the variant that got furthest, and
+is marked `script`, or `ai` when it has a hand classification in
+`scenedb/classes.tsv`. Only `script` entries are replaced: an entry somebody
+edited stays, and where the sweep disagrees with it the difference is
+printed.
 
 Build Amiberry:
 
