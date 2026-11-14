@@ -31,7 +31,7 @@ class CannotReplay(Exception):
 
 
 def actions(entry, keys=True):
-    """What to do when, for emulator.run's ``play``. Without ``keys`` the
+    """What to do when, for emulator.Options' ``play``. Without ``keys`` the
     disks go in and nothing is pressed."""
     out = []
     first = entry.get("drives", 1) + 1      # the first disk that is swapped in
@@ -84,8 +84,8 @@ def play(machine, variant, entry, keys):
     acts = actions(entry, keys)
     inserts = [f for f, what, _ in acts if what == "insert"]
     frames = inserts[-1] + TAIL_FRAMES
-    log = emulator.run(machine, variant, frames, drives=entry.get("drives", 1),
-                       play=acts)
+    log = emulator.run(machine, variant, frames, emulator.Options(
+        drives=entry.get("drives", 1), play=acts))
     v = verdict.classify(log, frames // 250)
     return v.verdict, loaded(log.samples, inserts)
 

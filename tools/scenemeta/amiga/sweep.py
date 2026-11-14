@@ -100,21 +100,17 @@ def clicks_to_start(a):
     return 0 if first is None else (first - 1) // a.click_every
 
 
-def attempt(m, variant, frames, drives=1, triggers="", click_every=0,
-            schedule=(), unit=0, detect=True, max_clicks=0, key_every=0,
-            seed=emulator.DEFAULT_SEED, swap_click=True, nudge_until=0):
-    log = emulator.run(m, variant, frames, drives=drives, triggers=triggers,
-                       click_every=click_every, schedule=schedule, unit=unit,
-                       detect=detect, max_clicks=max_clicks,
-                       key_every=key_every, seed=seed, swap_click=swap_click,
-                       nudge_until=nudge_until)
-    log.events.append({"event": "seed", "seed": seed})
+def attempt(m, variant, frames, **kw):
+    """One run and what it showed. ``kw`` are emulator.Options fields."""
+    opts = emulator.Options(**kw)
+    log = emulator.run(m, variant, frames, opts)
+    log.events.append({"event": "seed", "seed": opts.seed})
     v = verdict.classify(log, frames // 250)
     sw = verdict.swaps(log)
     reached = verdict.disks_reached(log, verdict.played_swaps(log, sw, v),
-                                    drives, len(variant.disks))
-    return Attempt(m.name, frames, v, log, sw, drives, reached, unit,
-                   click_every, key_every, seed)
+                                    opts.drives, len(variant.disks))
+    return Attempt(m.name, frames, v, log, sw, opts.drives, reached,
+                   opts.unit, opts.click_every, opts.key_every, opts.seed)
 
 
 def try_machine(m, variant, frames):

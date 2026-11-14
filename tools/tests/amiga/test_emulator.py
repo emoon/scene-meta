@@ -73,7 +73,7 @@ class HdConfigTest(unittest.TestCase):
 class ScriptTest(unittest.TestCase):
     def script(self, frames=1000, **kw):
         return emulator._script(frames, 250, "peek x 4", pathlib.Path("/s"),
-                                1, [], **kw)
+                                [], emulator.Options(**kw))
 
     def test_no_nudge_by_default(self):
         self.assertFalse([c for c in self.script() if c.startswith("input")])
@@ -116,7 +116,7 @@ class PlayTest(unittest.TestCase):
 
     def play(self, actions, frames=1000):
         return emulator._play(frames, 250, "peek x 4", pathlib.Path("/s"),
-                              ["/d/1-b.adf"], actions)
+                              ["/d/1-b.adf"], emulator.Options(play=actions))
 
     def test_insert_and_click_at_their_frames(self):
         cmds = self.play([(300, "insert", 0), (550, "click", 0)])
@@ -146,17 +146,18 @@ class ParseTest(unittest.TestCase):
 
 class AutoswapTest(unittest.TestCase):
     def test_clicks_when_a_new_disk_is_not_picked_up(self):
-        self.assertTrue(emulator._autoswap().startswith("disk autoswap click "))
+        self.assertTrue(emulator._autoswap(emulator.Options()).startswith("disk autoswap click "))
 
     def test_without_the_click(self):
         # The run that shows whether a swap's click was needed.
-        cmd = emulator._autoswap("reread", unit=1, swap_click=False)
+        cmd = emulator._autoswap(emulator.Options(
+            triggers="reread", unit=1, swap_click=False))
         self.assertTrue(cmd.startswith("disk autoswap on "))
         self.assertTrue(cmd.endswith(" unit=1 reread"))
 
     def test_detector_off(self):
-        self.assertEqual(emulator._autoswap("reread", detect=False),
-                         "disk autoswap off")
+        opts = emulator.Options(triggers="reread", detect=False)
+        self.assertEqual(emulator._autoswap(opts), "disk autoswap off")
 
 
 if __name__ == "__main__":

@@ -160,12 +160,9 @@ def execbase(machine, kind="floppy"):
     return _execbase_cache[key]
 
 
-def run(machine, variant, frames, interval=250, timeout=None, triggers="",
-        drives=1, click_every=0, schedule=(), unit=0, detect=True,
-        max_clicks=0, key_every=0, seed=DEFAULT_SEED, swap_click=True,
-        nudge_until=0, play=()):
-    """Run ``variant`` on ``machine`` for ``frames`` frames, sampling every
-    ``interval``. Returns a RunLog.
+@dataclasses.dataclass(frozen=True)
+class Options:
+    """How a run is driven: what is mounted, pressed and swapped, and when.
 
     ``triggers`` arms riskier swap triggers on top of the default ones:
     "reread" (Iso re-reads one track while it waits) and "anycyl" (the idle
@@ -204,6 +201,28 @@ def run(machine, variant, frames, interval=250, timeout=None, triggers="",
     detector off: ``(frame, "insert", k)`` puts disk ``k`` of the swap list
     in, ``(frame, "click", button)`` clicks a mouse button.
     """
+    triggers: str = ""
+    drives: int = 1
+    click_every: int = 0
+    schedule: tuple = ()
+    unit: int = 0
+    detect: bool = True
+    max_clicks: int = 0
+    key_every: int = 0
+    seed: int = DEFAULT_SEED
+    swap_click: bool = True
+    nudge_until: int = 0
+    play: tuple = ()
+
+    @property
+    def detects(self):
+        """Is the swap-wait detector on for this run?"""
+        return bool(self.detect and not self.schedule and not self.play)
+
+
+def run(machine, variant, frames, opts=Options(), interval=250, timeout=None):
+    """Run ``variant`` on ``machine`` for ``frames`` frames, sampling every
+    ``interval``. Returns a RunLog."""
     # Warp runs well ahead of real time; slower than that means stuck, but
     # leave room for a loaded box (retries run several emulators at once).
     timeout = timeout or 60 + frames // 50
@@ -211,22 +230,16 @@ def run(machine, variant, frames, interval=250, timeout=None, triggers="",
     alert_peek = f"peek {eb + LAST_ALERT:x} 4"
     with tempfile.TemporaryDirectory(prefix="scenemeta-") as t:
         tmp = pathlib.Path(t)
-        text, swaps = _uae_config(machine, variant, tmp, drives, seed)
+        text, swaps = _uae_config(machine, variant, tmp, opts.drives,
+                                  opts.seed)
         cfg = tmp / "machine.uae"
         cfg.write_text(text)
         shots = tmp / "shots"
         shots.mkdir()
 
-        cmds = ["warp on", _autoswap(triggers, unit,
-                                        detect and not schedule and not play,
-                                        swap_click)]
-        if play:
-            cmds += _play(frames, interval, alert_peek, shots, swaps, play,
-                          unit)
-        else:
-            cmds += _script(frames, interval, alert_peek, shots, drives,
-                            swaps, schedule, unit, click_every, max_clicks,
-                            key_every, nudge_until)
+        script = _play if opts.play else _script
+        cmds = ["warp on", _autoswap(opts)]
+        cmds += script(frames, interval, alert_peek, shots, swaps, opts)
         argv = [str(config.AMIBERRY), "-f", str(cfg)]
         argv += [f"-diskswapper={d}" for d in swaps]
         for c in cmds:
@@ -237,22 +250,21 @@ def run(machine, variant, frames, interval=250, timeout=None, triggers="",
                       eb, alert_peek)
 
 
-def _autoswap(triggers="", unit=0, detect=True, swap_click=True):
+def _autoswap(opts):
     """The command that sets the swap-wait detector up for a run. It is
     armed even with one disk: its "exhausted" event is how a demo that asks
     for a disk we do not have shows up."""
-    if not detect:
+    if not opts.detects:
         return "disk autoswap off"
-    cmd = (f"disk autoswap {'click' if swap_click else 'on'}"
+    cmd = (f"disk autoswap {'click' if opts.swap_click else 'on'}"
            f" idle={AUTOSWAP_IDLE_SECONDS}"
            f" tail={AUTOSWAP_TAIL_FRAMES} dead={DEAD_FRAMES}")
-    if unit:
-        cmd += f" unit={unit}"
-    return f"{cmd} {triggers}".strip()
+    if opts.unit:
+        cmd += f" unit={opts.unit}"
+    return f"{cmd} {opts.triggers}".strip()
 
 
-def _script(frames, interval, alert_peek, shots, drives, swaps, schedule=(),
-            unit=0, click_every=0, max_clicks=0, key_every=0, nudge_until=0):
+def _script(frames, interval, alert_peek, shots, swaps, opts):
     """The batch commands of a run: per sample interval a status and a
     screenshot, plus the scheduled inserts and the input nudges."""
     cmds = []
@@ -260,41 +272,44 @@ def _script(frames, interval, alert_peek, shots, drives, swaps, schedule=(),
     # (frame, swap list index): each scheduled disk goes in, then the
     # pulses re-insert it.
     pending = []
-    for k, f in enumerate(sorted(schedule)):
+    for k, f in enumerate(sorted(opts.schedule)):
         pending += [(f + p * SCHEDULE_PULSE_FRAMES, k)
                     for p in range(SCHEDULE_PULSES + 1)]
     pending.sort(key=lambda x: x[0])
     click_next, clicks, periodic, keys = False, 0, 0, 0
     for i in range(n):
-        nudge = not (nudge_until and (i + 1) * interval >= nudge_until)
+        nudge = not (opts.nudge_until
+                     and (i + 1) * interval >= opts.nudge_until)
         cmds += [f"run frames={interval}"] + _sample(i, alert_peek, shots,
-                                                     drives > 1)
+                                                     opts.drives > 1)
         if click_next:
             # After a scheduled insert: left and right in turn (Lethal
             # Dose 2 takes its disk on the right button only).
             cmds.append(f"input mouse click {clicks % 2}")
             clicks += 1
             click_next = False
-        elif nudge and click_every and (i + 1) * interval % click_every == 0 \
-                and not (max_clicks and periodic >= max_clicks):
+        elif nudge and opts.click_every \
+                and (i + 1) * interval % opts.click_every == 0 \
+                and not (opts.max_clicks and periodic >= opts.max_clicks):
             cmds.append("input mouse click 0")
             periodic += 1
-        elif nudge and key_every and (i + 1) * interval % key_every == 0:
+        elif nudge and opts.key_every \
+                and (i + 1) * interval % opts.key_every == 0:
             cmds += _press(NUDGE_KEYS[keys % len(NUDGE_KEYS)])
             keys += 1
         while pending and (i + 1) * interval >= pending[0][0]:
             _, k = pending.pop(0)
             if k < len(swaps):
-                cmds.append(f"disk insert {unit} {swaps[k]}")
+                cmds.append(f"disk insert {opts.unit} {swaps[k]}")
             click_next = True
     return cmds
 
 
-def _play(frames, interval, alert_peek, shots, swaps, actions, unit=0):
-    """The batch commands of a run that does ``actions`` at their frames: a
+def _play(frames, interval, alert_peek, shots, swaps, opts):
+    """The batch commands of a run that does ``opts.play`` at its frames: a
     sample every ``interval`` as in any run, the frames between split
     where an action falls."""
-    pending = sorted(actions)
+    pending = sorted(opts.play)
     cmds, at = [], 0
     for i in range(max(1, frames // interval)):
         end = (i + 1) * interval
@@ -303,7 +318,8 @@ def _play(frames, interval, alert_peek, shots, swaps, actions, unit=0):
             if frame > at:
                 cmds.append(f"run frames={frame - at}")
                 at = frame
-            cmds.append(f"disk insert {unit} {swaps[arg]}" if what == "insert"
+            cmds.append(f"disk insert {opts.unit} {swaps[arg]}"
+                        if what == "insert"
                         else f"input mouse click {arg}")
         if end > at:
             cmds.append(f"run frames={end - at}")
