@@ -50,6 +50,8 @@ class Sample:
     alert: int = None  # exec's LastAlert when exec is still in place
     last_dma: int = -1  # frame of the last disk DMA start so far
     box: str = ""  # what alertshot sees on screen: guru | task-held | ""
+    # Head cylinder of each drive (runs that ask for "disk status" only).
+    cyls: list = dataclasses.field(default_factory=list)
 
 
 @dataclasses.dataclass
@@ -161,7 +163,7 @@ def execbase(machine, kind="floppy"):
 def run(machine, variant, frames, interval=250, timeout=None, triggers="",
         drives=1, click_every=0, schedule=(), unit=0, detect=True,
         max_clicks=0, key_every=0, seed=DEFAULT_SEED, swap_click=True,
-        nudge_until=0):
+        nudge_until=0, play=()):
     """Run ``variant`` on ``machine`` for ``frames`` frames, sampling every
     ``interval``. Returns a RunLog.
 
@@ -197,6 +199,10 @@ def run(machine, variant, frames, interval=250, timeout=None, triggers="",
     disk it put in is not loaded from within 5 s, and ``nudge_until`` stops
     the ``click_every`` and ``key_every`` presses from that frame on: for
     the run that shows whether that click was needed.
+
+    ``play`` does fixed things at exact frames and nothing else, the
+    detector off: ``(frame, "insert", k)`` puts disk ``k`` of the swap list
+    in, ``(frame, "click", button)`` clicks a mouse button.
     """
     # Warp runs well ahead of real time; slower than that means stuck, but
     # leave room for a loaded box (retries run several emulators at once).
@@ -211,11 +217,16 @@ def run(machine, variant, frames, interval=250, timeout=None, triggers="",
         shots = tmp / "shots"
         shots.mkdir()
 
-        cmds = ["warp on", _autoswap(triggers, unit, detect and not schedule,
+        cmds = ["warp on", _autoswap(triggers, unit,
+                                        detect and not schedule and not play,
                                         swap_click)]
-        cmds += _script(frames, interval, alert_peek, shots, drives, swaps,
-                        schedule, unit, click_every, max_clicks, key_every,
-                        nudge_until)
+        if play:
+            cmds += _play(frames, interval, alert_peek, shots, swaps, play,
+                          unit)
+        else:
+            cmds += _script(frames, interval, alert_peek, shots, drives,
+                            swaps, schedule, unit, click_every, max_clicks,
+                            key_every, nudge_until)
         argv = [str(config.AMIBERRY), "-f", str(cfg)]
         argv += [f"-diskswapper={d}" for d in swaps]
         for c in cmds:
@@ -256,11 +267,8 @@ def _script(frames, interval, alert_peek, shots, drives, swaps, schedule=(),
     click_next, clicks, periodic, keys = False, 0, 0, 0
     for i in range(n):
         nudge = not (nudge_until and (i + 1) * interval >= nudge_until)
-        cmds += [f"run frames={interval}", "status", "peek 4 4", alert_peek,
-                 f"screenshot {shots / f'{i:04d}.png'}",
-                 "disk autoswap status"]
-        if drives > 1:
-            cmds.append("disk status")
+        cmds += [f"run frames={interval}"] + _sample(i, alert_peek, shots,
+                                                     drives > 1)
         if click_next:
             # After a scheduled insert: left and right in turn (Lethal
             # Dose 2 takes its disk on the right button only).
@@ -280,6 +288,35 @@ def _script(frames, interval, alert_peek, shots, drives, swaps, schedule=(),
                 cmds.append(f"disk insert {unit} {swaps[k]}")
             click_next = True
     return cmds
+
+
+def _play(frames, interval, alert_peek, shots, swaps, actions, unit=0):
+    """The batch commands of a run that does ``actions`` at their frames: a
+    sample every ``interval`` as in any run, the frames between split
+    where an action falls."""
+    pending = sorted(actions)
+    cmds, at = [], 0
+    for i in range(max(1, frames // interval)):
+        end = (i + 1) * interval
+        while pending and pending[0][0] <= end:
+            frame, what, arg = pending.pop(0)
+            if frame > at:
+                cmds.append(f"run frames={frame - at}")
+                at = frame
+            cmds.append(f"disk insert {unit} {swaps[arg]}" if what == "insert"
+                        else f"input mouse click {arg}")
+        if end > at:
+            cmds.append(f"run frames={end - at}")
+            at = end
+        cmds += _sample(i, alert_peek, shots, True)
+    return cmds
+
+
+def _sample(i, alert_peek, shots, disk_status):
+    """The commands that record sample ``i`` of a run."""
+    cmds = ["status", "peek 4 4", alert_peek,
+            f"screenshot {shots / f'{i:04d}.png'}", "disk autoswap status"]
+    return cmds + ["disk status"] if disk_status else cmds
 
 
 def _press(key):
@@ -350,6 +387,9 @@ def _parse(stdout, stderr, rc, timed_out, shots, swaps, first_swap, eb,
                            "inserted": res.get("inserted"),
                            "disk": names.get(res.get("inserted"))})
         elif cmd == "disk status":
+            if samples:
+                samples[-1].cyls = [d.get("cyl", -1)
+                                    for d in res.get("units", [])]
             for u, d in enumerate(res.get("units", [])[:MAX_DRIVES]):
                 if d.get("motor"):
                     max_cyl[u] = max(max_cyl[u], d.get("cyl", -1))

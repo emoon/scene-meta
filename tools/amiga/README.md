@@ -65,6 +65,7 @@ python3 -m scenedb sweep --jobs 96       # resumable
 python3 -m scenedb sweep --ids 89 142    # specific productions
 python3 -m scenedb report
 python3 -m scenedb export                # scene.db -> ../../data/amiga
+python3 -m scenedb replay --ids 142      # play data-file entries as written
 python3 -m unittest discover -s tests -t .
 ```
 
@@ -80,6 +81,14 @@ is marked `script`, or `ai` when it has a hand classification in
 `scenedb/classes.tsv`. Only `script` entries are replaced: an entry somebody
 edited stays, and where the sweep disagrees with it the difference is
 printed.
+
+`replay` (`scenedb/replay.py`) goes the other way: it plays an entry of the
+data files exactly as written (its machine, each disk in at its time, each
+key after its insert; no detector, no retries) and says whether every disk
+was loaded. An entry with keys on its swaps is played once more without
+them, which shows whether the keys are needed. Without `--ids` it plays
+every entry that has a key on a swap. Left mouse button only so far, and
+swapped disks always go into DF0.
 
 Build Amiberry:
 

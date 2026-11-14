@@ -4,12 +4,13 @@
     python3 -m scenedb sweep [--ids ...] [--limit N] [--jobs N]
     python3 -m scenedb report
     python3 -m scenedb export
+    python3 -m scenedb replay [--ids ...] [--jobs N]
 """
 
 import argparse
 import sys
 
-from . import catalog, classes, export, fetch, media, store, sweep
+from . import catalog, classes, export, fetch, media, replay, store, sweep
 
 
 def _prods(args):
@@ -35,7 +36,13 @@ def main(argv=None):
                            help="only multi-disk variants")
     sub.add_parser("report")
     sub.add_parser("export", help="merge the results into the data files")
+    p = sub.add_parser("replay", help="play data-file entries as written")
+    p.add_argument("--ids", type=int, nargs="*")
+    p.add_argument("--jobs", type=int)
     args = ap.parse_args(argv)
+
+    if args.cmd == "replay":    # reads the data files, not the database
+        return replay.run(args.ids, jobs=args.jobs)
 
     db = store.Store()
     try:

@@ -111,6 +111,39 @@ class ScriptTest(unittest.TestCase):
         self.assertEqual(cmds[i + 2], "input key 68 up")
 
 
+class PlayTest(unittest.TestCase):
+    """A run that does fixed things at exact frames and nothing else."""
+
+    def play(self, actions, frames=1000):
+        return emulator._play(frames, 250, "peek x 4", pathlib.Path("/s"),
+                              ["/d/1-b.adf"], actions)
+
+    def test_insert_and_click_at_their_frames(self):
+        cmds = self.play([(300, "insert", 0), (550, "click", 0)])
+        moves = [c for c in cmds if c.startswith(("run", "disk insert", "input"))]
+        self.assertEqual(moves, [
+            "run frames=250", "run frames=50", "disk insert 0 /d/1-b.adf",
+            "run frames=200", "run frames=50", "input mouse click 0",
+            "run frames=200", "run frames=250"])
+
+    def test_every_sample_reports_the_drives(self):
+        cmds = self.play([])
+        self.assertEqual(cmds.count("status"), 4)
+        self.assertEqual(cmds.count("disk status"), 4)
+
+
+class ParseTest(unittest.TestCase):
+    def test_head_cylinders_of_a_sample(self):
+        out = "\n".join([
+            '{"cmd": "status", "result": {"frame": 250, "pc": "0", "dmacon": 0,'
+            ' "bplcon0": 0}}',
+            '{"cmd": "disk status", "result": {"units": [{"cyl": 12, "motor": 1},'
+            ' {"cyl": 0, "motor": 0}]}}'])
+        log = emulator._parse(out, "", 0, False, pathlib.Path("/none"), [], 2,
+                              0, "peek x 4")
+        self.assertEqual(log.samples[0].cyls, [12, 0])
+
+
 class AutoswapTest(unittest.TestCase):
     def test_clicks_when_a_new_disk_is_not_picked_up(self):
         self.assertTrue(emulator._autoswap().startswith("disk autoswap click "))
