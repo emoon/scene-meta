@@ -52,8 +52,8 @@ fast    = "4M"
 ```
 
 The hardware field names of a platform are exactly the ones its
-`machines.toml` uses. A new preset is added when the same override keeps
-recurring.
+`machines.toml` uses; a value is a string or a whole number (`drives = 2`).
+A new preset is added when the same override keeps recurring.
 
 ## Entries
 
@@ -77,7 +77,8 @@ appears once per platform, as a key or as a cross-reference.
 | `machine` | preset name; omitted when it is the platform default |
 | hardware fields | overrides on the preset |
 | `result` | only when the production does not simply work: `broken`, `crashes-later`, `unknown` |
-| `kind` | `collection`, `standalone`, `separate-disks`, `menu`, `use-hd`, `boot_fresh` |
+| `boot` | `floppy` or `hd`: what to start it from, when that is not the first thing the download offers (an executable that only runs from a floppy, a disk set better run from its hard-drive archive) |
+| `kind` | `collection`, `standalone`, `separate-disks`, `menu`, `boot_fresh` |
 | `disks` | file names in disk order; multi-disk productions only |
 | `swaps` | disk swaps: `disk`, `at`, and optionally `until`, `key`, `key_delay` |
 | `keys` | key presses needed before any swap: `at`, `key` |
@@ -128,10 +129,15 @@ disagreement goes into a report for a person to look at.
 - The Amiga sweep's `+click` becomes `key = "lmb"` on the swap, only where
   the sweep actually had to click.
 - Frame and cycle counts are converted to seconds.
+- A sweep boots one production several ways (its executable from a hard
+  drive, the same files on a floppy, each disk set). The entry is the way
+  that got furthest; the first one found wins a tie. The others are not
+  written, and no `variant` tables are produced yet.
 
 ## Order of work
 
-1. Repo skeleton, schema, `machines.toml` for both platforms, validator.
-2. Move the two sweepers in (`r2-scene-db`, `r2-scene-db-c64`).
-3. One-time import of both sqlite databases, `manual.json` and `classes.tsv`.
-4. Replace the sweepers' sqlite-only output with the merge export.
+1. Repo skeleton, schema, `machines.toml` for both platforms, validator. Done.
+2. Move the two sweepers in (`r2-scene-db`, `r2-scene-db-c64`). Done.
+3. Amiga: `scenedb export` merges the sweep's results and `classes.tsv` into
+   `data/amiga`. Done, from the sweep that predates the Nov 2026 fixes.
+4. C64: the same for its sweep and `manual.json`.

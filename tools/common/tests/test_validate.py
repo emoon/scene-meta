@@ -2,7 +2,7 @@ import pathlib
 import tempfile
 import unittest
 
-from scenemeta import schema, validate
+from scenemeta import machines, schema, validate
 
 MACHINES = """\
 default = "a500"
@@ -130,7 +130,7 @@ class ValidateTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             path = pathlib.Path(tmp) / "machines.toml"
             path.write_text('default = "a600"\n[a500]\ncpu = "68000"\n')
-            self.assertEqual(validate.load_machines(path)[1], ["default must name a preset"])
+            self.assertEqual(machines.load(path)[2], ["default must name a preset"])
 
 
 if __name__ == "__main__":

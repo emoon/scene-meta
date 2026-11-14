@@ -8,10 +8,10 @@ import re
 import sys
 import tomllib
 
-from . import schema
+from . import machines, schema
 
 DATA = pathlib.Path(__file__).resolve().parents[3] / "data"
-MACHINES = "machines.toml"
+MACHINES = machines.FILE
 
 _SHA256 = re.compile(r"[0-9a-f]{64}")
 
@@ -91,6 +91,7 @@ _SWAP_ROWS = _rows((("disk", _number_from(2)), ("at", _seconds)),
 
 # What a production needs to run. A variant may restate any of them.
 SETTINGS = {
+    "boot": _one_of(schema.BOOTS),
     "result": _one_of(schema.RESULTS),
     "kind": _one_of(schema.KINDS),
     "disks": _texts,
@@ -113,28 +114,9 @@ PRODUCTION = {
 }
 
 
-def load_machines(path):
-    """(presets, problems). presets: name -> its hardware fields."""
-    try:
-        doc = tomllib.loads(path.read_text())
-    except (OSError, tomllib.TOMLDecodeError) as e:
-        return {}, [str(e)]
-    problems = []
-    presets = {k: v for k, v in doc.items() if isinstance(v, dict)}
-    for name in doc.keys() - presets.keys() - {"default"}:
-        problems.append(f"unknown field {name}")
-    if doc.get("default") not in presets:
-        problems.append("default must name a preset")
-    for name, fields in presets.items():
-        for field, value in fields.items():
-            if _text(value):
-                problems.append(f"[{name}] {field} must be a non-empty string")
-    return presets, problems
-
-
 def _settings(table, known, presets):
     """Problems in the settings fields of a production or a variant."""
-    hardware = {f for p in presets.values() for f in p} - {"description"}
+    hardware = machines.hardware_fields(presets)
     for name, value in table.items():
         if name in known:
             continue
@@ -142,8 +124,8 @@ def _settings(table, known, presets):
             if value not in presets:
                 yield f"machine {value!r} is not in {MACHINES}"
         elif name in hardware:
-            if _text(value):
-                yield f"{name} must be a non-empty string"
+            if not machines.hardware_value(value):
+                yield f"{name} must be a string or a whole number"
         elif name in SETTINGS:
             if problem := SETTINGS[name](value):
                 yield f"{name} {problem}"
@@ -192,7 +174,8 @@ def _file(path, presets, seen):
         previous = None
         for key, entry in entries.items():
             where = f"[{namespace}.{key}]"
-            if not key.isdecimal() or not isinstance(entry, dict):
+            if not key.isdecimal() or str(int(key)) != key \
+                    or not isinstance(entry, dict):
                 yield f"{where} must be a table with a numeric ID"
                 continue
             for problem in _production(namespace, entry, presets):
@@ -218,7 +201,7 @@ def _file(path, presets, seen):
 
 def check_platform(directory):
     """Problems in one platform's directory, as printable lines."""
-    presets, problems = load_machines(directory / MACHINES)
+    _, presets, problems = machines.load(directory / MACHINES)
     out = [f"{directory / MACHINES}: {p}" for p in problems]
     seen = {}
     for path in sorted(directory.glob("*.toml")):

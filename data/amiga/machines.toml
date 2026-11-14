@@ -1,5 +1,6 @@
 # Amiga machine presets. An entry names one with `machine` and may override
-# single fields on top of it. Sizes are K or M.
+# single fields on top of it. Sizes are K or M; drives is the number of floppy
+# drives.
 
 default = "a500"
 
@@ -9,6 +10,7 @@ cpu = "68000"
 chipset = "ocs"
 kickstart = "1.3"
 chip = "512K"
+drives = 1
 slow = "512K"
 
 [a500_1mb]
@@ -17,6 +19,7 @@ cpu = "68000"
 chipset = "ecs_agnus"
 kickstart = "1.3"
 chip = "1M"
+drives = 1
 slow = "512K"
 
 # Demos of the Kickstart 1.2 era hard-code ROM addresses and guru under 1.3.
@@ -26,6 +29,7 @@ cpu = "68000"
 chipset = "ocs"
 kickstart = "1.2"
 chip = "512K"
+drives = 1
 slow = "512K"
 
 # Some intros only run when AmigaDOS loads them into chip RAM.
@@ -35,6 +39,7 @@ cpu = "68000"
 chipset = "ocs"
 kickstart = "1.3"
 chip = "512K"
+drives = 1
 
 [a1200]
 description = "A1200, 2M chip"
@@ -42,6 +47,7 @@ cpu = "68ec020"
 chipset = "aga"
 kickstart = "3.0"
 chip = "2M"
+drives = 1
 
 [a1200_fast]
 description = "A1200 with 8M fast"
@@ -49,6 +55,7 @@ cpu = "68020"
 chipset = "aga"
 kickstart = "3.0"
 chip = "2M"
+drives = 1
 fast = "8M"
 
 [a1200_030]
@@ -58,6 +65,7 @@ fpu = "68882"
 chipset = "aga"
 kickstart = "3.0"
 chip = "2M"
+drives = 1
 fast = "32M"
 
 [a1200_060]
@@ -67,4 +75,5 @@ fpu = "68060"
 chipset = "aga"
 kickstart = "3.0"
 chip = "2M"
+drives = 1
 fast = "64M"

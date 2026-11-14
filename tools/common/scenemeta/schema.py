@@ -8,8 +8,11 @@ SOURCES = ("script", "ai", "verified")
 
 RESULTS = ("broken", "crashes-later", "unknown")
 
-KINDS = ("collection", "standalone", "separate-disks", "menu", "use-hd",
-         "boot_fresh")
+KINDS = ("collection", "standalone", "separate-disks", "menu", "boot_fresh")
+
+# What the production is started from, when it is not the first thing its
+# download offers.
+BOOTS = ("floppy", "hd")
 
 
 def bucket(title):
