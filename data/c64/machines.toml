@@ -1,0 +1,20 @@
+# C64 machine presets. An entry names one with `machine` and may override
+# single fields on top of it. Sizes are K or M.
+
+default = "pal_1541"
+
+[pal_1541]
+description = "C64 PAL (6569) with a 1541"
+video = "pal"
+drive = "1541"
+
+[ntsc_1541]
+description = "C64 NTSC (6567R8) with a 1541"
+video = "ntsc"
+drive = "1541"
+
+[pal_1541_reu]
+description = "C64 PAL (6569) with a 1541 and a 16M REU"
+video = "pal"
+drive = "1541"
+reu = "16M"

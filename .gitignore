@@ -1,0 +1,11 @@
+__pycache__/
+
+# Sweeper working state: derived data, results databases, ROMs.
+tools/*/work/
+tools/*/roms/
+tools/*/libs/
+tools/*/*.db
+tools/*/*.db-*
+tools/amiga/amiberry/build/
+tools/amiga/amiberry/build-dbg/
+tools/amiga/amiberry-*.log

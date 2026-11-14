@@ -1,0 +1,22 @@
+"""The vocabulary of the data files (see DESIGN.md)."""
+
+# Databases a production can be keyed by.
+NAMESPACES = ("demozoo", "csdb")
+
+# How an entry was found, least trusted first.
+SOURCES = ("script", "ai", "verified")
+
+RESULTS = ("broken", "crashes-later", "unknown")
+
+KINDS = ("collection", "standalone", "separate-disks", "menu", "use-hd",
+         "boot_fresh")
+
+
+def bucket(title):
+    """The file a production is kept in: the first character of its title."""
+    c = title[:1].lower()
+    if "a" <= c <= "z":
+        return c
+    if "0" <= c <= "9":
+        return "0-9"
+    return "misc"
