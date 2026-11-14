@@ -1,7 +1,7 @@
 """Find the bootable media of a production: the disk set of its release.
 
-Sources, in order: the CSDb mirror (``mirrors/csdb/<release id>/``, the
-release's files as downloaded) and the scene.org mirror (zips, unpacked
+Sources, in order: the CSDb mirror (csdbmirror.py, the release's files as
+downloaded) and the scene.org mirror (zips, unpacked
 into the work dir). The first source with disk images wins. Disk images
 linked one by one on scene.org form a set when no source has any.
 """
@@ -11,7 +11,7 @@ import os
 import pathlib
 import zipfile
 
-from . import config, diskset
+from . import config, csdbmirror, diskset
 
 
 @dataclasses.dataclass
@@ -30,7 +30,7 @@ def variants(prod):
     for cls, param in prod.links:
         src = None
         if cls == "CsdbRelease":
-            src = config.CSDB_DIR / str(param)
+            src = csdbmirror.directory(param)
         elif cls == "SceneOrgFile" and str(param).lower().endswith(".zip"):
             src = _unzip(prod.id, config.SCENEORG_DIR / str(param).lstrip("/"))
         if cls == "SceneOrgFile" and diskset.is_disk_image(str(param)):
