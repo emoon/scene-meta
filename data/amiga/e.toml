@@ -1266,7 +1266,7 @@ title = "Eon"
 group = "The Black Lotus"
 source = "script"
 disks = ["tbl_eon_party_ver_disk1.adf", "tbl_eon_party_ver_disk2.adf"]
-swaps = [{ disk = 2, at = 160.3, key = "lmb" }]
+swaps = [{ disk = 2, at = 160.3 }]
 
 [demozoo.34510]
 title = "Eph vs Cpu"
