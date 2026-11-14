@@ -5,7 +5,7 @@ import dataclasses
 import os
 import traceback
 
-from . import emulator, machines, media, verdict
+from . import catalog, emulator, machines, media, verdict
 
 SINGLE_DISK_FRAMES = 9000       # 3 minutes of a demo
 # Disks of a set can play for a long time before asking for the next one
@@ -312,7 +312,8 @@ def _job(prod, multi_only=False):
         variants, problems = media.variants(prod.id, prod.title)
         if multi_only:
             variants = [v for v in variants if len(v.disks) > 1]
-        results = [climb(v, prod.is_aga, prod.release_date) for v in variants]
+        aga_only = catalog.is_aga(prod)
+        results = [climb(v, aga_only, prod.release_date) for v in variants]
         for v, (_, best) in list(zip(variants, results)):
             if best.verdict.works:
                 continue
@@ -320,7 +321,7 @@ def _job(prod, multi_only=False):
                 fv = make()
                 if fv:
                     variants.append(fv)
-                    results.append(climb(fv, prod.is_aga, prod.release_date))
+                    results.append(climb(fv, aga_only, prod.release_date))
                     if results[-1][1].verdict.works:
                         break
         return prod, variants, problems, results, None

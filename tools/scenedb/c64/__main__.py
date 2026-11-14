@@ -1,43 +1,30 @@
-"""which C64 setup each demo works on, and when its multi-disk
+"""Which C64 setup each demo works on, and when its multi-disk
 sets ask for the next disk.
 
     python3 -m scenedb c64 sweep [--ids ...] [--limit N] [--jobs N] [--multi]
     python3 -m scenedb c64 report
 """
 
-import argparse
 import json
 import sys
 
+from ..core import cli
 from . import catalog, config, store, sweep
 
 MANUAL = config.ROOT / "manual.json"
 
 
 def _prods(args):
-    ids = set(args.ids) if args.ids else None
-    prods = catalog.productions(ids)
-    if args.since:
-        prods = [p for p in prods if p.release_date[:4] >= str(args.since)]
-    if args.limit:
-        prods = prods[:args.limit]
-    return prods
+    since = args.since and (lambda p: p.release_date[:4] >= str(args.since))
+    return cli.selected(catalog.productions, args, since)
 
 
 def main(argv=None):
-    ap = argparse.ArgumentParser(prog="scenedb c64")
-    sub = ap.add_subparsers(dest="cmd", required=True)
-    p = sub.add_parser("sweep")
-    p.add_argument("--ids", type=int, nargs="*")
-    p.add_argument("--limit", type=int)
+    ap, sub, p = cli.parser("c64")
     p.add_argument("--since", type=int, metavar="YEAR",
                    help="only productions released in YEAR or later")
-    p.add_argument("--jobs", type=int)
-    p.add_argument("--multi", action="store_true",
-                   help="only multi-disk variants")
     p.add_argument("--boot", action="store_true",
                    help="boot the file whose name matches the title, not the first")
-    sub.add_parser("report")
     sub.add_parser("manual", help="rebuild windows and collections, load manual.json")
     args = ap.parse_args(argv)
 

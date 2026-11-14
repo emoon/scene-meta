@@ -1,4 +1,4 @@
-"""which Amiga config each demo works on.
+"""Which Amiga config each demo works on.
 
     python3 -m scenedb amiga fetch [--ids ...] [--rate 1.0]
     python3 -m scenedb amiga sweep [--ids ...] [--limit N] [--jobs N]
@@ -7,34 +7,21 @@
     python3 -m scenedb amiga replay [--ids ...] [--jobs N]
 """
 
-import argparse
 import sys
 
+from ..core import cli
 from . import catalog, classes, export, fetch, media, replay, store, sweep
 
 
 def _prods(args):
-    ids = set(args.ids) if args.ids else None
-    prods = catalog.productions(ids)
-    if args.limit:
-        prods = prods[:args.limit]
-    return prods
+    return cli.selected(catalog.productions, args)
 
 
 def main(argv=None):
-    ap = argparse.ArgumentParser(prog="scenedb amiga")
-    sub = ap.add_subparsers(dest="cmd", required=True)
-    for name in ("fetch", "sweep"):
-        p = sub.add_parser(name)
-        p.add_argument("--ids", type=int, nargs="*")
-        p.add_argument("--limit", type=int)
-        if name == "fetch":
-            p.add_argument("--rate", type=float, default=1.0)
-        else:
-            p.add_argument("--jobs", type=int)
-            p.add_argument("--multi", action="store_true",
-                           help="only multi-disk variants")
-    sub.add_parser("report")
+    ap, sub, _ = cli.parser("amiga")
+    p = sub.add_parser("fetch")
+    cli.selection(p)
+    p.add_argument("--rate", type=float, default=1.0)
     sub.add_parser("export", help="merge the results into the data files")
     p = sub.add_parser("replay", help="play data-file entries as written")
     p.add_argument("--ids", type=int, nargs="*")

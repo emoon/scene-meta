@@ -3,11 +3,12 @@ import tempfile
 import unittest
 from unittest import mock
 
-from scenedb.c64 import catalog, config, media
+from scenedb.c64 import config, media
+from scenedb.core import catalog
 
 
 def _prod(links):
-    return catalog.Production(1, "T", "", ("Demo",), "2013", links)
+    return catalog.Production(1, "T", "", ("c64",), ("Demo",), "2013", links)
 
 
 class BareDiskLinksTest(unittest.TestCase):
