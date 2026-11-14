@@ -1,4 +1,4 @@
-# demoscene-metadata
+# SceneMeta
 
 What each demoscene production needs to run correctly: which machine, when to
 swap disks, which keys to press. Plain TOML, meant to be read and edited by
