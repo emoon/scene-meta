@@ -1,0 +1,1115 @@
+[demozoo.394836]
+title = "G50"
+group = "Lethargy"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.156420]
+title = "Gabberia Korvaan"
+group = "Da Hinurit"
+source = "script"
+
+[demozoo.205299]
+title = "Galaworm"
+group = "Tristar and Red Sector Inc."
+source = "script"
+kind = "collection"
+disks = ["wp03a.d64", "wp03b.d64"]
+boot_file = "galaworm/trsi"
+note = "disk set shared by 5 productions"
+
+[demozoo.193464]
+title = "Galaxy Demo 2"
+group = "The Drol Cat"
+source = "script"
+
+[demozoo.346172]
+title = "Galaxy Seven Music"
+group = "Exact"
+source = "script"
+
+[demozoo.182824]
+title = "Galerya"
+group = "Samar Productions"
+source = "script"
+
+[demozoo.361367]
+title = "Gallosch"
+group = "Mocean"
+source = "script"
+
+[demozoo.332180]
+title = "Galway Collection 1"
+group = "Antic"
+source = "script"
+
+[demozoo.351192]
+title = "Galway Selector"
+group = "Thunderbolt Cracking Crew"
+source = "script"
+
+[demozoo.19900]
+title = "Gambino"
+group = "Extend"
+source = "script"
+
+[demozoo.359013]
+title = "Gambler Cracking Service Demo"
+group = "The Remix Crew / Gambler Cracking Service"
+source = "script"
+
+[demozoo.363842]
+title = "Game Killer Theme"
+group = "Multi Crackers Sweden"
+source = "script"
+
+[demozoo.368925]
+title = "Game Mix 4"
+group = "Riffs / The Soft Maniacs"
+source = "script"
+
+[demozoo.176304]
+title = "Game of Thrones"
+group = "Genesis Project"
+source = "script"
+result = "unknown"
+boot_file = "gameofthrones/gp"
+
+[demozoo.206406]
+title = "Game Over"
+group = "West End Boys"
+source = "script"
+result = "unknown"
+
+[demozoo.310477]
+title = "Game Over"
+group = "Active"
+source = "script"
+
+[demozoo.348766]
+title = "Game Song II"
+group = "The Goonies"
+source = "script"
+
+[demozoo.178174]
+title = "Game Sound IX"
+group = "A.E.K. Crackware Essen 2099"
+source = "script"
+result = "unknown"
+
+[demozoo.341986]
+title = "Game Sounds"
+group = "Floppy Cracking Team"
+source = "script"
+
+[demozoo.330966]
+title = "Game Sounds I"
+group = "Fantastic Cracking Company"
+source = "script"
+
+[demozoo.386377]
+title = "Game Tunes"
+group = "The Intruder"
+source = "script"
+
+[demozoo.386378]
+title = "Game Tunes II"
+group = "The Intruder"
+source = "script"
+
+[demozoo.24675]
+title = "Gamelamer"
+group = "Anubis"
+source = "script"
+
+[demozoo.284030]
+title = "Gamertro"
+group = "Lethargy"
+source = "script"
+machine = "pal_1541_8580"
+disks = ["GAMERTRO Side #1 [Lethargy].d64", "GAMERTRO Side #2 [Lethargy].d64"]
+swaps = [{ disk = 2, at = 468.1 }]
+
+[demozoo.154538]
+title = "Gamerz Xtreme Intro"
+group = "Cosine"
+source = "script"
+
+[demozoo.268791]
+title = "Gamerz Xtreme Intro 2"
+group = "Cosine"
+source = "script"
+
+[demozoo.343575]
+title = "Gamestar Intro"
+group = "Swedish Cracking Crew"
+source = "script"
+
+[demozoo.195781]
+title = "GameTro"
+group = "Blazon"
+source = "script"
+
+[demozoo.295057]
+title = "Gangster"
+group = "United Cracking Boys"
+source = "script"
+
+[demozoo.367226]
+title = "Gaplus Tunes"
+group = "Relax Designs"
+source = "script"
+
+[demozoo.333380]
+title = "Garf's Revenge"
+group = "Doughnut Cracking Service"
+source = "script"
+
+[demozoo.296898]
+title = "Garfield"
+group = "Nik"
+source = "script"
+
+[demozoo.388152]
+title = "Garfield"
+group = "De Danske Crackers"
+source = "script"
+
+[demozoo.395856]
+title = "Garfield"
+group = "Flash Production"
+source = "script"
+
+[demozoo.291047]
+title = "Garlic #01"
+group = "Knickers"
+source = "script"
+
+[demozoo.297737]
+title = "Gauntlet (Demo)"
+group = "West Coast Crackers"
+source = "script"
+
+[demozoo.361413]
+title = "Gauntletdemo"
+group = "International Softspreading Association"
+source = "script"
+result = "unknown"
+
+[demozoo.357522]
+title = "Gax777 Intro 02"
+group = "GAX 777"
+source = "script"
+
+[demozoo.348362]
+title = "Gaxar Music Collection One"
+group = "System"
+source = "script"
+
+[demozoo.238023]
+title = "Gaxar Tunes 2"
+group = "The Dark Realm"
+source = "script"
+result = "unknown"
+
+[demozoo.350024]
+title = "GBA Basketball: Two on Two"
+group = "Eagle Soft Incorporated / Tuerk's Cracker Incorperation"
+source = "script"
+disks = ["gb.d64", "TwoOnTwo.d64"]
+swaps = [{ disk = 2, at = 133.9, key = "space", key_delay = 19.6 }]
+
+[demozoo.285032]
+title = "GCC Demo XIV"
+group = "Gothenburg Computer Cracking"
+source = "script"
+
+[demozoo.288395]
+title = "GCC Demo XV"
+group = "Gothenburg Computer Cracking"
+source = "script"
+
+[demozoo.298370]
+title = "GCC Tune V"
+group = "Gothenburg Computer Cracking"
+source = "script"
+result = "unknown"
+
+[demozoo.70296]
+title = "GCS CRYPT/C64 Demo"
+group = "Troublemaker"
+source = "script"
+
+[demozoo.373136]
+title = "Gdzie Jest Krzyż!"
+group = "Tropyx"
+source = "script"
+result = "unknown"
+boot_file = "gdzie jest krzyz"
+
+[demozoo.42926]
+title = "Gear Up"
+group = "Graffity"
+source = "script"
+result = "unknown"
+
+[demozoo.197836]
+title = "Geartro"
+group = "Wiseguy Industries 2015"
+source = "script"
+
+[demozoo.327157]
+title = "Gebunaslaa"
+group = "Yleisradio"
+source = "script"
+
+[demozoo.346128]
+title = "Gedenk Demo"
+group = "The OUG-Team"
+source = "script"
+boot_file = "gedenk demo"
+
+[demozoo.48493]
+title = "Gemini"
+group = "Padua"
+source = "script"
+machine = "pal_1541_8580"
+kind = "collection"
+disks = ["GFX.D64", "INTROS.D64", "MSX1.D64", "MSX2.D64", "REAL.D64"]
+boot_disk = 2
+boot_file = "gemini    /padua"
+note = "disk set shared by 19 productions"
+
+[demozoo.121304]
+title = "Generation 64"
+group = "Generation 64"
+source = "script"
+
+[demozoo.359731]
+title = "Generic"
+group = "Havok"
+source = "script"
+
+[demozoo.350118]
+title = "Genesis"
+group = "Z-Circle"
+source = "script"
+
+[demozoo.184533]
+title = "Genesis Parrot"
+group = "Genesis Project"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.351725]
+title = "Genesis Project Star-tro"
+group = "Genesis Project / The Phantom"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.274557]
+title = "Gerposaurus"
+group = "Fantastic 4 Cracking Group / Latex"
+source = "script"
+
+[demozoo.175561]
+title = "Geschichte Wird Gemacht"
+group = "Welle:Erdball"
+source = "script"
+result = "unknown"
+
+[demozoo.357946]
+title = "Get Down"
+group = "The Evil Boys"
+source = "script"
+
+[demozoo.338240]
+title = "Get Funky!"
+group = "Genetic Artstudios"
+source = "script"
+
+[demozoo.357732]
+title = "Get in Contact!"
+group = "Denix"
+source = "script"
+
+[demozoo.345901]
+title = "Get in the Van"
+group = "Atlantis"
+source = "script"
+disks = ["get_in_the_van_28side_a_main29.d64", "get_in_the_van_28side_b_transwarp29.d64"]
+swaps = [{ disk = 2, at = 182.7, key = "p1fire", key_delay = 33.0 }]
+
+[demozoo.184442]
+title = "Get Into It"
+group = "Brain Mission"
+source = "script"
+
+[demozoo.183391]
+title = "Get It"
+group = "The Danger Zone"
+source = "script"
+
+[demozoo.349338]
+title = "Get Lucky"
+group = "Nordischsound / Arturo Dente"
+source = "script"
+
+[demozoo.344328]
+title = "Get Me"
+group = "Wiseguy Industries 2015"
+source = "script"
+result = "unknown"
+
+[demozoo.295320]
+title = "Get Seasick!"
+group = "Anthrax"
+source = "script"
+
+[demozoo.188588]
+title = "Get Up"
+group = "Noice"
+source = "script"
+
+[demozoo.380094]
+title = "Getting Advanced"
+group = "Academy"
+source = "script"
+result = "unknown"
+
+[demozoo.229960]
+title = "Getting Nuked!"
+group = "Atomic Circle"
+source = "script"
+
+[demozoo.147351]
+title = "Getöse"
+group = "Alpha Flight"
+source = "script"
+
+[demozoo.366017]
+title = "Gew-Gaw"
+group = "Syntax Designs"
+source = "script"
+boot_file = " - gew-gaw -/stx"
+
+[demozoo.176316]
+title = "Gfave Tunes"
+group = "Code7"
+source = "script"
+
+[demozoo.294005]
+title = "Ghost's in 89"
+group = "The Guilties"
+source = "script"
+
+[demozoo.206285]
+title = "Ghostbusters 2"
+group = "Soldiers"
+source = "script"
+
+[demozoo.361112]
+title = "Ghosts'n Sexy Goblins"
+group = "Code7"
+source = "script"
+
+[demozoo.359120]
+title = "Ghoul's Demo"
+group = "Genius Softworks"
+source = "script"
+
+[demozoo.363149]
+title = "GI-Commando"
+group = "The Ninja Crackers"
+source = "script"
+
+[demozoo.361974]
+title = "Giana Sound"
+group = "Killer Rats Association"
+source = "script"
+result = "unknown"
+
+[demozoo.346117]
+title = "Gib Aids Eine Chance"
+group = "The OUG-Team"
+source = "script"
+
+[demozoo.339134]
+title = "Giga Mosh"
+group = "Byterapers"
+source = "script"
+
+[demozoo.348411]
+title = "Giga Music Demo"
+group = "The Last Generation 1945"
+source = "script"
+
+[demozoo.178175]
+title = "Giga-Demo"
+group = "The Rambo Crew"
+source = "script"
+result = "unknown"
+
+[demozoo.326634]
+title = "Giga-Demo"
+group = "Z-Circle"
+source = "script"
+machine = "ntsc_1541"
+
+[demozoo.274347]
+title = "Gimme Contact"
+group = "Lay & Andys Copy Crew"
+source = "script"
+
+[demozoo.277657]
+title = "Girl Intro"
+group = "The New Dimension"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.308464]
+title = "Girl Show II"
+group = "Goffy Crackings"
+source = "script"
+result = "unknown"
+
+[demozoo.366961]
+title = "Girlfriend Demo"
+group = "Software Team"
+source = "script"
+
+[demozoo.72235]
+title = "Girls"
+group = "Varsity"
+source = "script"
+
+[demozoo.352426]
+title = "Girls Game"
+group = "Babygang"
+source = "script"
+
+[demozoo.362564]
+title = "Gittin' Funky"
+group = "The Force"
+source = "script"
+
+[demozoo.178886]
+title = "Giving Ground"
+group = "The Solution"
+source = "script"
+
+[demozoo.288173]
+title = "Gl0ggdata"
+group = "Genesis Project / Hardcore Mofokkahz"
+source = "script"
+
+[demozoo.358283]
+title = "Glass Spider"
+group = "F2-Soft"
+source = "script"
+
+[demozoo.159836]
+title = "Glitch Gangsta (Party Version)"
+group = "Pungas De Villa Martelli"
+source = "script"
+
+[demozoo.387844]
+title = "Global Conquest II"
+group = "Focus"
+source = "script"
+kind = "collection"
+result = "unknown"
+disks = ["X98_Music.d64", "X98_Music_and_Graphics.D64"]
+note = "disk set shared by 5 productions"
+
+[demozoo.165322]
+title = "Global Domination (Party Version)"
+group = "Onslaught"
+source = "script"
+
+[demozoo.126734]
+title = "Global Puke"
+group = "Extend"
+source = "script"
+
+[demozoo.362962]
+title = "Gloom Intro"
+group = "Lore of Arts / Gloom"
+source = "script"
+
+[demozoo.325555]
+title = "Glory 2"
+group = "Cocyne"
+source = "script"
+disks = ["Cocyne - Glory 2 (Side 1).d64", "Cocyne - Glory 2 (Side 2).d64"]
+swaps = [{ disk = 2, at = 63.2, key = "space", key_delay = 19.7 }]
+
+[demozoo.325556]
+title = "Glory 3"
+group = "Lore of Arts / Cocyne"
+source = "script"
+
+[demozoo.387847]
+title = "Glory Days"
+group = "Active"
+source = "script"
+machine = "pal_1541_8580"
+kind = "collection"
+result = "unknown"
+disks = ["X98_Music.d64", "X98_Music_and_Graphics.D64"]
+note = "disk set shared by 5 productions"
+
+[demozoo.365677]
+title = "Gnomes"
+group = "Lepsi De"
+source = "script"
+
+[demozoo.94789]
+title = "Gnuff"
+group = "Genesis Project"
+source = "script"
+
+[demozoo.192033]
+title = "Go Gray"
+group = "Profik"
+source = "ai"
+disks = ["go_gray_s1.d64", "go_gray_s2.d64"]
+swaps = [{ disk = 2, at = 218.2, until = 232.4 }]
+keys = [{ at = 60.9, key = "space" }]
+note = "Go Gray: slideshow; the 'Flip Disc' picture is up only ~17 s; disk 2: space on the title page; no key after the insert; later inserts fail, disk 1 has looped"
+
+[demozoo.330725]
+title = "Go Sixtyfour"
+group = "Creatures"
+source = "script"
+
+[demozoo.347265]
+title = "Go64! Demo"
+group = "Plush"
+source = "script"
+
+[demozoo.73361]
+title = "Goa Brudbilder 2"
+group = "Hack n' Trade"
+source = "script"
+
+[demozoo.201254]
+title = "Goat Results"
+source = "script"
+result = "unknown"
+
+[demozoo.72231]
+title = "Goatland"
+group = "Noice"
+source = "script"
+
+[demozoo.136165]
+title = "GoatLight"
+group = "Fairlight / Noice / Offence"
+source = "script"
+machine = "pal_1541_8580"
+disks = ["GoatLight(A).d64", "GoatLight(B).d64"]
+swaps = [{ disk = 2, at = 487.7 }]
+
+[demozoo.24474]
+title = "Goatology"
+group = "Noice"
+source = "script"
+
+[demozoo.100546]
+title = "Goats Who Stare At Men"
+group = "Noice"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.343303]
+title = "God Gabriel"
+group = "Hanseatic Cracking Association"
+source = "script"
+result = "unknown"
+
+[demozoo.370099]
+title = "God is Back"
+group = "God of Thunder"
+source = "script"
+
+[demozoo.377424]
+title = "God Jul 2004"
+group = "Prowler64"
+source = "script"
+result = "unknown"
+
+[demozoo.377425]
+title = "God Jul 2005"
+group = "Prowler64"
+source = "script"
+
+[demozoo.377422]
+title = "God Jul 2006"
+group = "Prowler64"
+source = "script"
+
+[demozoo.377428]
+title = "God Jul 2007"
+group = "Prowler64"
+source = "script"
+
+[demozoo.377426]
+title = "God Jul 2009"
+group = "Prowler64"
+source = "script"
+
+[demozoo.377427]
+title = "God Jul 2010!"
+group = "Prowler64"
+source = "script"
+
+[demozoo.332228]
+title = "Godbreath"
+group = "Civitas"
+source = "script"
+boot_file = "godbreath/civi"
+
+[demozoo.101713]
+title = "Godspeed - A 8580 Music Album"
+group = "Mayday!"
+source = "script"
+
+[demozoo.75099]
+title = "Godzilla"
+group = "JSL"
+source = "ai"
+kind = "standalone"
+disks = ["PSTAR03-A.D64", "PSTAR03-B.D64"]
+boot_file = "godzilla    /jsl"
+note = "Godzilla: single 62-block file on Primary Star 03 side A; plays from memory to a 'hope you enjoyed' end card, never reads the drive after ~48M; side B is other compo entries"
+
+[demozoo.26009]
+title = "Goes Aldi (C64)"
+group = "Rave Network Overscan"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.340546]
+title = "Goggle Boxing"
+group = "Civi Cracking Group"
+source = "script"
+
+[demozoo.335750]
+title = "Going 69 after 50"
+group = "Pretzel Logic / Bonzai / Fairlight / Atlantis / Lethargy"
+source = "script"
+
+[demozoo.391311]
+title = "Going To Home 64 Rework"
+group = "Singular"
+source = "script"
+machine = "pal_1541_8580"
+result = "unknown"
+
+[demozoo.347744]
+title = "Golden Age of 64"
+group = "The Errors"
+source = "script"
+
+[demozoo.361386]
+title = "Golden Dreams"
+group = "International Commodore System"
+source = "script"
+
+[demozoo.368912]
+title = "Golden Oldie"
+group = "The Great Breakers"
+source = "script"
+
+[demozoo.356811]
+title = "Golden Oldies #1"
+group = "Groove D-Signs"
+source = "script"
+
+[demozoo.343705]
+title = "Gone With The Wind"
+group = "Taboo"
+source = "script"
+
+[demozoo.195834]
+title = "Goner's Music Collection"
+group = "Atlantic"
+source = "script"
+
+[demozoo.358529]
+title = "Good Bye FPS"
+group = "Future Power System"
+source = "script"
+
+[demozoo.350092]
+title = "Good Bye Slide"
+group = "Saga Connection"
+source = "script"
+
+[demozoo.330900]
+title = "Good Bye Vision"
+group = "Alpha Flight"
+source = "script"
+
+[demozoo.381568]
+title = "Good Friends"
+group = "Men At Work"
+source = "script"
+
+[demozoo.178769]
+title = "Good times"
+group = "Yleisradio"
+source = "script"
+
+[demozoo.169241]
+title = "Good Xmas"
+group = "Dinasours"
+source = "script"
+
+[demozoo.339955]
+title = "Goodbye Crypt"
+group = "Crypt"
+source = "script"
+
+[demozoo.355603]
+title = "Goodbye New Men"
+group = "Galaxy"
+source = "script"
+
+[demozoo.360402]
+title = "Goodbye Oregon"
+group = "House Of Lords"
+source = "script"
+
+[demozoo.351217]
+title = "Goodbye Tera"
+group = "TERA"
+source = "script"
+
+[demozoo.377684]
+title = "Gorba Boost"
+group = "Gorbat Soft"
+source = "script"
+
+[demozoo.325238]
+title = "Gorbat Soft 2022"
+group = "Gorbat Soft"
+source = "script"
+machine = "ntsc_1541"
+sid = "8580"
+
+[demozoo.293587]
+title = "Gordon Music"
+group = "USA-Team"
+source = "script"
+
+[demozoo.357067]
+title = "Gorky"
+group = "Coolex"
+source = "script"
+
+[demozoo.196835]
+title = "Gosh"
+group = "Psygon"
+source = "script"
+
+[demozoo.349347]
+title = "Gothica"
+group = "Tropyx"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.273456]
+title = "Gothik FLD"
+group = "The Commodore Gang"
+source = "script"
+
+[demozoo.138169]
+title = "Graffiti"
+group = "Genesis Project"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.193378]
+title = "Graffiti Demo"
+group = "Sprite Magic Duo"
+source = "script"
+
+[demozoo.357510]
+title = "Graffitti"
+group = "Eclipse"
+source = "script"
+
+[demozoo.188856]
+title = "Grafity-Art"
+group = "A en R Soft"
+source = "script"
+
+[demozoo.278344]
+title = "Grand Monster Slam Ripp #1"
+group = "Action"
+source = "script"
+
+[demozoo.278345]
+title = "Grand Monster Slam Ripp #2"
+group = "Action"
+source = "script"
+
+[demozoo.386382]
+title = "Graphics Scrollection"
+group = "Rastah Bar"
+source = "script"
+
+[demozoo.377713]
+title = "Gratuitous Alternative Fishbomb Intro"
+group = "Krill"
+source = "script"
+disks = ["fishbomb_sidea.d64", "fishbomb_sidea_bugfixed_easter_egg.d64"]
+note = "the sweep only reached disk 1 of 2"
+
+[demozoo.126833]
+title = "Grave Story"
+group = "Asphyxia"
+source = "script"
+
+[demozoo.2217]
+title = "Graveyard Blues 2: Rhythmic Bones"
+group = "Topaz Beerline"
+source = "script"
+
+[demozoo.26931]
+title = "Graveyard Blues 3"
+group = "Topaz Beerline"
+source = "script"
+
+[demozoo.129867]
+title = "Grease"
+group = "Axelerate"
+source = "script"
+
+[demozoo.110861]
+title = "Grease 2"
+group = "Axelerate"
+source = "script"
+result = "broken"
+
+[demozoo.184438]
+title = "Great"
+group = "Brain Mission"
+source = "script"
+
+[demozoo.367012]
+title = "Great Little One"
+group = "The Impact"
+source = "script"
+
+[demozoo.324944]
+title = "Greatest PETSCII Ever"
+group = "Kraksnax"
+source = "script"
+result = "unknown"
+
+[demozoo.345905]
+title = "Greaties 83%"
+group = "Mayday!"
+source = "script"
+
+[demozoo.332138]
+title = "Greco's Nightmare"
+group = "Drive"
+source = "script"
+boot_file = "greco's nightm."
+
+[demozoo.394832]
+title = "Green Demo"
+group = "Blazon"
+source = "script"
+
+[demozoo.368310]
+title = "Green Shit"
+group = "Q-Pha"
+source = "script"
+
+[demozoo.327687]
+title = "Greetings"
+group = "1001 Crew"
+source = "script"
+
+[demozoo.301537]
+title = "Greetings Letter I"
+group = "Swedish Future Crackers"
+source = "script"
+
+[demozoo.337320]
+title = "Greets 13.2.89"
+group = "Impulse"
+source = "script"
+
+[demozoo.323601]
+title = "Gregfeel's Sample Collection"
+group = "Lepsi De"
+source = "script"
+kind = "collection"
+disks = ["8BITS.D64", "BRAK.D64", "DESIGN3.D64", "DESPAIR.D64", "DNS#7.D64", "GFX1.D64", "GFX2.D64", "GREGFEEL.D64", "JAMAICA.D64", "MUSIC.D64", "QUARK1.D64", "quark2.d64", "SCD.D64", "TRIAGE1.D64", "TRIAGE2.D64", "WEHATEPC.D64"]
+note = "disk set shared by 9 productions"
+
+[demozoo.362807]
+title = "Gremlins"
+group = "The MCT"
+source = "script"
+
+[demozoo.313961]
+title = "Grey Demo"
+group = "Gronauer Cracking Crew"
+source = "script"
+
+[demozoo.189776]
+title = "Grey World"
+group = "Aplaus"
+source = "script"
+
+[demozoo.334239]
+title = "Grill and Chill 2023 - X-Mas Edition"
+group = "The Solaris Agency"
+source = "script"
+
+[demozoo.184523]
+title = "Grisademo"
+group = "Hardcore Mofokkahz / Genesis Project"
+source = "script"
+
+[demozoo.284958]
+title = "Groovy"
+group = "Argon"
+source = "script"
+
+[demozoo.188595]
+title = "Grov-Sopor"
+group = "Virus"
+source = "script"
+result = "unknown"
+boot_file = "grov-sopor/virus"
+
+[demozoo.347163]
+title = "Grubasie!"
+group = "Swappas With Attitude"
+source = "script"
+boot_file = "grubasie!/s.w.a."
+
+[demozoo.395186]
+title = "Gruk"
+group = "Bonzai"
+source = "script"
+machine = "ntsc_1541"
+
+[demozoo.188592]
+title = "Grymme"
+group = "Swedish Commodore Cracking Service"
+source = "script"
+
+[demozoo.359136]
+title = "GSG Demo"
+group = "German Star Group"
+source = "script"
+
+[demozoo.57270]
+title = "GSM-Chat"
+group = "Dekadence"
+source = "script"
+
+[demozoo.166370]
+title = "GSS On Tour"
+group = "German Spreading Service"
+source = "script"
+result = "unknown"
+
+[demozoo.189105]
+title = "Gubbabars"
+group = "Software of Sweden"
+source = "script"
+
+[demozoo.189250]
+title = "Gubbc0re"
+group = "Hardcore Mofokkahz"
+source = "script"
+
+[demozoo.340314]
+title = "Gubbdata Chronicles"
+group = "Genesis Project"
+source = "script"
+
+[demozoo.88157]
+title = "Gubbplasma"
+group = "Undone"
+source = "script"
+
+[demozoo.28166]
+title = "GubbSoft Intro"
+group = "Genesis Project"
+source = "script"
+
+[demozoo.100565]
+title = "Guld till Kalla"
+group = "Active"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.205513]
+title = "Gumbo"
+group = "Camelot"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.6421]
+title = "Gunnar 2: Galne Gunnar"
+group = "Dual Crew"
+source = "script"
+disks = ["gunnar_a.d64", "gunnar_b.d64"]
+swaps = [{ disk = 2, at = 143.1, key = "space", key_delay = 17.8 }]
+
+[demozoo.158807]
+title = "Gunnar Sa OK!"
+group = "Swappas With Attitude"
+source = "script"
+
+[demozoo.325354]
+title = "Gunpiccy II"
+group = "New Men 2007"
+source = "script"
+
+[demozoo.204181]
+title = "Gunship Warriors II"
+group = "MC"
+source = "script"
+
+[demozoo.24204]
+title = "GW09"
+group = "MuMu21 / Chrilles Cracking Crew"
+source = "script"
+
+[demozoo.134914]
+title = "GXAdvert"
+group = "Fantastic 4 Cracking Group / Atlantis"
+source = "script"
+
+[demozoo.298921]
+title = "Gyroscope III"
+group = "Radio Super-Kater"
+source = "script"
+result = "unknown"
+
+[demozoo.168131]
+title = "Göteborgtower"
+group = "Active"
+source = "script"
+
+[demozoo.200652]
+title = "Götta"
+group = "Fairlight"
+source = "script"
+
+[demozoo.194483]
+title = "Göttart"
+group = "Fairlight"
+source = "script"

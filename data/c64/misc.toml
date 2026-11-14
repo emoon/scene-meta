@@ -1,0 +1,93 @@
+[demozoo.90133]
+title = "!"
+group = "Booze Design / Oneway"
+source = "script"
+
+[demozoo.287654]
+title = "!dead"
+group = "Padua"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.184440]
+title = "#$%& Demo"
+group = "Brain Mission"
+source = "script"
+
+[demozoo.182232]
+title = "'Mouse #5' Intro"
+group = "Caution"
+source = "script"
+
+[demozoo.97304]
+title = "(B)arty-demo"
+group = "Z-Circle"
+source = "script"
+
+[demozoo.23757]
+title = "+H2K"
+group = "Plush"
+source = "script"
+machine = "pal_1541_8580"
+disks = ["PLUSH.D64", "PLUSH2.D64"]
+swaps = [{ disk = 2, at = 787.2 }]
+
+[demozoo.302796]
+title = ".H.F."
+group = "Anti-Hiphop Federatie"
+source = "script"
+result = "unknown"
+
+[demozoo.278312]
+title = ".welle erdball."
+group = "Welle:Erdball"
+source = "script"
+result = "unknown"
+
+[demozoo.194481]
+title = ":)bdbdwd"
+group = "Wrath Designs"
+source = "script"
+
+[demozoo.191210]
+title = "@"
+group = "Atlantis"
+source = "script"
+
+[demozoo.7678]
+title = "['Kju:]"
+group = "Reflex"
+source = "script"
+
+[demozoo.378373]
+title = "¿Qué Sofa, Güey? [Deadline Version]"
+group = "Slackers"
+source = "script"
+
+[demozoo.23396]
+title = "Ächzzeit"
+group = "Nuance"
+source = "script"
+result = "unknown"
+
+[demozoo.314663]
+title = "❤️MIX"
+group = "Artline Designs / Extend / Virtual Dreams"
+source = "script"
+disks = ["heartmix_side_a.d64", "heartmix_side_b.d64"]
+swaps = [{ disk = 2, at = 390.4 }]
+
+[demozoo.141417]
+title = "氣 - Qi"
+group = "Hoaxers"
+source = "ai"
+machine = "pal_1541_reu"
+sid = "8580"
+disks = ["qi_a.d64", "qi_b.d64"]
+swaps = [{ disk = 2, at = 304.5 }]
+note = "Qi: needs a REU (-reu -reusize 16384); without it disk 1 stops at READY; disk 2: TURN DISK yoga picture, no key; no upper limit seen (loop ran to 700M)"
+
+[demozoo.137935]
+title = "＿​|​￣​|​○ / Bow Down"
+group = "Goto80"
+source = "script"

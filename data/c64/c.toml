@@ -1,0 +1,2948 @@
+[demozoo.378364]
+title = "C Is For Cat"
+group = "Hokuto Force"
+source = "script"
+
+[demozoo.332073]
+title = "C&A Party Demo"
+group = "Amaze / Crypt"
+source = "script"
+
+[demozoo.300928]
+title = "C'est la vie Digi"
+group = "The Paco Crew"
+source = "script"
+
+[demozoo.308693]
+title = "C'est Simple"
+group = "Royal Cracking Animals"
+source = "script"
+
+[demozoo.347273]
+title = "C+V Bote Demo"
+group = "Spherical Designs"
+source = "script"
+
+[demozoo.347274]
+title = "C+V Bote Demo 2"
+group = "Spherical Designs"
+source = "script"
+
+[demozoo.358282]
+title = "C-64 Disk Drive Demo"
+group = "F2-Soft"
+source = "script"
+
+[demozoo.195291]
+title = "C-Bit '18"
+group = "Performers"
+source = "script"
+machine = "pal_1541_8580"
+disks = ["image1.d64", "image2.d64"]
+swaps = [{ disk = 2, at = 442.8 }]
+
+[demozoo.376545]
+title = "C-Rash"
+group = "Zyron"
+source = "script"
+machine = "pal_1541_8580"
+result = "unknown"
+
+[demozoo.377988]
+title = "C.C.C.P"
+group = "Babygang"
+source = "script"
+
+[demozoo.357235]
+title = "C.C.S. Intro I"
+group = "Crazy Cracking Service"
+source = "script"
+
+[demozoo.357236]
+title = "C.C.S. Intro II"
+group = "Crazy Cracking Service"
+source = "script"
+
+[demozoo.357237]
+title = "C.C.S. Intro III"
+group = "Crazy Cracking Service"
+source = "script"
+
+[demozoo.357238]
+title = "C.C.S. Intro IV"
+group = "Crazy Cracking Service"
+source = "script"
+
+[demozoo.357240]
+title = "C.C.S. Intro VI & VII"
+group = "Crazy Cracking Service"
+source = "script"
+
+[demozoo.206060]
+title = "C.Hunter"
+group = "Enigma"
+source = "script"
+
+[demozoo.52314]
+title = "C.O.W.S 98"
+group = "Padua"
+source = "script"
+
+[demozoo.365763]
+title = "C64 Christmas Disk"
+group = "Pirates of Denver"
+source = "script"
+result = "unknown"
+
+[demozoo.365873]
+title = "C64 Freaks"
+group = "JSL"
+source = "script"
+
+[demozoo.90173]
+title = "C64 Love 2"
+group = "Macx"
+source = "script"
+result = "unknown"
+
+[demozoo.92930]
+title = "C64 Love!"
+group = "Macx"
+source = "script"
+kind = "collection"
+disks = ["Aquoicasert_wd.d64", "Discojive_civitas.d64", "Feedback_3ad.d64", "Gfx&msx.d64", "Makedonian_sbp.d64", "returnof_hujowa.d64", "single_demos.d64"]
+boot_disk = 7
+boot_file = "c64love!   /macx"
+note = "disk set shared by 9 productions"
+
+[demozoo.178165]
+title = "C64 Porno Nummer 1"
+group = "Pirate Software Service"
+source = "script"
+
+[demozoo.193683]
+title = "C64 Scenerlist"
+source = "script"
+
+[demozoo.195305]
+title = "C64, Hear 64"
+group = "Desire"
+source = "script"
+
+[demozoo.121307]
+title = "C64demo"
+group = "Hardkore Lamers"
+source = "script"
+
+[demozoo.364480]
+title = "Cacophony"
+group = "Newness"
+source = "script"
+
+[demozoo.342675]
+title = "Cadmium"
+group = "Sidwave"
+source = "script"
+
+[demozoo.63928]
+title = "Cafe Lamer"
+group = "Extend"
+source = "script"
+
+[demozoo.153466]
+title = "Café Odd"
+group = "Reflex"
+source = "script"
+result = "unknown"
+
+[demozoo.206295]
+title = "Cage"
+group = "X-Future"
+source = "script"
+disks = ["CAGE_X-FUTURE_A.d64", "CAGE_X-FUTURE_B.d64"]
+note = "the sweep only reached disk 1 of 2"
+
+[demozoo.292319]
+title = "Calculation"
+group = "Artline Designs"
+source = "script"
+disks = ["ALD_Calculation_Side1.d64", "ALD_Calculation_Side2.d64"]
+swaps = [{ disk = 2, at = 379.9 }]
+
+[demozoo.346190]
+title = "Call Me Psycho Music"
+group = "Exact"
+source = "script"
+
+[demozoo.80734]
+title = "Call of the Past"
+group = "Arsenic"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.356358]
+title = "Call This"
+group = "Vision / Coderz"
+source = "script"
+
+[demozoo.332089]
+title = "Camouflage"
+group = "Babygang"
+source = "script"
+
+[demozoo.354870]
+title = "Can of Bozze"
+group = "Contrast"
+source = "script"
+
+[demozoo.317823]
+title = "Can't Touch His"
+group = "Extend"
+source = "script"
+
+[demozoo.365799]
+title = "Can-Can"
+group = "Plasma Grafix"
+source = "script"
+
+[demozoo.352420]
+title = "Canabis"
+group = "Babygang"
+source = "script"
+
+[demozoo.274549]
+title = "Canada Demo"
+group = "KMS"
+source = "script"
+
+[demozoo.352421]
+title = "Canal+ Demo"
+group = "Babygang"
+source = "script"
+
+[demozoo.167020]
+title = "Candle Wax"
+group = "Hype"
+source = "ai"
+kind = "standalone"
+disks = ["0195a.d64", "Candle_Wax.d64", "Candlewax_HYPE.d64"]
+note = "3 d64s are alternative wrappers of the same 33-block prg plus parts 2-7 on the same disk; no flip"
+
+[demozoo.340673]
+title = "Caperycorn"
+group = "Abnormal"
+source = "script"
+
+[demozoo.368195]
+title = "Caprice Design turns 50"
+group = "Plush"
+source = "script"
+
+[demozoo.162162]
+title = "Captain Alehouse"
+group = "FLAT3"
+source = "script"
+
+[demozoo.345527]
+title = "Captors Logo"
+group = "Relax"
+source = "script"
+
+[demozoo.317992]
+title = "Captured Music"
+group = "Drugsoft"
+source = "script"
+
+[demozoo.279084]
+title = "Carbon Brush"
+group = "Undone"
+source = "script"
+
+[demozoo.362073]
+title = "Carding Demo"
+group = "Die Hard Hackers"
+source = "script"
+disks = ["carding_demo.d64", "thw85b.d64"]
+note = "the sweep only reached disk 1 of 2"
+
+[demozoo.58416]
+title = "Caretta"
+group = "Centric"
+source = "script"
+
+[demozoo.287042]
+title = "Carnivorous"
+group = "Carcass"
+source = "script"
+
+[demozoo.362948]
+title = "Carolas Last Revenge"
+group = "Lore of Arts"
+source = "script"
+
+[demozoo.345648]
+title = "Cartoon"
+group = "Future Concepts"
+source = "script"
+
+[demozoo.286652]
+title = "Cascade DOTY Entry"
+group = "Cascade"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.270977]
+title = "Cast"
+group = "Devils"
+source = "script"
+
+[demozoo.349097]
+title = "Cast to See"
+group = "Tropyx"
+source = "script"
+machine = "pal_1541_8580"
+disks = ["Stary_piernik_4a.d64", "Stary_piernik_4b.d64"]
+swaps = [{ disk = 2, at = 53.1, key = "p2fire", key_delay = 49.4 }]
+
+[demozoo.299086]
+title = "Cat Stevens"
+group = "Migges"
+source = "script"
+result = "unknown"
+
+[demozoo.338557]
+title = "Cataclysm"
+group = "Complex"
+source = "script"
+
+[demozoo.396955]
+title = "Catya Dancing Queen"
+group = "Fancy Rats / BOOM!"
+source = "script"
+
+[demozoo.4881]
+title = "Cauldron"
+group = "The Dreams / Exceed / Resource"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.44397]
+title = "Cause of Death"
+group = "Arsenic"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.359602]
+title = "CCCP Demo"
+group = "CCCP Squad"
+source = "script"
+result = "unknown"
+
+[demozoo.339466]
+title = "CCCP Greet"
+group = "Competent Commodore Cracking Pirates"
+source = "script"
+disks = ["cccp.d64", "cccp greet.d64"]
+swaps = [{ disk = 2, at = 92.7, key = "p2fire", key_delay = 52.5 }]
+boot_file = "cccp greet ....."
+
+[demozoo.178171]
+title = "CCCP Smessel II"
+group = "Competent Commodore Cracking Pirates"
+source = "ai"
+kind = "standalone"
+disks = ["cccp.d64", "cccp smessel 2.d64"]
+boot_file = "cccp smessel ii"
+note = "cccp.d64 is the CCCP collection (many Smessel prgs); 'cccp smessel 2.d64' has the same byte-identical 66-block 'cccp smessel ii' prg. Alternatives, one file, no flip. Boot file 'cccp smessel ii'."
+
+[demozoo.341759]
+title = "CCS Worldwide"
+group = "Crazy Cracking Service"
+source = "script"
+
+[demozoo.293582]
+title = "CCT Selector IX"
+group = "Cool Cracking Team"
+source = "script"
+
+[demozoo.363800]
+title = "CD 09 ''Mercy''"
+group = "Sharon Soundworks / The Austria Crew / Monster Inc."
+source = "script"
+
+[demozoo.341499]
+title = "CD Mania"
+group = "Fatum"
+source = "script"
+
+[demozoo.345765]
+title = "CD World"
+group = "Lepsi De / Samar Productions"
+source = "script"
+result = "unknown"
+
+[demozoo.135377]
+title = "Ce-Bit '87"
+group = "Software Invasion Berlin"
+source = "script"
+
+[demozoo.393278]
+title = "Cebit"
+group = "EDE"
+source = "script"
+
+[demozoo.348126]
+title = "Cebit Demo"
+group = "The Law-Breakers"
+source = "script"
+
+[demozoo.357602]
+title = "Cebit Demo"
+group = "Genesis Project / The Butterflies"
+source = "script"
+
+[demozoo.395916]
+title = "Celebrate"
+group = "Share"
+source = "script"
+
+[demozoo.288569]
+title = "Celtic Musax Ripp Disk"
+group = "Celtic"
+source = "script"
+result = "unknown"
+
+[demozoo.111305]
+title = "Censor Intro"
+group = "Delta Machine"
+source = "script"
+
+[demozoo.18087]
+title = "Centric Preview"
+group = "Cyance"
+source = "script"
+
+[demozoo.356451]
+title = "Cepelia"
+group = "Elysium"
+source = "script"
+disks = ["Cepelia_side1.d64", "Cepelia_side2.d64"]
+swaps = [{ disk = 2, at = 362.9 }]
+
+[demozoo.358121]
+title = "Chain Intro"
+group = "Deluxe Edition"
+source = "script"
+
+[demozoo.343481]
+title = "Chain Letter"
+group = "The Supersonics"
+source = "script"
+result = "unknown"
+
+[demozoo.327666]
+title = "Challenge"
+group = "Fire-Eagle"
+source = "script"
+
+[demozoo.348910]
+title = "Chambers of Shaolin Rip"
+group = "Active"
+source = "script"
+
+[demozoo.50093]
+title = "Chanel No 64"
+group = "Arise"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.199761]
+title = "Changing"
+group = "Astral"
+source = "script"
+disks = ["Changing 1991 (Side 1).d64", "Changing 1991 (Side 2).d64"]
+swaps = [{ disk = 2, at = 171.9, key = "space", key_delay = 17.5 }]
+
+[demozoo.349859]
+title = "Channel 4"
+group = "Ian And Mic"
+source = "script"
+
+[demozoo.341877]
+title = "Channel 42 Intro"
+group = "FBI Crew / Channel 42"
+source = "script"
+
+[demozoo.200004]
+title = "Channel Zero"
+group = "Action"
+source = "script"
+
+[demozoo.343227]
+title = "Channels"
+group = "Booze Design"
+source = "script"
+machine = "pal_1541_8580"
+result = "unknown"
+
+[demozoo.126202]
+title = "Chaos"
+group = "Paragon"
+source = "script"
+
+[demozoo.347315]
+title = "Chaos 2"
+group = "Paragon"
+source = "script"
+
+[demozoo.349134]
+title = "Chaos BC"
+group = "Surgeon"
+source = "script"
+machine = "pal_1541_8580"
+disks = ["Stary_piernik_4a.d64", "Stary_piernik_4b.d64"]
+swaps = [{ disk = 2, at = 52.3, key = "p2fire", key_delay = 50.6 }]
+
+[demozoo.293721]
+title = "Chaos Logo"
+group = "Cryptic Tales"
+source = "script"
+
+[demozoo.288529]
+title = "Chars Suck"
+group = "Triad"
+source = "script"
+
+[demozoo.87148]
+title = "Chase That Feeling"
+group = "A Life in Hell"
+source = "script"
+
+[demozoo.167245]
+title = "Cheap Piece"
+group = "Paradize"
+source = "script"
+
+[demozoo.318864]
+title = "Check This Out"
+group = "Kleenex 88"
+source = "script"
+
+[demozoo.334287]
+title = "Cheerio!"
+group = "Delta System"
+source = "script"
+
+[demozoo.205102]
+title = "Chemical"
+group = "Delta Projects"
+source = "script"
+
+[demozoo.172959]
+title = "Chemtrails"
+group = "Delysid"
+source = "script"
+
+[demozoo.296074]
+title = "Cherche le Zavr"
+group = "Atlantis"
+source = "script"
+
+[demozoo.319403]
+title = "Chessboard"
+group = "Camelot"
+source = "script"
+
+[demozoo.372576]
+title = "Chesser's Ride"
+group = "Blazon"
+source = "script"
+
+[demozoo.350563]
+title = "Chicago's 30"
+group = "The Blasters Inc."
+source = "script"
+
+[demozoo.87811]
+title = "Chicanery"
+group = "Triad"
+source = "script"
+
+[demozoo.83738]
+title = "Chili Power 2006"
+group = "Instinct"
+source = "script"
+
+[demozoo.343007]
+title = "Chill Out!!"
+group = "Fairlight"
+source = "script"
+
+[demozoo.187980]
+title = "Chilly The Most"
+group = "2000 A.D."
+source = "script"
+
+[demozoo.347041]
+title = "Chime This"
+group = "Shade"
+source = "script"
+
+[demozoo.346095]
+title = "Chipwar Music"
+group = "The Underground Team"
+source = "script"
+
+[demozoo.395308]
+title = "Chojnów '94 Compo Music Pack #1"
+group = "Altus"
+source = "script"
+
+[demozoo.349463]
+title = "Cholo Tune"
+group = "United Software Artists"
+source = "script"
+
+[demozoo.3606]
+title = "Christfuck"
+group = "Conflict"
+source = "script"
+
+[demozoo.302405]
+title = "Christmas \"Party\" 5.0 Results"
+source = "script"
+machine = "ntsc_1541"
+
+[demozoo.323681]
+title = "Christmas 1989"
+group = "Actual Trading Generation"
+source = "script"
+
+[demozoo.345009]
+title = "Christmas 2007"
+group = "Panda Design"
+source = "script"
+
+[demozoo.336839]
+title = "Christmas 2010"
+group = "Forces of Evil / KrionyX"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.197623]
+title = "Christmas 2018"
+group = "MP Software"
+source = "script"
+
+[demozoo.301934]
+title = "Christmas Aches"
+group = "Cult"
+source = "script"
+
+[demozoo.291792]
+title = "Christmas Carol"
+group = "Orion"
+source = "script"
+result = "unknown"
+
+[demozoo.205728]
+title = "Christmas Demo"
+group = "The Lurking Horror"
+source = "script"
+
+[demozoo.295395]
+title = "Christmas Demo"
+group = "The Web Inc."
+source = "script"
+
+[demozoo.350677]
+title = "Christmas Demo 2006"
+group = "The New Dimension"
+source = "script"
+
+[demozoo.197554]
+title = "Christmas Demo 2018"
+group = "Genesis Project"
+source = "script"
+
+[demozoo.316613]
+title = "Christmas Greetings 2022"
+group = "Gorbat Soft"
+source = "script"
+
+[demozoo.189710]
+title = "Christmas Greets"
+group = "Abnormal"
+source = "script"
+
+[demozoo.100351]
+title = "Christmas is Awesome"
+group = "Commodore Is Awesome"
+source = "script"
+
+[demozoo.331985]
+title = "Christmas is Awesome 3"
+group = "Commodore Is Awesome"
+source = "script"
+
+[demozoo.288167]
+title = "Christmas Megademo (Sledge of Displace)"
+group = "Offence / Atlantis / Genesis Project / Lethargy / Bonzai"
+source = "script"
+machine = "pal_1541_8580"
+result = "unknown"
+disks = ["ChristmasBall.d64", "DrScienceBox.d64", "DrScienceLayerPart.d64", "DrScienceTextDisplayer.d64", "DrScienceTextDisplayer2.d64", "EgoRaytrace.d64", "GreetingScroller.d64", "Leuat-Doc-ToplessSanta.d64", "LeuatRotatingSantas.d64", "LeuatScroller.d64", "MarchingSnowflakes1.d64", "MarchingSnowflakes2.d64", "PerplexSnow.d64", "ProudlyPresent.d64", "QzerowBumpmas.d64", "QzerowSledgeFade.d64", "QzerowXmastree.d64", "QzerowYellowSnow.d64", "RasterFaderDown.d64", "RasterFaderUp.d64", "ShadowChristmastree.d64", "Sledge of displace - Santas - Side A.d64", "Sledge of displace - Santas - Side B.d64", "Sledge of displace - Santas - Side C.d64", "Sledge of displace - Santas - Side D.d64", "SnowflakeZoomer.d64", "StreptoColorcycler.d64", "TechTechTree.d64", "TheSantas-B.d64", "TheSantas_dir_art_01.d64", "TheSantas_dir_art_02.d64", "TheSantas_dir_art_03.d64", "TheSantas_dir_art_04.d64", "Trap2021.d64", "TrapApproved.d64", "TrapXmasballs.d64", "VisageMCScroller.d64", "WaltBasicWipe.d64", "WaltCandy.d64", "WaltHeartFader.d64", "WaltLetter.d64", "WaltTrans.d64"]
+
+[demozoo.338970]
+title = "Christmas Note"
+group = "Sense Designs"
+source = "script"
+result = "unknown"
+
+[demozoo.178163]
+title = "Christmas Songs"
+source = "script"
+
+[demozoo.274850]
+title = "Christmas'88"
+group = "Alcatraz"
+source = "script"
+
+[demozoo.282585]
+title = "Christmas18"
+group = "Censor Design"
+source = "script"
+
+[demozoo.359246]
+title = "CHT Is Dead"
+group = "Omikron"
+source = "script"
+result = "unknown"
+
+[demozoo.183234]
+title = "Chubby Chubby SID Chip V2"
+group = "The New Dimension"
+source = "script"
+
+[demozoo.376128]
+title = "Chunky and Planar"
+group = "Sys5"
+source = "ai"
+kind = "collection"
+disks = ["474_bytes_for_Zyron.d64", "bbb_-_bit_by_bit.d64", "Datasvision-DTV.d64", "deadline_final_gp.d64", "DO-YOU-HAVE-WHAT-WE-IN-SWEDEN-CALL-A-TESTBILD.d64", "KillingJoke---Skyhawk-Triad---PETSCIICompo---20250731.d64", "regn z69.d64", "shadow_star_gp.d64", "TRIAD-2_the_city.d64", "TRIAD-Teddy-John.d64", "TRIAD-VL-BBS_Intro.d64"]
+note = "entry not on any d64: bare prg 'C64/Demo/Sys5_Chunky and Planar/sys5-chunky_and_planar.prg' in paga25-c64.zip; single file, no flip"
+
+[demozoo.331986]
+title = "CiA 2014 Banner Competition"
+group = "Commodore Is Awesome"
+source = "script"
+
+[demozoo.336210]
+title = "Ciao"
+group = "Bang"
+source = "script"
+
+[demozoo.350678]
+title = "Cinder Shadow"
+group = "The New Dimension"
+source = "script"
+
+[demozoo.316046]
+title = "Cinque"
+group = "Padua"
+source = "script"
+
+[demozoo.88158]
+title = "Circadin"
+group = "Triad"
+source = "script"
+
+[demozoo.325303]
+title = "Circle of Trust"
+group = "Wrath Designs"
+source = "script"
+
+[demozoo.331031]
+title = "Circle Twist"
+group = "Bros"
+source = "script"
+
+[demozoo.189412]
+title = "Circle Twist 2"
+group = "Bros"
+source = "script"
+
+[demozoo.126307]
+title = "City of Shock"
+group = "Beastie Boys"
+source = "script"
+
+[demozoo.341965]
+title = "City Scape"
+group = "House Designs"
+source = "script"
+result = "unknown"
+
+[demozoo.341878]
+title = "Cityline"
+group = "FBI Crew"
+source = "script"
+result = "unknown"
+
+[demozoo.48545]
+title = "Civitas Charset Dither Demo"
+group = "Civitas"
+source = "script"
+boot_file = "civitas/ditherer"
+
+[demozoo.332214]
+title = "Civitas-Intro 10"
+group = "Civitas"
+source = "script"
+result = "unknown"
+
+[demozoo.332215]
+title = "Civitas-Intro 11"
+group = "Civitas"
+source = "script"
+disks = ["%5BCIVITAS%5D_INTRO_%2311.D64", "civitas_intro11.d64"]
+note = "the sweep only reached disk 1 of 2"
+
+[demozoo.168687]
+title = "Claculate It"
+group = "Brainstorm"
+source = "script"
+kind = "collection"
+disks = ["BCC7allofthemA.d64", "BCC7allofthemB.d64", "BCC7allofthemC.d64"]
+note = "disk set shared by 3 productions"
+
+[demozoo.347129]
+title = "Classic"
+group = "Classic"
+source = "script"
+
+[demozoo.286276]
+title = "Classicodemo"
+group = "Zigag Cracking Service"
+source = "script"
+
+[demozoo.159843]
+title = "Classics"
+group = "Booze Design"
+source = "script"
+
+[demozoo.356774]
+title = "Classics"
+group = "Opal"
+source = "script"
+
+[demozoo.334612]
+title = "Classified"
+group = "Dunex"
+source = "script"
+
+[demozoo.348655]
+title = "Cleve's music collection"
+group = "Charged"
+source = "script"
+disks = ["cleve.d64", "clevemusiccollection.d64"]
+swaps = [{ disk = 2, at = 147.0, key = "p2fire", key_delay = 49.8 }]
+
+[demozoo.348656]
+title = "Cleve's music pack"
+group = "Charged"
+source = "script"
+
+[demozoo.193469]
+title = "Clever & Smart Intro"
+group = "Terminator Tomes"
+source = "script"
+
+[demozoo.345526]
+title = "Climax"
+group = "Relax"
+source = "script"
+
+[demozoo.351722]
+title = "Clone Demo"
+group = "Nico Clone"
+source = "script"
+machine = "ntsc_1541"
+sid = "8580"
+
+[demozoo.152893]
+title = "Clone Invasion"
+group = "C64CD"
+source = "script"
+
+[demozoo.152895]
+title = "Clone Reaction"
+group = "C64CD"
+source = "script"
+
+[demozoo.152896]
+title = "Clonemas"
+group = "C64CD"
+source = "script"
+
+[demozoo.165441]
+title = "Clonetro"
+group = "C64CD"
+source = "script"
+
+[demozoo.163420]
+title = "Close Enough"
+group = "Extend"
+source = "script"
+
+[demozoo.187981]
+title = "Close To Finish"
+group = "2000 A.D."
+source = "script"
+
+[demozoo.347094]
+title = "Cloud Kingdoms"
+group = "Genesis Project"
+source = "script"
+
+[demozoo.25817]
+title = "Clown"
+group = "Civitas"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.345211]
+title = "Club Light Demo"
+group = "Hitmen"
+source = "script"
+
+[demozoo.189112]
+title = "CMD60Phoar"
+group = "Hardcore Mofokkahz"
+source = "script"
+
+[demozoo.360836]
+title = "CNCD Superbox"
+group = "Aleksi Eeben"
+source = "script"
+result = "unknown"
+
+[demozoo.345437]
+title = "CNT's Intro #1"
+group = "Fiction"
+source = "script"
+
+[demozoo.332076]
+title = "Co-Boozing"
+group = "Crypt / Pepsi Crew"
+source = "script"
+
+[demozoo.308155]
+title = "Co-Demo"
+group = "Hightec / Action"
+source = "script"
+
+[demozoo.338354]
+title = "Co-Demo"
+group = "Computer Freaks Association / Wild 57"
+source = "script"
+
+[demozoo.338866]
+title = "Co-Demo"
+group = "Asia / Trigon / Noise"
+source = "script"
+
+[demozoo.293985]
+title = "Co-Demo!"
+group = "The Guilties / The Golden Triangle"
+source = "script"
+
+[demozoo.97278]
+title = "Co-hop Demo"
+group = "SHAPE / The Ruling Company"
+source = "script"
+
+[demozoo.271043]
+title = "Co-Intro"
+group = "Frontline / Bytestar"
+source = "script"
+
+[demozoo.205298]
+title = "Co-Op"
+group = "Civitas / Raiders of the Lost Empire"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.349889]
+title = "Co-op"
+group = "Impulse / Beyond Force / SHAPE"
+source = "script"
+
+[demozoo.356115]
+title = "Co-Op"
+group = "Tristar"
+source = "script"
+machine = "ntsc_1541"
+
+[demozoo.328977]
+title = "Co-op Demo"
+group = "FBR Germany / Saga Connection"
+source = "script"
+
+[demozoo.352830]
+title = "Co-op Demo"
+group = "Queensland Copy Federation / The Game Killers"
+source = "script"
+
+[demozoo.339930]
+title = "Co-op Demo 2006"
+group = "Alpha Flight / Crypt"
+source = "script"
+
+[demozoo.362732]
+title = "Co-Part"
+group = "The Foxfire Crew"
+source = "script"
+
+[demozoo.347316]
+title = "Co-Rape"
+group = "The Future / Paragon"
+source = "script"
+
+[demozoo.317482]
+title = "Co. Demo"
+group = "Zappers / XYZ-Soft"
+source = "script"
+
+[demozoo.173480]
+title = "Coast to Coast"
+group = "McMartin / Nick Vivid"
+source = "script"
+
+[demozoo.327993]
+title = "Cobra Demo"
+group = "The Bytemaster"
+source = "script"
+
+[demozoo.347420]
+title = "Cobra Picture"
+group = "Real Amazing Federation"
+source = "script"
+
+[demozoo.299080]
+title = "Cobra Quickie"
+group = "Cas"
+source = "script"
+
+[demozoo.523]
+title = "Cockcrusher"
+group = "Bonzai"
+source = "script"
+
+[demozoo.2176]
+title = "Cocktail"
+group = "Triad"
+source = "script"
+
+[demozoo.313114]
+title = "Cocktail to Go!"
+group = "Bonzai"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.366337]
+title = "Cocoon"
+group = "Styling"
+source = "script"
+machine = "ntsc_1541"
+
+[demozoo.362949]
+title = "Cocyne Muzak"
+group = "Lore of Arts / Exotic Designs"
+source = "script"
+
+[demozoo.267979]
+title = "Code 4"
+group = "Singular"
+source = "ai"
+kind = "standalone"
+disks = ["Arok1.d64", "Arok2.d64"]
+note = "Code 4: disk 2 (arok2) is the demo itself, boot it alone"
+
+[demozoo.366745]
+title = "Codeboys & Endians"
+group = "Booze Design"
+source = "script"
+machine = "pal_1541_8580"
+disks = ["CodeboysAndEndians_1.d64", "CodeboysAndEndians_2.d64"]
+swaps = [{ disk = 2, at = 462.9 }]
+
+[demozoo.110860]
+title = "Codename: Remoff 98%"
+group = "Lepsi De"
+source = "script"
+
+[demozoo.387438]
+title = "Codey turns 50!"
+group = "Excess"
+source = "script"
+
+[demozoo.330367]
+title = "Coffee Spill"
+group = "Damagesoft Incorperated / Weird Hellbent Operators"
+source = "script"
+
+[demozoo.290796]
+title = "Coke'n'7UP"
+group = "Crackforce"
+source = "script"
+
+[demozoo.125840]
+title = "Cold as Hell"
+group = "Hexagon"
+source = "script"
+
+[demozoo.183633]
+title = "Cold Wind"
+group = "Argus"
+source = "script"
+
+[demozoo.363923]
+title = "Collect It"
+group = "Nation"
+source = "script"
+
+[demozoo.349036]
+title = "Collection"
+group = "The Wanted"
+source = "script"
+
+[demozoo.339329]
+title = "Collection #1"
+group = "Rhyme Design"
+source = "script"
+
+[demozoo.363699]
+title = "Collection 1"
+group = "Migs Designs"
+source = "script"
+
+[demozoo.363698]
+title = "Collection 2"
+group = "Migs Designs"
+source = "script"
+
+[demozoo.172925]
+title = "Collection 24"
+group = "Exact"
+source = "script"
+
+[demozoo.374609]
+title = "Collusion Contact Us"
+group = "Collusion"
+source = "script"
+
+[demozoo.167248]
+title = "Collusion Musicdisk"
+group = "Collusion"
+source = "script"
+
+[demozoo.49502]
+title = "Colony"
+group = "Ancients Pledge"
+source = "script"
+machine = "pal_1541_8580"
+kind = "collection"
+disks = ["Forever2011_Demo.d64", "Forever2011_Demo2.d64"]
+boot_file = "colony by a.p.i."
+note = "disk set shared by 4 productions"
+
+[demozoo.325605]
+title = "Color Cycling"
+group = "javierglez"
+source = "script"
+
+[demozoo.357092]
+title = "Color Space"
+group = "Dark Crystal"
+source = "script"
+result = "unknown"
+
+[demozoo.286648]
+title = "Colorama"
+group = "Alpha Flight"
+source = "script"
+
+[demozoo.365882]
+title = "Colorfire + Picture + Tweaks Preview"
+group = "The Postmoderns"
+source = "script"
+
+[demozoo.392450]
+title = "Colors"
+group = "Lethargy"
+source = "ai"
+machine = "pal_1541_8580"
+result = "broken"
+disks = ["colors__lethargy_.d64", "colors__lethargy__side_b.d64", "colors__lethargy__side_c.d64"]
+note = "Colors: x64sc crashes (monitor closed) at ~70M cycles after the COLORS logo, reproducible; sides A/B/C each hold one prg, flip need unknown"
+
+[demozoo.27773]
+title = "Colossal Pictures"
+group = "Rogue"
+source = "script"
+disks = ["Colossal Pictures (Side 1).d64", "Colossal Pictures (Side 2).d64"]
+swaps = [{ disk = 2, at = 267.2, key = "space", key_delay = 15.1 }]
+
+[demozoo.184572]
+title = "Colour Blob"
+group = "US Rangers"
+source = "script"
+
+[demozoo.197021]
+title = "Coltrax Number Two"
+group = "Coltrax 2304"
+source = "script"
+
+[demozoo.41518]
+title = "Coma Job"
+group = "Oxyron / Crest"
+source = "script"
+
+[demozoo.21532]
+title = "Coma Job 2/3"
+group = "Oxyron / Crest"
+source = "script"
+
+[demozoo.55071]
+title = "Coma Light"
+group = "Oxyron"
+source = "script"
+
+[demozoo.114985]
+title = "Coma Light '87"
+group = "Oxyron"
+source = "script"
+
+[demozoo.26930]
+title = "Coma Light 10 - Vector Light"
+group = "Oxyron"
+source = "script"
+
+[demozoo.6196]
+title = "Coma Light 11"
+group = "Oxyron"
+source = "script"
+disks = ["Coma_Light_11_S1.d64", "Coma_Light_11_S2.d64"]
+swaps = [{ disk = 2, at = 107.2, key = "space", key_delay = 18.8 }]
+boot_file = "-coma  light 11-"
+
+[demozoo.44403]
+title = "Coma Light 13"
+group = "Oxyron"
+source = "script"
+machine = "pal_1541_8580"
+disks = ["side1.d64", "side2.d64"]
+swaps = [{ disk = 2, at = 454.2, key = "space" }]
+
+[demozoo.55085]
+title = "Coma Light 4"
+group = "Oxyron"
+source = "ai"
+machine = "ntsc_1541"
+disks = ["Coma_Light_04_S1.D64", "Coma_Light_04_S2.D64"]
+swaps = [{ disk = 2, at = 464.4, key = "space", key_delay = 15.6 }]
+keys = [{ at = 117.3, key = "space" }, { at = 146.7, key = "space" }, { at = 176.0, key = "space" }, { at = 205.3, key = "space" }, { at = 234.7, key = "space" }, { at = 264.0, key = "space" }, { at = 293.3, key = "space" }, { at = 322.7, key = "space" }, { at = 352.0, key = "space" }, { at = 381.3, key = "space" }, { at = 410.7, key = "space" }, { at = 440.0, key = "space" }]
+note = "Coma Light 4: space-driven part chain on side 1 (space every 30M from 120M; space before ~100M breaks the load); last part '09.turn the disk' shows from ~463M; after insert the vector-mania part appears; disk 2: verified: insert 475M + space 16M later -> side 2 part starts; no spaces after 450M (against disk 1 destructive)"
+
+[demozoo.86429]
+title = "Coma Light 5"
+group = "Oxyron"
+source = "ai"
+machine = "ntsc_1541"
+sid = "8580"
+disks = ["Coma_Light_05_S1.d64", "Coma_Light_05_S2.d64"]
+swaps = [{ disk = 2, at = 440.0, key = "space", key_delay = 15.6 }]
+keys = [{ at = 117.3, key = "space" }, { at = 146.7, key = "space" }, { at = 176.0, key = "space" }, { at = 205.3, key = "space" }, { at = 234.7, key = "space" }, { at = 264.0, key = "space" }, { at = 293.3, key = "space" }, { at = 322.7, key = "space" }, { at = 352.0, key = "space" }]
+note = "Coma Light 5: space-driven chain (space every 30M from 120M); 07.turn the disk logo up from ~390M; side 2 starts with TV-pyramid/cube part; disk 2: verified: insert 450M + space +16M -> new part by ~485M; keys stop at 360M"
+
+[demozoo.72221]
+title = "Coma Light 8"
+group = "Oxyron"
+source = "script"
+machine = "pal_1541_8580"
+disks = ["comalight8-s1.d64", "comalight8-s2.d64"]
+swaps = [{ disk = 2, at = 162.1, key = "space", key_delay = 14.9 }]
+
+[demozoo.103422]
+title = "Coma Light 9"
+group = "Oxyron"
+source = "ai"
+machine = "ntsc_1541"
+disks = ["Coma_Light_09_Side_1.D64", "Coma_Light_09_Side_2.D64"]
+swaps = [{ disk = 2, at = 469.3, key = "space", key_delay = 15.6 }]
+keys = [{ at = 117.3, key = "space" }, { at = 146.7, key = "space" }, { at = 176.0, key = "space" }, { at = 205.3, key = "space" }, { at = 234.7, key = "space" }, { at = 264.0, key = "space" }, { at = 293.3, key = "space" }, { at = 322.7, key = "space" }, { at = 352.0, key = "space" }, { at = 381.3, key = "space" }]
+note = "Coma Light 9: space-driven chain (space every 30M from 120M); TURN DISK part up from ~419M; side 2 starts with oxyron/conaught sphere part; disk 2: verified: insert 480M + space +16M -> new part by ~500M; keys stop at 390M"
+
+[demozoo.124841]
+title = "Comaland"
+group = "Censor Design / Oxyron"
+source = "script"
+machine = "pal_1541_8580"
+disks = ["image1.d64", "image2.d64", "image3.d64", "image4.d64"]
+swaps = [{ disk = 2, at = 374.7, key = "space" }, { disk = 3, at = 668.1, key = "space" }, { disk = 4, at = 1075.9 }]
+
+[demozoo.140070]
+title = "Comaland 100%"
+group = "Censor Design / Oxyron"
+source = "script"
+machine = "pal_1541_8580"
+disks = ["image1.d64", "image2.d64", "image3.d64", "image4.d64"]
+swaps = [{ disk = 2, at = 301.8, key = "space", key_delay = 16.5 }, { disk = 3, at = 575.9, key = "space", key_delay = 16.8 }, { disk = 4, at = 894.4 }]
+
+[demozoo.359438]
+title = "Combat  Fool"
+group = "I.C.E. Squad"
+source = "script"
+
+[demozoo.301697]
+title = "Combination Demo"
+group = "Mr. Merlin / The Hawk"
+source = "script"
+result = "unknown"
+
+[demozoo.348409]
+title = "Comeback Part 1"
+group = "The Last Generation 1945"
+source = "script"
+
+[demozoo.339304]
+title = "Comely"
+group = "Zodux"
+source = "script"
+
+[demozoo.343603]
+title = "Comic Bakery Music"
+group = "Swedish Cracking Crew / The Beserkers"
+source = "script"
+
+[demozoo.340216]
+title = "Comic Frame Music"
+group = "Vibrants"
+source = "script"
+
+[demozoo.291010]
+title = "Coming Back Hard Again"
+group = "Mask"
+source = "script"
+
+[demozoo.330373]
+title = "Coming Home"
+group = "Alpha Flight"
+source = "script"
+
+[demozoo.164194]
+title = "Coming Soon"
+group = "Ideal"
+source = "ai"
+kind = "standalone"
+disks = ["forever1.d64", "forever2.d64"]
+note = "disk 1 file 'coming s. /ideal', single load, runs >180M cycles, no flip"
+
+[demozoo.338870]
+title = "Coming Soon"
+group = "Reflex"
+source = "script"
+
+[demozoo.361389]
+title = "Commando \"Acid House\""
+group = "International Cracking Entertainment"
+source = "script"
+
+[demozoo.351191]
+title = "Commando Demo"
+group = "Thunderbolt Cracking Crew"
+source = "script"
+
+[demozoo.359123]
+title = "Commodore Network Demo"
+group = "Genius Softworks"
+source = "script"
+disks = ["COMNETGA.D64", "COMNETGB.D64"]
+note = "the sweep only reached disk 1 of 2"
+
+[demozoo.391632]
+title = "Commodore Robot"
+group = "Vandahlia"
+source = "script"
+
+[demozoo.320259]
+title = "Commodorella Eduskuntaan 2023"
+group = "Piraattipuolue"
+source = "script"
+
+[demozoo.363319]
+title = "Comp Demo"
+group = "Delta Image Crew"
+source = "script"
+
+[demozoo.395918]
+title = "Competition Demo"
+group = "FBR Germany"
+source = "script"
+
+[demozoo.336346]
+title = "Compilation"
+group = "Abase / Redline Design"
+source = "script"
+
+[demozoo.357160]
+title = "Complex"
+group = "Energy"
+source = "script"
+
+[demozoo.176317]
+title = "Compo Intro V1"
+group = "Code7"
+source = "script"
+
+[demozoo.348657]
+title = "Compod's music collection"
+group = "Charged"
+source = "script"
+
+[demozoo.322685]
+title = "Composition Demo"
+group = "Breaksoft International"
+source = "script"
+
+[demozoo.388875]
+title = "Compozak"
+group = "Excess"
+source = "script"
+machine = "pal_1541_8580"
+kind = "collection"
+disks = ["The Party 3 Music Competition [Side 1].d64", "The Party 3 Music Competition [Side 2].d64"]
+note = "disk set shared by 8 productions"
+
+[demozoo.127449]
+title = "Compusphere (The Net Is Vast and Infinite)"
+group = "Fantastic 4 Cracking Group / Atlantis"
+source = "script"
+
+[demozoo.377769]
+title = "Computing Parallel Universes"
+group = "Atlantis / G-Fellow"
+source = "script"
+
+[demozoo.314671]
+title = "Con News"
+group = "Con Artists"
+source = "script"
+
+[demozoo.105197]
+title = "Concluded Cuts"
+group = "Oxsid Planetary"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.347179]
+title = "Confetti's"
+group = "Oneway"
+source = "script"
+
+[demozoo.297747]
+title = "Confusion!"
+group = "Firelord"
+source = "script"
+
+[demozoo.6035]
+title = "Connected"
+group = "Vision / Genesis Project"
+source = "script"
+
+[demozoo.306281]
+title = "Connections"
+group = "Antivision Incorporated 4711 / Gandalf Sound Crackings 2001"
+source = "script"
+
+[demozoo.188583]
+title = "Conqueror"
+group = "Hoaxers"
+source = "script"
+
+[demozoo.188589]
+title = "Conquest"
+group = "Rizing"
+source = "script"
+
+[demozoo.359726]
+title = "Conspiracy"
+group = "Havok"
+source = "script"
+
+[demozoo.22398]
+title = "Contact"
+group = "The Ultimate Mayas"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.277710]
+title = "Contact"
+group = "Panorama"
+source = "script"
+
+[demozoo.367120]
+title = "Contact"
+group = "The Disk Force"
+source = "script"
+
+[demozoo.367145]
+title = "Contact"
+group = "Tour De Future / Reflex"
+source = "script"
+
+[demozoo.389541]
+title = "Contact Access"
+group = "Access"
+source = "script"
+
+[demozoo.282069]
+title = "Contact Andre"
+group = "Antic / Oxyron"
+source = "script"
+
+[demozoo.361341]
+title = "Contact Avengers"
+group = "Avengers"
+source = "script"
+result = "unknown"
+
+[demozoo.351660]
+title = "Contact Aztec"
+group = "Cabana"
+source = "script"
+
+[demozoo.232177]
+title = "Contact Batman"
+group = "Seico"
+source = "script"
+
+[demozoo.183929]
+title = "Contact BCT"
+group = "Bodycount"
+source = "script"
+result = "unknown"
+
+[demozoo.293508]
+title = "Contact Berny"
+group = "Sex Express"
+source = "script"
+
+[demozoo.352832]
+title = "Contact Chedda"
+group = "Queensland Copy Federation"
+source = "script"
+
+[demozoo.361319]
+title = "Contact Corpse"
+group = "Inox"
+source = "script"
+
+[demozoo.364339]
+title = "Contact D'mo"
+group = "New Example Crew"
+source = "script"
+
+[demozoo.199762]
+title = "Contact Demo"
+group = "Astral"
+source = "script"
+
+[demozoo.205065]
+title = "Contact Demo"
+group = "Megadeath"
+source = "script"
+
+[demozoo.234071]
+title = "Contact Demo"
+group = "Computer Line"
+source = "script"
+
+[demozoo.312051]
+title = "Contact Demo"
+group = "The Microforce"
+source = "script"
+
+[demozoo.336212]
+title = "Contact Demo"
+group = "Worldwide Swappers"
+source = "script"
+
+[demozoo.337564]
+title = "Contact Demo"
+group = "Internal Affairs"
+source = "script"
+
+[demozoo.338116]
+title = "Contact Demo"
+group = "The Aliens Corporation"
+source = "script"
+result = "unknown"
+
+[demozoo.339211]
+title = "Contact Demo"
+group = "Bamboo"
+source = "script"
+
+[demozoo.342990]
+title = "Contact Demo"
+group = "Zone 45"
+source = "script"
+
+[demozoo.343549]
+title = "Contact Demo"
+group = "New Dimension Crew"
+source = "script"
+boot_file = "contact demo/ndc"
+
+[demozoo.344120]
+title = "Contact Demo"
+group = "The Spench"
+source = "script"
+
+[demozoo.345547]
+title = "Contact Demo"
+group = "Lightflash"
+source = "script"
+
+[demozoo.345650]
+title = "Contact Demo"
+group = "Future Concepts"
+source = "script"
+
+[demozoo.347272]
+title = "Contact Demo"
+group = "Style / Spherical Designs"
+source = "script"
+
+[demozoo.351513]
+title = "Contact Demo"
+group = "Varcaus / Albion Crew"
+source = "script"
+
+[demozoo.351874]
+title = "Contact Demo"
+group = "Xentrix"
+source = "script"
+
+[demozoo.359119]
+title = "Contact Demo"
+group = "Genius Softworks"
+source = "script"
+
+[demozoo.360360]
+title = "Contact Demo"
+group = "View"
+source = "script"
+
+[demozoo.361533]
+title = "Contact Demo"
+group = "Judges for Dealing Software"
+source = "script"
+
+[demozoo.365978]
+title = "Contact Demo"
+group = "Power Pride"
+source = "script"
+
+[demozoo.368607]
+title = "Contact Demo"
+group = "Software Swapping and Cracking Group"
+source = "script"
+
+[demozoo.368908]
+title = "Contact Demo"
+group = "The Great Breakers"
+source = "script"
+
+[demozoo.387886]
+title = "Contact Demo"
+group = "Federation Against Megasoft"
+source = "script"
+
+[demozoo.229944]
+title = "Contact Demo #1"
+group = "The Crusaders"
+source = "script"
+
+[demozoo.363225]
+title = "Contact Demo 1"
+group = "X-Large"
+source = "script"
+result = "unknown"
+
+[demozoo.363226]
+title = "Contact Demo 2"
+group = "X-Large"
+source = "script"
+
+[demozoo.358113]
+title = "Contact DLE Now"
+group = "Deluxe Edition"
+source = "script"
+
+[demozoo.206064]
+title = "Contact Enigma"
+group = "Enigma"
+source = "script"
+
+[demozoo.339914]
+title = "Contact Excess!!"
+group = "Excess"
+source = "script"
+
+[demozoo.343285]
+title = "Contact Fantastic Falcon"
+group = "Hanseatic Cracking Association"
+source = "script"
+
+[demozoo.345435]
+title = "Contact Fiction"
+group = "Fiction / Mega Power Designs"
+source = "script"
+
+[demozoo.175953]
+title = "Contact Fury"
+group = "Fury"
+source = "script"
+
+[demozoo.359012]
+title = "Contact GCS"
+group = "Gambler Cracking Service"
+source = "script"
+
+[demozoo.359145]
+title = "Contact Gigaline"
+group = "Gigaline"
+source = "script"
+
+[demozoo.359727]
+title = "Contact Havok"
+group = "Havok"
+source = "script"
+
+[demozoo.357027]
+title = "Contact Helloween"
+group = "Helloween"
+source = "script"
+result = "unknown"
+
+[demozoo.357401]
+title = "Contact HTG"
+group = "Hacker Trick Group"
+source = "ai"
+kind = "standalone"
+disks = ["contacth.t.g.d64", "HTG-Contact.d64"]
+note = "two alternative single-prg copies (contacth.t.g.d64 and HTG-Contact.d64); no flip"
+
+[demozoo.296359]
+title = "Contact Info & Release List"
+group = "Bad Coders International"
+source = "script"
+result = "unknown"
+
+[demozoo.327362]
+title = "Contact Intro"
+group = "Agile"
+source = "script"
+result = "unknown"
+
+[demozoo.350747]
+title = "Contact Ispace"
+group = "Warriors of the Wasteland"
+source = "script"
+
+[demozoo.361955]
+title = "Contact Kill Line"
+group = "Kill Line"
+source = "script"
+
+[demozoo.293628]
+title = "Contact Lester"
+group = "Lester"
+source = "script"
+
+[demozoo.302538]
+title = "Contact Letter"
+group = "Scandinavian Cracking Force"
+source = "script"
+
+[demozoo.363451]
+title = "Contact LSD"
+group = "Matrix"
+source = "script"
+
+[demozoo.345554]
+title = "Contact LTH"
+group = "Lightflash"
+source = "script"
+
+[demozoo.363392]
+title = "Contact Mantronix"
+group = "Mantronix"
+source = "script"
+
+[demozoo.363449]
+title = "Contact Matrix"
+group = "Matrix"
+source = "script"
+
+[demozoo.363399]
+title = "Contact Max"
+group = "Mantronix"
+source = "script"
+
+[demozoo.293504]
+title = "Contact Me"
+group = "Sex Express"
+source = "script"
+
+[demozoo.347271]
+title = "Contact Me"
+group = "Spherical Designs"
+source = "script"
+
+[demozoo.374606]
+title = "Contact Me"
+group = "Collusion"
+source = "script"
+result = "unknown"
+
+[demozoo.393320]
+title = "Contact Me!"
+group = "Unlock"
+source = "script"
+
+[demozoo.293503]
+title = "Contact Morris"
+group = "Sex Express"
+source = "script"
+
+[demozoo.183394]
+title = "Contact Muc"
+group = "The DSE Crew / The Cosmic Force"
+source = "script"
+
+[demozoo.293501]
+title = "Contact Note"
+group = "Sex Express"
+source = "script"
+
+[demozoo.351515]
+title = "Contact Note Preview"
+group = "Albion Crew"
+source = "script"
+machine = "ntsc_1541"
+
+[demozoo.315888]
+title = "Contact Now"
+group = "The Cops"
+source = "script"
+
+[demozoo.344657]
+title = "Contact Part"
+group = "Army / A-Team"
+source = "script"
+
+[demozoo.348355]
+title = "Contact Razor"
+group = "System"
+source = "script"
+disks = ["Contact Razor [System].d64", "Contact_Razor_SYS.d64"]
+swaps = [{ disk = 2, at = 147.4, key = "space", key_delay = 17.6 }]
+
+[demozoo.308691]
+title = "Contact RCA"
+group = "Royal Cracking Animals"
+source = "script"
+result = "unknown"
+
+[demozoo.296268]
+title = "Contact Rhythmic Lunatics"
+group = "Rhythmic Lunatics"
+source = "script"
+
+[demozoo.364573]
+title = "Contact Sane"
+group = "Nitros Developments"
+source = "script"
+
+[demozoo.339530]
+title = "Contact Scout"
+group = "Silicon Limited"
+source = "script"
+
+[demozoo.338379]
+title = "Contact Security"
+group = "Security"
+source = "script"
+
+[demozoo.366347]
+title = "Contact Split"
+group = "Split Second"
+source = "script"
+
+[demozoo.183393]
+title = "Contact Starman"
+group = "The Danger Zone"
+source = "script"
+
+[demozoo.367263]
+title = "Contact TDF #6"
+group = "Tour De Future"
+source = "script"
+
+[demozoo.361536]
+title = "Contact Time"
+group = "Forces of Nature"
+source = "script"
+
+[demozoo.368268]
+title = "Contact Twix"
+group = "Senze"
+source = "script"
+machine = "ntsc_1541"
+
+[demozoo.374603]
+title = "Contact Typhoon"
+group = "Collusion"
+source = "script"
+
+[demozoo.189711]
+title = "Contact Us"
+group = "Abnormal"
+source = "script"
+
+[demozoo.204854]
+title = "Contact Us"
+group = "Bad Karma"
+source = "script"
+disks = ["0979a.d64", "contact_us.d64"]
+swaps = [{ disk = 2, at = 172.8, key = "p2fire", key_delay = 54.1 }]
+
+[demozoo.206005]
+title = "Contact Us"
+group = "Pentangle"
+source = "script"
+machine = "ntsc_1541"
+
+[demozoo.271520]
+title = "Contact Us"
+group = "Poltergeist"
+source = "script"
+
+[demozoo.290939]
+title = "Contact Us"
+group = "Mask"
+source = "script"
+
+[demozoo.293720]
+title = "Contact Us"
+group = "Cryptic Tales"
+source = "script"
+result = "unknown"
+
+[demozoo.338777]
+title = "Contact Us"
+group = "Art & Beat Creations"
+source = "script"
+
+[demozoo.348125]
+title = "Contact Us"
+group = "The Law-Breakers"
+source = "script"
+
+[demozoo.206356]
+title = "Contact Us !"
+group = "The Fighter"
+source = "script"
+
+[demozoo.205991]
+title = "Contact Us (1)"
+group = "Enigma"
+source = "script"
+
+[demozoo.234100]
+title = "Contact Us (2)"
+group = "Enigma"
+source = "script"
+
+[demozoo.340674]
+title = "Contact Us 2"
+group = "Abnormal"
+source = "script"
+
+[demozoo.358425]
+title = "Contact Us 2"
+group = "The Masters"
+source = "script"
+
+[demozoo.344002]
+title = "Contact Us Now"
+group = "Motiv8"
+source = "script"
+
+[demozoo.201922]
+title = "Contact Us!"
+group = "Bad Karma"
+source = "script"
+
+[demozoo.288571]
+title = "Contact Us!"
+group = "Chain"
+source = "script"
+
+[demozoo.315965]
+title = "Contact Us!"
+group = "Warriors of Darkness / Mirage"
+source = "script"
+result = "broken"
+
+[demozoo.341808]
+title = "Contact Us!"
+group = "Excess"
+source = "script"
+
+[demozoo.344155]
+title = "Contact Us!"
+group = "Victory"
+source = "script"
+
+[demozoo.350061]
+title = "Contact us!"
+group = "Bionic"
+source = "script"
+boot_file = "contact us!  /bc"
+
+[demozoo.353263]
+title = "Contact Us!"
+group = "Axis"
+source = "script"
+result = "unknown"
+
+[demozoo.362187]
+title = "Contact Us!"
+group = "Miracle"
+source = "script"
+
+[demozoo.359243]
+title = "Contact Us!!"
+group = "Omikron"
+source = "script"
+result = "unknown"
+
+[demozoo.205063]
+title = "Contact Uz"
+group = "Megadeath"
+source = "script"
+
+[demozoo.349044]
+title = "Contact Uz"
+group = "Titan"
+source = "script"
+
+[demozoo.361390]
+title = "Contact Uz"
+group = "International Cracking Entertainment"
+source = "script"
+boot_file = "contact uz [ice]"
+
+[demozoo.361532]
+title = "Contact Uz"
+group = "Judges for Dealing Software"
+source = "script"
+
+[demozoo.336255]
+title = "Contact Uz or Not"
+group = "Worldwide Swappers"
+source = "script"
+
+[demozoo.331449]
+title = "Contact Uz.."
+group = "Brutal"
+source = "script"
+
+[demozoo.347037]
+title = "Contact Vampire"
+group = "Bloodsuckers / Blaze"
+source = "script"
+
+[demozoo.356355]
+title = "Contact Vision"
+group = "Vision"
+source = "script"
+
+[demozoo.390444]
+title = "Contact Xentrix"
+group = "Xentrix"
+source = "script"
+
+[demozoo.183478]
+title = "Contact Xiphiax"
+group = "Frantic / The Cosmic Force"
+source = "script"
+
+[demozoo.340213]
+title = "Contact YMCA"
+group = "YMCA"
+source = "script"
+machine = "ntsc_1541"
+
+[demozoo.340218]
+title = "Contact YMCA/SQN"
+group = "YMCA"
+source = "script"
+
+[demozoo.334028]
+title = "Contact ZSS - The Sentinel"
+group = "Zorro Soft Switzerland"
+source = "script"
+result = "unknown"
+
+[demozoo.334027]
+title = "Contact ZSS 2"
+group = "Zorro Soft Switzerland"
+source = "script"
+
+[demozoo.327360]
+title = "Contact!"
+group = "Agile"
+source = "script"
+
+[demozoo.336690]
+title = "Contact!"
+group = "Saga Connection"
+source = "script"
+
+[demozoo.375109]
+title = "Contactblock"
+group = "Tomcat"
+source = "script"
+
+[demozoo.310476]
+title = "Contactive"
+group = "Active"
+source = "script"
+
+[demozoo.310469]
+title = "Contactive 2"
+group = "Active"
+source = "script"
+
+[demozoo.356347]
+title = "Contest Demo"
+group = "Vision"
+source = "script"
+
+[demozoo.97303]
+title = "Contest-Demo"
+group = "Finnish Gold"
+source = "script"
+
+[demozoo.100575]
+title = "Continuum"
+group = "Triad"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.5174]
+title = "Contraflow"
+group = "Cosine"
+source = "script"
+
+[demozoo.349227]
+title = "Contrast Zak"
+group = "DE-Koder"
+source = "script"
+machine = "pal_1541_8580"
+result = "unknown"
+
+[demozoo.205101]
+title = "Contribution"
+group = "Delta Projects"
+source = "script"
+
+[demozoo.18768]
+title = "Convention"
+group = "Soney"
+source = "script"
+
+[demozoo.126419]
+title = "Coococ 12"
+group = "Fantastic 4 Cracking Group"
+source = "script"
+
+[demozoo.113004]
+title = "Cookie"
+group = "Commodore Is Awesome"
+source = "script"
+
+[demozoo.346982]
+title = "Cookie"
+group = "NATO"
+source = "script"
+result = "unknown"
+
+[demozoo.334678]
+title = "Cool Cat"
+group = "Actual Trading Generation"
+source = "script"
+result = "unknown"
+
+[demozoo.361954]
+title = "Cool Coop"
+group = "Kill Line / Dunex"
+source = "script"
+
+[demozoo.358120]
+title = "Cool DLE Intro 1"
+group = "Deluxe Edition"
+source = "script"
+
+[demozoo.357344]
+title = "Cool Fuck and Member"
+group = "Danish Science"
+source = "script"
+
+[demozoo.271160]
+title = "Cool Guys"
+group = "Frontline"
+source = "script"
+machine = "ntsc_1541"
+
+[demozoo.206056]
+title = "Cool Huh"
+group = "Enigma"
+source = "script"
+
+[demozoo.232178]
+title = "Cool Intro"
+group = "Seico"
+source = "script"
+
+[demozoo.361486]
+title = "Cool Intro"
+group = "Kinetik Crack Team"
+source = "script"
+
+[demozoo.356116]
+title = "Cool Intro V3.0"
+group = "Tristar"
+source = "script"
+
+[demozoo.356117]
+title = "Cool Intro V4.0"
+group = "Tristar"
+source = "script"
+
+[demozoo.319669]
+title = "Cool New Short Intro"
+group = "Baboons"
+source = "script"
+
+[demozoo.365647]
+title = "Cool Pentangle"
+group = "Pentangle"
+source = "script"
+
+[demozoo.347497]
+title = "Cool Runnings"
+group = "The Mean Team"
+source = "script"
+
+[demozoo.308690]
+title = "Cool Scroller"
+group = "Royal Cracking Animals"
+source = "script"
+
+[demozoo.363812]
+title = "Cool Swapping"
+group = "Moon Soft"
+source = "script"
+
+[demozoo.197024]
+title = "Cool Tracks"
+group = "Coltrax 2304"
+source = "script"
+result = "unknown"
+
+[demozoo.357651]
+title = "Cool Versus Mega"
+group = "Cool Crew / Megaforz"
+source = "script"
+
+[demozoo.366018]
+title = "Coolness"
+group = "Swapping with Amazing Programs"
+source = "script"
+
+[demozoo.363460]
+title = "Coolsqueezer II"
+group = "Tron System 9009"
+source = "script"
+
+[demozoo.189712]
+title = "Cooool!!"
+group = "Abnormal"
+source = "script"
+
+[demozoo.334514]
+title = "Coop"
+group = "Faces / Dark Science Inc."
+source = "script"
+
+[demozoo.335858]
+title = "Coop"
+group = "The Spench / The Sixth Sense"
+source = "script"
+
+[demozoo.188215]
+title = "Coop '89"
+group = "407 / Saga Connection"
+source = "script"
+
+[demozoo.335371]
+title = "Coop Collection"
+group = "Ideal / Thunders"
+source = "script"
+result = "unknown"
+
+[demozoo.3153]
+title = "Coop Demo"
+group = "Abyss-Connection / Metalvotze"
+source = "script"
+
+[demozoo.275784]
+title = "Coop Demo"
+group = "D-Vision / Double"
+source = "script"
+result = "unknown"
+boot_file = "dbc-coopdemo-dob"
+
+[demozoo.357105]
+title = "Coop Demo"
+group = "Digitech"
+source = "script"
+
+[demozoo.358424]
+title = "Coop Demo"
+group = "Fat Boy Crackers / The Masters"
+source = "script"
+
+[demozoo.205062]
+title = "Coop Demo Note"
+group = "Megadeath"
+source = "script"
+
+[demozoo.357247]
+title = "Cooperation"
+group = "Fantasy Cracking Service / Ruhrpott Cracker Group"
+source = "script"
+
+[demozoo.206409]
+title = "Cooperation Demo"
+group = "Zoom / West End Boys"
+source = "script"
+
+[demozoo.334694]
+title = "Cooperation Demo"
+group = "Blackline"
+source = "script"
+
+[demozoo.345002]
+title = "Cooperation Demo"
+group = "The Level 99 Industries / Oneway"
+source = "script"
+
+[demozoo.345622]
+title = "Cooperation Intro"
+group = "Titan / Kiss"
+source = "script"
+
+[demozoo.347425]
+title = "Coped Demo"
+group = "Real Amazing Federation"
+source = "script"
+result = "unknown"
+
+[demozoo.309672]
+title = "Coppernicus"
+group = "Triad"
+source = "script"
+
+[demozoo.364491]
+title = "Copy Demo"
+group = "Nightmare Cracking Institution"
+source = "script"
+
+[demozoo.126208]
+title = "Copy Party"
+group = "Zynapz"
+source = "script"
+
+[demozoo.73359]
+title = "Copycat"
+group = "Fairlight"
+source = "script"
+
+[demozoo.346045]
+title = "Core of Acid"
+group = "Wrath Designs"
+source = "script"
+result = "unknown"
+boot_file = "core of acid /wd"
+
+[demozoo.278738]
+title = "CORO(L)NA NUTHOUSE"
+group = "Onslaught"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.351567]
+title = "Corwin Contact Note"
+group = "Tengu"
+source = "script"
+
+[demozoo.183399]
+title = "Cosmic Bytes"
+group = "The Danger Zone / The Cosmic Force"
+source = "script"
+
+[demozoo.324768]
+title = "Cosmodrome Teaser"
+group = "Gorbat Soft"
+source = "script"
+
+[demozoo.302301]
+title = "Cosowi Avantgarde"
+group = "Plush"
+source = "script"
+
+[demozoo.6979]
+title = "Courtesy of Soviet"
+group = "Wrath Designs"
+source = "script"
+disks = ["Courtesy_of_Soviet_-side1-_WRATH-DES.d64", "Courtesy_of_Soviet_-side2-_WRATH-DES.d64"]
+swaps = [{ disk = 2, at = 381.1, key = "space", key_delay = 17.8 }]
+
+[demozoo.302966]
+title = "Cover-Demo"
+group = "Corner Crackware Essen"
+source = "script"
+disks = ["ccw.d64", "cd.d64", "cover-demo.d64"]
+note = "the sweep only reached disk 1 of 3"
+
+[demozoo.308565]
+title = "Cowboy's Dream"
+group = "Elysium / Wrath Designs"
+source = "script"
+
+[demozoo.100543]
+title = "CP-Listan 1000"
+group = "Dj Cat"
+source = "script"
+result = "unknown"
+
+[demozoo.304638]
+title = "CPM aka Karstadt"
+group = "USA-Team"
+source = "script"
+
+[demozoo.365901]
+title = "CPU Yell"
+group = "The Legendary Crusaders"
+source = "script"
+
+[demozoo.196963]
+title = "Crack Intro"
+group = "nomiStake"
+source = "script"
+
+[demozoo.197622]
+title = "Crack Intro"
+group = "Cosine"
+source = "script"
+
+[demozoo.296450]
+title = "Crackers Paper"
+group = "The Team Cracker"
+source = "script"
+
+[demozoo.297756]
+title = "Crackhawk-Demo 3"
+group = "KGB Crew"
+source = "script"
+
+[demozoo.29062]
+title = "Crackling 'n' Cocio"
+group = "Bonzai"
+source = "script"
+
+[demozoo.360553]
+title = "Crap"
+group = "Inarux Enterprises 1970"
+source = "script"
+result = "unknown"
+
+[demozoo.139905]
+title = "Crap I Coded In 91"
+group = "Road Hard"
+source = "script"
+
+[demozoo.365879]
+title = "Crash the Ninja"
+group = "Point-X"
+source = "script"
+
+[demozoo.356346]
+title = "Crazy"
+group = "Vision"
+source = "script"
+
+[demozoo.397568]
+title = "Crazy"
+group = "Empire Software"
+source = "script"
+
+[demozoo.334100]
+title = "Crazy Bitmaps"
+group = "Commando Frontier"
+source = "script"
+
+[demozoo.347351]
+title = "Crazy Conversation"
+group = "New Corporation / Seven-Up Crew"
+source = "script"
+
+[demozoo.289527]
+title = "Crazy Demo"
+group = "The Crazy Artists"
+source = "script"
+
+[demozoo.86582]
+title = "Crazy Fish"
+group = "The New Dimension"
+source = "script"
+
+[demozoo.348304]
+title = "Crazy Sines"
+group = "Atlantic"
+source = "script"
+
+[demozoo.346753]
+title = "Crazy Sprites"
+group = "Riffs / The Soft Maniacs"
+source = "script"
+
+[demozoo.349088]
+title = "Crazy Wall"
+group = "Vegeta"
+source = "script"
+machine = "pal_1541_8580"
+disks = ["Symphony 2005 Warez.d64", "You Can't Stop Us!.d64"]
+swaps = [{ disk = 2, at = 74.9, key = "space", key_delay = 17.5 }]
+
+[demozoo.206294]
+title = "Crazy World"
+group = "X-Future"
+source = "script"
+
+[demozoo.30409]
+title = "Creaky Bearing"
+group = "Visac / LHS"
+source = "script"
+
+[demozoo.101544]
+title = "Creation"
+group = "Diffusion / Utopia"
+source = "script"
+
+[demozoo.349330]
+title = "Creative Flame's"
+group = "Axelerate"
+source = "script"
+machine = "pal_1541_8580"
+result = "unknown"
+disks = ["NP4_MUSIC_A.D64", "NP4_MUSIC_B.D64"]
+
+[demozoo.345212]
+title = "Creatures Music"
+group = "Hitmen"
+source = "script"
+
+[demozoo.331546]
+title = "Credible"
+group = "Array"
+source = "script"
+
+[demozoo.344066]
+title = "Creepshow"
+group = "New Men 2007"
+source = "script"
+
+[demozoo.358119]
+title = "Creepy Intro"
+group = "Deluxe Edition"
+source = "script"
+
+[demozoo.357968]
+title = "Cremation"
+group = "Havok / Venom / Lords / Evil"
+source = "script"
+result = "unknown"
+
+[demozoo.86576]
+title = "Crepusculo"
+group = "Level 64"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.324092]
+title = "Crescendo"
+group = "Chaotic Crew International"
+source = "script"
+
+[demozoo.331135]
+title = "Crescendo 2 NTSC"
+group = "Crescent"
+source = "script"
+result = "unknown"
+
+[demozoo.86402]
+title = "Crest Light"
+group = "Crest"
+source = "script"
+
+[demozoo.347002]
+title = "Crest Logo"
+group = "Ruthless"
+source = "script"
+
+[demozoo.100044]
+title = "Crest Slide Story 90%"
+group = "Crest"
+source = "ai"
+disks = ["Crest-CSS_SideA.d64", "Crest-CSS_SideB.d64", "Crest-CSS_SideC.d64", "Crest-CSS_Tooldisk.d64"]
+swaps = [{ disk = 2, at = 782.3 }, { disk = 3, at = 1532.0 }]
+note = "Crest Slide Story: sides A-C are the demo; disk 4 is a standalone tool disk nothing loads"
+
+[demozoo.383071]
+title = "Crimbo 1982"
+group = "Pretzel Logic"
+source = "script"
+
+[demozoo.337565]
+title = "Crime of the Century"
+group = "Century"
+source = "script"
+disks = ["Crime_of_the_Century_S1.d64", "Crime_of_the_Century_S2.d64"]
+swaps = [{ disk = 2, at = 99.6, key = "space", key_delay = 13.4 }]
+
+[demozoo.275771]
+title = "Criminal"
+group = "Covenant / Civitas"
+source = "script"
+
+[demozoo.190183]
+title = "Crises"
+group = "Abandoneds"
+source = "script"
+
+[demozoo.335860]
+title = "Crisis"
+group = "The Ruling Company"
+source = "script"
+
+[demozoo.337478]
+title = "Critical"
+group = "World Wide Expressive"
+source = "script"
+
+[demozoo.346754]
+title = "Crockets Theme"
+group = "Front / Riffs"
+source = "script"
+
+[demozoo.107728]
+title = "Crocolux"
+group = "Metalux"
+source = "script"
+
+[demozoo.315128]
+title = "Crosslinker V2.0"
+group = "XAKK"
+source = "script"
+
+[demozoo.279894]
+title = "Crowcastle"
+group = "Enigma"
+source = "script"
+result = "unknown"
+
+[demozoo.59680]
+title = "Crowd Pleaser"
+group = "Hitmen"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.280571]
+title = "Crowded Minds"
+group = "The Solution"
+source = "script"
+
+[demozoo.355613]
+title = "CrozBlock"
+group = "Conic"
+source = "script"
+
+[demozoo.200768]
+title = "Cruel Potato"
+group = "Albion Crew"
+source = "script"
+
+[demozoo.345443]
+title = "Crusade!"
+group = "Future Concepts"
+source = "script"
+result = "unknown"
+
+[demozoo.893]
+title = "Crushed"
+group = "Inversion"
+source = "script"
+
+[demozoo.278338]
+title = "Crushin'"
+group = "Netmen"
+source = "script"
+
+[demozoo.334056]
+title = "Crushin'"
+group = "Commando Frontier"
+source = "script"
+
+[demozoo.358082]
+title = "Cruxipuck 88"
+group = "Danish Underground Crackers"
+source = "script"
+
+[demozoo.332221]
+title = "Crycitas"
+group = "Civitas / Crypt"
+source = "script"
+
+[demozoo.339939]
+title = "Crypt Demo No. 1"
+group = "Crypt"
+source = "script"
+
+[demozoo.339941]
+title = "Crypt Demo No. 2"
+group = "Crypt"
+source = "script"
+
+[demozoo.339943]
+title = "Crypt Demo No. 4"
+group = "Crypt"
+source = "script"
+
+[demozoo.283356]
+title = "Cryptica"
+group = "AMOK / Crypt"
+source = "script"
+
+[demozoo.195296]
+title = "Crystal Gazer"
+group = "Chorus"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.126830]
+title = "Crystal Sheep 2"
+group = "Charged"
+source = "script"
+
+[demozoo.274907]
+title = "CS! - Final Version"
+group = "Right To Censor"
+source = "script"
+
+[demozoo.326394]
+title = "CSDb Hardware-Guru Charts 2020"
+group = "Extend / Hackers"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.205971]
+title = "CTOD Demo"
+group = "Cracking Team of Darkness"
+source = "script"
+
+[demozoo.205969]
+title = "CTOD Goes Amiga"
+group = "Cracking Team of Darkness"
+source = "script"
+
+[demozoo.352423]
+title = "Cube and Co"
+group = "Babygang"
+source = "script"
+disks = ["byg.D64", "cube_and_co.d64"]
+note = "the sweep only reached disk 1 of 2"
+
+[demozoo.314648]
+title = "Cubical"
+group = "Jupp3"
+source = "script"
+
+[demozoo.37690]
+title = "Cucumber Juice"
+group = "Hitmen"
+source = "script"
+
+[demozoo.18456]
+title = "Cucumber Juice 2"
+group = "Hitmen"
+source = "ai"
+machine = "ntsc_1541"
+disks = ["Cucumber_Juice_2_SideA.D64", "Cucumber_Juice_2_SideB.D64"]
+swaps = [{ disk = 2, at = 931.8, key = "space", key_delay = 18.1 }]
+keys = [{ at = 73.3, key = "return" }]
+boot_file = "cucumber juice 2"
+note = "Cucumber Juice 2: setup screen needs Return, long demo, TURN DISK/PRESS SPACE at ~860M; disk 2: setup screen at ~55M, Return at 75M; TURN DISK PRESS SPACE screen waits (no upper limit seen, still up at 1.8G); insert then space"
+
+[demozoo.291564]
+title = "Curious Dog"
+group = "XTRO"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.360094]
+title = "Cursor I (Second Demo)"
+group = "Hondani"
+source = "script"
+disks = ["HONDANI_2ND_DEMO.D64", "Second_Demo.D64"]
+note = "the sweep only reached disk 1 of 2"
+
+[demozoo.356927]
+title = "Cute Little Demo"
+group = "Danish Designs"
+source = "script"
+
+[demozoo.119301]
+title = "Cute Overdose"
+group = "Resource / Oxyron"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.331559]
+title = "Cxart II"
+group = "Browbeat"
+source = "script"
+
+[demozoo.87952]
+title = "Cyber Dream"
+group = "Atlantis"
+source = "script"
+
+[demozoo.368376]
+title = "Cyberland"
+group = "Thunders"
+source = "script"
+disks = ["Cyberland_Side_1.d64", "Cyberland_Side_2.d64"]
+swaps = [{ disk = 2, at = 172.2, key = "space", key_delay = 17.3 }]
+
+[demozoo.368377]
+title = "Cyberland 2"
+group = "Thunders"
+source = "script"
+
+[demozoo.206057]
+title = "Cybernoid Enigma"
+group = "Enigma"
+source = "script"
+
+[demozoo.206058]
+title = "Cybernoid Lizzy"
+group = "Enigma"
+source = "script"
+
+[demozoo.358083]
+title = "Cybernoid Music Rip"
+group = "Danish Underground Crackers"
+source = "script"
+
+[demozoo.274473]
+title = "Cybernoid Ripp"
+group = "The Seventh Sector / New Generation Crew"
+source = "script"
+
+[demozoo.176314]
+title = "Cyberpunk Music-Collection"
+group = "Code7"
+source = "script"
+
+[demozoo.268823]
+title = "CyberTracker X-Mas 2001 Tune Pack"
+group = "No Name / XentaX"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.322907]
+title = "Cyberwave"
+group = "Agile"
+source = "script"
+
+[demozoo.8299]
+title = "Cycle"
+group = "Booze Design"
+source = "script"
+machine = "pal_1541_8580"
+result = "unknown"
+boot_file = "B cycle! B      "
+
+[demozoo.359439]
+title = "Cyclomania"
+group = "I.C.E. Squad"
+source = "script"
+
+[demozoo.86426]
+title = "Cyclone"
+group = "Laser Inc."
+source = "script"
+
+[demozoo.347780]
+title = "Cyclops"
+group = "The BAM International"
+source = "script"
+
+[demozoo.312867]
+title = "Cycotic"
+group = "Hardcorps"
+source = "script"
+
+[demozoo.294006]
+title = "Cynoid II"
+group = "The Guilties"
+source = "script"
+
+[demozoo.293983]
+title = "Cynoid III"
+group = "The Guilties"
+source = "script"
+
+[demozoo.189919]
+title = "Czarni Intro"
+group = "Alpha Flight 1970"
+source = "script"

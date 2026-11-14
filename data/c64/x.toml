@@ -1,0 +1,328 @@
+[demozoo.344384]
+title = "X 2004 After Show"
+group = "Metalvotze"
+source = "script"
+
+[demozoo.195292]
+title = "X Marks The Spot"
+group = "Genesis Project"
+source = "script"
+machine = "pal_1541_8580"
+disks = ["XMARKS-1.d64", "XMARKS-2.d64", "XMARKS-3.d64"]
+swaps = [{ disk = 2, at = 378.8 }, { disk = 3, at = 718.2 }]
+
+[demozoo.385113]
+title = "X-95 Partydemo"
+group = "Aphenfluhk / Wegpluear Tiem"
+source = "script"
+
+[demozoo.358106]
+title = "X-Am Time"
+group = "Danish Underground Crackers"
+source = "script"
+
+[demozoo.1507]
+title = "X-Animated"
+group = "The Bellows / Creators"
+source = "script"
+boot_file = "x-animated /c&tb"
+
+[demozoo.348947]
+title = "X-Com: Terror from the Deep OST"
+group = "XentaX"
+source = "script"
+
+[demozoo.302408]
+title = "X-Intro V1"
+group = "X-Vector"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.338260]
+title = "X-Intro V2"
+group = "X-Vector"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.297651]
+title = "X-Mas 1986"
+group = "D.S. Compware"
+source = "script"
+result = "unknown"
+
+[demozoo.346326]
+title = "X-Mas 2009"
+group = "Those Up Fucked Sceners"
+source = "script"
+
+[demozoo.366679]
+title = "X-Mas Again"
+group = "Rabiez"
+source = "script"
+
+[demozoo.364342]
+title = "X-Mas Demo"
+group = "New Example Crew"
+source = "script"
+
+[demozoo.363585]
+title = "X-Mas Demo 2024"
+group = "Blazon"
+source = "script"
+
+[demozoo.204535]
+title = "X-mas Demo!"
+group = "Prestige"
+source = "script"
+
+[demozoo.286518]
+title = "X-Mas Intro"
+group = "Ultimate Crew"
+source = "script"
+result = "unknown"
+
+[demozoo.293125]
+title = "X-Mas Ranx"
+group = "Ahead"
+source = "script"
+
+[demozoo.343984]
+title = "X-Mas Ripp"
+group = "Motiv8"
+source = "script"
+
+[demozoo.351187]
+title = "X-Ray Intro"
+group = "X-Ray"
+source = "script"
+
+[demozoo.327477]
+title = "X-Traction 1"
+group = "Danish Cracking Crew"
+source = "script"
+
+[demozoo.188015]
+title = "X-Zorcisms!"
+group = "2000 A.D."
+source = "script"
+
+[demozoo.161967]
+title = "X2000"
+group = "Abyss-Connection"
+source = "script"
+
+[demozoo.80105]
+title = "X2004 Coop"
+group = "Metalvotze / Abyss-Connection"
+source = "script"
+
+[demozoo.324773]
+title = "X2023 Demo"
+group = "Creators"
+source = "script"
+
+[demozoo.41517]
+title = "X98"
+group = "Legacy"
+source = "script"
+
+[demozoo.361406]
+title = "Xamitlu Zak"
+group = "International Cracking Entertainment"
+source = "script"
+result = "unknown"
+
+[demozoo.317484]
+title = "Xantirox"
+group = "2002"
+source = "script"
+
+[demozoo.340888]
+title = "Xcellence"
+group = "World Wide Expressive / Weird Science"
+source = "script"
+
+[demozoo.195311]
+title = "Xcusemo"
+group = "Atlantis"
+source = "script"
+
+[demozoo.344250]
+title = "Xenia"
+group = "Plasma"
+source = "script"
+
+[demozoo.124831]
+title = "Xenomorphic"
+group = "Artstate"
+source = "script"
+machine = "ntsc_1541"
+
+[demozoo.356673]
+title = "Xenon Intro #2"
+group = "Xenon Cracking Group"
+source = "script"
+
+[demozoo.356672]
+title = "Xenon Intro #3"
+group = "Xenon Cracking Group"
+source = "script"
+
+[demozoo.356668]
+title = "Xenon Intro #7"
+group = "Xenon Cracking Group"
+source = "script"
+
+[demozoo.356666]
+title = "Xenon Intro #8"
+group = "Xenon Cracking Group"
+source = "script"
+
+[demozoo.356665]
+title = "Xenon Intro #9"
+group = "Xenon Cracking Group"
+source = "script"
+
+[demozoo.351904]
+title = "Xenophobia"
+group = "Xentrix"
+source = "script"
+result = "unknown"
+
+[demozoo.390438]
+title = "Xentrix Music"
+group = "Xentrix"
+source = "script"
+
+[demozoo.7687]
+title = "Xfr"
+group = "Napalm"
+source = "script"
+
+[demozoo.358443]
+title = "XirtaM"
+group = "Falcon Soft"
+source = "script"
+
+[demozoo.331084]
+title = "Xmas 2009"
+group = "Venom"
+source = "script"
+
+[demozoo.288171]
+title = "XMAS 2020"
+group = "Censor Design"
+source = "script"
+
+[demozoo.383676]
+title = "XMas 2025"
+group = "The Solaris Agency"
+source = "script"
+
+[demozoo.270217]
+title = "Xmas 2k19"
+group = "Alpha Raid"
+source = "script"
+
+[demozoo.204071]
+title = "Xmas Alpha Flight on Delysid"
+group = "Alpha Flight"
+source = "script"
+
+[demozoo.323426]
+title = "Xmas Demo '08"
+group = "Venom"
+source = "script"
+
+[demozoo.336019]
+title = "Xmas Fever"
+group = "Lepsi De"
+source = "script"
+
+[demozoo.175301]
+title = "Xmas in July"
+group = "Forces of Evil"
+source = "script"
+
+[demozoo.332824]
+title = "Xmas Petscii Demo"
+group = "JSL"
+source = "script"
+
+[demozoo.383746]
+title = "XMAS-DirArt"
+group = "Blazon"
+source = "script"
+result = "unknown"
+
+[demozoo.272530]
+title = "Xmas19 Greetings"
+group = "Latex"
+source = "script"
+
+[demozoo.347168]
+title = "Xmasspoop"
+group = "Swappas With Attitude"
+source = "script"
+result = "unknown"
+
+[demozoo.21456]
+title = "Xnitzy & Xnutzi Goes To Datastorm"
+group = "Apan Bepan"
+source = "script"
+
+[demozoo.269950]
+title = "Xoxox Softpack #1 - Music"
+group = "Xoxox Software"
+source = "script"
+
+[demozoo.342016]
+title = "Xplosion!"
+group = "Horizon / World Wide Expressive"
+source = "script"
+
+[demozoo.357496]
+title = "XTC"
+group = "Diamond"
+source = "script"
+
+[demozoo.295267]
+title = "XTC Jive"
+group = "XTC / Sphinx"
+source = "script"
+
+[demozoo.189911]
+title = "XXL"
+group = "Medium"
+source = "script"
+
+[demozoo.298719]
+title = "XXX"
+group = "Lethargy"
+source = "script"
+machine = "pal_1541_8580"
+disks = ["XXX Side #1 [Lethargy].d64", "XXX Side #2 [Lethargy].d64"]
+swaps = [{ disk = 2, at = 423.0 }]
+
+[demozoo.309729]
+title = "XXX+I"
+group = "Lethargy"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.268427]
+title = "Xydraphur"
+group = "Baseline 2209"
+source = "script"
+
+[demozoo.345109]
+title = "Xylon"
+group = "Paramount"
+source = "script"
+disks = ["Xylon.d64", "xylon-paramount.d64"]
+swaps = [{ disk = 2, at = 191.2, key = "space", key_delay = 18.3 }]
+
+[demozoo.300300]
+title = "Xyzzy Demo"
+group = "Karl XII"
+source = "script"

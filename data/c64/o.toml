@@ -1,0 +1,949 @@
+[demozoo.19200]
+title = "O-Tech People"
+group = "Active"
+source = "script"
+
+[demozoo.25816]
+title = "O-Tech People II"
+group = "Active"
+source = "script"
+
+[demozoo.366742]
+title = "O-Tech People III"
+group = "Fairlight"
+source = "script"
+
+[demozoo.345007]
+title = "Obelisk I"
+group = "Oneway"
+source = "script"
+
+[demozoo.137702]
+title = "Obelisk II"
+group = "Oneway"
+source = "script"
+
+[demozoo.26169]
+title = "Obey 60%"
+group = "Viscid"
+source = "script"
+
+[demozoo.330834]
+title = "Oblique"
+group = "Panda Design"
+source = "script"
+
+[demozoo.365058]
+title = "Oblique Intro 1"
+group = "Oblique"
+source = "script"
+
+[demozoo.126819]
+title = "Obornik"
+group = "Elysium"
+source = "script"
+machine = "ntsc_1541"
+
+[demozoo.7679]
+title = "Obscene Code"
+group = "No Name"
+source = "script"
+
+[demozoo.334048]
+title = "Occasion"
+group = "Falcon"
+source = "script"
+kind = "collection"
+disks = ["Bytestar_party_1989a.D64", "Bytestar_party_1989b.D64"]
+note = "disk set shared by 9 productions"
+
+[demozoo.326857]
+title = "Ocean Loader"
+group = "Yleisradio"
+source = "script"
+
+[demozoo.343580]
+title = "Ocean Loader"
+group = "Swedish Cracking Crew"
+source = "script"
+result = "unknown"
+boot_file = "ocean loader/scc"
+
+[demozoo.330957]
+title = "Ocean Sounds"
+group = "Alpha Flight"
+source = "script"
+result = "unknown"
+
+[demozoo.325234]
+title = "Octavius"
+group = "Kraksnax"
+source = "script"
+
+[demozoo.356588]
+title = "Octopus Preview [For Aqua]"
+group = "Wrath Designs"
+source = "script"
+result = "unknown"
+
+[demozoo.387856]
+title = "Ode to Pri"
+group = "Entropy"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.200118]
+title = "Ode to RRR"
+group = "Excess"
+source = "script"
+
+[demozoo.375798]
+title = "Ode To Wizard"
+group = "Samar"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.353283]
+title = "Odyssey 01"
+group = "Samar Productions"
+source = "script"
+result = "unknown"
+
+[demozoo.302364]
+title = "Offering"
+group = "Atlantis"
+source = "script"
+
+[demozoo.198235]
+title = "Official Party-Note From the Dota'95 Party"
+group = "Creators"
+source = "script"
+result = "unknown"
+
+[demozoo.395891]
+title = "Official Results From Bros - Rawhead - Supplier - Party"
+source = "script"
+
+[demozoo.340420]
+title = "Offline Player"
+group = "Hokuto Force"
+source = "script"
+result = "unknown"
+
+[demozoo.127460]
+title = "Ogoa Brudbilder"
+group = "Panda Lovers"
+source = "script"
+
+[demozoo.361473]
+title = "Oh Joy!"
+group = "The Warlocks"
+source = "script"
+
+[demozoo.6422]
+title = "Oh No, More Dots!"
+group = "Beyond Force"
+source = "script"
+
+[demozoo.353909]
+title = "Ohnesorg"
+group = "Triad"
+source = "script"
+
+[demozoo.86428]
+title = "Oksen"
+group = "Starion"
+source = "script"
+disks = ["Oksen_S1.d64", "Oksen_S2.d64"]
+swaps = [{ disk = 2, at = 185.6, key = "space", key_delay = 12.6 }]
+
+[demozoo.326060]
+title = "Ol3-Yle-K23"
+source = "script"
+
+[demozoo.170316]
+title = "Old Blood"
+group = "Hitmen"
+source = "script"
+
+[demozoo.361333]
+title = "Old Games!"
+group = "The Vikings Q"
+source = "script"
+
+[demozoo.327698]
+title = "Old Intro"
+group = "1001 Crew"
+source = "script"
+result = "unknown"
+
+[demozoo.346111]
+title = "Old Magermix"
+group = "The OUG-Team"
+source = "script"
+boot_file = "old magermix"
+
+[demozoo.348350]
+title = "Old Maxis Demo"
+group = "System / Washers"
+source = "script"
+
+[demozoo.195312]
+title = "Old Men in Used Cars"
+group = "Fossil"
+source = "script"
+machine = "pal_1541_8580"
+disks = ["OMIUC-side1.d64", "OMIUC-side2.d64"]
+swaps = [{ disk = 2, at = 330.8, key = "space" }]
+
+[demozoo.175223]
+title = "Old Musics Collection"
+group = "The Stock"
+source = "script"
+result = "unknown"
+
+[demozoo.198326]
+title = "Old School Intro 2019"
+group = "MCM Designs"
+source = "script"
+
+[demozoo.382671]
+title = "Old Skool"
+group = "Wanderer / Kickback"
+source = "script"
+result = "unknown"
+
+[demozoo.363658]
+title = "Old Times Collection"
+group = "Rayden"
+source = "script"
+
+[demozoo.196191]
+title = "Oldest Style"
+group = "Cosine"
+source = "script"
+
+[demozoo.338359]
+title = "Oldie #01"
+group = "Computer Freaks Association"
+source = "script"
+
+[demozoo.338360]
+title = "Oldie #02"
+group = "Computer Freaks Association"
+source = "script"
+
+[demozoo.367009]
+title = "Oldies & Goldies"
+group = "The Increasing Popularity Crew"
+source = "script"
+
+[demozoo.70382]
+title = "Oldschool"
+group = "Troublemaker"
+source = "script"
+
+[demozoo.175259]
+title = "Oldschool 1"
+group = "Tronix"
+source = "script"
+
+[demozoo.175261]
+title = "Oldschool 3"
+group = "Tronix"
+source = "script"
+
+[demozoo.391245]
+title = "Oldschool Guide"
+group = "Genesis Project"
+source = "script"
+
+[demozoo.355525]
+title = "Oldschool Spirits"
+group = "Jumalauta"
+source = "script"
+
+[demozoo.306975]
+title = "Oldsk00l Intro Plus"
+group = "Fantastic 4 Cracking Group"
+source = "script"
+
+[demozoo.350695]
+title = "Oldskool Commander"
+group = "The New Dimension"
+source = "script"
+
+[demozoo.191211]
+title = "Oldskool Heroes"
+group = "Nah-Kolor"
+source = "script"
+
+[demozoo.346351]
+title = "Oldskool Times"
+group = "Crypt / Magicans / The New Dimension"
+source = "script"
+
+[demozoo.234091]
+title = "Olles banan"
+group = "Pentangle"
+source = "script"
+
+[demozoo.358455]
+title = "Olsen and Cooper Music Collection"
+group = "Feniks"
+source = "script"
+
+[demozoo.27593]
+title = "Olympische Randsportarten"
+group = "Metalvotze"
+source = "script"
+
+[demozoo.345737]
+title = "Omed Elttil A"
+group = "Sunrise"
+source = "script"
+
+[demozoo.339965]
+title = "Omed Ylgu"
+group = "The Troopers"
+source = "script"
+
+[demozoo.342921]
+title = "Omednikufesin"
+group = "Nebula"
+source = "script"
+
+[demozoo.24332]
+title = "Omega 2"
+group = "Future Concepts"
+source = "script"
+
+[demozoo.302780]
+title = "Omega Demo"
+group = "Omega / Jazzcat"
+source = "script"
+
+[demozoo.200318]
+title = "OMG got Balls!"
+group = "OMG"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.341760]
+title = "On Stage"
+group = "Crime"
+source = "script"
+
+[demozoo.198596]
+title = "On the Move"
+group = "Squadron"
+source = "script"
+result = "unknown"
+
+[demozoo.73367]
+title = "On the Road"
+group = "Vision / Triad / Tristar and Red Sector Inc."
+source = "script"
+machine = "ntsc_1541"
+
+[demozoo.282067]
+title = "Once Upon a Time"
+group = "Oxyron"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.376173]
+title = "Once Upon a Time"
+group = "Oxsid Planetary"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.194688]
+title = "Once Upon A Time In The West"
+group = "The Menacing Cracking Alliance"
+source = "script"
+
+[demozoo.364492]
+title = "One Day Left"
+group = "Nightmare Cracking Institution"
+source = "script"
+result = "unknown"
+
+[demozoo.347384]
+title = "One Day's Work"
+group = "German Spreading Service"
+source = "script"
+
+[demozoo.331497]
+title = "One Hot Minute"
+group = "Civitas"
+source = "script"
+
+[demozoo.20272]
+title = "One Little Wish"
+group = "Fairlight"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.388797]
+title = "One Man and his 2-SID D..."
+group = "The Supply Team"
+source = "script"
+result = "unknown"
+
+[demozoo.81404]
+title = "One Million Lightyears from Earth"
+group = "Fairlight"
+source = "script"
+result = "unknown"
+
+[demozoo.375790]
+title = "One Minute of Boredom"
+group = "Extend"
+source = "script"
+
+[demozoo.156466]
+title = "One Moment of Tecnikality 70%"
+group = "Civitas"
+source = "script"
+
+[demozoo.375496]
+title = "One Nation"
+group = "Triad"
+source = "script"
+
+[demozoo.348035]
+title = "One Nop Too Far"
+group = "Parados"
+source = "script"
+
+[demozoo.27259]
+title = "One Quarter"
+group = "Fairlight"
+source = "script"
+machine = "pal_1541_8580"
+disks = ["fairlight-onequarter-sidea.d64", "fairlight-onequarter-sideb.d64"]
+swaps = [{ disk = 2, at = 434.2, key = "space", key_delay = 15.8 }]
+
+[demozoo.345034]
+title = "One Year"
+group = "The Imperium Arts"
+source = "script"
+
+[demozoo.348133]
+title = "One Year"
+group = "The Voice"
+source = "script"
+disks = ["One Year - The Voice.D64", "One_Year_the_Voice.d64"]
+note = "the sweep only reached disk 1 of 2"
+
+[demozoo.308164]
+title = "One Year Action"
+group = "Action"
+source = "script"
+disks = ["One Year Action.d64", "oneyearaction2bnote5baction5d.d64"]
+swaps = [{ disk = 2, at = 165.4, key = "space", key_delay = 17.0 }]
+
+[demozoo.2213]
+title = "One Year Camelot 3"
+group = "Camelot"
+source = "script"
+
+[demozoo.331441]
+title = "One Year Century"
+group = "Century"
+source = "script"
+
+[demozoo.125673]
+title = "One Year Coop"
+group = "Fantastic 4 Cracking Group / Atlantis"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.126294]
+title = "One Year Crest"
+group = "Crest"
+source = "script"
+
+[demozoo.339633]
+title = "One Year Inceria"
+group = "Inceria"
+source = "script"
+
+[demozoo.19823]
+title = "One-Der"
+group = "Oxyron"
+source = "script"
+machine = "pal_1541_8580"
+result = "unknown"
+
+[demozoo.196681]
+title = "One-Sprite-Wonder"
+group = "Raiders of the Lost Empire"
+source = "script"
+
+[demozoo.309724]
+title = "Onef1ler 2"
+group = "Atlantis"
+source = "script"
+
+[demozoo.286687]
+title = "Oneliner"
+group = "CeriX"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.356684]
+title = "Onezeiler"
+group = "Han Solo"
+source = "script"
+machine = "ntsc_1541"
+
+[demozoo.190664]
+title = "Onkel Kånkel"
+group = "Onkel Kånkel"
+source = "script"
+
+[demozoo.368905]
+title = "Only a Demo"
+group = "The Great Breakers"
+source = "script"
+
+[demozoo.197023]
+title = "Only Power"
+group = "Coltrax 2304"
+source = "script"
+result = "unknown"
+
+[demozoo.324771]
+title = "Onslaught on Tour"
+group = "Onslaught"
+source = "script"
+
+[demozoo.335746]
+title = "Ooops"
+group = "Atlantis"
+source = "script"
+
+[demozoo.345708]
+title = "Ooops Up"
+group = "Stash"
+source = "script"
+disks = ["ooopsupstash.d64", "oops_up-stash.d64"]
+swaps = [{ disk = 2, at = 150.3, key = "space", key_delay = 18.2 }]
+
+[demozoo.367850]
+title = "Oor Demo"
+group = "The Boy's From Uncle"
+source = "script"
+
+[demozoo.325341]
+title = "Open Your Mind"
+group = "Clinic"
+source = "script"
+result = "unknown"
+
+[demozoo.4016]
+title = "Opera Omnia"
+group = "Bennysoft"
+source = "script"
+result = "unknown"
+
+[demozoo.279826]
+title = "Opera Omnia"
+group = "Antic"
+source = "script"
+
+[demozoo.324774]
+title = "Operation Eindhoven"
+group = "The Dreams / Resource"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.361558]
+title = "Opium"
+group = "Shurigen"
+source = "script"
+
+[demozoo.189726]
+title = "Opium 95%"
+group = "Samar"
+source = "script"
+disks = ["Opium_S1.D64", "Opium_S2.D64"]
+swaps = [{ disk = 2, at = 175.2 }]
+
+[demozoo.366897]
+title = "OPS"
+group = "Triad"
+source = "script"
+
+[demozoo.345771]
+title = "Optimistic Kick"
+group = "Lepsi De"
+source = "script"
+result = "unknown"
+
+[demozoo.367839]
+title = "Optimum Fuck Up Preview"
+group = "The Coders"
+source = "script"
+result = "unknown"
+disks = ["Optimum_Fuck_Up_Prv.d64", "optimum_fuck_up_prv-exomized.d64"]
+
+[demozoo.49506]
+title = "Optytro 3"
+group = "Anubis"
+source = "script"
+kind = "collection"
+disks = ["Forever2011_Demo.d64", "Forever2011_Demo2.d64"]
+boot_file = "optytro3/optimus"
+note = "disk set shared by 4 productions"
+
+[demozoo.125843]
+title = "Opussum Demo"
+group = "Hexagon"
+source = "script"
+
+[demozoo.119302]
+title = "Orangi."
+group = "Extend"
+source = "script"
+result = "unknown"
+
+[demozoo.350196]
+title = "Orangi24."
+group = "Extend"
+source = "script"
+
+[demozoo.356891]
+title = "Orb Examples"
+group = "Lithium"
+source = "script"
+
+[demozoo.171221]
+title = "Orbtraxx 3 - fUJi"
+group = "Orb"
+source = "ai"
+machine = "ntsc_1541"
+kind = "collection"
+disks = ["fUJi_Vol1.d64", "fUJi_Vol2.d64", "fUJi_Vol3.d64", "fUJi_Vol4.d64"]
+note = "Orbtraxx 3 fUJi: four standalone volumes with tune menus"
+
+[demozoo.331686]
+title = "Order Graphics II"
+group = "Contex"
+source = "script"
+
+[demozoo.336699]
+title = "Order Now!"
+group = "Saga Connection"
+source = "script"
+
+[demozoo.198595]
+title = "Orgasm"
+group = "Squadron"
+source = "script"
+
+[demozoo.295745]
+title = "Orgasm"
+group = "Danish Floating Team"
+source = "script"
+
+[demozoo.340684]
+title = "Orgasmatron"
+group = "Abnormal"
+source = "script"
+
+[demozoo.335851]
+title = "Oriental"
+group = "Madonna Cracking Group"
+source = "script"
+
+[demozoo.126689]
+title = "Origon"
+group = "Elysium"
+source = "script"
+
+[demozoo.25875]
+title = "Orivesi"
+group = "Extend"
+source = "script"
+
+[demozoo.27263]
+title = "oso"
+group = "Hack n' Trade"
+source = "script"
+
+[demozoo.57106]
+title = "Otolle Pillua"
+group = "Jumalauta"
+source = "script"
+result = "unknown"
+
+[demozoo.350997]
+title = "Otto"
+group = "Trans-X"
+source = "script"
+
+[demozoo.190792]
+title = "Otto-Joke"
+group = "Terminator Tomes"
+source = "script"
+
+[demozoo.359442]
+title = "Oud Rund"
+group = "I.C.E. Squad"
+source = "script"
+
+[demozoo.346110]
+title = "OUG Digi Mix V4"
+group = "The OUG-Team"
+source = "script"
+
+[demozoo.346109]
+title = "OUG Digi Mix V6"
+group = "The OUG-Team"
+source = "script"
+
+[demozoo.346103]
+title = "OUG Letter 14-4"
+group = "The OUG-Team"
+source = "script"
+
+[demozoo.286649]
+title = "Our Contribution To The Scene"
+group = "Laxity"
+source = "script"
+
+[demozoo.20329]
+title = "Our Darkness"
+group = "Smash Designs"
+source = "script"
+disks = ["OUR_DARKNESS_S1.D64", "OUR_DARKNESS_S2.D64"]
+swaps = [{ disk = 2, at = 191.7, key = "p2fire", key_delay = 42.2 }]
+
+[demozoo.357204]
+title = "Our Departure"
+group = "Federation Beyond Intelligence"
+source = "script"
+
+[demozoo.126547]
+title = "Our First"
+group = "Sky Runners"
+source = "script"
+
+[demozoo.338747]
+title = "Our First"
+group = "Collusion"
+source = "script"
+
+[demozoo.295440]
+title = "Our First Demo"
+group = "A-Team"
+source = "script"
+
+[demozoo.88362]
+title = "Our First FLI Demo"
+group = "Dual Crew"
+source = "script"
+
+[demozoo.206308]
+title = "Our First Intro"
+group = "Defence"
+source = "script"
+
+[demozoo.23766]
+title = "Our Greatness"
+group = "RUM Posse"
+source = "script"
+
+[demozoo.266267]
+title = "Our Jail #1"
+group = "Alcatraz"
+source = "script"
+
+[demozoo.272369]
+title = "Our Jail #2"
+group = "Alcatraz"
+source = "script"
+
+[demozoo.290387]
+title = "Our Last Demo"
+group = "Oregon"
+source = "script"
+result = "unknown"
+
+[demozoo.362802]
+title = "Our Last Demo"
+group = "Mazix 2010"
+source = "script"
+
+[demozoo.25834]
+title = "Our Love"
+group = "Dekadence"
+source = "script"
+
+[demozoo.348124]
+title = "Our New 1"
+group = "The Law-Breakers"
+source = "script"
+
+[demozoo.24482]
+title = "Our Speedway"
+group = "Hujowa"
+source = "script"
+
+[demozoo.277437]
+title = "Our Style"
+group = "Starion"
+source = "script"
+
+[demozoo.125838]
+title = "Our Style 2"
+group = "Starion"
+source = "script"
+
+[demozoo.117765]
+title = "Our Style 3"
+group = "Starion"
+source = "script"
+
+[demozoo.2215]
+title = "Our Style 5"
+group = "Starion"
+source = "script"
+
+[demozoo.337490]
+title = "Our Venlo Demo"
+group = "Trigon"
+source = "script"
+
+[demozoo.24889]
+title = "Out of Arts"
+group = "Express Crew"
+source = "script"
+result = "unknown"
+
+[demozoo.39963]
+title = "Out of Code"
+group = "Tengu"
+source = "script"
+
+[demozoo.268593]
+title = "Out of Contex"
+group = "Artline Designs"
+source = "ai"
+disks = ["ALD_Out_of_Contex_SIDEA.d64", "ALD_Out_of_Contex_SIDEB.d64"]
+swaps = [{ disk = 2, at = 233.4, key = "space", key_delay = 17.3 }]
+note = "Out of Contex: side A runs title/face/ring parts then shows TURN DISK (~154-180M); insert side B then space ~17M later, new parts (car, tunnel, cube) follow; inserting before the TURN screen hangs on a pink screen; disk 2: TURN DISK shows from ~154-180M and stays 400M+; no upper limit seen; insert before ~154M hangs"
+
+[demozoo.325151]
+title = "Out of Orderia Party Note"
+group = "Out of Order"
+source = "script"
+
+[demozoo.325791]
+title = "Out of Sleep"
+group = "Digital Crackers / The Droids"
+source = "script"
+machine = "ntsc_1541"
+
+[demozoo.350547]
+title = "Out Of Space / Centauri Logo"
+group = "Centauri"
+source = "script"
+result = "unknown"
+
+[demozoo.362803]
+title = "Out Run Demo"
+group = "Elite 1997 / Mazix 2010"
+source = "script"
+
+[demozoo.37727]
+title = "Outbreak"
+group = "Smash Designs"
+source = "script"
+machine = "pal_1541_8580"
+result = "unknown"
+
+[demozoo.126382]
+title = "Outbreak Of Evil"
+group = "Sodom"
+source = "script"
+
+[demozoo.333252]
+title = "Outland"
+group = "Plasma"
+source = "script"
+
+[demozoo.183564]
+title = "Outlaw"
+group = "D.S. Compware"
+source = "script"
+
+[demozoo.359732]
+title = "Outline"
+group = "Havok"
+source = "script"
+
+[demozoo.186768]
+title = "Outlined"
+group = "Thundax"
+source = "script"
+
+[demozoo.196828]
+title = "Outrun Muzax"
+group = "Psygon"
+source = "script"
+
+[demozoo.61699]
+title = "Outsider"
+group = "Spaceballs"
+source = "script"
+
+[demozoo.154655]
+title = "Over D Ocean"
+group = "Mayday!"
+source = "script"
+
+[demozoo.90131]
+title = "Over The Edge"
+group = "Triad"
+source = "script"
+machine = "ntsc_1541"
+
+[demozoo.350862]
+title = "Overact"
+group = "Impulse"
+source = "script"
+
+[demozoo.362988]
+title = "Overlander Madness"
+group = "The Lost Heroes"
+source = "script"
+
+[demozoo.353169]
+title = "Overload"
+group = "Tronix"
+source = "script"
+
+[demozoo.183937]
+title = "Overloaded Micro"
+group = "Sealandsoft"
+source = "script"
+
+[demozoo.395552]
+title = "Overmind"
+group = "Brainwave"
+source = "script"
+
+[demozoo.190065]
+title = "Owlz"
+group = "Grue"
+source = "script"
+
+[demozoo.118075]
+title = "Oxy Rock"
+group = "Oxyron"
+source = "script"
+machine = "pal_1541_8580"

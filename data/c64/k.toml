@@ -1,0 +1,705 @@
+[demozoo.386614]
+title = "K&A plus #6 - meet the team"
+group = "K&A Plus"
+source = "script"
+
+[demozoo.343852]
+title = "K.a.o.s. music"
+group = "Alienware 4009"
+source = "script"
+
+[demozoo.343283]
+title = "K.G.B. And H.C.A."
+group = "Hanseatic Cracking Association"
+source = "script"
+
+[demozoo.363182]
+title = "K7"
+group = "Mad+Bad"
+source = "script"
+
+[demozoo.177794]
+title = "K9 V Orange Main Sequence"
+group = "Fairlight"
+source = "script"
+
+[demozoo.327132]
+title = "Kakkaa? Komisaario Naamapalmu!"
+source = "script"
+result = "unknown"
+
+[demozoo.347004]
+title = "Kamazaike!!"
+group = "Ruthless"
+source = "script"
+
+[demozoo.344169]
+title = "Kamera Demo"
+group = "Joy Division"
+source = "script"
+result = "unknown"
+
+[demozoo.81883]
+title = "Kamikaze"
+group = "Creators"
+source = "script"
+
+[demozoo.392452]
+title = "Kamishibai"
+group = "Atlantis"
+source = "script"
+disks = ["kamishibai_by_atlantis_1.d64", "kamishibai_by_atlantis_2.d64", "kamishibai_by_atlantis_3.d64"]
+swaps = [{ disk = 2, at = 261.9 }, { disk = 3, at = 527.3 }]
+
+[demozoo.349114]
+title = "Kangaroos"
+group = "The Force"
+source = "script"
+
+[demozoo.345610]
+title = "Kanon-Korven"
+group = "Noice"
+source = "script"
+machine = "ntsc_1541"
+disks = ["Kanon-korven [Side 1].d64", "Kanon-korven [Side 2].d64"]
+swaps = [{ disk = 2, at = 167.6, key = "space", key_delay = 17.4 }]
+boot_file = "  kanon-korven  "
+
+[demozoo.343295]
+title = "Karate Kitsch"
+group = "Hanseatic Cracking Association"
+source = "script"
+
+[demozoo.355438]
+title = "Karoshi"
+group = "Slackers"
+source = "script"
+
+[demozoo.170414]
+title = "Kattsvamp"
+group = "MuMu21"
+source = "script"
+
+[demozoo.312947]
+title = "Katzen-Video.mp4"
+group = "Raiders of the Lost Empire"
+source = "script"
+
+[demozoo.380080]
+title = "Katzenparade"
+group = "Atlantis"
+source = "script"
+
+[demozoo.351576]
+title = "Kau Z Uhuf"
+group = "Tengu / Rule3"
+source = "script"
+machine = "ntsc_1541"
+sid = "8580"
+boot_file = "kau z uhuf/[w&k]"
+
+[demozoo.190790]
+title = "Kaufhaus-Demo"
+group = "Terminator Tomes"
+source = "script"
+boot_file = "kaufhaus-d.!/tnr"
+
+[demozoo.310911]
+title = "Kavalkadi"
+source = "script"
+
+[demozoo.309474]
+title = "KB's Jukebox"
+group = "The Obsessed Maniacs"
+source = "script"
+result = "unknown"
+
+[demozoo.269145]
+title = "Kdo Z Vas"
+group = "Trash"
+source = "script"
+
+[demozoo.105198]
+title = "Kebab Pjuck"
+group = "Afrika / Trhh"
+source = "script"
+
+[demozoo.100553]
+title = "Kebab Pjuck II"
+group = "Afrika"
+source = "script"
+machine = "pal_1541_8580"
+disks = ["afrika-kebab_pjuck_ii-side_a.d64", "afrika-kebab_pjuck_ii-side_b.d64"]
+swaps = [{ disk = 2, at = 344.4 }]
+
+[demozoo.290683]
+title = "Kebul!"
+group = "Crackforce"
+source = "script"
+
+[demozoo.302546]
+title = "Keep Empire Great"
+group = "Starz"
+source = "script"
+result = "unknown"
+
+[demozoo.356592]
+title = "Kefkewl Preview"
+group = "Wrath Designs"
+source = "script"
+
+[demozoo.368220]
+title = "Keine Termine und leicht einen sitzen"
+group = "Slackers"
+source = "script"
+
+[demozoo.327136]
+title = "Kek-tekno-kone"
+group = "Yleisradio"
+source = "script"
+
+[demozoo.191982]
+title = "Kellerkind"
+group = "Tristar and Red Sector Inc."
+source = "script"
+
+[demozoo.305002]
+title = "Kentilla - Tune!"
+group = "RCS Industries"
+source = "script"
+result = "unknown"
+
+[demozoo.181583]
+title = "Kerekes 64Band Music Selector"
+group = "Singular / SIDRIP Alliance"
+source = "script"
+
+[demozoo.206236]
+title = "Kesaeleiri"
+group = "Yleisradio"
+source = "script"
+
+[demozoo.296903]
+title = "Kettle Demo"
+group = "Torky"
+source = "script"
+result = "unknown"
+
+[demozoo.356590]
+title = "Kewl Ircs Preview"
+group = "Wrath Designs"
+source = "script"
+
+[demozoo.189421]
+title = "Kewlie Hewlie Music"
+group = "Raw Deal Inc."
+source = "script"
+
+[demozoo.344921]
+title = "Kick Ass"
+group = "The Stars"
+source = "script"
+
+[demozoo.350840]
+title = "Kick Ass 89"
+group = "Lazer"
+source = "script"
+
+[demozoo.356380]
+title = "Kick Ass!"
+group = "Vision"
+source = "script"
+
+[demozoo.198875]
+title = "Kick Boxer Demo"
+group = "Eurasia"
+source = "script"
+disks = ["040A Kickboxer by Eurasia.D64", "kickboxerdemo-eurasia.d64"]
+note = "the sweep only reached disk 1 of 2"
+
+[demozoo.358093]
+title = "Kick It!"
+group = "Danish Underground Crackers"
+source = "script"
+
+[demozoo.363076]
+title = "Kicking Revenge"
+group = "Trinomic / Lower Level"
+source = "script"
+result = "unknown"
+
+[demozoo.268798]
+title = "Kicky Tunes"
+group = "Baseline 2209"
+source = "script"
+
+[demozoo.268355]
+title = "Kicky Tunes 7"
+group = "Traxxon 4554 / Baseline 2209"
+source = "script"
+
+[demozoo.163426]
+title = "Kikkeli"
+group = "Extend"
+source = "script"
+result = "unknown"
+
+[demozoo.359411]
+title = "Kill Idefix"
+group = "The Remix Crew"
+source = "script"
+
+[demozoo.335832]
+title = "Kill Or Cure"
+group = "The Wonderboys"
+source = "script"
+
+[demozoo.274903]
+title = "Kill Pokemon"
+group = "Anubis"
+source = "script"
+
+[demozoo.350861]
+title = "Kill'em All"
+group = "Impulse"
+source = "script"
+
+[demozoo.18460]
+title = "Killa Demo"
+group = "Ultimate"
+source = "script"
+
+[demozoo.331657]
+title = "Killed Sound"
+group = "The Public Enemies"
+source = "script"
+
+[demozoo.193137]
+title = "Killing Commies!"
+group = "Abnormal"
+source = "script"
+
+[demozoo.270494]
+title = "Killing Is Phun"
+group = "Q-Pha"
+source = "script"
+
+[demozoo.385937]
+title = "Killing Joke"
+group = "Triad"
+source = "script"
+
+[demozoo.336872]
+title = "Kilroy"
+group = "Power Station"
+source = "script"
+
+[demozoo.2446]
+title = "Kinderegg"
+group = "Offence"
+source = "script"
+
+[demozoo.9928]
+title = "Kindergarten Boogie 64k"
+group = "Shut The Fuck Up / Bluebox Cinematique Gmbh"
+source = "script"
+
+[demozoo.324778]
+title = "Kinetics"
+group = "Triad"
+source = "script"
+
+[demozoo.273831]
+title = "King's Head"
+group = "Copyright Escape"
+source = "script"
+
+[demozoo.193138]
+title = "Kinky"
+group = "Abnormal"
+source = "script"
+result = "unknown"
+
+[demozoo.7685]
+title = "Kisel"
+group = "Gnumums Inc."
+source = "script"
+result = "unknown"
+
+[demozoo.266039]
+title = "Kismalac"
+group = "Singular Crew"
+source = "script"
+kind = "collection"
+disks = ["AROK1.D64", "AROK2.D64"]
+note = "disk set shared by 6 productions"
+
+[demozoo.345589]
+title = "Kiss Flash"
+group = "Kiss"
+source = "script"
+
+[demozoo.348354]
+title = "Kitana Zaks"
+group = "System"
+source = "script"
+
+[demozoo.393316]
+title = "Kitchen Boyz Demo"
+group = "Kitchen Boyz"
+source = "script"
+result = "unknown"
+
+[demozoo.201921]
+title = "Kiwiana-What?"
+group = "Bad Karma"
+source = "script"
+result = "unknown"
+
+[demozoo.374153]
+title = "Kjellement"
+group = "Triad"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.181741]
+title = "Klang-Test"
+group = "Welle:Erdball"
+source = "script"
+kind = "collection"
+disks = ["v2003-s1.d64", "v2003-s2.d64", "v2003-s3.d64", "v2003-s4.d64"]
+boot_file = "BW klang-test WB"
+note = "disk set shared by 8 productions"
+
+[demozoo.160992]
+title = "Klangsynthese"
+group = "Welle:Erdball"
+source = "script"
+
+[demozoo.63979]
+title = "Kleptoparanoidi"
+group = "Extend"
+source = "script"
+
+[demozoo.368314]
+title = "Klonfa"
+group = "Medium"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.392439]
+title = "Kloten Met de Broodtrommel Leren Ontdekken Klooien"
+group = "deFEEST"
+source = "script"
+
+[demozoo.138842]
+title = "Kluski"
+group = "Kluski"
+source = "script"
+
+[demozoo.357371]
+title = "Knights"
+group = "Danecrew"
+source = "script"
+
+[demozoo.130133]
+title = "Knock Out"
+group = "Mlecze Design"
+source = "script"
+
+[demozoo.344817]
+title = "Knuckle Buster Music & S/FX"
+group = "The Evil Ones"
+source = "script"
+
+[demozoo.343473]
+title = "Knuckle Busters Music"
+group = "The Supersonics"
+source = "script"
+
+[demozoo.166367]
+title = "Koalatro"
+group = "Cosine"
+source = "script"
+
+[demozoo.158030]
+title = "Kohuhotelli"
+group = "Kolkki"
+source = "script"
+
+[demozoo.354817]
+title = "Kojak - Who loves ya, baby!"
+group = "Triad"
+source = "script"
+
+[demozoo.27772]
+title = "Kolaps"
+group = "Cult"
+source = "script"
+
+[demozoo.331566]
+title = "Kolkytkaks"
+group = "Browbeat"
+source = "script"
+
+[demozoo.326890]
+title = "Kolmiolääke"
+group = "Extend"
+source = "script"
+
+[demozoo.360521]
+title = "Kolv Jack"
+group = "Impact"
+source = "script"
+
+[demozoo.166758]
+title = "Komagutt"
+group = "Digital Designs"
+source = "script"
+
+[demozoo.352583]
+title = "Kong Music Collection"
+group = "Onslaught"
+source = "script"
+
+[demozoo.365980]
+title = "Kongoblatte"
+group = "Software of Sweden"
+source = "script"
+
+[demozoo.269172]
+title = "Kontakt Demo"
+group = "Cadaver"
+source = "script"
+
+[demozoo.356901]
+title = "Kool As Fuck Part II"
+group = "DIK88"
+source = "script"
+
+[demozoo.355609]
+title = "Kool Rock 1"
+group = "Galaxy"
+source = "script"
+
+[demozoo.355610]
+title = "Kool Rock 2"
+group = "Galaxy"
+source = "script"
+
+[demozoo.347119]
+title = "Kopido"
+group = "Mirage / Genesis Project"
+source = "script"
+
+[demozoo.18798]
+title = "Kotze Inside"
+group = "Metalvotze"
+source = "script"
+
+[demozoo.325086]
+title = "Kozmistasaeteilyae"
+source = "script"
+machine = "ntsc_1541"
+
+[demozoo.308150]
+title = "Krabat Intro 3"
+group = "Krabat"
+source = "script"
+
+[demozoo.362059]
+title = "Krabats Revenge II"
+group = "Krabat"
+source = "script"
+
+[demozoo.326992]
+title = "Krak Out Record"
+group = "XL-Crackers"
+source = "script"
+
+[demozoo.370734]
+title = "Krak Zak"
+group = "Jammer"
+source = "script"
+
+[demozoo.345023]
+title = "Krakatau"
+group = "Whoop!"
+source = "script"
+
+[demozoo.368438]
+title = "Krakout #01"
+group = "US Rangers"
+source = "script"
+machine = "ntsc_1541"
+
+[demozoo.325361]
+title = "Krakout Instructions"
+group = "X-Force Team 173"
+source = "script"
+
+[demozoo.323695]
+title = "Krakout Music"
+group = "Comic Cracking Crew"
+source = "script"
+
+[demozoo.356920]
+title = "Krakout Muzix"
+group = "Damage Incorporated 2019"
+source = "script"
+machine = "ntsc_1541"
+
+[demozoo.363495]
+title = "Krakout Sound"
+group = "Mega Soft Incorporated"
+source = "script"
+result = "unknown"
+
+[demozoo.388200]
+title = "Krakrz Kräktro 2"
+group = "Soundstorm"
+source = "script"
+disks = ["krakrz.d64", "krakrz_fixed.d64"]
+note = "the sweep only reached disk 1 of 2"
+
+[demozoo.31651]
+title = "Krawall Deluxe"
+group = "Tristar and Red Sector Inc."
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.281883]
+title = "Krestage 3 - More Weird Stuff"
+group = "Crest"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.37689]
+title = "Krestology"
+group = "Crest"
+source = "ai"
+disks = ["Krestology.s1.d64", "Krestology.s2.d64", "tools.d64"]
+swaps = [{ disk = 2, at = 261.9, key = "space", key_delay = 14.2 }]
+note = "Krestology: side 1 -> side 2 is the chain (sweep accepted); disk 3 is a standalone tools disk; disk 2: from sweep flip 0 (accepted); upper limit not tested"
+
+[demozoo.340670]
+title = "Krestory"
+group = "Crest"
+source = "ai"
+result = "broken"
+disks = ["Krestory_SideA.D64", "Krestory_SideB.D64"]
+boot_file = "-   krestory   -"
+note = "disk protection trap: 'HAHA, WANNA START THIS DEMO?' then READY in VICE with the d64 image; both sides identical dir"
+
+[demozoo.202043]
+title = "Kreuzfeuer"
+group = "Un-Fairlight"
+source = "script"
+result = "unknown"
+
+[demozoo.18461]
+title = "Kringlorna From Mars"
+group = "Gnu Mums Inc."
+source = "script"
+result = "broken"
+
+[demozoo.336814]
+title = "KrionyX Thawed"
+group = "KrionyX"
+source = "script"
+
+[demozoo.184603]
+title = "Krush Groovin'"
+group = "Fossil"
+source = "script"
+result = "unknown"
+
+[demozoo.361943]
+title = "Kry's Collection"
+group = "Joga Studio"
+source = "script"
+
+[demozoo.324957]
+title = "KSX Christmas '22"
+group = "Kraksnax"
+source = "script"
+
+[demozoo.358435]
+title = "Kubus"
+group = "Falcon Soft"
+source = "script"
+result = "unknown"
+
+[demozoo.287130]
+title = "Kugel XVIII"
+group = "Thunderbolt Cracking Crew"
+source = "script"
+
+[demozoo.356889]
+title = "Kult"
+group = "Lithium"
+source = "ai"
+kind = "standalone"
+disks = ["disk065a.d64", "kult_demo-lithium-with_dir.d64"]
+note = "disk065a is a compilation containing the byte-identical kult prg; the other disk is the same demo alone; no flip. Prefer kult_demo-lithium-with_dir.d64 as the single disk"
+
+[demozoo.126304]
+title = "Kult 3D"
+group = "Babygang"
+source = "script"
+
+[demozoo.20979]
+title = "Kumivanilja"
+group = "Yleisradio"
+source = "script"
+boot_file = "kumivanilja /yle"
+
+[demozoo.281296]
+title = "Kung Fu Fighting"
+source = "script"
+
+[demozoo.122690]
+title = "Kuno Nuko Demo III"
+group = "Cyber Design"
+source = "script"
+
+[demozoo.323806]
+title = "Kurt and Doris"
+group = "Civitas"
+source = "script"
+
+[demozoo.201995]
+title = "Kurzschluss"
+group = "Retrofan / Rio / Hucky"
+source = "script"
+
+[demozoo.324942]
+title = "Kwik Tune"
+group = "Kraksnax"
+source = "script"
+
+[demozoo.274970]
+title = "Kyfnkacxkn"
+group = "Delysid"
+source = "script"
+result = "unknown"
+
+[demozoo.66670]
+title = "Kymmene"
+group = "Aspekt"
+source = "script"
+
+[demozoo.360877]
+title = "Kyrsae"
+group = "Dekadence"
+source = "script"
+
+[demozoo.327145]
+title = "Käpy"
+source = "script"
+result = "unknown"
+
+[demozoo.301181]
+title = "Köszönöm"
+group = "Atlantis"
+source = "script"

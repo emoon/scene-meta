@@ -1,0 +1,194 @@
+[demozoo.344095]
+title = "Y R U SO L8 ??"
+group = "Magnetix"
+source = "script"
+
+[demozoo.301927]
+title = "Y.A.W.O.T."
+group = "Higher Computer Science 5005"
+source = "script"
+
+[demozoo.23475]
+title = "Y2K (Duck & Cover)"
+group = "No Name"
+source = "ai"
+disks = ["DISK1.D64", "DISK2.D64", "STARTU~1.D64"]
+swaps = [{ disk = 1, at = 156.3, key = "space", key_delay = 18.3 }]
+boot_disk = 3
+note = "Y2K: demo is on disk 3 (STARTU~1, boot_disk=2); DISK1/DISK2 are data disk sides; asks INSERT DATA-DISK SIDE 1 at ~100M; side 2 request not seen (x64sc died at ~250-350M twice); disk 1: boot with disk 3 in the drive; insert DISK1.D64 then space; prompt waits (no upper limit seen, 800M)"
+
+[demozoo.298557]
+title = "Ya Made a Mess"
+group = "Yeti Factories"
+source = "script"
+result = "unknown"
+
+[demozoo.340294]
+title = "Yaemon's Tunebox"
+group = "Collision / Depredators"
+source = "script"
+
+[demozoo.168806]
+title = "Yaemon's Tunebox 2"
+group = "Brutal"
+source = "script"
+
+[demozoo.189918]
+title = "Yahoo 40%"
+group = "Hell Parrago"
+source = "script"
+
+[demozoo.321357]
+title = "Yeah"
+group = "The Almighty Grabbers"
+source = "script"
+
+[demozoo.345626]
+title = "Yeah"
+group = "Noice"
+source = "script"
+
+[demozoo.287658]
+title = "Yeah Naa Not an Intro"
+group = "the lost underground"
+source = "script"
+
+[demozoo.334691]
+title = "Yeah Venlo"
+group = "Madonna Cracking Group"
+source = "script"
+
+[demozoo.7009]
+title = "Year of the Ankh"
+group = "Focus"
+source = "script"
+
+[demozoo.296870]
+title = "Yes Indeede"
+group = "The Billy Buckhead Crew"
+source = "script"
+
+[demozoo.360095]
+title = "Yes Name Mikrodemo"
+group = "Hondani"
+source = "script"
+
+[demozoo.366471]
+title = "Yesterday Dreams"
+group = "Quintex Designs"
+source = "script"
+
+[demozoo.366472]
+title = "Yesterday Dreams II"
+group = "Quintex Designs"
+source = "script"
+
+[demozoo.357562]
+title = "Yet Again"
+group = "Mystic"
+source = "script"
+
+[demozoo.206066]
+title = "Yeti-Demo"
+group = "Enigma / Zeus Duo"
+source = "script"
+
+[demozoo.53871]
+title = "Yhteiskuntaluokkakaavio"
+group = "tAAt"
+source = "script"
+
+[demozoo.327037]
+title = "YLE"
+group = "Yleisradio"
+source = "script"
+result = "unknown"
+
+[demozoo.326765]
+title = "Ylentry2013"
+group = "Yleisradio"
+source = "script"
+
+[demozoo.199840]
+title = "YLEvoittaa"
+group = "Yleisradio"
+source = "script"
+
+[demozoo.327156]
+title = "Ylex"
+source = "script"
+result = "unknown"
+
+[demozoo.331377]
+title = "Ymerdrys II"
+group = "Zargon Industries"
+source = "script"
+
+[demozoo.296439]
+title = "Yo Bencor Bud"
+group = "Bencor Brothers"
+source = "script"
+
+[demozoo.126475]
+title = "Yoghurt"
+group = "Swedish Commodore Cracking Service"
+source = "script"
+
+[demozoo.82247]
+title = "You Can't Stop Us"
+group = "Tropyx"
+source = "script"
+machine = "pal_1541_8580"
+disks = ["Symphony 2005 Warez.d64", "You Can't Stop Us!.d64"]
+swaps = [{ disk = 2, at = 74.1, key = "space", key_delay = 17.3 }]
+
+[demozoo.3601]
+title = "You Know the Routine 2"
+group = "Camelot"
+source = "script"
+
+[demozoo.300860]
+title = "You Suffer"
+group = "Bump and Grind"
+source = "script"
+result = "unknown"
+
+[demozoo.359115]
+title = "Young Gun"
+group = "Genius Softworks"
+source = "script"
+
+[demozoo.308129]
+title = "Young Guns Digi"
+group = "Danish Gold"
+source = "script"
+
+[demozoo.387846]
+title = "Youthful"
+group = "Lepsi De"
+source = "script"
+machine = "pal_1541_8580"
+kind = "collection"
+result = "unknown"
+disks = ["X98_Music.d64", "X98_Music_and_Graphics.D64"]
+note = "disk set shared by 5 productions"
+
+[demozoo.116709]
+title = "Youthquake"
+group = "Contex"
+source = "script"
+
+[demozoo.348675]
+title = "Yppox"
+group = "Cosmos"
+source = "script"
+
+[demozoo.384017]
+title = "Ys II Opening"
+group = "Otomata Labs"
+source = "script"
+
+[demozoo.311008]
+title = "YYZ"
+group = "Bodd / Pyros"
+source = "script"

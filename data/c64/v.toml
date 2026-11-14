@@ -1,0 +1,616 @@
+[demozoo.296907]
+title = "V Eight Music"
+group = "USA-Team"
+source = "script"
+
+[demozoo.343732]
+title = "V Intro"
+group = "The Star Frontiers"
+source = "script"
+
+[demozoo.116521]
+title = "V3LOCIP3D3"
+group = "Fairlight"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.266268]
+title = "Va fan du vill"
+group = "Agile / Triad"
+source = "script"
+
+[demozoo.53868]
+title = "Vaippaihottuma"
+group = "Dekadence"
+source = "script"
+
+[demozoo.389056]
+title = "Valerio"
+group = "Metalvotze"
+source = "script"
+
+[demozoo.365494]
+title = "Valhalla Demo V1"
+group = "UFO-Software Ltd."
+source = "script"
+
+[demozoo.355528]
+title = "Vamosabailar"
+group = "Jumalauta"
+source = "script"
+
+[demozoo.356921]
+title = "Vampire Music"
+group = "Damage Incorporated 2019"
+source = "script"
+
+[demozoo.352587]
+title = "Van Diemen's Complex"
+group = "Onslaught"
+source = "script"
+
+[demozoo.339324]
+title = "Van Gils"
+group = "Ruthless"
+source = "script"
+
+[demozoo.314665]
+title = "Vandalism News #73 Headlines"
+group = "Vandalism News Staff / Nah-Kolor"
+source = "script"
+
+[demozoo.334844]
+title = "Variety Omens II"
+group = "Event"
+source = "script"
+result = "unknown"
+
+[demozoo.296759]
+title = "VCC10"
+group = "Vintage Computing Carinthia"
+source = "script"
+
+[demozoo.188208]
+title = "Vector Ball 2"
+group = "3LUX"
+source = "script"
+
+[demozoo.365459]
+title = "Vector Magic 2"
+group = "Triumwyrat / Paradox"
+source = "script"
+
+[demozoo.138791]
+title = "Vector Overdose"
+group = "Exile"
+source = "script"
+
+[demozoo.344192]
+title = "Vector Sector"
+group = "T&T - The Computer Shop"
+source = "script"
+
+[demozoo.366678]
+title = "Vectora"
+group = "Rabiez"
+source = "script"
+
+[demozoo.346439]
+title = "Vectorballs"
+group = "Density"
+source = "script"
+
+[demozoo.163424]
+title = "Vectordreams"
+group = "Yleisradio"
+source = "script"
+
+[demozoo.126302]
+title = "Vectoria"
+group = "Lightflash"
+source = "script"
+
+[demozoo.213893]
+title = "Vectormania II"
+group = "Masters' Design Group"
+source = "script"
+result = "unknown"
+
+[demozoo.327064]
+title = "Vectorscroll"
+group = "Bonzai"
+source = "script"
+result = "unknown"
+
+[demozoo.77570]
+title = "Vectrologic"
+group = "Atlantic"
+source = "script"
+
+[demozoo.168733]
+title = "Vega"
+group = "Delysid"
+source = "script"
+
+[demozoo.348360]
+title = "Vegetation"
+group = "System"
+source = "script"
+disks = ["VEGTIONA.D64", "VEGTIONB.D64"]
+note = "the sweep only reached disk 1 of 2"
+
+[demozoo.51966]
+title = "Veggiestorm"
+group = "Active"
+source = "script"
+result = "unknown"
+
+[demozoo.130130]
+title = "Velocity"
+group = "Onslaught"
+source = "script"
+machine = "ntsc_1541"
+boot_file = "velocity    /[o]"
+
+[demozoo.376731]
+title = "Vem Fan Vet?"
+group = "Fantastic 4 Cracking Group / Nostalgia / Oxsid Planetary"
+source = "script"
+machine = "pal_1541_8580"
+result = "unknown"
+
+[demozoo.338816]
+title = "Venlo Demo"
+group = "Paradize"
+source = "script"
+
+[demozoo.197161]
+title = "Venlo Demo 1"
+group = "Bionix"
+source = "script"
+
+[demozoo.336274]
+title = "Venlo Greetz"
+group = "Double"
+source = "script"
+
+[demozoo.336415]
+title = "Venlo Time"
+group = "Century"
+source = "script"
+
+[demozoo.358127]
+title = "Venlo Time"
+group = "Ionix"
+source = "script"
+
+[demozoo.334689]
+title = "Venlo Time!"
+group = "Madonna Cracking Group"
+source = "script"
+
+[demozoo.336275]
+title = "Venlo Tour Note"
+group = "The Ruling Company"
+source = "script"
+
+[demozoo.336416]
+title = "Venlocation"
+group = "The Warriors"
+source = "script"
+
+[demozoo.281636]
+title = "Venlolism"
+group = "Magicans"
+source = "script"
+
+[demozoo.314847]
+title = "Venom Demo I"
+group = "I.O.U."
+source = "script"
+result = "unknown"
+
+[demozoo.314848]
+title = "Venom Demo II"
+group = "I.O.U."
+source = "script"
+
+[demozoo.126834]
+title = "Vermessic Park Preview"
+group = "Vermes"
+source = "script"
+
+[demozoo.388159]
+title = "Vertic Story"
+group = "Jaybird"
+source = "script"
+
+[demozoo.346581]
+title = "Vertical Rasters"
+group = "Jewels"
+source = "script"
+
+[demozoo.380095]
+title = "Verticality"
+group = "Academy"
+source = "script"
+disks = ["Verticality.d64", "verticality-academy.d64"]
+note = "the sweep only reached disk 1 of 2"
+
+[demozoo.122709]
+title = "Very"
+group = "Liquid"
+source = "script"
+
+[demozoo.351629]
+title = "Very Cool"
+group = "Monsters Of Soft"
+source = "script"
+
+[demozoo.357700]
+title = "Very Small Demo"
+group = "Dethrone"
+source = "script"
+
+[demozoo.366401]
+title = "Very Very"
+group = "Pulse Productions"
+source = "script"
+
+[demozoo.67998]
+title = "Very Wicked - Most Delicate"
+group = "Padua"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.306204]
+title = "VF-SSDPCM1 Super Plus"
+group = "Algotech"
+source = "script"
+
+[demozoo.274539]
+title = "Vi Drar Till"
+group = "Dinasours"
+source = "script"
+
+[demozoo.343895]
+title = "Viaduct Crisis"
+group = "Anti Ronny Kuysters Club"
+source = "script"
+
+[demozoo.175512]
+title = "Vibrants FM"
+group = "XentaX"
+source = "script"
+
+[demozoo.18462]
+title = "Vibrations"
+group = "Lepsi Designs"
+source = "script"
+
+[demozoo.341440]
+title = "Vic Fouls"
+group = "The Clumsy Creepers / Exact"
+source = "script"
+
+[demozoo.86583]
+title = "Vicious SID"
+group = "Masters' Design Group"
+source = "script"
+disks = ["Vicious Sid 1.d64", "Vicious Sid 2.d64"]
+swaps = [{ disk = 2, at = 716.8, key = "space" }]
+
+[demozoo.44556]
+title = "Vicious Sid 2"
+group = "The Noisy Bunch"
+source = "script"
+disks = ["vicious_sid2-sidea.d64", "vicious_sid2-sideb.d64"]
+swaps = [{ disk = 2, at = 1371.6 }]
+
+[demozoo.134379]
+title = "Victorian Era VIC 20 Sound Chip Emulator"
+group = "Aleksi Eeben"
+source = "script"
+
+[demozoo.380106]
+title = "Vikings Music"
+group = "Norwegian Cracking Corporation"
+source = "script"
+
+[demozoo.304624]
+title = "Vikings Muzax"
+group = "Active Cracking Crew"
+source = "script"
+
+[demozoo.21460]
+title = "Viktiga Nyheter"
+group = "Syntax Terror"
+source = "script"
+
+[demozoo.343319]
+title = "Vinyl Tribute #2"
+group = "SID-Spieler"
+source = "script"
+machine = "pal_1541_8580"
+disks = ["side1.d64", "side2.d64"]
+swaps = [{ disk = 2, at = 125.3, key = "p1fire", key_delay = 33.6 }]
+
+[demozoo.280211]
+title = "Violation"
+group = "AMOK"
+source = "script"
+
+[demozoo.113203]
+title = "Violent Birth"
+group = "Onslaught"
+source = "script"
+result = "unknown"
+
+[demozoo.206217]
+title = "Viper Designs Party Demo!!"
+group = "Viper Designs / Fantastic 4 Cracking Group / Defence"
+source = "ai"
+kind = "standalone"
+disks = ["coop.d64", "f4cg2bdefence2bviperdesigns-partydemoin1989.d64", "vpd.d64"]
+note = "disks are alternative packs of the same 2-part demo (3 identical md5); part II loads from disk 1 after a space at ~120M, no flip"
+
+[demozoo.314651]
+title = "Vipera Fecalis"
+group = "annizio / zuulkuul"
+source = "script"
+
+[demozoo.670]
+title = "Virtsarakko"
+group = "Dekadence"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.345778]
+title = "Virtual Dreams"
+group = "Lepsi De"
+source = "script"
+
+[demozoo.266034]
+title = "Virtual Pok(e)"
+group = "UNSoft"
+source = "script"
+kind = "collection"
+disks = ["AROK1.D64", "AROK2.D64"]
+note = "disk set shared by 6 productions"
+
+[demozoo.381241]
+title = "Visage ! 50"
+group = "Lethargy"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.110628]
+title = "Visible 3.4"
+group = "Full Force"
+source = "script"
+
+[demozoo.343859]
+title = "Vision"
+group = "Alliance"
+source = "script"
+
+[demozoo.181738]
+title = "Vision 2003 Demo"
+group = "Oxyron / Creators"
+source = "script"
+machine = "pal_1541_8580"
+kind = "collection"
+disks = ["v2003-s1.d64", "v2003-s2.d64", "v2003-s3.d64", "v2003-s4.d64"]
+boot_file = ". vision 2003! ."
+note = "disk set shared by 8 productions"
+
+[demozoo.3154]
+title = "Vision 2003 Invitation"
+group = "Protovision"
+source = "script"
+result = "unknown"
+
+[demozoo.190760]
+title = "Vision 2003 Partynote"
+group = "Protovision"
+source = "script"
+kind = "collection"
+disks = ["v2003-s1.d64", "v2003-s2.d64", "v2003-s3.d64", "v2003-s4.d64"]
+boot_file = ". vision 2003! ."
+note = "disk set shared by 8 productions"
+
+[demozoo.171323]
+title = "Vision Partynote"
+group = "Protovision"
+source = "script"
+result = "unknown"
+boot_file = "vision partynote"
+
+[demozoo.318348]
+title = "Vision X"
+group = "Steven K"
+source = "script"
+
+[demozoo.314621]
+title = "Vision Y"
+group = "Steven K"
+source = "script"
+
+[demozoo.315134]
+title = "Vision Z"
+group = "Steven K"
+source = "script"
+
+[demozoo.387822]
+title = "Vision2003"
+group = "Active"
+source = "script"
+machine = "pal_1541_8580"
+kind = "collection"
+disks = ["v2003-s1.d64", "v2003-s2.d64", "v2003-s3.d64", "v2003-s4.d64"]
+boot_file = ". vision 2003! ."
+note = "disk set shared by 8 productions"
+
+[demozoo.176232]
+title = "Visit"
+group = "Fantastic 4 Cracking Group / Atlantis / Computer Freaks Association / Illusion"
+source = "script"
+
+[demozoo.90130]
+title = "Visitors"
+group = "Civitas"
+source = "script"
+
+[demozoo.346192]
+title = "Visitors"
+group = "Exact"
+source = "script"
+
+[demozoo.126919]
+title = "Visual Deffect"
+group = "Trias"
+source = "script"
+
+[demozoo.183153]
+title = "Visual Party Results"
+source = "script"
+
+[demozoo.338217]
+title = "Visual Target"
+group = "Paramount"
+source = "script"
+
+[demozoo.86405]
+title = "Visuality 2"
+group = "Visual Reality"
+source = "script"
+
+[demozoo.72232]
+title = "Visuality 3"
+group = "Visual Reality"
+source = "script"
+
+[demozoo.337517]
+title = "Vittukusiivo"
+group = "Beyond Force"
+source = "script"
+
+[demozoo.44564]
+title = "Viva La Revolucion!"
+group = "Gheymaid Inc."
+source = "script"
+
+[demozoo.337179]
+title = "Vivian II"
+group = "Hurricane / Vertical"
+source = "script"
+disks = ["Vivian 2.d64", "vivian_ii.d64"]
+swaps = [{ disk = 2, at = 75.4, key = "p1fire", key_delay = 36.5 }]
+
+[demozoo.300851]
+title = "VIY"
+group = "Atlantis / Pretzel Logic"
+source = "script"
+
+[demozoo.376137]
+title = "VL-intro"
+group = "Triad"
+source = "script"
+kind = "collection"
+disks = ["474_bytes_for_Zyron.d64", "bbb_-_bit_by_bit.d64", "Datasvision-DTV.d64", "deadline_final_gp.d64", "DO-YOU-HAVE-WHAT-WE-IN-SWEDEN-CALL-A-TESTBILD.d64", "KillingJoke---Skyhawk-Triad---PETSCIICompo---20250731.d64", "regn z69.d64", "shadow_star_gp.d64", "TRIAD-2_the_city.d64", "TRIAD-Teddy-John.d64", "TRIAD-VL-BBS_Intro.d64"]
+boot_disk = 11
+boot_file = "triad/ v.l-intro"
+note = "disk set shared by 5 productions"
+
+[demozoo.375137]
+title = "VLD Note 2"
+group = "Vlaardingen Productions"
+source = "script"
+machine = "ntsc_1541"
+
+[demozoo.375863]
+title = "Vlzzz"
+group = "Extend"
+source = "script"
+
+[demozoo.352585]
+title = "VOA"
+group = "Onslaught"
+source = "script"
+
+[demozoo.349289]
+title = "Voglio Volare I"
+group = "The Warriors"
+source = "script"
+boot_file = " voglio  volare "
+
+[demozoo.349290]
+title = "Voglio Volare II"
+group = "The Warriors"
+source = "script"
+
+[demozoo.126735]
+title = "Vogue"
+group = "Orbs"
+source = "script"
+
+[demozoo.9866]
+title = "Void"
+group = "Resource / Coma"
+source = "script"
+disks = ["Void_S1.D64", "Void_S2.D64"]
+swaps = [{ disk = 2, at = 153.4, key = "space", key_delay = 14.3 }]
+
+[demozoo.196838]
+title = "Vojtabrog"
+group = "Psygon"
+source = "script"
+
+[demozoo.82752]
+title = "Volatile"
+group = "Panda Design"
+source = "script"
+
+[demozoo.7684]
+title = "Voodoo People"
+group = "No Name"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.370784]
+title = "Voodoomania"
+group = "Civitas"
+source = "script"
+disks = ["Ody_Rip_Disk_5a.d64", "Ody_Rip_Disk_5b.d64"]
+swaps = [{ disk = 2, at = 409.1, key = "p1fire", key_delay = 28.0 }]
+
+[demozoo.295315]
+title = "Vortex 42 Copy-Party Demo"
+group = "Playboy"
+source = "script"
+
+[demozoo.309675]
+title = "Vovve"
+group = "Rebels"
+source = "script"
+
+[demozoo.325574]
+title = "VQ-Mania"
+group = "Algotech"
+source = "script"
+
+[demozoo.365791]
+title = "Vrrooom Vrrooom"
+group = "White Plague Inc."
+source = "script"
+
+[demozoo.136156]
+title = "Vulcan Salute"
+group = "Fantastic 4 Cracking Group / Atlantis"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.55088]
+title = "VVV"
+group = "The Paranormal Federation"
+source = "script"

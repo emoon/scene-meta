@@ -1,0 +1,2257 @@
+[demozoo.107729]
+title = "Paaarty!"
+group = "Genesis Project"
+source = "script"
+
+[demozoo.336680]
+title = "Pacer (Compo Version)"
+group = "Quark"
+source = "script"
+boot_file = "pacer"
+
+[demozoo.296183]
+title = "Padawans' Awakening"
+group = "Padawans"
+source = "script"
+
+[demozoo.289200]
+title = "Padua Is Growing"
+group = "Padua"
+source = "script"
+
+[demozoo.343644]
+title = "Pag's First 4 KFK"
+group = "Kung-Fu Kids"
+source = "script"
+
+[demozoo.133876]
+title = "Pagan's Mind"
+group = "Dream"
+source = "script"
+
+[demozoo.363646]
+title = "Pages in Blood"
+group = "Pentagram"
+source = "script"
+
+[demozoo.375846]
+title = "Pahos"
+group = "Sad"
+source = "ai"
+machine = "pal_1541_8580"
+kind = "collection"
+result = "unknown"
+disks = ["GFX.D64", "INTROS.D64", "MSX1.D64", "MSX2.D64", "REAL.D64"]
+boot_disk = 5
+boot_file = "pahos       /sad"
+note = "realtime music compo entry 'pahos       /sad' on Forever 3 REAL.D64; single-file tune with a static text screen (sweep no-activity is the unchanging player screen), never asks for another disk"
+
+[demozoo.9360]
+title = "Pain"
+group = "Agony Design"
+source = "script"
+result = "unknown"
+
+[demozoo.183098]
+title = "Pain In The Asm"
+group = "Fairlight / Prosonix / Offence"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.327031]
+title = "Painajainen"
+group = "Yleisradio"
+source = "script"
+
+[demozoo.386680]
+title = "PAK'24 Spring Edition"
+group = "Nicron"
+source = "script"
+machine = "ntsc_1541"
+
+[demozoo.386681]
+title = "PAK'24 Summer Edition"
+group = "Nicron"
+source = "script"
+result = "unknown"
+
+[demozoo.327122]
+title = "Palveluinfo!"
+group = "Yleisradio"
+source = "script"
+result = "unknown"
+
+[demozoo.323719]
+title = "Pamper Boy"
+group = "Cool Cracking Team / Federation Against TMC"
+source = "script"
+
+[demozoo.297974]
+title = "Pamper-Boy"
+group = "Spirit"
+source = "script"
+
+[demozoo.87816]
+title = "Pancakes"
+group = "Beardswitcher"
+source = "script"
+
+[demozoo.345011]
+title = "Pandas"
+group = "Panda Design"
+source = "script"
+
+[demozoo.326881]
+title = "Pannari"
+group = "Yleisradio"
+source = "script"
+result = "unknown"
+
+[demozoo.109117]
+title = "Panopticon"
+group = "Traction / Brainstorm"
+source = "script"
+
+[demozoo.362878]
+title = "Panta 50"
+group = "Fairlight"
+source = "script"
+
+[demozoo.80098]
+title = "Panta Rhei"
+group = "Plush / Instinct / Oxyron"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.290012]
+title = "Panter Surfer"
+group = "Von And Crew"
+source = "script"
+
+[demozoo.352434]
+title = "Panthers"
+group = "Babygang"
+source = "script"
+
+[demozoo.151949]
+title = "PantyWhore"
+group = "Abyss-Connection"
+source = "script"
+
+[demozoo.157611]
+title = "Papcie"
+group = "Menhir"
+source = "script"
+
+[demozoo.360883]
+title = "Papel"
+group = "Pretzel Logic"
+source = "script"
+machine = "pal_1541_8580"
+disks = ["PAPEL_Side1.D64", "PAPEL_Side2.D64"]
+swaps = [{ disk = 2, at = 498.6 }]
+
+[demozoo.306299]
+title = "Paper Demo"
+group = "Swedish Future Crackers"
+source = "script"
+
+[demozoo.286592]
+title = "Paperboy Instructions"
+group = "Skyline"
+source = "script"
+
+[demozoo.347783]
+title = "Paperboy Intro"
+group = "The BAM International"
+source = "script"
+
+[demozoo.285311]
+title = "Paperboy Music"
+group = "Mad Cracking Agency"
+source = "script"
+
+[demozoo.354883]
+title = "Paperpott"
+group = "Contrast"
+source = "script"
+
+[demozoo.137703]
+title = "Pappa Badger"
+group = "Oneway"
+source = "script"
+
+[demozoo.126666]
+title = "Paradance"
+group = "Paradize"
+source = "script"
+
+[demozoo.331331]
+title = "Paradigm"
+group = "Cosine"
+source = "script"
+
+[demozoo.341445]
+title = "Paradise II (The Home of Doctor Marlboro!)"
+group = "Exact"
+source = "script"
+
+[demozoo.347050]
+title = "Paradox"
+group = "Shade"
+source = "script"
+disks = ["paradox.d64", "paradox_shade.d64"]
+note = "the sweep only reached disk 1 of 2"
+
+[demozoo.350059]
+title = "Paradox"
+group = "Bionic"
+source = "script"
+result = "unknown"
+
+[demozoo.380093]
+title = "Paradox"
+group = "Academy"
+source = "script"
+
+[demozoo.344173]
+title = "Paraflex"
+group = "Sea+Cal"
+source = "script"
+
+[demozoo.345956]
+title = "Parallax"
+group = "Scoop Design"
+source = "script"
+
+[demozoo.377772]
+title = "Parallax Tribute"
+group = "Bonzai"
+source = "script"
+
+[demozoo.349872]
+title = "Paramax"
+group = "Ian And Mic"
+source = "script"
+
+[demozoo.306623]
+title = "Paranoid"
+group = "The Warriors 1881"
+source = "script"
+
+[demozoo.351891]
+title = "Paranoid 4"
+group = "Xentrix"
+source = "script"
+
+[demozoo.126733]
+title = "Paranoid 5"
+group = "The Ancient Temple"
+source = "script"
+disks = ["Paranoid_5_SideA.D64", "Paranoid_5_SideB.D64"]
+swaps = [{ disk = 2, at = 131.4, key = "space", key_delay = 12.9 }]
+
+[demozoo.188995]
+title = "Paranoimia"
+group = "A-Star"
+source = "script"
+
+[demozoo.326825]
+title = "Paras"
+group = "Yleisradio"
+source = "script"
+
+[demozoo.338724]
+title = "Paratyphoid"
+group = "Silicon Limited"
+source = "script"
+
+[demozoo.351892]
+title = "Pardy 1"
+group = "Xentrix"
+source = "script"
+
+[demozoo.351893]
+title = "Pardy 3"
+group = "Xentrix"
+source = "script"
+
+[demozoo.351894]
+title = "Pardy Demo 2"
+group = "Xentrix"
+source = "script"
+
+[demozoo.332551]
+title = "Parilasta Parasta"
+source = "script"
+
+[demozoo.340738]
+title = "Paroxysm"
+group = "Dutch USA-Team"
+source = "script"
+result = "unknown"
+
+[demozoo.352435]
+title = "Part Preview Toy"
+group = "Babygang"
+source = "script"
+
+[demozoo.350586]
+title = "Partners in Crime"
+group = "The Digital Underground"
+source = "script"
+
+[demozoo.283358]
+title = "Party"
+group = "Hurricane"
+source = "script"
+
+[demozoo.189106]
+title = "Party Anemals"
+group = "Dinasours"
+source = "script"
+
+[demozoo.293447]
+title = "Party Animals"
+group = "Pretzel Logic"
+source = "script"
+
+[demozoo.327794]
+title = "Party Arrive"
+group = "Detail"
+source = "script"
+
+[demozoo.137707]
+title = "Party Attraction"
+group = "Flash Inc."
+source = "script"
+disks = ["flash_inc_party_attraction-A.d64", "flash_inc_party_attraction-B.d64"]
+swaps = [{ disk = 2, at = 162.6, key = "space", key_delay = 12.7 }]
+
+[demozoo.337227]
+title = "Party Awake"
+group = "Crime Connection"
+source = "script"
+
+[demozoo.293629]
+title = "Party Bugger"
+group = "The Errors"
+source = "script"
+
+[demozoo.6318]
+title = "Party Demo"
+group = "Fire-Eagle / Genesis Project"
+source = "script"
+disks = ["Party_Demo.d64", "Slot_Mashine.d64"]
+swaps = [{ disk = 2, at = 146.7, key = "space", key_delay = 19.2 }]
+
+[demozoo.101543]
+title = "Party Demo"
+group = "Collision / Electric Boyz"
+source = "script"
+
+[demozoo.204103]
+title = "Party Demo"
+group = "The Suppliers"
+source = "script"
+
+[demozoo.288937]
+title = "Party Demo"
+group = "Hate"
+source = "script"
+machine = "ntsc_1541"
+
+[demozoo.336423]
+title = "Party Demo"
+group = "FBR Germany / Acid / Transit / Thrash"
+source = "script"
+
+[demozoo.341446]
+title = "Party Demo"
+group = "Shining 8 / Exact"
+source = "script"
+
+[demozoo.344251]
+title = "Party Demo"
+group = "Plasma"
+source = "script"
+
+[demozoo.345438]
+title = "Party Demo"
+group = "RCS 2100 / Syndrom 2001"
+source = "script"
+result = "unknown"
+
+[demozoo.395917]
+title = "Party Demo"
+group = "Century"
+source = "script"
+machine = "ntsc_1541"
+
+[demozoo.342876]
+title = "Party Demo #2"
+group = "Xenon"
+source = "script"
+
+[demozoo.117775]
+title = "Party Demo 1"
+group = "Aliens"
+source = "script"
+
+[demozoo.293709]
+title = "Party Demo II"
+group = "Thundercats"
+source = "script"
+
+[demozoo.349434]
+title = "Party Demo III"
+group = "Thundercats"
+source = "script"
+
+[demozoo.204109]
+title = "Party Demo IV"
+group = "Thundercats"
+source = "script"
+
+[demozoo.345570]
+title = "Party Futureline"
+group = "Futureline"
+source = "script"
+
+[demozoo.172169]
+title = "Party Groove"
+group = "Resource"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.336354]
+title = "Party II"
+group = "Hurricane"
+source = "script"
+
+[demozoo.336355]
+title = "Party III"
+group = "Hurricane"
+source = "script"
+
+[demozoo.110627]
+title = "Party Image"
+group = "Fashion"
+source = "script"
+
+[demozoo.375786]
+title = "Party On The 64"
+group = "Civitas / The New Dimension / Protovision"
+source = "script"
+machine = "pal_1541_8580"
+kind = "collection"
+disks = ["GFX.D64", "INTROS.D64", "MSX1.D64", "MSX2.D64", "REAL.D64"]
+boot_disk = 3
+boot_file = "party on the 64"
+note = "disk set shared by 19 productions"
+
+[demozoo.6315]
+title = "Party Pack"
+group = "Genesis Project"
+source = "script"
+
+[demozoo.177002]
+title = "Party Pig"
+group = "Booze Design"
+source = "script"
+
+[demozoo.86578]
+title = "Party Report"
+group = "Wiseguy Industries 2015"
+source = "script"
+result = "unknown"
+
+[demozoo.268245]
+title = "Party Results MM! 3"
+source = "script"
+machine = "ntsc_1541"
+
+[demozoo.349693]
+title = "Party Scroll"
+group = "Network"
+source = "script"
+disks = ["Network_1988_PartyScroll.d64", "partyscroll.d64"]
+swaps = [{ disk = 2, at = 64.8, key = "p1fire", key_delay = 37.4 }]
+
+[demozoo.182945]
+title = "Party Song"
+group = "The Danish Circle"
+source = "script"
+
+[demozoo.350864]
+title = "Party Style"
+group = "Impulse"
+source = "script"
+
+[demozoo.19827]
+title = "Party Test"
+group = "Scala Productions"
+source = "script"
+
+[demozoo.358098]
+title = "Party Time"
+group = "Danish Underground Crackers"
+source = "script"
+
+[demozoo.101762]
+title = "Party Time!"
+group = "Richard"
+source = "script"
+machine = "pal_1541_8580"
+disks = ["KBITCOMPO.D64", "Richard_Oxyron_2008_Disk_CORRECT.d64"]
+swaps = [{ disk = 2, at = 193.5, key = "p1fire" }]
+
+[demozoo.334051]
+title = "Party Vector"
+group = "The Ancient Temple"
+source = "script"
+machine = "ntsc_1541"
+
+[demozoo.328878]
+title = "Party Winner"
+group = "Alabama / Opal"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.351517]
+title = "Party Zax"
+group = "Albion Crew"
+source = "script"
+machine = "ntsc_1541"
+boot_file = "...party zax...."
+
+[demozoo.351518]
+title = "Party Zax II"
+group = "Albion Crew"
+source = "script"
+
+[demozoo.389542]
+title = "Party Zone"
+group = "Access"
+source = "script"
+
+[demozoo.331442]
+title = "Party-Demo"
+group = "Century / Alive / Saga Connection"
+source = "script"
+result = "unknown"
+
+[demozoo.337229]
+title = "Party-Demo 2"
+group = "Madonna Cracking Group"
+source = "script"
+
+[demozoo.351663]
+title = "Party-Time"
+group = "Capitol"
+source = "script"
+
+[demozoo.18463]
+title = "Partydemo"
+group = "Onslaught"
+source = "script"
+
+[demozoo.117773]
+title = "Partydemo"
+group = "The Future"
+source = "script"
+result = "unknown"
+
+[demozoo.277529]
+title = "Partydemo"
+group = "Antimon"
+source = "script"
+
+[demozoo.339306]
+title = "Partydemo"
+group = "Byterapers"
+source = "script"
+result = "unknown"
+
+[demozoo.368963]
+title = "Partydemo"
+group = "UnderZone Industries"
+source = "script"
+
+[demozoo.332739]
+title = "Partydemo 2"
+group = "Antiriad"
+source = "script"
+
+[demozoo.340471]
+title = "Partydunexparty"
+group = "Dunex"
+source = "script"
+
+[demozoo.332374]
+title = "Partyfeezer"
+group = "Full Force"
+source = "script"
+result = "unknown"
+
+[demozoo.331568]
+title = "Partypervo"
+group = "Browbeat"
+source = "script"
+
+[demozoo.86285]
+title = "Partyplot"
+group = "Crypt"
+source = "script"
+
+[demozoo.306981]
+title = "Partypopper"
+group = "Fatzone"
+source = "script"
+machine = "pal_1541_8580"
+disks = ["Partypopper-Disk1.d64", "Partypopper-Disk2.d64"]
+swaps = [{ disk = 2, at = 376.2 }]
+
+[demozoo.354682]
+title = "Partypåg"
+group = "Booze Design"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.344135]
+title = "Partyseeker'TOW"
+group = "Black Mail / The Spench / Union"
+source = "script"
+
+[demozoo.110630]
+title = "Partyshock"
+group = "Shockwave"
+source = "script"
+
+[demozoo.55083]
+title = "Partytrap"
+group = "Beyond Force"
+source = "script"
+
+[demozoo.148142]
+title = "Partywagon"
+group = "Artline Designs"
+source = "script"
+machine = "pal_1541_8580"
+boot_file = "partywagon  /ald"
+
+[demozoo.358261]
+title = "Pass Plastic"
+group = "42"
+source = "script"
+
+[demozoo.110859]
+title = "Passion"
+group = "Fraction"
+source = "script"
+
+[demozoo.393022]
+title = "Pasta LVB!"
+group = "BOOM!"
+source = "script"
+
+[demozoo.154697]
+title = "Pasthet"
+group = "Samar"
+source = "script"
+
+[demozoo.358849]
+title = "Patagonia Intro"
+group = "Patagonia / CentralPerk"
+source = "script"
+
+[demozoo.20274]
+title = "Patterns"
+group = "Panda Design"
+source = "script"
+
+[demozoo.302583]
+title = "Patto's Music Collection"
+group = "Onslaught"
+source = "ai"
+disks = ["Patto's Music Collection Side1.d64", "Patto's Music Collection Side2.d64"]
+swaps = [{ disk = 2, at = 180.7, key = "return", key_delay = 10.1 }]
+keys = [{ at = 71.0, key = "space" }, { at = 131.9, key = "down" }, { at = 147.2, key = "return" }]
+note = "Patto's Music Collection: 62-tune player, side B tunes ask for the flip; disk 2: TURN DISK icon shows after Return on a side B tune; no upper limit seen"
+
+[demozoo.330967]
+title = "Paulette"
+group = "Kraksnax"
+source = "script"
+result = "unknown"
+
+[demozoo.343579]
+title = "Pawn Demo"
+group = "Swedish Cracking Crew"
+source = "script"
+
+[demozoo.345203]
+title = "Payback"
+group = "Varsity"
+source = "script"
+disks = ["0208a.d64", "Payback.d64"]
+swaps = [{ disk = 2, at = 604.7, key = "p1fire", key_delay = 35.2 }]
+
+[demozoo.40501]
+title = "PC-fun"
+group = "Replay"
+source = "script"
+
+[demozoo.277560]
+title = "PCIC"
+group = "Kraze"
+source = "script"
+
+[demozoo.205322]
+title = "Peace On Earth"
+group = "Pentagon"
+source = "script"
+result = "unknown"
+
+[demozoo.345237]
+title = "Peace or War"
+group = "Hitmen"
+source = "script"
+
+[demozoo.86572]
+title = "Pearls For Pigs"
+group = "Xenon"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.346247]
+title = "Pebbles"
+group = "Triad"
+source = "script"
+
+[demozoo.325249]
+title = "Pebcak!"
+group = "Gorbat Soft"
+source = "script"
+machine = "ntsc_1541"
+sid = "8580"
+
+[demozoo.357666]
+title = "Pedo-Friends"
+group = "Array / Drive / Demix / FBR Germany / Actual Trading Generation"
+source = "script"
+
+[demozoo.118405]
+title = "Penguin Holiday"
+group = "Genesis Project"
+source = "script"
+
+[demozoo.375498]
+title = "Pensive Woman"
+group = "Lepsi De"
+source = "script"
+
+[demozoo.205994]
+title = "Pentangle Demo I"
+group = "Pentangle"
+source = "script"
+
+[demozoo.314749]
+title = "Perfect Demo"
+group = "Delta 4"
+source = "script"
+
+[demozoo.327151]
+title = "Perfect Ten"
+group = "Barfly"
+source = "script"
+
+[demozoo.357405]
+title = "Perfect Timing"
+group = "Hacker Trick Group"
+source = "ai"
+kind = "standalone"
+disks = ["HTG-Perfect_Timing.d64", "Perfect_Timing.d64"]
+note = "two copies of the same single-prg demo (prgs differ by 1 byte); disks are alternatives"
+
+[demozoo.388752]
+title = "Perfection"
+group = "Newtech"
+source = "script"
+
+[demozoo.366674]
+title = "Perfection 1991"
+group = "Rabiez"
+source = "script"
+
+[demozoo.332359]
+title = "Perfectly Perfection"
+group = "Digitize Design Group / The Voice"
+source = "script"
+
+[demozoo.189454]
+title = "Perform"
+group = "Abadion"
+source = "script"
+
+[demozoo.326876]
+title = "Perkele"
+source = "script"
+
+[demozoo.72174]
+title = "Pero"
+group = "Singular Crew"
+source = "script"
+
+[demozoo.126493]
+title = "Perplex"
+group = "Cosmos"
+source = "script"
+
+[demozoo.357109]
+title = "Perplexing"
+group = "Druid"
+source = "script"
+
+[demozoo.361365]
+title = "Personal Rankings"
+group = "Eltronic"
+source = "script"
+
+[demozoo.343772]
+title = "Personal T2 Demo"
+group = "The Terrible Two"
+source = "script"
+
+[demozoo.324938]
+title = "Pervers Juliet"
+group = "Kraksnax"
+source = "script"
+
+[demozoo.349378]
+title = "Pervo Sex Text 01"
+group = "Jughead / Sorry Morry"
+source = "script"
+
+[demozoo.349382]
+title = "Pervo Sex Text 02"
+group = "Jughead / Sorry Morry"
+source = "script"
+
+[demozoo.349383]
+title = "Pervo Sex Text 03"
+group = "Jughead / Sorry Morry"
+source = "script"
+result = "unknown"
+
+[demozoo.349384]
+title = "Pervo Sex Text 04"
+group = "Jughead / Sorry Morry"
+source = "script"
+
+[demozoo.349385]
+title = "Pervo Sex Text 05"
+group = "Jughead / Sorry Morry"
+source = "script"
+
+[demozoo.349386]
+title = "Pervo Sex Text 06"
+group = "Jughead / Sorry Morry"
+source = "script"
+
+[demozoo.349387]
+title = "Pervo Sex Text 07"
+group = "Jughead / Sorry Morry"
+source = "script"
+result = "unknown"
+
+[demozoo.349388]
+title = "Pervo Sex Text 08"
+group = "Jughead / Sorry Morry"
+source = "script"
+
+[demozoo.349389]
+title = "Pervo Sex Text 09"
+group = "Jughead / Sorry Morry"
+source = "script"
+machine = "ntsc_1541"
+
+[demozoo.349379]
+title = "Pervo Sex Text 10"
+group = "Jughead / Sorry Morry"
+source = "script"
+result = "unknown"
+
+[demozoo.349380]
+title = "Pervo Sex Text 11"
+group = "Jughead / Sorry Morry"
+source = "script"
+
+[demozoo.349381]
+title = "Pervo Sex Text 12"
+group = "Panoramic Designs"
+source = "script"
+
+[demozoo.349390]
+title = "Pervo Song Text 01"
+group = "Sorry Morry"
+source = "script"
+result = "unknown"
+
+[demozoo.349391]
+title = "Pervo Song Text 02"
+group = "Sorry Morry"
+source = "script"
+result = "unknown"
+
+[demozoo.326829]
+title = "Pesaeae"
+group = "Oetoekaet"
+source = "script"
+
+[demozoo.343302]
+title = "Peter Gabriel Demo 1"
+group = "Hanseatic Cracking Association"
+source = "script"
+
+[demozoo.59954]
+title = "Peter Halin on Läski Hårå"
+group = "Jumalauta"
+source = "script"
+
+[demozoo.369816]
+title = "Petrassic"
+group = "Jobj"
+source = "script"
+kind = "collection"
+disks = ["Forever23A.d64", "Forever23B.d64"]
+boot_disk = 2
+boot_file = "petrassic"
+note = "disk set shared by 3 productions"
+
+[demozoo.189908]
+title = "Petrov"
+group = "Noxema"
+source = "script"
+
+[demozoo.375978]
+title = "Petscii Nightmares"
+group = "Judas"
+source = "script"
+disks = ["PetsciiNightmares_A.d64", "PetsciiNightmares_B.d64"]
+swaps = [{ disk = 2, at = 193.3, key = "p1fire", key_delay = 36.5 }]
+
+[demozoo.326545]
+title = "Petskiippi"
+group = "Dekadence"
+source = "script"
+
+[demozoo.361885]
+title = "PEZ Demo"
+group = "Mahna Mahna"
+source = "script"
+
+[demozoo.126667]
+title = "Pez In My Brain"
+group = "Panoramic Designs"
+source = "script"
+
+[demozoo.333861]
+title = "Phantom & Top Duck Instructions"
+group = "Cracking For Lovers"
+source = "script"
+
+[demozoo.327699]
+title = "Phantoms of the Asteroid Music"
+group = "1001 Crew"
+source = "script"
+result = "unknown"
+
+[demozoo.126687]
+title = "Pharaon"
+group = "Delta System / Cadgers"
+source = "script"
+
+[demozoo.359733]
+title = "Phase One"
+group = "Havok"
+source = "script"
+
+[demozoo.90167]
+title = "Phases"
+group = "Crest"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.320547]
+title = "Phatfinger"
+group = "Seism / Doc Science"
+source = "script"
+machine = "ntsc_1541"
+
+[demozoo.126917]
+title = "Phenomena"
+group = "Chaos"
+source = "script"
+
+[demozoo.326551]
+title = "PHILISHAVEGREWINTRO2021DRMASTERPISSRULEZSUCKSCHITHOMOLAMERS"
+group = "The Philishave Grew"
+source = "script"
+
+[demozoo.100771]
+title = "Phlame Extended"
+group = "Victory"
+source = "script"
+
+[demozoo.337952]
+title = "Phleskvann"
+group = "Dinasours"
+source = "script"
+
+[demozoo.384159]
+title = "Phonics Is Dead"
+group = "Phonics"
+source = "script"
+
+[demozoo.205682]
+title = "Phreeeeeeedh"
+group = "Hardcore Mofokkahz"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.347051]
+title = "Physics"
+group = "Shade"
+source = "script"
+
+[demozoo.48632]
+title = "Pi"
+group = "EXclusive ON"
+source = "ai"
+kind = "standalone"
+disks = ["stuff01.d64", "stuff02.d64"]
+note = "disk 1 file 'π loader   /exon' (first byte PETSCII $FF; autostart pattern '? loader*'), plays to end scroller, no flip"
+
+[demozoo.343305]
+title = "Pi.R Squared Music"
+group = "Hanseatic Cracking Association"
+source = "script"
+
+[demozoo.356810]
+title = "Piano Fun'93"
+group = "Groove D-Signs"
+source = "script"
+
+[demozoo.346132]
+title = "Pic In Pic II"
+group = "The OUG-Team"
+source = "script"
+
+[demozoo.206063]
+title = "Picture and Music Orgasm"
+group = "Enigma"
+source = "script"
+
+[demozoo.273853]
+title = "Picture Demo"
+group = "KMS"
+source = "script"
+disks = ["kms_-_picture_demo.d64", "picturedemo-kms.d64"]
+note = "the sweep only reached disk 1 of 2"
+
+[demozoo.273854]
+title = "Picture Info"
+group = "KMS"
+source = "script"
+
+[demozoo.206006]
+title = "Piece"
+group = "Pentangle"
+source = "script"
+result = "unknown"
+
+[demozoo.331687]
+title = "Piece of (S)crap"
+group = "Contex"
+source = "script"
+
+[demozoo.206354]
+title = "Piece of Art"
+group = "The Fighter"
+source = "script"
+
+[demozoo.45080]
+title = "Piece of Cake"
+group = "Defiers"
+source = "script"
+
+[demozoo.356746]
+title = "Piece of Cake"
+group = "Rizing"
+source = "script"
+result = "unknown"
+
+[demozoo.6038]
+title = "Piece of Cake 3"
+group = "Megastyle"
+source = "script"
+
+[demozoo.354884]
+title = "Piece of Coke"
+group = "Contrast"
+source = "script"
+
+[demozoo.354885]
+title = "Piece of Coke II"
+group = "Contrast"
+source = "script"
+
+[demozoo.340019]
+title = "Piece of Coolness"
+group = "Crypt"
+source = "script"
+
+[demozoo.77565]
+title = "Piece of Crap 2"
+group = "Fritske"
+source = "script"
+
+[demozoo.269123]
+title = "Pieces"
+group = "Trash"
+source = "script"
+
+[demozoo.123125]
+title = "Pieces of 8-bit"
+group = "Genesis Project"
+source = "script"
+
+[demozoo.315943]
+title = "Pieces of Art"
+group = "Netmen"
+source = "script"
+
+[demozoo.314674]
+title = "Pieni Maalaiskylä"
+group = "Peeker Mafia"
+source = "script"
+
+[demozoo.50089]
+title = "Pigometrics"
+group = "Secret Lab Productions"
+source = "script"
+
+[demozoo.175221]
+title = "Pilkillae"
+group = "Yleisradio"
+source = "script"
+result = "unknown"
+
+[demozoo.143097]
+title = "Pimp my Bento"
+group = "NOOP"
+source = "script"
+
+[demozoo.114603]
+title = "Pimp my Commodore"
+group = "Resource / Chorus / Singular"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.17939]
+title = "Pimp My Snail"
+group = "Camelot"
+source = "script"
+
+[demozoo.363391]
+title = "Pimpf"
+group = "Mantronix"
+source = "script"
+
+[demozoo.2163]
+title = "Pimplesqueezer 5"
+group = "Rawhead"
+source = "script"
+result = "unknown"
+
+[demozoo.2173]
+title = "Pimplesqueezer 6"
+group = "Rawhead"
+source = "script"
+
+[demozoo.357047]
+title = "Pina's Coli 1"
+group = "Death"
+source = "script"
+result = "unknown"
+
+[demozoo.387845]
+title = "Ping Reply From Outter Space"
+group = "SHAPE"
+source = "script"
+kind = "collection"
+disks = ["X98_Music.d64", "X98_Music_and_Graphics.D64"]
+boot_disk = 2
+boot_file = "ping reply  /grg"
+note = "disk set shared by 5 productions"
+
+[demozoo.325256]
+title = "Piratebot"
+group = "Con Artists"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.342926]
+title = "Piratesland"
+group = "World Cracking Federation"
+source = "script"
+
+[demozoo.361942]
+title = "Piroska & the Wolf Preview"
+group = "Joga Studio"
+source = "script"
+
+[demozoo.350848]
+title = "Piss Off"
+group = "Lazer"
+source = "script"
+
+[demozoo.97314]
+title = "Pista 17"
+group = "Relative"
+source = "script"
+
+[demozoo.266040]
+title = "Pista.pas"
+group = "42"
+source = "script"
+kind = "collection"
+disks = ["AROK1.D64", "AROK2.D64"]
+note = "disk set shared by 6 productions"
+
+[demozoo.377423]
+title = "Pivo-Demo"
+group = "Prowler64"
+source = "script"
+
+[demozoo.392443]
+title = "Pixel Punx Assemble"
+group = "Pixel Punx"
+source = "script"
+
+[demozoo.164707]
+title = "Pixels"
+group = "Fantastic 4 Cracking Group"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.195315]
+title = "Pixels 35"
+group = "Fantastic 4 Cracking Group"
+source = "script"
+
+[demozoo.358099]
+title = "Pizz Off"
+group = "Danish Underground Crackers"
+source = "script"
+
+[demozoo.359734]
+title = "Pizza"
+group = "Havok / Venom"
+source = "script"
+
+[demozoo.338726]
+title = "Plainness"
+group = "Digitech"
+source = "script"
+disks = ["Plainness.D64", "Plainness (1990-09-15)(Digitech).d64"]
+swaps = [{ disk = 2, at = 478.1, key = "p1fire", key_delay = 35.6 }]
+
+[demozoo.274119]
+title = "Plan-M"
+group = "Beyond Force"
+source = "script"
+
+[demozoo.100561]
+title = "Planet Åstorp"
+group = "Afrika"
+source = "script"
+machine = "pal_1541_8580"
+result = "unknown"
+
+[demozoo.346101]
+title = "Planeten Demo 1"
+group = "The OUG-Team"
+source = "script"
+
+[demozoo.107730]
+title = "Plasmalux"
+group = "Metalux"
+source = "script"
+
+[demozoo.306537]
+title = "Plasmatoy Version 2"
+group = "Defame"
+source = "script"
+
+[demozoo.333440]
+title = "Plastic Fantastic"
+group = "Censor Design"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.332610]
+title = "Platoon Demo"
+group = "Ash & Dave"
+source = "ai"
+kind = "standalone"
+disks = ["Platoon Demo A&D.d64", "Platoon_Demo.d64"]
+note = "two relabelled copies of the same single 110-block prg, no flip"
+
+[demozoo.361322]
+title = "Play Me the Song of Death"
+group = "Inox"
+source = "script"
+
+[demozoo.356586]
+title = "Play With Colors 1"
+group = "Wrath Designs"
+source = "script"
+
+[demozoo.356585]
+title = "Play With Colors 2"
+group = "Wrath Designs"
+source = "script"
+
+[demozoo.340262]
+title = "Playboy Music"
+group = "The Guardians Incorporated"
+source = "script"
+
+[demozoo.27771]
+title = "Plazmolytic"
+group = "React"
+source = "script"
+
+[demozoo.194482]
+title = "Plotkiform"
+group = "Hujowa"
+source = "script"
+disks = ["plotkiform_s1.d64", "plotkiform_s2.d64"]
+swaps = [{ disk = 2, at = 270.7 }]
+
+[demozoo.126738]
+title = "Plots 4"
+group = "Varsity"
+source = "script"
+
+[demozoo.201860]
+title = "PLUS+"
+group = "Chrilles Cracking Crew"
+source = "script"
+
+[demozoo.18090]
+title = "Plush World"
+group = "Plush"
+source = "script"
+
+[demozoo.357285]
+title = "Plutonium"
+group = "Fluid"
+source = "script"
+
+[demozoo.327016]
+title = "Pocmoc Kaappaus"
+group = "Yleisradio"
+source = "script"
+
+[demozoo.365767]
+title = "POD Demo"
+group = "Pirates of Denver"
+source = "script"
+
+[demozoo.365759]
+title = "POD Demo (2)"
+group = "Pirates of Denver"
+source = "script"
+
+[demozoo.365761]
+title = "POD Demo (3)"
+group = "Pirates of Denver"
+source = "script"
+disks = ["poddemo3-pod-sb174416-page-zimmermanset2.d64", "smurfannihilator-gavinrkujawa-sb174458-page-zimmermanset3.d64"]
+note = "the sweep only reached disk 1 of 2"
+
+[demozoo.365758]
+title = "POD Demo (4)"
+group = "Pirates of Denver"
+source = "script"
+
+[demozoo.326827]
+title = "Poem"
+source = "script"
+result = "unknown"
+
+[demozoo.326854]
+title = "Poikarakkaus 20pros"
+group = "Yleisradio"
+source = "script"
+result = "unknown"
+
+[demozoo.351896]
+title = "Point Blank"
+group = "Xentrix"
+source = "script"
+result = "crashes-later"
+disks = ["XENTRIX - Point Blank_a.d64", "XENTRIX - Point Blank_b.d64"]
+note = "the sweep only reached disk 1 of 2"
+
+[demozoo.6198]
+title = "Point Zero"
+group = "Silicon Ltd."
+source = "script"
+
+[demozoo.350926]
+title = "Poison"
+group = "Impulse"
+source = "script"
+
+[demozoo.351015]
+title = "Poison 2"
+group = "Impulse"
+source = "script"
+
+[demozoo.86078]
+title = "Poisonous Injection"
+group = "Triad"
+source = "script"
+
+[demozoo.81407]
+title = "Poland"
+group = "Coders With Attitude"
+source = "script"
+
+[demozoo.363587]
+title = "Polar Xmas 2024"
+group = "Code7"
+source = "script"
+
+[demozoo.340634]
+title = "Polarized"
+group = "Renegade Programming Group"
+source = "script"
+
+[demozoo.18774]
+title = "Police!"
+group = "Bitbreaker / Carlos"
+source = "script"
+
+[demozoo.353286]
+title = "Politica"
+group = "Samar Productions"
+source = "script"
+
+[demozoo.326297]
+title = "Polka Vinyl"
+group = "Grue"
+source = "script"
+
+[demozoo.357143]
+title = "Pollution"
+group = "Delta Force Team / International Cracking Entertainment"
+source = "script"
+boot_file = "pollution  [gpz]"
+
+[demozoo.325070]
+title = "Pollytrax 1"
+group = "Xenon"
+source = "script"
+result = "unknown"
+
+[demozoo.325071]
+title = "Pollytrax 2"
+group = "Xenon"
+source = "script"
+
+[demozoo.365921]
+title = "Polser Demo 1"
+group = "Polser Party Posse"
+source = "script"
+
+[demozoo.375842]
+title = "Polyread"
+group = "Gerard Hultink"
+source = "script"
+machine = "pal_1541_8580"
+kind = "collection"
+disks = ["GFX.D64", "INTROS.D64", "MSX1.D64", "MSX2.D64", "REAL.D64"]
+boot_disk = 4
+boot_file = "polyread"
+note = "disk set shared by 19 productions"
+
+[demozoo.363793]
+title = "Pommes Frites"
+group = "Monster Inc."
+source = "script"
+
+[demozoo.345744]
+title = "Pooky's Ripp"
+group = "Mad Hatter / Trust"
+source = "script"
+disks = ["pooky27sripp.d64", "pookys-ripp-complete-trust-mh.d64"]
+note = "the sweep only reached disk 1 of 2"
+
+[demozoo.351204]
+title = "Pool Demo"
+group = "Thunderbolt Cracking Crew"
+source = "script"
+
+[demozoo.126690]
+title = "Poor and Slow"
+group = "Inflexion Development"
+source = "script"
+machine = "ntsc_1541"
+
+[demozoo.41108]
+title = "POP!"
+group = "Dual Crew"
+source = "script"
+
+[demozoo.335387]
+title = "Popcorn II"
+group = "Hype"
+source = "script"
+
+[demozoo.344240]
+title = "Population"
+group = "Vermes"
+source = "script"
+
+[demozoo.232174]
+title = "Pormaskar"
+group = "Vogue Designs"
+source = "script"
+
+[demozoo.350307]
+title = "Porn Pack 01"
+group = "Raiders of the Lost Empire"
+source = "script"
+result = "unknown"
+
+[demozoo.350308]
+title = "Porn Pack 02"
+group = "Raiders of the Lost Empire"
+source = "script"
+result = "unknown"
+boot_file = "pornpack #02/jsl"
+
+[demozoo.361004]
+title = "Porno II"
+group = "United Cracker Corporation"
+source = "script"
+
+[demozoo.347841]
+title = "Pornographic"
+group = "Proxyon"
+source = "script"
+
+[demozoo.50086]
+title = "Portal"
+group = "Lepsi Developments / Miracles"
+source = "script"
+machine = "pal_1541_8580"
+disks = ["portal.d64", "portal2.d64"]
+swaps = [{ disk = 2, at = 394.7 }]
+
+[demozoo.286622]
+title = "Pose"
+group = "Matec"
+source = "script"
+
+[demozoo.332855]
+title = "Positive Karma"
+group = "Chorus"
+source = "script"
+
+[demozoo.79042]
+title = "Postcards from Stockholm"
+group = "Fairlight"
+source = "script"
+
+[demozoo.6039]
+title = "Potholes In My Lawn"
+group = "Science 451"
+source = "script"
+
+[demozoo.184419]
+title = "Power"
+group = "Brain Mission"
+source = "script"
+
+[demozoo.350189]
+title = "Power"
+group = "Caution"
+source = "script"
+result = "unknown"
+
+[demozoo.336304]
+title = "Power Drive"
+group = "Powers of Pain"
+source = "script"
+
+[demozoo.358116]
+title = "Power Guyz"
+group = "Deluxe Edition"
+source = "script"
+
+[demozoo.366397]
+title = "Power No Price"
+group = "Pulse Productions"
+source = "script"
+
+[demozoo.394160]
+title = "Power of 2"
+group = "Darklite / Offence"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.189915]
+title = "Power On"
+group = "Fraction"
+source = "script"
+
+[demozoo.347133]
+title = "Power Train"
+group = "Fear"
+source = "script"
+
+[demozoo.187997]
+title = "Power X-Treme"
+group = "2000 A.D."
+source = "script"
+
+[demozoo.357246]
+title = "Power-Demo Part 1"
+group = "Ruhrpott Cracker Group"
+source = "script"
+
+[demozoo.198113]
+title = "Powerdrive"
+group = "Jay"
+source = "script"
+
+[demozoo.359736]
+title = "Powerdrome"
+group = "Havok"
+source = "script"
+
+[demozoo.394960]
+title = "Powerlame Party"
+group = "Starman / Photony / The Syndicate"
+source = "script"
+
+[demozoo.325186]
+title = "Powerpack II"
+group = "Chic Design"
+source = "script"
+
+[demozoo.126219]
+title = "Powersoft & DRM"
+group = "Powersoft"
+source = "script"
+
+[demozoo.187998]
+title = "Practical Joke"
+group = "2000 A.D."
+source = "script"
+
+[demozoo.330313]
+title = "Pray To Hell"
+group = "The Darkness"
+source = "script"
+
+[demozoo.315898]
+title = "Preacherman"
+group = "The Cops"
+source = "script"
+
+[demozoo.342900]
+title = "Precision"
+group = "Laser Inc. / Fluor"
+source = "script"
+
+[demozoo.280171]
+title = "Predison 2020"
+group = "Fairlight"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.206070]
+title = "Preintro"
+group = "Knickers"
+source = "script"
+
+[demozoo.336711]
+title = "Prejudice"
+group = "Tropic"
+source = "script"
+result = "unknown"
+
+[demozoo.363221]
+title = "Preliminary"
+group = "X-Large"
+source = "script"
+disks = ["Preliminary note.d64", "preliminary_x-l.d64"]
+note = "the sweep only reached disk 1 of 2"
+
+[demozoo.81482]
+title = "Premium Firsttro Gold"
+group = "Bitbreaker"
+source = "script"
+
+[demozoo.170148]
+title = "Prepare For Domination"
+group = "Speedfisters"
+source = "script"
+
+[demozoo.183614]
+title = "Prepared"
+group = "Argus"
+source = "script"
+
+[demozoo.357725]
+title = "Prescience for Future"
+group = "Ecstacy"
+source = "script"
+
+[demozoo.359422]
+title = "Presentable Demo"
+group = "Group 74/Slimesoft"
+source = "script"
+
+[demozoo.181739]
+title = "Presets"
+group = "Cosine"
+source = "script"
+machine = "ntsc_1541"
+disks = ["presets.d64", "v2003-s1.d64", "v2003-s2.d64", "v2003-s3.d64", "v2003-s4.d64"]
+note = "the sweep only reached disk 1 of 5"
+
+[demozoo.298837]
+title = "President Demo"
+group = "The Paco Crew"
+source = "script"
+
+[demozoo.385931]
+title = "Prestige"
+group = "Triad"
+source = "script"
+
+[demozoo.90129]
+title = "Pretending to see the light"
+group = "Fairlight"
+source = "script"
+
+[demozoo.365944]
+title = "Preternatural"
+group = "The Dutches / Channel 4"
+source = "script"
+
+[demozoo.349675]
+title = "Preview"
+group = "The Golden Triangle"
+source = "script"
+
+[demozoo.330038]
+title = "Preview Bebop"
+group = "Cosmic Cracking Force"
+source = "script"
+result = "unknown"
+
+[demozoo.353434]
+title = "Preview Part"
+group = "Silicon Limited"
+source = "script"
+
+[demozoo.79048]
+title = "Pride"
+group = "Triad"
+source = "script"
+
+[demozoo.189755]
+title = "Pride"
+group = "Oxygen64"
+source = "script"
+
+[demozoo.330044]
+title = "Pride and Fame"
+group = "Cosmix Federation"
+source = "script"
+boot_file = "pride and fame 2"
+
+[demozoo.167479]
+title = "Primary Scar"
+group = "World Wide Expressive"
+source = "script"
+
+[demozoo.181740]
+title = "Primary Star 2003 Winners"
+group = "Raiders of the Lost Empire"
+source = "script"
+disks = ["AP29A.D64", "AP29B.D64"]
+swaps = [{ disk = 2, at = 126.9, key = "p2fire", key_delay = 48.6 }]
+
+[demozoo.80103]
+title = "Primary's Color's"
+group = "X-tra Designs"
+source = "script"
+
+[demozoo.164709]
+title = "Prime Time"
+group = "Delysid"
+source = "script"
+
+[demozoo.339623]
+title = "Prime Time"
+group = "Spherical Designs"
+source = "script"
+
+[demozoo.318280]
+title = "Primetime"
+group = "Triad"
+source = "script"
+
+[demozoo.196832]
+title = "Prince"
+group = "Psygon"
+source = "script"
+
+[demozoo.175184]
+title = "Prince of Persia Preview"
+group = "Genesis Project / Onslaught / MaZZA"
+source = "script"
+
+[demozoo.21455]
+title = "Princess in the Kingdom of Subpixels"
+group = "Mahoney"
+source = "script"
+
+[demozoo.285357]
+title = "Print is the new Poke"
+group = "Wil"
+source = "ai"
+kind = "collection"
+disks = ["2019-03-30-10liner_by_hirschi.d64", "bar10der.d64", "bomb.D64", "breakout.d64", "breakout.d64", "dropper.d64", "horse racing.d64", "keyboard_trainer64.d64", "Meteors20.D64", "Meteors20.D64", "Mines20.D64", "Mines64.D64", "MiniMans20.D64", "MiniMans20.D64", "MiniMans20.D64", "Mushrooms.d64", "RACE4YOURLIFE.d64", "Rainbow Diet.d64", "Thief64.D64", "Toilet Roll Pulling.d64", "torpedoboatcommander.d64", "You've Got Mail.d64"]
+note = "Print is the new Poke: 23 unrelated 10-liner contest entries, mixed platforms"
+
+[demozoo.332097]
+title = "Prise de Tete Preview"
+group = "Babygang"
+source = "script"
+
+[demozoo.337421]
+title = "Prissy"
+group = "Beyond Force"
+source = "script"
+disks = ["note_for_prissy.d64", "prissy.d64"]
+note = "the sweep only reached disk 1 of 2"
+
+[demozoo.179667]
+title = "Private Parts"
+group = "Fairlight / Prosonix / Offence"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.334281]
+title = "Pro BMX Sim Demo"
+group = "Dutch Swapping Team"
+source = "script"
+
+[demozoo.129861]
+title = "Pro Memoria 2"
+group = "Arise"
+source = "script"
+disks = ["Promemoria_II.Side_A.D64", "Promemoria_II.Side_B.D64"]
+swaps = [{ disk = 2, at = 109.1, key = "space", key_delay = 13.2 }]
+
+[demozoo.179584]
+title = "Pro Memoria 4"
+group = "Arise"
+source = "script"
+
+[demozoo.337423]
+title = "Problem"
+group = "Beyond Force"
+source = "script"
+
+[demozoo.126700]
+title = "Problem child - Preview"
+group = "Topaz Beerline"
+source = "script"
+
+[demozoo.351235]
+title = "Problemchild - He Knows Me"
+group = "Topaz Beerline"
+source = "script"
+
+[demozoo.86399]
+title = "Produkthandler Kom Her"
+group = "Camelot"
+source = "script"
+
+[demozoo.205265]
+title = "Profanation"
+group = "Anubis"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.125828]
+title = "Professional Demo 2"
+group = "ABC Crackings"
+source = "script"
+
+[demozoo.357035]
+title = "Proform"
+group = "Twins"
+source = "script"
+
+[demozoo.290174]
+title = "Progen"
+group = "Powerzone Designs"
+source = "script"
+
+[demozoo.18796]
+title = "Project Pitchfork"
+group = "Smash Designs"
+source = "script"
+disks = ["project1.d64", "project2.d64"]
+swaps = [{ disk = 2, at = 474.4 }]
+
+[demozoo.390442]
+title = "Project X"
+group = "Xentrix"
+source = "script"
+
+[demozoo.108092]
+title = "Projections"
+group = "Willow"
+source = "script"
+boot_file = "projections  /gb"
+
+[demozoo.366324]
+title = "Proline Time"
+group = "Proline Enterprise"
+source = "script"
+
+[demozoo.319481]
+title = "Prolog"
+group = "Betelgeuze"
+source = "script"
+
+[demozoo.122713]
+title = "Promille Goat"
+group = "Noice"
+source = "script"
+
+[demozoo.368524]
+title = "Promotion"
+group = "Style Designs"
+source = "script"
+
+[demozoo.361401]
+title = "Propaganda"
+group = "International Cracking Entertainment"
+source = "script"
+boot_file = "propaganda [ice]"
+
+[demozoo.308635]
+title = "Propatria"
+group = "Dream"
+source = "script"
+
+[demozoo.4015]
+title = "Prophecy & Fate"
+group = "Bytecult / Civitas"
+source = "script"
+
+[demozoo.188591]
+title = "Propp"
+group = "Noice"
+source = "script"
+
+[demozoo.293949]
+title = "Prost!"
+group = "Alpha Flight"
+source = "script"
+
+[demozoo.359566]
+title = "Protest"
+group = "Hal"
+source = "script"
+
+[demozoo.288537]
+title = "Protogeo 100%"
+group = "Glance"
+source = "script"
+machine = "pal_1541_8580"
+disks = ["protogeo100_glance.d64", "protogeo100_glance_note.d64"]
+note = "the sweep only reached disk 1 of 2"
+
+[demozoo.44395]
+title = "Protogeo 80%"
+group = "Glance"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.172769]
+title = "Proud To Be An Austrian"
+group = "Pulsar"
+source = "script"
+
+[demozoo.270802]
+title = "Proud To Be German"
+group = "Men At Work / The Cracking Mission"
+source = "script"
+
+[demozoo.116520]
+title = "Pseudo Code"
+group = "Noice"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.386819]
+title = "PSP Vice Intro"
+group = "Oriens"
+source = "script"
+
+[demozoo.178773]
+title = "Psy17basic"
+source = "script"
+
+[demozoo.345012]
+title = "Psyche"
+group = "Panda Design"
+source = "script"
+
+[demozoo.184017]
+title = "Psychedelic Delicacy"
+group = "Delysid"
+source = "script"
+
+[demozoo.350625]
+title = "Psychedelic II"
+group = "Tetragon"
+source = "script"
+
+[demozoo.355167]
+title = "Psycho Pigs UXB"
+group = "Hotline"
+source = "script"
+
+[demozoo.368321]
+title = "Psychotechno"
+group = "X-Vector"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.126736]
+title = "Psychotic Dreams"
+group = "Brutal"
+source = "script"
+
+[demozoo.343992]
+title = "Psykling"
+group = "Motiv8"
+source = "script"
+
+[demozoo.327133]
+title = "Psymax"
+group = "Oetoekaet"
+source = "script"
+
+[demozoo.366419]
+title = "PT Intro No.3"
+group = "Pyrotech"
+source = "script"
+
+[demozoo.342671]
+title = "Public Relations"
+group = "Oracle"
+source = "script"
+
+[demozoo.348064]
+title = "Publication"
+group = "The Fantastic Crew"
+source = "script"
+result = "unknown"
+
+[demozoo.119338]
+title = "Puke"
+group = "Dekadence"
+source = "script"
+
+[demozoo.386632]
+title = "Puke"
+group = "Evil"
+source = "script"
+result = "unknown"
+
+[demozoo.368263]
+title = "Puls"
+group = "Sentinel"
+source = "script"
+
+[demozoo.394941]
+title = "Puls-Demo"
+group = "Prologic"
+source = "script"
+
+[demozoo.172840]
+title = "Pulstar"
+group = "Pulsar"
+source = "script"
+
+[demozoo.183390]
+title = "Pump It Up"
+group = "The Danger Zone / The Cosmic Force"
+source = "script"
+
+[demozoo.166617]
+title = "Pumpkin Joyness"
+group = "Hokuto Force"
+source = "script"
+
+[demozoo.332826]
+title = "Pumpkin Nights 2011"
+group = "Crypt"
+source = "script"
+
+[demozoo.356658]
+title = "Punchfixed Bugfix"
+group = "Raiders of the Lost Empire"
+source = "script"
+
+[demozoo.182208]
+title = "Punk Intro 2018"
+group = "PunkPunkPunk"
+source = "script"
+
+[demozoo.276667]
+title = "Punte Bunkte"
+group = "Brainwank"
+source = "script"
+
+[demozoo.116717]
+title = "Pure Acid"
+group = "Dolphins"
+source = "script"
+
+[demozoo.356937]
+title = "Pure Coolness"
+group = "Blue Chip"
+source = "script"
+
+[demozoo.359117]
+title = "Pure Genius"
+group = "Genius Softworks"
+source = "script"
+
+[demozoo.376730]
+title = "Pure Lcpwibes"
+group = "Zyron"
+source = "script"
+machine = "pal_1541_8580"
+result = "unknown"
+
+[demozoo.269116]
+title = "Pure Trash"
+group = "Trash"
+source = "script"
+
+[demozoo.54552]
+title = "Purple"
+group = "Coma"
+source = "script"
+
+[demozoo.315546]
+title = "Purple"
+group = "Censor Design"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.340685]
+title = "Purple Heart Ripp!"
+group = "Abnormal"
+source = "script"
+
+[demozoo.183249]
+title = "Purple Liner Intro"
+group = "Delta Machine"
+source = "script"
+
+[demozoo.183252]
+title = "Purple Liner Intro V2"
+group = "Delta Machine"
+source = "script"
+
+[demozoo.345182]
+title = "Push And See"
+group = "Bros"
+source = "script"
+
+[demozoo.125824]
+title = "Push It"
+group = "Joost Impink"
+source = "script"
+
+[demozoo.183859]
+title = "Push It"
+group = "Swedish Commodore Cracking Service"
+source = "script"
+
+[demozoo.340201]
+title = "Push-It"
+group = "JCH"
+source = "script"
+result = "unknown"
+
+[demozoo.90592]
+title = "Pushing Bits"
+group = "cmp"
+source = "script"
+
+[demozoo.289465]
+title = "PW's Demo 1"
+group = "P.W."
+source = "script"
+
+[demozoo.309217]
+title = "PW's Letter #4"
+group = "P.W."
+source = "script"
+
+[demozoo.307888]
+title = "PW's Letter 3"
+group = "P.W."
+source = "script"
+
+[demozoo.350114]
+title = "Pyralizer Preview"
+group = "Time / Saga Connection"
+source = "script"
+
+[demozoo.360879]
+title = "Pyramage"
+group = "Finnish Gold"
+source = "script"
+
+[demozoo.395189]
+title = "Pálinka Gulyás"
+group = "Hungry Hackers of Hungary"
+source = "script"
+
+[demozoo.311502]
+title = "Pösö"
+group = "dA JoRMaS"
+source = "script"

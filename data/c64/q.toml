@@ -1,0 +1,137 @@
+[demozoo.352837]
+title = "QCF - The Pride of Queensland"
+group = "Queensland Copy Federation"
+source = "script"
+
+[demozoo.386579]
+title = "Qdor Qdor"
+group = "Fairlight"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.363761]
+title = "Qiuckmuz"
+group = "Mjau"
+source = "script"
+
+[demozoo.364483]
+title = "Qobbat"
+group = "Newness"
+source = "script"
+
+[demozoo.19875]
+title = "qr"
+group = "Abnormal / Hoaxers"
+source = "script"
+
+[demozoo.178399]
+title = "Quad Core"
+group = "Singular Crew"
+source = "ai"
+kind = "standalone"
+disks = ["Quad_Core_bl.d64", "Quad_Core_br.d64", "Quad_Core_tl.d64", "Quad_Core_tr.d64"]
+note = "4 disks = 4 screen quarters for 4 simultaneous C64s (readme); not a chain, no flip; starts on joy1 fire"
+
+[demozoo.178]
+title = "Quadrant"
+group = "Chorus"
+source = "script"
+result = "unknown"
+boot_file = "quadrant /chorus"
+
+[demozoo.366497]
+title = "Quadrant Bust 2"
+group = "The Quadrant"
+source = "script"
+
+[demozoo.359737]
+title = "Quality"
+group = "Havok"
+source = "script"
+result = "unknown"
+
+[demozoo.366458]
+title = "Quari Demo 03"
+group = "Quari Cracking Group"
+source = "script"
+
+[demozoo.366460]
+title = "Quari Demo 05"
+group = "Quari Cracking Group"
+source = "script"
+
+[demozoo.339916]
+title = "Quaver"
+group = "Xenon"
+source = "script"
+
+[demozoo.333858]
+title = "Que-dex Loading Music"
+group = "Cracking For Lovers"
+source = "script"
+
+[demozoo.334023]
+title = "Quedex Sounds"
+group = "Zorro Soft Switzerland"
+source = "script"
+
+[demozoo.388163]
+title = "Queen Demo"
+group = "Jaybird"
+source = "script"
+
+[demozoo.343469]
+title = "Queen-Special"
+group = "The Supersonics"
+source = "script"
+
+[demozoo.204112]
+title = "Quel Homme"
+group = "Agile"
+source = "script"
+
+[demozoo.336826]
+title = "Quest-of-the"
+group = "KrionyX"
+source = "script"
+
+[demozoo.343364]
+title = "Quick Score Ballad"
+group = "Spider Jerusalem"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.326313]
+title = "Quickie"
+group = "Hevosmiesten Tietotoimisto"
+source = "script"
+
+[demozoo.343263]
+title = "Quietus"
+group = "Padua"
+source = "ai"
+machine = "pal_1541_8580"
+kind = "standalone"
+disks = ["01.x2018 6581 music.d64", "02.x2018 8580 music.d64", "03.x2018 8580 music.d64"]
+note = "Quietus: disks are 6581/8580 SID alternatives of one music disk; disk 1 stays alive 690M cycles, no flip asked"
+
+[demozoo.345406]
+title = "Quite Kool"
+group = "New Formula Crew"
+source = "script"
+
+[demozoo.362082]
+title = "Quizzical"
+group = "Knickers"
+source = "script"
+
+[demozoo.312232]
+title = "Quo Vadis"
+group = "Dream"
+source = "script"
+
+[demozoo.289017]
+title = "Quorra Likes Sprites!"
+group = "Onslaught"
+source = "script"
+machine = "pal_1541_8580"

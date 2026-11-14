@@ -1,0 +1,1396 @@
+[demozoo.353254]
+title = "L'Anti-Club"
+group = "Axis"
+source = "script"
+
+[demozoo.312560]
+title = "L'Encyclopédie Géométrique - Last Dance"
+group = "Wrath Designs"
+source = "ai"
+machine = "pal_1541_8580"
+kind = "standalone"
+disks = ["ENCYC ART SIDE2.D64", "ENCYC ART SIDE 1.D64", "last_dance.d64"]
+boot_disk = 3
+note = "Production is last_dance.d64 (disk 3, boot_disk=2); ENCYC ART SIDE1/2 are an unrelated artwork release. Runs with no flip."
+
+[demozoo.364357]
+title = "L.C.E. Sound XIV"
+group = "New Imports / Fantasy Cracking Service"
+source = "script"
+
+[demozoo.364355]
+title = "L.C.E. Sound XIX"
+group = "New Imports"
+source = "script"
+
+[demozoo.364358]
+title = "L.C.E. Sound XVI"
+group = "New Imports"
+source = "script"
+
+[demozoo.364354]
+title = "L.C.E. Sound XVIII"
+group = "New Imports"
+source = "script"
+
+[demozoo.359146]
+title = "La Boum Music!"
+group = "Gigaline"
+source = "script"
+
+[demozoo.26167]
+title = "La Linea"
+group = "Breeze"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.349668]
+title = "Laaame"
+group = "The Golden Triangle"
+source = "script"
+machine = "ntsc_1541"
+disks = ["Laaame.d64", "TGT_1989_Laaame.d64"]
+note = "the sweep only reached disk 1 of 2"
+
+[demozoo.193486]
+title = "Lachsack"
+group = "Terminator Tomes"
+source = "script"
+
+[demozoo.342925]
+title = "Lambada"
+group = "World Cracking Federation"
+source = "script"
+
+[demozoo.367389]
+title = "Lambada"
+group = "Rookies"
+source = "script"
+
+[demozoo.325364]
+title = "Lamborghini"
+group = "XL-Crackers"
+source = "script"
+
+[demozoo.343830]
+title = "Lame"
+group = "Across"
+source = "script"
+
+[demozoo.356840]
+title = "Lame & Bug"
+group = "Xenium"
+source = "script"
+
+[demozoo.193139]
+title = "Lame 'N' Lousy"
+group = "Abnormal"
+source = "script"
+
+[demozoo.357930]
+title = "Lame Collection"
+group = "Electronic Generation"
+source = "script"
+boot_file = "lame-collection"
+
+[demozoo.387890]
+title = "Lame Filler"
+group = "Mute 101"
+source = "script"
+result = "unknown"
+
+[demozoo.361395]
+title = "Lame Machine"
+group = "International Cracking Entertainment"
+source = "script"
+result = "unknown"
+
+[demozoo.290798]
+title = "Lame Off"
+group = "Danish Underground Crackers / Crackforce"
+source = "script"
+
+[demozoo.122686]
+title = "Lame Over"
+group = "War Deal Lamers"
+source = "script"
+result = "unknown"
+
+[demozoo.198729]
+title = "Lamecruncher"
+group = "Squadron"
+source = "script"
+
+[demozoo.204035]
+title = "Lameness"
+group = "Pride"
+source = "script"
+result = "unknown"
+
+[demozoo.100774]
+title = "Lameness '93"
+group = "Transcom Serbia"
+source = "script"
+
+[demozoo.122685]
+title = "Lameness Rules"
+group = "Oxyron"
+source = "script"
+
+[demozoo.356834]
+title = "Lamer Thing"
+group = "Equinoxe / Alagazam"
+source = "script"
+
+[demozoo.205999]
+title = "Lamers"
+group = "Pentangle"
+source = "script"
+
+[demozoo.343304]
+title = "Lamers at Post"
+group = "Hanseatic Cracking Association"
+source = "script"
+
+[demozoo.100049]
+title = "Lamers Can Party"
+group = "MuMu21"
+source = "script"
+
+[demozoo.373145]
+title = "Lampa i Sofa"
+group = "Surgeon"
+source = "script"
+machine = "pal_1541_8580"
+boot_file = "lampa i sofa"
+
+[demozoo.351665]
+title = "Landscape"
+group = "Capitol"
+source = "script"
+
+[demozoo.192144]
+title = "Larger Than Life"
+group = "Blues Muz' / SHAPE"
+source = "script"
+
+[demozoo.269543]
+title = "Larryland"
+group = "Raiders of the Lost Empire"
+source = "script"
+
+[demozoo.344258]
+title = "Lascivious"
+group = "Plasma"
+source = "script"
+
+[demozoo.361561]
+title = "Laser Logo 1.1"
+group = "Laser Cracking Service"
+source = "script"
+result = "unknown"
+
+[demozoo.21453]
+title = "Lash"
+group = "Fairlight"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.336314]
+title = "Lasonic Logo"
+group = "The Ruling Company / World Wide Expressive"
+source = "script"
+
+[demozoo.314912]
+title = "Last Demo"
+group = "Delta 4"
+source = "script"
+
+[demozoo.356932]
+title = "Last Demo"
+group = "The Dark Boys"
+source = "script"
+
+[demozoo.311021]
+title = "Last Episode"
+group = "Avenge Limited / Silicon Limited"
+source = "script"
+
+[demozoo.368961]
+title = "Last Ninja 2 Ripp"
+group = "UnderZone Industries"
+source = "script"
+
+[demozoo.351657]
+title = "Last Ninja 3 Music Demo"
+group = "Cabana"
+source = "script"
+
+[demozoo.363487]
+title = "Last Ninja Muzax"
+group = "Mega Soft Incorporated"
+source = "script"
+
+[demozoo.356182]
+title = "Last Piece"
+group = "Tristar / Flexible"
+source = "script"
+
+[demozoo.358501]
+title = "Last Piper"
+group = "From The Ashes"
+source = "script"
+result = "unknown"
+
+[demozoo.296996]
+title = "Last Rabbish"
+group = "Fantasy Cracking Service"
+source = "script"
+result = "unknown"
+
+[demozoo.343459]
+title = "Last Shit"
+group = "Proceeding Crackers"
+source = "script"
+
+[demozoo.340003]
+title = "Last Soldiers of Hell"
+group = "Crypt"
+source = "script"
+
+[demozoo.344658]
+title = "Last TDM Logo"
+group = "Army"
+source = "script"
+result = "unknown"
+
+[demozoo.178314]
+title = "Last Touch"
+group = "Blazon"
+source = "script"
+
+[demozoo.348029]
+title = "Last Work 4 Asphyxia"
+group = "Asphyxia"
+source = "script"
+result = "unknown"
+
+[demozoo.61258]
+title = "Late Ejaculation"
+group = "Elysium"
+source = "script"
+disks = ["late_ejaculation_a.d64", "late_ejaculation_b.d64"]
+swaps = [{ disk = 2, at = 520.1 }]
+
+[demozoo.232198]
+title = "Latest Demo"
+group = "The Real Hitmen"
+source = "script"
+
+[demozoo.91062]
+title = "Laugh Until Your Head Burns"
+group = "Chrome"
+source = "script"
+
+[demozoo.187988]
+title = "Laxilite"
+group = "2000 A.D."
+source = "script"
+
+[demozoo.295288]
+title = "Laxity Intro #105 (Enlightenment)"
+group = "Laxity"
+source = "script"
+
+[demozoo.171333]
+title = "Laxity Intro #62 (Big Disco)"
+group = "Laxity"
+source = "script"
+
+[demozoo.170110]
+title = "Laxity Intro #71 (Mad Joker)"
+group = "Laxity"
+source = "script"
+
+[demozoo.166509]
+title = "Laxity Intro #72 (Swing-A-Round)"
+group = "Laxity"
+source = "script"
+
+[demozoo.126465]
+title = "Lazer Link"
+group = "The Ancient Temple"
+source = "script"
+result = "unknown"
+boot_file = "[tat] lazer link"
+
+[demozoo.389796]
+title = "Lazy Prophet"
+group = "Project ECHTZEIT"
+source = "script"
+
+[demozoo.352211]
+title = "Lazyness Farewell Demo"
+group = "Red Sector Inc."
+source = "script"
+
+[demozoo.376666]
+title = "LCP 2005"
+group = "Fantastic 4 Cracking Group"
+source = "script"
+machine = "pal_1541_8580"
+result = "unknown"
+boot_file = "lcp 2005 . zyron"
+
+[demozoo.376732]
+title = "LCP 2k"
+group = "Fantastic 4 Cracking Group / Oxsid Planetary"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.322888]
+title = "LCP 98 Party"
+group = "Dual Crew Shining"
+source = "script"
+
+[demozoo.97504]
+title = "LCP Memories"
+group = "Fairlight / Instinct"
+source = "script"
+
+[demozoo.76205]
+title = "Le Phant"
+group = "Dekadence"
+source = "script"
+
+[demozoo.189920]
+title = "Lech"
+group = "Zwiastun Swietej Jehowy"
+source = "script"
+
+[demozoo.178167]
+title = "Leech Invasion"
+group = "Source Underground Network"
+source = "script"
+
+[demozoo.316533]
+title = "Leffty Left"
+group = "Aregon / Venom"
+source = "script"
+
+[demozoo.195868]
+title = "Left Over Music"
+group = "Spider Jerusalem"
+source = "script"
+
+[demozoo.282601]
+title = "Legacy"
+group = "Censor Design"
+source = "script"
+
+[demozoo.126213]
+title = "Legalise It"
+group = "Vision"
+source = "script"
+
+[demozoo.356663]
+title = "Legend"
+group = "Xenogamy"
+source = "script"
+
+[demozoo.349127]
+title = "Legend Mix"
+group = "The Danish Circle"
+source = "script"
+
+[demozoo.298836]
+title = "Legend of Kage Music"
+group = "Terrestrial Breakin' Company"
+source = "script"
+result = "unknown"
+
+[demozoo.285955]
+title = "Legend of SGS"
+group = "Skylight Game Swapping"
+source = "script"
+
+[demozoo.347325]
+title = "Legendary Oldies #01"
+group = "Rebels"
+source = "script"
+
+[demozoo.349996]
+title = "Legendary Oldies #02"
+group = "The Remembers"
+source = "ai"
+kind = "standalone"
+disks = ["Legendary Oldies 2 [Side 1].d64", "Legendary Oldies 2 [Side 2].d64"]
+note = "side 2 = extra text seq files; scroller never touches the drive after 40M"
+
+[demozoo.349997]
+title = "Legendary Oldies #03"
+group = "The Remembers"
+source = "script"
+disks = ["LegendaryOldies3a_1994.d64", "LegendaryOldies3b_1994.d64"]
+swaps = [{ disk = 2, at = 128.7, key = "space", key_delay = 18.2 }]
+
+[demozoo.382666]
+title = "Legendary Oldies #04"
+group = "The Remembers"
+source = "script"
+disks = ["the_remembers-legendary_oldies_4-s1.d64", "the_remembers-legendary_oldies_4-s2.d64"]
+swaps = [{ disk = 2, at = 46.2, key = "p2fire", key_delay = 53.5 }]
+
+[demozoo.349234]
+title = "Legendary Oldies #05"
+group = "Nostalgia"
+source = "script"
+
+[demozoo.327355]
+title = "Legends"
+group = "Agile"
+source = "script"
+
+[demozoo.351009]
+title = "Legion Logo"
+group = "Impulse / Reflex"
+source = "script"
+
+[demozoo.55086]
+title = "Legoland 2"
+group = "Fairlight"
+source = "script"
+
+[demozoo.6195]
+title = "Legoland 3"
+group = "Fairlight"
+source = "script"
+disks = ["Legoland 3-1.d64", "Legoland 3-2.d64"]
+swaps = [{ disk = 2, at = 288.6, key = "space", key_delay = 16.9 }]
+
+[demozoo.90593]
+title = "Leifi!"
+group = "Dual Crew"
+source = "script"
+
+[demozoo.361916]
+title = "Lemmi-Out!"
+group = "Atlantis"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.350692]
+title = "Lemon 64 2003 Games Champion"
+group = "The New Dimension"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.77221]
+title = "Lentävä Matto"
+group = "ISO"
+source = "script"
+result = "unknown"
+
+[demozoo.345692]
+title = "Lepsi Max #9"
+group = "Lepsi De"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.86431]
+title = "Lessons in Lust"
+group = "X-Factor"
+source = "script"
+
+[demozoo.327743]
+title = "Let It Be"
+group = "Soedesoft"
+source = "script"
+
+[demozoo.337779]
+title = "Let the Funk Flow"
+group = "Digitech"
+source = "script"
+
+[demozoo.97274]
+title = "Let's DYCP!"
+group = "The Ruling Company"
+source = "script"
+
+[demozoo.349348]
+title = "Let's Fight!"
+group = "Data"
+source = "script"
+machine = "pal_1541_8580"
+kind = "collection"
+disks = ["v2003-s1.d64", "v2003-s2.d64", "v2003-s3.d64", "v2003-s4.d64"]
+note = "disk set shared by 8 productions"
+
+[demozoo.336377]
+title = "Let's Melt!"
+group = "Magnetix / The Ancient Temple"
+source = "script"
+
+[demozoo.349906]
+title = "Let's Oldie"
+group = "Jam"
+source = "script"
+disks = ["01lets_oldie-JAM.d64", "02lets_oldie-JAM.d64"]
+swaps = [{ disk = 2, at = 148.4, key = "space", key_delay = 19.0 }]
+
+[demozoo.189284]
+title = "Let's Party"
+group = "The Golden Triangle"
+source = "script"
+
+[demozoo.359872]
+title = "Let's Party"
+group = "Hexagon"
+source = "script"
+
+[demozoo.395998]
+title = "Let's party with Dano50(%)"
+group = "Padua"
+source = "script"
+
+[demozoo.184035]
+title = "Let's Rule!"
+group = "Axenon"
+source = "script"
+
+[demozoo.84340]
+title = "Let's Scroll It"
+group = "c64.com"
+source = "script"
+disks = ["let's_scroll_it_a.d64", "let's_scroll_it_b.d64"]
+swaps = [{ disk = 2, at = 434.5 }]
+
+[demozoo.340005]
+title = "Let's Session"
+group = "Crypt"
+source = "script"
+
+[demozoo.290877]
+title = "Let's Shock the Cops"
+group = "Crack Swap Industries"
+source = "script"
+
+[demozoo.341968]
+title = "Let's Talk"
+group = "House Designs"
+source = "script"
+
+[demozoo.300761]
+title = "Let's Twisting"
+group = "Jupp3"
+source = "script"
+
+[demozoo.206403]
+title = "Let'z Go West!"
+group = "West End Boys"
+source = "script"
+
+[demozoo.327050]
+title = "Lethal Display"
+group = "Bonzai"
+source = "script"
+
+[demozoo.327051]
+title = "Lethal Display 2"
+group = "Bonzai"
+source = "script"
+
+[demozoo.190413]
+title = "Lethal Display 3"
+group = "Bonzai"
+source = "script"
+
+[demozoo.126537]
+title = "Lethal Display 4"
+group = "Bonzai"
+source = "script"
+
+[demozoo.360882]
+title = "Lethal Display 6"
+group = "Bonzai"
+source = "script"
+
+[demozoo.193487]
+title = "Letter"
+group = "Terminator Tomes"
+source = "script"
+
+[demozoo.347423]
+title = "Letter 2"
+group = "Real Amazing Federation"
+source = "script"
+
+[demozoo.296899]
+title = "Letter From DDC"
+group = "De Danske Crackers"
+source = "script"
+
+[demozoo.300623]
+title = "Letter I"
+group = "Swedish Future Crackers"
+source = "script"
+
+[demozoo.306297]
+title = "Letter Number 2"
+group = "P.W."
+source = "script"
+
+[demozoo.197843]
+title = "Level One"
+group = "Cosine"
+source = "script"
+
+[demozoo.273850]
+title = "Leviathan"
+group = "Copyright Escape"
+source = "script"
+
+[demozoo.360827]
+title = "Lftyle"
+group = "Yleisradio"
+source = "script"
+result = "unknown"
+
+[demozoo.324948]
+title = "Liar"
+group = "Kraksnax"
+source = "script"
+
+[demozoo.365840]
+title = "Liberace Madness"
+group = "Pleasure Dome Crew"
+source = "script"
+boot_file = "liberace mad/pdc"
+
+[demozoo.291892]
+title = "Libidinous!"
+group = "Supreme"
+source = "script"
+
+[demozoo.360532]
+title = "Licence to Drive"
+group = "Impact"
+source = "script"
+
+[demozoo.205998]
+title = "Lick my Ass"
+group = "Pentangle"
+source = "script"
+
+[demozoo.293723]
+title = "Lier Ranx (1)"
+group = "Sentec"
+source = "script"
+
+[demozoo.293726]
+title = "Lier Ranx (2)"
+group = "Technic / Sentec"
+source = "script"
+
+[demozoo.293957]
+title = "Lier Ranx (3)"
+group = "Sentec"
+source = "script"
+
+[demozoo.324945]
+title = "Life"
+group = "Kraksnax"
+source = "script"
+
+[demozoo.386097]
+title = "LIFE"
+group = "JSL"
+source = "script"
+
+[demozoo.309670]
+title = "Life Cycle"
+group = "Prosonix / Offence"
+source = "script"
+
+[demozoo.23767]
+title = "Life is CENTRIC"
+group = "Centric"
+source = "script"
+
+[demozoo.330122]
+title = "Life...!"
+group = "Invasion"
+source = "script"
+result = "unknown"
+
+[demozoo.168284]
+title = "Lifeline"
+group = "Stars On SixtyFour"
+source = "script"
+
+[demozoo.126220]
+title = "Lifestyle"
+group = "World Wide Expressive"
+source = "script"
+
+[demozoo.331456]
+title = "Lifestyle"
+group = "Brutal"
+source = "script"
+
+[demozoo.162826]
+title = "Lifework"
+group = "Arise"
+source = "script"
+disks = ["Lifework_Arise_S1.d64", "Lifework_Arise_S2.d64"]
+swaps = [{ disk = 2, at = 185.9, key = "space", key_delay = 17.0 }]
+
+[demozoo.358498]
+title = "Light"
+group = "From The Ashes"
+source = "script"
+
+[demozoo.301067]
+title = "Light Commando"
+group = "Micro Mouth"
+source = "script"
+
+[demozoo.126306]
+title = "Light Some Dreams"
+group = "Science 451"
+source = "script"
+
+[demozoo.346860]
+title = "Lightforce Intro"
+group = "Fantasy Cracking Service"
+source = "script"
+
+[demozoo.336316]
+title = "Lightning"
+group = "Union"
+source = "script"
+
+[demozoo.332208]
+title = "Lightning 2"
+group = "Union"
+source = "script"
+disks = ["Lightning 2 [Union].d64", "Lightning_II.D64"]
+swaps = [{ disk = 2, at = 159.9, key = "space", key_delay = 17.1 }]
+
+[demozoo.187989]
+title = "Lights of Dawn"
+group = "2000 A.D."
+source = "script"
+
+[demozoo.274576]
+title = "Limbo Living"
+group = "Fossil"
+source = "script"
+
+[demozoo.332587]
+title = "Linuxemu 0.1"
+group = "Yleisradio"
+source = "script"
+result = "unknown"
+
+[demozoo.345492]
+title = "Lion Talk"
+group = "Orion"
+source = "script"
+
+[demozoo.286499]
+title = "Liquid Booze"
+group = "Booze Design"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.302632]
+title = "Listen to This"
+group = "The Papillons"
+source = "script"
+result = "unknown"
+
+[demozoo.153826]
+title = "Liten Sopp"
+group = "Svenonacid"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.345767]
+title = "Litter"
+group = "Lepsi De"
+source = "script"
+
+[demozoo.366319]
+title = "Little Boxes"
+group = "Proline Enterprise"
+source = "script"
+
+[demozoo.356808]
+title = "Little Collection #1"
+group = "Groove D-Signs"
+source = "script"
+result = "unknown"
+
+[demozoo.359017]
+title = "Little Contact Demo"
+group = "Gambler Cracking Service"
+source = "script"
+
+[demozoo.184418]
+title = "Little Demo"
+group = "Brain Mission"
+source = "script"
+
+[demozoo.184594]
+title = "Little Demo"
+group = "Destiny Seven"
+source = "script"
+
+[demozoo.281919]
+title = "Little Demo"
+group = "The Fun Factory"
+source = "script"
+
+[demozoo.286620]
+title = "Little Demo"
+group = "The Web Inc."
+source = "script"
+
+[demozoo.73426]
+title = "Little Lame Intro"
+group = "The Ultra Crew"
+source = "script"
+
+[demozoo.361396]
+title = "Little Pack"
+group = "International Cracking Entertainment"
+source = "script"
+disks = ["little_pack-ice.d64", "Mixed2.d64"]
+note = "the sweep only reached disk 1 of 2"
+
+[demozoo.193141]
+title = "Little Shit"
+group = "Abnormal"
+source = "script"
+result = "unknown"
+
+[demozoo.293081]
+title = "Little SPC Demo"
+group = "Speedcracker Crew"
+source = "script"
+result = "unknown"
+
+[demozoo.363167]
+title = "Little Toy Story"
+group = "Mad+Bad"
+source = "script"
+
+[demozoo.338484]
+title = "Little Xmas Demo"
+group = "Hexagon"
+source = "script"
+
+[demozoo.3763]
+title = "Live from Breakpoint"
+group = "Singular Crew"
+source = "script"
+
+[demozoo.362972]
+title = "Lively"
+group = "Lore of Arts"
+source = "script"
+
+[demozoo.80106]
+title = "Living"
+group = "Glance"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.197463]
+title = "Living Legend"
+group = "The Concept Kids"
+source = "script"
+
+[demozoo.356183]
+title = "Living M.A.D."
+group = "Tristar"
+source = "script"
+
+[demozoo.351388]
+title = "Living On Video!"
+group = "Stoat & Tim"
+source = "script"
+
+[demozoo.361860]
+title = "LM Dir Fun"
+group = "Onslaught"
+source = "script"
+result = "unknown"
+
+[demozoo.325703]
+title = "Lo-fi SID Music to Study/Relax to"
+group = "Hackers"
+source = "script"
+
+[demozoo.362973]
+title = "LOA Intro"
+group = "Lore of Arts"
+source = "script"
+
+[demozoo.374608]
+title = "Load & Run"
+group = "Collusion"
+source = "script"
+
+[demozoo.363938]
+title = "Load to See"
+group = "Nemesis"
+source = "script"
+
+[demozoo.358094]
+title = "Load-Runner"
+group = "Danish Underground Crew"
+source = "script"
+
+[demozoo.90166]
+title = "Loaded"
+group = "Fairlight"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.327149]
+title = "Loader.prg"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.26007]
+title = "Lobotomia"
+group = "Rave Network Overscan / Dekadence"
+source = "script"
+
+[demozoo.318737]
+title = "Location"
+group = "Foxx Inc."
+source = "script"
+
+[demozoo.98932]
+title = "Loda Error"
+group = "Elyta"
+source = "script"
+kind = "collection"
+disks = ["2_forever_young_by_tropyx.d64", "5_conrad_dash_by_conrad&v12.d64", "7_loda_error_by_elyta.d64"]
+boot_disk = 3
+boot_file = "loda error/elyta"
+note = "disk set shared by 3 productions"
+
+[demozoo.871]
+title = "Loeoeppi"
+group = "Oetoekaet"
+source = "script"
+
+[demozoo.326296]
+title = "Loeoeppilehemae"
+group = "Oetoekaet"
+source = "script"
+
+[demozoo.189727]
+title = "Logic Control"
+group = "Fraction"
+source = "script"
+result = "unknown"
+
+[demozoo.350018]
+title = "Logical"
+group = "X-Factor"
+source = "script"
+
+[demozoo.291666]
+title = "Logo #6"
+group = "Eagle Electronics"
+source = "script"
+machine = "ntsc_1541"
+
+[demozoo.357533]
+title = "Logo #7"
+group = "Guards of Doom"
+source = "script"
+
+[demozoo.331683]
+title = "Logo 4 wot crew"
+group = "Contex"
+source = "script"
+
+[demozoo.185042]
+title = "Logo Competition"
+group = "Sodom"
+source = "script"
+
+[demozoo.332144]
+title = "Logo Contest"
+group = "Drive"
+source = "script"
+
+[demozoo.293670]
+title = "Logo Demo"
+group = "Cryptic Tales"
+source = "script"
+
+[demozoo.344873]
+title = "Logo for Escape"
+group = "Powerzone Designs"
+source = "script"
+
+[demozoo.388725]
+title = "Logo for L11"
+group = "Newtech"
+source = "script"
+
+[demozoo.293954]
+title = "Logo for Level 11"
+group = "Technic / Sentec"
+source = "script"
+
+[demozoo.291636]
+title = "Logo for Paradize"
+group = "Exalt"
+source = "script"
+
+[demozoo.336693]
+title = "Logo for WWE"
+group = "The Ruling Company"
+source = "script"
+result = "unknown"
+
+[demozoo.344874]
+title = "Logo For X-Rated"
+group = "Powerzone Designs"
+source = "script"
+
+[demozoo.290160]
+title = "Logo-Tronix"
+group = "Powerzone Designs"
+source = "script"
+
+[demozoo.353161]
+title = "Logos of 88"
+group = "Tronix / The Zeroboys"
+source = "script"
+
+[demozoo.349687]
+title = "Logoshow"
+group = "Network"
+source = "script"
+
+[demozoo.168734]
+title = "Lollipop"
+group = "Delysid"
+source = "script"
+
+[demozoo.395928]
+title = "Lonely"
+group = "The Cat"
+source = "script"
+kind = "collection"
+disks = ["Bytestar_party_1989a.D64", "Bytestar_party_1989b.D64"]
+note = "disk set shared by 9 productions"
+
+[demozoo.188939]
+title = "Lonesome Panther"
+group = "The Outlaw Force"
+source = "script"
+
+[demozoo.206073]
+title = "Long Waited"
+group = "Knickers"
+source = "script"
+
+[demozoo.276666]
+title = "Longest Precalc of All Time"
+group = "Flugeldufel"
+source = "script"
+
+[demozoo.302406]
+title = "Look At Me"
+group = "Street Children"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.184748]
+title = "Look At Me 2"
+group = "Raiders of the Lost Empire"
+source = "script"
+
+[demozoo.343094]
+title = "Look at This"
+group = "Sparx"
+source = "script"
+
+[demozoo.116580]
+title = "Look Sharp"
+group = "Contex"
+source = "script"
+
+[demozoo.325942]
+title = "Looking For Atlantis"
+group = "Fairlight"
+source = "script"
+
+[demozoo.327354]
+title = "Looks Sharp"
+group = "Agile"
+source = "script"
+
+[demozoo.201920]
+title = "Lord Have Mercy"
+group = "Bad Karma"
+source = "script"
+
+[demozoo.363596]
+title = "Lords of Sonic Rule!"
+group = "The Soft Smashers 6802"
+source = "script"
+
+[demozoo.343294]
+title = "Lorry Rip 01"
+group = "Hanseatic Cracking Association"
+source = "script"
+
+[demozoo.343293]
+title = "Lorry Rip 02"
+group = "Hanseatic Cracking Association"
+source = "script"
+
+[demozoo.343311]
+title = "Lorry Rip 03"
+group = "Hanseatic Cracking Association"
+source = "script"
+
+[demozoo.349458]
+title = "Loser Demo IX"
+group = "United Software Artists"
+source = "script"
+
+[demozoo.349457]
+title = "Loser Demo X"
+group = "United Software Artists"
+source = "script"
+
+[demozoo.349455]
+title = "Loser Demo XI"
+group = "United Software Artists"
+source = "script"
+
+[demozoo.349466]
+title = "Loser Sample II"
+group = "United Software Artists"
+source = "script"
+
+[demozoo.349467]
+title = "Loser Sample III"
+group = "United Software Artists"
+source = "script"
+result = "unknown"
+
+[demozoo.349468]
+title = "Loser Sample IV"
+group = "United Software Artists"
+source = "script"
+result = "unknown"
+
+[demozoo.349465]
+title = "Loser Sample V"
+group = "United Software Artists"
+source = "script"
+
+[demozoo.349460]
+title = "Loser-Sample VII"
+group = "United Software Artists"
+source = "script"
+
+[demozoo.323584]
+title = "Lotus Radio"
+group = "Excess"
+source = "script"
+
+[demozoo.393861]
+title = "Loud and Proud"
+group = "Swiss Cracking Association"
+source = "script"
+
+[demozoo.3152]
+title = "Love"
+group = "Outcast"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.9346]
+title = "Love"
+group = "Agony Design"
+source = "ai"
+machine = "pal_1541_8580"
+disks = ["agony_love-A.d64", "agony_love-B.d64"]
+swaps = [{ disk = 2, at = 573.5, key = "space", key_delay = 18.3 }]
+keys = [{ at = 152.2, key = "1" }]
+note = "Love: menu key 1, demo ends on FLIP DISC picture, needs insert then space; disk 2: menu at ~120M, key 1 at 150M; FLIP DISC picture from ~520M (no upper limit seen); insert alone does nothing, space ~18M later starts side B"
+
+[demozoo.336717]
+title = "Love and Sex #2"
+group = "Alpha Flight"
+source = "script"
+
+[demozoo.194687]
+title = "Love Over Gold"
+group = "The Menacing Cracking Alliance"
+source = "script"
+
+[demozoo.117763]
+title = "Love This Now"
+group = "Horizon"
+source = "script"
+result = "crashes-later"
+disks = ["Love_This_Now_S1.d64", "Love_This_Now_S2.d64"]
+swaps = [{ disk = 2, at = 1390.0, key = "space", key_delay = 15.7 }]
+
+[demozoo.374054]
+title = "Love U 4 Ever"
+group = "Sad"
+source = "ai"
+machine = "pal_1541_8580"
+kind = "collection"
+result = "unknown"
+disks = ["GFX.D64", "INTROS.D64", "MSX1.D64", "MSX2.D64", "REAL.D64"]
+boot_disk = 3
+boot_file = "love u 4ever/sad"
+note = "Love U 4 Ever: Forever 3 music compo entry, file 'love u 4ever/sad' on MSX1.D64; music player with a static text screen (hence no-activity). No flip"
+
+[demozoo.344090]
+title = "Love'n'Regards"
+group = "Magnetix"
+source = "script"
+
+[demozoo.288465]
+title = "Lovecats"
+group = "Atlantis"
+source = "script"
+
+[demozoo.338120]
+title = "Loverbyte"
+group = "The Aliens Corporation"
+source = "script"
+
+[demozoo.334289]
+title = "LSD"
+group = "Equinoxe"
+source = "script"
+
+[demozoo.352333]
+title = "LSD Experience"
+group = "Wrath Designs"
+source = "script"
+
+[demozoo.343572]
+title = "Lucasfilm Intro"
+group = "Swedish Cracking Crew"
+source = "script"
+result = "unknown"
+
+[demozoo.302414]
+title = "Luf"
+group = "Elyta"
+source = "script"
+kind = "collection"
+disks = ["sb064966.d64", "sb064967.d64"]
+note = "disk set shared by 5 productions"
+
+[demozoo.373148]
+title = "Lullaby for Violaine"
+group = "Randall"
+source = "script"
+machine = "pal_1541_8580"
+boot_file = "lullaby ..."
+
+[demozoo.332012]
+title = "Lunacy"
+group = "Antic"
+source = "script"
+
+[demozoo.332011]
+title = "Lunacy 2"
+group = "Antic"
+source = "script"
+result = "unknown"
+
+[demozoo.332010]
+title = "Lunacy 3"
+group = "Antic"
+source = "script"
+
+[demozoo.332009]
+title = "Lunacy 4"
+group = "Antic"
+source = "script"
+
+[demozoo.279958]
+title = "Lunacy 5 Preview"
+group = "Antic"
+source = "script"
+
+[demozoo.58410]
+title = "Lunacy 6 - The Lost Sequel"
+group = "Antic"
+source = "script"
+
+[demozoo.26928]
+title = "Lunacy 7"
+group = "Antic"
+source = "script"
+result = "crashes-later"
+disks = ["Lunacy 7-1.d64", "Lunacy 7-2.d64"]
+swaps = [{ disk = 2, at = 607.3, key = "p1fire", key_delay = 32.6 }]
+
+[demozoo.55084]
+title = "Lunacy V"
+group = "Antic"
+source = "script"
+disks = ["Lunacy 5 [Side 1].d64", "Lunacy 5 [Side 2].d64"]
+swaps = [{ disk = 2, at = 161.1, key = "space", key_delay = 14.3 }]
+
+[demozoo.164626]
+title = "Lunatico"
+group = "lft"
+source = "script"
+disks = ["lft-lunatico-side1.d64", "lft-lunatico-side2.d64"]
+swaps = [{ disk = 2, at = 459.0 }]
+
+[demozoo.326873]
+title = "Luneberg"
+group = "Ninja GeFilus"
+source = "script"
+result = "unknown"
+
+[demozoo.336649]
+title = "LVLLVLtro"
+group = "Hack n' Trade"
+source = "script"
+
+[demozoo.197994]
+title = "LXT - Flash Bang"
+group = "Laxity / The New Dimension"
+source = "script"
+
+[demozoo.343726]
+title = "Lycan"
+group = "The Solution"
+source = "script"
+boot_file = "lycan        [s]"
+
+[demozoo.24844]
+title = "Lyrics"
+group = "Goat"
+source = "script"
+
+[demozoo.189288]
+title = "Lysholmer Spesial"
+group = "Abnormal / Network"
+source = "script"

@@ -1,0 +1,1515 @@
+[demozoo.184970]
+title = "N2C4Oxyron"
+group = "Enthusi"
+source = "script"
+result = "unknown"
+
+[demozoo.366258]
+title = "Na Sowas Demo"
+group = "Probyte"
+source = "script"
+result = "unknown"
+
+[demozoo.349371]
+title = "Nabuhodonozor"
+group = "Tropyx / DE-Koder"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.332146]
+title = "NaCL"
+group = "Drive"
+source = "script"
+
+[demozoo.347084]
+title = "Naction"
+group = "Traxion"
+source = "script"
+
+[demozoo.391310]
+title = "Nagyfröccs"
+group = "Singular"
+source = "script"
+machine = "pal_1541_8580"
+result = "unknown"
+
+[demozoo.29950]
+title = "Naked Grinder"
+group = "Hoaxers"
+source = "script"
+
+[demozoo.51177]
+title = "Naked Grinder 2"
+group = "Hoaxers"
+source = "script"
+
+[demozoo.340489]
+title = "Nalot"
+group = "Quantum"
+source = "script"
+
+[demozoo.368147]
+title = "Nam Digi #1"
+group = "Secure"
+source = "script"
+result = "unknown"
+
+[demozoo.368148]
+title = "Nam Digi #2"
+group = "Secure"
+source = "script"
+result = "unknown"
+
+[demozoo.188586]
+title = "Nameless"
+group = "Paragon"
+source = "script"
+
+[demozoo.291885]
+title = "Nameless"
+group = "Supreme"
+source = "script"
+result = "unknown"
+
+[demozoo.190381]
+title = "Nasty"
+group = "Abyss-Connection"
+source = "script"
+
+[demozoo.347319]
+title = "Nasty 2"
+group = "Paragon"
+source = "script"
+
+[demozoo.349090]
+title = "Nasz Widzewek"
+group = "Turbosnail"
+source = "script"
+disks = ["Stary_piernik_4a.d64", "Stary_piernik_4b.d64"]
+swaps = [{ disk = 2, at = 53.2, key = "p2fire", key_delay = 50.3 }]
+
+[demozoo.351740]
+title = "Nata's Uplift Mofo Party Plan"
+group = "HeMa!"
+source = "script"
+
+[demozoo.5176]
+title = "Nation"
+group = "Black Code Design"
+source = "script"
+result = "broken"
+
+[demozoo.362045]
+title = "National Demo"
+group = "The Mad Boys"
+source = "script"
+
+[demozoo.376156]
+title = "Nattdopp i Helsingborg"
+group = "Dino"
+source = "ai"
+machine = "pal_1541_8580"
+kind = "collection"
+disks = ["474_bytes_for_Zyron.d64", "bbb_-_bit_by_bit.d64", "Datasvision-DTV.d64", "deadline_final_gp.d64", "DO-YOU-HAVE-WHAT-WE-IN-SWEDEN-CALL-A-TESTBILD.d64", "KillingJoke---Skyhawk-Triad---PETSCIICompo---20250731.d64", "regn z69.d64", "shadow_star_gp.d64", "TRIAD-2_the_city.d64", "TRIAD-Teddy-John.d64", "TRIAD-VL-BBS_Intro.d64"]
+note = "entry not on any d64: bare prg 'C64/Demo/DINO  of  JUDAS_Nattdopp i Helsongborg/nattdopp i helsingborg.prg' in paga25-c64.zip; single file, no flip"
+
+[demozoo.4312]
+title = "Natural Wonders"
+group = "Oxyron"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.86571]
+title = "Natural Wonders 2"
+group = "Oxyron"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.332475]
+title = "Naturaleza 64"
+group = "Mirazulado"
+source = "script"
+
+[demozoo.327352]
+title = "Nature"
+group = "Agile / Computer Freaks Association"
+source = "script"
+
+[demozoo.363380]
+title = "NCD Demo 1"
+group = "Norwegian Cracking Duo"
+source = "script"
+
+[demozoo.295400]
+title = "Neat Crap"
+group = "Browbeat"
+source = "script"
+
+[demozoo.331537]
+title = "NEC Tune II aka NEC Demo VIII"
+group = "North Europe Crackpack"
+source = "script"
+result = "unknown"
+
+[demozoo.268504]
+title = "Necessity"
+group = "Codetsu"
+source = "script"
+
+[demozoo.197041]
+title = "Necropolis"
+group = "Security Of The First World"
+source = "script"
+
+[demozoo.347184]
+title = "Need More"
+group = "Oneway"
+source = "script"
+
+[demozoo.36620]
+title = "Need more nops"
+group = "Sys5"
+source = "script"
+
+[demozoo.339830]
+title = "Negative Karma"
+group = "Crest"
+source = "script"
+
+[demozoo.336193]
+title = "Negatron"
+group = "The Jezebels Union"
+source = "script"
+
+[demozoo.19915]
+title = "nelikolmio!"
+group = "Yleisradio"
+source = "script"
+
+[demozoo.363762]
+title = "Nemesis"
+group = "Mjau"
+source = "script"
+result = "unknown"
+
+[demozoo.388169]
+title = "Nemesis Demo"
+group = "Jaybird"
+source = "script"
+
+[demozoo.388157]
+title = "Nemesis Demo II"
+group = "Jaybird"
+source = "script"
+
+[demozoo.3762]
+title = "Neon"
+group = "K2"
+source = "script"
+
+[demozoo.168129]
+title = "Neon"
+group = "Triad"
+source = "script"
+machine = "pal_1541_8580"
+disks = ["triad-neon_side1.d64", "triad-neon_side2.d64"]
+swaps = [{ disk = 2, at = 262.7 }]
+
+[demozoo.37692]
+title = "Neoteric"
+group = "Cosine"
+source = "script"
+
+[demozoo.308404]
+title = "Nepa Färjan"
+group = "Jumalauta"
+source = "script"
+
+[demozoo.126472]
+title = "Nervous Breakdown"
+group = "Fenix"
+source = "script"
+
+[demozoo.144519]
+title = "Net Runner"
+group = "Aen Seidhe"
+source = "script"
+
+[demozoo.271521]
+title = "Never Ending"
+group = "Poltergeist"
+source = "script"
+
+[demozoo.126387]
+title = "Never Say Die"
+group = "Uniforce"
+source = "script"
+
+[demozoo.368458]
+title = "New Address"
+group = "Sharp"
+source = "script"
+
+[demozoo.197680]
+title = "New Adress"
+group = "The Boytronic Crew"
+source = "script"
+
+[demozoo.357943]
+title = "New Adress"
+group = "Promise"
+source = "script"
+
+[demozoo.206410]
+title = "New Beginning"
+group = "West End Boys"
+source = "script"
+
+[demozoo.290881]
+title = "New CSI-Demo"
+group = "Crack Swap Industries"
+source = "script"
+
+[demozoo.357534]
+title = "New Dawn"
+group = "Guards of Doom"
+source = "script"
+
+[demozoo.6319]
+title = "New Demention"
+group = "Fire-Eagle / Genesis Project"
+source = "script"
+
+[demozoo.205997]
+title = "New Demo"
+group = "Pentangle"
+source = "script"
+
+[demozoo.293245]
+title = "New Demo"
+group = "Ahead"
+source = "script"
+
+[demozoo.343455]
+title = "New Demo"
+group = "Proceeding Crackers"
+source = "script"
+
+[demozoo.361961]
+title = "New Demo"
+group = "Killer Rats Association"
+source = "script"
+
+[demozoo.353243]
+title = "New Edition Intro Preview"
+group = "Red Sector Inc."
+source = "script"
+
+[demozoo.200320]
+title = "New Faces"
+group = "Triad"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.343457]
+title = "New Fashion"
+group = "Proceeding Crackers"
+source = "script"
+
+[demozoo.370118]
+title = "New Fashion"
+group = "The Night Operation"
+source = "script"
+
+[demozoo.175535]
+title = "New Horizons"
+group = "Samar Productions"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.300653]
+title = "New in TDC"
+group = "The Danish Circle"
+source = "script"
+result = "unknown"
+
+[demozoo.70425]
+title = "New International Standard"
+group = "Plutonium Crackers 2001 / Relax / Yeti Factories / Triad / Danish Gold / Fairlight / 1001 Crew / Raw Deal Inc."
+source = "script"
+
+[demozoo.186296]
+title = "New Intro"
+group = "Enigma / Zeus Duo"
+source = "script"
+
+[demozoo.206072]
+title = "New Intro"
+group = "Knickers"
+source = "script"
+
+[demozoo.206208]
+title = "New Intro"
+group = "Viper Designs"
+source = "script"
+
+[demozoo.291041]
+title = "New Intro"
+group = "Mask"
+source = "script"
+
+[demozoo.302509]
+title = "New Intro"
+group = "Weird Science 2662"
+source = "script"
+
+[demozoo.310475]
+title = "New Intro"
+group = "Active"
+source = "script"
+
+[demozoo.336696]
+title = "New Intro"
+group = "World Wide Expressive"
+source = "script"
+
+[demozoo.336697]
+title = "New Intro"
+group = "Saga Connection"
+source = "script"
+
+[demozoo.343667]
+title = "New Intro"
+group = "Wartec"
+source = "script"
+
+[demozoo.344123]
+title = "New Intro"
+group = "The Spench"
+source = "script"
+
+[demozoo.345523]
+title = "New Intro"
+group = "Relax"
+source = "script"
+
+[demozoo.351917]
+title = "New Intro"
+group = "Noise"
+source = "script"
+
+[demozoo.354875]
+title = "New Intro"
+group = "Contrast"
+source = "script"
+
+[demozoo.360076]
+title = "New Intro"
+group = "Hightec"
+source = "script"
+
+[demozoo.362982]
+title = "New Intro"
+group = "Lore of Arts"
+source = "script"
+
+[demozoo.344656]
+title = "New Intro #06"
+group = "Army"
+source = "script"
+result = "unknown"
+
+[demozoo.345493]
+title = "New Intro #1"
+group = "Orion"
+source = "script"
+
+[demozoo.345494]
+title = "New Intro #2"
+group = "Orion"
+source = "script"
+
+[demozoo.291570]
+title = "New Intro 1.0"
+group = "Motion"
+source = "script"
+
+[demozoo.298275]
+title = "New Intro Elite"
+group = "Elite"
+source = "script"
+
+[demozoo.345495]
+title = "New Intro!"
+group = "Orion"
+source = "script"
+
+[demozoo.200016]
+title = "New Life"
+group = "Delysid"
+source = "script"
+
+[demozoo.288936]
+title = "New Limits"
+group = "The Supply Team"
+source = "script"
+result = "unknown"
+
+[demozoo.340015]
+title = "New Look"
+group = "Crypt"
+source = "script"
+
+[demozoo.197012]
+title = "New Member"
+group = "Coltrax 2304"
+source = "script"
+
+[demozoo.363484]
+title = "New Member"
+group = "Mega Soft Incorporated"
+source = "script"
+result = "unknown"
+
+[demozoo.271035]
+title = "New Members"
+group = "Frontline"
+source = "script"
+
+[demozoo.337483]
+title = "New Members"
+group = "Lazer"
+source = "script"
+machine = "ntsc_1541"
+
+[demozoo.288334]
+title = "New Men Demo I"
+group = "New Men"
+source = "script"
+
+[demozoo.197011]
+title = "New Name"
+group = "Coltrax 2304"
+source = "script"
+
+[demozoo.363687]
+title = "New Prima Demo"
+group = "Prisma"
+source = "script"
+
+[demozoo.324937]
+title = "New Serf Dom"
+group = "Kraksnax"
+source = "script"
+result = "unknown"
+
+[demozoo.315048]
+title = "New Sounds"
+group = "Delta 4"
+source = "script"
+
+[demozoo.340215]
+title = "New Star"
+group = "YMCA"
+source = "script"
+result = "unknown"
+
+[demozoo.298601]
+title = "New TEF V7"
+group = "The Electronic Federation"
+source = "script"
+
+[demozoo.357950]
+title = "New Version"
+group = "The Evil Boys"
+source = "script"
+result = "unknown"
+
+[demozoo.194747]
+title = "New Wave"
+group = "Breeze"
+source = "script"
+
+[demozoo.338122]
+title = "New Wave"
+group = "The Plastic Age"
+source = "script"
+
+[demozoo.359998]
+title = "New Wave"
+group = "Warrant"
+source = "script"
+
+[demozoo.343436]
+title = "New Year Demo"
+group = "Genesis"
+source = "script"
+
+[demozoo.350693]
+title = "New Year Messages 2008"
+group = "The New Dimension"
+source = "script"
+
+[demozoo.170099]
+title = "New Years Resolution"
+group = "Genesis Project"
+source = "script"
+
+[demozoo.145555]
+title = "New York Tokyo"
+group = "Salva Mea"
+source = "script"
+
+[demozoo.26871]
+title = "newbie prod for buenz.li"
+group = "mar77i"
+source = "script"
+
+[demozoo.187992]
+title = "Newest Intro+"
+group = "2000 A.D."
+source = "script"
+
+[demozoo.351667]
+title = "News"
+group = "Capitol"
+source = "script"
+
+[demozoo.178180]
+title = "Newsletter 1"
+group = "The Star Team"
+source = "script"
+
+[demozoo.347251]
+title = "Newsletter 2 (Intro 28.5.86)"
+group = "Flash Cracking Group"
+source = "script"
+
+[demozoo.361960]
+title = "Newwave"
+group = "Killer Rats Association"
+source = "script"
+
+[demozoo.358096]
+title = "Newz 88"
+group = "Danish Underground Crackers"
+source = "script"
+
+[demozoo.326872]
+title = "NeXT (preview)"
+group = "Extend"
+source = "script"
+
+[demozoo.324780]
+title = "Next Level"
+group = "Performers"
+source = "script"
+machine = "pal_1541_8580"
+disks = ["image1.d64", "image2.d64", "image3.d64", "image4.d64"]
+swaps = [{ disk = 2, at = 428.8 }, { disk = 3, at = 824.7 }, { disk = 4, at = 1331.4 }]
+
+[demozoo.392459]
+title = "Next Round"
+group = "Performers"
+source = "ai"
+disks = ["next_round_disk_1.d64", "next_round_disk_2.d64", "next_round_disk_3.d64", "next_round_extraround_bonusmaterial.d64", "next_round_side2_digimax_version.d64"]
+swaps = [{ disk = 2, at = 362.3 }, { disk = 3, at = 622.2 }]
+note = "Next Round: disk 1->2 (~357M) ->3 (~613M) no keys; disk 4 (bonus material) and disk 5 (digimax alternative of round 2) are not part of the chain"
+
+[demozoo.346270]
+title = "Nexus Intro"
+group = "Newlook / Radwar Enterprises"
+source = "script"
+result = "unknown"
+
+[demozoo.205685]
+title = "NGC 1277 100%"
+group = "Samar Productions"
+source = "script"
+
+[demozoo.203812]
+title = "NGC 1277 80%"
+group = "Samar Productions"
+source = "script"
+disks = ["ngc1277_d1.d64", "ngc1277_d2.d64"]
+swaps = [{ disk = 2, at = 258.5 }]
+
+[demozoo.295266]
+title = "Niandertahl Human"
+group = "Vortex 42"
+source = "script"
+
+[demozoo.323920]
+title = "Nice Demo"
+group = "Tommyknockers"
+source = "script"
+
+[demozoo.357333]
+title = "Nice Demo"
+group = "Alien Crackers"
+source = "script"
+
+[demozoo.368904]
+title = "Nice Demo 2"
+group = "The Great Breakers"
+source = "script"
+
+[demozoo.368903]
+title = "Nice Demo 3"
+group = "The Great Breakers"
+source = "script"
+
+[demozoo.358148]
+title = "Nice Demo 4"
+group = "Dennis Cracking Crew"
+source = "script"
+
+[demozoo.298602]
+title = "Nice Intro"
+group = "The Paco Crew"
+source = "script"
+
+[demozoo.308658]
+title = "Nice Scroller"
+group = "Royal Cracking Animals"
+source = "script"
+
+[demozoo.347307]
+title = "Nick Danger's Demise"
+group = "Fucked Beyond Repair"
+source = "script"
+
+[demozoo.357370]
+title = "Nicy!"
+group = "Danecrew"
+source = "script"
+
+[demozoo.349091]
+title = "Niespodzianka"
+group = "Turbosnail"
+source = "script"
+disks = ["Stary_piernik_4a.d64", "Stary_piernik_4b.d64"]
+swaps = [{ disk = 2, at = 52.0, key = "p2fire", key_delay = 50.5 }]
+
+[demozoo.343701]
+title = "Nieuwemaas"
+group = "Finn"
+source = "ai"
+machine = "pal_1541_8580"
+kind = "collection"
+disks = ["ps2004-1.d64", "ps2004-2.d64"]
+note = "Nieuwemaas: 2004 party-disk pair of separate entries; the intro is the file '4 nwe maas /finn' on disk 1"
+
+[demozoo.343669]
+title = "Night at Boss 1"
+group = "Boss Incorporated / Maniacs / Wartec"
+source = "script"
+
+[demozoo.343666]
+title = "Night at Boss II"
+group = "Boss Incorporated / Maniacs / Wartec"
+source = "script"
+result = "unknown"
+
+[demozoo.357730]
+title = "Night Demo"
+group = "Denix"
+source = "script"
+
+[demozoo.360880]
+title = "Nightfall"
+group = "Artline Designs"
+source = "script"
+
+[demozoo.281977]
+title = "Nightmare"
+group = "Asphyxia"
+source = "script"
+
+[demozoo.358279]
+title = "Nightmare"
+group = "Express Artworx"
+source = "script"
+
+[demozoo.293495]
+title = "Nightmare 1"
+group = "Sex Express"
+source = "script"
+
+[demozoo.343281]
+title = "Nightmare 1"
+group = "Hanseatic Cracking Association"
+source = "script"
+
+[demozoo.351627]
+title = "Nightmare Crew"
+group = "Nightmare Crew"
+source = "script"
+
+[demozoo.205729]
+title = "Nightmare Demo"
+group = "The Lurking Horror"
+source = "script"
+
+[demozoo.381618]
+title = "Nightmare!"
+group = "Blues Muz'"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.288712]
+title = "Nightshift"
+group = "Fantasia"
+source = "script"
+disks = ["Nightshift (Side 1).d64", "Nightshift (Side 2).d64"]
+swaps = [{ disk = 2, at = 173.9, key = "space", key_delay = 17.4 }]
+
+[demozoo.376850]
+title = "Nightshift"
+group = "Scallop"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.338225]
+title = "Nighttime Reflections"
+group = "Raistlin"
+source = "script"
+result = "unknown"
+
+[demozoo.312845]
+title = "Nightwarrior"
+group = "Powerstation"
+source = "script"
+
+[demozoo.375501]
+title = "Nightworks"
+group = "Arise"
+source = "script"
+
+[demozoo.18452]
+title = "Nine"
+group = "Reflex"
+source = "script"
+disks = ["Nine_DiskA.D64", "Nine_DiskB.D64"]
+swaps = [{ disk = 2, at = 193.2 }]
+
+[demozoo.356734]
+title = "Nineteen"
+group = "Telephone Crackers Norway"
+source = "script"
+
+[demozoo.274064]
+title = "Nineteen Music"
+group = "South Banat Crew"
+source = "script"
+
+[demozoo.44380]
+title = "Ninfa"
+group = "Level 64"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.98943]
+title = "Ninja"
+group = "JSL"
+source = "script"
+result = "unknown"
+
+[demozoo.273834]
+title = "Ninja Demo"
+group = "Copyright Escape"
+source = "script"
+
+[demozoo.333432]
+title = "Ninja Demo"
+group = "North Projects"
+source = "script"
+
+[demozoo.341908]
+title = "Ninja Demo"
+group = "Zigag Cracking Service"
+source = "script"
+
+[demozoo.18797]
+title = "No"
+group = "Smash Designs"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.327697]
+title = "No Border Demo 3"
+group = "Crackmasters"
+source = "script"
+result = "unknown"
+
+[demozoo.324761]
+title = "No Bounds"
+group = "Genesis Project"
+source = "script"
+machine = "pal_1541_8580"
+disks = ["BigDXYCP.d64", "CheckerBoard.d64", "CheckerZoomer.d64", "ColourCycle.d64", "Demo Disk 1.d64", "Demo Disk 1.d64", "Demo Disk 1.d64", "DirArt-NoBounds-Side1.d64", "DirArt-NoBounds-Side2.d64", "Earth.d64", "HiresLoader.d64", "InfiniteBobs.d64", "KefrensPlus.d64", "NoBounds.d64", "NoBounds-GP-Side1.d64", "NoBounds-GP-Side2.d64", "Parallax.d64", "PlasmaVector.d64", "PlotCube.d64", "RaytraceNightmare.d64", "ReflectorTW.d64", "RotatingGP.d64", "SpriteFPP.d64", "StarWars.d64", "TechTech.d64", "TinyCircleScroll.d64", "Trailblazer.d64", "TransitionScattered.d64", "TransitionSquares.d64", "Tunnel.d64", "TwistScroll.d64", "VerticalBitmapScroll.d64"]
+note = "the sweep only reached disk 1 of 32"
+
+[demozoo.349690]
+title = "No Bullshit 5"
+group = "Network"
+source = "script"
+result = "unknown"
+
+[demozoo.41874]
+title = "no cameleon"
+group = "Ideal"
+source = "script"
+
+[demozoo.336454]
+title = "No Clue"
+group = "Paradize"
+source = "script"
+
+[demozoo.341886]
+title = "No Commies"
+group = "Sorell / FBI Crew"
+source = "script"
+disks = ["No_Commies.D64", "no_commies2bnote.d64"]
+swaps = [{ disk = 2, at = 458.6, key = "space", key_delay = 15.0 }]
+
+[demozoo.122689]
+title = "No Control"
+group = "Triad"
+source = "script"
+
+[demozoo.181617]
+title = "No Demo!"
+group = "Dinasours"
+source = "script"
+
+[demozoo.67765]
+title = "No Direction"
+group = "Upstars"
+source = "script"
+
+[demozoo.297872]
+title = "No Doubt"
+group = "Citizen"
+source = "script"
+
+[demozoo.68034]
+title = "No Future"
+group = "Menhir"
+source = "script"
+
+[demozoo.368316]
+title = "No Good"
+group = "Galicya"
+source = "script"
+machine = "pal_1541_8580"
+kind = "collection"
+disks = ["sb064966.d64", "sb064967.d64"]
+note = "disk set shared by 5 productions"
+
+[demozoo.202061]
+title = "No Illusions"
+group = "Mr. Quark"
+source = "script"
+result = "unknown"
+boot_file = "no illusions/mrq"
+
+[demozoo.327036]
+title = "No jesus"
+group = "Yleisradio"
+source = "script"
+result = "unknown"
+
+[demozoo.350020]
+title = "No Lamers"
+group = "X-Factor"
+source = "script"
+
+[demozoo.43011]
+title = "No Lion"
+group = "Ideal"
+source = "script"
+result = "unknown"
+disks = ["CONTEST99A.D64", "CONTEST99B.D64"]
+
+[demozoo.338357]
+title = "No Mercy"
+group = "Computer Freaks Association"
+source = "script"
+
+[demozoo.337954]
+title = "No Mercy 1338"
+group = "Dinasours"
+source = "script"
+
+[demozoo.290711]
+title = "No Mercy for the Trooper"
+group = "Atlantis / Fairlight"
+source = "script"
+
+[demozoo.316455]
+title = "No Mercy!"
+group = "Venom"
+source = "script"
+result = "unknown"
+
+[demozoo.349640]
+title = "No More C64"
+group = "Breakpoint Hacking Techniques"
+source = "script"
+
+[demozoo.359612]
+title = "No More MBI"
+group = "Zip Cracking Factories"
+source = "script"
+
+[demozoo.336421]
+title = "No More War"
+group = "Sodom"
+source = "script"
+
+[demozoo.182860]
+title = "No Name"
+group = "Legion"
+source = "script"
+
+[demozoo.184437]
+title = "No Name"
+group = "Brain Mission"
+source = "script"
+
+[demozoo.206017]
+title = "No Name"
+group = "Argus"
+source = "script"
+
+[demozoo.343456]
+title = "No Name"
+group = "Proceeding Crackers"
+source = "script"
+
+[demozoo.361399]
+title = "No Name"
+group = "International Cracking Entertainment"
+source = "script"
+
+[demozoo.363219]
+title = "No Name"
+group = "Magic"
+source = "script"
+
+[demozoo.290588]
+title = "No Name.."
+group = "Danish Underground Crackers / Crackforce"
+source = "script"
+
+[demozoo.144247]
+title = "No no"
+group = "Dinasours"
+source = "script"
+
+[demozoo.385928]
+title = "No Nom Noms"
+group = "Dinasours"
+source = "script"
+
+[demozoo.24477]
+title = "No Panic"
+group = "Dekadence"
+source = "script"
+
+[demozoo.191860]
+title = "No Scroller Mix"
+group = "Ability"
+source = "script"
+
+[demozoo.343425]
+title = "No Scrolls 1"
+group = "Power Station"
+source = "script"
+
+[demozoo.343426]
+title = "No Scrolls 2"
+group = "Power Station"
+source = "script"
+
+[demozoo.51964]
+title = "No Shit!"
+group = "Dinasours"
+source = "script"
+
+[demozoo.131352]
+title = "No Sleep II"
+group = "XAKK"
+source = "script"
+
+[demozoo.334463]
+title = "No Sprites"
+group = "Fairlight"
+source = "script"
+
+[demozoo.193144]
+title = "No Style"
+group = "Abnormal"
+source = "script"
+
+[demozoo.268460]
+title = "No Supply #1"
+group = "Federation Against Supply Team / Baseline 2209"
+source = "script"
+
+[demozoo.110625]
+title = "No Time"
+group = "Exult"
+source = "script"
+result = "unknown"
+
+[demozoo.188602]
+title = "No Trend"
+group = "The Ruling Company"
+source = "script"
+
+[demozoo.340220]
+title = "No Vacation"
+group = "YMCA"
+source = "script"
+
+[demozoo.285573]
+title = "No Way"
+group = "Tropyx"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.357184]
+title = "No Way Out"
+group = "Fear"
+source = "ai"
+kind = "standalone"
+disks = ["fear_info.d64", "No Way Out_FEAR.d64", "NoWayOut.Fear.d64"]
+note = "boot_disk 2; fear_info.d64 is another release, the other two images are alternatives holding all parts; no flip"
+
+[demozoo.274530]
+title = "No Wolf"
+group = "Dinasours"
+source = "script"
+
+[demozoo.206355]
+title = "No-Name Demo"
+group = "The Fighter"
+source = "script"
+
+[demozoo.175532]
+title = "No-Skip Mix (2014 Edition)"
+group = "Mayday!"
+source = "script"
+
+[demozoo.205996]
+title = "No:Name"
+group = "Pentangle"
+source = "script"
+
+[demozoo.356353]
+title = "Nobility"
+group = "Twins"
+source = "script"
+
+[demozoo.178770]
+title = "Nocturnal Beats"
+group = "Yleisradio"
+source = "script"
+
+[demozoo.37691]
+title = "Nofx"
+group = "Chalice"
+source = "script"
+boot_file = "S!-nofx..."
+
+[demozoo.73365]
+title = "NoFX at BFP07"
+group = "NoFX"
+source = "script"
+
+[demozoo.100046]
+title = "Nofx-mini-megademo"
+group = "NoFX"
+source = "script"
+
+[demozoo.30408]
+title = "Noisy Intro"
+group = "DMAgic"
+source = "script"
+
+[demozoo.358097]
+title = "Noisy Tune 3"
+group = "Danish Underground Crackers"
+source = "script"
+result = "unknown"
+
+[demozoo.4009]
+title = "Non Plus Ultra"
+group = "Singular Crew"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.185110]
+title = "Non Ultra"
+group = "Dacota"
+source = "script"
+
+[demozoo.359139]
+title = "Non-Human Origin"
+group = "Gheymaid Inc."
+source = "script"
+result = "unknown"
+
+[demozoo.206231]
+title = "Non-Morris"
+source = "script"
+
+[demozoo.337172]
+title = "Nonamed Demo"
+group = "Flash"
+source = "script"
+result = "unknown"
+
+[demozoo.6314]
+title = "Nonce II"
+group = "Powers of Pain / World Wide Expressive / Genesis Project"
+source = "script"
+
+[demozoo.290439]
+title = "None Of Us Are Getting Out Of This Life Alive"
+group = "Atlantis / Mayday! / Padua / Excess / Rabenauge / Delysid / The New Ninja Skateboarders of Death"
+source = "script"
+
+[demozoo.357033]
+title = "Nonrelease"
+group = "Twins"
+source = "script"
+
+[demozoo.357034]
+title = "Nonrelease II"
+group = "Twins"
+source = "script"
+
+[demozoo.148145]
+title = "Nonsense"
+group = "Argon / Crom"
+source = "script"
+
+[demozoo.204222]
+title = "Nonterraqueous I Music + Pic"
+group = "The Medway Boys"
+source = "script"
+result = "unknown"
+
+[demozoo.35380]
+title = "noOfly majicccck rularzzZzz!!!"
+group = "Cracky Cracking Group"
+source = "script"
+
+[demozoo.387729]
+title = "Noppelkotze"
+group = "Hotstuffers"
+source = "script"
+
+[demozoo.60018]
+title = "Nordlicht Invitation"
+group = "Arsenic"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.193395]
+title = "Normal Day"
+group = "Terminator Tomes"
+source = "script"
+
+[demozoo.385558]
+title = "Norsk Data"
+group = "Satellite"
+source = "script"
+
+[demozoo.189715]
+title = "North Party v1.0 Results"
+source = "script"
+result = "unknown"
+
+[demozoo.295960]
+title = "Northern Genesis"
+group = "Defcon 1 / The Cops / The Last Days Incorporated / The Incredible Fantastics"
+source = "script"
+
+[demozoo.152114]
+title = "Northern Star"
+group = "Booze Design"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.366743]
+title = "Norwegian Arm"
+group = "Offence"
+source = "script"
+result = "unknown"
+
+[demozoo.6044]
+title = "Norwegian Sunrise"
+group = "Mega Industries"
+source = "script"
+
+[demozoo.339305]
+title = "Noseblood"
+group = "The Zaints / Byterapers"
+source = "script"
+
+[demozoo.35867]
+title = "Nostalgia"
+group = "Coma"
+source = "script"
+
+[demozoo.342041]
+title = "Nostalgia"
+group = "Yleisradio"
+source = "script"
+
+[demozoo.377766]
+title = "Nostalgia"
+group = "Blazon"
+source = "script"
+
+[demozoo.272838]
+title = "Nostalgic Moments"
+group = "MultiStyle Labs"
+source = "script"
+
+[demozoo.341748]
+title = "Nostalgy Show"
+group = "Nostalgy"
+source = "script"
+machine = "ntsc_1541"
+
+[demozoo.90590]
+title = "Nostril"
+group = "Siders"
+source = "script"
+
+[demozoo.86612]
+title = "Not a Scene Production"
+group = "Warriors of the Wasteland"
+source = "script"
+
+[demozoo.261739]
+title = "Not Good Not Terrible"
+group = "DNP"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.183327]
+title = "Not Just a Demo"
+group = "Nemesis"
+source = "script"
+
+[demozoo.373144]
+title = "Not the Last N One"
+group = "V0yager"
+source = "script"
+machine = "pal_1541_8580"
+result = "unknown"
+
+[demozoo.277559]
+title = "Note 2 Disk"
+group = "Kraze"
+source = "script"
+
+[demozoo.268261]
+title = "Note 2 Releases"
+group = "Anubis"
+source = "script"
+machine = "ntsc_1541"
+
+[demozoo.367006]
+title = "Notes"
+group = "The Incredible One Thousand Boys"
+source = "script"
+
+[demozoo.359135]
+title = "Nothing"
+group = "German Star Group"
+source = "ai"
+kind = "standalone"
+disks = ["gsg_demo.d64", "nothing_men.d64"]
+note = "two independent one-prg disks (gsg demo 70 blocks, nothing 62 blocks); no disk flip; nothing_men.d64 is the actual Nothing production, gsg_demo.d64 a bundled extra"
+
+[demozoo.159841]
+title = "Nothing but PETSCII"
+group = "Genesis Project"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.335448]
+title = "Nothing Else"
+group = "Equinoxe"
+source = "script"
+
+[demozoo.350063]
+title = "Nothing Part 1"
+group = "Bionic Force"
+source = "script"
+
+[demozoo.308656]
+title = "Nothing Special"
+group = "Royal Cracking Animals"
+source = "script"
+
+[demozoo.397564]
+title = "Nothing Special I"
+group = "Empire Software"
+source = "script"
+
+[demozoo.397569]
+title = "Nothing Special II"
+group = "Empire Software"
+source = "script"
+
+[demozoo.298204]
+title = "Nothing Special Preview"
+group = "Voodoo"
+source = "script"
+
+[demozoo.126194]
+title = "Nothing Special!"
+group = "Danish Piracy Society 2010"
+source = "script"
+
+[demozoo.205995]
+title = "Nothing To Have"
+group = "Pentangle"
+source = "script"
+
+[demozoo.385311]
+title = "Nothing to See Here"
+group = "Burglar"
+source = "script"
+
+[demozoo.348594]
+title = "Notre Dame"
+group = "Therapy"
+source = "script"
+disks = ["Notre Dame A - Therapy.d64", "Notre Dame B - Therapy.d64"]
+swaps = [{ disk = 2, at = 86.7, key = "p1fire", key_delay = 34.0 }]
+boot_file = "not(r)e dame    "
+
+[demozoo.126668]
+title = "Nous Sommes Pain"
+group = "Powers of Pain"
+source = "script"
+
+[demozoo.338876]
+title = "Nova 2 Tunecollection"
+group = "Reflex"
+source = "script"
+
+[demozoo.107774]
+title = "Nova 80%"
+group = "K2"
+source = "script"
+result = "unknown"
+boot_file = "nova80%/zed yago"
+
+[demozoo.383124]
+title = "Novation II"
+group = "Nova"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.284960]
+title = "Now Better"
+group = "Argon"
+source = "script"
+
+[demozoo.353381]
+title = "Now The Newts You Need"
+group = "Chronic"
+source = "script"
+
+[demozoo.334343]
+title = "Nowy Rok Demo"
+group = "Fatum"
+source = "script"
+
+[demozoo.380051]
+title = "Nr.1"
+group = "Academy"
+source = "script"
+result = "unknown"
+
+[demozoo.297742]
+title = "NSC Sounds XXII"
+group = "The Non Stop Cracker"
+source = "script"
+
+[demozoo.345522]
+title = "Nu Demo"
+group = "Relax"
+source = "script"
+
+[demozoo.292084]
+title = "Nuclear Winter"
+group = "Ruler"
+source = "script"
+
+[demozoo.388942]
+title = "Nuclear Winter Games"
+group = "Blazon"
+source = "script"
+
+[demozoo.175123]
+title = "Nucular"
+group = "Arsenic"
+source = "script"
+
+[demozoo.267734]
+title = "Null Bock"
+group = "Defcon 1"
+source = "script"
+
+[demozoo.274897]
+title = "Null Bock"
+group = "SilverFox"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.325245]
+title = "Numbskull"
+group = "The Philishave Grew"
+source = "script"
+machine = "pal_1541_8580"
+result = "unknown"
+boot_file = "numbskull   /psg"
+
+[demozoo.366680]
+title = "Numero Uno"
+group = "Rabiez"
+source = "script"
+
+[demozoo.330042]
+title = "Nuttin' But All"
+group = "Cosmix Federation"
+source = "script"
+
+[demozoo.6043]
+title = "Nutwork"
+group = "Antimon"
+source = "script"
+
+[demozoo.349692]
+title = "Nymphomania"
+group = "Network"
+source = "script"
+disks = ["Network_1991_Nymphomania.d64", "the_nymphomania.d64"]
+swaps = [{ disk = 2, at = 502.8, key = "p1fire", key_delay = 36.5 }]
+
+[demozoo.267981]
+title = "Nyukamor"
+group = "Bugkiller TM"
+source = "script"
+result = "unknown"

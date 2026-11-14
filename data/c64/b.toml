@@ -1,0 +1,2249 @@
+[demozoo.327162]
+title = "B la bla"
+source = "script"
+result = "unknown"
+
+[demozoo.327749]
+title = "B.E.A.M Music"
+group = "Fire-Eagle / Genesis Project"
+source = "script"
+
+[demozoo.380055]
+title = "Baby Maniac"
+group = "Academy"
+source = "script"
+
+[demozoo.332087]
+title = "Baby's Revange"
+group = "Babygang"
+source = "script"
+
+[demozoo.352407]
+title = "Babygang Intro"
+group = "Babygang"
+source = "script"
+
+[demozoo.362944]
+title = "Babylon Five"
+group = "Lords of Sonics"
+source = "script"
+
+[demozoo.339444]
+title = "Babylon II"
+group = "The Wanderer Group"
+source = "script"
+
+[demozoo.322885]
+title = "Bacchanale"
+group = "Agile"
+source = "script"
+
+[demozoo.319196]
+title = "Bachtracking"
+group = "Triad"
+source = "script"
+
+[demozoo.97439]
+title = "Back"
+group = "The Ruling Company / Illusion"
+source = "script"
+
+[demozoo.340502]
+title = "Back 2 The Old Skool"
+group = "EXclusive ON"
+source = "ai"
+machine = "pal_1541_8580"
+kind = "collection"
+result = "unknown"
+disks = ["GFX.D64", "INTROS.D64", "MSX1.D64", "MSX2.D64", "REAL.D64"]
+note = "music compo entry, disk 3 (MSX1.D64) file 'back2theolds>sag' of the Forever 3 set; single-file SID tune with a static info screen, never asks for another disk"
+
+[demozoo.336479]
+title = "Back Again!"
+group = "Alpha Flight"
+source = "script"
+
+[demozoo.309678]
+title = "Back from the Dead"
+group = "Babygang"
+source = "script"
+
+[demozoo.330778]
+title = "Back in 2007"
+group = "Blazon"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.330779]
+title = "Back in 2008"
+group = "Blazon"
+source = "script"
+
+[demozoo.346563]
+title = "Back of Beyond"
+group = "Jewels"
+source = "script"
+
+[demozoo.295329]
+title = "Back on the Road Again"
+group = "Anthrax"
+source = "script"
+
+[demozoo.204853]
+title = "Back on Wax 1"
+group = "Bad Karma"
+source = "script"
+
+[demozoo.204848]
+title = "Back on Wax 2"
+group = "Bad Karma"
+source = "script"
+
+[demozoo.204871]
+title = "Back on Wax 3"
+group = "Bad Karma"
+source = "script"
+
+[demozoo.233857]
+title = "Back on Wax 4"
+group = "Bad Karma"
+source = "script"
+
+[demozoo.718]
+title = "Back To Basic"
+group = "Beyond Force"
+source = "script"
+
+[demozoo.58902]
+title = "Back to Basic"
+group = "Chainsaw"
+source = "script"
+
+[demozoo.182243]
+title = "Back to Basic"
+group = "The New Dimension"
+source = "script"
+
+[demozoo.179206]
+title = "Back to Basics"
+group = "Jupp3"
+source = "script"
+
+[demozoo.350829]
+title = "Back to Future"
+group = "Lazer"
+source = "script"
+
+[demozoo.340941]
+title = "Back To Reality"
+group = "Insiders"
+source = "script"
+
+[demozoo.368124]
+title = "Back to Reality"
+group = "Sector 90"
+source = "script"
+
+[demozoo.332070]
+title = "Back to the 80's"
+group = "Crypt"
+source = "script"
+
+[demozoo.356341]
+title = "Back, No Way!"
+group = "Vision"
+source = "script"
+
+[demozoo.47210]
+title = "Back<-strike!"
+group = "Science 451"
+source = "script"
+
+[demozoo.291005]
+title = "Bad Apple 64"
+group = "Onslaught"
+source = "script"
+
+[demozoo.201122]
+title = "Bad Boy"
+group = "Samar Productions / EXclusive ON"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.363378]
+title = "Bad Cat November Demo"
+group = "Norwegian Cracking Agency"
+source = "script"
+
+[demozoo.333857]
+title = "Bad Cat Title Music"
+group = "Cracking For Lovers"
+source = "script"
+
+[demozoo.365776]
+title = "Bad Demo"
+group = "The Shade Section"
+source = "script"
+
+[demozoo.333442]
+title = "Bad Pixels"
+group = "New Generation Crew"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.19890]
+title = "Badcopy"
+group = "Emulamer"
+source = "script"
+
+[demozoo.341931]
+title = "Badmood"
+group = "Gorbat Soft"
+source = "script"
+
+[demozoo.326831]
+title = "Badsie Megademo"
+group = "Ninja GeFilus"
+source = "script"
+
+[demozoo.205327]
+title = "Baertige"
+group = "Willow"
+source = "ai"
+kind = "collection"
+disks = ["Willow 2004 Partydisk Side 01.D64", "Willow 2004 Partydisk Side 02.D64"]
+boot_disk = 2
+boot_file = "baertige.../shay"
+note = "one entry on Willow 2004 Partydisk: file 'baertige.../shay' on side 02 (boot disk 2, boot file baertige); no flip. A baertige.t64 is also in the csdb dir"
+
+[demozoo.352413]
+title = "BAF"
+group = "Babygang"
+source = "script"
+
+[demozoo.177337]
+title = "Bailando"
+group = "Dual Crew Shining"
+source = "script"
+
+[demozoo.266197]
+title = "Bajskorv"
+group = "Asgaard Designs"
+source = "script"
+
+[demozoo.361479]
+title = "Ball Demo"
+group = "The Warlocks"
+source = "script"
+
+[demozoo.268802]
+title = "Ballcrushing"
+group = "Baseline 2209"
+source = "script"
+
+[demozoo.49321]
+title = "Balloon Or Die"
+group = "Civitas"
+source = "script"
+
+[demozoo.344015]
+title = "Balls"
+group = "Motiv8"
+source = "script"
+
+[demozoo.326319]
+title = "Balls And Whine!"
+source = "script"
+
+[demozoo.293445]
+title = "Balls Might Touch"
+group = "Fatzone"
+source = "script"
+
+[demozoo.196116]
+title = "Bambora"
+group = "The New Aces 2087"
+source = "script"
+
+[demozoo.201591]
+title = "Bamse og Kyllingen"
+group = "Digital Dreams"
+source = "script"
+disks = ["bamseogkyllingen-digitaldreams.d64", "dig_-_bamse_og_kyllingen.d64"]
+swaps = [{ disk = 2, at = 157.0, key = "space", key_delay = 18.4 }]
+
+[demozoo.344183]
+title = "Banana Intro 4"
+group = "North Slovene Cracking Service"
+source = "script"
+
+[demozoo.309679]
+title = "Bananasours"
+group = "Dinasours"
+source = "script"
+
+[demozoo.343312]
+title = "Bangkok Demo"
+group = "Hanseatic Cracking Association"
+source = "script"
+
+[demozoo.204179]
+title = "Bangkok Knights"
+group = "MC"
+source = "script"
+result = "unknown"
+
+[demozoo.365964]
+title = "Bangkok Muzzz"
+group = "P&P Studios"
+source = "script"
+result = "unknown"
+
+[demozoo.288381]
+title = "Baracuda meets Barracuda"
+group = "Blazon"
+source = "script"
+
+[demozoo.344872]
+title = "Bards Logo"
+group = "Powerzone Designs"
+source = "script"
+
+[demozoo.270328]
+title = "Barely Alive"
+group = "Kvasigen"
+source = "script"
+
+[demozoo.348365]
+title = "Barmaid"
+group = "System"
+source = "script"
+result = "unknown"
+
+[demozoo.296143]
+title = "Barry Boomer"
+group = "TSJ"
+source = "ai"
+kind = "standalone"
+disks = ["BarryBoomer_6581.d64", "BarryBoomer_8580.d64"]
+note = "Barry Boomer: 6581 and 8580 SID builds of one demo; disk 1 stays alive 556M cycles, no flip asked"
+
+[demozoo.364657]
+title = "Bars"
+group = "North-West Commodore User Group"
+source = "script"
+
+[demozoo.361245]
+title = "Basic"
+group = "United Artists"
+source = "script"
+
+[demozoo.53902]
+title = "BASIC - Reality"
+group = "Willow / The Ultimate Mayas"
+source = "script"
+
+[demozoo.274178]
+title = "Basic 1"
+group = "Fieser Wolf"
+source = "script"
+
+[demozoo.274179]
+title = "Basic 3"
+group = "Fieser Wolf"
+source = "script"
+
+[demozoo.112697]
+title = "Basic Alives"
+group = "Sanity"
+source = "script"
+boot_file = "basic alives/lb"
+
+[demozoo.100050]
+title = "Basic Crap"
+group = "Zephyr"
+source = "script"
+
+[demozoo.43014]
+title = "Basic Demo"
+group = "UNSoft"
+source = "script"
+result = "unknown"
+
+[demozoo.365757]
+title = "BASIC Demo 1"
+group = "Pirates of Denver"
+source = "script"
+result = "unknown"
+
+[demozoo.148187]
+title = "Basic Instinct"
+group = "Jupp3"
+source = "script"
+
+[demozoo.175291]
+title = "Basic JSL"
+group = "Covenant"
+source = "script"
+result = "unknown"
+
+[demozoo.331487]
+title = "BASIC JSL II"
+group = "Covenant"
+source = "script"
+result = "unknown"
+
+[demozoo.360671]
+title = "Basic Night at Freddy's Pizzeria"
+group = "Cookiegoth"
+source = "script"
+
+[demozoo.58690]
+title = "Basic Rlt Compo"
+group = "Aki"
+source = "ai"
+kind = "collection"
+disks = ["adventure.d64", "forever14releses.d64", "sidlove.d64"]
+boot_disk = 2
+boot_file = "basic rlt compo"
+note = "one BASIC file 'basic rlt compo' on disk 2 (forever14releses.d64) of a 3-disk party compilation; boot disk 2 + that file; no flip"
+
+[demozoo.268605]
+title = "BASIC V3"
+group = "Jupp3"
+source = "script"
+
+[demozoo.333028]
+title = "BASIC-Collection"
+group = "Digital Sounds System"
+source = "script"
+result = "unknown"
+
+[demozoo.186923]
+title = "Basic-Demo"
+group = "Hollowman"
+source = "script"
+
+[demozoo.297615]
+title = "Basserne"
+group = "Nik"
+source = "script"
+
+[demozoo.23759]
+title = "Bastard"
+group = "Breeze"
+source = "script"
+disks = ["SIDE1.D64", "SIDE2.D64"]
+swaps = [{ disk = 2, at = 140.4, key = "space", key_delay = 17.7 }]
+
+[demozoo.332088]
+title = "Bat-Dance"
+group = "Babygang"
+source = "script"
+disks = ["%5BBYG%5D_BAT-DANCE.D64", "bat-dance.d64"]
+note = "the sweep only reached disk 1 of 2"
+
+[demozoo.273219]
+title = "Batplot"
+group = "Adam West Group"
+source = "script"
+
+[demozoo.90445]
+title = "Batt-man"
+group = "Polish Productions"
+source = "script"
+
+[demozoo.375500]
+title = "Battle Scars"
+group = "Samar Productions"
+source = "script"
+
+[demozoo.323587]
+title = "Battle Stations"
+group = "Hokuto Force"
+source = "script"
+disks = ["Battle_Stations_Side1.d64", "Battle_Stations_Side2.d64"]
+swaps = [{ disk = 2, at = 204.0 }]
+
+[demozoo.186147]
+title = "Battling Seizure Robots"
+group = "Avatar"
+source = "script"
+result = "unknown"
+
+[demozoo.173928]
+title = "BCC #4 Party Scroll"
+group = "C64 Club Berlin"
+source = "script"
+
+[demozoo.173944]
+title = "BCC #5 Party Scroll"
+group = "C64 Club Berlin"
+source = "script"
+
+[demozoo.357667]
+title = "Beach Party"
+group = "Demix / Actual Trading Generation"
+source = "ai"
+kind = "standalone"
+disks = ["atg.d64", "Beach_Party.D64"]
+boot_disk = 2
+note = "Beach_Party.D64 contains the whole demo; atg.d64 is a compilation with the same files; boot_disk 2 (Beach_Party.D64) is the real production, no flip"
+
+[demozoo.4013]
+title = "Beach Party Summer 1988"
+group = "Megahawks Incorporated"
+source = "script"
+
+[demozoo.304626]
+title = "Beast Demo III"
+group = "The Legion Crackers"
+source = "script"
+
+[demozoo.373309]
+title = "Beat Broken, Quit."
+group = "Mayday!"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.356339]
+title = "Beat Dis"
+group = "Vision"
+source = "script"
+disks = ["MISC2.d64", "vision80a.d64"]
+note = "the sweep only reached disk 1 of 2"
+
+[demozoo.183370]
+title = "Beat Thizz"
+group = "Cool Fresh Crew / The Danger Zone"
+source = "script"
+
+[demozoo.298825]
+title = "Beat-Time"
+group = "Beat Team"
+source = "script"
+
+[demozoo.361329]
+title = "Beatable"
+group = "Trace"
+source = "script"
+
+[demozoo.177791]
+title = "Beats"
+group = "Atlantis"
+source = "script"
+
+[demozoo.173578]
+title = "Because"
+group = "Noice"
+source = "script"
+
+[demozoo.280170]
+title = "Becoming Danko"
+group = "Triad"
+source = "script"
+
+[demozoo.345210]
+title = "Bed of Nails"
+group = "Hitmen"
+source = "script"
+
+[demozoo.340507]
+title = "Bedlam"
+group = "Cross"
+source = "script"
+disks = ["Bedlam.d64", "Cross - Bedlam.d64"]
+swaps = [{ disk = 2, at = 132.5, key = "space", key_delay = 18.1 }]
+
+[demozoo.124828]
+title = "Bee Together"
+group = "Mahoney"
+source = "script"
+
+[demozoo.325124]
+title = "Beelzebub"
+group = "Extend"
+source = "script"
+result = "unknown"
+
+[demozoo.324968]
+title = "Been Caught Buttering"
+group = "Kraksnax"
+source = "script"
+
+[demozoo.298747]
+title = "Beep!"
+group = "Dream"
+source = "script"
+
+[demozoo.338820]
+title = "Beer Report"
+group = "Abary"
+source = "script"
+
+[demozoo.376005]
+title = "Beerdough"
+group = "Oxsid Planetary"
+source = "script"
+
+[demozoo.376760]
+title = "Beergola Bros 2025 - Fuel Like a Casserole"
+group = "Fairlight"
+source = "script"
+
+[demozoo.289811]
+title = "Beermacht"
+group = "Sabian"
+source = "script"
+
+[demozoo.360869]
+title = "Beerscroller"
+group = "lpl"
+source = "script"
+
+[demozoo.20339]
+title = "Beerstation - The Return of the Plinsen"
+group = "Warriors of Wasteland"
+source = "script"
+
+[demozoo.22699]
+title = "Beertime"
+group = "Dekadence"
+source = "script"
+
+[demozoo.3151]
+title = "Beertime 3"
+group = "Dekadence"
+source = "script"
+
+[demozoo.44558]
+title = "Beertime 5"
+group = "Dekadence"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.666]
+title = "Beertime IVA"
+group = "Dekadence"
+source = "script"
+
+[demozoo.179209]
+title = "Beertime One"
+group = "Dekadence"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.114987]
+title = "Beertro"
+group = "Royal Belgian Beer Squadron"
+source = "script"
+
+[demozoo.200067]
+title = "Beezarro"
+group = "Atlantis"
+source = "script"
+
+[demozoo.336778]
+title = "Before You Go"
+group = "Internal Affairs / Paradize"
+source = "script"
+disks = ["Before_You_Go_V1.d64", "Before_You_Go_V2.d64"]
+swaps = [{ disk = 2, at = 200.3, key = "p1fire", key_delay = 27.1 }]
+
+[demozoo.375032]
+title = "Behind the Screen"
+group = "Pixel Punx"
+source = "script"
+
+[demozoo.97513]
+title = "Beisikki Demo"
+group = "Fit"
+source = "script"
+result = "unknown"
+
+[demozoo.349225]
+title = "Bells of Glory"
+group = "Data"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.332047]
+title = "Ben Daglish Collection 3"
+group = "Antic"
+source = "script"
+result = "unknown"
+
+[demozoo.167238]
+title = "Ben Daglish Music 2"
+group = "Newlook"
+source = "script"
+
+[demozoo.296438]
+title = "Bencor Minidemo"
+group = "Bencor Brothers"
+source = "script"
+
+[demozoo.343300]
+title = "Benn Stuff"
+group = "Hanseatic Cracking Association"
+source = "script"
+
+[demozoo.364490]
+title = "Besides the Work"
+group = "Nightmare Cracking Institution"
+source = "script"
+
+[demozoo.352414]
+title = "Best Amiga"
+group = "Babygang"
+source = "script"
+
+[demozoo.361967]
+title = "Best Intro 1"
+group = "Killer Rats Association"
+source = "script"
+
+[demozoo.356338]
+title = "Best Moves II"
+group = "Vision"
+source = "script"
+
+[demozoo.343848]
+title = "Best Movies"
+group = "Alienware 4009"
+source = "script"
+
+[demozoo.360511]
+title = "Best Music Collection 1"
+group = "Impact Laboratories / Jabole"
+source = "script"
+result = "unknown"
+
+[demozoo.336478]
+title = "Best of Arne 1"
+group = "Alpha Flight"
+source = "script"
+
+[demozoo.336477]
+title = "Best of Arne 2"
+group = "Alpha Flight"
+source = "script"
+
+[demozoo.6909]
+title = "Best of Trinomic"
+group = "Trinomic"
+source = "script"
+
+[demozoo.313113]
+title = "Best on CRT"
+group = "Breeze"
+source = "script"
+disks = ["bestoncrt-s1.d64", "bestoncrt-s2.d64"]
+swaps = [{ disk = 2, at = 462.7 }]
+
+[demozoo.366009]
+title = "Best Then Demo"
+group = "The Destiny Crew / Power Soft Crew"
+source = "script"
+
+[demozoo.267746]
+title = "Betrayal"
+group = "Majic 12"
+source = "script"
+result = "unknown"
+
+[demozoo.35385]
+title = "Better"
+group = "Onslaught"
+source = "script"
+disks = ["Better by Onslaught - Side 1.d64", "Better by Onslaught - Side 2.d64"]
+swaps = [{ disk = 2, at = 538.6 }]
+
+[demozoo.271040]
+title = "Better Dead Than Lamer"
+group = "Frontline"
+source = "script"
+
+[demozoo.349102]
+title = "Better Skate"
+group = "The Worlds Greatest Importers / The Fanatic Duo"
+source = "script"
+
+[demozoo.349776]
+title = "Beurk"
+group = "Yankees"
+source = "script"
+
+[demozoo.361888]
+title = "Beverly Hills Cop"
+group = "Little Fluffy Group"
+source = "script"
+
+[demozoo.391454]
+title = "Beware What Comes"
+group = "Inox"
+source = "script"
+
+[demozoo.153249]
+title = "Beyond"
+group = "Maniacs of Noise / CyberZound Productions"
+source = "script"
+
+[demozoo.184030]
+title = "Beyond all Dreams"
+group = "Axenon"
+source = "ai"
+kind = "standalone"
+disks = ["bad.d64", "bey_all_draxn.d64"]
+note = "two releases (TDD / other header) of the same one-file demo; alternatives, no flip"
+
+[demozoo.126688]
+title = "Beyond Imagination"
+group = "Antic"
+source = "script"
+
+[demozoo.6199]
+title = "Beyond Imagination 2"
+group = "Antic"
+source = "script"
+
+[demozoo.291790]
+title = "Beyond Reality"
+group = "Tetragon"
+source = "script"
+
+[demozoo.35868]
+title = "Beyond Recovery"
+group = "Singular"
+source = "script"
+
+[demozoo.362180]
+title = "Beyond the Reality"
+group = "Lash"
+source = "script"
+result = "unknown"
+
+[demozoo.126691]
+title = "Beyond The Stars"
+group = "Skylight Designs"
+source = "script"
+disks = ["Beyond_The_Stars_S1.D64", "Beyond_The_Stars_S2.D64"]
+swaps = [{ disk = 2, at = 176.8, key = "space", key_delay = 15.3 }]
+
+[demozoo.198437]
+title = "Beyond the Stars"
+group = "Breakpoint Hacking Techniques"
+source = "script"
+
+[demozoo.61257]
+title = "Biba 2"
+group = "Arise"
+source = "ai"
+disks = ["biba2_a.d64", "biba2_b.d64"]
+swaps = [{ disk = 2, at = 203.0 }]
+note = "Biba 2: boot file must be the 43k 'B...demo' prg (2nd dir entry, autostart image:'B*'); it prints FLIP DISK on BASIC screen, after disk 2 the Biba 2 demo runs; disk 2: verified: insert at 200M, no key; demo logo + 'from planet Arise' appear ~35M later (boot_file B*)"
+
+[demozoo.44557]
+title = "Biba 3"
+group = "Arise"
+source = "script"
+machine = "pal_1541_8580"
+disks = ["BIBA 3 SIDE A.D64", "BIBA 3 SIDE B.D64"]
+swaps = [{ disk = 2, at = 464.4 }]
+
+[demozoo.343883]
+title = "Biene Maja"
+group = "Anti Fucking Beginners Society"
+source = "script"
+
+[demozoo.306998]
+title = "Big Deal"
+group = "Fright"
+source = "script"
+
+[demozoo.356114]
+title = "Big Distance"
+group = "Tristar"
+source = "script"
+
+[demozoo.346818]
+title = "Big Fun"
+group = "The Wizards"
+source = "script"
+
+[demozoo.345432]
+title = "Big Fun II"
+group = "Fiction"
+source = "script"
+
+[demozoo.343828]
+title = "Big Fun!!"
+group = "Across"
+source = "script"
+
+[demozoo.394955]
+title = "Big Lamers Demo"
+group = "Miami Vice Floppy Service"
+source = "script"
+
+[demozoo.361338]
+title = "Big Party"
+group = "The Mad Boys"
+source = "script"
+
+[demozoo.341876]
+title = "Big Shit"
+group = "FBI Crew"
+source = "script"
+
+[demozoo.315958]
+title = "Big Tits"
+group = "Stormtroopers of Death / Mirage"
+source = "script"
+
+[demozoo.326663]
+title = "Big Vic Show"
+group = "Caution"
+source = "script"
+
+[demozoo.100197]
+title = "Bike64 Project - 0xAA Version"
+group = "Level 64"
+source = "script"
+machine = "pal_1541_8580"
+disks = ["bike64A.D64", "bike64B.d64"]
+swaps = [{ disk = 2, at = 266.2, key = "p2fire" }]
+
+[demozoo.201999]
+title = "Bild-Dia-Show"
+group = "CO²"
+source = "script"
+
+[demozoo.324932]
+title = "Billion $ Babies"
+group = "Kraksnax"
+source = "script"
+
+[demozoo.354890]
+title = "Billy's First Demo"
+group = "The Electronic Knights"
+source = "script"
+
+[demozoo.347162]
+title = "Bilpartaj 1003%"
+group = "Swappas With Attitude"
+source = "script"
+
+[demozoo.373549]
+title = "Binary Pulsed"
+group = "Desire"
+source = "script"
+
+[demozoo.287309]
+title = "Bintro"
+source = "script"
+
+[demozoo.350064]
+title = "Bionic Logo"
+group = "Bionic Force"
+source = "script"
+
+[demozoo.172476]
+title = "Bira Hora"
+group = "Active"
+source = "script"
+
+[demozoo.375795]
+title = "Bird's Talk"
+group = "Unreal"
+source = "ai"
+machine = "pal_1541_8580"
+kind = "collection"
+result = "unknown"
+disks = ["GFX.D64", "INTROS.D64", "MSX1.D64", "MSX2.D64", "REAL.D64"]
+boot_disk = 3
+boot_file = "bird's talk /pch"
+note = "music compo entry 'bird's talk /pch' on Forever 3 MSX1.D64; single-file SID tune with a static title screen (sweep no-activity is the unchanging player screen), never asks for another disk"
+
+[demozoo.99521]
+title = "Birds on Fire"
+group = "Hack n' Trade"
+source = "script"
+
+[demozoo.177005]
+title = "Birdy Show"
+group = "Szokez"
+source = "script"
+
+[demozoo.52988]
+title = "Birthday Demo"
+group = "DMAgic"
+source = "script"
+disks = ["CORE01-demo.d64", "CORE01-SID-gfx-final.d64"]
+swaps = [{ disk = 2, at = 99.9, key = "p1fire", key_delay = 33.1 }]
+
+[demozoo.126196]
+title = "Birthday Demo"
+group = "Legend"
+source = "script"
+
+[demozoo.206001]
+title = "Birthday Demo"
+group = "Pentangle"
+source = "script"
+
+[demozoo.344903]
+title = "Birthday Demo"
+group = "Zad Team"
+source = "script"
+
+[demozoo.376129]
+title = "Bit by Bit"
+group = "X-Jammer / Screwface"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.346162]
+title = "Bitburger III"
+group = "Exact"
+source = "script"
+
+[demozoo.341414]
+title = "Bitchy and Jade"
+group = "Mute 101"
+source = "script"
+
+[demozoo.290853]
+title = "Bite a Bit"
+group = "Crack Swap Industries"
+source = "script"
+
+[demozoo.365540]
+title = "Bitfrost"
+group = "Freedom Systems"
+source = "script"
+
+[demozoo.357740]
+title = "Bitmania"
+group = "Duel Control"
+source = "script"
+
+[demozoo.213312]
+title = "Bitmania Diskmag Menusystem"
+group = "TMA"
+source = "script"
+
+[demozoo.17945]
+title = "Bits n Pieces"
+group = "Triad"
+source = "script"
+
+[demozoo.88492]
+title = "Bitter Swede Symphony"
+group = "Booze Design"
+source = "script"
+machine = "pal_1541_8580"
+result = "unknown"
+
+[demozoo.310916]
+title = "Bitti-Leiri Demo"
+group = "Wabo-Soft"
+source = "script"
+machine = "ntsc_1541"
+
+[demozoo.7516]
+title = "Bizarre"
+group = "sYmptom"
+source = "script"
+
+[demozoo.365804]
+title = "Bizarre"
+group = "The Road Busters"
+source = "script"
+
+[demozoo.359147]
+title = "Blaa - The Demo"
+group = "Scream"
+source = "script"
+disks = ["Blaa - The Demo (Side 1).d64", "Blaa - The Demo (Side 2).d64", "Blaa - The Demo_b.d64"]
+note = "the sweep only reached disk 1 of 3"
+
+[demozoo.296994]
+title = "Blaafrak"
+group = "Nik"
+source = "script"
+
+[demozoo.327161]
+title = "Blabla"
+source = "script"
+
+[demozoo.375208]
+title = "Black Birdie 2024 Invitro"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.184522]
+title = "Black Celebration"
+group = "Twilight"
+source = "script"
+
+[demozoo.47202]
+title = "Black Hole"
+group = "Lepsi Developments"
+source = "script"
+
+[demozoo.195431]
+title = "Black Hole"
+group = "deFEEST"
+source = "script"
+
+[demozoo.184405]
+title = "Black Magic"
+group = "Chorus"
+source = "script"
+
+[demozoo.345032]
+title = "Black Magic"
+group = "The Imperium Arts"
+source = "script"
+
+[demozoo.361387]
+title = "Black Magic 2"
+group = "International Commodore System"
+source = "script"
+disks = ["Black_magic_2_by_TG_JSL.d64", "notetomy5thdemo[tg-jsl].d64"]
+swaps = [{ disk = 2, at = 152.2, key = "p1fire", key_delay = 36.9 }]
+
+[demozoo.326306]
+title = "Black on Black"
+group = "Yleisradio"
+source = "script"
+result = "unknown"
+
+[demozoo.334026]
+title = "Black Porsche"
+group = "Zorro Soft Switzerland"
+source = "script"
+
+[demozoo.271009]
+title = "Black Satanday"
+group = "Devils"
+source = "script"
+result = "unknown"
+
+[demozoo.96489]
+title = "Black Spark 100%"
+group = "Black Sun"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.1055]
+title = "Black Spark 90%"
+group = "Black Sun"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.356886]
+title = "Blackadder's Blackboard"
+group = "Lithium"
+source = "script"
+result = "unknown"
+
+[demozoo.291447]
+title = "Blank Intro"
+group = "Mask"
+source = "script"
+
+[demozoo.290586]
+title = "Blank Out"
+group = "Danish Underground Crackers"
+source = "script"
+result = "unknown"
+
+[demozoo.55167]
+title = "Blasen"
+group = "Chrissie"
+source = "script"
+
+[demozoo.321257]
+title = "Blasphemy #2"
+group = "Hitmen"
+source = "ai"
+disks = ["Blas2a.d64", "Blas2b.d64"]
+swaps = [{ disk = 2, at = 304.5, key = "space", key_delay = 15.2 }]
+keys = [{ at = 60.9, key = "space" }, { at = 73.1, key = "down" }, { at = 83.2, key = "down" }, { at = 93.4, key = "down" }, { at = 103.5, key = "down" }, { at = 113.7, key = "down" }, { at = 123.8, key = "down" }, { at = 134.0, key = "down" }, { at = 144.1, key = "down" }, { at = 154.3, key = "down" }, { at = 164.4, key = "down" }, { at = 174.6, key = "down" }, { at = 184.7, key = "down" }, { at = 203.8, key = "return" }]
+note = "Blasphemy #2: space on intro, 12x Down moves to a side-two tune, Return shows 'Turn side two'; insert, then space ~15M later; disk 2: key names down/Return are X keysyms Down/Return; no upper limit seen"
+
+[demozoo.200700]
+title = "Blasphemy #3"
+group = "Hitmen"
+source = "script"
+disks = ["BLP3A.D64", "BLP3B.D64"]
+swaps = [{ disk = 2, at = 148.3, key = "space", key_delay = 13.2 }]
+
+[demozoo.340421]
+title = "BlasterMania 4.1"
+group = "Code7 / International Cracking Company"
+source = "script"
+
+[demozoo.344416]
+title = "Blastermania 4.2"
+group = "International Cracking Company / Code7"
+source = "script"
+
+[demozoo.331667]
+title = "Blaze Logo"
+group = "Contex"
+source = "script"
+
+[demozoo.343306]
+title = "Blazer Music"
+group = "Hanseatic Cracking Association"
+source = "script"
+
+[demozoo.300248]
+title = "Blazon 2003 Intro - Remastered"
+group = "Blazon"
+source = "script"
+result = "unknown"
+
+[demozoo.300243]
+title = "Blazon Twinkle Twinkle Little Starz"
+group = "Blazon"
+source = "script"
+
+[demozoo.394823]
+title = "Blazon World"
+group = "Blazon"
+source = "script"
+
+[demozoo.317308]
+title = "Blazon X-mas Demo"
+group = "Blazon"
+source = "script"
+
+[demozoo.330723]
+title = "Bleed into One Music Collection"
+group = "Creatures"
+source = "script"
+
+[demozoo.363218]
+title = "Blizzard"
+group = "Magic"
+source = "script"
+
+[demozoo.126288]
+title = "Blizzard (part 1)"
+group = "The Mule"
+source = "script"
+kind = "collection"
+disks = ["Bytestar_party_1989a.D64", "Bytestar_party_1989b.D64"]
+note = "disk set shared by 9 productions"
+
+[demozoo.126287]
+title = "Blizzard 2 (part 2)"
+group = "The Mule"
+source = "script"
+kind = "collection"
+disks = ["Bytestar_party_1989a.D64", "Bytestar_party_1989b.D64"]
+note = "disk set shared by 9 productions"
+
+[demozoo.358430]
+title = "Blob Tunes"
+group = "Triad"
+source = "script"
+
+[demozoo.6986]
+title = "Bloempjes & Bytjes"
+group = "Silicon Ltd."
+source = "ai"
+kind = "standalone"
+disks = ["Bloempjes&Bytjes.Silicon.d64", "Bloempjes_and_Bytjes-fixed.Silicon.d64"]
+note = "Bloempjes & Bytjes: disk 2 is the loadbug-fixed re-release of the same demo, alternative not a second side"
+
+[demozoo.349983]
+title = "Blood and Guts"
+group = "Swedish Cracking Association"
+source = "script"
+disks = ["Blood n Guts [Swedish Cracking Association] (side 1).d64", "Blood n Guts [Swedish Cracking Association] (side 2).d64"]
+swaps = [{ disk = 2, at = 135.7, key = "space", key_delay = 19.2 }]
+
+[demozoo.368855]
+title = "Blood Drinkers"
+group = "Tankard"
+source = "script"
+
+[demozoo.336055]
+title = "Blood'n Hell"
+group = "Impulse"
+source = "script"
+
+[demozoo.2219]
+title = "Blow My Fuse"
+group = "The Ruling Company"
+source = "script"
+result = "unknown"
+
+[demozoo.351544]
+title = "Blow Them Up"
+group = "The Wanderer Group"
+source = "script"
+
+[demozoo.294008]
+title = "Blowfly"
+group = "The Guilties"
+source = "script"
+
+[demozoo.346061]
+title = "Blue Days"
+group = "Bernese Computer Technologies"
+source = "script"
+
+[demozoo.366330]
+title = "Blue Demo"
+group = "Proline"
+source = "script"
+
+[demozoo.339594]
+title = "Blue Dreams"
+group = "The Troopers"
+source = "script"
+
+[demozoo.346837]
+title = "Blue Dreams II"
+group = "Fantasy Cracking Service"
+source = "script"
+
+[demozoo.375844]
+title = "Blue Flower"
+group = "Draco"
+source = "ai"
+machine = "pal_1541_8580"
+kind = "standalone"
+disks = ["GFX.D64", "INTROS.D64", "MSX1.D64", "MSX2.D64", "REAL.D64"]
+boot_disk = 4
+boot_file = "blue flower/hank"
+note = "Blue Flower: single SID tune on MSX2.D64 of the Forever 3 compo set; the sweep's flip to REAL.D64 was a false accept (did not reproduce, player screen unchanged)"
+
+[demozoo.26870]
+title = "Blue Monday"
+group = "Crypt"
+source = "script"
+
+[demozoo.359743]
+title = "Blue Monday"
+group = "Hawk & Snork"
+source = "script"
+
+[demozoo.375399]
+title = "Blue Monday Demo"
+group = "The Jackal / Gryphon"
+source = "script"
+result = "unknown"
+
+[demozoo.357924]
+title = "Blue Monday I"
+group = "Europe Computer Software"
+source = "script"
+
+[demozoo.344841]
+title = "Blue Warhawk Intro"
+group = "Light Force / Warhawk International"
+source = "script"
+
+[demozoo.81884]
+title = "Blueprint for Organic Toy"
+group = "Panda Design"
+source = "script"
+
+[demozoo.321626]
+title = "Bne or Bust"
+group = "Bitnop Designs"
+source = "script"
+
+[demozoo.286647]
+title = "Bob Johnson"
+group = "Phantasy"
+source = "script"
+
+[demozoo.354869]
+title = "Boden Party"
+group = "Skylight"
+source = "script"
+
+[demozoo.351961]
+title = "Bodyshocker"
+group = "Triangle / Danish Game Smashers"
+source = "script"
+
+[demozoo.102459]
+title = "Bogdance"
+group = "Invada"
+source = "script"
+
+[demozoo.126677]
+title = "Boing"
+group = "Powers of Pain"
+source = "script"
+
+[demozoo.126204]
+title = "Bollocks"
+group = "Sector 90"
+source = "script"
+
+[demozoo.201150]
+title = "Bomb Fusion Music"
+group = "Hotline"
+source = "script"
+
+[demozoo.321365]
+title = "Bomb Jack 2 Ripp"
+group = "Lightforce"
+source = "script"
+
+[demozoo.331225]
+title = "Bomb Jack Music"
+group = "Fantastic Cracking Company"
+source = "script"
+
+[demozoo.50256]
+title = "Bomb Prv"
+group = "Dekadence"
+source = "script"
+
+[demozoo.343849]
+title = "Bomb You"
+group = "Alienware 4009"
+source = "script"
+
+[demozoo.327662]
+title = "Bombo Music"
+group = "1001 Crew"
+source = "script"
+result = "unknown"
+
+[demozoo.356736]
+title = "Bombo Music"
+group = "Telephone Crackers Norway"
+source = "script"
+
+[demozoo.386375]
+title = "Bombo Music"
+group = "The Intruder"
+source = "script"
+
+[demozoo.139059]
+title = "Bon Voyage"
+group = "Bonzai"
+source = "script"
+
+[demozoo.117764]
+title = "Bonanza"
+group = "Microsystems Digital Technologies"
+source = "script"
+result = "unknown"
+
+[demozoo.336707]
+title = "Bond Action"
+group = "Tropic"
+source = "script"
+
+[demozoo.349886]
+title = "Bone Hard"
+group = "Impulse"
+source = "script"
+disks = ["Bone Harder [Side 1].d64", "Bone Harder [Side 2].d64"]
+swaps = [{ disk = 2, at = 151.9, key = "space", key_delay = 13.8 }]
+
+[demozoo.6040]
+title = "Bone Harder"
+group = "Impulse"
+source = "script"
+disks = ["Bone Harder [Side 1].d64", "Bone Harder [Side 2].d64"]
+swaps = [{ disk = 2, at = 151.8, key = "space", key_delay = 17.1 }]
+
+[demozoo.126539]
+title = "Bone Harder 2"
+group = "Impulse"
+source = "script"
+
+[demozoo.349887]
+title = "Bone Hardest"
+group = "Impulse"
+source = "script"
+
+[demozoo.91060]
+title = "Boned Cortex"
+group = "Chrome"
+source = "script"
+
+[demozoo.164716]
+title = "Bonfire!"
+group = "Neoplasia"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.287631]
+title = "Bonzilloscope"
+group = "Bonzai"
+source = "ai"
+kind = "standalone"
+disks = ["Bonzilloscope-disk1_BZ.d64", "Bonzilloscope-disk2_BZ.d64", "Bonzilloscope-disk3_BZ.d64", "Bonzilloscope-disk4_BZ.d64"]
+note = "Bonzilloscope: four standalone player disks"
+
+[demozoo.308644]
+title = "Boogie Factor 100%"
+group = "Fairlight"
+source = "script"
+
+[demozoo.391146]
+title = "Booker's Music Pack #01 (version 2)"
+group = "Caution"
+source = "script"
+
+[demozoo.66671]
+title = "BoomBoom"
+group = "Aspekt"
+source = "script"
+
+[demozoo.293593]
+title = "Booring"
+group = "Sex Express"
+source = "script"
+
+[demozoo.365929]
+title = "Bootsy's Club Tonic (8580 Radio Edit)"
+group = "Onslaught"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.20337]
+title = "Booze"
+group = "Metalvotze"
+source = "script"
+result = "unknown"
+boot_file = "!booze!"
+
+[demozoo.304593]
+title = "Booze Your Illusion"
+group = "Battery / Acrise"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.205972]
+title = "Border Demo I"
+group = "Cracking Team of Darkness"
+source = "script"
+
+[demozoo.205973]
+title = "Border Demo II"
+group = "Cracking Team of Darkness"
+source = "script"
+
+[demozoo.97283]
+title = "Border Letter 4 aka Amazing"
+group = "1001 Crew"
+source = "script"
+
+[demozoo.363764]
+title = "Borderaster"
+group = "Mjau"
+source = "script"
+
+[demozoo.79043]
+title = "Borderline"
+group = "Triad"
+source = "script"
+
+[demozoo.303936]
+title = "Borderthrust"
+group = "Veitvet Cracking Service"
+source = "script"
+
+[demozoo.346564]
+title = "Boring Trip"
+group = "Jewels"
+source = "script"
+
+[demozoo.375484]
+title = "Born in the (B)arikkala"
+source = "script"
+
+[demozoo.285499]
+title = "Born To Crack"
+group = "Al Capone Instruments"
+source = "script"
+result = "unknown"
+
+[demozoo.353791]
+title = "Born To Win"
+group = "Pet Shop Boys"
+source = "script"
+
+[demozoo.61260]
+title = "BornInPain"
+group = "Sataki"
+source = "script"
+
+[demozoo.44561]
+title = "Bornscroller"
+group = "The Solaris Agency"
+source = "script"
+
+[demozoo.75100]
+title = "Borntro"
+group = "Flashback"
+source = "script"
+kind = "collection"
+disks = ["PSTAR03-A.D64", "PSTAR03-B.D64"]
+boot_file = "borntro      /fb"
+note = "disk set shared by 5 productions"
+
+[demozoo.364343]
+title = "Bose"
+group = "New Example Crew"
+source = "script"
+
+[demozoo.368166]
+title = "Bostich"
+group = "Galicya"
+source = "script"
+kind = "collection"
+disks = ["sb064966.d64", "sb064967.d64"]
+note = "disk set shared by 5 productions"
+
+[demozoo.388168]
+title = "Bounce Around"
+group = "Jaybird"
+source = "script"
+
+[demozoo.325790]
+title = "Bounce Party"
+group = "Xenon"
+source = "script"
+
+[demozoo.197464]
+title = "Bounch Da B"
+group = "The Concept Kids"
+source = "script"
+result = "unknown"
+boot_file = "bounch da b./tck"
+
+[demozoo.200008]
+title = "Bouncing Dancer"
+group = "Ciccioriccio"
+source = "script"
+
+[demozoo.362745]
+title = "Bounder 2 Music"
+group = "The Furious"
+source = "script"
+
+[demozoo.347399]
+title = "Boy's Don't Cry"
+group = "Super Swap Sweden"
+source = "script"
+
+[demozoo.77566]
+title = "Boyt Kikker"
+group = "Pie vs. Pie"
+source = "script"
+
+[demozoo.272495]
+title = "Boz Intro"
+group = "Boz Desing"
+source = "script"
+
+[demozoo.357966]
+title = "Brain Dead"
+group = "Evil"
+source = "script"
+
+[demozoo.340533]
+title = "Brain Tumor Preview"
+group = "Amnesia"
+source = "script"
+
+[demozoo.318849]
+title = "Brain-Dead"
+group = "Light"
+source = "script"
+machine = "ntsc_1541"
+
+[demozoo.289028]
+title = "Brainbeat"
+group = "Reflex"
+source = "script"
+
+[demozoo.289027]
+title = "Brainbeat II"
+group = "Reflex"
+source = "script"
+
+[demozoo.289026]
+title = "Brainbeat III"
+group = "Reflex"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.289025]
+title = "Brainbeat IV"
+group = "Reflex"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.365930]
+title = "Brainkaszana"
+group = "Vulture Design"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.278342]
+title = "Brainstorm"
+group = "Array"
+source = "script"
+
+[demozoo.110620]
+title = "Brainstorm 3"
+group = "Megastyle"
+source = "script"
+result = "unknown"
+boot_file = "brainstorm 3/msi"
+
+[demozoo.351908]
+title = "Brainwork 2"
+group = "Noise"
+source = "script"
+
+[demozoo.21536]
+title = "Brak"
+group = "GFB64"
+source = "script"
+kind = "collection"
+disks = ["8BITS.D64", "BRAK.D64", "DESIGN3.D64", "DESPAIR.D64", "DNS#7.D64", "GFX1.D64", "GFX2.D64", "GREGFEEL.D64", "JAMAICA.D64", "MUSIC.D64", "QUARK1.D64", "quark2.d64", "SCD.D64", "TRIAGE1.D64", "TRIAGE2.D64", "WEHATEPC.D64"]
+note = "disk set shared by 9 productions"
+
+[demozoo.22399]
+title = "Brak 2"
+group = "GFB64"
+source = "script"
+
+[demozoo.23478]
+title = "BRAK 3"
+group = "GFB64"
+source = "script"
+result = "unknown"
+
+[demozoo.388727]
+title = "Brazil Bits"
+group = "Pungas De Villa Martelli"
+source = "script"
+
+[demozoo.309577]
+title = "Breadbinked"
+group = "Atlantis / Pretzel Logic"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.366318]
+title = "Break a Leg"
+group = "Proline Enterprise"
+source = "script"
+
+[demozoo.7513]
+title = "Break Through II"
+group = "Panic"
+source = "script"
+
+[demozoo.198325]
+title = "Break Ya Neck"
+group = "MCM Designs"
+source = "script"
+
+[demozoo.274969]
+title = "Breakdance"
+group = "Delysid"
+source = "script"
+
+[demozoo.333377]
+title = "Breaker #1"
+group = "Doughnut Cracking Service"
+source = "script"
+
+[demozoo.276661]
+title = "Breakpoint is not cold"
+group = "Neoplasia"
+source = "script"
+
+[demozoo.5108]
+title = "Breakpoint Partyscroller"
+group = "Tristar / Abyss-Connection"
+source = "script"
+
+[demozoo.361966]
+title = "Breakthru"
+group = "Killer Rats Association"
+source = "script"
+
+[demozoo.327665]
+title = "Breakthru Music"
+group = "1001 Crew"
+source = "script"
+
+[demozoo.345045]
+title = "Breathless"
+group = "Hoaxers"
+source = "script"
+result = "unknown"
+boot_file = "-breathless-/hxs"
+
+[demozoo.339591]
+title = "Brede Slayer"
+group = "The Troopers / Lowboy"
+source = "script"
+
+[demozoo.19825]
+title = "Breitbandkatze 66%"
+group = "Reflex"
+source = "ai"
+disks = ["Breibandkatze_SideA.D64", "Breibandkatze_SideB.D64"]
+swaps = [{ disk = 1, at = 86.3, key = "space", key_delay = 20.3 }]
+boot_disk = 2
+note = "Breitbandkatze 66%: boot SIDE B (disk 2, boot_disk=1) first; it asks for side A; disk 1: boot with disk 2 (SideB) in the drive; after TURN DISK & PRESS SPACE insert disk 1 (SideA), space +20M; prompt waits (no upper limit seen, up to 300M)"
+
+[demozoo.368137]
+title = "Bribed Intro"
+group = "Secure"
+source = "script"
+
+[demozoo.346222]
+title = "Bridge to Universe"
+group = "Rush Division"
+source = "script"
+
+[demozoo.102455]
+title = "Brief Bursts of Happiness (B.B.O.H.)"
+group = "The Dreams / Creators"
+source = "script"
+
+[demozoo.352305]
+title = "Brilliant Triad!"
+group = "Triad"
+source = "script"
+
+[demozoo.81406]
+title = "Broken"
+group = "Civitas"
+source = "script"
+
+[demozoo.176725]
+title = "Broken"
+group = "Quadtrip"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.199843]
+title = "Broken"
+group = "Yleisradio"
+source = "script"
+
+[demozoo.661]
+title = "Broken Disk"
+group = "Dekadence"
+source = "script"
+
+[demozoo.358965]
+title = "Broken Keyboard"
+group = "Big Brother Copy"
+source = "script"
+result = "unknown"
+
+[demozoo.290552]
+title = "BrokenBorderRasters"
+group = "Excess"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.296144]
+title = "Bromance"
+group = "Bonzai"
+source = "script"
+machine = "pal_1541_8580"
+disks = ["Bromance side 1.D64", "Bromance side 2.D64"]
+swaps = [{ disk = 2, at = 412.1 }]
+
+[demozoo.327320]
+title = "Bronx Part aka Wish You Were Here"
+group = "Bronx"
+source = "script"
+
+[demozoo.124886]
+title = "Brown Note"
+group = "Fresh And In Charge"
+source = "script"
+
+[demozoo.326548]
+title = "Brudbilder"
+group = "Porn Wankers"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.355577]
+title = "Brunost"
+group = "Cocktail"
+source = "script"
+disks = ["Brunost_S1.d64", "Brunost_S2.d64"]
+swaps = [{ disk = 2, at = 137.9, key = "p1fire", key_delay = 35.9 }]
+
+[demozoo.369027]
+title = "Brush your PETSCII [99%]"
+group = "Elysium"
+source = "script"
+
+[demozoo.20268]
+title = "Brutal"
+group = "Light"
+source = "script"
+
+[demozoo.341035]
+title = "Brutal Attack"
+group = "Fantastic 4 Cracking Group / Nostalgia / Active"
+source = "script"
+
+[demozoo.365251]
+title = "Brutal Blue"
+group = "Orbs"
+source = "script"
+
+[demozoo.137706]
+title = "Brutal II"
+group = "Light"
+source = "script"
+
+[demozoo.341335]
+title = "Brutal Morale"
+group = "Exact"
+source = "script"
+
+[demozoo.2212]
+title = "Brutality"
+group = "Light"
+source = "script"
+
+[demozoo.190515]
+title = "BSOD"
+group = "Lepsi De / Miracles"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.341413]
+title = "BSS+BSWF"
+group = "Vision / Exact"
+source = "script"
+
+[demozoo.375534]
+title = "Bu Gece Gelmeyecek - He Won’t Come Back Tonight"
+group = "emarti"
+source = "script"
+result = "unknown"
+
+[demozoo.344803]
+title = "Bubble Bobble Music"
+group = "The Last Detail / The Shadows"
+source = "script"
+
+[demozoo.183199]
+title = "Bubble Wobble Intro"
+group = "Flex"
+source = "script"
+
+[demozoo.349858]
+title = "Bubbles"
+group = "Ian And Mic"
+source = "script"
+result = "unknown"
+
+[demozoo.183290]
+title = "Bubbles Intro"
+group = "The New Dimension"
+source = "script"
+
+[demozoo.101714]
+title = "Buddha Music Disk #1"
+group = "Hokuto Force"
+source = "script"
+
+[demozoo.357688]
+title = "Budweiser 3"
+group = "Death Sector"
+source = "script"
+disks = ["budweiser3.d64", "Budweiser_3.d64"]
+note = "the sweep only reached disk 1 of 2"
+
+[demozoo.86425]
+title = "Budworx"
+group = "Hysteric"
+source = "script"
+
+[demozoo.335997]
+title = "Budworx 2 Preview Parts"
+group = "Hysteric"
+source = "script"
+
+[demozoo.59037]
+title = "Buenzli Dance 2008"
+group = "Crypt"
+source = "script"
+
+[demozoo.58982]
+title = "Buenzli-Demo"
+group = "Crypt / The New Dimension"
+source = "script"
+
+[demozoo.364479]
+title = "Buffoonery"
+group = "Newness"
+source = "script"
+boot_file = "buffoonery!!!!!!"
+
+[demozoo.356336]
+title = "Bugger All"
+group = "Vision"
+source = "script"
+
+[demozoo.332907]
+title = "Bugs Bunny"
+group = "Defiers"
+source = "script"
+
+[demozoo.274186]
+title = "Bukowski"
+group = "Laxity"
+source = "script"
+
+[demozoo.181523]
+title = "Bullets over Vegas"
+group = "The Solution"
+source = "script"
+
+[demozoo.183400]
+title = "Bullshit"
+group = "The Danger Zone"
+source = "script"
+
+[demozoo.341736]
+title = "Bullshit"
+group = "Future Software Spy's 1969"
+source = "script"
+
+[demozoo.357360]
+title = "Bullshit"
+group = "Danecrew"
+source = "script"
+
+[demozoo.365261]
+title = "Bullshitscroller"
+group = "Orgado"
+source = "script"
+
+[demozoo.315900]
+title = "Bullshitter II"
+group = "The Cops"
+source = "script"
+
+[demozoo.315901]
+title = "Bullshitter II - New Release"
+group = "Gloom"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.302413]
+title = "Bum...Bum...Bum"
+group = "Q-Pha"
+source = "script"
+kind = "collection"
+disks = ["sb064966.d64", "sb064967.d64"]
+note = "disk set shared by 5 productions"
+
+[demozoo.267656]
+title = "Bump Up"
+group = "Lethargy"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.110856]
+title = "Bumpmania / Pijak Potrafi"
+group = "Arise"
+source = "script"
+disks = ["arise_bumpmania-A.d64", "arise_bumpmania-B.d64"]
+swaps = [{ disk = 2, at = 101.9 }]
+
+[demozoo.370028]
+title = "Bumtsich"
+group = "Extend"
+source = "script"
+
+[demozoo.330925]
+title = "Bunkerscroller 2010"
+group = "Svenonacid / ReCoMe"
+source = "script"
+
+[demozoo.4683]
+title = "Bunnies In Trouble"
+group = "DaCapo"
+source = "script"
+
+[demozoo.177139]
+title = "Bunt"
+group = "Vernunftmensch"
+source = "script"
+disks = ["bunker17.d64", "bunt.d64"]
+swaps = [{ disk = 2, at = 67.3, key = "p1fire", key_delay = 34.2 }]
+
+[demozoo.126832]
+title = "Burglary"
+group = "Nipson"
+source = "script"
+disks = ["Burglary_Side1.D64", "Burglary_Side2.D64"]
+swaps = [{ disk = 2, at = 411.4, key = "p2fire", key_delay = 43.0 }]
+
+[demozoo.346472]
+title = "Burkah Intro V2"
+group = "Onslaught"
+source = "script"
+
+[demozoo.102462]
+title = "Burn Baby Burn"
+group = "The Postmoderns"
+source = "script"
+
+[demozoo.2221]
+title = "Burn It"
+group = "Oxyron"
+source = "script"
+
+[demozoo.167438]
+title = "Burning Chrome"
+group = "Chromance"
+source = "script"
+disks = ["BurningChrome.d64", "Chromance - Burning Chrome.d64"]
+swaps = [{ disk = 2, at = 91.0, key = "p2fire", key_delay = 48.0 }]
+
+[demozoo.293970]
+title = "Burp"
+group = "SkyPower"
+source = "script"
+
+[demozoo.316704]
+title = "Bursting Out"
+group = "Color Of Skin / Beast"
+source = "script"
+
+[demozoo.143541]
+title = "Bus Noise"
+group = "Slipstream"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.319704]
+title = "Bus-Trip @ Night"
+group = "Blazon"
+source = "script"
+
+[demozoo.159834]
+title = "But We Loved Her"
+group = "Senex"
+source = "script"
+
+[demozoo.25442]
+title = "buttRfly"
+group = "Prince"
+source = "script"
+
+[demozoo.19885]
+title = "Buu-Klubben"
+group = "Yleisradio / FST"
+source = "script"
+
+[demozoo.357546]
+title = "Buy Cheap Discs!"
+group = "Level 11"
+source = "script"
+
+[demozoo.280844]
+title = "Bwahaha"
+group = "Victory"
+source = "script"
+
+[demozoo.312053]
+title = "Bye & Hello"
+group = "The Microforce"
+source = "script"
+
+[demozoo.367873]
+title = "Bye Vision!!"
+group = "The Black Lords"
+source = "script"
+
+[demozoo.183562]
+title = "Bye-Bye Baby"
+group = "Shield"
+source = "script"
+
+[demozoo.352418]
+title = "BYG Classic"
+group = "Babygang"
+source = "script"
+
+[demozoo.352419]
+title = "BYG Strikes Back"
+group = "Babygang"
+source = "script"
+result = "unknown"
+
+[demozoo.178775]
+title = "Byle"
+group = "Yleisradio"
+source = "script"
+result = "unknown"
+
+[demozoo.343564]
+title = "Byte Demo 2"
+group = "ZZap"
+source = "script"
+
+[demozoo.329670]
+title = "Bytes In Motion"
+group = "Motion"
+source = "script"
+
+[demozoo.395930]
+title = "Bytestar Party Results"
+group = "Bytestar"
+source = "script"
+
+[demozoo.365433]
+title = "Bzyk Msx Collection #1"
+group = "P.B."
+source = "script"
+result = "unknown"
+
+[demozoo.204255]
+title = "Bzykolandia #1"
+group = "Censure Designz"
+source = "script"
+
+[demozoo.165325]
+title = "bzzz"
+group = "Nah Kolor"
+source = "script"
+
+[demozoo.126476]
+title = "Bålsta Pack 2"
+group = "Zoom"
+source = "script"
+
+[demozoo.126478]
+title = "Bålsta Släppet"
+group = "The Leftovers"
+source = "script"

@@ -1,0 +1,1151 @@
+[demozoo.306747]
+title = "E$G Demo 002"
+group = "E$G Legion Team"
+source = "script"
+
+[demozoo.308634]
+title = "E2iRA"
+group = "Arise"
+source = "script"
+machine = "pal_1541_8580"
+disks = ["e2ira_A.d64", "e2ira_B.d64", "e2ira_C.d64"]
+swaps = [{ disk = 2, at = 347.3 }, { disk = 3, at = 733.3 }]
+
+[demozoo.365850]
+title = "Eager To Play"
+group = "Samar / MultiStyle Labs / EXclusive ON"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.98887]
+title = "Eagle"
+group = "Raiders of the Lost Empire"
+source = "script"
+result = "unknown"
+
+[demozoo.201398]
+title = "Eagle Tube"
+group = "Hotline"
+source = "script"
+
+[demozoo.271226]
+title = "Eagles Dare"
+group = "Cosine"
+source = "script"
+
+[demozoo.350602]
+title = "Eargasm 1"
+group = "Excess"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.295733]
+title = "Earth Moving"
+group = "Draxan Enterprises"
+source = "script"
+
+[demozoo.206213]
+title = "Earthquake"
+group = "Viper Designs"
+source = "script"
+result = "unknown"
+
+[demozoo.316592]
+title = "Earthquake"
+group = "The Artworx"
+source = "script"
+
+[demozoo.369963]
+title = "Earwax Music"
+group = "Digital Designs"
+source = "script"
+
+[demozoo.367268]
+title = "Earwax Music V2.05"
+group = "Regina"
+source = "script"
+result = "unknown"
+
+[demozoo.370739]
+title = "Earworms #2"
+group = "Civitas"
+source = "ai"
+kind = "collection"
+disks = ["Earworms_2_CIVITAS_Side1.d64", "Earworms_2_CIVITAS_Side2.d64"]
+note = "Earworms #2: music-collection disks (tunes as files, note+player on side 1); side 2 is more tunes; no flip"
+
+[demozoo.339946]
+title = "Easter Demo 2008"
+group = "Crypt / The New Dimension"
+source = "script"
+
+[demozoo.272878]
+title = "Easter Docs"
+group = "Commando Frontier"
+source = "script"
+
+[demozoo.389749]
+title = "Easter Egg"
+group = "Exploding Heads"
+source = "script"
+
+[demozoo.295572]
+title = "Easter Holidays"
+group = "A-Team"
+source = "script"
+
+[demozoo.350089]
+title = "Easy Way Out"
+group = "Saga Connection"
+source = "script"
+
+[demozoo.344652]
+title = "ECCC '11"
+group = "Arkanix Labs"
+source = "script"
+
+[demozoo.357932]
+title = "ECG Demo"
+group = "Apple Soft / Electronic Generation"
+source = "script"
+
+[demozoo.357935]
+title = "ECG in Radio 1"
+group = "Electronic Generation"
+source = "ai"
+kind = "standalone"
+disks = ["ecg-in-radio-1-ecg.d64", "ECG_In_Radio_1.D64"]
+note = "single 198-block prg on every image; duplicates + a re-release wrapper"
+
+[demozoo.181993]
+title = "Echo #17"
+group = "Wacek"
+source = "script"
+
+[demozoo.152140]
+title = "Echofied 6581"
+group = "Maniacs of Noise"
+source = "script"
+
+[demozoo.113010]
+title = "Eclectic"
+group = "Onslaught"
+source = "ai"
+machine = "pal_1541_8580"
+disks = ["eclectic-side1.d64", "eclectic-side2.d64"]
+swaps = [{ disk = 2, at = 713.9 }]
+note = "Eclectic: spinning floppy animation, drive motor keeps toggling; disk 2: no key; no upper limit seen (loop still spinning after 6 Gcycles)"
+
+[demozoo.392142]
+title = "Eclipse 50"
+group = "Excess"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.287084]
+title = "ECM Raster Fun"
+group = "Bonzai"
+source = "script"
+
+[demozoo.349116]
+title = "Economique"
+group = "The Paranormal Federation"
+source = "script"
+
+[demozoo.22396]
+title = "Ecoute Et Voir"
+group = "Faque"
+source = "script"
+
+[demozoo.291292]
+title = "Eddie!"
+group = "Browbeat"
+source = "script"
+
+[demozoo.334057]
+title = "Eddie's Revenge"
+group = "Commando Frontier"
+source = "script"
+
+[demozoo.139429]
+title = "Edelin Tales"
+group = "Samar"
+source = "script"
+result = "unknown"
+
+[demozoo.353277]
+title = "Edge"
+group = "Samar Productions"
+source = "script"
+
+[demozoo.367209]
+title = "Edge of Destruction"
+group = "Reign Of Terror"
+source = "script"
+
+[demozoo.6309]
+title = "Edge of Disgrace"
+group = "Booze Design"
+source = "script"
+machine = "pal_1541_8580"
+disks = ["EdgeOfDisgrace_0.d64", "EdgeOfDisgrace_1a.d64", "EdgeOfDisgrace_1b.d64"]
+swaps = [{ disk = 2, at = 315.9 }, { disk = 3, at = 1079.2 }]
+
+[demozoo.173832]
+title = "Edislove"
+group = "Fairlight"
+source = "script"
+
+[demozoo.202479]
+title = "Edison 2019 Invitation"
+group = "Chemtrailer Boys"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.349332]
+title = "Edition"
+group = "Data"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.21739]
+title = "Efelantti"
+group = "Dekadence"
+source = "script"
+
+[demozoo.364310]
+title = "Effect 1"
+group = "New Dutch Crackers"
+source = "script"
+
+[demozoo.79046]
+title = "Effluvium"
+group = "Christopher Jam"
+source = "script"
+
+[demozoo.362202]
+title = "Eggsuck"
+group = "Legion"
+source = "script"
+disks = ["Eggsuck.D64", "eggsuck-legion.d64"]
+swaps = [{ disk = 2, at = 213.0, key = "p1fire", key_delay = 37.0 }]
+
+[demozoo.343299]
+title = "Egon Kowalski"
+group = "Hanseatic Cracking Association"
+source = "script"
+
+[demozoo.354871]
+title = "Egoscreen"
+group = "Contrast"
+source = "script"
+
+[demozoo.320878]
+title = "Egypt Maya Leaves"
+group = "Wrath Designs"
+source = "script"
+
+[demozoo.162814]
+title = "Eierfeile"
+group = "Hitmen / Success & The Ruling Company"
+source = "script"
+
+[demozoo.178185]
+title = "Eine typische Radiodurchsage aus dem Dritten Reich"
+group = "The Star Team"
+source = "script"
+
+[demozoo.314151]
+title = "Eis und Feuer Pic"
+group = "Delta 4"
+source = "script"
+
+[demozoo.299705]
+title = "El Hálito del Misericordioso"
+group = "Rico"
+source = "script"
+
+[demozoo.338413]
+title = "El Toro"
+group = "Commando Frontier"
+source = "script"
+
+[demozoo.195612]
+title = "Elara"
+group = "Onslaught"
+source = "script"
+
+[demozoo.377642]
+title = "Elastic"
+group = "Lethargy"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.178774]
+title = "Elavae arkisto"
+group = "Yleisradio"
+source = "script"
+
+[demozoo.137705]
+title = "Eldorado"
+group = "Origo Dreamline"
+source = "script"
+
+[demozoo.18088]
+title = "Electric"
+group = "Smash Designs"
+source = "script"
+disks = ["electr1.d64", "electr2.d64"]
+swaps = [{ disk = 2, at = 141.4, key = "space", key_delay = 17.5 }]
+
+[demozoo.18799]
+title = "Electric Dreams"
+group = "Tengu"
+source = "script"
+
+[demozoo.328005]
+title = "Electric Salsa Digi"
+group = "The Fantastic Four"
+source = "script"
+
+[demozoo.373151]
+title = "Electro Mechanica"
+group = "Sidwave"
+source = "script"
+boot_file = "electromechanica"
+
+[demozoo.349333]
+title = "Electronic Affection"
+group = "Data"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.272533]
+title = "Electronic Love"
+group = "Future Technologics 2009"
+source = "script"
+
+[demozoo.366509]
+title = "Electronic Speechdemo's of Berkeley"
+group = "The Professionals 2010"
+source = "script"
+result = "unknown"
+disks = ["437b.d64", "volume_x.d64"]
+
+[demozoo.351796]
+title = "Elektra Glide Music"
+group = "Razor 1911"
+source = "script"
+
+[demozoo.368650]
+title = "Elektraglide"
+group = "Storm Industries 1930"
+source = "script"
+
+[demozoo.126214]
+title = "Eligible"
+group = "Prime"
+source = "script"
+
+[demozoo.68316]
+title = "Elite Ninja Ninjas"
+group = "Misfit"
+source = "script"
+
+[demozoo.289787]
+title = "Elite-Contax"
+group = "Sabian"
+source = "script"
+
+[demozoo.359118]
+title = "Elle-Edition"
+group = "Genius Softworks"
+source = "script"
+
+[demozoo.55082]
+title = "Elysion - The Requiem"
+group = "Origo Dreamline"
+source = "script"
+disks = ["Elysion.d64", "Elysion_Extra.d64"]
+swaps = [{ disk = 2, at = 225.0 }]
+
+[demozoo.375849]
+title = "Eläin"
+group = "Panic"
+source = "script"
+
+[demozoo.326852]
+title = "Elämän Labyrintti"
+group = "Yleisradio"
+source = "script"
+
+[demozoo.24885]
+title = "Embryo"
+group = "Padua"
+source = "script"
+disks = ["embryo_1.d64", "embryo_2.d64"]
+swaps = [{ disk = 2, at = 705.7 }]
+
+[demozoo.367227]
+title = "Emerald Mine II"
+group = "Relax Designs"
+source = "script"
+
+[demozoo.357750]
+title = "Emergency"
+group = "Eject"
+source = "script"
+
+[demozoo.24887]
+title = "Emission"
+group = "Triad"
+source = "script"
+result = "unknown"
+
+[demozoo.313263]
+title = "EmoKakFuu"
+group = "Mayday!"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.60351]
+title = "Emotional Breakdown"
+group = "Offence"
+source = "script"
+disks = ["Emotional_Breakdown_S1.d64", "Emotional_Breakdown_S2.d64"]
+swaps = [{ disk = 2, at = 291.4, key = "p1fire", key_delay = 25.9 }]
+
+[demozoo.206018]
+title = "Emotional Breakdown"
+group = "Argus"
+source = "script"
+
+[demozoo.44656]
+title = "Empeg Joool"
+group = "Singular"
+source = "script"
+
+[demozoo.334062]
+title = "Emphasis"
+group = "The Last Science"
+source = "script"
+
+[demozoo.347130]
+title = "Empire + GP #1 (anti NEI demo)"
+group = "Empire / Genesis Project"
+source = "script"
+
+[demozoo.8720]
+title = "Empirion"
+group = "Bauknecht"
+source = "script"
+
+[demozoo.77220]
+title = "Emulated"
+group = "Upstars"
+source = "script"
+
+[demozoo.351720]
+title = "En Bug"
+source = "script"
+result = "unknown"
+
+[demozoo.353278]
+title = "Enchanted Forest"
+group = "Samar Productions"
+source = "script"
+disks = ["ef-by-samar.d64", "ef-by-samar-fixed.d64"]
+note = "the sweep only reached disk 1 of 2"
+
+[demozoo.6306]
+title = "Endemic Demo"
+group = "Genesis Project"
+source = "script"
+
+[demozoo.201998]
+title = "Endlich Urlaub"
+group = "Telespielator"
+source = "script"
+
+[demozoo.363493]
+title = "Enduro Sound"
+group = "Mega Soft Incorporated"
+source = "script"
+
+[demozoo.122688]
+title = "Energizer"
+group = "Plush"
+source = "script"
+disks = ["ENERG1.D64", "ENERG2.D64"]
+swaps = [{ disk = 2, at = 96.0, key = "space", key_delay = 17.2 }]
+
+[demozoo.309477]
+title = "Enigma"
+group = "Smash Designs"
+source = "script"
+
+[demozoo.338978]
+title = "Enigma - the Demo"
+group = "Genetic Artstudios"
+source = "script"
+
+[demozoo.206054]
+title = "Enigma Demo"
+group = "Enigma"
+source = "script"
+
+[demozoo.206061]
+title = "Enigma Demo I"
+group = "Enigma"
+source = "script"
+
+[demozoo.234101]
+title = "Enigma Demo III"
+group = "Enigma"
+source = "script"
+
+[demozoo.356737]
+title = "Enigma Force Music"
+group = "Telephone Crackers Norway"
+source = "script"
+result = "unknown"
+
+[demozoo.361512]
+title = "Enigma Force Music"
+group = "International Software Pirates"
+source = "script"
+
+[demozoo.234099]
+title = "Enigma in Combat"
+group = "Enigma"
+source = "script"
+
+[demozoo.189756]
+title = "Enjoy"
+group = "Lepsi De"
+source = "script"
+
+[demozoo.188581]
+title = "Enjoy The Silence"
+group = "Reaction"
+source = "script"
+result = "unknown"
+
+[demozoo.365808]
+title = "Enjoy the Silence"
+group = "The Real Force"
+source = "script"
+
+[demozoo.187984]
+title = "Enjoystick!"
+group = "2000 A.D."
+source = "script"
+
+[demozoo.394935]
+title = "Enköping Results"
+group = "Horizon"
+source = "script"
+
+[demozoo.126203]
+title = "Enköpings Flodhäst"
+group = "Absolut Vodka Team"
+source = "script"
+
+[demozoo.343032]
+title = "Enlightment I"
+group = "Team Guru"
+source = "script"
+
+[demozoo.343031]
+title = "Enlightment II"
+group = "Team Guru"
+source = "script"
+
+[demozoo.281289]
+title = "Enola Gay"
+source = "ai"
+kind = "standalone"
+disks = ["enola_gay.d64", "enola_gayabc.d64"]
+note = "two alternative single-prg dumps (enola gay / enola guy), no flip"
+
+[demozoo.326001]
+title = "Enterprise II"
+group = "Doughnut Cracking Service / Future Projects"
+source = "script"
+
+[demozoo.278555]
+title = "Eorgy"
+group = "NoFX"
+source = "script"
+
+[demozoo.177033]
+title = "Epic Comeback"
+group = "Resource"
+source = "script"
+
+[demozoo.84364]
+title = "Epilepsia"
+group = "Digital Sounds System"
+source = "script"
+result = "unknown"
+
+[demozoo.112152]
+title = "Episode 64 Prv."
+group = "Tristar and Red Sector Inc."
+source = "script"
+machine = "pal_1541_8580"
+boot_file = "episode64"
+
+[demozoo.313507]
+title = "Eroismo"
+group = "Atlantis"
+source = "script"
+
+[demozoo.373146]
+title = "Eros n Psycho"
+group = "Rio"
+source = "script"
+machine = "pal_1541_8580"
+boot_file = "eros n psycho"
+
+[demozoo.72336]
+title = "Erotic Members"
+group = "Mummyjammers"
+source = "script"
+boot_file = "erotic members  "
+
+[demozoo.325081]
+title = "Erotika"
+source = "script"
+
+[demozoo.4010]
+title = "Error 23"
+group = "The Dreams / Resource"
+source = "script"
+
+[demozoo.294982]
+title = "Errorlevel-21 [silent version]"
+group = "The Apace Software"
+source = "script"
+
+[demozoo.173438]
+title = "ES1RA"
+group = "Arise"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.328969]
+title = "Escapade"
+group = "Alpha Flight"
+source = "script"
+
+[demozoo.4987]
+title = "Escape of the Rundsporthalle"
+group = "Kryo"
+source = "script"
+
+[demozoo.327684]
+title = "ESCOS 3"
+group = "1001 Crew"
+source = "script"
+
+[demozoo.293981]
+title = "ESCOS Demo"
+group = "The Guilties"
+source = "script"
+
+[demozoo.205519]
+title = "Esløw Nästa"
+group = "Esl0w"
+source = "script"
+
+[demozoo.259205]
+title = "Essentials"
+group = "Hack n' Trade"
+source = "script"
+
+[demozoo.344618]
+title = "Etch Music 10"
+group = "Real Software Publishers"
+source = "script"
+
+[demozoo.344616]
+title = "Etch Music 11"
+group = "Real Software Publishers"
+source = "script"
+
+[demozoo.344615]
+title = "Etch Music 12"
+group = "Real Software Publishers"
+source = "script"
+
+[demozoo.344614]
+title = "Etch Music 13"
+group = "Real Software Publishers"
+source = "script"
+
+[demozoo.344613]
+title = "Etch Music 14"
+group = "Real Software Publishers"
+source = "script"
+
+[demozoo.344612]
+title = "Etch Music 15"
+group = "Real Software Publishers"
+source = "script"
+
+[demozoo.344611]
+title = "Etch Music 16"
+group = "Real Software Publishers"
+source = "script"
+
+[demozoo.344610]
+title = "Etch Music 17"
+group = "Real Software Publishers"
+source = "script"
+
+[demozoo.344609]
+title = "Etch Music 18"
+group = "Real Software Publishers"
+source = "script"
+
+[demozoo.344608]
+title = "Etch Music 19"
+group = "Real Software Publishers"
+source = "script"
+
+[demozoo.344620]
+title = "Etch Music 20"
+group = "Real Software Publishers"
+source = "script"
+
+[demozoo.363267]
+title = "Eternal Dreams"
+group = "Photon"
+source = "script"
+
+[demozoo.270548]
+title = "Eternal Forever"
+group = "Future Shock"
+source = "script"
+result = "unknown"
+
+[demozoo.180363]
+title = "Eternal Sentinel"
+group = "Onslaught"
+source = "script"
+
+[demozoo.362203]
+title = "Eternity"
+group = "Legion"
+source = "script"
+
+[demozoo.274423]
+title = "Ethanol Performance"
+group = "annizio / zuulkuul"
+source = "script"
+
+[demozoo.332023]
+title = "Ethic"
+group = "Antic"
+source = "script"
+
+[demozoo.129863]
+title = "Eufrosyne Dream"
+group = "EXclusive ON"
+source = "script"
+result = "unknown"
+
+[demozoo.125831]
+title = "Euh..."
+group = "HSG"
+source = "script"
+
+[demozoo.155931]
+title = "Euro Beats 1"
+group = "Civitas"
+source = "script"
+
+[demozoo.298511]
+title = "Euro Beats 2"
+group = "Civitas"
+source = "script"
+
+[demozoo.365851]
+title = "Eurodance"
+group = "MultiStyle Labs"
+source = "script"
+
+[demozoo.292048]
+title = "Europe"
+group = "Sadist Black Crew"
+source = "script"
+
+[demozoo.357918]
+title = "Europe"
+group = "Europe Computer Software"
+source = "script"
+result = "unknown"
+
+[demozoo.368144]
+title = "Europe Nazi Free"
+group = "Secure"
+source = "script"
+result = "unknown"
+
+[demozoo.388944]
+title = "Europe United 2002"
+group = "XentaX"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.48877]
+title = "Euskal Invitation"
+group = "Level 64"
+source = "script"
+result = "unknown"
+
+[demozoo.170133]
+title = "Evel 667"
+group = "Dinasours"
+source = "script"
+
+[demozoo.324775]
+title = "Event Zero Trailer"
+group = "Lethargy"
+source = "script"
+
+[demozoo.336069]
+title = "Evergreen Music Collection"
+group = "Another Zapping of Order"
+source = "script"
+
+[demozoo.23605]
+title = "Everlasting Star"
+group = "Genesis Project"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.346320]
+title = "Every Color's Equal"
+group = "Those Up Fucked Sceners"
+source = "script"
+
+[demozoo.340480]
+title = "Every Day of the Life Is Bad"
+group = "Quantum"
+source = "script"
+
+[demozoo.86575]
+title = "Every DYCP Counts in Large Amounts"
+group = "Chorus"
+source = "script"
+
+[demozoo.376527]
+title = "Everybody Loves Richard"
+group = "FMan"
+source = "script"
+
+[demozoo.357941]
+title = "Evil Guyz"
+group = "Promise"
+source = "script"
+
+[demozoo.293238]
+title = "Evil Spirit"
+group = "Ahead"
+source = "script"
+
+[demozoo.26168]
+title = "Evolution 98%"
+group = "Warriors of the Wasteland"
+source = "script"
+
+[demozoo.350684]
+title = "EVS Tribute Demo"
+group = "The New Dimension"
+source = "script"
+
+[demozoo.274184]
+title = "EX-Beach"
+group = "Excess"
+source = "script"
+
+[demozoo.316151]
+title = "EXAC Party Scroller"
+group = "TREX"
+source = "script"
+
+[demozoo.68033]
+title = "Excalibur"
+group = "Albion Crew"
+source = "script"
+
+[demozoo.344052]
+title = "Excalibur"
+group = "Florasoft Worldwide"
+source = "script"
+
+[demozoo.376154]
+title = "Excavated Artefacts + Relics"
+group = "Genesis Project / Oxsid Planetary"
+source = "script"
+
+[demozoo.58419]
+title = "Exceed"
+group = "Abyss-Connection"
+source = "script"
+
+[demozoo.206216]
+title = "Excel Pal64 Intro"
+group = "Viper Designs"
+source = "script"
+
+[demozoo.204095]
+title = "Exciter!"
+group = "Vortex 42"
+source = "script"
+
+[demozoo.368911]
+title = "Excuse Me Please"
+group = "The Great Breakers"
+source = "script"
+
+[demozoo.230130]
+title = "Excuze Mee..."
+group = "The Flash Point Boys"
+source = "script"
+disks = ["dixie_meeting.dexie.d64", "Excuze Mee...-TFPB.d64"]
+note = "the sweep only reached disk 1 of 2"
+
+[demozoo.55163]
+title = "Execute Overdrive"
+group = "Smash Designs"
+source = "script"
+machine = "pal_1541_8580"
+disks = ["exe_over_sds_s1.d64", "exe_over_sds_s2.d64"]
+swaps = [{ disk = 2, at = 716.4 }]
+
+[demozoo.301931]
+title = "Executed"
+group = "Cursor"
+source = "script"
+
+[demozoo.344113]
+title = "Execution 2"
+group = "The Task Force"
+source = "script"
+
+[demozoo.361477]
+title = "Execution at Night"
+group = "The Warlocks"
+source = "script"
+
+[demozoo.363697]
+title = "Exhibition"
+group = "Migs Designs"
+source = "script"
+
+[demozoo.158805]
+title = "Exit"
+group = "Defiers"
+source = "script"
+
+[demozoo.92932]
+title = "Exkrement"
+group = "Sealsex"
+source = "script"
+kind = "collection"
+disks = ["Aquoicasert_wd.d64", "Discojive_civitas.d64", "Feedback_3ad.d64", "Gfx&msx.d64", "Makedonian_sbp.d64", "returnof_hujowa.d64", "single_demos.d64"]
+boot_disk = 7
+boot_file = "exkrement  /ssex"
+note = "disk set shared by 9 productions"
+
+[demozoo.346344]
+title = "Exod"
+group = "Magicans"
+source = "script"
+
+[demozoo.138885]
+title = "Exodus"
+group = "Vermes"
+source = "script"
+
+[demozoo.350116]
+title = "Exodus"
+group = "Z-Circle"
+source = "script"
+
+[demozoo.116804]
+title = "Exoff"
+group = "EXclusive ON"
+source = "script"
+machine = "pal_1541_8580"
+result = "unknown"
+
+[demozoo.351309]
+title = "Exotic Dream II"
+group = "The Last Science"
+source = "script"
+
+[demozoo.279663]
+title = "Expand"
+group = "Bonzai"
+source = "ai"
+machine = "pal_1541_reu"
+sid = "8580"
+disks = ["Expand by Bonzai - Disk1.D64", "Expand by Bonzai - Disk2.D64"]
+swaps = [{ disk = 2, at = 349.7, key = "space", key_delay = 18.3 }]
+note = "Expand: needs a 512 KB REU (-reu -reusize 512); without it disk 1 stops on a 'requires a REU' screen; disk 2: starfield alternates HIT SPACE / TURN DISK; insert with no key does nothing; no upper limit seen (572 s also worked)"
+
+[demozoo.396083]
+title = "Expanse 2"
+group = "Quantum"
+source = "script"
+
+[demozoo.336373]
+title = "Explorer"
+group = "Acid Crew"
+source = "script"
+
+[demozoo.348106]
+title = "Explorers v1"
+group = "The Explorers"
+source = "script"
+
+[demozoo.348107]
+title = "Explorers v12"
+group = "The Explorers"
+source = "script"
+
+[demozoo.348108]
+title = "Explorers v3"
+group = "The Explorers"
+source = "ai"
+kind = "standalone"
+disks = ["exp_-_explorers_v3.d64", "explorers_v3.d64"]
+note = "two d64s each with one near-identical prg (13008 vs 13007 bytes) = alternative wrappers"
+
+[demozoo.348109]
+title = "Explorers v6"
+group = "The Explorers"
+source = "script"
+
+[demozoo.110611]
+title = "Exquisite"
+group = "Zoko Team"
+source = "script"
+result = "unknown"
+
+[demozoo.117915]
+title = "Exquisite II"
+group = "Zoko Team"
+source = "script"
+result = "unknown"
+boot_file = "..exquisite ii.."
+
+[demozoo.357509]
+title = "Extacy"
+group = "Eclipse"
+source = "script"
+result = "unknown"
+
+[demozoo.343565]
+title = "Extasy Mega Demo"
+group = "ZZap"
+source = "script"
+disks = ["Extasy_s1.d64", "Extasy_s2.d64"]
+swaps = [{ disk = 2, at = 164.8, key = "space", key_delay = 18.8 }]
+
+[demozoo.343600]
+title = "Extermination"
+group = "Swedish Cracking Crew"
+source = "script"
+result = "unknown"
+
+[demozoo.359154]
+title = "Extra Part"
+group = "Scream"
+source = "script"
+result = "unknown"
+
+[demozoo.365760]
+title = "Extra Raster Time"
+group = "Pirates of Denver / Weird Science"
+source = "script"
+
+[demozoo.363582]
+title = "Extract"
+group = "Tengu"
+source = "script"
+boot_file = "-   extract!   -"
+
+[demozoo.350011]
+title = "Extravagance"
+group = "X-Factor"
+source = "script"
+
+[demozoo.359681]
+title = "Extravagant"
+group = "Xzess"
+source = "script"
+
+[demozoo.359441]
+title = "Extreme"
+group = "I.C.E. Squad"
+source = "script"
+
+[demozoo.376847]
+title = "Extreme Silence"
+group = "Scallop"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.7512]
+title = "Extremes"
+group = "Byterapers Inc."
+source = "script"
+
+[demozoo.359686]
+title = "Exzelent"
+group = "Xzess"
+source = "script"
+
+[demozoo.344167]
+title = "Eye Demo"
+group = "Joy Division"
+source = "script"
+
+[demozoo.375799]
+title = "Eye Of Tiger"
+group = "Unreal"
+source = "ai"
+machine = "ntsc_1541"
+sid = "8580"
+kind = "collection"
+disks = ["GFX.D64", "INTROS.D64", "MSX1.D64", "MSX2.D64", "REAL.D64"]
+boot_disk = 3
+boot_file = "eye of tiger/pch"
+note = "music compo entry 'eye of tiger/pch' on Forever 3 MSX1.D64; single file with a static title screen, never asks for another disk (v7 flips to MSX2/REAL were late idle false positives, not reproduced: 11 inserts all rejected)"
+
+[demozoo.333754]
+title = "Eyes"
+group = "Fairlight"
+source = "script"
+disks = ["fairlight-eyes-e9aca7e-a.d64", "fairlight-eyes-e9aca7e-b.d64"]
+swaps = [{ disk = 2, at = 356.7 }]
+
+[demozoo.343966]
+title = "Eyes Killer"
+group = "Deers"
+source = "script"
+
+[demozoo.316595]
+title = "Eyes Robber"
+group = "I.S.A"
+source = "script"
+
+[demozoo.391407]
+title = "Eyvind's Extended Jukebox Vol 00"
+group = "Eyvind Ebsen"
+source = "script"

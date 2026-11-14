@@ -1,0 +1,501 @@
+[demozoo.361259]
+title = "UA Bounces Back"
+group = "United Artists"
+source = "script"
+
+[demozoo.344895]
+title = "Uaaark!"
+group = "Zad Team"
+source = "script"
+
+[demozoo.316150]
+title = "UCF Intro 1"
+group = "United Crackers of Finland"
+source = "script"
+
+[demozoo.294054]
+title = "UFO Defense OST"
+group = "XentaX"
+source = "script"
+
+[demozoo.355993]
+title = "Ugly"
+group = "Dexion"
+source = "script"
+
+[demozoo.88160]
+title = "Ugly Love Bounce Thing"
+group = "Beardswitcher"
+source = "script"
+
+[demozoo.291663]
+title = "Uha Da Da"
+group = "Eagle Electronics"
+source = "script"
+
+[demozoo.351632]
+title = "UHA Ltd. Sec."
+group = "Modern Arts"
+source = "script"
+machine = "pal_1541_8580"
+result = "unknown"
+
+[demozoo.327137]
+title = "Ukkomies"
+source = "script"
+result = "unknown"
+
+[demozoo.327041]
+title = "Ulimax"
+group = "Yleisradio"
+source = "script"
+result = "unknown"
+
+[demozoo.351901]
+title = "Ultimate"
+group = "Xentrix"
+source = "script"
+
+[demozoo.363390]
+title = "Ultimate"
+group = "Mantronix"
+source = "script"
+
+[demozoo.361525]
+title = "Ultimate Music"
+group = "J And J"
+source = "script"
+
+[demozoo.330022]
+title = "Ultiverzum"
+group = "Singular Crew"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.344187]
+title = "Ultra Demo II"
+group = "North Slovene Cracking Service"
+source = "script"
+result = "unknown"
+
+[demozoo.363443]
+title = "Ultra Violet 3"
+group = "Matrix"
+source = "script"
+disks = ["Ultra Violet 3 [Side 1].d64", "Ultra Violet 3 [Side 2].d64"]
+swaps = [{ disk = 2, at = 53.3, key = "space", key_delay = 19.6 }]
+
+[demozoo.363452]
+title = "Ultra Violet 4"
+group = "Matrix"
+source = "script"
+
+[demozoo.363453]
+title = "Ultra Violet 5"
+group = "Matrix"
+source = "script"
+
+[demozoo.79045]
+title = "Ultragui"
+group = "Fairlight"
+source = "script"
+
+[demozoo.363688]
+title = "Ultrama 1"
+group = "Prisma"
+source = "script"
+
+[demozoo.312326]
+title = "Ultrasound"
+group = "Caution"
+source = "script"
+
+[demozoo.367146]
+title = "Un-Released Demo '89"
+group = "Tour De Future / Reflex"
+source = "script"
+
+[demozoo.361372]
+title = "Unbelievable"
+group = "The Warlocks"
+source = "script"
+
+[demozoo.195294]
+title = "Unboxed"
+group = "Bonzai"
+source = "script"
+machine = "pal_1541_8580"
+disks = ["Unboxed side 1.D64", "Unboxed side 2.D64", "Unboxed side 3.D64"]
+swaps = [{ disk = 2, at = 557.0 }, { disk = 3, at = 1019.7 }]
+
+[demozoo.366416]
+title = "Unbranded"
+group = "Pyrotech"
+source = "script"
+disks = ["Pyrotech - Unbranded.d64", "Unbranded.d64"]
+swaps = [{ disk = 2, at = 460.2, key = "p1fire", key_delay = 35.9 }]
+
+[demozoo.124839]
+title = "Uncensored"
+group = "Booze Design"
+source = "script"
+machine = "pal_1541_8580"
+disks = ["boozedemo1.d64", "boozedemo2.d64"]
+swaps = [{ disk = 2, at = 695.8 }]
+
+[demozoo.317306]
+title = "Uncertain Future 2023"
+group = "Blazon"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.316713]
+title = "Uncle Petscii Presents Good King Wenceslas"
+group = "Triad"
+source = "script"
+
+[demozoo.288238]
+title = "Uncle PETSCII's Christmas Show"
+group = "Triad"
+source = "script"
+
+[demozoo.296140]
+title = "Uncle PETSCII's Droids of Star Wars"
+group = "Triad"
+source = "script"
+
+[demozoo.36837]
+title = "Undead"
+group = "Emulamer"
+source = "script"
+machine = "ntsc_1541"
+
+[demozoo.278398]
+title = "Undelireadable"
+group = "Genesis Project"
+source = "script"
+
+[demozoo.188597]
+title = "Undeniable"
+group = "Fenix"
+source = "script"
+
+[demozoo.124829]
+title = "Under Construction Invitation"
+group = "AttentionWhore"
+source = "script"
+result = "unknown"
+
+[demozoo.345605]
+title = "Under Pressure"
+group = "Titan / Kiss"
+source = "script"
+
+[demozoo.322392]
+title = "Under The Sea - Edison 2023"
+group = "Fairlight"
+source = "script"
+
+[demozoo.327760]
+title = "Underground"
+group = "Fire-Eagle / Genesis Project"
+source = "script"
+
+[demozoo.351582]
+title = "Underground 2"
+group = "Tengu"
+source = "script"
+
+[demozoo.188012]
+title = "Underlight!"
+group = "2000 A.D."
+source = "script"
+
+[demozoo.324055]
+title = "Underrated"
+group = "Lethargy"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.232175]
+title = "Underwear"
+group = "Vogue Designs"
+source = "script"
+
+[demozoo.334646]
+title = "Underwear"
+group = "Force Ten"
+source = "script"
+
+[demozoo.348945]
+title = "Unepic Stoned High SID Collection Intro"
+group = "XentaX"
+source = "script"
+
+[demozoo.354680]
+title = "Unfinished Business"
+group = "Bonzai"
+source = "script"
+
+[demozoo.331207]
+title = "Unfinished Demo"
+group = "Heptagon"
+source = "script"
+
+[demozoo.349029]
+title = "Unger Text"
+group = "The Scientists"
+source = "script"
+
+[demozoo.108096]
+title = "Ungetestet Preview"
+group = "Right To Censor"
+source = "script"
+boot_file = "ungetestet /rtc!"
+
+[demozoo.4012]
+title = "Unicorn"
+group = "Chorus"
+source = "script"
+
+[demozoo.332857]
+title = "Unicorn, the Collectors Edition"
+group = "Chorus"
+source = "script"
+
+[demozoo.334625]
+title = "Unifax"
+group = "Union"
+source = "script"
+
+[demozoo.388149]
+title = "Union Box"
+group = "De Danske Crackers"
+source = "script"
+disks = ["union_box_part_1.d64", "unionbox.d64"]
+swaps = [{ disk = 2, at = 90.6, key = "p1fire", key_delay = 34.5 }]
+
+[demozoo.388151]
+title = "Union Music II"
+group = "De Danske Crackers"
+source = "script"
+
+[demozoo.357377]
+title = "Unique 1"
+group = "Danecrew"
+source = "script"
+
+[demozoo.53900]
+title = "Unique 50%"
+group = "Centric"
+source = "script"
+
+[demozoo.350932]
+title = "United & Cool"
+group = "Impulse"
+source = "script"
+
+[demozoo.330085]
+title = "United Sids of ALD"
+group = "Artline Designs"
+source = "script"
+
+[demozoo.331371]
+title = "Unitrax Music"
+group = "D.S. Compware"
+source = "script"
+
+[demozoo.293449]
+title = "Unity"
+group = "Atlantis / Padua"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.20278]
+title = "Universal Intro"
+group = "Sidwave"
+source = "script"
+result = "unknown"
+boot_file = "universal intro"
+
+[demozoo.370119]
+title = "Unjusted World"
+group = "Shining 8"
+source = "script"
+
+[demozoo.229956]
+title = "Unknown Demo"
+group = "Tridon"
+source = "script"
+
+[demozoo.205097]
+title = "Unlimited"
+group = "Megadeath"
+source = "script"
+
+[demozoo.287657]
+title = "Unlimited Bobs 4 Syntax"
+group = "Onslaught"
+source = "script"
+
+[demozoo.107731]
+title = "Unlimited Metalux"
+group = "Metalux"
+source = "script"
+
+[demozoo.183819]
+title = "Unmatrix"
+group = "Fatzone"
+source = "script"
+
+[demozoo.308290]
+title = "Unprecedented"
+group = "Dual Crew"
+source = "script"
+
+[demozoo.93559]
+title = "Unreal Day Dreams"
+group = "Gloom / Spherical Designs"
+source = "script"
+
+[demozoo.365454]
+title = "Unreleased Panic Intro"
+group = "Panic"
+source = "script"
+result = "unknown"
+
+[demozoo.175560]
+title = "Unreleased Pimps"
+group = "Maniacs of Noise"
+source = "script"
+
+[demozoo.677]
+title = "Unsigned"
+group = "Byterapers"
+source = "script"
+machine = "pal_1541_8580"
+disks = ["B-Unsigned.d64", "B-Unsigned.EMU.SYNCLAG.200ms.d64"]
+swaps = [{ disk = 2, at = 283.6, key = "space", key_delay = 16.0 }]
+
+[demozoo.296496]
+title = "Unstopable"
+group = "Accuracy"
+source = "script"
+
+[demozoo.171099]
+title = "Until It..."
+group = "Green Light"
+source = "script"
+
+[demozoo.368319]
+title = "Untitled"
+group = "Unity"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.356785]
+title = "Untitled Part One"
+group = "Magic Science"
+source = "script"
+
+[demozoo.356786]
+title = "Untitled Part Two"
+group = "Magic Science"
+source = "script"
+
+[demozoo.278981]
+title = "Untold Stories I"
+group = "Pretzel Logic"
+source = "script"
+
+[demozoo.368159]
+title = "Unused Part"
+group = "Secure"
+source = "script"
+
+[demozoo.90172]
+title = "Up In Smoke 2"
+group = "Swappas With Attitude"
+source = "script"
+
+[demozoo.74772]
+title = "Up in Smoke 3"
+group = "Swappaz Wid Attitude"
+source = "script"
+result = "crashes-later"
+
+[demozoo.332003]
+title = "Up the Limits II"
+group = "Antic"
+source = "script"
+
+[demozoo.84363]
+title = "Upm00hsers"
+group = "Abmushers"
+source = "script"
+
+[demozoo.343704]
+title = "Uppity"
+group = "Genesis Project"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.294836]
+title = "Upscroll Wibble Intro"
+group = "Blazon"
+source = "script"
+
+[demozoo.134638]
+title = "Upshift!"
+group = "Triad"
+source = "script"
+
+[demozoo.343461]
+title = "Uridibad"
+group = "Sensible Software"
+source = "ai"
+kind = "standalone"
+disks = ["uridibad.D64", "uridibad-differentpack-demos31.d64"]
+note = "uridibad.D64 (28 blocks) vs uridibad-differentpack-demos31.d64 (26 blocks): same demo, different packer, no flip"
+
+[demozoo.60868]
+title = "Urtyp"
+group = "Haquebright"
+source = "script"
+result = "unknown"
+
+[demozoo.347167]
+title = "USA"
+group = "Swappas With Attitude"
+source = "script"
+disks = ["other_releases.d64", "usa.d64"]
+swaps = [{ disk = 2, at = 186.3, key = "space", key_delay = 17.9 }]
+
+[demozoo.2218]
+title = "Use Your Illusion"
+group = "Dunex"
+source = "script"
+result = "unknown"
+
+[demozoo.72234]
+title = "Use Your Illusions 2"
+group = "Dunex"
+source = "script"
+result = "unknown"
+
+[demozoo.368160]
+title = "USK Intro"
+group = "Secure"
+source = "script"
+
+[demozoo.353177]
+title = "Utopia"
+group = "Tronix"
+source = "script"
+
+[demozoo.199834]
+title = "Uutiset"
+group = "Yleisradio"
+source = "script"
+result = "unknown"
+boot_file = "uutiset"

@@ -1,0 +1,623 @@
+[demozoo.388165]
+title = "J's Scroll Mania"
+group = "Jaybird"
+source = "script"
+
+[demozoo.174618]
+title = "J(46) - SIDWAVE 30 Years Anniversary Music Disk"
+group = "Sidwave"
+source = "script"
+
+[demozoo.22697]
+title = "J.A.Q."
+group = "Scallop"
+source = "script"
+
+[demozoo.344184]
+title = "Jagger Demo"
+group = "North Slovene Cracking Service"
+source = "script"
+
+[demozoo.301540]
+title = "Jail"
+group = "Spacexpress"
+source = "script"
+
+[demozoo.300967]
+title = "Jail Break Tune"
+group = "Active Cracking Crew"
+source = "script"
+
+[demozoo.304979]
+title = "Jail Digi"
+group = "Yaesu"
+source = "script"
+
+[demozoo.357334]
+title = "Jail Music"
+group = "Alien Crackers"
+source = "script"
+
+[demozoo.354070]
+title = "Jail Trellis"
+group = "Blaze"
+source = "script"
+disks = ["jail trellis - blaze.d64", "jail_trellis.d64"]
+swaps = [{ disk = 2, at = 90.2, key = "space", key_delay = 18.6 }]
+
+[demozoo.351737]
+title = "Jailbird's Nightmare"
+group = "HeMa!"
+source = "script"
+
+[demozoo.301066]
+title = "Jailbreak Music"
+group = "Starfox / Joke"
+source = "script"
+
+[demozoo.304404]
+title = "Jailbreak Music"
+group = "The Terminators International"
+source = "script"
+
+[demozoo.343573]
+title = "Jailbreak Music"
+group = "Swedish Cracking Crew"
+source = "script"
+
+[demozoo.375850]
+title = "Jamaica"
+group = "Extend"
+source = "script"
+
+[demozoo.21537]
+title = "Jamaica Dream"
+group = "Warriors of the Wasteland"
+source = "script"
+kind = "collection"
+disks = ["8BITS.D64", "BRAK.D64", "DESIGN3.D64", "DESPAIR.D64", "DNS#7.D64", "GFX1.D64", "GFX2.D64", "GREGFEEL.D64", "JAMAICA.D64", "MUSIC.D64", "QUARK1.D64", "quark2.d64", "SCD.D64", "TRIAGE1.D64", "TRIAGE2.D64", "WEHATEPC.D64"]
+note = "disk set shared by 9 productions"
+
+[demozoo.112154]
+title = "JamaiK2"
+group = "K2"
+source = "script"
+
+[demozoo.298891]
+title = "James Bond"
+group = "Fantasy Cracking Service"
+source = "script"
+
+[demozoo.274615]
+title = "Jamtland"
+group = "Genesis Project"
+source = "script"
+
+[demozoo.330387]
+title = "Janine"
+group = "Alpha Flight"
+source = "script"
+
+[demozoo.388164]
+title = "Jay's 2nd Demo"
+group = "Jaybird"
+source = "script"
+
+[demozoo.388170]
+title = "Jaybird's Demo"
+group = "Jaybird"
+source = "script"
+
+[demozoo.310478]
+title = "Jazzgossen Preview aka Trident Music #3"
+group = "Active"
+source = "script"
+result = "unknown"
+
+[demozoo.373307]
+title = "Jazzland"
+group = "Onslaught / Vaudeville"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.359567]
+title = "Jazzylax"
+group = "Hal"
+source = "script"
+
+[demozoo.375110]
+title = "JCH Equalizer"
+group = "Tomcat"
+source = "script"
+
+[demozoo.363753]
+title = "JCH Music Collection"
+group = "Miracle"
+source = "script"
+
+[demozoo.269774]
+title = "Je T'aime Mon Monstre"
+group = "Atlantis"
+source = "script"
+result = "unknown"
+
+[demozoo.26934]
+title = "Jerkland"
+group = "Digital Designs"
+source = "script"
+
+[demozoo.390452]
+title = "Jeroen Tel Music"
+group = "Xentrix"
+source = "script"
+
+[demozoo.73423]
+title = "Jesus And Clowns"
+group = "RetarData"
+source = "script"
+
+[demozoo.353331]
+title = "Jet Set Willy"
+group = "Blues Brothers"
+source = "script"
+
+[demozoo.178166]
+title = "Jet-Set"
+group = "Brynolf / The Cookie Man"
+source = "script"
+
+[demozoo.175559]
+title = "Jim Slim - Music Disk"
+group = "SHAPE / Blues Muz'"
+source = "script"
+result = "unknown"
+
+[demozoo.205072]
+title = "Jingledick"
+group = "Megadeath"
+source = "script"
+
+[demozoo.344248]
+title = "Jingoo"
+group = "Plasma"
+source = "script"
+
+[demozoo.337223]
+title = "Jinks Color"
+group = "The Rough Boys"
+source = "script"
+
+[demozoo.352354]
+title = "Jinks Demo"
+group = "Hotline / Heroes of Tomorrow"
+source = "script"
+result = "unknown"
+
+[demozoo.348063]
+title = "Jinks or Die"
+group = "The Fantastic Crew"
+source = "script"
+
+[demozoo.274739]
+title = "Job Is PETSCII"
+group = "Royal Belgian Beer Squadron"
+source = "script"
+
+[demozoo.365544]
+title = "Jobj42 Invite"
+group = "Jobj"
+source = "script"
+
+[demozoo.351165]
+title = "Joe"
+group = "X-Ray"
+source = "script"
+
+[demozoo.307358]
+title = "Joetro"
+group = "Bonzai / Wrath Designs"
+source = "script"
+
+[demozoo.324933]
+title = "Joey"
+group = "Kraksnax"
+source = "script"
+
+[demozoo.365872]
+title = "Johan Bengtson Had a Joint"
+group = "MultiStyle Labs"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.279855]
+title = "John Stormont's Electrosound History Book"
+group = "Onslaught"
+source = "ai"
+kind = "standalone"
+result = "unknown"
+disks = ["Bonus Goodies-Side1.d64", "Bonus Goodies-Side2.d64", "John Stormonts Electrosound History Book.d64"]
+boot_disk = 3
+note = "Electrosound History Book: boot disk 3 (main disk); title card needs space (~100M), then a music player, no disk access after 72M; Bonus Goodies side 1/2 are extra loose tune files, not a chain"
+
+[demozoo.126298]
+title = "Join It"
+group = "Future Vision Switzerland"
+source = "script"
+
+[demozoo.323712]
+title = "Join Joined!"
+group = "Danish Piracy Society 2010"
+source = "script"
+
+[demozoo.351330]
+title = "Join Now"
+group = "Liquid"
+source = "script"
+
+[demozoo.289377]
+title = "Join our Crew"
+group = "Stainless Steel"
+source = "script"
+
+[demozoo.197013]
+title = "Join the Federation Against SUS"
+group = "Coltrax 2304"
+source = "script"
+
+[demozoo.351332]
+title = "Join Us Now"
+group = "Liquid"
+source = "script"
+
+[demozoo.234087]
+title = "Join Us!"
+group = "Pentangle"
+source = "script"
+
+[demozoo.362032]
+title = "Join Us!"
+group = "The Jackals"
+source = "script"
+
+[demozoo.205989]
+title = "Join Us! II"
+group = "Pentangle"
+source = "script"
+
+[demozoo.293499]
+title = "Join Uss"
+group = "Sex Express"
+source = "script"
+
+[demozoo.362027]
+title = "Joker Moves #1"
+group = "The Joker Crew"
+source = "script"
+
+[demozoo.362029]
+title = "Joker Moves #2"
+group = "The Joker Crew"
+source = "script"
+
+[demozoo.380982]
+title = "Jolly Wee Punx"
+group = "Pixel Punx"
+source = "script"
+
+[demozoo.363936]
+title = "Jolly Wizz Demo"
+group = "Nemesis"
+source = "script"
+
+[demozoo.327181]
+title = "Jonathan Dunn Music Collection"
+group = "Bonzai"
+source = "script"
+
+[demozoo.39991]
+title = "Jopottaa!"
+group = "Byterapers"
+source = "script"
+
+[demozoo.355614]
+title = "Journal"
+group = "Conic"
+source = "script"
+
+[demozoo.335342]
+title = "Journey through Mirrorland"
+group = "SHAPE / Blues Muz'"
+source = "script"
+result = "unknown"
+
+[demozoo.363684]
+title = "Joyboy"
+group = "Prisma"
+source = "script"
+
+[demozoo.343476]
+title = "Judge Dredd Music"
+group = "The Supersonics"
+source = "script"
+
+[demozoo.327163]
+title = "Juha Light"
+group = "Yleisradio"
+source = "script"
+result = "unknown"
+
+[demozoo.333246]
+title = "Juicy"
+group = "Exact"
+source = "script"
+
+[demozoo.326743]
+title = "Juke Box #1"
+group = "Black Code Design"
+source = "script"
+
+[demozoo.205104]
+title = "Juke Box #4"
+group = "Black Code Design"
+source = "script"
+
+[demozoo.205287]
+title = "Juke Box #5"
+group = "Black Code Design"
+source = "script"
+
+[demozoo.269159]
+title = "Jukebox #01"
+group = "Trash"
+source = "script"
+
+[demozoo.338483]
+title = "Jul-ful 2003"
+group = "Prowler64"
+source = "script"
+result = "unknown"
+
+[demozoo.178075]
+title = "Julia"
+group = "Medium"
+source = "script"
+
+[demozoo.292986]
+title = "July Rankings"
+group = "The Scanners"
+source = "script"
+
+[demozoo.191992]
+title = "Jump"
+group = "Abyss-Connection"
+source = "script"
+
+[demozoo.48348]
+title = "Jump and Rum"
+group = "Allitaice"
+source = "ai"
+kind = "standalone"
+disks = ["forever1.d64", "forever2.d64"]
+note = "disk 2 file 'jump&run /allit.' (512b realtime entry), runs from autostart, no flip"
+
+[demozoo.303647]
+title = "Jump'n Jolly"
+group = "Unit 2"
+source = "script"
+
+[demozoo.359693]
+title = "Jump-Demo"
+group = "World of Madness"
+source = "script"
+result = "unknown"
+
+[demozoo.306751]
+title = "Jumping U8"
+group = "The Unbelievable Eight"
+source = "script"
+
+[demozoo.97267]
+title = "Junkfood"
+group = "The Ruling Company"
+source = "script"
+
+[demozoo.276662]
+title = "Jupiler"
+group = "Raiders of the Lost Empire"
+source = "script"
+
+[demozoo.358091]
+title = "Just 13....."
+group = "Danish Underground Crackers"
+source = "script"
+
+[demozoo.343985]
+title = "Just 4 Phun 2"
+group = "Motiv8"
+source = "script"
+
+[demozoo.345439]
+title = "Just a Demo"
+group = "Mega Power Designs"
+source = "script"
+
+[demozoo.333232]
+title = "Just a Demo (v2)"
+group = "Computer Cracking Team"
+source = "script"
+
+[demozoo.336453]
+title = "Just a Hurry for Venlo"
+group = "Titan"
+source = "script"
+
+[demozoo.356135]
+title = "Just a Little Message"
+group = "Tristar"
+source = "script"
+
+[demozoo.331455]
+title = "Just a..."
+group = "Brutal"
+source = "script"
+
+[demozoo.378381]
+title = "Just an Old Knob"
+group = "Hokuto Force"
+source = "script"
+
+[demozoo.24336]
+title = "Just Another Noter"
+group = "Aquanauts"
+source = "script"
+
+[demozoo.323321]
+title = "Just Dance 64"
+group = "Algotech"
+source = "script"
+
+[demozoo.339303]
+title = "Just For Fun"
+group = "Zodux"
+source = "script"
+
+[demozoo.364685]
+title = "Just For Fun"
+group = "Panic"
+source = "script"
+
+[demozoo.335831]
+title = "Just For Funlo"
+group = "Azoo"
+source = "script"
+
+[demozoo.336716]
+title = "Just for Venlo"
+group = "Sodom / Transit / Saga Connection"
+source = "script"
+
+[demozoo.284957]
+title = "Just for Venlo V1"
+group = "Argon"
+source = "script"
+
+[demozoo.284953]
+title = "Just for Venlo V2"
+group = "Argon"
+source = "script"
+result = "unknown"
+
+[demozoo.345099]
+title = "Just Fun"
+group = "Paramount"
+source = "ai"
+kind = "standalone"
+result = "unknown"
+disks = ["Just Fun by Paramount.d64", "just_fun__p.d64"]
+note = "two d64 versions of one prg (just fun!, 58 vs 78 blocks); alternatives, no flip; sweep no-activity on both machines"
+
+[demozoo.350860]
+title = "Just Fun"
+group = "Impulse"
+source = "script"
+
+[demozoo.363811]
+title = "Just Joking"
+group = "Moon Soft"
+source = "script"
+result = "unknown"
+
+[demozoo.340001]
+title = "Just like a Cryptie"
+group = "Crypt"
+source = "script"
+
+[demozoo.365673]
+title = "Just Like Booze"
+group = "Pioneers"
+source = "script"
+disks = ["Just Like Booze_Pioneers.D64", "just_like_booze.d64"]
+note = "the sweep only reached disk 1 of 2"
+
+[demozoo.291787]
+title = "Just Like That"
+group = "Tetragon"
+source = "script"
+
+[demozoo.365878]
+title = "Just Look It"
+group = "Point-X"
+source = "script"
+
+[demozoo.53903]
+title = "Just One Screen"
+group = "Bennysoft"
+source = "ai"
+kind = "standalone"
+disks = ["Bennysoft - Just One Screen.d64", "Bill_Gehts_Gut.d64", "I98WARES.D64"]
+note = "only disk 1 is the production (single prg); the other two d64s are unrelated releases in the same csdb dir"
+
+[demozoo.361528]
+title = "Just Perfect"
+group = "Judges for Dealing Software"
+source = "script"
+
+[demozoo.358092]
+title = "Just Twenty"
+group = "Danish Underground Crackers"
+source = "script"
+
+[demozoo.323282]
+title = "Just Working"
+group = "Alcatraz"
+source = "script"
+
+[demozoo.345530]
+title = "Just'n Digi"
+group = "Relax"
+source = "script"
+boot_file = "just'n digi     "
+
+[demozoo.126530]
+title = "Justice"
+group = "Laser Inc."
+source = "script"
+disks = ["Justice-1-1.d64", "Justice-1-2.d64", "Justice-2-1.d64"]
+note = "the sweep only reached disk 1 of 3"
+
+[demozoo.345141]
+title = "Justice"
+group = "Forces of Evil"
+source = "script"
+
+[demozoo.353783]
+title = "Justice"
+group = "Triad"
+source = "script"
+
+[demozoo.356842]
+title = "Justification"
+group = "Reflex"
+source = "script"
+
+[demozoo.319191]
+title = "JustinBlue"
+group = "Graffity"
+source = "script"
+disks = ["justinblue_a.g64", "justinblue_b.g64"]
+swaps = [{ disk = 2, at = 479.7, key = "space" }]
+
+[demozoo.308159]
+title = "Justine 4 All"
+group = "Action"
+source = "script"
+
+[demozoo.361006]
+title = "Jutta Aus Kalkutta"
+group = "United Cracker Corporation"
+source = "script"
+
+[demozoo.116716]
+title = "Jylland Rules!"
+group = "Depredators"
+source = "script"

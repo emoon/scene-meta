@@ -1,0 +1,322 @@
+[demozoo.350123]
+title = "Z-Rock"
+group = "Z-Circle"
+source = "script"
+result = "unknown"
+
+[demozoo.350124]
+title = "Z-Rock II"
+group = "Z-Circle"
+source = "script"
+
+[demozoo.350125]
+title = "Z-Rock III"
+group = "Z-Circle"
+source = "script"
+
+[demozoo.350126]
+title = "Z-Rock IV"
+group = "Z-Circle"
+source = "script"
+
+[demozoo.358107]
+title = "Zachobat"
+group = "Danish Underground Crackers"
+source = "script"
+
+[demozoo.350853]
+title = "Zak Collection 2"
+group = "Lazer"
+source = "script"
+
+[demozoo.357286]
+title = "Zak for Hysteric"
+group = "Amplifier"
+source = "script"
+
+[demozoo.357287]
+title = "Zak'n'"
+group = "Amplifier"
+source = "script"
+
+[demozoo.358263]
+title = "Zakk Ripp Disk"
+group = "42"
+source = "script"
+
+[demozoo.349521]
+title = "Zakplayer V4.4"
+group = "The Imperium Arts"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.330114]
+title = "Zara"
+group = "Kraksnax"
+source = "script"
+result = "unknown"
+
+[demozoo.390454]
+title = "Zax Box 14"
+group = "Met / Xentrix"
+source = "script"
+
+[demozoo.363504]
+title = "Zax by Vibrants"
+group = "Megadesigns Incorporated"
+source = "script"
+
+[demozoo.175513]
+title = "Zax Collection"
+group = "XentaX"
+source = "script"
+
+[demozoo.336307]
+title = "Zax-Disc No.02"
+group = "Wizards of Illusions"
+source = "script"
+disks = ["Wizard Of Illusion - WOI Ripp #094-#137.D64", "Wizard Of Illusion - WOI Ripp #138-#188.D64"]
+swaps = [{ disk = 2, at = 59.7, key = "p1fire", key_delay = 35.2 }]
+
+[demozoo.317483]
+title = "Zaxx"
+group = "2002"
+source = "script"
+
+[demozoo.362046]
+title = "Zeb Demo"
+group = "The Mad Boys"
+source = "script"
+
+[demozoo.138759]
+title = "Zegnaj KSB"
+group = "Super"
+source = "script"
+
+[demozoo.205295]
+title = "Zeitanomalie 4"
+group = "Welle:Erdball"
+source = "script"
+
+[demozoo.339815]
+title = "Zeitanomalie 5"
+group = "Courage"
+source = "script"
+
+[demozoo.205381]
+title = "Zeitanomalie III"
+group = "Welle:Erdball"
+source = "script"
+
+[demozoo.354681]
+title = "Zeitgeist"
+group = "Triad"
+source = "script"
+
+[demozoo.356565]
+title = "Zenimage Preview"
+group = "Wrath Designs"
+source = "script"
+result = "unknown"
+
+[demozoo.289555]
+title = "Zenturion"
+group = "The Last Science"
+source = "script"
+
+[demozoo.196870]
+title = "Zeptotro"
+group = "Cosine"
+source = "script"
+
+[demozoo.289636]
+title = "Zeros & Ones"
+group = "Wile Coyote"
+source = "script"
+disks = ["0&1_0.d64", "0&1_1.d64"]
+swaps = [{ disk = 2, at = 160.7, key = "space", key_delay = 14.0 }]
+
+[demozoo.359622]
+title = "Zewa's Warning"
+group = "Zewa-Soft Team"
+source = "script"
+
+[demozoo.275766]
+title = "Ziel Verfehlt"
+group = "Welle:Erdball"
+source = "script"
+
+[demozoo.326309]
+title = "Ziili Tuli Kuitenkin"
+source = "script"
+result = "unknown"
+
+[demozoo.326764]
+title = "Ziili2013fin"
+group = "Ziili"
+source = "script"
+
+[demozoo.338829]
+title = "Zing Intro"
+group = "Clarion"
+source = "script"
+
+[demozoo.97307]
+title = "Zodux 2"
+group = "Zodux"
+source = "script"
+
+[demozoo.187879]
+title = "Zoids Theme"
+group = "1001 Crew"
+source = "script"
+
+[demozoo.354796]
+title = "Zoltar Speaks"
+group = "Triad"
+source = "script"
+
+[demozoo.193465]
+title = "Zombi-Demo"
+group = "Stryker"
+source = "script"
+
+[demozoo.375020]
+title = "Zone 5"
+group = "Fairlight"
+source = "script"
+
+[demozoo.119400]
+title = "Zoo '98 Partyscroller"
+group = "Dekadence"
+source = "script"
+
+[demozoo.164964]
+title = "ZOO 2017 Invitation"
+group = "Zooparty Organizers"
+source = "script"
+
+[demozoo.354247]
+title = "ZOO 2024 Invitation"
+group = "Gorbat Soft"
+source = "script"
+
+[demozoo.119307]
+title = "Zoo98 Partyscroller"
+group = "Padua"
+source = "script"
+
+[demozoo.148139]
+title = "Zookeeper"
+group = "Fantastic 4 Cracking Group / Atlantis"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.148148]
+title = "Zoology"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.322040]
+title = "Zoolook"
+group = "Disky"
+source = "script"
+
+[demozoo.347083]
+title = "Zoolook"
+group = "New Balance Bochum"
+source = "script"
+result = "unknown"
+
+[demozoo.293546]
+title = "Zoolook Music"
+group = "Warhawk International"
+source = "script"
+
+[demozoo.359605]
+title = "Zorkenzag"
+group = "Zip Cracking Factories"
+source = "script"
+
+[demozoo.359520]
+title = "Zoxes vs. TFO"
+group = "Zoxes"
+source = "script"
+
+[demozoo.388718]
+title = "Zpace!"
+group = "Banzai"
+source = "script"
+
+[demozoo.334021]
+title = "ZSS-Mega-Demo"
+group = "Zorro Soft Switzerland"
+source = "script"
+
+[demozoo.189713]
+title = "ZTH Stopped"
+group = "Abnormal"
+source = "script"
+machine = "ntsc_1541"
+
+[demozoo.206067]
+title = "Zuuni Dreams"
+group = "Enigma / Zeus Duo"
+source = "script"
+
+[demozoo.200119]
+title = "Zwartennerd"
+group = "Excess"
+source = "script"
+
+[demozoo.293518]
+title = "Zwieback"
+group = "Sex Express"
+source = "script"
+boot_file = "zwieback0"
+
+[demozoo.305083]
+title = "Zynchro Blocks"
+group = "Altex"
+source = "script"
+
+[demozoo.301694]
+title = "Zyron"
+group = "1001 Crew"
+source = "script"
+
+[demozoo.79051]
+title = "Zyron Est Fart"
+group = "Coders With Attitude"
+source = "script"
+
+[demozoo.277423]
+title = "Zyron Music-Collection 11"
+group = "Antic / Deceit"
+source = "script"
+
+[demozoo.279739]
+title = "Zyron Music-Collection 12"
+group = "Antic"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.279753]
+title = "Zyron Music-Collection 13"
+group = "Antic"
+source = "script"
+
+[demozoo.301526]
+title = "Zyron Soundtrack"
+group = "Danish Gold"
+source = "script"
+
+[demozoo.302778]
+title = "ZZ Execution"
+group = "The Jedi Knights"
+source = "script"
+
+[demozoo.331361]
+title = "Zzap! 64"
+group = "Fantastic Cracking Company"
+source = "script"

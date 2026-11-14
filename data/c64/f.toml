@@ -1,0 +1,2042 @@
+[demozoo.6982]
+title = "F.A.K.E."
+group = "The Obsessed Maniacs"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.193402]
+title = "F.D.K. Demo"
+group = "Terminator Tomes"
+source = "script"
+
+[demozoo.325983]
+title = "F.S. Demo No.2"
+group = "Frank Strearvsky"
+source = "script"
+
+[demozoo.177031]
+title = "F1 Evolution"
+group = "EXclusive ON"
+source = "script"
+result = "unknown"
+
+[demozoo.350746]
+title = "F1 Tornado"
+group = "Warriors of the Wasteland"
+source = "script"
+
+[demozoo.313119]
+title = "F20"
+group = "Lethargy"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.322391]
+title = "F4CG At Revision"
+group = "Fantastic 4 Cracking Group"
+source = "script"
+
+[demozoo.183392]
+title = "Fabulous"
+group = "The Cosmic Force"
+source = "script"
+machine = "ntsc_1541"
+
+[demozoo.341051]
+title = "Fabulous"
+group = "Fantastic 4 Cracking Group"
+source = "script"
+
+[demozoo.376531]
+title = "Fabulous"
+group = "Wanderer"
+source = "script"
+
+[demozoo.175274]
+title = "Facedemo"
+group = "Delysid"
+source = "script"
+
+[demozoo.194268]
+title = "Facts"
+group = "Noise"
+source = "script"
+
+[demozoo.169479]
+title = "Fade In"
+group = "Bonzai"
+source = "script"
+
+[demozoo.326689]
+title = "Faderik"
+source = "script"
+
+[demozoo.302411]
+title = "Failure"
+group = "Faith Design"
+source = "script"
+kind = "collection"
+disks = ["sb064966.d64", "sb064967.d64"]
+note = "disk set shared by 5 productions"
+
+[demozoo.368052]
+title = "Failure"
+group = "Faith Design"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.352571]
+title = "Fairlight loves Genesis Project"
+group = "Onslaught"
+source = "script"
+
+[demozoo.351863]
+title = "Fairlight Music 1"
+group = "Razor 1911"
+source = "script"
+
+[demozoo.351864]
+title = "Fairlight Music 2"
+group = "Razor 1911 / Star One"
+source = "script"
+result = "unknown"
+
+[demozoo.325527]
+title = "Faith"
+group = "Kraksnax"
+source = "script"
+
+[demozoo.112708]
+title = "Fake"
+group = "M.O.N"
+source = "script"
+disks = ["CH2K-SI1.D64", "CH2K-SI2.D64"]
+swaps = [{ disk = 2, at = 906.0, key = "p2fire" }]
+
+[demozoo.164706]
+title = "Fallen Stars"
+group = "Mayday!"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.182246]
+title = "Falling Stars"
+group = "Avatar"
+source = "script"
+
+[demozoo.68147]
+title = "Fallout"
+group = "Smash Designs"
+source = "script"
+
+[demozoo.72176]
+title = "FAMF"
+group = "Singular Crew"
+source = "script"
+
+[demozoo.75064]
+title = "Famous Australians Volume 1"
+group = "Offence"
+source = "script"
+
+[demozoo.173924]
+title = "Fanboy(s) of the Asteryk"
+group = "TheRyk"
+source = "script"
+result = "unknown"
+
+[demozoo.336991]
+title = "FanFarewell"
+group = "Artline Designs"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.363437]
+title = "Fantasia"
+group = "Matrix"
+source = "script"
+
+[demozoo.330822]
+title = "Fantasia 2"
+group = "Oxyron"
+source = "script"
+disks = ["Fantasia 2.d64", "Oxyron - (1992-xx-xx) - Fantasia 2.d64"]
+swaps = [{ disk = 2, at = 143.0, key = "space", key_delay = 18.5 }]
+
+[demozoo.139996]
+title = "Fantasmolytic"
+group = "Censor Design / Oxyron"
+source = "script"
+machine = "pal_1541_8580"
+disks = ["image1.d64", "image2.d64"]
+swaps = [{ disk = 2, at = 405.5 }]
+
+[demozoo.345731]
+title = "Fantastic Colors"
+group = "Sodom"
+source = "script"
+
+[demozoo.365858]
+title = "Fantastic Demoz Volume No.1"
+group = "Point In Darkness"
+source = "script"
+disks = ["Fantastic Demoz Volume_a.d64", "Fantastic Demoz Volume_b.d64"]
+swaps = [{ disk = 2, at = 139.9, key = "space", key_delay = 19.0 }]
+
+[demozoo.361336]
+title = "Fantastic!"
+group = "Crackers of the Future"
+source = "script"
+
+[demozoo.5219]
+title = "Fantasy"
+group = "Chromance"
+source = "script"
+
+[demozoo.334274]
+title = "Fantasy"
+group = "Intruders"
+source = "script"
+
+[demozoo.363430]
+title = "Fantasy"
+group = "Martial-Art Software"
+source = "script"
+
+[demozoo.302410]
+title = "Fantasy Preview"
+group = "Samar"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.344664]
+title = "Fantasy World"
+group = "Art Design"
+source = "script"
+
+[demozoo.364304]
+title = "Fantasy World"
+group = "New Age"
+source = "script"
+
+[demozoo.285705]
+title = "Fantomas"
+group = "Siesta"
+source = "script"
+
+[demozoo.295325]
+title = "Fanzy"
+group = "Anthrax"
+source = "script"
+
+[demozoo.101755]
+title = "Farbraus"
+group = "Arsenic"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.332797]
+title = "Farewell Axis"
+group = "Cascade"
+source = "script"
+
+[demozoo.331673]
+title = "Farewell Demo"
+group = "Contex"
+source = "script"
+
+[demozoo.367400]
+title = "Farewell Life"
+group = "Rubidium"
+source = "script"
+machine = "ntsc_1541"
+
+[demozoo.339953]
+title = "Farewell Scene"
+group = "Crypt"
+source = "script"
+
+[demozoo.343837]
+title = "Farny Demo"
+group = "Active Swapping Crew"
+source = "script"
+
+[demozoo.312979]
+title = "Fassbrandy"
+group = "Bednaess"
+source = "script"
+
+[demozoo.136718]
+title = "Fast Blade"
+group = "Willow"
+source = "script"
+machine = "ntsc_1541"
+
+[demozoo.4348]
+title = "Fast Bucket V1"
+group = "Brainstorm"
+source = "script"
+
+[demozoo.269267]
+title = "Fast Demo"
+group = "Federation Against Supply Team / Shield"
+source = "script"
+
+[demozoo.206353]
+title = "Fast Intro"
+group = "The Fighter"
+source = "script"
+
+[demozoo.205308]
+title = "Fast One"
+group = "Secret Lab Productions"
+source = "script"
+kind = "collection"
+disks = ["wp03a.d64", "wp03b.d64"]
+boot_disk = 2
+boot_file = "fastone/slp"
+note = "disk set shared by 5 productions"
+
+[demozoo.234106]
+title = "Fast One"
+group = "Waste"
+source = "script"
+
+[demozoo.361476]
+title = "Fast Smashed"
+group = "The Warlocks"
+source = "script"
+
+[demozoo.331308]
+title = "Fast'n'Cool"
+group = "Bytestar"
+source = "script"
+
+[demozoo.75105]
+title = "Fastcompo"
+group = "JSL"
+source = "script"
+disks = ["AP29A.D64", "AP29B.D64"]
+swaps = [{ disk = 2, at = 126.8, key = "p2fire", key_delay = 50.2 }]
+
+[demozoo.357082]
+title = "Fastdemo"
+group = "Dacota"
+source = "script"
+
+[demozoo.286155]
+title = "Faster Than Light"
+group = "Jazzcat Cracking Team"
+source = "script"
+result = "unknown"
+
+[demozoo.205516]
+title = "Fat Albert"
+group = "Triad"
+source = "script"
+
+[demozoo.348054]
+title = "Fat Boys Live (Digi V-3)"
+group = "The Byte Engineers"
+source = "script"
+
+[demozoo.193458]
+title = "Fat Boys Live!"
+group = "Terminator Tomes"
+source = "script"
+
+[demozoo.61259]
+title = "Fata Morgana"
+group = "Oxygen64"
+source = "script"
+
+[demozoo.339553]
+title = "Fatal Realm"
+group = "Creators"
+source = "script"
+kind = "collection"
+disks = ["vision2002_side1.d64", "vision2002_side2.d64"]
+boot_file = "fatal realm /crt"
+note = "disk set shared by 2 productions"
+
+[demozoo.310557]
+title = "Fatality"
+group = "Albion Crew"
+source = "script"
+
+[demozoo.349686]
+title = "FATBD"
+group = "Network"
+source = "script"
+
+[demozoo.364361]
+title = "FatMas 2024"
+group = "Darklite"
+source = "script"
+
+[demozoo.314666]
+title = "FatZooMania"
+group = "Fatzone"
+source = "script"
+
+[demozoo.100042]
+title = "Faux Visage"
+group = "Panda Design"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.345090]
+title = "Favorites 1"
+group = "Paramount"
+source = "script"
+
+[demozoo.345091]
+title = "Favorites 2"
+group = "Paramount"
+source = "script"
+
+[demozoo.4888]
+title = "Favorites 3"
+group = "Paramount"
+source = "script"
+
+[demozoo.341879]
+title = "FBI 2 Years"
+group = "FBI Crew"
+source = "script"
+
+[demozoo.352510]
+title = "FBI-Crew Logo"
+group = "The Ruling Company / World Wide Expressive"
+source = "script"
+
+[demozoo.321234]
+title = "FBR Commandos"
+group = "Fucked Beyond Repair"
+source = "script"
+
+[demozoo.357310]
+title = "FCG Cool Demo"
+group = "Formby Cracking Group"
+source = "script"
+disks = ["%5BFCG%5D_COOLDEMO.D64", "cool_demo-fcg.d64"]
+note = "the sweep only reached disk 1 of 2"
+
+[demozoo.280792]
+title = "FCS 50 Years"
+group = "Finnish Gold"
+source = "script"
+
+[demozoo.90320]
+title = "Fear"
+group = "Civitas"
+source = "ai"
+kind = "standalone"
+disks = ["v2003-s1.d64", "v2003-s2.d64", "v2003-s3.d64", "v2003-s4.d64"]
+boot_file = "fear    /civitas"
+note = "Fear: single 115-block file on Vision 2003 side 1; space on the text page (~100M) then '1' on the crucifix page (~160M) reach the last part, all from memory with no drive access after ~80M; the other sides are unrelated releases"
+
+[demozoo.173942]
+title = "FEAR"
+group = "Raiders of the Lost Empire"
+source = "script"
+
+[demozoo.364489]
+title = "Feature Demo One"
+group = "Nightmare Cracking Institution"
+source = "script"
+
+[demozoo.196836]
+title = "Federation Against Softunion"
+group = "Psygon"
+source = "script"
+
+[demozoo.21060]
+title = "Fedt med l0g"
+group = "Genesis Project"
+source = "script"
+
+[demozoo.92925]
+title = "Feedback"
+group = "Triad"
+source = "script"
+kind = "collection"
+disks = ["Aquoicasert_wd.d64", "Discojive_civitas.d64", "Feedback_3ad.d64", "Gfx&msx.d64", "Makedonian_sbp.d64", "returnof_hujowa.d64", "single_demos.d64"]
+boot_disk = 3
+boot_file = "triad/  feedback"
+note = "disk set shared by 9 productions"
+
+[demozoo.24192]
+title = "Feedspister"
+group = "MuMu21"
+source = "script"
+
+[demozoo.338446]
+title = "Feel the Perfection"
+group = "Shades"
+source = "script"
+
+[demozoo.314661]
+title = "Feelgood"
+group = "Gorbat Soft"
+source = "script"
+
+[demozoo.23761]
+title = "Feeling Retro"
+group = "Resource"
+source = "script"
+machine = "pal_1541_8580"
+disks = ["RESOURC1.D64", "RESOURC2.D64"]
+swaps = [{ disk = 2, at = 412.5, key = "space" }]
+
+[demozoo.181789]
+title = "Feliz Navidad"
+group = "Fairlight"
+source = "script"
+
+[demozoo.196869]
+title = "Femtotro"
+group = "Cosine"
+source = "script"
+
+[demozoo.167359]
+title = "Fentanyl"
+group = "Speedfisters"
+source = "script"
+
+[demozoo.375792]
+title = "Ferlajt"
+group = "Anubis"
+source = "ai"
+machine = "pal_1541_8580"
+kind = "collection"
+result = "unknown"
+disks = ["GFX.D64", "INTROS.D64", "MSX1.D64", "MSX2.D64", "REAL.D64"]
+note = "music compo entry, disk 3 (MSX1.D64) file 'factor6/music' of the Forever 3 set (CSDb 103090: Ferlajt by Factor6/Anubis); single-file SID tune, never asks for another disk"
+
+[demozoo.343274]
+title = "Festiv"
+group = "Hanseatic Cracking Association"
+source = "script"
+
+[demozoo.352321]
+title = "Fett Isterparty 2011"
+group = "hedning / Itch / Avalon"
+source = "script"
+
+[demozoo.184516]
+title = "Fett som fjell"
+group = "Atlantis"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.201426]
+title = "Feud Demo"
+group = "Hotline"
+source = "script"
+
+[demozoo.345077]
+title = "Feverish"
+group = "Poison"
+source = "script"
+
+[demozoo.358510]
+title = "FFI Demo#3"
+group = "Future Forces Incorporated"
+source = "script"
+
+[demozoo.327363]
+title = "FHGHG"
+group = "Agile"
+source = "script"
+
+[demozoo.281294]
+title = "Fiddle-Faddle"
+source = "script"
+
+[demozoo.367155]
+title = "Fidl's Intro Collection"
+group = "The Discmonsters"
+source = "script"
+
+[demozoo.357159]
+title = "Fido Dido"
+group = "Energy"
+source = "script"
+
+[demozoo.36979]
+title = "Fierce Creations"
+group = "Xenon"
+source = "script"
+
+[demozoo.27262]
+title = "Fifteen Minutes Of Lame"
+group = "Offence"
+source = "script"
+
+[demozoo.97308]
+title = "FIG Again"
+group = "Finnish Gold"
+source = "script"
+
+[demozoo.74972]
+title = "Fight Against Racism"
+group = "Smash Designs"
+source = "ai"
+disks = ["far1.d64", "far2.d64", "far3.d64"]
+swaps = [{ disk = 2, at = 568.4, key = "space", key_delay = 16.2 }, { disk = 3, at = 1116.5, key = "space", key_delay = 14.2 }]
+keys = [{ at = 152.2, key = "1" }, { at = 152.2, key = "1" }]
+note = "Fight Against Racism: menu key 1 (whole demo); prompts 'insert disk side 2 / space' and 'insert side 3 and press space'; insert then space ~16M later; disk 2: prompt up by ~520M; verified; disk 3: prompt up by ~1000M after disk 2 chain; verified"
+
+[demozoo.293243]
+title = "Fight in the World"
+group = "Ahead"
+source = "script"
+
+[demozoo.346450]
+title = "Fight the Power"
+group = "Silicon"
+source = "script"
+
+[demozoo.277068]
+title = "FIGHT!"
+group = "Atlantis"
+source = "script"
+
+[demozoo.184593]
+title = "Fighting a Lost Cause"
+group = "Destiny Seven"
+source = "script"
+
+[demozoo.367004]
+title = "Final"
+group = "The Incredible One Thousand Boys / SDB 2065"
+source = "script"
+
+[demozoo.367231]
+title = "Final Curtain"
+group = "Reset 86"
+source = "script"
+result = "unknown"
+
+[demozoo.322026]
+title = "Final Fight Highscore"
+group = "PDB"
+source = "script"
+
+[demozoo.322024]
+title = "Final Fight Title"
+group = "PDB"
+source = "script"
+
+[demozoo.359730]
+title = "Final Frontier Co-op [NTSC]"
+group = "Venom / Lords / Shade / Havok / X-Factor / The Force"
+source = "script"
+disks = ["final_frontier.d64", "final_frontier_missing_parts.d64"]
+swaps = [{ disk = 2, at = 133.6, key = "space", key_delay = 18.2 }]
+
+[demozoo.363532]
+title = "Final Odyssey"
+group = "Mesmery"
+source = "script"
+
+[demozoo.352573]
+title = "Final Ram"
+group = "Onslaught"
+source = "script"
+
+[demozoo.357987]
+title = "Final Synth Sample 1"
+group = "Illegal Software Group"
+source = "script"
+result = "unknown"
+
+[demozoo.376725]
+title = "Find The Lamer"
+group = "Sequencer"
+source = "script"
+
+[demozoo.377989]
+title = "Find the Raster"
+group = "Babygang"
+source = "script"
+
+[demozoo.344133]
+title = "Fine Young Cannibals"
+group = "The Spench"
+source = "script"
+
+[demozoo.357032]
+title = "Finished Intro"
+group = "Twins"
+source = "script"
+
+[demozoo.193328]
+title = "Finlandia Fly"
+group = "Zero Dizayn"
+source = "script"
+machine = "ntsc_1541"
+disks = ["silesia_party_1_disk_1.d64", "silesia_party_1_disk_2.d64", "silesia_party_1_disk_3.d64"]
+boot_disk = 3
+boot_file = "finlandia fly   "
+note = "the sweep only reached disk 1 of 3"
+
+[demozoo.266260]
+title = "Finnsids Collection"
+group = "Delysid"
+source = "script"
+
+[demozoo.332226]
+title = "Finsterwald"
+group = "Civitas"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.18092]
+title = "Fire"
+group = "Art Project Studios"
+source = "script"
+
+[demozoo.273832]
+title = "Fire"
+group = "Copyright Escape"
+source = "script"
+
+[demozoo.350618]
+title = "Fire"
+group = "Tetragon"
+source = "script"
+result = "unknown"
+
+[demozoo.343751]
+title = "Firebee Music Collection"
+group = "Axelerate / Voodoo"
+source = "script"
+result = "unknown"
+
+[demozoo.356560]
+title = "Firebobs in Water Preview"
+group = "Wrath Designs"
+source = "script"
+
+[demozoo.385377]
+title = "Firelord 50"
+group = "Excess"
+source = "script"
+machine = "ntsc_1541"
+sid = "8580"
+
+[demozoo.330010]
+title = "Firestarter"
+group = "Reality"
+source = "script"
+
+[demozoo.324056]
+title = "FiREWiRE"
+group = "Angels"
+source = "script"
+
+[demozoo.368624]
+title = "Fireworks"
+group = "Spellmix / Demons"
+source = "script"
+
+[demozoo.394936]
+title = "First"
+group = "Zynapz"
+source = "script"
+
+[demozoo.75104]
+title = "First Aid"
+group = "Padua"
+source = "script"
+disks = ["AP29A.D64", "AP29B.D64"]
+swaps = [{ disk = 2, at = 126.0, key = "p2fire", key_delay = 48.9 }]
+
+[demozoo.336292]
+title = "First Album"
+group = "The Ruling Company"
+source = "script"
+result = "unknown"
+
+[demozoo.44375]
+title = "First Demo"
+group = "deFEEST"
+source = "script"
+
+[demozoo.196450]
+title = "First Demo"
+group = "Frantic"
+source = "script"
+
+[demozoo.358265]
+title = "First Demo"
+group = "X-Cess"
+source = "script"
+
+[demozoo.361686]
+title = "First Demo"
+group = "Phytons"
+source = "script"
+
+[demozoo.367137]
+title = "First Demo"
+group = "Reflex"
+source = "script"
+disks = ["dixie_meeting.dexie.d64", "First Demo-RFX.d64"]
+note = "the sweep only reached disk 1 of 2"
+
+[demozoo.361965]
+title = "First Digi Demo"
+group = "Killer Rats Association"
+source = "script"
+
+[demozoo.351951]
+title = "First Fuckletter"
+group = "Plutonium Crackers"
+source = "script"
+result = "unknown"
+
+[demozoo.54553]
+title = "First Intro"
+group = "JaSoft"
+source = "script"
+result = "unknown"
+
+[demozoo.361621]
+title = "First Intro"
+group = "Modern Cracking Trio"
+source = "script"
+
+[demozoo.386341]
+title = "First Intro"
+group = "Trap"
+source = "script"
+
+[demozoo.19899]
+title = "First Megahawks Demo '87"
+group = "Megahawks Incorporated"
+source = "script"
+
+[demozoo.152800]
+title = "First Official Demo"
+group = "Byterapers Inc."
+source = "script"
+
+[demozoo.356514]
+title = "First One"
+group = "Weird Science 2662"
+source = "script"
+result = "unknown"
+boot_file = "first one    /ws"
+
+[demozoo.30411]
+title = "First Time"
+group = "kenji"
+source = "script"
+
+[demozoo.364482]
+title = "First Try"
+group = "Newness"
+source = "script"
+
+[demozoo.73358]
+title = "First You Live, and Then You Die"
+group = "Fairlight"
+source = "script"
+
+[demozoo.298748]
+title = "FirstTryo"
+group = "Genetix"
+source = "script"
+result = "unknown"
+
+[demozoo.276665]
+title = "Fish"
+group = "Church 64"
+source = "script"
+
+[demozoo.368305]
+title = "Fish Spawn"
+group = "Sharon"
+source = "script"
+
+[demozoo.360884]
+title = "Fishbomb"
+group = "Extend"
+source = "script"
+disks = ["fishbomb_sidea.d64", "fishbomb_sideb.d64"]
+swaps = [{ disk = 2, at = 179.3 }]
+
+[demozoo.170118]
+title = "Fishing Furiously"
+group = "Undone"
+source = "ai"
+kind = "standalone"
+disks = ["undone_-_fishing_furiously.d64", "undone_-_fishing_furiously_packed.d64"]
+note = "disks are alternatives: plain vs packed version of the same single prg, no flip"
+
+[demozoo.354873]
+title = "Fishy"
+group = "Contrast"
+source = "script"
+
+[demozoo.392536]
+title = "FIST 2 - The Earbleeding Continues"
+group = "Mayday!"
+source = "script"
+
+[demozoo.100568]
+title = "Fist of Trade"
+group = "Hack n' Trade"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.375025]
+title = "Fistro"
+group = "Blazon"
+source = "script"
+
+[demozoo.293987]
+title = "Fit for Fight"
+group = "Mnemonic Designs"
+source = "script"
+
+[demozoo.176576]
+title = "Fite"
+group = "Fury"
+source = "script"
+
+[demozoo.21740]
+title = "Fitspeak"
+group = "Dekadence"
+source = "script"
+
+[demozoo.21741]
+title = "Fitspeak 2"
+group = "Dekadence"
+source = "script"
+
+[demozoo.24676]
+title = "Fitspeak Remix"
+group = "Dekadence"
+source = "script"
+
+[demozoo.275074]
+title = "Fittan Med Sperm"
+group = "Byterapers"
+source = "script"
+
+[demozoo.380977]
+title = "Fitty"
+group = "Bonzai / Camelot"
+source = "script"
+
+[demozoo.125848]
+title = "Five Split"
+group = "Starion"
+source = "script"
+
+[demozoo.397561]
+title = "Fiveteen Scrolls"
+group = "Empire Software"
+source = "script"
+
+[demozoo.344943]
+title = "Fixed Intro"
+group = "Stardom"
+source = "script"
+
+[demozoo.347180]
+title = "Fjartpipare"
+group = "Oneway"
+source = "script"
+
+[demozoo.292327]
+title = "Fjortis!"
+group = "Fatzone"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.90135]
+title = "Fjoss v1.1"
+group = "Oneway"
+source = "script"
+machine = "ntsc_1541"
+
+[demozoo.184538]
+title = "Fjälldata 2018 Partyscroller"
+group = "Booze Design"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.200323]
+title = "Fjällkingen"
+group = "Esl0w"
+source = "script"
+
+[demozoo.177250]
+title = "Flag Party Results and Visitor List"
+group = "Poison"
+source = "ai"
+kind = "standalone"
+result = "unknown"
+disks = ["flag2k.d64", "flag2k-2.d64"]
+note = "disk 1 file 'results+vislist!' (flag2k.d64): static results page, single file, no flip"
+
+[demozoo.293952]
+title = "Flanell Saus Pudding Pusen"
+group = "Sentec / Technic"
+source = "script"
+
+[demozoo.342662]
+title = "Flash"
+group = "Spacexpress"
+source = "script"
+
+[demozoo.357361]
+title = "Flash Back"
+group = "Danecrew"
+source = "script"
+
+[demozoo.305073]
+title = "Flash Demo"
+group = "KGB Crew"
+source = "script"
+result = "unknown"
+
+[demozoo.316596]
+title = "Flash Demo V2.1"
+group = "K.G.B. Cracking Crew"
+source = "script"
+
+[demozoo.347233]
+title = "Flash I"
+group = "Flash Cracking Group"
+source = "script"
+
+[demozoo.347234]
+title = "Flash II"
+group = "Flash Cracking Group"
+source = "script"
+
+[demozoo.347235]
+title = "Flash III"
+group = "Flash Cracking Group"
+source = "script"
+
+[demozoo.347237]
+title = "Flash IV"
+group = "Flash Cracking Group"
+source = "script"
+
+[demozoo.347238]
+title = "Flash IX"
+group = "Flash Cracking Group"
+source = "script"
+
+[demozoo.347239]
+title = "Flash V"
+group = "Flash Cracking Group"
+source = "script"
+
+[demozoo.347240]
+title = "Flash VI"
+group = "Flash Cracking Group"
+source = "script"
+
+[demozoo.347241]
+title = "Flash VII"
+group = "Flash Cracking Group"
+source = "script"
+
+[demozoo.347242]
+title = "Flash VIII"
+group = "Flash Cracking Group"
+source = "script"
+
+[demozoo.347243]
+title = "Flash X"
+group = "Flash Cracking Group"
+source = "script"
+
+[demozoo.347244]
+title = "Flash XI"
+group = "Flash Cracking Group"
+source = "script"
+
+[demozoo.343850]
+title = "Flash-demo 1"
+group = "Alienware 4009"
+source = "script"
+
+[demozoo.343851]
+title = "Flash-demo 2"
+group = "Alienware 4009"
+source = "script"
+
+[demozoo.113007]
+title = "Flashback"
+group = "Software of Sweden"
+source = "script"
+
+[demozoo.376870]
+title = "Flashback 2013 Remote Reminder"
+group = "G-Fellow"
+source = "script"
+result = "unknown"
+
+[demozoo.376707]
+title = "Flashback to 64"
+group = "Jpl"
+source = "script"
+result = "unknown"
+
+[demozoo.367328]
+title = "Flashbak"
+group = "Retro64"
+source = "script"
+result = "unknown"
+
+[demozoo.31419]
+title = "Flashbang"
+group = "Genesis Project"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.193392]
+title = "Flashpoint"
+group = "Terminator Tomes"
+source = "script"
+
+[demozoo.375847]
+title = "Flatley Dance Group"
+group = "React"
+source = "ai"
+machine = "pal_1541_8580"
+kind = "collection"
+result = "unknown"
+disks = ["GFX.D64", "INTROS.D64", "MSX1.D64", "MSX2.D64", "REAL.D64"]
+note = "music compo entry, disk 3 (MSX1.D64) file 'flatleyorcan' of the Forever 3 set; single-file SID tune with a static info screen, never asks for another disk"
+
+[demozoo.7677]
+title = "Flatline"
+group = "Smash Designs"
+source = "script"
+machine = "ntsc_1541"
+sid = "8580"
+result = "crashes-later"
+disks = ["flat1.d64", "flat2.d64"]
+swaps = [{ disk = 2, at = 170.1, key = "p1fire", key_delay = 33.6 }]
+
+[demozoo.19766]
+title = "Flatwild"
+group = "Smash Designs"
+source = "script"
+machine = "pal_1541_8580"
+disks = ["0090a.D64", "Flatwild.d64"]
+note = "the sweep only reached disk 1 of 2"
+
+[demozoo.312788]
+title = "Fleshlite"
+group = "Digital Access / Onslaught / Defame"
+source = "script"
+
+[demozoo.342748]
+title = "Flexible"
+group = "Offence"
+source = "script"
+
+[demozoo.360527]
+title = "Flexible"
+group = "Impact"
+source = "script"
+
+[demozoo.342749]
+title = "Flexible II"
+group = "Offence"
+source = "script"
+
+[demozoo.348870]
+title = "Flexible!"
+group = "Swiss Cracking Association"
+source = "script"
+
+[demozoo.21454]
+title = "Flexxible"
+group = "Fatzone"
+source = "script"
+
+[demozoo.18465]
+title = "FLI-Cycled"
+group = "High-Tech"
+source = "script"
+
+[demozoo.86577]
+title = "Flip On A Trip"
+group = "Raiders of the Lost Empire"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.326849]
+title = "Floater"
+group = "Beyond Force"
+source = "script"
+
+[demozoo.126198]
+title = "Flogging a Dead Horse"
+group = "Redstar"
+source = "script"
+
+[demozoo.309485]
+title = "Floodland"
+group = "Hitmen"
+source = "script"
+
+[demozoo.90132]
+title = "Floppy"
+group = "Defiers / Instinct"
+source = "script"
+machine = "ntsc_1541"
+
+[demozoo.92931]
+title = "Floppy 2001 Demo"
+group = "Yodelking / UL-Tomten / Puterman"
+source = "script"
+kind = "collection"
+disks = ["Aquoicasert_wd.d64", "Discojive_civitas.d64", "Feedback_3ad.d64", "Gfx&msx.d64", "Makedonian_sbp.d64", "returnof_hujowa.d64", "single_demos.d64"]
+boot_disk = 7
+boot_file = " floppy2001demo "
+note = "disk set shared by 9 productions"
+
+[demozoo.189905]
+title = "Flower"
+group = "Faith Design"
+source = "script"
+result = "unknown"
+
+[demozoo.205179]
+title = "Flower Power"
+group = "Delta Projects"
+source = "script"
+boot_file = "flower power /dp"
+
+[demozoo.345181]
+title = "Flower Power"
+group = "Syndrom 2001 / RCS 2100 / Bros"
+source = "script"
+
+[demozoo.90174]
+title = "Flpu"
+group = "cmp / d4rkn3ss"
+source = "script"
+boot_file = "flpu  /cmp&johey"
+
+[demozoo.324943]
+title = "Fluff"
+group = "Kraksnax"
+source = "script"
+
+[demozoo.3603]
+title = "Flut"
+group = "K2"
+source = "script"
+disks = ["FLUTS1.D64", "FLUTS2.D64"]
+swaps = [{ disk = 2, at = 479.7, key = "space" }]
+
+[demozoo.347801]
+title = "Flux Collection"
+group = "Skylight Designs"
+source = "script"
+
+[demozoo.21458]
+title = "Fly Bird Fly"
+group = "Triad"
+source = "script"
+
+[demozoo.98874]
+title = "Fogyish"
+group = "Samar Productions / Arise"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.328976]
+title = "Follow the Leader"
+group = "Orion / Thrash"
+source = "script"
+result = "unknown"
+
+[demozoo.332091]
+title = "Fondamental"
+group = "Babygang"
+source = "script"
+
+[demozoo.191209]
+title = "Fopcycle"
+group = "Fairlight / Prosonix / Offence"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.100548]
+title = "For A Few $d001 More"
+group = "Sys5"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.181743]
+title = "For A Friend"
+group = "Church 64"
+source = "script"
+kind = "collection"
+disks = ["v2003-s1.d64", "v2003-s2.d64", "v2003-s3.d64", "v2003-s4.d64"]
+boot_file = "for a friend/c64"
+note = "disk set shared by 8 productions"
+
+[demozoo.193393]
+title = "For All!"
+group = "Terminator Tomes"
+source = "script"
+
+[demozoo.366008]
+title = "For Beaty"
+group = "Power Soft Crew"
+source = "script"
+
+[demozoo.358125]
+title = "For Fun"
+group = "Demon Boyz"
+source = "script"
+
+[demozoo.368317]
+title = "For KD"
+group = "Tridam"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.380984]
+title = "For Pete's Sake"
+group = "Scenior's Haven"
+source = "script"
+disks = ["for-petes-sake-demo.d64", "for-petes-sake-notes.d64"]
+swaps = [{ disk = 2, at = 589.7, key = "space" }]
+
+[demozoo.349968]
+title = "For Ravange"
+group = "Biedronki"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.84358]
+title = "For Teh Win"
+group = "Cosine"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.350750]
+title = "Forbidden Fruit"
+group = "Warriors of the Wasteland"
+source = "script"
+result = "unknown"
+
+[demozoo.375845]
+title = "Forever 2002"
+group = "Tropyx / Nostalgia / Tide / Draco"
+source = "ai"
+machine = "ntsc_1541"
+sid = "8580"
+kind = "standalone"
+disks = ["GFX.D64", "INTROS.D64", "MSX1.D64", "MSX2.D64", "REAL.D64"]
+boot_disk = 4
+boot_file = "forever 2002/hmm"
+note = "Forever 2002: single SID tune on MSX2.D64 of the Forever 3 compo set; the sweep's flip to REAL.D64 was a false accept (tune info screen unchanged)"
+
+[demozoo.48634]
+title = "Forever 5"
+group = "Resource / Singular"
+source = "script"
+kind = "collection"
+disks = ["stuff01.d64", "stuff02.d64"]
+boot_file = "forever5/rsc+sgr"
+note = "disk set shared by 5 productions"
+
+[demozoo.334201]
+title = "Forever Friends"
+group = "Triad"
+source = "script"
+
+[demozoo.144806]
+title = "Forever Lost"
+group = "Samar"
+source = "script"
+
+[demozoo.98927]
+title = "Forever Young"
+group = "Tropyx"
+source = "script"
+kind = "collection"
+disks = ["2_forever_young_by_tropyx.d64", "5_conrad_dash_by_conrad&v12.d64", "7_loda_error_by_elyta.d64"]
+boot_file = "forever young/tx"
+note = "disk set shared by 3 productions"
+
+[demozoo.354872]
+title = "Forget About Mike Tyson"
+group = "Contrast"
+source = "script"
+
+[demozoo.279801]
+title = "Forgotten Beats"
+group = "Antic"
+source = "script"
+
+[demozoo.286643]
+title = "Forgotten Dots"
+group = "Chorus"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.346346]
+title = "Formula One"
+group = "Magicans"
+source = "script"
+
+[demozoo.363843]
+title = "Formula One Theme"
+group = "Multi Crackers Sweden"
+source = "script"
+
+[demozoo.315205]
+title = "Formula Petscii"
+group = "Performers"
+source = "script"
+
+[demozoo.351354]
+title = "Forsythia"
+group = "Unit 5"
+source = "script"
+boot_file = "- forsythia -"
+
+[demozoo.17949]
+title = "Forthissimo"
+group = "Mathman"
+source = "script"
+
+[demozoo.393018]
+title = "Forza!"
+group = "Hokuto Force"
+source = "script"
+
+[demozoo.376193]
+title = "Four & Twenty"
+group = "Oxsid Planetary"
+source = "script"
+machine = "pal_1541_8580"
+result = "unknown"
+
+[demozoo.341737]
+title = "Four in One"
+group = "Future Software Spy's 1969"
+source = "script"
+
+[demozoo.347182]
+title = "Four Weeks"
+group = "Oneway"
+source = "script"
+
+[demozoo.101541]
+title = "Four Years"
+group = "Origo Dreamline"
+source = "script"
+
+[demozoo.18089]
+title = "Four Years Oxyron"
+group = "Oxyron"
+source = "script"
+
+[demozoo.100542]
+title = "Foursome"
+group = "Hoaxers"
+source = "script"
+
+[demozoo.68199]
+title = "Fourteen & Life"
+group = "Fairlight"
+source = "script"
+
+[demozoo.336822]
+title = "Fourth Dimension"
+group = "Time"
+source = "script"
+disks = ["fourth-dimension-with-note-time.d64", "fourth_dimension.d64"]
+swaps = [{ disk = 2, at = 134.4, key = "space", key_delay = 18.4 }]
+
+[demozoo.357656]
+title = "Fox Demo"
+group = "Cool Swapping Trio"
+source = "script"
+
+[demozoo.316011]
+title = "Fracture"
+group = "Triad"
+source = "script"
+result = "unknown"
+
+[demozoo.325569]
+title = "Fragile-89"
+group = "Agile"
+source = "script"
+
+[demozoo.27260]
+title = "Fragment"
+group = "Magnar / Mahoney / Prowler"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.176015]
+title = "Fragment of a TempesT Millenium"
+group = "TempesT"
+source = "script"
+
+[demozoo.306324]
+title = "Francuski Piesek"
+group = "Fraction"
+source = "script"
+
+[demozoo.350157]
+title = "Frankenstein Demo"
+group = "Wizax"
+source = "script"
+
+[demozoo.124836]
+title = "Frantic 3: Nightmare"
+group = "Hoaxers"
+source = "script"
+machine = "pal_1541_8580"
+disks = ["frantic3a.d64", "frantic3b.d64"]
+swaps = [{ disk = 2, at = 460.7 }]
+
+[demozoo.183489]
+title = "Frantic Ranx"
+group = "Frantic"
+source = "script"
+
+[demozoo.183479]
+title = "Frantic Situation"
+group = "Frantic / The Cosmic Force"
+source = "script"
+
+[demozoo.195313]
+title = "Frantic4BHF"
+group = "Hoaxers"
+source = "script"
+
+[demozoo.197826]
+title = "Frantique Flu"
+group = "Frantic"
+source = "script"
+
+[demozoo.293876]
+title = "Fratze"
+group = "Out of Order"
+source = "script"
+result = "unknown"
+
+[demozoo.183235]
+title = "Fratzengeballer!"
+group = "Alpha Flight"
+source = "script"
+
+[demozoo.179079]
+title = "Freak Out"
+group = "Online"
+source = "script"
+
+[demozoo.329862]
+title = "Freaked Frigit"
+group = "Computer Piracy Group"
+source = "script"
+
+[demozoo.189278]
+title = "Freaks In Space"
+group = "Abnormal"
+source = "script"
+
+[demozoo.348114]
+title = "Freaks Mega Demo 1"
+group = "The Freaks"
+source = "script"
+
+[demozoo.229948]
+title = "Freaxy One"
+group = "The Crusaders"
+source = "script"
+
+[demozoo.201428]
+title = "Freddy Hardest Picture"
+group = "Hotline"
+source = "script"
+result = "unknown"
+
+[demozoo.101703]
+title = "Free Beer!"
+group = "Delysid"
+source = "script"
+
+[demozoo.372835]
+title = "Free Fall"
+group = "CNCD"
+source = "script"
+result = "unknown"
+
+[demozoo.365877]
+title = "Free Style Demo I"
+group = "Point-X"
+source = "script"
+
+[demozoo.60871]
+title = "Freedom"
+group = "Civitas"
+source = "script"
+
+[demozoo.367005]
+title = "Freekbox"
+group = "The Incredible One Thousand Boys"
+source = "script"
+
+[demozoo.352511]
+title = "Freescape 1"
+group = "World Wide Expressive"
+source = "script"
+
+[demozoo.296068]
+title = "Freespin"
+group = "Reflex"
+source = "script"
+
+[demozoo.356817]
+title = "Freestyle"
+group = "Gloom / Trans-X"
+source = "script"
+result = "unknown"
+
+[demozoo.343793]
+title = "Frenzy"
+group = "ACID"
+source = "script"
+
+[demozoo.4885]
+title = "Fresh Dose"
+group = "Speedfisters"
+source = "script"
+
+[demozoo.338370]
+title = "Freshmania"
+group = "Fresh"
+source = "script"
+
+[demozoo.160501]
+title = "fREUd"
+group = "Hoaxers"
+source = "script"
+machine = "pal_1541_reu"
+sid = "8580"
+
+[demozoo.309680]
+title = "Fria bad BBS"
+group = "Judas"
+source = "script"
+
+[demozoo.291643]
+title = "Friday the 13th Demo"
+group = "Exalt"
+source = "script"
+
+[demozoo.349664]
+title = "Fright-intro"
+group = "The Golden Triangle"
+source = "script"
+
+[demozoo.50085]
+title = "Frighthof"
+group = "Arsenic"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.375390]
+title = "FRODIGI - Free Running Oscillator Digi"
+group = "Onslaught"
+source = "script"
+
+[demozoo.375393]
+title = "Frodigi 5"
+group = "Onslaught"
+source = "script"
+result = "unknown"
+
+[demozoo.323322]
+title = "Frodigi 8"
+group = "Algotech"
+source = "ai"
+kind = "standalone"
+disks = ["frodigi8.d64", "frodigi8-fixed.d64"]
+note = "frodigi8.d64 and frodigi8-fixed.d64 are the original and a fixed re-release of one single-disk demo; alternatives, no flip"
+
+[demozoo.332092]
+title = "From Africa"
+group = "Babygang"
+source = "script"
+
+[demozoo.230133]
+title = "From All of Us to All of You"
+group = "The Flash Point Boys"
+source = "script"
+
+[demozoo.138884]
+title = "From Beyond"
+group = "Asphyxia"
+source = "script"
+disks = ["From_Beyond_S1.D64", "From_Beyond_S2.D64"]
+swaps = [{ disk = 2, at = 370.0 }]
+
+[demozoo.368858]
+title = "From Hell To The Unknown"
+group = "Tankard"
+source = "script"
+
+[demozoo.348309]
+title = "From the Deep of the North"
+group = "Fairlight"
+source = "script"
+
+[demozoo.51967]
+title = "From Votze with love"
+group = "Drago / Ragnarok"
+source = "script"
+
+[demozoo.295010]
+title = "Front End Demo"
+group = "FunkScientist Productions"
+source = "script"
+boot_file = "-front end demo-"
+
+[demozoo.79601]
+title = "Frontier"
+group = "Hoaxers / Wrath Designs"
+source = "script"
+result = "unknown"
+
+[demozoo.345725]
+title = "Froyd's Music Collection"
+group = "Lepsi De"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.344584]
+title = "Froyd's Music Collection 2"
+group = "Miracles"
+source = "script"
+
+[demozoo.373147]
+title = "Frozen Nipples"
+group = "Fatum / Onslaught"
+source = "script"
+machine = "ntsc_1541"
+sid = "8580"
+boot_file = "frozen nipples"
+
+[demozoo.334036]
+title = "Frst Demo On Little C64"
+group = "Starlight"
+source = "script"
+
+[demozoo.274109]
+title = "FST Trackmo"
+group = "FST"
+source = "script"
+
+[demozoo.894]
+title = "FST Trackmo 2"
+group = "FST"
+source = "script"
+
+[demozoo.50090]
+title = "Fu Chen"
+group = "Ancients Pledge Inc"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.276669]
+title = "Fuck"
+group = "Raiders of the Lost Empire"
+source = "script"
+
+[demozoo.301733]
+title = "Fuck Benny Hill!"
+group = "Swedish Future Crackers"
+source = "script"
+
+[demozoo.318766]
+title = "Fuck D.C."
+group = "Foxx Inc."
+source = "script"
+
+[demozoo.205096]
+title = "Fuck Dracul"
+group = "Twins / Megadeath / The Ruling Company"
+source = "script"
+
+[demozoo.367208]
+title = "Fuck Off MTV"
+group = "Entity / Reign Of Terror"
+source = "script"
+
+[demozoo.340241]
+title = "Fuck Off! (Finnish version)"
+group = "Pure-Byte"
+source = "script"
+
+[demozoo.387850]
+title = "Fuck PC!"
+group = "Moe's Tavern"
+source = "script"
+kind = "collection"
+disks = ["The Party 3 Music Competition [Side 1].d64", "The Party 3 Music Competition [Side 2].d64"]
+note = "disk set shared by 8 productions"
+
+[demozoo.366467]
+title = "Fuck Racism"
+group = "Quintex Designs"
+source = "script"
+
+[demozoo.330378]
+title = "Fuck Shop"
+group = "Alpha Flight"
+source = "script"
+
+[demozoo.126290]
+title = "Fuck the Devil"
+group = "Afresh"
+source = "script"
+kind = "collection"
+disks = ["Bytestar_party_1989a.D64", "Bytestar_party_1989b.D64"]
+note = "disk set shared by 9 productions"
+
+[demozoo.364367]
+title = "Fuck The Internet"
+group = "New World Order"
+source = "script"
+
+[demozoo.86337]
+title = "Fuck the Scene"
+group = "Warriors of the Wasteland"
+source = "script"
+machine = "ntsc_1541"
+disks = ["fuckside1.d64", "fuckside2.d64"]
+swaps = [{ disk = 2, at = 603.3, key = "p2fire" }]
+
+[demozoo.339795]
+title = "Fuck Thomas"
+group = "Silicon Limited"
+source = "script"
+
+[demozoo.349622]
+title = "Fuck You"
+group = "The New Aces 2087"
+source = "script"
+result = "unknown"
+
+[demozoo.332079]
+title = "Fuck You Ignorance"
+group = "Crypt / The Walker Group / Het Meisje van de Vleeswarenafdeling"
+source = "script"
+
+[demozoo.351666]
+title = "Fuck'em Those"
+group = "Capitol"
+source = "script"
+
+[demozoo.349665]
+title = "Fucked It!"
+group = "The Golden Triangle"
+source = "script"
+
+[demozoo.356917]
+title = "Fuckin' Grey"
+group = "Damage Incorporated 2019"
+source = "script"
+
+[demozoo.350795]
+title = "Fuckings"
+group = "Quartet"
+source = "script"
+
+[demozoo.339839]
+title = "Fuckings to Lamers"
+group = "Accession"
+source = "script"
+
+[demozoo.368651]
+title = "Fucky!"
+group = "Storm Industries 1930"
+source = "script"
+result = "unknown"
+
+[demozoo.333404]
+title = "Fuel"
+group = "Fantasia"
+source = "script"
+
+[demozoo.112707]
+title = "Fuenf Ka"
+group = "Centric"
+source = "script"
+disks = ["CH2K-SI1.D64", "CH2K-SI2.D64"]
+swaps = [{ disk = 2, at = 182.1, key = "p2fire" }]
+
+[demozoo.318101]
+title = "Fufuufuuu"
+group = "Anonymous Downvote Cowards"
+source = "script"
+machine = "pal_1541_8580"
+
+[demozoo.331354]
+title = "Fugu 50"
+group = "TREX"
+source = "script"
+
+[demozoo.350877]
+title = "Full Beat"
+group = "The Invincible Cracker / The Artworx"
+source = "script"
+
+[demozoo.361392]
+title = "Full Power"
+group = "International Cracking Entertainment"
+source = "script"
+boot_file = "full power [ice]"
+
+[demozoo.48878]
+title = "Fullscreen Is The Shit"
+group = "Lord Nikon"
+source = "script"
+
+[demozoo.336772]
+title = "Fulminate"
+group = "Trust"
+source = "script"
+
+[demozoo.51965]
+title = "Fumisugium"
+group = "Senex"
+source = "script"
+
+[demozoo.347605]
+title = "Fun Duel Preview"
+group = "Success & The Ruling Company"
+source = "script"
+
+[demozoo.362885]
+title = "Fun Picture Show"
+group = "Linear Productions"
+source = "script"
+result = "unknown"
+
+[demozoo.331309]
+title = "Fun-Byte"
+group = "Bytestar"
+source = "script"
+
+[demozoo.292020]
+title = "Funky Music 13"
+group = "The Black Force"
+source = "script"
+
+[demozoo.292018]
+title = "Funky Music IX"
+group = "The Black Force"
+source = "script"
+
+[demozoo.271029]
+title = "Funky Stars"
+group = "C64CD"
+source = "script"
+
+[demozoo.335256]
+title = "FunWithLogo"
+group = "Verz!!!"
+source = "script"
+
+[demozoo.117761]
+title = "Furulund-demo"
+group = "Defiers"
+source = "script"
+
+[demozoo.361487]
+title = "Fusion Sucks"
+group = "The Watchers"
+source = "script"
+
+[demozoo.193463]
+title = "Future - Demo"
+group = "The Drol Cat"
+source = "script"
+
+[demozoo.361335]
+title = "Future Brief IV"
+group = "Crackers of the Future"
+source = "script"
+
+[demozoo.183608]
+title = "Future Car"
+group = "B-Art"
+source = "script"
+
+[demozoo.296224]
+title = "Future Composer 2"
+group = "Beastie Boys"
+source = "script"
+
+[demozoo.345568]
+title = "Future Concepts"
+group = "Future Concepts / Crazy"
+source = "script"
+
+[demozoo.351953]
+title = "Future Drums"
+group = "Plutonium Crackers"
+source = "script"
+
+[demozoo.322044]
+title = "Future Fire"
+group = "Hanseatic Cracking Association"
+source = "script"
+
+[demozoo.333851]
+title = "Future II"
+group = "Cracking For Lovers"
+source = "script"
+
+[demozoo.309325]
+title = "Future Shock II"
+group = "The Fall Guys"
+source = "script"
+
+[demozoo.314122]
+title = "Future-Group"
+group = "Delta 4"
+source = "script"
+
+[demozoo.346171]
+title = "Futureworld-Demo"
+group = "Exact"
+source = "script"
+
+[demozoo.173833]
+title = "Fy fan vad illa"
+group = "Sys5"
+source = "script"
+
+[demozoo.368221]
+title = "Fünfzig 90%"
+group = "A Moiré Misszió Bemutatja"
+source = "script"
