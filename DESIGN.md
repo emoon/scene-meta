@@ -7,7 +7,7 @@ repo for every platform, starting with Amiga and C64.
 ## Principles
 
 - **The TOML is the truth.** The sweepers' sqlite databases are their private
-  run logs. Nothing is compiled from the TOML; consumers read it as they like.
+  run logs (one schema for every platform, `tools/README.md`). Nothing is compiled from the TOML; consumers read it as they like.
 - **Emulator agnostic.** Entries state hardware facts and what the production
   needs. No emulator names, no emulator options.
 - **Only what Amiga and C64 need today.** Adding a TOML field later breaks
@@ -21,8 +21,9 @@ repo for every platform, starting with Amiga and C64.
 data/<platform>/machines.toml    machine presets, in hardware terms
 data/<platform>/<bucket>.toml    productions
 tools/common/                    validator, merge
-tools/amiga/                     Amiga sweeper and its patched Amiberry
-tools/c64/                       C64 sweeper (drives stock VICE)
+tools/scenedb/                   the sweepers: core/ and one subpackage per platform
+tools/amiga/                     the Amiga sweeper's patched Amiberry, ROMs, notes
+tools/c64/                       the C64 sweeper's ROMs and notes (drives stock VICE)
 ```
 
 One licence per directory: `data/` is CC0, each emulator keeps its own, the

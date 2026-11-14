@@ -6,11 +6,11 @@ disks automatically.
 
 Source data is the NAS: `meta/index.sqlite` (the Demozoo export) for the
 production list, `demozoo/<id/1000>/<id>/` for the files. Every Amiga OCS/ECS
-and AGA demo and intro (`scenedb/catalog.py`) is booted headless in a patched
+and AGA demo and intro (`../scenedb/amiga/catalog.py`) is booted headless in a patched
 Amiberry (`amiberry/`, see `amiberry/SNAPSHOT.md`) up a machine ladder until
 one works.
 
-## Machine ladder (`scenedb/machines.py`)
+## Machine ladder (`../scenedb/amiga/machines.py`)
 
 | name | machine |
 |------|---------|
@@ -29,7 +29,7 @@ AGA-only productions start at `a1200`. Productions released before Oct 1992 skip
 and guru under 1.3. Some intros only run when AmigaDOS loads them into chip
 RAM, i.e. on a bare 512K A500 (`a500_512k`).
 
-## What "works" means (`scenedb/verdict.py`)
+## What "works" means (`../scenedb/amiga/verdict.py`)
 
 Every 250 frames the run records status and a screenshot. A sample is alive
 when audio DMA is on or the screen changed (with bitplanes on). A run works
@@ -40,7 +40,7 @@ silent, so they never count.
 
 ## Disk swaps
 
-Disk sets are formed from file names (`scenedb/diskset.py`: `DemoA`/`DemoB`,
+Disk sets are formed from file names (`../scenedb/amiga/diskset.py`: `DemoA`/`DemoB`,
 `-1`/`-2`, `disk1`, `d2`, ...). Disk 1 boots in DF0, the rest go on the swap
 list, and the emulator's swap-wait detector inserts the next disk when the
 demo waits for it (CIA /CHNG polling with the drive idle, or a silent prompt;
@@ -48,7 +48,7 @@ a mouse click is pressed if the new disk is not picked up). A run chosen with
 such a click is run once more with nothing pressed from that insert on, and
 the click is only kept when that run falls short: a disk that is slow to
 load gets clicked too. Each
-insert is stored with its frame in `swap`. A multi-disk run that goes quiet with disks
+insert is stored with its time in `swap`. A multi-disk run that goes quiet with disks
 left to insert is retried with the idle trigger's head-position gate off
 (`anycyl`).
 
@@ -59,30 +59,34 @@ several downloads) are a set too, and unpack into one tree.
 
 ## Usage
 
+From `tools/` (the layout and what the platforms share: `../README.md`):
+
 ```bash
-python3 -m scenedb fetch                 # missing disks -> NAS
-python3 -m scenedb sweep --jobs 96       # resumable
-python3 -m scenedb sweep --ids 89 142    # specific productions
-python3 -m scenedb report
-python3 -m scenedb export                # scene.db -> ../../data/amiga
-python3 -m scenedb replay --ids 142      # play data-file entries as written
+python3 -m scenedb amiga fetch                 # missing disks -> NAS
+python3 -m scenedb amiga sweep --jobs 96       # resumable
+python3 -m scenedb amiga sweep --ids 89 142    # specific productions
+python3 -m scenedb amiga report
+python3 -m scenedb amiga export                # scene.db -> ../data/amiga
+python3 -m scenedb amiga replay --ids 142      # play data-file entries as written
+python3 -m scenedb amiga migrate               # convert an older scene.db
 python3 -m unittest discover -s tests -t .
 ```
 
-The sweep's own log is `scene.db` (sqlite). The `best` view gives one row
+The sweep's own log is `amiga/scene.db` (sqlite, the shared schema of
+`../scenedb/core/store.py`, times in seconds). The `best` view gives one row
 per variant: the chosen machine, its verdict, and its swaps as
-`frame:disk:trigger` (trigger `poll` or `idle`, `+click` when a click was
-needed).
+`seconds:disk:trigger` (trigger `poll`, `idle`, `reread` or `scheduled`,
+`+click` when a click was needed; the click is also the swap's `key`).
 
-`export` (`scenedb/export.py`) merges that into the data files people edit,
-`../../data/amiga/*.toml` (format: `DESIGN.md` at the top of the repo). Each
+`export` (`../scenedb/amiga/export.py`) merges that into the data files people edit,
+`data/amiga/*.toml` (format: `DESIGN.md` at the top of the repo). Each
 production becomes one entry, taken from the variant that got furthest, and
 is marked `script`, or `ai` when it has a hand classification in
-`scenedb/classes.tsv`. Only `script` entries are replaced: an entry somebody
+`../scenedb/amiga/classes.tsv`. Only `script` entries are replaced: an entry somebody
 edited stays, and where the sweep disagrees with it the difference is
 printed.
 
-`replay` (`scenedb/replay.py`) goes the other way: it plays an entry of the
+`replay` (`../scenedb/amiga/replay.py`) goes the other way: it plays an entry of the
 data files exactly as written (its machine, each disk in at its time, each
 key after its insert; no detector, no retries) and says whether every disk
 was loaded. An entry with keys on its swaps is played once more without
@@ -108,7 +112,7 @@ cmake --build build
 - The swap frame is when the detector fired (about 10 s into a polled wait,
   or the idle timeout), not the first frame of the prompt.
 - Executables are booted from a directory hard drive with a one-line
-  startup-sequence, run after `s/scenedb-setup` (`scenedb/workbench.py`):
+  startup-sequence, run after `s/scenedb-setup` (`../scenedb/amiga/workbench.py`):
   what SetPatch and Workbench's preferences did on a user's machine (AGA
   enabled on KS3.0, topaz 8 as the default font). Disk-based libraries
   (mathieeedoubbas, ...) come from `libs/` (`SCENEDB_LIBS`), copied from a

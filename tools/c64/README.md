@@ -2,19 +2,19 @@
 
 Which C64 setup each demo works on, and when multi-disk demos ask for their
 next disk, so a frontend can flip disks automatically. The C64 twin of
-`../amiga`: same shape, same results-database idea.
+`../amiga`: same shape, the same sweep log (`../README.md`).
 
 Source data is the NAS: `meta/index.sqlite` (the Demozoo export) for the
 production list (platform "Commodore 64": Demo, Intro, Musicdisk), and the
 release's files from `mirrors/csdb/<CSDb release id>/` or, failing that, the
 scene.org zip (`mirrors/sceneorg`, unpacked into `work/media/`). The disk
-images of one release are one set, in natural name order (`scenedb/diskset.py`;
+images of one release are one set, in natural name order (`../scenedb/c64/diskset.py`;
 `.d64` preferred over `.g64` of the same disk).
 
 Every set is autostarted headless in stock VICE 3.7.1 (`x64sc`, under Xvfb) up a
 machine ladder until one works.
 
-## Machine ladder (`scenedb/machines.py`)
+## Machine ladder (`../scenedb/c64/machines.py`)
 
 | name | machine |
 |------|---------|
@@ -30,30 +30,31 @@ Debian's `vice` ships no ROMs. `roms/` holds them under the names VICE looks up
 ROM headers (any VICE source tree, e.g. the one under `replay_frontend`):
 
 ```bash
-python3 tools/extract_roms.py <vice>/include/embedded roms
+python3 -m scenedb.c64.tools.extract_roms <vice>/include/embedded c64/roms
 ```
 
 Needs `x64sc` and `xvfb-run` on `PATH` (`SCENEDB_VICE` overrides the binary).
 
-## How a run is driven (`scenedb/vice.py`, `scenedb/runner.py`)
+## How a run is driven (`../scenedb/c64/vice.py`, `../scenedb/c64/runner.py`)
 
 VICE has no "run N frames", so the run is paced by wall clock and stamped with
 emulated time: the remote monitor (`-remotemonitor`) stops the emulator on any
 input, `stopwatch` gives the exact CPU cycle count, `m 8:1c00` reads the 1541's
 VIA2 port B, `screenshot` grabs the screen, and `x` resumes. Every 0.1 s of wall
-time that is one sample (cycles, PC, drive port, screenshot hash). All times in
-the database are C64 cycles since power-on (PAL 985248 Hz, NTSC 1022727 Hz).
+time that is one sample (cycles, PC, drive port, screenshot hash). A run counts
+C64 cycles since power-on; the database has them as seconds on the machine's
+clock (PAL 985248 Hz, NTSC 1022727 Hz).
 Cycle stamps are exact; the moments between samples are not reproducible run to
 run.
 
-## What "works" means (`scenedb/verdict.py`)
+## What "works" means (`../scenedb/c64/verdict.py`)
 
 A sample is alive when the screen changed since the previous one and the C64 is
 not at the BASIC prompt (cursor blink would otherwise count). A run works with
 20 s of C64 time alive before any crash (CPU JAM, emulator death, wall-clock
 timeout).
 
-## Disk flips (`scenedb/swapwait.py`)
+## Disk flips (`../scenedb/c64/swapwait.py`)
 
 Disk 1 is autostarted in drive 8; a flip is detach, 3 s empty, attach (the
 write-protect sensor has to see the slot empty). A demo is waiting for a disk when
@@ -72,31 +73,38 @@ the drive port (VIA2 port B, sync bit ignored) holds still:
 
 After an insert the demo may want a key ("turn disk and press space"). While the
 drive stays untouched, `runner.py` presses space, Return, port-2 fire and port-1 fire
-5 s apart (`scenedb/xinput.py`: XTest events to the emulator's Xvfb window).
+5 s apart (`../scenedb/c64/xinput.py`: XTest events to the emulator's Xvfb window).
 
 A flip counts (`accepted`) once the drive port moves again after the insert. A
 disk the demo ignores is taken back out and triggers back off for 30 s.
 
-Each `flip` row has the disk number, trigger, `waiting_since` (cycles: when the
-drive went quiet, about when the demo asked), `inserted` (cycles), `accepted`,
-and the screenshot of the prompt.
+Each flip is a `swap` row: the disk number, trigger, `waiting_since` (when the
+drive went quiet, about when the demo asked), `at` (when the disk went in),
+`accepted`, the key pressed after the insert, and the screenshot of the prompt.
 
 ## Usage
 
+From `tools/`:
+
 ```bash
-python3 -m scenedb sweep --ids 324781 6309     # specific productions
-python3 -m scenedb sweep --multi --jobs 64     # resumable
-python3 -m scenedb report
+python3 -m scenedb c64 sweep --ids 324781 6309     # specific productions
+python3 -m scenedb c64 sweep --multi --jobs 64     # resumable
+python3 -m scenedb c64 report
+python3 -m scenedb c64 manual                      # load manual.json (hand observations)
+python3 -m scenedb c64 migrate                     # convert an older scene.db
 python3 -m unittest discover -s tests -t .
 ```
 
-Results are in `scene.db` (sqlite). The `best` view gives one row per variant:
-chosen machine, verdict, disks reached, and `flips` as
-`disk:waiting_since_cycles:trigger`.
+Results are in `c64/scene.db` (sqlite, the shared schema of
+`../scenedb/core/store.py`, times in seconds). The `best` view gives one row
+per variant: chosen machine, verdict, disks reached, and the accepted `swaps`
+as `seconds:disk:trigger`. `manual.json` is written in cycles and converted
+when it is loaded.
 
-Tools: `tools/pilot.py <id>` runs one production and prints flips (`--shots dir`
-saves the prompts), `tools/trace.py` prints the raw drive/screen samples of a
-disk set (no flipping), `tools/sheet.py` makes a contact sheet of screenshots.
+Tools: `python3 -m scenedb.c64.tools.pilot <id>` runs one production and prints
+flips (`--shots dir` saves the prompts), `scenedb.c64.tools.trace` prints the
+raw drive/screen samples of a disk set (no flipping), `scenedb.c64.tools.sheet`
+makes a contact sheet of screenshots.
 
 ## Pilot (famous multi-disk demos, `pal_1541`)
 

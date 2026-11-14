@@ -22,7 +22,7 @@ The format and the reasons behind it are in [DESIGN.md](DESIGN.md).
 | `data/<platform>/machines.toml` | the machine presets, in hardware terms |
 | `data/<platform>/<bucket>.toml` | productions, by first character of the title |
 | `tools/common/` | validator |
-| `tools/amiga/`, `tools/c64/` | the sweepers that generated the first pass |
+| `tools/scenedb/` | the sweepers that generated the first pass, see [tools/README.md](tools/README.md) |
 
 ## Editing
 
