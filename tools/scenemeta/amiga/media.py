@@ -212,59 +212,77 @@ def _sha1(path):
     return h.hexdigest()
 
 
-def variants(prod_id, title=""):
-    """``(variants, problems)`` for one production. Problems are short
-    reason strings for files that produced nothing. ``title`` picks the
-    executable named after the production in an unpacked archive."""
-    src = config.prod_dir(prod_id)
-    if not src.is_dir():
-        return [], ["no-files-on-nas"]
-    work = config.WORK / "media" / str(prod_id)
-    problems, disks, exes, trees = [], {}, [], []
+@dataclasses.dataclass
+class _Found:
+    """What a production's files hold, its archives unpacked under ``work``."""
+    work: pathlib.Path
+    problems: list = dataclasses.field(default_factory=list)
+    disks: dict = dataclasses.field(default_factory=dict)  # name: (sha1, path)
+    exes: list = dataclasses.field(default_factory=list)
+    trees: list = dataclasses.field(default_factory=list)  # unpacked archives
 
-    def take(path, depth, parts=()):
+    def take(self, path, depth=0, parts=()):
+        """Sort one file in. An archive is unpacked, together with the other
+        ``parts`` of its release, and what it holds is taken in turn."""
         kind = sniff(path)
         if kind == "disk":
-            bad = image_problem(path)
-            if bad:
-                problems.append(f"{path.name}: {bad}")
-                return
-            disks.setdefault(path.name, (_sha1(path), path))
+            self._disk(path)
         elif kind == "exe":
-            exes.append(path)
+            self.exes.append(path)
         elif kind == "archive" and depth < 2:
-            out = work / "x" / f"{depth}-{path.name}"
-            if out.exists():
-                _rmtree(out)
-            for a in (path, *parts):
-                err = unpack_into(a, out)
-                if err:
-                    problems.append(f"{a.name}: {err}")
-                    return
-            trees.append(out)
-            for f in sorted(_walk_files(out)):
-                if sniff(f) != "exe":
-                    take(f, depth + 1)
+            self._archive(path, depth, parts)
 
+    def _disk(self, path):
+        bad = image_problem(path)
+        if bad:
+            self.problems.append(f"{path.name}: {bad}")
+            return
+        self.disks.setdefault(path.name, (_sha1(path), path))
+
+    def _archive(self, path, depth, parts):
+        out = self.work / "x" / f"{depth}-{path.name}"
+        if out.exists():
+            _rmtree(out)
+        for a in (path, *parts):
+            err = unpack_into(a, out)
+            if err:
+                self.problems.append(f"{a.name}: {err}")
+                return
+        self.trees.append(out)
+        for f in sorted(_walk_files(out)):
+            if sniff(f) != "exe":
+                self.take(f, depth + 1)
+
+
+def _release_files(src):
+    """``(file, parts)`` for each of a production's files to take. A release
+    split over numbered archives (pwl-rpg1.lha .. pwl-rpg3.lha) unpacks into
+    one tree: the first holds the demo, the others, its ``parts``, the data."""
     files = [f for f in sorted(src.iterdir())
              if f.is_file() and not f.name.endswith(".part")]
-    # A release split over numbered archives (pwl-rpg1.lha .. pwl-rpg3.lha)
-    # unpacks into one tree: the first holds the demo, the others its data.
     parts = {}
     for group in diskset.group([f.name for f in files if sniff(f) == "archive"]):
         parts[group[0]] = [src / n for n in group[1:]]
         parts.update((n, None) for n in group[1:])
-    for f in files:
-        if parts.get(f.name, ()) is not None:
-            take(f, 0, parts.get(f.name, ()))
+    return [(f, parts.get(f.name, ())) for f in files
+            if parts.get(f.name, ()) is not None]
 
+
+def _seen_before(shas, seen):
+    """Is the disk set with these hashes a repeat of one in ``seen``? A
+    single disk also when it is part of a set."""
+    return shas in seen or (len(shas) == 1 and any(shas[0] in s for s in seen))
+
+
+def _disk_variants(disks, prod_id, work):
+    """A floppy variant for each disk set among ``disks``."""
     # Group by name first, then drop byte-identical repeats: the same disk is
     # often mirrored under two names (Oxygene-ControlA = control1), and only
     # one of them may belong to a complete set.
     out, seen = [], set()
     for group in diskset.group(list(disks)):
         shas = tuple(disks[n][0] for n in group)
-        if shas in seen or (len(group) == 1 and any(shas[0] in s for s in seen)):
+        if _seen_before(shas, seen):
             continue
         seen.add(shas)
         paths = [str(disks[n][1]) for n in group]
@@ -273,16 +291,27 @@ def variants(prod_id, title=""):
             paths = [joined]
         out.append(flag_ffs(launch_variant(paths, prod_id, only_unbootable=True)
                             or Variant("floppy", paths), work))
+    return out
 
-    for tree in trees:
-        v = _tree_variant(tree, title)
-        if v:
-            out.append(v)
-    for exe in exes:
-        out.append(_exe_variant(exe, work))
-    if not out and not problems:
-        problems.append("no-bootable-media")
-    return out[:MAX_VARIANTS], problems
+
+def variants(prod_id, title=""):
+    """``(variants, problems)`` for one production. Problems are short
+    reason strings for files that produced nothing. ``title`` picks the
+    executable named after the production in an unpacked archive."""
+    src = config.prod_dir(prod_id)
+    if not src.is_dir():
+        return [], ["no-files-on-nas"]
+    work = config.WORK / "media" / str(prod_id)
+    found = _Found(work)
+    for f, parts in _release_files(src):
+        found.take(f, 0, parts)
+
+    out = _disk_variants(found.disks, prod_id, work)
+    out += [v for v in (_tree_variant(t, title) for t in found.trees) if v]
+    out += [_exe_variant(exe, work) for exe in found.exes]
+    if not out and not found.problems:
+        found.problems.append("no-bootable-media")
+    return out[:MAX_VARIANTS], found.problems
 
 
 def _tree_variant(tree, title=""):
