@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Contact sheet of screenshots: python3 -m scenedb.c64.tools.sheet out.jpg a.png b.png ..."""
+"""Contact sheet of screenshots: python3 -m scenemeta.c64.tools.sheet out.jpg a.png b.png ..."""
 import sys
 
 from PIL import Image, ImageDraw

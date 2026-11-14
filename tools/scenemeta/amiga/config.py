@@ -11,9 +11,9 @@ STATE_DB = NAS / "meta" / "state.sqlite"
 DEMOZOO_DIR = NAS / "demozoo"
 
 AMIBERRY = pathlib.Path(os.environ.get(
-    "SCENEDB_AMIBERRY", ROOT / "amiberry" / "build" / "amiberry"))
+    "SCENEMETA_AMIBERRY", ROOT / "amiberry" / "build" / "amiberry"))
 # Libraries from a Workbench disk, put in LIBS: of hard-drive boots (optional).
-LIBS_DIR = pathlib.Path(os.environ.get("SCENEDB_LIBS", ROOT / "libs"))
+LIBS_DIR = pathlib.Path(os.environ.get("SCENEMETA_LIBS", ROOT / "libs"))
 
 
 def prod_dir(prod_id):

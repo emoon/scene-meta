@@ -1,7 +1,7 @@
 import unittest
 
-from scenedb.c64 import verdict
-from scenedb.c64.swapwait import Sample
+from scenemeta.c64 import verdict
+from scenemeta.c64.swapwait import Sample
 
 SEC = 1_000_000
 

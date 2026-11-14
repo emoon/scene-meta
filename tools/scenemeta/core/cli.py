@@ -8,8 +8,8 @@ from . import store
 
 
 def parser(platform):
-    """``(parser, subparsers, sweep)`` for ``scenedb <platform>``."""
-    ap = argparse.ArgumentParser(prog=f"scenedb {platform}")
+    """``(parser, subparsers, sweep)`` for ``scenemeta <platform>``."""
+    ap = argparse.ArgumentParser(prog=f"scenemeta {platform}")
     sub = ap.add_subparsers(dest="cmd", required=True)
     sweep = sub.add_parser("sweep")
     selection(sweep)
@@ -51,4 +51,4 @@ def open_store(platform, make):
         return make()
     except store.LegacyDatabase as e:
         sys.exit(f"{e} predates the shared schema; convert it with"
-                 f" `python3 -m scenedb {platform} migrate {e}`")
+                 f" `python3 -m scenemeta {platform} migrate {e}`")

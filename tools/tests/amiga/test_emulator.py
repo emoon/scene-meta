@@ -2,7 +2,7 @@ import pathlib
 import tempfile
 import unittest
 
-from scenedb.amiga import emulator, machines, media, workbench
+from scenemeta.amiga import emulator, machines, media, workbench
 
 
 class UaeConfigTest(unittest.TestCase):

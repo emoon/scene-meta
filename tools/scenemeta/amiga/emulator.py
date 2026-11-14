@@ -141,7 +141,7 @@ def execbase(machine, kind="floppy"):
     hard drive is mounted."""
     key = (machine.name, kind == "hd")
     if key not in _execbase_cache:
-        with tempfile.TemporaryDirectory(prefix="scenedb-eb-") as t:
+        with tempfile.TemporaryDirectory(prefix="scenemeta-eb-") as t:
             tmp = pathlib.Path(t)
             media = "nr_floppies=1\n"
             if kind == "hd":
@@ -209,7 +209,7 @@ def run(machine, variant, frames, interval=250, timeout=None, triggers="",
     timeout = timeout or 60 + frames // 50
     eb = execbase(machine, variant.kind)
     alert_peek = f"peek {eb + LAST_ALERT:x} 4"
-    with tempfile.TemporaryDirectory(prefix="scenedb-") as t:
+    with tempfile.TemporaryDirectory(prefix="scenemeta-") as t:
         tmp = pathlib.Path(t)
         text, swaps = _uae_config(machine, variant, tmp, drives, seed)
         cfg = tmp / "machine.uae"

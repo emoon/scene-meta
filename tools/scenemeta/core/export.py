@@ -11,7 +11,7 @@ import dataclasses
 import json
 import sys
 
-from scenemeta import machines as presets, merge
+from .. import machines as presets, merge
 
 
 @dataclasses.dataclass

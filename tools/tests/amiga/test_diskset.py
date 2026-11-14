@@ -1,6 +1,6 @@
 import unittest
 
-from scenedb.amiga import diskset
+from scenemeta.amiga import diskset
 
 
 class GroupTest(unittest.TestCase):

@@ -1,6 +1,6 @@
 import unittest
 
-from scenedb.c64.xinput import Keys
+from scenemeta.c64.xinput import Keys
 
 
 class Syms(unittest.TestCase):

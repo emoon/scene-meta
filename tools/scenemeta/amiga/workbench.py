@@ -26,7 +26,7 @@ import struct
 
 from . import config
 
-SETUP = "s/scenedb-setup"
+SETUP = "s/scenemeta-setup"
 
 # Copied even when no file names them: packed executables hide the names.
 ALWAYS_LIBS = {"mathtrans.library", "mathieeedoubbas.library",

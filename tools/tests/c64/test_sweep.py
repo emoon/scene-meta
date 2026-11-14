@@ -1,7 +1,7 @@
 import unittest
 from unittest import mock
 
-from scenedb.c64 import machines, runner, sweep, verdict
+from scenemeta.c64 import machines, runner, sweep, verdict
 
 
 class Variant:

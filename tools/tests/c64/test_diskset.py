@@ -2,7 +2,7 @@ import os
 import tempfile
 import unittest
 
-from scenedb.c64 import diskset
+from scenemeta.c64 import diskset
 
 
 class Order(unittest.TestCase):

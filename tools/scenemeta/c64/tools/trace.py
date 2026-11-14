@@ -2,7 +2,7 @@
 """Watch one disk set boot: every sample prints cycles, C64 PC, drive VIA2
 port B (motor/LED/stepper) and the screenshot hash. Disks are never swapped.
 
-    python3 -m scenedb.c64.tools.trace --out work/trace --seconds 60 disk1.d64 [disk2.d64 ...]
+    python3 -m scenemeta.c64.tools.trace --out work/trace --seconds 60 disk1.d64 [disk2.d64 ...]
 """
 import argparse
 import hashlib
@@ -24,7 +24,7 @@ def main():
     a = ap.parse_args()
     out = pathlib.Path(a.out).resolve()
     out.mkdir(parents=True, exist_ok=True)
-    with tempfile.TemporaryDirectory(prefix="scenedb-") as t:
+    with tempfile.TemporaryDirectory(prefix="scenemeta-") as t:
         tmp = pathlib.Path(t)
         imgs = []
         for i, src in enumerate(a.images):

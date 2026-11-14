@@ -3,9 +3,9 @@ import sqlite3
 import tempfile
 import unittest
 
-from scenedb.c64 import migrate, store
-from scenedb.c64.machines import NTSC_HZ, PAL_HZ
-from scenedb.core.result import Swap
+from scenemeta.c64 import migrate, store
+from scenemeta.c64.machines import NTSC_HZ, PAL_HZ
+from scenemeta.core.result import Swap
 
 # An early C64 sweep database: no hand-observation tables, no key_at, no
 # boot file, no asked_disk.

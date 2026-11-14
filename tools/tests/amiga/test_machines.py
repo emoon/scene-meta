@@ -2,7 +2,7 @@ import pathlib
 import tempfile
 import unittest
 
-from scenedb.amiga import machines
+from scenemeta.amiga import machines
 
 
 def names(ms):

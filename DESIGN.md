@@ -20,8 +20,7 @@ repo for every platform, starting with Amiga and C64.
 ```
 data/<platform>/machines.toml    machine presets, in hardware terms
 data/<platform>/<bucket>.toml    productions
-tools/common/                    validator, merge
-tools/scenedb/                   the sweepers: core/ and one subpackage per platform
+tools/scenemeta/                 validator, merge, and the sweepers: core/ and one subpackage per platform
 tools/amiga/                     the Amiga sweeper's patched Amiberry, ROMs, notes
 tools/c64/                       the C64 sweeper's ROMs and notes (drives stock VICE)
 ```
@@ -139,6 +138,6 @@ disagreement goes into a report for a person to look at.
 
 1. Repo skeleton, schema, `machines.toml` for both platforms, validator. Done.
 2. Move the two sweepers in (`r2-scene-db`, `r2-scene-db-c64`). Done.
-3. Amiga: `scenedb export` merges the sweep's results and `classes.tsv` into
+3. Amiga: `scenemeta export` merges the sweep's results and `classes.tsv` into
    `data/amiga`. Done, from the sweep that predates the Nov 2026 fixes.
 4. C64: the same for its sweep and `manual.json`.

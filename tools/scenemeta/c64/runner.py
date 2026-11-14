@@ -127,7 +127,7 @@ def run(machine, variant, budget):
 
 
 def _run_once(machine, variant, budget, veto):
-    with tempfile.TemporaryDirectory(prefix="scenedb-") as t:
+    with tempfile.TemporaryDirectory(prefix="scenemeta-") as t:
         tmp = pathlib.Path(t)
         # The emulator writes disk changes back to the image: use copies.
         disks = []

@@ -2,7 +2,7 @@
 """Trace the swap-wait detector on multi-disk variants, for diagnosing sets
 that never reach their last disk.
 
-    python3 -m scenedb.amiga.tools.swaptrace --db work/multi.db --out work/trace --jobs 20 [IDS...]
+    python3 -m scenemeta.amiga.tools.swaptrace --db work/multi.db --out work/trace --jobs 20 [IDS...]
 
 Per production: <out>/<id>/trace.txt (status + detector state every 250
 frames, events) and a screenshot every 2000 frames. Runs on the machine the

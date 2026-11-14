@@ -10,7 +10,7 @@ import tomllib
 
 from . import machines, schema
 
-DATA = pathlib.Path(__file__).resolve().parents[3] / "data"
+DATA = pathlib.Path(__file__).resolve().parents[2] / "data"
 MACHINES = machines.FILE
 
 _SHA256 = re.compile(r"[0-9a-f]{64}")

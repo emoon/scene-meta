@@ -7,7 +7,7 @@ import unittest
 import unittest.mock
 import zipfile
 
-from scenedb.amiga import media
+from scenemeta.amiga import media
 
 EXE = media.HUNK_MAGIC + b"\0" * 60
 
@@ -198,7 +198,7 @@ class FloppyVariantTest(unittest.TestCase):
         self.assertTrue(media.bootable(adf))
         listing = subprocess.run(["xdftool", fv.disks[0], "list"],
                                  capture_output=True, text=True).stdout
-        for name in ("hc.exe", "hc.dat", "startup-sequence", "scenedb-setup"):
+        for name in ("hc.exe", "hc.dat", "startup-sequence", "scenemeta-setup"):
             self.assertIn(name, listing)
 
     def test_too_big(self):

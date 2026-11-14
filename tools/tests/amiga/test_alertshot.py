@@ -1,7 +1,7 @@
 import pathlib
 import unittest
 
-from scenedb.amiga import alertshot
+from scenemeta.amiga import alertshot
 
 DATA = pathlib.Path(__file__).parent / "data"
 

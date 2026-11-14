@@ -1,7 +1,7 @@
 import unittest
 
-from scenedb.amiga.emulator import NO_ALERT, RunLog, Sample
-from scenedb.amiga import verdict
+from scenemeta.amiga.emulator import NO_ALERT, RunLog, Sample
+from scenemeta.amiga import verdict
 
 AUDIO = 0x20F    # master + all audio channels
 SILENT = 0x200

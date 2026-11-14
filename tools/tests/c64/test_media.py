@@ -3,8 +3,8 @@ import tempfile
 import unittest
 from unittest import mock
 
-from scenedb.c64 import config, media
-from scenedb.core import catalog
+from scenemeta.c64 import config, media
+from scenemeta.core import catalog
 
 
 def _prod(links):

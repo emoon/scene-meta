@@ -1,6 +1,6 @@
 import unittest
 
-from scenedb.c64 import bootfile
+from scenemeta.c64 import bootfile
 
 
 class PickTest(unittest.TestCase):

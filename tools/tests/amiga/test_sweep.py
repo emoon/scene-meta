@@ -3,8 +3,8 @@ from unittest import mock
 import unittest
 from unittest import mock
 
-from scenedb.amiga import emulator, machines, media, sweep, verdict
-from scenedb.amiga.emulator import RunLog, Sample
+from scenemeta.amiga import emulator, machines, media, sweep, verdict
+from scenemeta.amiga.emulator import RunLog, Sample
 
 
 def attempt(last_dmas, swaps=(), crash_frame=None):
@@ -288,13 +288,13 @@ class ClickNeededTest(unittest.TestCase):
 
 class RungsTest(unittest.TestCase):
     def test_ffs_boot_disk_skips_kickstart_1(self):
-        from scenedb.amiga import media
+        from scenemeta.amiga import media
         v = media.Variant("floppy", ["x.adf"], ffs=True)
         names = [m.name for m in sweep.rungs(v, False)]
         self.assertEqual(names, ["a1200", "a1200_fast", "a1200_030", "a1200_060"])
 
     def test_ordinary_disk_keeps_the_ladder(self):
-        from scenedb.amiga import media, machines
+        from scenemeta.amiga import media, machines
         v = media.Variant("floppy", ["x.adf"])
         self.assertEqual(sweep.rungs(v, False), machines.ladder_for(False))
 
@@ -306,7 +306,7 @@ class SeedTest(unittest.TestCase):
 
     def run_try(self, n_disks, fake):
         from unittest import mock
-        from scenedb.amiga import machines, media
+        from scenemeta.amiga import machines, media
         v = media.Variant("floppy", [f"d{i}.adf" for i in range(n_disks)])
         with mock.patch.object(sweep, "attempt", fake):
             return sweep.try_machine(machines.BY_NAME["a500"], v, 9000)
@@ -352,7 +352,7 @@ class SeedIsRecordedTest(unittest.TestCase):
     def test_the_attempt_log_says_which_seed_it_ran(self):
         # A stored run can only be reproduced with its seed.
         from unittest import mock
-        from scenedb.amiga import machines, media
+        from scenemeta.amiga import machines, media
         log = RunLog([], [], 0, False, "")
         v = media.Variant("floppy", ["d0.adf"])
         with mock.patch.object(emulator, "run", return_value=log):

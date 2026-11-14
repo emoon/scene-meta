@@ -1,9 +1,9 @@
 """Which C64 setup each demo works on, and when its multi-disk
 sets ask for the next disk.
 
-    python3 -m scenedb c64 sweep [--ids ...] [--limit N] [--jobs N] [--multi]
-    python3 -m scenedb c64 report
-    python3 -m scenedb c64 migrate [scene.db]
+    python3 -m scenemeta c64 sweep [--ids ...] [--limit N] [--jobs N] [--multi]
+    python3 -m scenemeta c64 report
+    python3 -m scenemeta c64 migrate [scene.db]
 """
 
 import json

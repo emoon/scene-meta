@@ -2,8 +2,8 @@ import pathlib
 import tempfile
 import unittest
 
-from scenedb.c64 import store
-from scenedb.core.result import Swap
+from scenemeta.c64 import store
+from scenemeta.core.result import Swap
 
 
 def flip(disk, since, inserted, accepted=True, key=None, key_at=None):

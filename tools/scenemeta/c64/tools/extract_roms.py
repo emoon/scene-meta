@@ -2,7 +2,7 @@
 """Turn VICE's embedded ROM headers into the ROM files a stock VICE install
 lacks (Debian's package ships none).
 
-    python3 -m scenedb.c64.tools.extract_roms <vice/include/embedded> [roms-dir]
+    python3 -m scenemeta.c64.tools.extract_roms <vice/include/embedded> [roms-dir]
 """
 import pathlib
 import re

@@ -1,8 +1,8 @@
 import unittest
 
-from scenedb.amiga import export
-from scenedb.core.export import Variant
-from scenedb.core.result import Swap
+from scenemeta.amiga import export
+from scenemeta.core.export import Variant
+from scenemeta.core.result import Swap
 
 
 def variant(idx=0, kind="hd", disks=(), command='"demo"\n', note="", machine="a500",

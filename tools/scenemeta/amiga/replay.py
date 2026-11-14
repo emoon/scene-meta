@@ -11,7 +11,7 @@ import concurrent.futures as cf
 import os
 import tomllib
 
-from scenemeta import machines as presets
+from .. import machines as presets
 
 from ..core.export import default_machine
 from . import config, emulator, machines, media, verdict

@@ -4,7 +4,7 @@ import struct
 import tempfile
 import unittest
 
-from scenedb.amiga import workbench
+from scenemeta.amiga import workbench
 
 
 class WorkbenchTest(unittest.TestCase):

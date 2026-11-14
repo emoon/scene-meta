@@ -1,7 +1,7 @@
 import unittest
 
-from scenedb.amiga import replay
-from scenedb.amiga.emulator import Sample
+from scenemeta.amiga import replay
+from scenemeta.amiga.emulator import Sample
 
 
 def samples(spec):

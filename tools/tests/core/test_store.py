@@ -2,9 +2,9 @@ import pathlib
 import tempfile
 import unittest
 
-from scenedb.core import export, store, sweep
-from scenedb.core.catalog import Production
-from scenedb.core.result import Run, Swap, Variant
+from scenemeta.core import export, store, sweep
+from scenemeta.core.catalog import Production
+from scenemeta.core.result import Run, Swap, Variant
 
 PROD = Production(7, "Demo", "Group", ("ocs",), ("Demo",), "1991", [])
 

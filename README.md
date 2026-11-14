@@ -21,8 +21,7 @@ The format and the reasons behind it are in [DESIGN.md](DESIGN.md).
 |------|------|
 | `data/<platform>/machines.toml` | the machine presets, in hardware terms |
 | `data/<platform>/<bucket>.toml` | productions, by first character of the title |
-| `tools/common/` | validator |
-| `tools/scenedb/` | the sweepers that generated the first pass, see [tools/README.md](tools/README.md) |
+| `tools/scenemeta/` | the validator, and the sweepers that generated the first pass, see [tools/README.md](tools/README.md) |
 
 ## Editing
 
@@ -41,9 +40,9 @@ Set `verified` only when you have watched all of it.
 Check your change (Python 3.11 or later, no dependencies):
 
 ```bash
-cd tools/common
+cd tools
 python3 -m scenemeta.validate
-python3 -m unittest discover -s tests -t .
+python3 -m unittest tests.test_merge tests.test_validate
 ```
 
 ## Licences

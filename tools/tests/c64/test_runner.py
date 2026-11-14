@@ -1,6 +1,6 @@
 import unittest
 
-from scenedb.c64 import runner, vice
+from scenemeta.c64 import runner, vice
 
 
 def log(crash_cycles, inserted=100, crash="emulator-exit"):

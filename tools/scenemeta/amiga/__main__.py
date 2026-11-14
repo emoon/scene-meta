@@ -1,11 +1,11 @@
 """Which Amiga config each demo works on.
 
-    python3 -m scenedb amiga fetch [--ids ...] [--rate 1.0]
-    python3 -m scenedb amiga sweep [--ids ...] [--limit N] [--jobs N]
-    python3 -m scenedb amiga report
-    python3 -m scenedb amiga export
-    python3 -m scenedb amiga replay [--ids ...] [--jobs N]
-    python3 -m scenedb amiga migrate [scene.db]
+    python3 -m scenemeta amiga fetch [--ids ...] [--rate 1.0]
+    python3 -m scenemeta amiga sweep [--ids ...] [--limit N] [--jobs N]
+    python3 -m scenemeta amiga report
+    python3 -m scenemeta amiga export
+    python3 -m scenemeta amiga replay [--ids ...] [--jobs N]
+    python3 -m scenemeta amiga migrate [scene.db]
 """
 
 import sys

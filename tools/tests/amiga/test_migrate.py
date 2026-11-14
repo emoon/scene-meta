@@ -3,9 +3,9 @@ import sqlite3
 import tempfile
 import unittest
 
-from scenedb.amiga import migrate, store
-from scenedb.core import export
-from scenedb.core.result import Swap
+from scenemeta.amiga import migrate, store
+from scenemeta.core import export
+from scenemeta.core.result import Swap
 
 # The Amiga sweep database as it was before the shared schema.
 LEGACY = """

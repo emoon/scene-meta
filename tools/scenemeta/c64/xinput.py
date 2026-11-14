@@ -107,7 +107,7 @@ class Keys:
             env["XAUTHORITY"] = self.auth
         self.vice.resume()
         time.sleep(0.1)
-        subprocess.run([sys.executable, "-m", "scenedb.xinput", self.display,
+        subprocess.run([sys.executable, "-m", "scenemeta.xinput", self.display,
                         self.SYMS[key], "" if self.numlock_set else "numlock"],
                        env=env, cwd=os.path.dirname(os.path.dirname(__file__)),
                        check=False, capture_output=True)

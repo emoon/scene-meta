@@ -2,17 +2,16 @@
 
 | path | what |
 |------|------|
-| `common/scenemeta/` | reads, writes and validates the data files; no dependencies, used by CI |
-| `scenedb/` | the sweepers: one package, a subpackage per platform |
-| `scenedb/core/` | what every platform shares |
-| `scenedb/amiga/`, `scenedb/c64/` | the platforms |
+| `scenemeta/` | one package: the data files' reader, writer and validator at the top level (no dependencies, used by CI), and the sweepers |
+| `scenemeta/core/` | what every platform's sweeper shares |
+| `scenemeta/amiga/`, `scenemeta/c64/` | the platforms |
 | `amiga/`, `c64/` | what a platform keeps outside the code: its emulator, ROMs, work directory, sweep database, notes |
-| `tests/` | the sweepers' tests |
+| `tests/` | the tests: `test_merge.py` and `test_validate.py` for the data files, a directory per sweeper part |
 
 ```bash
 cd tools
-python3 -m scenedb amiga sweep --ids 142     # or: c64
-python3 -m scenedb amiga report
+python3 -m scenemeta amiga sweep --ids 142     # or: c64
+python3 -m scenemeta amiga report
 python3 -m unittest discover -s tests -t .
 ```
 
@@ -25,7 +24,7 @@ found into `data/<platform>` (see `../DESIGN.md`).
 
 | module | what |
 |--------|------|
-| `core/config.py` | the NAS, and a platform's ROM, work, database and data paths (`SCENEDB_NAS`, `SCENEDB_ROMS`, `SCENEDB_WORK`, `SCENEDB_DB`, `SCENEDB_DATA`) |
+| `core/config.py` | the NAS, and a platform's ROM, work, database and data paths (`SCENEMETA_NAS`, `SCENEMETA_ROMS`, `SCENEMETA_WORK`, `SCENEMETA_DB`, `SCENEMETA_DATA`) |
 | `core/catalog.py` | the productions of a platform and their download links, from the Demozoo index |
 | `core/result.py` | the records a platform reports: `Variant`, `Run`, `Swap` |
 | `core/store.py` | the sweep log: `production`, `variant`, `run`, `swap`, and the `best` view |
@@ -61,7 +60,7 @@ A platform is a subpackage with:
 - `export.py`: what a data-file entry says, from `core.export.productions`;
   `core.export.run` merges the entries.
 - `__main__.py`: `core.cli.parser` plus its own commands. Add the name to
-  `PLATFORMS` in `scenedb/__main__.py`.
+  `PLATFORMS` in `scenemeta/__main__.py`.
 - `data/<platform>/machines.toml` for its presets, and `tools/<platform>/`
   for its emulator and ROMs.
 
@@ -71,7 +70,7 @@ A database written before the shared schema (Amiga frames, C64 cycles and
 `flip` tables) is refused. Convert it in place, one transaction:
 
 ```bash
-python3 -m scenedb amiga migrate path/to/scene.db
+python3 -m scenemeta amiga migrate path/to/scene.db
 ```
 
 The old tools cannot read a converted file: copy it first if they still
