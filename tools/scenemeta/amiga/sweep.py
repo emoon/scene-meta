@@ -113,37 +113,56 @@ def attempt(m, variant, frames, **kw):
                    opts.unit, opts.click_every, opts.key_every, opts.seed)
 
 
+class _Tries:
+    """The attempts made on one machine, and the way to make more."""
+
+    def __init__(self, m, variant, frames):
+        self._run = (m, variant, frames)
+        self.n = len(variant.disks)
+        self.tries = [attempt(m, variant, frames)]
+        self.asked = [{}]    # the arguments of each attempt, to run one again
+
+    def short(self):
+        """Is the set's last disk still out of reach?"""
+        # Swaps in runs that never got going are the OS mounting disks.
+        return self.n > 1 and max((a.reached for a in self.tries if a.ran),
+                                  default=0) < self.n
+
+    def stalled(self):
+        return waits_for_click(self.tries)
+
+    def wave(self, *kws):
+        """Run one attempt per set of arguments, all at once."""
+        # Every attempt rolls its own seed, as the wall clock did before
+        # runs were pinned: a demo that races may get going on another.
+        # Retries that continue a base run say its seed.
+        kws = [{"seed": emulator.DEFAULT_SEED + len(self.tries) + i, **kw}
+               for i, kw in enumerate(kws)]
+        with cf.ThreadPoolExecutor(len(kws) or 1) as pool:
+            got = list(pool.map(lambda kw: attempt(*self._run, **kw), kws))
+        self.tries.extend(got)
+        self.asked.extend(kws)
+        return got
+
+
 def try_machine(m, variant, frames):
     """One machine, plus the retries a demo may need to get going or to
     reach the last disk of its set. Retries that do not depend on each
     other run at once, in waves. Every attempt is returned; the last one
     is the best."""
-    n = len(variant.disks)
-    tries = [attempt(m, variant, frames)]
-    asked = [{}]    # the arguments of each attempt, to run one again
+    t = _Tries(m, variant, frames)
+    _try_external_drives(t, _try_triggers_and_nudges(t))
+    _try_scheduled_swaps(t)
+    best = _best(t)
+    return [a for a in t.tries if a is not best] + [best]
 
-    def short():
-        # Swaps in runs that never got going are the OS mounting disks.
-        return n > 1 and max((a.reached for a in tries if a.ran), default=0) < n
 
-    def stalled():
-        return waits_for_click(tries)
-
-    def wave(*kws):
-        # Every attempt rolls its own seed, as the wall clock did before
-        # runs were pinned: a demo that races may get going on another.
-        # Retries that continue a base run say its seed.
-        kws = [{"seed": emulator.DEFAULT_SEED + len(tries) + i, **kw}
-               for i, kw in enumerate(kws)]
-        with cf.ThreadPoolExecutor(len(kws) or 1) as pool:
-            got = list(pool.map(
-                lambda kw: attempt(m, variant, frames, **kw), kws))
-        tries.extend(got)
-        asked.extend(kws)
-        return got
-
+def _try_triggers_and_nudges(t):
+    """The first retries: riskier swap triggers for a set that stopped
+    short, clicks and keys for a demo that waits. Returns each retry as
+    ``(arguments, attempt)``."""
     first = []
-    if short():
+    if t.short():
         # Waits the default detector cannot see: re-reading one track
         # until the disk changes, then a prompt with the head parked
         # mid-disk (the idle trigger can also fire in a quiet stretch).
@@ -151,78 +170,96 @@ def try_machine(m, variant, frames):
                   dict(triggers="reread anycyl static")]
         # Early swaps on the OS's own drive polling (a DOS-loaded demo
         # playing from RAM) broke the demo: Dark Ages, the AMOS megademos.
-        if verdict.swaps(tries[0].log):
+        if verdict.swaps(t.tries[0].log):
             first += [dict(triggers="rampolls"),
                       dict(triggers="rampolls", click_every=CLICK_EVERY)]
-    if short() or stalled():
+    if t.short() or t.stalled():
         # "Click mouse button to continue" (AMOS PD intros, "HIT MOUSE!").
         first.append(dict(triggers="reread", click_every=CLICK_EVERY))
-    if short() or stalled():
         # Return, Space and fire in turn (Megademo 2's credits page).
         first.append(dict(triggers="reread", key_every=CLICK_EVERY))
-    got = wave(*first)
-    if not any(a.verdict.works for a in tries):
-        wave(*[dict(kw, max_clicks=limit, seed=a.seed) for kw, a in zip(first, got)
-               if (limit := clicks_to_start(a))])
+    got = t.wave(*first)
+    if not any(a.verdict.works for a in t.tries):
+        t.wave(*[dict(kw, max_clicks=limit, seed=a.seed)
+                 for kw, a in zip(first, got) if (limit := clicks_to_start(a))])
+    return list(zip(first, got))
+
+
+def _nudge_that_helped(t, got, field):
+    """CLICK_EVERY when the attempts among ``got`` that pressed ``field``
+    (click_every or key_every) got further than every attempt without."""
+    pressed = [a for a in got if getattr(a, field)]
+    if not pressed:
+        return 0
+    without = max(a.rank for a in t.tries if not getattr(a, field))
+    return CLICK_EVERY if max(a.rank for a in pressed) > without else 0
+
+
+def _try_external_drives(t, first):
+    """A set that is still short gets its disks in the external drives.
+    ``first`` is what _try_triggers_and_nudges returned."""
+    got = [a for _, a in first]
     # When clicking is what got the demo going, the later attempts click
     # too (The Wall: its intro waits for a button, then it wants the
     # external drive).
-    clicked = [a for a in got if a.click_every]
-    clicks = CLICK_EVERY if clicked and \
-        max(a.rank for a in clicked) > max(a.rank for a in tries
-                                           if not a.click_every) else 0
+    clicks = _nudge_that_helped(t, got, "click_every")
     # Likewise for the keys (Megademo 2: Return, then it wants disk 2).
-    keyed = [a for a in got if a.key_every]
-    keys = CLICK_EVERY if keyed and \
-        max(a.rank for a in keyed) > max(a.rank for a in tries
-                                         if not a.key_every) else 0
+    keys = _nudge_that_helped(t, got, "key_every")
     triggers = "reread rampolls" if any(
-        "rampolls" in kw.get("triggers", "") and a.rank > tries[0].rank
-        for kw, a in zip(first, got)) else "reread"
+        "rampolls" in kw.get("triggers", "") and a.rank > t.tries[0].rank
+        for kw, a in first) else "reread"
     second = []
-    if short():
+    if t.short():
         # "Insert disk 2 in any external drive": the set in DF0-DF3.
         second.append(dict(triggers=triggers, click_every=clicks,
                            key_every=keys,
-                           drives=min(n, emulator.MAX_DRIVES)))
+                           drives=min(t.n, emulator.MAX_DRIVES)))
         # Every later disk in the external drive, one after another (Soho
         # reads disk 2 from DF1, then waits for disk 3 there too).
-        if n > 2:
+        if t.n > 2:
             second.append(dict(triggers=triggers, click_every=clicks,
                                key_every=keys, drives=2, unit=1))
-    wave(*second)
+    t.wave(*second)
+
+
+def _try_scheduled_swaps(t):
+    """The last resort for a set that is still short: prompts no detector
+    sees (a still or animated picture, motor left on, no polling). Swap
+    where the demo stops reading the disk that is in, one disk per round,
+    keeping the swaps that worked."""
     # Nothing ran without the detector getting in the way: run with it off
     # to see where the demo really stops reading, for the swaps below.
-    if short() and not any(a.ran for a in tries if a.drives < n):
-        wave(dict(detect=False), dict(detect=False, click_every=CLICK_EVERY))
-    # Last resort: prompts no detector sees (a still or animated picture,
-    # motor left on, no polling). Swap where the demo stops reading the
-    # disk that is in, one disk per round, keeping the swaps that worked.
-    while short():
-        base = max((a for a in tries if a.drives < n), key=lambda a: a.rank)
-        got = wave(*[dict(schedule=[f for f, _, _ in base.swaps] + [at],
-                          drives=base.drives, unit=base.unit,
-                          click_every=base.click_every,
-                          key_every=base.key_every, seed=base.seed)
-                     for at in swap_frames(base)])
+    if t.short() and not any(a.ran for a in t.tries if a.drives < t.n):
+        t.wave(dict(detect=False), dict(detect=False, click_every=CLICK_EVERY))
+    while t.short():
+        base = max((a for a in t.tries if a.drives < t.n),
+                   key=lambda a: a.rank)
+        got = t.wave(*[dict(schedule=[f for f, _, _ in base.swaps] + [at],
+                            drives=base.drives, unit=base.unit,
+                            click_every=base.click_every,
+                            key_every=base.key_every, seed=base.seed)
+                       for at in swap_frames(base)])
         # Only a running attempt can be the next base: anything else
         # would be retried for ever.
         if not any(a.ran and a.reached > base.reached for a in got):
             break
-    best, kw = max(zip(tries, asked), key=lambda t: t[0].rank)
+
+
+def _best(t):
+    """The best attempt, run once more without its swap click when it had
+    one, to see whether the click was needed."""
+    best, kw = max(zip(t.tries, t.asked), key=lambda x: x[0].rank)
     at = clicked_swap(best)
-    if at is not None:
-        # The detector clicks whenever a new disk is not loaded from within
-        # 5 s, and a slow start then looks like the click's doing (Desert
-        # Dream). Only the same run without the click shows it was needed:
-        # with nothing pressed at all once that disk is in, a retry's own
-        # clicks included (Megademo III).
-        plain = wave(dict(kw, seed=best.seed, swap_click=False,
-                          nudge_until=at))[0]
-        if as_far(plain, best):
-            best = plain
-    tries = [a for a in tries if a is not best]
-    return tries + [best]
+    if at is None:
+        return best
+    # The detector clicks whenever a new disk is not loaded from within
+    # 5 s, and a slow start then looks like the click's doing (Desert
+    # Dream). Only the same run without the click shows it was needed:
+    # with nothing pressed at all once that disk is in, a retry's own
+    # clicks included (Megademo III).
+    plain = t.wave(dict(kw, seed=best.seed, swap_click=False,
+                        nudge_until=at))[0]
+    return plain if as_far(plain, best) else best
 
 
 def clicked_swap(a):
