@@ -205,15 +205,7 @@ def run(machine, variant, frames, interval=250, timeout=None, triggers="",
         shots = tmp / "shots"
         shots.mkdir()
 
-        # Autoswap is armed even with one disk: its "exhausted" event is how a
-        # demo that asks for a disk we do not have shows up.
-        autoswap = (f"disk autoswap click idle={AUTOSWAP_IDLE_SECONDS}"
-                    f" tail={AUTOSWAP_TAIL_FRAMES} dead={DEAD_FRAMES}")
-        if unit:
-            autoswap += f" unit={unit}"
-        if schedule or not detect:
-            autoswap, triggers = "disk autoswap off", ""
-        cmds = ["warp on", f"{autoswap} {triggers}".strip()]
+        cmds = ["warp on", _autoswap(triggers, unit, detect and not schedule)]
         cmds += _script(frames, interval, alert_peek, shots, drives, swaps,
                         schedule, unit, click_every, max_clicks, key_every)
         argv = [str(config.AMIBERRY), "-f", str(cfg)]
@@ -224,6 +216,19 @@ def run(machine, variant, frames, interval=250, timeout=None, triggers="",
         first_swap = len(variant.disks) - len(swaps) + 1
         return _parse(stdout, stderr, rc, timed_out, shots, swaps, first_swap,
                       eb, alert_peek)
+
+
+def _autoswap(triggers="", unit=0, detect=True):
+    """The command that sets the swap-wait detector up for a run. It is
+    armed even with one disk: its "exhausted" event is how a demo that asks
+    for a disk we do not have shows up."""
+    if not detect:
+        return "disk autoswap off"
+    cmd = (f"disk autoswap click idle={AUTOSWAP_IDLE_SECONDS}"
+           f" tail={AUTOSWAP_TAIL_FRAMES} dead={DEAD_FRAMES}")
+    if unit:
+        cmd += f" unit={unit}"
+    return f"{cmd} {triggers}".strip()
 
 
 def _script(frames, interval, alert_peek, shots, drives, swaps, schedule=(),
