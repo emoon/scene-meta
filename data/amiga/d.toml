@@ -2903,9 +2903,10 @@ machine = "a1200"
 [demozoo.142]
 title = "Desert Dream"
 group = "Kefrens"
-source = "script"
+source = "ai"
 disks = ["Kefrens-DesertDreamA.adf", "Kefrens-DesertDreamB.dms"]
-swaps = [{ disk = 2, at = 536.9, key = "lmb" }]
+swaps = [{ disk = 2, at = 536.9 }]
+note = "no click needed: disk 2 is read within 3 s of the insert, with or without one"
 
 [demozoo.355437]
 title = "Desert Warfare"
