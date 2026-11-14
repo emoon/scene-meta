@@ -244,10 +244,11 @@ def run(machine, variant, frames, opts=Options(), interval=250, timeout=None):
         argv += [f"-diskswapper={d}" for d in swaps]
         for c in cmds:
             argv += ["--dbg", c]
-        stdout, stderr, rc, timed_out = _invoke(argv, tmp, timeout)
+        ran = _invoke(argv, tmp, timeout)
+        # Swap-list path -> 1-based disk number of the set.
         first_swap = len(variant.disks) - len(swaps) + 1
-        return _parse(stdout, stderr, rc, timed_out, shots, swaps, first_swap,
-                      eb, alert_peek)
+        names = {str(d): first_swap + i for i, d in enumerate(swaps)}
+        return _parse(ran, shots, names, eb, alert_peek)
 
 
 def _autoswap(opts):
@@ -372,52 +373,85 @@ def _text(b):
     return b.decode(errors="replace") if isinstance(b, bytes) else b
 
 
-def _parse(stdout, stderr, rc, timed_out, shots, swaps, first_swap, eb,
-           alert_peek):
-    samples, events = [], []
-    # Swap-list path -> 1-based disk number of the set.
-    names = {str(d): first_swap + i for i, d in enumerate(swaps)}
-    eb_ok = False
-    max_cyl = [-1] * MAX_DRIVES
-    box_cache = {}
-    for rec in _records(stdout):
+class _Reader:
+    """Builds a run's samples and events from the emulator's records."""
+
+    def __init__(self, shots, names, eb, alert_peek):
+        self.samples, self.events = [], []
+        self.max_cyl = [-1] * MAX_DRIVES
+        self._shots, self._names, self._eb = shots, names, eb
+        self._eb_ok = False
+        self._box_cache = {}
+        self._commands = {"status": self._status,
+                          "disk autoswap status": self._last_dma,
+                          "disk status": self._disk_status,
+                          "peek 4 4": self._execbase,
+                          alert_peek: self._alert}
+
+    def read(self, rec):
         if "event" in rec:
             if "inserted" in rec:
-                rec["disk"] = names.get(rec["inserted"])
-            events.append(rec)
-            continue
-        cmd, res = rec.get("cmd"), rec.get("result") or {}
-        if cmd == "status" and res:
-            png = shots / f"{len(samples):04d}.png"
-            shot = hashlib.md5(png.read_bytes()).hexdigest() if png.exists() else ""
-            samples.append(Sample(res["frame"], int(res["pc"], 16),
-                                  res["dmacon"], res["bplcon0"],
-                                  res.get("resets", 0),
-                                  os.path.basename(res.get("df0", "")), shot,
-                                  box=_box(png, shot, box_cache)))
-        elif cmd == "disk autoswap status" and samples:
-            samples[-1].last_dma = res.get("last_dma", -1)
-        elif cmd and cmd.startswith("disk insert") and res.get("ok"):
-            events.append({"event": "scheduled-swap",
-                           "frame": samples[-1].frame if samples else 0,
-                           "inserted": res.get("inserted"),
-                           "disk": names.get(res.get("inserted"))})
-        elif cmd == "disk status":
-            if samples:
-                samples[-1].cyls = [d.get("cyl", -1)
-                                    for d in res.get("units", [])]
-            for u, d in enumerate(res.get("units", [])[:MAX_DRIVES]):
-                if d.get("motor"):
-                    max_cyl[u] = max(max_cyl[u], d.get("cyl", -1))
-        elif cmd == "peek 4 4":
-            eb_ok = _peek_long(res) == eb
-        elif cmd == alert_peek and samples and eb_ok:
-            # Only trusted while $4 still points at the ExecBase the ROM
-            # built; a demo that took the machine over owns that memory.
-            samples[-1].alert = _peek_long(res)
+                rec["disk"] = self._names.get(rec["inserted"])
+            self.events.append(rec)
+            return
+        cmd, res = rec.get("cmd") or "", rec.get("result") or {}
+        if cmd.startswith("disk insert"):
+            self._inserted(res)
+        elif cmd in self._commands:
+            self._commands[cmd](res)
+
+    def _status(self, res):
+        if not res:
+            return
+        png = self._shots / f"{len(self.samples):04d}.png"
+        shot = hashlib.md5(png.read_bytes()).hexdigest() if png.exists() else ""
+        self.samples.append(Sample(res["frame"], int(res["pc"], 16),
+                                   res["dmacon"], res["bplcon0"],
+                                   res.get("resets", 0),
+                                   os.path.basename(res.get("df0", "")), shot,
+                                   box=_box(png, shot, self._box_cache)))
+
+    def _last_dma(self, res):
+        if self.samples:
+            self.samples[-1].last_dma = res.get("last_dma", -1)
+
+    def _inserted(self, res):
+        if res.get("ok"):
+            self.events.append({
+                "event": "scheduled-swap",
+                "frame": self.samples[-1].frame if self.samples else 0,
+                "inserted": res.get("inserted"),
+                "disk": self._names.get(res.get("inserted"))})
+
+    def _disk_status(self, res):
+        units = res.get("units", [])
+        if self.samples:
+            self.samples[-1].cyls = [d.get("cyl", -1) for d in units]
+        for u, d in enumerate(units[:MAX_DRIVES]):
+            if d.get("motor"):
+                self.max_cyl[u] = max(self.max_cyl[u], d.get("cyl", -1))
+
+    def _execbase(self, res):
+        self._eb_ok = _peek_long(res) == self._eb
+
+    def _alert(self, res):
+        # Only trusted while $4 still points at the ExecBase the ROM
+        # built; a demo that took the machine over owns that memory.
+        if self.samples and self._eb_ok:
+            self.samples[-1].alert = _peek_long(res)
+
+
+def _parse(ran, shots, names, eb, alert_peek):
+    """The RunLog of a finished run. ``ran`` is what _invoke returned,
+    ``names`` the disk number of each swap-list path."""
+    stdout, stderr, rc, timed_out = ran
+    reader = _Reader(shots, names, eb, alert_peek)
+    for rec in _records(stdout):
+        reader.read(rec)
     pngs = sorted(shots.glob("*.png"))
     last = pngs[-1].read_bytes() if pngs else b""
-    return RunLog(samples, events, rc, timed_out, stderr[-600:], last, max_cyl)
+    return RunLog(reader.samples, reader.events, rc, timed_out, stderr[-600:],
+                  last, reader.max_cyl)
 
 
 # An alert box is mostly black: its PNG is a few KB, a demo's screen is not.

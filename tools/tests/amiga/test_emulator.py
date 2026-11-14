@@ -139,7 +139,7 @@ class ParseTest(unittest.TestCase):
             ' "bplcon0": 0}}',
             '{"cmd": "disk status", "result": {"units": [{"cyl": 12, "motor": 1},'
             ' {"cyl": 0, "motor": 0}]}}'])
-        log = emulator._parse(out, "", 0, False, pathlib.Path("/none"), [], 2,
+        log = emulator._parse((out, "", 0, False), pathlib.Path("/none"), {},
                               0, "peek x 4")
         self.assertEqual(log.samples[0].cyls, [12, 0])
 
