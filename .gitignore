@@ -9,3 +9,6 @@ tools/*/*.db-*
 tools/amiga/amiberry/build/
 tools/amiga/amiberry/build-dbg/
 tools/amiga/amiberry-*.log
+
+# Working notes between sessions.
+HANDOFF*.md
