@@ -1,0 +1,3177 @@
+[
+  {
+    "prod": 192033,
+    "class": "flips",
+    "note": "Go Gray: slideshow; the 'Flip Disc' picture is up only ~17 s",
+    "windows": [
+      {
+        "disk": 2,
+        "start": 212000000,
+        "insert_at": 215000000,
+        "end": 229000000,
+        "pre_keys": [
+          [
+            60000000,
+            "space"
+          ]
+        ],
+        "note": "space on the title page; no key after the insert; later inserts fail, disk 1 has looped"
+      }
+    ]
+  },
+  {
+    "prod": 302583,
+    "class": "flips",
+    "note": "Patto's Music Collection: 62-tune player, side B tunes ask for the flip",
+    "windows": [
+      {
+        "disk": 2,
+        "start": 158000000,
+        "insert_at": 178000000,
+        "key": "return",
+        "key_delay": 10000000,
+        "pre_keys": [
+          [
+            70000000,
+            "space"
+          ],
+          [
+            130000000,
+            "down"
+          ],
+          [
+            145000000,
+            "return"
+          ]
+        ],
+        "note": "TURN DISK icon shows after Return on a side B tune; no upper limit seen"
+      }
+    ]
+  },
+  {
+    "prod": 113010,
+    "class": "flips",
+    "note": "Eclectic: spinning floppy animation, drive motor keeps toggling",
+    "windows": [
+      {
+        "disk": 2,
+        "start": 436000000,
+        "insert_at": 703400000,
+        "note": "no key; no upper limit seen (loop still spinning after 6 Gcycles)"
+      }
+    ]
+  },
+  {
+    "prod": 164712,
+    "class": "boot_fresh",
+    "note": "Holodeck 2: side B is standalone ('reset and reload'); disk 1 ends on a static end card",
+    "windows": [
+      {
+        "disk": 2,
+        "start": 300000000,
+        "note": "insert B, hard reset, LOAD\"*\",8,1, RUN (about 120 s of C64 time)"
+      }
+    ]
+  },
+  {
+    "prod": 100044,
+    "class": "flips",
+    "note": "Crest Slide Story: sides A-C are the demo; disk 4 is a standalone tool disk nothing loads"
+  },
+  {
+    "prod": 24884,
+    "class": "standalone",
+    "note": "Royal Arte: disk 2 is a separate demo"
+  },
+  {
+    "prod": 287631,
+    "class": "standalone",
+    "note": "Bonzilloscope: four standalone player disks"
+  },
+  {
+    "prod": 279663,
+    "class": "flips",
+    "note": "Expand: needs a 512 KB REU (-reu -reusize 512); without it disk 1 stops on a 'requires a REU' screen",
+    "windows": [
+      {
+        "disk": 2,
+        "start": 305000000,
+        "insert_at": 344517406,
+        "key": "space",
+        "key_delay": 18000000,
+        "note": "starfield alternates HIT SPACE / TURN DISK; insert with no key does nothing; no upper limit seen (572 s also worked)"
+      }
+    ]
+  },
+  {
+    "prod": 141417,
+    "class": "flips",
+    "note": "Qi: needs a REU (-reu -reusize 16384); without it disk 1 stops at READY",
+    "windows": [
+      {
+        "disk": 2,
+        "start": 105000000,
+        "insert_at": 300000000,
+        "note": "TURN DISK yoga picture, no key; no upper limit seen (loop ran to 700M)"
+      }
+    ]
+  },
+  {
+    "prod": 176035,
+    "class": "flips",
+    "note": "Modern Love Classics: tune menu never asks for the disk by itself",
+    "windows": [
+      {
+        "disk": 2,
+        "start": 139000000,
+        "insert_at": 149000000,
+        "pre_keys": [
+          [
+            118000000,
+            "9"
+          ]
+        ],
+        "note": "key 9 on the tune menu makes a 'turn' icon appear; no key after the insert; 412M also worked"
+      }
+    ]
+  },
+  {
+    "prod": 195434,
+    "class": "flips",
+    "note": "Supremacy 2: only inserts made while the drive port is 0xde (motor and LED solid) work",
+    "windows": [
+      {
+        "disk": 2,
+        "start": 93000000,
+        "insert_at": 103000000,
+        "end": 141000000,
+        "note": "after a random 8M-72M cycles the port drops to 0xd2 and no insert works any more; no key helps"
+      }
+    ]
+  },
+  {
+    "prod": 267979,
+    "class": "standalone",
+    "note": "Code 4: disk 2 (arok2) is the demo itself, boot it alone"
+  },
+  {
+    "prod": 171221,
+    "class": "collection",
+    "note": "Orbtraxx 3 fUJi: four standalone volumes with tune menus"
+  },
+  {
+    "prod": 343701,
+    "class": "collection",
+    "note": "Nieuwemaas: 2004 party-disk pair of separate entries; the intro is the file '4 nwe maas /finn' on disk 1"
+  },
+  {
+    "prod": 285357,
+    "class": "collection",
+    "note": "Print is the new Poke: 23 unrelated 10-liner contest entries, mixed platforms"
+  },
+  {
+    "prod": 17940,
+    "class": "flips",
+    "note": "A Press Space Odyssey: space-driven demo (each part waits for space); all 4 disks are one chain: walker part loops 'INSERT DISK 2', disk 2 ends in a no-prompt guestbook loop that polls the drive, disk 3 ends on a 'turn disk' 4 picture. Space timings shift by 20-40M cycles between runs.",
+    "windows": [
+      {
+        "disk": 2,
+        "start": 330000000,
+        "insert_at": 400000000,
+        "end": 700000000,
+        "pre_keys": [
+          [
+            60000000,
+            "space"
+          ],
+          [
+            85000000,
+            "space"
+          ],
+          [
+            110000000,
+            "space"
+          ],
+          [
+            135000000,
+            "space"
+          ],
+          [
+            160000000,
+            "space"
+          ],
+          [
+            185000000,
+            "space"
+          ],
+          [
+            210000000,
+            "space"
+          ],
+          [
+            235000000,
+            "space"
+          ],
+          [
+            260000000,
+            "space"
+          ],
+          [
+            285000000,
+            "space"
+          ],
+          [
+            310000000,
+            "space"
+          ],
+          [
+            335000000,
+            "space"
+          ]
+        ],
+        "note": "INSERT DISK 2 apeman loop from ~330M; no key after insert; 604M insert also worked"
+      },
+      {
+        "disk": 3,
+        "start": 650000000,
+        "insert_at": 800000000,
+        "end": 1500000000,
+        "pre_keys": [
+          [
+            500000000,
+            "space"
+          ],
+          [
+            540000000,
+            "space"
+          ],
+          [
+            580000000,
+            "space"
+          ],
+          [
+            620000000,
+            "space"
+          ],
+          [
+            660000000,
+            "space"
+          ],
+          [
+            700000000,
+            "space"
+          ],
+          [
+            740000000,
+            "space"
+          ],
+          [
+            780000000,
+            "space"
+          ]
+        ],
+        "note": "no prompt: disk 2 ends in the guestbook scroller loop (drive blips f0/f4); insert at 800M or 1100M worked; no key after"
+      },
+      {
+        "disk": 4,
+        "start": 1140000000,
+        "insert_at": 1400000000,
+        "pre_keys": [
+          [
+            1000000000,
+            "space"
+          ],
+          [
+            1030000000,
+            "space"
+          ],
+          [
+            1060000000,
+            "space"
+          ],
+          [
+            1090000000,
+            "space"
+          ],
+          [
+            1120000000,
+            "space"
+          ]
+        ],
+        "note": "'turn disk' on the big 4 picture from ~1140M; no key; no upper limit seen (loops to 2600M+)"
+      }
+    ]
+  },
+  {
+    "prod": 343239,
+    "class": "standalone",
+    "note": "Homecoming: disks are 6581/8580 SID alternatives; disk 1 runs and ends at BASIC, later inserts are ignored"
+  },
+  {
+    "prod": 343263,
+    "class": "standalone",
+    "note": "Quietus: disks are 6581/8580 SID alternatives of one music disk; disk 1 stays alive 690M cycles, no flip asked"
+  },
+  {
+    "prod": 296143,
+    "class": "standalone",
+    "note": "Barry Boomer: 6581 and 8580 SID builds of one demo; disk 1 stays alive 556M cycles, no flip asked"
+  },
+  {
+    "prod": 58414,
+    "class": "flips",
+    "note": "Insomnia V1.1: 64EVER setup menu needs Return; side 1 ends on a floppy-disk graphic (no text) and waits",
+    "windows": [
+      {
+        "disk": 2,
+        "start": 445000000,
+        "insert_at": 480000000,
+        "pre_keys": [
+          [
+            150000000,
+            "return"
+          ]
+        ],
+        "note": "Return on the setup menu (START THE JOURNEY); no key before ~100M or the autostart RUN breaks; no key after the insert; the disk graphic was still waiting at 1095M"
+      }
+    ]
+  },
+  {
+    "prod": 194606,
+    "class": "collection",
+    "note": "Sid Compo III results: each side has the same SGRviewer results text (static, no tune menu) plus that side's compo tunes as loose PRGs; no flip asked"
+  },
+  {
+    "prod": 81880,
+    "class": "flips",
+    "note": "Sphaeristerium: boot intro's SID-noise screen melt never finishes in VICE (needs poke c444=46 at ~25M to exit), then 'Demo or Note' needs key D",
+    "windows": [
+      {
+        "disk": 2,
+        "start": 160000000,
+        "insert_at": 175000000,
+        "pre_keys": [
+          [
+            40000000,
+            "d"
+          ]
+        ],
+        "note": "no key after the insert; loader idles with motor on after the afro picture (~153M) and takes side B within 2.5M; upper limit not tested"
+      }
+    ]
+  },
+  {
+    "prod": 75099,
+    "class": "standalone",
+    "note": "Godzilla: single 62-block file on Primary Star 03 side A; plays from memory to a 'hope you enjoyed' end card, never reads the drive after ~48M; side B is other compo entries"
+  },
+  {
+    "prod": 90320,
+    "class": "standalone",
+    "note": "Fear: single 115-block file on Vision 2003 side 1; space on the text page (~100M) then '1' on the crucifix page (~160M) reach the last part, all from memory with no drive access after ~80M; the other sides are unrelated releases"
+  },
+  {
+    "prod": 181742,
+    "class": "standalone",
+    "note": "Splinter Cell: single 43-block file on Vision 2003 side 1; ends on a static 'C64 RULES!' text card at ~100M (border flashes), no drive access after ~36M; other sides are unrelated releases"
+  },
+  {
+    "prod": 205312,
+    "class": "standalone",
+    "note": "The Pentagon Megademo: 'megademo' loader + 'mega2.sm' on Willow Party 03 side A; one looping stick-figure screen, no drive access after ~42M; side B is unrelated entries"
+  },
+  {
+    "prod": 349347,
+    "class": "collection",
+    "note": "SID music compo entry 20.gothica on Silesia Party 1 disk 1; single file, never asks for another disk (sweep flips were idle false positives on the player screen)"
+  },
+  {
+    "prod": 375799,
+    "class": "collection",
+    "note": "music compo entry 'eye of tiger/pch' on Forever 3 MSX1.D64; single file with a static title screen, never asks for another disk (v7 flips to MSX2/REAL were late idle false positives, not reproduced: 11 inserts all rejected)"
+  },
+  {
+    "prod": 375820,
+    "class": "collection",
+    "note": "music compo entry 'my 8580 /hank' on Forever 3 MSX2.D64; single file, never asks for another disk (sweep flip to REAL.D64 was an idle false positive)"
+  },
+  {
+    "prod": 375831,
+    "class": "standalone",
+    "note": "Techradio: single SID tune on MSX2.D64 of the Forever 3 compo set; the sweep's flip to REAL.D64 was a false accept (tune screen unchanged)"
+  },
+  {
+    "prod": 375844,
+    "class": "standalone",
+    "note": "Blue Flower: single SID tune on MSX2.D64 of the Forever 3 compo set; the sweep's flip to REAL.D64 was a false accept (did not reproduce, player screen unchanged)"
+  },
+  {
+    "prod": 375845,
+    "class": "standalone",
+    "note": "Forever 2002: single SID tune on MSX2.D64 of the Forever 3 compo set; the sweep's flip to REAL.D64 was a false accept (tune info screen unchanged)"
+  },
+  {
+    "prod": 375795,
+    "class": "collection",
+    "note": "music compo entry 'bird's talk /pch' on Forever 3 MSX1.D64; single-file SID tune with a static title screen (sweep no-activity is the unchanging player screen), never asks for another disk"
+  },
+  {
+    "prod": 375843,
+    "class": "collection",
+    "note": "music compo entry '!run it' on Forever 3 MSX2.D64; single-file SID tune with a static 'music by .praiser/smadny mnich' screen (sweep no-activity is the unchanging player screen), never asks for another disk"
+  },
+  {
+    "prod": 375846,
+    "class": "collection",
+    "note": "realtime music compo entry 'pahos       /sad' on Forever 3 REAL.D64; single-file tune with a static text screen (sweep no-activity is the unchanging player screen), never asks for another disk"
+  },
+  {
+    "prod": 205314,
+    "class": "collection",
+    "note": "12345: Willow Party 2003 gfx entry, file '12345' on disk 2 (wp03b); its loader's \"jubi*\" picks 'jubilaeum 1' instead of the picture 'jubilaeum 2' (koala at $6000) so it shows garbage; preload jubilaeum 2 and it shows a static picture. No flip"
+  },
+  {
+    "prod": 374054,
+    "class": "collection",
+    "note": "Love U 4 Ever: Forever 3 music compo entry, file 'love u 4ever/sad' on MSX1.D64; music player with a static text screen (hence no-activity). No flip"
+  },
+  {
+    "prod": 375793,
+    "class": "collection",
+    "note": "Malvig: Forever 3 music compo entry, file 'malvig /sad' on MSX1.D64; music player with a static text screen (hence no-activity). No flip"
+  },
+  {
+    "prod": 92926,
+    "class": "collection",
+    "note": "A Quoi Ca Sert?: Floppy 2001 party disk set, the demo is 'aquoi ca sert/wd' on disk 1; it opens a menu, so press 1 (~75M cycles) to start it; it plays to a black screen ~190M, no disk asked"
+  },
+  {
+    "prod": 189202,
+    "class": "collection",
+    "note": "Silesia 2 Note: Silesia Party 2 stuff disks 1-7, the note is 'sp 2 note' on disk 2 (sweep picks disk 7 'note', Albion's noter, wrong); static pages turned with space, no disk asked"
+  },
+  {
+    "prod": 205301,
+    "class": "collection",
+    "note": "2 Planeten: Willow Party 2003 disk pair, the entry is '-  2 planeten  -' on disk A; a single static picture (two planets), so no-activity is correct; no disk asked"
+  },
+  {
+    "prod": 340502,
+    "class": "collection",
+    "note": "music compo entry, disk 3 (MSX1.D64) file 'back2theolds>sag' of the Forever 3 set; single-file SID tune with a static info screen, never asks for another disk"
+  },
+  {
+    "prod": 372089,
+    "class": "collection",
+    "note": "music compo entry, disk 3 (MSX1.D64) file 'adrian mole/sb' of the Forever 3 set; single-file SID tune with a static info screen, never asks for another disk"
+  },
+  {
+    "prod": 375787,
+    "class": "collection",
+    "note": "music compo entry, disk 3 (MSX1.D64) file 'retrosong/dosoo' of the Forever 3 set; single-file SID tune with a fully static screen (no-activity = unchanging player screen), never asks for another disk"
+  },
+  {
+    "prod": 375792,
+    "class": "collection",
+    "note": "music compo entry, disk 3 (MSX1.D64) file 'factor6/music' of the Forever 3 set (CSDb 103090: Ferlajt by Factor6/Anubis); single-file SID tune, never asks for another disk"
+  },
+  {
+    "prod": 375797,
+    "class": "collection",
+    "note": "music compo entry, disk 3 (MSX1.D64) file 'rhythmoftheb>sag' of the Forever 3 set; single-file SID tune with a static info screen, never asks for another disk"
+  },
+  {
+    "prod": 375798,
+    "class": "collection",
+    "note": "music compo entry, disk 3 (MSX1.D64) file 'ode to w./glover' of the Forever 3 set; single-file SID tune with a static info screen, never asks for another disk"
+  },
+  {
+    "prod": 375822,
+    "class": "collection",
+    "note": "music compo entry, disk 4 (MSX2.D64) file 'eclipse /perplex' of the Forever 3 set; single-file SID tune with a static info screen, never asks for another disk"
+  },
+  {
+    "prod": 375847,
+    "class": "collection",
+    "note": "music compo entry, disk 3 (MSX1.D64) file 'flatleyorcan' of the Forever 3 set; single-file SID tune with a static info screen, never asks for another disk"
+  },
+  {
+    "prod": 369820,
+    "class": "collection",
+    "note": "demo compo entry, disk 2 (Forever23B.d64) file 'samar-acid' of the Forever 23 set; 135-block single file (KERNAL load ~94M cycles), then runs 8+ minutes with the drive motor off; no flip"
+  },
+  {
+    "prod": 17938,
+    "class": "collection",
+    "note": "entry not located: Storebror (LCP 2011 demo #2, one-file demo ~39KB per CSDb 101517) is not on any disk of lcp2011-c64-compos.zip; listed all 25 disks, ran 36_snolgkos (Hoaxers) and 48_forthissimo (Mathma)",
+    "windows": []
+  },
+  {
+    "prod": 48348,
+    "class": "standalone",
+    "note": "disk 2 file 'jump&run /allit.' (512b realtime entry), runs from autostart, no flip",
+    "windows": []
+  },
+  {
+    "prod": 164194,
+    "class": "standalone",
+    "note": "disk 1 file 'coming s. /ideal', single load, runs >180M cycles, no flip",
+    "windows": []
+  },
+  {
+    "prod": 48589,
+    "class": "standalone",
+    "note": "disk 1 file 'szenzacios/padua' (realtime compo), runs, no flip",
+    "windows": []
+  },
+  {
+    "prod": 48632,
+    "class": "standalone",
+    "note": "disk 1 file '\u03c0 loader   /exon' (first byte PETSCII $FF; autostart pattern '? loader*'), plays to end scroller, no flip",
+    "windows": []
+  },
+  {
+    "prod": 49503,
+    "class": "collection",
+    "note": "entry not located: Squary Demo placed 2nd at Forever 2011; set disks hold only #1 Colony, #3 High Five (silesia 5), #4, #5",
+    "windows": []
+  },
+  {
+    "prod": 49504,
+    "class": "standalone",
+    "note": "disk 2 (Forever2011_Demo2) file 'silesia 5' = High Five (Silesia 5 invitation, #3); boot with disk 2 in drive, loads only from that disk, no flip",
+    "windows": []
+  },
+  {
+    "prod": 98928,
+    "class": "collection",
+    "note": "entry not located: 50 Shades of Grey placed 3rd in RetroKomp 2013 wild; 5_wild_compo.zip holds only entries 2, 5, 7 (7 = Loda Error 98932)",
+    "windows": []
+  },
+  {
+    "prod": 376126,
+    "class": "collection",
+    "note": "entry not on any d64: it is the bare prg 'C64/Demo/TST_Sidwave 40 years/sidwave 40 years.prg' in paga25-c64.zip (unzip drops .prg); single file, no flip",
+    "windows": []
+  },
+  {
+    "prod": 376128,
+    "class": "collection",
+    "note": "entry not on any d64: bare prg 'C64/Demo/Sys5_Chunky and Planar/sys5-chunky_and_planar.prg' in paga25-c64.zip; single file, no flip",
+    "windows": []
+  },
+  {
+    "prod": 376131,
+    "class": "collection",
+    "note": "entry not on any d64: bare prg 'C64/Demo/NoFx_Welcome Wolk/welcome_wolk.prg' in paga25-c64.zip; single file, no flip",
+    "windows": []
+  },
+  {
+    "prod": 376156,
+    "class": "collection",
+    "note": "entry not on any d64: bare prg 'C64/Demo/DINO  of  JUDAS_Nattdopp i Helsongborg/nattdopp i helsingborg.prg' in paga25-c64.zip; single file, no flip",
+    "windows": []
+  },
+  {
+    "prod": 376152,
+    "class": "standalone",
+    "note": "disk 5 file 'pagadata' (own d64 DO-YOU-HAVE-WHAT-WE-IN-SWEDEN-CALL-A-TESTBILD.d64, autostart first file); test-card pages advanced by space, drive idle, no flip",
+    "windows": []
+  },
+  {
+    "prod": 188894,
+    "class": "standalone",
+    "note": "disk 3 file '   party note   ': Silesia Party v1 results text; single file, no flip",
+    "windows": []
+  },
+  {
+    "prod": 349478,
+    "class": "standalone",
+    "note": "disk 1 file '19.to silesia': music compo entry, player 'To silesia - Vol1' (8580, 1:55); single file, no flip",
+    "windows": []
+  },
+  {
+    "prod": 92928,
+    "class": "standalone",
+    "note": "disk 6 file 'return of the_CI' (returnof_hujowa.d64, autostart first file): whole demo on that disk, reaches end card at ~286M, no flip",
+    "windows": []
+  },
+  {
+    "prod": 92929,
+    "class": "standalone",
+    "note": "disk 7 file ' the esl0v demo ' (single_demos.d64): single file, no flip",
+    "windows": []
+  },
+  {
+    "prod": 177250,
+    "class": "standalone",
+    "note": "disk 1 file 'results+vislist!' (flag2k.d64): static results page, single file, no flip",
+    "windows": []
+  },
+  {
+    "prod": 75107,
+    "class": "standalone",
+    "note": "disk 1 file 'mushr.s.back /f6' (PSTAR03-A, fast compo): BASIC, autostart RUN, ends by design at 'and again the sun is' + READY ~60M; no flip",
+    "windows": []
+  },
+  {
+    "prod": 6986,
+    "class": "standalone",
+    "note": "Bloempjes & Bytjes: disk 2 is the loadbug-fixed re-release of the same demo, alternative not a second side"
+  },
+  {
+    "prod": 9862,
+    "class": "standalone",
+    "note": "Winteractive: disk 2 is the bugfixed re-release of the same demo (same file list), alternative not a second side"
+  },
+  {
+    "prod": 9346,
+    "class": "flips",
+    "note": "Love: menu key 1, demo ends on FLIP DISC picture, needs insert then space",
+    "windows": [
+      {
+        "disk": 2,
+        "start": 520000000,
+        "insert_at": 565000000,
+        "key": "space",
+        "key_delay": 18000000,
+        "pre_keys": [
+          [
+            150000000,
+            "1"
+          ]
+        ],
+        "note": "menu at ~120M, key 1 at 150M; FLIP DISC picture from ~520M (no upper limit seen); insert alone does nothing, space ~18M later starts side B"
+      }
+    ]
+  },
+  {
+    "prod": 18453,
+    "class": "flips",
+    "note": "Triage: menu key 1, 'Turn Disk' logo at ~517M, insert only (no key)",
+    "windows": [
+      {
+        "disk": 2,
+        "start": 517000000,
+        "insert_at": 560000000,
+        "pre_keys": [
+          [
+            125000000,
+            "1"
+          ]
+        ],
+        "note": "Smash-driver menu up ~105M, key 1 at 125M; Turn Disk stays up (no upper limit seen); no key after the insert"
+      }
+    ]
+  },
+  {
+    "prod": 18456,
+    "class": "flips",
+    "note": "Cucumber Juice 2: setup screen needs Return, long demo, TURN DISK/PRESS SPACE at ~860M",
+    "windows": [
+      {
+        "disk": 2,
+        "start": 860000000,
+        "insert_at": 953000000,
+        "key": "space",
+        "key_delay": 18500000,
+        "pre_keys": [
+          [
+            75000000,
+            "Return"
+          ]
+        ],
+        "note": "setup screen at ~55M, Return at 75M; TURN DISK PRESS SPACE screen waits (no upper limit seen, still up at 1.8G); insert then space"
+      }
+    ]
+  },
+  {
+    "prod": 19822,
+    "class": "flips",
+    "note": "Second Reality: menu 1, config screen needs Left (soundcard SID) then Return, then 'please insert side 2'",
+    "windows": [
+      {
+        "disk": 2,
+        "start": 453000000,
+        "insert_at": 474000000,
+        "key": "space",
+        "key_delay": 15000000,
+        "pre_keys": [
+          [
+            130000000,
+            "1"
+          ],
+          [
+            165000000,
+            "Left"
+          ],
+          [
+            185000000,
+            "Return"
+          ]
+        ],
+        "note": "menu at ~120M; config screen ~140M: Left selects SID, Return; 'please insert side 2' waits (still up 250M later); keys Left/Return need monkeypatch xinput.Keys.SYMS['Left']='Left'"
+      }
+    ]
+  },
+  {
+    "prod": 19825,
+    "class": "flips",
+    "note": "Breitbandkatze 66%: boot SIDE B (disk 2, boot_disk=1) first; it asks for side A",
+    "windows": [
+      {
+        "disk": 1,
+        "start": 60000000,
+        "insert_at": 85000000,
+        "key": "space",
+        "key_delay": 20000000,
+        "note": "boot with disk 2 (SideB) in the drive; after TURN DISK & PRESS SPACE insert disk 1 (SideA), space +20M; prompt waits (no upper limit seen, up to 300M)"
+      }
+    ],
+    "boot_disk": 1
+  },
+  {
+    "prod": 23475,
+    "class": "flips",
+    "note": "Y2K: demo is on disk 3 (STARTU~1, boot_disk=2); DISK1/DISK2 are data disk sides; asks INSERT DATA-DISK SIDE 1 at ~100M; side 2 request not seen (x64sc died at ~250-350M twice)",
+    "windows": [
+      {
+        "disk": 1,
+        "start": 100000000,
+        "insert_at": 154000000,
+        "key": "space",
+        "key_delay": 18000000,
+        "note": "boot with disk 3 in the drive; insert DISK1.D64 then space; prompt waits (no upper limit seen, 800M)"
+      }
+    ],
+    "boot_disk": 2
+  },
+  {
+    "prod": 24890,
+    "class": "flips",
+    "note": "Wildfire 2: boot wildfire.d64 (disk 2, boot_disk=1) first, then wildf000.d64 (disk 1)",
+    "windows": [
+      {
+        "disk": 1,
+        "start": 100000000,
+        "insert_at": 154000000,
+        "key": "space",
+        "key_delay": 19000000,
+        "note": "BASIC text TURN DISK AND PRESS SPACE... waits (no upper limit seen to 900M); after wildf000 the demo plays, ends on a static picture at ~308M"
+      }
+    ],
+    "boot_disk": 1
+  },
+  {
+    "prod": 26926,
+    "class": "broken",
+    "note": "Wonderland X: intro loops until a key; any key drops to a blank blue screen with CPU idle in KERNAL and no drive activity, next part (1..) never loads in VICE; side B never requested"
+  },
+  {
+    "prod": 321257,
+    "class": "flips",
+    "note": "Blasphemy #2: space on intro, 12x Down moves to a side-two tune, Return shows 'Turn side two'; insert, then space ~15M later",
+    "windows": [
+      {
+        "disk": 2,
+        "start": 200800000,
+        "insert_at": 300000000,
+        "key": "space",
+        "key_delay": 15000000,
+        "pre_keys": [
+          [
+            60000000,
+            "space"
+          ],
+          [
+            72000000,
+            "down"
+          ],
+          [
+            82000000,
+            "down"
+          ],
+          [
+            92000000,
+            "down"
+          ],
+          [
+            102000000,
+            "down"
+          ],
+          [
+            112000000,
+            "down"
+          ],
+          [
+            122000000,
+            "down"
+          ],
+          [
+            132000000,
+            "down"
+          ],
+          [
+            142000000,
+            "down"
+          ],
+          [
+            152000000,
+            "down"
+          ],
+          [
+            162000000,
+            "down"
+          ],
+          [
+            172000000,
+            "down"
+          ],
+          [
+            182000000,
+            "down"
+          ],
+          [
+            200800000,
+            "Return"
+          ]
+        ],
+        "note": "key names down/Return are X keysyms Down/Return; no upper limit seen"
+      }
+    ]
+  },
+  {
+    "prod": 336380,
+    "class": "flips",
+    "note": "Mega-Co: menu on side A; side B parts I-P need side B in the drive before the letter key",
+    "windows": [
+      {
+        "disk": 2,
+        "start": 60000000,
+        "insert_at": 94000000,
+        "pre_keys": [
+          [
+            130700000,
+            "i"
+          ]
+        ],
+        "note": "insert side B, then press i (J-P likewise); pressing before the insert gives READY"
+      }
+    ]
+  },
+  {
+    "prod": 338375,
+    "class": "standalone",
+    "note": "March Meeting: boot file march-meeting'91; the demo runs on side A to its credits; side B is a separate PD disk, no flip seen",
+    "boot_file": "march-meeting'91"
+  },
+  {
+    "prod": 293629,
+    "class": "standalone",
+    "note": "two alternative versions (original and bugfixed), one prg each; no flip"
+  },
+  {
+    "prod": 330373,
+    "class": "standalone",
+    "note": "two alternative copies of the same single-file demo; no flip"
+  },
+  {
+    "prod": 126675,
+    "class": "standalone",
+    "note": "boot_file 'airdance 4 [tat]' (first dir entries are junk); disk 2 is a text note only",
+    "boot_file": "airdance 4 [tat]"
+  },
+  {
+    "prod": 340670,
+    "class": "broken",
+    "note": "disk protection trap: 'HAHA, WANNA START THIS DEMO?' then READY in VICE with the d64 image; both sides identical dir"
+  },
+  {
+    "prod": 37689,
+    "class": "flips",
+    "note": "Krestology: side 1 -> side 2 is the chain (sweep accepted); disk 3 is a standalone tools disk",
+    "windows": [
+      {
+        "disk": 2,
+        "start": 210000000,
+        "insert_at": 258000000,
+        "key": "space",
+        "key_delay": 14000000,
+        "note": "from sweep flip 0 (accepted); upper limit not tested"
+      }
+    ]
+  },
+  {
+    "prod": 55085,
+    "class": "flips",
+    "note": "Coma Light 4: space-driven part chain on side 1 (space every 30M from 120M; space before ~100M breaks the load); last part '09.turn the disk' shows from ~463M; after insert the vector-mania part appears",
+    "windows": [
+      {
+        "disk": 2,
+        "start": 460000000,
+        "insert_at": 475000000,
+        "key": "space",
+        "key_delay": 16000000,
+        "pre_keys": [
+          [
+            120000000,
+            "space"
+          ],
+          [
+            150000000,
+            "space"
+          ],
+          [
+            180000000,
+            "space"
+          ],
+          [
+            210000000,
+            "space"
+          ],
+          [
+            240000000,
+            "space"
+          ],
+          [
+            270000000,
+            "space"
+          ],
+          [
+            300000000,
+            "space"
+          ],
+          [
+            330000000,
+            "space"
+          ],
+          [
+            360000000,
+            "space"
+          ],
+          [
+            390000000,
+            "space"
+          ],
+          [
+            420000000,
+            "space"
+          ],
+          [
+            450000000,
+            "space"
+          ]
+        ],
+        "note": "verified: insert 475M + space 16M later -> side 2 part starts; no spaces after 450M (against disk 1 destructive)"
+      }
+    ]
+  },
+  {
+    "prod": 86429,
+    "class": "flips",
+    "note": "Coma Light 5: space-driven chain (space every 30M from 120M); 07.turn the disk logo up from ~390M; side 2 starts with TV-pyramid/cube part",
+    "windows": [
+      {
+        "disk": 2,
+        "start": 395000000,
+        "insert_at": 450000000,
+        "key": "space",
+        "key_delay": 16000000,
+        "pre_keys": [
+          [
+            120000000,
+            "space"
+          ],
+          [
+            150000000,
+            "space"
+          ],
+          [
+            180000000,
+            "space"
+          ],
+          [
+            210000000,
+            "space"
+          ],
+          [
+            240000000,
+            "space"
+          ],
+          [
+            270000000,
+            "space"
+          ],
+          [
+            300000000,
+            "space"
+          ],
+          [
+            330000000,
+            "space"
+          ],
+          [
+            360000000,
+            "space"
+          ]
+        ],
+        "note": "verified: insert 450M + space +16M -> new part by ~485M; keys stop at 360M"
+      }
+    ]
+  },
+  {
+    "prod": 103422,
+    "class": "flips",
+    "note": "Coma Light 9: space-driven chain (space every 30M from 120M); TURN DISK part up from ~419M; side 2 starts with oxyron/conaught sphere part",
+    "windows": [
+      {
+        "disk": 2,
+        "start": 420000000,
+        "insert_at": 480000000,
+        "key": "space",
+        "key_delay": 16000000,
+        "pre_keys": [
+          [
+            120000000,
+            "space"
+          ],
+          [
+            150000000,
+            "space"
+          ],
+          [
+            180000000,
+            "space"
+          ],
+          [
+            210000000,
+            "space"
+          ],
+          [
+            240000000,
+            "space"
+          ],
+          [
+            270000000,
+            "space"
+          ],
+          [
+            300000000,
+            "space"
+          ],
+          [
+            330000000,
+            "space"
+          ],
+          [
+            360000000,
+            "space"
+          ],
+          [
+            390000000,
+            "space"
+          ]
+        ],
+        "note": "verified: insert 480M + space +16M -> new part by ~500M; keys stop at 390M"
+      }
+    ]
+  },
+  {
+    "prod": 61257,
+    "class": "flips",
+    "note": "Biba 2: boot file must be the 43k 'B...demo' prg (2nd dir entry, autostart image:'B*'); it prints FLIP DISK on BASIC screen, after disk 2 the Biba 2 demo runs",
+    "windows": [
+      {
+        "disk": 2,
+        "start": 150000000,
+        "insert_at": 200000000,
+        "note": "verified: insert at 200M, no key; demo logo + 'from planet Arise' appear ~35M later (boot_file B*)"
+      }
+    ]
+  },
+  {
+    "prod": 74972,
+    "class": "flips",
+    "note": "Fight Against Racism: menu key 1 (whole demo); prompts 'insert disk side 2 / space' and 'insert side 3 and press space'; insert then space ~16M later",
+    "windows": [
+      {
+        "disk": 2,
+        "start": 520000000,
+        "insert_at": 560000000,
+        "key": "space",
+        "key_delay": 16000000,
+        "pre_keys": [
+          [
+            150000000,
+            "1"
+          ]
+        ],
+        "note": "prompt up by ~520M; verified"
+      },
+      {
+        "disk": 3,
+        "start": 1000000000,
+        "insert_at": 1100000000,
+        "key": "space",
+        "key_delay": 14000000,
+        "pre_keys": [
+          [
+            150000000,
+            "1"
+          ]
+        ],
+        "note": "prompt up by ~1000M after disk 2 chain; verified"
+      }
+    ]
+  },
+  {
+    "prod": 82034,
+    "class": "flips",
+    "note": "Scrollwars: 3 disks (a,b,c); 'INSERT NEXT DISK' then space ~13M after the insert; ends on THE END card",
+    "windows": [
+      {
+        "disk": 2,
+        "start": 430000000,
+        "insert_at": 470000000,
+        "key": "space",
+        "key_delay": 14000000,
+        "note": "verified"
+      },
+      {
+        "disk": 3,
+        "start": 790000000,
+        "insert_at": 850000000,
+        "key": "space",
+        "key_delay": 12000000,
+        "note": "verified; second prompt appears ~320M after disk 2 chain starts"
+      }
+    ]
+  },
+  {
+    "prod": 86398,
+    "class": "standalone",
+    "note": "Wonderland IX: intro and each numbered part are separate programs that quit to BASIC on a key; no disk requests; side 2 only holds more parts"
+  },
+  {
+    "prod": 103424,
+    "class": "collection",
+    "note": "Temple of Dreams: disk 015 is the production (boot 'temple of dreams', self-contained, ends on 3 years Lore card); 016 is a different Lore of Arts spread release; no flip"
+  },
+  {
+    "prod": 392450,
+    "class": "broken",
+    "note": "Colors: x64sc crashes (monitor closed) at ~70M cycles after the COLORS logo, reproducible; sides A/B/C each hold one prg, flip need unknown"
+  },
+  {
+    "prod": 392453,
+    "class": "flips",
+    "note": "Time Paradox: s0 boots; insert s1 on 'PLEASE INSERT DEMO DISK NO.1' (~25M, tried 65M), s2 on floppy icon (~300M, tried 400M), s3 on floppy-in-hand screen (~700M, tried 820M); no keys, prompts wait",
+    "windows": [
+      {
+        "disk": 2,
+        "start": 25000000,
+        "insert_at": 65000000,
+        "end": null
+      },
+      {
+        "disk": 3,
+        "start": 300000000,
+        "insert_at": 400000000,
+        "end": null
+      },
+      {
+        "disk": 4,
+        "start": 700000000,
+        "insert_at": 820000000,
+        "end": null
+      }
+    ]
+  },
+  {
+    "prod": 392458,
+    "class": "flips",
+    "note": "The Lab: boot side1 (disk 2, boot_disk=1); TURN DISK ~350M -> side2 (disk 3); INSERT SIDE THREE ~640M -> side3 (disk 4); extras.d64 (disk 1, side 4) is bonus, never asked; no keys",
+    "windows": [
+      {
+        "disk": 3,
+        "start": 350000000,
+        "insert_at": 404000000,
+        "end": null
+      },
+      {
+        "disk": 4,
+        "start": 640000000,
+        "insert_at": 904000000,
+        "end": null
+      }
+    ],
+    "boot_disk": 1
+  },
+  {
+    "prod": 392459,
+    "class": "flips",
+    "note": "Next Round: disk 1->2 (~357M) ->3 (~613M) no keys; disk 4 (bonus material) and disk 5 (digimax alternative of round 2) are not part of the chain",
+    "windows": [
+      {
+        "disk": 2,
+        "start": 253000000,
+        "insert_at": 357000000,
+        "end": null
+      },
+      {
+        "disk": 3,
+        "start": 534000000,
+        "insert_at": 613000000,
+        "end": null
+      }
+    ]
+  },
+  {
+    "prod": 344876,
+    "class": "collection",
+    "note": "Mega Co-Demo '90: each prg is an independent group part (first prg is a Transit scroller loop); loading one returns to READY; no flip"
+  },
+  {
+    "prod": 349884,
+    "class": "flips",
+    "note": "Aggressiv & MFD: boot 'aggresiv & mfd/i' from Agressiv.D64 (disk order 2,1); space, p2fire to the Aggresiv picture; insert Agressd2 then space ~17M later loads a new part; not fully reproducible",
+    "boot_file": "aggresiv & mfd/i",
+    "windows": [
+      {
+        "disk": 2,
+        "start": 250000000,
+        "insert_at": 550000000,
+        "key": "space",
+        "key_delay": 17000000,
+        "pre_keys": [
+          [
+            60000000,
+            "space"
+          ],
+          [
+            250000000,
+            "p2fire"
+          ],
+          [
+            460000000,
+            "space"
+          ]
+        ],
+        "note": "disk order must put Agressiv.D64 first"
+      }
+    ]
+  },
+  {
+    "prod": 358697,
+    "class": "standalone",
+    "note": "two alternative single-prg versions (final and final-2024); no flip"
+  },
+  {
+    "prod": 370739,
+    "class": "collection",
+    "note": "Earworms #2: music-collection disks (tunes as files, note+player on side 1); side 2 is more tunes; no flip"
+  },
+  {
+    "prod": 17941,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 24332,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 80831,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 98941,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 88492,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 125673,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 156354,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 166509,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 170110,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 171333,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 173445,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 173924,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 173928,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 175258,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 178314,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 178222,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 183310,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 183369,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 183576,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 184035,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 184896,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 191857,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 190790,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 193840,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 197463,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 199614,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 200118,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 200088,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 200318,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 206311,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 229953,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 268460,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 270977,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 271226,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 273832,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 274294,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 274850,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 289200,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 289552,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 290025,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 290552,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 290711,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 290877,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 291447,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 291564,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 293076,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 293128,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 293442,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 293487,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 293578,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 294200,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 296585,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 297811,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 297875,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 301594,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 302301,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 305219,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 308012,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 309218,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 315965,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 316540,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 316704,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 318864,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 323951,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 324957,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 331330,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 331683,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 331687,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 331989,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 332067,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 332079,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 332087,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 332089,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 332095,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 332097,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 332099,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 332633,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 332826,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 333377,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 333404,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 334027,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 334057,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 334630,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 335396,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 336248,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 336832,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 336836,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 337167,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 339161,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 339945,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 339996,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 340015,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 340019,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 340025,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 340544,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 340941,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 341064,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 341449,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 342962,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 343276,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 343296,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 343540,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 343532,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 344056,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 344251,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 344607,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 344661,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 344662,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 344890,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 344943,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 344947,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 345141,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 346095,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 346102,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 346117,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 346128,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 346349,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 346351,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 346738,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 346741,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 346852,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 347130,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 347152,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 347237,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 347238,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 347244,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 347313,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 347793,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 348038,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 348142,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 348779,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 349034,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 349282,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 349847,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 350654,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 350848,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 350920,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 351034,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 351309,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 351880,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 352445,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 352522,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 352571,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 354679,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 354682,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 356645,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 356772,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 357035,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 357269,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 357941,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 357940,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 359004,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 359520,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 359986,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 361518,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 361676,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 361587,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 362029,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 362027,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 362047,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 362051,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 362059,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 362187,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 362944,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 363144,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 363596,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 363595,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 363942,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 364342,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 364344,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 364490,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 365757,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 365804,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 366674,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 366679,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 366678,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 366680,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 367128,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 367139,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 367199,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 368307,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 368433,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 368651,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 368654,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 368860,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 374599,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 387364,
+    "class": "standalone",
+    "note": "Disk links are byte-identical copies of one image (same md5); single disk, no flip.",
+    "windows": []
+  },
+  {
+    "prod": 170118,
+    "class": "standalone",
+    "note": "disks are alternatives: plain vs packed version of the same single prg, no flip",
+    "windows": []
+  },
+  {
+    "prod": 299223,
+    "class": "standalone",
+    "note": "disk 1 is a different intro (Starline III); the demo is on disk 2 file 'stl first demo' (boot_disk 2); no flip",
+    "windows": [],
+    "boot_disk": 1,
+    "boot_file": "stl first demo"
+  },
+  {
+    "prod": 356112,
+    "class": "standalone",
+    "note": "two alternative dumps of the same single-file demo (Digital Dungeon cracked copy vs Tristar copy); no flip",
+    "windows": []
+  },
+  {
+    "prod": 138671,
+    "class": "standalone",
+    "note": "crack of The Jet v2.0: disk A = game (menu 1/2 colour/mono), disk B = docs/extras prg; no flip prompt",
+    "windows": []
+  },
+  {
+    "prod": 291041,
+    "class": "standalone",
+    "note": "two d64 copies of the same one-file intro (blank header vs XIDEX header); alternatives, no flip"
+  },
+  {
+    "prod": 348148,
+    "class": "standalone",
+    "note": "two releases (THC / TDD headers) of the same one-file intro; alternatives, no flip"
+  },
+  {
+    "prod": 362201,
+    "class": "standalone",
+    "note": "two releases (TDD / Legion headers) of the same one-file demo; alternatives, no flip"
+  },
+  {
+    "prod": 344362,
+    "class": "standalone",
+    "note": "two releases (Whiz-zards / TDD headers) of the same one-file demo; alternatives, no flip"
+  },
+  {
+    "prod": 178399,
+    "class": "standalone",
+    "note": "4 disks = 4 screen quarters for 4 simultaneous C64s (readme); not a chain, no flip; starts on joy1 fire",
+    "windows": []
+  },
+  {
+    "prod": 281289,
+    "class": "standalone",
+    "note": "two alternative single-prg dumps (enola gay / enola guy), no flip",
+    "windows": []
+  },
+  {
+    "prod": 360402,
+    "class": "standalone",
+    "note": "two alternative single-prg 31-block dumps (different labels), no flip",
+    "windows": []
+  },
+  {
+    "prod": 332610,
+    "class": "standalone",
+    "note": "two relabelled copies of the same single 110-block prg, no flip",
+    "windows": []
+  },
+  {
+    "prod": 184030,
+    "class": "standalone",
+    "note": "two releases (TDD / other header) of the same one-file demo; alternatives, no flip",
+    "windows": []
+  },
+  {
+    "prod": 323322,
+    "class": "standalone",
+    "note": "frodigi8.d64 and frodigi8-fixed.d64 are the original and a fixed re-release of one single-disk demo; alternatives, no flip",
+    "windows": []
+  },
+  {
+    "prod": 361259,
+    "class": "standalone",
+    "note": "two releases (TDD / Hilti headers) of the same one-file demo; alternatives, no flip",
+    "windows": []
+  },
+  {
+    "prod": 362203,
+    "class": "standalone",
+    "note": "two releases (TDD / Legion headers) of the same one-file demo; alternatives, no flip",
+    "windows": []
+  },
+  {
+    "prod": 119307,
+    "class": "standalone",
+    "note": "two d64 copies of one 77-block prg (zoo98 scroll/pda); alternatives, no flip",
+    "windows": []
+  },
+  {
+    "prod": 183240,
+    "class": "standalone",
+    "note": "three versions of one prg (original/fixed/official release); alternatives, no flip",
+    "windows": []
+  },
+  {
+    "prod": 345099,
+    "class": "standalone",
+    "note": "two d64 versions of one prg (just fun!, 58 vs 78 blocks); alternatives, no flip; sweep no-activity on both machines",
+    "windows": []
+  },
+  {
+    "prod": 336325,
+    "class": "standalone",
+    "note": "two d64s hold byte-identical 83-block prg (names rob & david[afl] / thanatos demo); no flip",
+    "windows": []
+  },
+  {
+    "prod": 331407,
+    "class": "standalone",
+    "note": "two d64s each with one 154-block prg (4ydmxfix / 4yeardem): alternative versions, no flip",
+    "windows": []
+  },
+  {
+    "prod": 343598,
+    "class": "standalone",
+    "note": "two d64s each with the same single 9-block prg rip-028 (headers tdd / d/r): alternative re-releases, no flip",
+    "windows": []
+  },
+  {
+    "prod": 343461,
+    "class": "standalone",
+    "note": "uridibad.D64 (28 blocks) vs uridibad-differentpack-demos31.d64 (26 blocks): same demo, different packer, no flip",
+    "windows": []
+  },
+  {
+    "prod": 364571,
+    "class": "broken",
+    "note": "game crack (Tongue of the Fatman) not a demo; custom-format 2-side trackloader; x64sc exits at ~320-357M cycles in all runs, space at ~60M starts the game, side 2 loaded by the game later, no window found",
+    "windows": []
+  },
+  {
+    "prod": 187858,
+    "class": "broken",
+    "note": "Derby Day part 1 aborts with FILE NOT FOUND (DATA-STOR/M-C CODE/CHAR. files missing from both dumps); disk 2 is Derby Day 2, a separate prg; no flip fixes it",
+    "windows": []
+  },
+  {
+    "prod": 351326,
+    "class": "standalone",
+    "note": "two re-release dumps of the same single 171-block prg (header only differs: blank vs TDD); sweep reaches the Wizball demo screen",
+    "windows": []
+  },
+  {
+    "prod": 359135,
+    "class": "standalone",
+    "note": "two independent one-prg disks (gsg demo 70 blocks, nothing 62 blocks); no disk flip; nothing_men.d64 is the actual Nothing production, gsg_demo.d64 a bundled extra",
+    "windows": []
+  },
+  {
+    "prod": 298793,
+    "class": "standalone",
+    "note": "Wizardry II crack (3 game disks, swaps driven by gameplay); S at menu reboots to LOAD\"*\" and hangs in VICE with disk 1 or 3; disk 1 title menu is the working state",
+    "windows": []
+  },
+  {
+    "prod": 286685,
+    "class": "standalone",
+    "note": "3 listed disks = 2 identical copies (houseparty.d64/House Party.d64, one 68-block prg) + a different release (house_party.d64, 59-block prg + note); alternatives, no flip"
+  },
+  {
+    "prod": 205327,
+    "class": "collection",
+    "note": "one entry on Willow 2004 Partydisk: file 'baertige.../shay' on side 02 (boot disk 2, boot file baertige); no flip. A baertige.t64 is also in the csdb dir",
+    "boot_disk": 1,
+    "boot_file": "baertige.../shay"
+  },
+  {
+    "prod": 39420,
+    "class": "standalone",
+    "note": "Mean Streets game crack (4 disk sides, in-game swaps by gameplay): Nostalgia intro + trainer menu (START GAME preselected, Return); no scriptable demo flip found; not verified past the menu"
+  },
+  {
+    "prod": 58690,
+    "class": "collection",
+    "note": "one BASIC file 'basic rlt compo' on disk 2 (forever14releses.d64) of a 3-disk party compilation; boot disk 2 + that file; no flip",
+    "windows": [],
+    "boot_disk": 1,
+    "boot_file": "basic rlt compo"
+  },
+  {
+    "prod": 205099,
+    "class": "collection",
+    "note": "one 'structural   /dp' file on compilation disk 2 (003a.d64, boot_disk 2); disk 1 copy has error bytes and hangs on LOAD in VICE; no flip",
+    "windows": [],
+    "boot_disk": 1,
+    "boot_file": "structural   /dp"
+  },
+  {
+    "prod": 268593,
+    "class": "flips",
+    "note": "Out of Contex: side A runs title/face/ring parts then shows TURN DISK (~154-180M); insert side B then space ~17M later, new parts (car, tunnel, cube) follow; inserting before the TURN screen hangs on a pink screen",
+    "windows": [
+      {
+        "disk": 2,
+        "start": 180000000,
+        "insert_at": 230000000,
+        "key": "space",
+        "key_delay": 17000000,
+        "note": "TURN DISK shows from ~154-180M and stays 400M+; no upper limit seen; insert before ~154M hangs"
+      }
+    ]
+  },
+  {
+    "prod": 173898,
+    "class": "standalone",
+    "note": "Se gitai o Ilios: disk 1 is the whole demo (one file, no disk access after 71M cycles, ends on sun/mountains part); intro.d64 and paralax.d64 are loose single-part dev disks, not a chain"
+  },
+  {
+    "prod": 279855,
+    "class": "standalone",
+    "note": "Electrosound History Book: boot disk 3 (main disk); title card needs space (~100M), then a music player, no disk access after 72M; Bonus Goodies side 1/2 are extra loose tune files, not a chain",
+    "boot_disk": 2
+  },
+  {
+    "prod": 167513,
+    "class": "standalone",
+    "note": "Mate In Two chess-problem game: disk A = program + problems 1-130, B = 131-270, C = 271-315; data disks are only read when the player picks a high problem number (user-driven, not scripted); menu could not be driven in VICE to confirm"
+  },
+  {
+    "prod": 167020,
+    "class": "standalone",
+    "note": "3 d64s are alternative wrappers of the same 33-block prg plus parts 2-7 on the same disk; no flip",
+    "windows": []
+  },
+  {
+    "prod": 168685,
+    "class": "standalone",
+    "note": "production is disk C (identical to myd-bcc2013.d64) alone, boot_disk=3 with autostart; A/B are other entries of the BCC#7 partydisk; no flip (works 153M cycles, no drive activity after load)",
+    "windows": [],
+    "boot_disk": 2
+  },
+  {
+    "prod": 53903,
+    "class": "standalone",
+    "note": "only disk 1 is the production (single prg); the other two d64s are unrelated releases in the same csdb dir",
+    "windows": []
+  },
+  {
+    "prod": 196150,
+    "class": "standalone",
+    "note": "3 d64s each carry both parts (digi-riffs/tsb + part2) on one disk; alternatives (fix / original / x01 extras)",
+    "windows": []
+  },
+  {
+    "prod": 346133,
+    "class": "flips",
+    "note": "Multiverse 100% (X'24): 4 sides, one chain; each side ends on a FLIP DISK picture and the demo polls the drive, no key needed. Seen working in pilot: waits 252M/486M/798M, inserts 332M/565M/877M. No upper limit seen.",
+    "windows": [
+      {
+        "disk": 2,
+        "start": 252000000,
+        "insert_at": 332000000,
+        "note": "side 1 ends on a polled flip, no key"
+      },
+      {
+        "disk": 3,
+        "start": 486000000,
+        "insert_at": 565000000,
+        "note": "FLIP DISK ship picture, no key"
+      },
+      {
+        "disk": 4,
+        "start": 798000000,
+        "insert_at": 877000000,
+        "note": "flip disk landscape picture, no key; space part follows"
+      }
+    ]
+  },
+  {
+    "prod": 336216,
+    "class": "standalone",
+    "note": "Actually The Wrath of Denethenor game (4 sides: ass crack). Disk requests ('insert disk side #3 and press RETURN') are gameplay-driven after menu key 2; no scriptable window. Boots and shows menu on side 1."
+  },
+  {
+    "prod": 349958,
+    "class": "standalone",
+    "note": "Elvira (Czech version, Flair), game with 6 d64: disk swaps are gameplay-driven. Intro needs key n at ~60M then p2fire (not p1fire/space) at ~285M to start; game then runs from disk 1 without a prompt for 400M+. No scripted flip window."
+  },
+  {
+    "prod": 359538,
+    "class": "standalone",
+    "note": "Perfect Score SAT prep software (12 g64: antonyms, analogies, sentence, reading comp, math, practice, std english). Each disk boots on its own (sat/sat1); independent modules, no flip."
+  },
+  {
+    "prod": 160815,
+    "class": "standalone",
+    "note": "Media is Onslaught 'Deadlock Preview' dev versions (disk 1 v0.04-0.09, disk 2 v0.21-1.2), not a chain; trainer prompt needs y or n (after load, ~160M). No disk request seen.",
+    "windows": []
+  },
+  {
+    "prod": 166545,
+    "class": "flips",
+    "note": "Four sides. Prints 'Turn Disk' picture card, no key needed: insert 80M cycles after the card appears. Disk 2 (d1s2) at 295M, disk 3 (d2s1) after second Turn Disk card ~431M, insert ~494M. Disk 4 (d2s2) not confirmed: stuck on garbled bitmap in VICE after disk 3.",
+    "windows": [
+      {
+        "disk": 2,
+        "start": 215000000,
+        "insert_at": 295000000,
+        "end": null,
+        "key": null,
+        "pre_keys": [],
+        "note": "Turn Disk card, no key; new Algotech pictures follow"
+      },
+      {
+        "disk": 3,
+        "start": 431000000,
+        "insert_at": 494000000,
+        "end": null,
+        "key": null,
+        "pre_keys": [],
+        "note": "second Turn Disk card; new picture parts appear; x64sc died once in my run with insert at 495M"
+      }
+    ]
+  },
+  {
+    "prod": 318272,
+    "class": "flips",
+    "note": "Music-disk player; disks 2..20 are data disks. Insert disk N then press F1 (player re-reads, disk name and song list change, e.g. 'Rusty' for disk 2). Needs key F1 (not in xinput.Keys.SYMS); verified for disk 2 only, others same files layout (ruNN/pmNN/eNN).",
+    "windows": [
+      {
+        "disk": 2,
+        "start": 40000000,
+        "insert_at": 45000000,
+        "end": null,
+        "key": "F1",
+        "pre_keys": [],
+        "note": "F1 ~20M cycles after insert; list changes from 'Various games #1' to 'Rusty'. Same for disks 3-20."
+      }
+    ]
+  },
+  {
+    "prod": 58418,
+    "class": "collection",
+    "note": "csdb 162 is Oyvind Jergan 'div code' utilities on 4 independent disks, not Moral of the Day; no flip.",
+    "windows": []
+  },
+  {
+    "prod": 312560,
+    "class": "standalone",
+    "note": "Production is last_dance.d64 (disk 3, boot_disk=2); ENCYC ART SIDE1/2 are an unrelated artwork release. Runs with no flip.",
+    "windows": [],
+    "boot_disk": 2
+  },
+  {
+    "prod": 376425,
+    "class": "standalone",
+    "note": "Music disk, 4 sides (a,b,c tunes; d start side with visual pack #09 menu). Boot side d (boot_disk=3), Return at ~41M, player starts by ~85M and needs no flip; inserting side a + keys caused no drive activity. User-selected tunes from other sides not tested.",
+    "windows": [],
+    "boot_disk": 3
+  },
+  {
+    "prod": 178171,
+    "class": "standalone",
+    "note": "cccp.d64 is the CCCP collection (many Smessel prgs); 'cccp smessel 2.d64' has the same byte-identical 66-block 'cccp smessel ii' prg. Alternatives, one file, no flip. Boot file 'cccp smessel ii'.",
+    "windows": [],
+    "boot_file": "cccp smessel ii"
+  },
+  {
+    "prod": 171331,
+    "class": "standalone",
+    "note": "Production is wavey.d64 (disk 3, boot_disk=2); Side1/Side2 are the ICC intro compo 2013 collection. Runs 220M with no flip.",
+    "windows": [],
+    "boot_disk": 2
+  },
+  {
+    "prod": 204034,
+    "class": "flips",
+    "note": "Deep (Pride): trainer menu needs n then space; each part needs a space (spaces ~every 100M); FLIP DISK OVER text from ~1000M; insert side B then one space ~19M later",
+    "windows": [
+      {
+        "disk": 2,
+        "start": 1000000000,
+        "insert_at": 1100000000,
+        "end": 1400000000,
+        "key": "space",
+        "pre_keys": [
+          [
+            30000000,
+            "n"
+          ],
+          [
+            45000000,
+            "space"
+          ],
+          [
+            150000000,
+            "space"
+          ],
+          [
+            250000000,
+            "space"
+          ],
+          [
+            350000000,
+            "space"
+          ],
+          [
+            520000000,
+            "space"
+          ],
+          [
+            640000000,
+            "space"
+          ],
+          [
+            740000000,
+            "space"
+          ],
+          [
+            840000000,
+            "space"
+          ],
+          [
+            940000000,
+            "space"
+          ]
+        ],
+        "note": "verified with insert at 1154M + space 19M later; ~1100M is inferred from the text first seen ~1015M in an earlier run (spaces timing shifts it)"
+      }
+    ]
+  },
+  {
+    "prod": 206217,
+    "class": "standalone",
+    "note": "disks are alternative packs of the same 2-part demo (3 identical md5); part II loads from disk 1 after a space at ~120M, no flip",
+    "windows": []
+  },
+  {
+    "prod": 357973,
+    "class": "standalone",
+    "note": "Wizard's Crown crack (4 disks: boot/dungeon/disk1/disk2): game asks 'insert game disk (front)' / 'insert disk1' by prompts; gameplay-driven swaps, not scriptable; could not get past the prompts",
+    "windows": []
+  },
+  {
+    "prod": 355215,
+    "class": "standalone",
+    "note": "Dungeon! game (Ikari crack) with 6 optional scenario/docs disks; game on disk 1 runs alone; scenario swaps are user-driven",
+    "windows": []
+  },
+  {
+    "prod": 346986,
+    "class": "flips",
+    "note": "Dodger (SOTE, German RPG): after the story pages (space every 60M from 300M) the game asks 'BITTE DISKETTE:C' (save disk, disk 3), then 'BITTE DISKETTE:B' (data disk, disk 2), then starts; later swaps are gameplay-driven",
+    "windows": [
+      {
+        "disk": 3,
+        "start": 560000000,
+        "insert_at": 640000000,
+        "pre_keys": [
+          [
+            300000000,
+            "space"
+          ],
+          [
+            360000000,
+            "space"
+          ],
+          [
+            420000000,
+            "space"
+          ],
+          [
+            480000000,
+            "space"
+          ],
+          [
+            540000000,
+            "space"
+          ]
+        ],
+        "note": "prompt BITTE DISKETTE:C up from ~540M; no key after insert"
+      },
+      {
+        "disk": 2,
+        "start": 700000000,
+        "insert_at": 720000000,
+        "note": "prompt BITTE DISKETTE:B appears ~10M after disk C is accepted; game then starts"
+      }
+    ]
+  },
+  {
+    "prod": 171243,
+    "class": "standalone",
+    "note": "Late Xmas: three independent football-tournament programs (Em 88, Euro 1992, Euro 88/Italia 90), each boots to its own group-selection menu; no flip"
+  },
+  {
+    "prod": 50092,
+    "class": "standalone",
+    "note": "Topless: Normal and Party version d64s hold the same files; alternatives, not a chain"
+  },
+  {
+    "prod": 294235,
+    "class": "standalone",
+    "note": "Summer Games II crack on 3 disks (A game, B docs+SG1 events, C tips). Intro needs space ~60M, d ~90M (fastloader), n ~120M (reset records), then game menu ~150-250M. Disk swaps only happen from gameplay (event choice); not scriptable, no scripted flip.",
+    "windows": []
+  },
+  {
+    "prod": 126542,
+    "class": "broken",
+    "note": "Boot side 2 first. Parts 01/02 run, then the logo card hangs from ~207M to 900M+ with the drive idle; spaces, inserting side 1 (230M) and the alternate loader 'metal max-g load' change nothing. Real demo needs 2 disc turns (side2 -> side1 -> side2) but VICE never reaches the turn prompt. Unresolved rather than proven broken.",
+    "windows": [],
+    "boot_disk": 1
+  },
+  {
+    "prod": 350177,
+    "class": "standalone",
+    "note": "METALW2A = original, METALW2B = plus/trained version; each disk holds all level files; alternatives"
+  },
+  {
+    "prod": 356889,
+    "class": "standalone",
+    "note": "disk065a is a compilation containing the byte-identical kult prg; the other disk is the same demo alone; no flip. Prefer kult_demo-lithium-with_dir.d64 as the single disk"
+  },
+  {
+    "prod": 356910,
+    "class": "standalone",
+    "note": "RUSSIA0 is the game; RUSSIA1/RUSSIA2 are save-game disks used only on in-game save/load; no scripted flip"
+  },
+  {
+    "prod": 357401,
+    "class": "standalone",
+    "note": "two alternative single-prg copies (contacth.t.g.d64 and HTG-Contact.d64); no flip"
+  },
+  {
+    "prod": 349660,
+    "class": "standalone",
+    "note": "Sagor der Eroberer adventure; disks 2/3 are later chapter data requested by gameplay, no scripted flip",
+    "windows": []
+  },
+  {
+    "prod": 350800,
+    "class": "standalone",
+    "note": "Pick That Tune quiz; PICKTUN0 holds the program, other disks are category data chosen by the player; title waits for Return",
+    "windows": []
+  },
+  {
+    "prod": 357667,
+    "class": "standalone",
+    "note": "Beach_Party.D64 contains the whole demo; atg.d64 is a compilation with the same files; boot_disk 2 (Beach_Party.D64) is the real production, no flip",
+    "windows": [],
+    "boot_disk": 1
+  },
+  {
+    "prod": 331665,
+    "class": "standalone",
+    "note": "The Hobbit game crack; disk B is an empty save disk used by the game, no scripted flip",
+    "windows": []
+  },
+  {
+    "prod": 363137,
+    "class": "collection",
+    "note": "CCA Clubdisk 4 diskmag, production is one file on side B; boot_disk 2, boot_file bugs bunny 2/bcf; runs with no flip",
+    "windows": [],
+    "boot_disk": 1,
+    "boot_file": "bugs bunny 2/bcf"
+  },
+  {
+    "prod": 365845,
+    "class": "standalone",
+    "note": "two independent sample-player disks (a, b), each runs alone with no disk prompt; b image has 175531 bytes (error bytes) but boots",
+    "windows": []
+  },
+  {
+    "prod": 348797,
+    "class": "standalone",
+    "note": "Passeggeri del Vento adventure crack; disk 2 requested from gameplay (episodes e5-e9), no scripted flip",
+    "windows": []
+  },
+  {
+    "prod": 367872,
+    "class": "standalone",
+    "note": "World Games crack; disks 2/3 hold event files loaded from gameplay choice, no scripted flip",
+    "windows": []
+  },
+  {
+    "prod": 357405,
+    "class": "standalone",
+    "note": "two copies of the same single-prg demo (prgs differ by 1 byte); disks are alternatives",
+    "windows": []
+  },
+  {
+    "prod": 338543,
+    "class": "flips",
+    "note": "VERIFIED (fl39): menu; space ~142M, F3 ~202M -> 'FLIP DISK + PRESS SPACE !' (~241M); insert disk 2 ~245M, space +17M -> menu returns. F5 (THE DEATH TROUSERS) at ~300M then loads a new part 'Mr Freeze's Digibrain Part 2' from disk 2 (not on disk 1: F5 on disk 1 alone does nothing). F3 path shows nothing new after disk 2; F1 runs from disk 1.",
+    "windows": [
+      {
+        "disk": 2,
+        "start": 140000000,
+        "insert_at": 245000000,
+        "end": 900000000,
+        "key": "space",
+        "pre_keys": [
+          [
+            142000000,
+            "space"
+          ],
+          [
+            202000000,
+            "F3"
+          ]
+        ],
+        "note": "insert after FLIP DISK prompt; space +17M; then F5 at ~300M (not replayable by the window schema) shows disk 2 content"
+      }
+    ]
+  },
+  {
+    "prod": 368857,
+    "class": "collection",
+    "note": "menu disk + 22 independent single-game disks (DOD01..DOD22), each with the same loader; no flip",
+    "windows": []
+  },
+  {
+    "prod": 344445,
+    "class": "standalone",
+    "note": "Carmen Sandiego USA game crack; side 2 is game data, swaps gameplay-driven; attract loop, no flip script"
+  },
+  {
+    "prod": 345987,
+    "class": "standalone",
+    "note": "Summer Games crack, 3 sides, event loads driven by gameplay"
+  },
+  {
+    "prod": 339076,
+    "class": "standalone",
+    "note": "disk 2 contains the same prg as disk 1 (cmp identical); disk 1 is a compilation, boot file 'abstract d-mo #1'",
+    "boot_file": "abstract d-mo #1"
+  },
+  {
+    "prod": 348108,
+    "class": "standalone",
+    "note": "two d64s each with one near-identical prg (13008 vs 13007 bytes) = alternative wrappers",
+    "windows": []
+  },
+  {
+    "prod": 357184,
+    "class": "standalone",
+    "note": "boot_disk 2; fear_info.d64 is another release, the other two images are alternatives holding all parts; no flip",
+    "windows": []
+  },
+  {
+    "prod": 349996,
+    "class": "standalone",
+    "note": "side 2 = extra text seq files; scroller never touches the drive after 40M",
+    "windows": []
+  },
+  {
+    "prod": 367143,
+    "class": "standalone",
+    "note": "disk 2 = extra loose ripp prgs 21-40; intro never reads the drive after 31M (spaces to 450M)",
+    "windows": []
+  },
+  {
+    "prod": 343317,
+    "class": "standalone",
+    "note": "disks 1+2 are byte-identical copies; disk 3 is the extras/notes/soundtrack disk, no flip",
+    "windows": []
+  },
+  {
+    "prod": 357935,
+    "class": "standalone",
+    "note": "single 198-block prg on every image; duplicates + a re-release wrapper",
+    "windows": []
+  },
+  {
+    "prod": 386374,
+    "class": "standalone",
+    "note": "two images carry byte-identical 'wobbler music' prg (one on a TWA compilation); no flip",
+    "windows": []
+  },
+  {
+    "prod": 331559,
+    "class": "standalone",
+    "note": "3 images = 2 identical + same files with other header; no flip",
+    "windows": []
+  },
+  {
+    "prod": 336678,
+    "class": "standalone",
+    "note": "Movie Maker tool, 4 G64: program, movies, shape/bkg libs; user-driven swaps, no scripted flip (not emulated)",
+    "windows": []
+  },
+  {
+    "prod": 339092,
+    "class": "standalone",
+    "note": "Math Blaster: program disk + data disk of seq problem sets; player-driven",
+    "windows": []
+  },
+  {
+    "prod": 357558,
+    "class": "standalone",
+    "note": "Questron II crack (Apple RPG); swaps (boot side / scenario / save disk) are gameplay-driven; no scripted flip",
+    "windows": []
+  },
+  {
+    "prod": 353156,
+    "class": "standalone",
+    "note": "text adventure; picture disks AMY1-4 loaded by player progress, not a flip chain",
+    "windows": []
+  },
+  {
+    "prod": 347321,
+    "class": "standalone",
+    "note": "quiz game; disk B is question data used from gameplay; no-activity is the YES/NO key-wait screen",
+    "windows": []
+  },
+  {
+    "prod": 336821,
+    "class": "standalone",
+    "note": "disk A has all parts 1-6 (space per part, ends in BASIC ~410M); disk B (garbled dir, other release 'spook's pd-wares') does not boot and no new part appears after insert at 333M/623M",
+    "windows": []
+  },
+  {
+    "prod": 322083,
+    "class": "standalone",
+    "note": "two alternative releases (FCS single-file disk + Mr.Fiend compilation disk032a), no flip",
+    "windows": []
+  },
+  {
+    "prod": 308466,
+    "class": "standalone",
+    "note": "disk 1 is a 2278-byte junk file, real prod is the single d64 hi-fimusicbox1bygoffy.d64",
+    "windows": []
+  },
+  {
+    "prod": 346097,
+    "class": "standalone",
+    "note": "Scooby Doo adventure, SCOOBYD1-4 are chapter data disks swapped by gameplay",
+    "windows": []
+  },
+  {
+    "prod": 201706,
+    "class": "flips",
+    "note": "Rigid sample collection: side A boots the player; key 1 at the menu (~100M) shows a 9-song list covering sides B-F; insert side B then Return ~38M later loads Electric City from B (screen 'NNN wait...' then credits). Space/fire do nothing; other sides not tried.",
+    "windows": [
+      {
+        "disk": 2,
+        "start": 120000000,
+        "insert_at": 163500000,
+        "end": null,
+        "key": "Return",
+        "key_delay": 38000000,
+        "pre_keys": [
+          [
+            100000000,
+            "1"
+          ]
+        ],
+        "note": "menu key 1 at ~100M (menu is up from ~63M); Return only after insert; Electric City is the preselected song (side B)"
+      }
+    ]
+  },
+  {
+    "prod": 355205,
+    "class": "standalone",
+    "note": "Farewell! (I.C.O.S.D.) is a game over 7 content disks (boot/inst/data/exp/ext/save); title -> space -> Game Over without input, never asks for a disk unattended; disk requests come from gameplay, not a demo flip",
+    "windows": []
+  },
+  {
+    "prod": 367893,
+    "class": "standalone",
+    "note": "Conquestador crack (Mirage/Hysteric): intros need spaces at ~113M and ~313M, menu ~400M; F3 shows text prompt PLEASE SAVE-GAME-DISK (disk 3), swaps are menu/gameplay-driven; game start (F7 setup screen) not passed, game file (main) on disk 2",
+    "windows": []
+  },
+  {
+    "prod": 196768,
+    "class": "collection",
+    "note": "Music disk on 2 sides: menu prg + ~30 tune files on side 1, ~25 on side 2 (two-letter names). NTSC only. Menu 'The collection' (Return) gives a black screen with display off, idle drive and static SID in VICE; inserting side 2 does nothing. Not a scripted flip.",
+    "windows": []
+  }
+]
