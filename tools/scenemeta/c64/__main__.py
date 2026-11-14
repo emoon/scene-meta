@@ -3,6 +3,8 @@ sets ask for the next disk.
 
     python3 -m scenemeta c64 sweep [--ids ...] [--limit N] [--jobs N] [--multi]
     python3 -m scenemeta c64 report
+    python3 -m scenemeta c64 manual
+    python3 -m scenemeta c64 export
     python3 -m scenemeta c64 migrate [scene.db]
 """
 
@@ -10,7 +12,7 @@ import json
 import sys
 
 from ..core import cli
-from . import catalog, config, migrate, store, sweep
+from . import catalog, config, export, migrate, store, sweep
 
 MANUAL = config.ROOT / "manual.json"
 
@@ -27,6 +29,7 @@ def main(argv=None):
     p.add_argument("--boot", action="store_true",
                    help="boot the file whose name matches the title, not the first")
     sub.add_parser("manual", help="rebuild windows and collections, load manual.json")
+    sub.add_parser("export", help="the same, then merge the results into the data files")
     args = ap.parse_args(argv)
 
     if args.cmd == "migrate":
@@ -38,13 +41,21 @@ def main(argv=None):
             sweep.run_all(_prods(args), db, jobs=args.jobs,
                           multi_only=args.multi, pick_boot=args.boot)
         elif args.cmd == "manual":
-            db.rebuild_windows()
-            db.classify_collections()
-            db.put_manual(json.loads(MANUAL.read_text()))
+            load_manual(db)
+        elif args.cmd == "export":
+            load_manual(db)
+            export.run(db)
         elif args.cmd == "report":
             report(db)
     finally:
         db.close()
+
+
+def load_manual(db):
+    """Bring what the store derives and what was observed by hand up to date."""
+    db.rebuild_windows()
+    db.classify_collections()
+    db.put_manual(json.loads(MANUAL.read_text()))
 
 
 def report(db):

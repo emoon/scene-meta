@@ -19,11 +19,16 @@ asked for a disk. Times are seconds, as everywhere in the log; manual.json
 gives them in C64 cycles and is converted when it is loaded.
 """
 
+import collections
 import json
 import os
 
 from ..core import store
 from . import config, machines
+
+# When to change to ``disk``: ``at`` is an insert known to work (None: none
+# is), ``until`` the last one; ``pre_keys`` are ``[seconds, key]`` pairs.
+Window = collections.namedtuple("Window", "disk at until key key_delay pre_keys note")
 
 SCHEMA = """
 create table if not exists swap_window (
@@ -168,3 +173,26 @@ class Store(store.Store):
                      json.dumps(pre_keys) if pre_keys else None,
                      w.get("note")))
         self.db.commit()
+
+    # -- reading -------------------------------------------------------------
+    def schedule(self, prod_id, variant):
+        """The Window of each disk of a variant (manual first), by disk."""
+        return [Window(disk, at, until, key, delay, json.loads(pre_keys or "[]"), note)
+                for disk, at, until, key, delay, pre_keys, note in self.db.execute(
+                    "select disk, insert_at, \"end\", key, key_delay, pre_keys, note"
+                    " from schedule where prod_id=? and variant=? order by disk",
+                    (prod_id, variant))]
+
+    def variant_class(self, prod_id, variant):
+        """``(class, source, note)`` given to a variant (manual first), or
+        None when nothing classed it."""
+        return self.db.execute(
+            "select class, source, note from variant_class where prod_id=? and"
+            " variant=? order by source = 'manual' desc limit 1",
+            (prod_id, variant)).fetchone()
+
+    def manual_boot(self, prod_id, variant):
+        """``(boot_disk, boot_file)`` of a hand-classified variant, or None."""
+        return self.db.execute(
+            "select boot_disk, boot_file from manual_boot where prod_id=? and"
+            " variant=?", (prod_id, variant)).fetchone()

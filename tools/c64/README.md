@@ -7,7 +7,9 @@ next disk, so a frontend can flip disks automatically. The C64 twin of
 Source data is the NAS: `meta/index.sqlite` (the Demozoo export) for the
 production list (platform "Commodore 64": Demo, Intro, Musicdisk), and the
 release's files from `mirrors/csdb/<CSDb release id>/` or, failing that, the
-scene.org zip (`mirrors/sceneorg`, unpacked into `work/media/`). The disk
+scene.org zip (`mirrors/sceneorg`, unpacked into `work/media/`). A CSDb
+directory that holds an item of another collection under the same id is passed
+over (`../scenemeta/c64/csdbmirror.py`). The disk
 images of one release are one set, in natural name order (`../scenemeta/c64/diskset.py`;
 `.d64` preferred over `.g64` of the same disk).
 
@@ -91,6 +93,7 @@ python3 -m scenemeta c64 sweep --ids 324781 6309     # specific productions
 python3 -m scenemeta c64 sweep --multi --jobs 64     # resumable
 python3 -m scenemeta c64 report
 python3 -m scenemeta c64 manual                      # load manual.json (hand observations)
+python3 -m scenemeta c64 export                      # the same, then merge into ../data/c64
 python3 -m scenemeta c64 migrate                     # convert an older scene.db
 python3 -m unittest discover -s tests -t .
 ```
@@ -105,6 +108,24 @@ Tools: `python3 -m scenemeta.c64.tools.pilot <id>` runs one production and print
 flips (`--shots dir` saves the prompts), `scenemeta.c64.tools.trace` prints the
 raw drive/screen samples of a disk set (no flipping), `scenemeta.c64.tools.sheet`
 makes a contact sheet of screenshots.
+
+## Export (`../scenemeta/c64/export.py`)
+
+`export` writes one entry per swept production into `../data/c64`
+(`../docs/DESIGN.md`), `script` from the sweep alone and `ai` where
+`manual.json` has the production:
+
+- `result`: `crashes-later` and `broken` from the verdict, `unknown` for a run
+  with nothing moving on screen; a hand class `broken` is `broken`, and a
+  hand-made schedule counts as running whatever the sweep saw.
+- `swaps` from the `schedule` view (`at` the insert, `until` the window's end,
+  `key` and `key_delay`), `keys` from the windows' `pre_keys`. A set classed
+  `standalone`, `collection` or `boot_fresh` gets its `kind` and no swaps.
+- `boot_disk` and `boot_file` from `manual.json`, else the sweep's.
+- `note`: the hand notes of the production and of each disk.
+
+A hand observation is of a disk set. Where the media now finds a single disk
+for the production it is not applied.
 
 ## Pilot (famous multi-disk demos, `pal_1541`)
 

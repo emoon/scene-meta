@@ -83,17 +83,18 @@ appears once per platform, as a key or as a cross-reference.
 | `kind` | `collection`, `standalone`, `separate-disks`, `menu`, `boot_fresh` |
 | `disks` | file names in disk order; multi-disk productions only |
 | `swaps` | disk swaps: `disk`, `at`, and optionally `until`, `key`, `key_delay` |
-| `keys` | key presses needed before any swap: `at`, `key` |
+| `keys` | key presses at fixed times, other than a swap's own key: `at`, `key` |
 | `run` | the file to start, when the obvious one is wrong or ambiguous |
 | `boot_disk`, `boot_file` | the disk (1-based) and file to boot, when not the first |
 | `assign` | AmigaDOS assigns, e.g. `{ Killer = "SYS:" }` |
 | `note` | free text |
 | `variant` | see below |
 
-All times are seconds of emulated time since power-on. In a swap, `at` is an
-insert time known to work and `until` the last one known to work; `key` is
-pressed `key_delay` seconds after the insert. Key names are lowercase
-(`space`, `return`, `p1fire`, `p2fire`, `lmb`).
+All times are seconds of emulated time since power-on. In a swap, `disk` is
+the number of the disk that goes in (1 when the production booted from a
+later one), `at` is an insert time known to work and `until` the last one
+known to work; `key` is pressed `key_delay` seconds after the insert. Key
+names are lowercase (`space`, `return`, `p1fire`, `p2fire`, `lmb`).
 
 Settings sit on the production. A variant appears only when one specific
 download needs different settings; it is identified by file name and SHA-256
@@ -142,4 +143,4 @@ disagreement goes into a report for a person to look at.
 2. Move the two sweepers in (`r2-scene-db`, `r2-scene-db-c64`). Done.
 3. Amiga: `scenemeta export` merges the sweep's results and `classes.tsv` into
    `data/amiga`. Done, from the sweep that predates the Nov 2026 fixes.
-4. C64: the same for its sweep and `manual.json`.
+4. C64: the same for its sweep and `manual.json`. Done.
