@@ -79,7 +79,7 @@ per variant: the chosen machine, its verdict, and its swaps as
 `+click` when a click was needed; the click is also the swap's `key`).
 
 `export` (`../scenemeta/amiga/export.py`) merges that into the data files people edit,
-`data/amiga/*.toml` (format: `DESIGN.md` at the top of the repo). Each
+`data/amiga/*.toml` (format: `docs/DESIGN.md`). Each
 production becomes one entry, taken from the variant that got furthest, and
 is marked `script`, or `ai` when it has a hand classification in
 `../scenemeta/amiga/classes.tsv`. Only `script` entries are replaced: an entry somebody

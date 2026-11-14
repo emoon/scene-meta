@@ -1,4 +1,4 @@
-"""The vocabulary of the data files (see DESIGN.md)."""
+"""The vocabulary of the data files (see docs/DESIGN.md)."""
 
 # Databases a production can be keyed by.
 NAMESPACES = ("demozoo", "csdb")

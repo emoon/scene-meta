@@ -1,4 +1,4 @@
-"""Plays entries of the data files (``data/amiga``, see DESIGN.md) exactly as
+"""Plays entries of the data files (``data/amiga``, see docs/DESIGN.md) exactly as
 written: the entry's machine, each disk put in at its time, each key pressed
 after its insert. Nothing is detected and nothing retried, so this shows
 what the entry says, not what a sweep can find.

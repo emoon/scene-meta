@@ -1,5 +1,5 @@
 """From the sweep's log into the shared data files (``data/<platform>``, see
-DESIGN.md at the top of the repo).
+docs/DESIGN.md).
 
 The core reads what the sweep chose for each variant and merges the
 platform's entries into the files; what an entry says is the platform's

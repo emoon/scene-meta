@@ -18,7 +18,7 @@ python3 -m unittest discover -s tests -t .
 A sweep boots every production of a platform in an emulator, up a ladder of
 machines until one works, swaps disks when the production waits for one, and
 logs every run in `<platform>/scene.db`. The export then merges what was
-found into `data/<platform>` (see `../DESIGN.md`).
+found into `data/<platform>` (see `../docs/DESIGN.md`).
 
 ## What the core does
 

@@ -1,5 +1,5 @@
 """Writes the sweep's results into the shared data files (``data/amiga``,
-see DESIGN.md at the top of the repo): one entry per production, from the
+see docs/DESIGN.md): one entry per production, from the
 variant that got furthest.
 
 A production the sweep found is ``script``; one with a hand classification

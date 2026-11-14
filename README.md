@@ -10,10 +10,10 @@ title  = "Desert Dream"
 group  = "Kefrens"
 source = "script"
 disks  = ["DesertDream-A.adf", "DesertDream-B.adf"]
-swaps  = [{ disk = 2, at = 536.9, key = "lmb" }]
+swaps  = [{ disk = 2, at = 536.9 }]
 ```
 
-The format and the reasons behind it are in [DESIGN.md](DESIGN.md).
+The format and the reasons behind it are in [docs/DESIGN.md](docs/DESIGN.md).
 
 ## Layout
 

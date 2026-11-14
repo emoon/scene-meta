@@ -1,4 +1,4 @@
-"""Checks the data files against DESIGN.md, one line per problem.
+"""Checks the data files against docs/DESIGN.md, one line per problem.
 
     python3 -m scenemeta.validate [data-dir]
 """
