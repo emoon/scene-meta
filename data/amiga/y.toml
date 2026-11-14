@@ -1,0 +1,429 @@
+[demozoo.45906]
+title = "Y"
+group = "iq2000 / Nevermind"
+source = "script"
+result = "unknown"
+
+[demozoo.9403]
+title = "Y'aga"
+group = "Anadune"
+source = "script"
+machine = "a1200_060"
+
+[demozoo.36106]
+title = "Y'on"
+group = "Anadune / Floppy"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.21378]
+title = "Y-Boot"
+group = "Y-Crew"
+source = "script"
+
+[demozoo.224869]
+title = "Yamma Yamma"
+group = "Philips"
+source = "script"
+
+[demozoo.27969]
+title = "Yaontalama"
+group = "MGDesign"
+source = "script"
+machine = "a1200"
+
+[demozoo.105994]
+title = "Yawp Cola"
+group = "3 Little Elks"
+source = "script"
+machine = "a1200"
+
+[demozoo.351838]
+title = "Yazbo Intro"
+group = "Magnetic Fields"
+source = "script"
+
+[demozoo.2186]
+title = "Yeah"
+group = "Razor 1911"
+source = "script"
+
+[demozoo.30476]
+title = "Years"
+group = "Genetic"
+source = "script"
+result = "unknown"
+
+[demozoo.190944]
+title = "Yellow Demo"
+group = "The Supply Team"
+source = "script"
+
+[demozoo.175952]
+title = "Yes"
+group = "Interactive / Tribe"
+source = "script"
+machine = "a1200"
+
+[demozoo.53432]
+title = "Yes SIR!"
+group = "Laxative Effects"
+source = "script"
+
+[demozoo.8193]
+title = "Yes!"
+group = "Haujobb / Loveboat"
+source = "script"
+machine = "a1200"
+
+[demozoo.278143]
+title = "Yes!"
+group = "Agima"
+source = "script"
+
+[demozoo.238009]
+title = "Yet Another Compact"
+group = "Cryptic"
+source = "script"
+
+[demozoo.194511]
+title = "Yet Another Compact Disc"
+group = "Harman Kardon"
+source = "script"
+
+[demozoo.198942]
+title = "Yet Another Compo Starter"
+group = "ArtWay"
+source = "script"
+result = "unknown"
+run = "engine"
+
+[demozoo.190281]
+title = "Yet Another Cool Intro and Compilation Disk"
+group = "Pendle Europa"
+source = "script"
+
+[demozoo.182916]
+title = "Yet Another Demo"
+group = "Cryptic"
+source = "script"
+
+[demozoo.227205]
+title = "Yet Another Demo"
+group = "Third Reich"
+source = "script"
+
+[demozoo.247216]
+title = "Yet Another Demo"
+group = "It"
+source = "script"
+
+[demozoo.262308]
+title = "Yet Another Demo"
+group = "The Giants"
+source = "script"
+
+[demozoo.330971]
+title = "Yet Another Demo"
+group = "Bloodsuckers"
+source = "script"
+
+[demozoo.264722]
+title = "Yet Another Demo With Bobs Using Two Sine Tables"
+group = "Wizzcat"
+source = "script"
+
+[demozoo.240993]
+title = "Yet Another Demodisk IV Intro"
+group = "Digitech"
+source = "script"
+
+[demozoo.254498]
+title = "Yet Another Disk"
+group = "Pseudo-Ops"
+source = "script"
+
+[demozoo.216752]
+title = "Yet Another Download"
+group = "Rebels"
+source = "script"
+
+[demozoo.19432]
+title = "Yet Another Fourty K (YAFK)"
+group = "Nature"
+source = "script"
+machine = "a1200"
+
+[demozoo.262507]
+title = "Yet Another Great Disk"
+group = "The Powerlords"
+source = "script"
+
+[demozoo.371352]
+title = "Yet Another Hot Release"
+group = "Obsession"
+source = "script"
+
+[demozoo.207381]
+title = "Yet Another Intro"
+group = "Phase"
+source = "script"
+
+[demozoo.231814]
+title = "Yet Another Intro"
+group = "No Limits"
+source = "script"
+
+[demozoo.234988]
+title = "Yet Another Intro"
+group = "Aurora / Arcadia Team"
+source = "script"
+
+[demozoo.249939]
+title = "Yet Another Intro"
+group = "Majic 12"
+source = "script"
+
+[demozoo.257025]
+title = "Yet Another Nice Intro"
+group = "Savage"
+source = "script"
+
+[demozoo.243462]
+title = "Yet Another Preview"
+group = "Exile"
+source = "script"
+
+[demozoo.209258]
+title = "Yet Another Production"
+group = "Bastards"
+source = "script"
+
+[demozoo.238784]
+title = "Yet Another Production"
+group = "Bounty"
+source = "script"
+
+[demozoo.178041]
+title = "Yet Another Sin"
+group = "Planet Jazz"
+source = "script"
+
+[demozoo.242275]
+title = "Yet Another Spread"
+group = "The Eleminator & Lucifer Software Team"
+source = "script"
+result = "unknown"
+
+[demozoo.354965]
+title = "Yet More Amiga Goodies"
+group = "Parallel Dimensions"
+source = "script"
+
+[demozoo.223376]
+title = "Yiddo's First Demo"
+group = "Stupid Name Team"
+source = "script"
+
+[demozoo.208709]
+title = "Yine Biz"
+group = "Zombie Boys"
+source = "script"
+
+[demozoo.277276]
+title = "Yip Cover"
+group = "Void"
+source = "script"
+
+[demozoo.23503]
+title = "Yirmi"
+group = "Zomco"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.391867]
+title = "Yksi, Kaksi, Kolme"
+group = "Desire"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.215949]
+title = "Yo"
+group = "Goonies 2041"
+source = "script"
+
+[demozoo.234454]
+title = "Yo - Party Intro"
+group = "Anthrox"
+source = "script"
+
+[demozoo.255485]
+title = "Yo Demos 03 - intro"
+group = "Ram Jam"
+source = "script"
+
+[demozoo.3008]
+title = "Yo Man 2"
+group = "Donut Fetish"
+source = "script"
+machine = "a1200"
+
+[demozoo.220486]
+title = "Yo Neander!"
+group = "Toxic Track"
+source = "script"
+
+[demozoo.258999]
+title = "Yo Yo Yo"
+group = "Depeche"
+source = "script"
+
+[demozoo.194313]
+title = "Yo!"
+group = "Ozone Free"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.196435]
+title = "Yo!"
+group = "Damage"
+source = "script"
+
+[demozoo.100792]
+title = "Yo! Elephant"
+group = "Planet Jazz"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.195636]
+title = "Yodel Conference 3 & 4 Invitation"
+group = "Yodel"
+source = "script"
+
+[demozoo.303672]
+title = "Yoho Bodies"
+group = "ICE"
+source = "script"
+
+[demozoo.70689]
+title = "Yom Kippur"
+group = "Resurrected"
+source = "script"
+machine = "a1200"
+
+[demozoo.22681]
+title = "Yoman 3"
+group = "Donut Fetish"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.38145]
+title = "Yoo!"
+group = "Moons"
+source = "script"
+machine = "a1200_030"
+run = "mns-yoo!.exe_uncru"
+
+[demozoo.261209]
+title = "Yop Plaf Boom Intro"
+group = "Willow"
+source = "script"
+
+[demozoo.219626]
+title = "You Ain't The First"
+group = "Metro"
+source = "script"
+machine = "a1200"
+
+[demozoo.3617]
+title = "You Are Completely Anonymous"
+group = "Monkeyman / Xeron"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.29947]
+title = "You Are Lucy"
+group = "Spaceballs"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.237353]
+title = "You Are Uggly"
+group = "Cinefex Design"
+source = "script"
+
+[demozoo.158244]
+title = "You Ate Red"
+group = "Floppy"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.255737]
+title = "You Can Always Thrust Razor Demo"
+group = "Razor 1911 / Thrust"
+source = "script"
+
+[demozoo.252360]
+title = "You Like Dots?"
+group = "Oblivion"
+source = "script"
+machine = "a1200"
+
+[demozoo.292283]
+title = "You Make Me Smile"
+group = "Desire"
+source = "script"
+
+[demozoo.203252]
+title = "You Must Live!"
+group = "Honoo"
+source = "script"
+machine = "a1200"
+
+[demozoo.160714]
+title = "You Must Obey"
+group = "Nukleus"
+source = "script"
+
+[demozoo.366667]
+title = "You probably think this demo is about you"
+group = "Tulou"
+source = "script"
+result = "unknown"
+
+[demozoo.260616]
+title = "Young 1989"
+group = "The Softkiller Crew / Accumulators"
+source = "script"
+
+[demozoo.31950]
+title = "Your Amiga Can Do This"
+group = "Union"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.32374]
+title = "Your Astral Pilot"
+group = "Johan Alpmar / Martin Kalms"
+source = "script"
+machine = "a1200"
+
+[demozoo.262307]
+title = "Yowzatic Sensations"
+group = "The Giants"
+source = "script"
+
+[demozoo.224702]
+title = "Yoyo Suxx"
+group = "Anti Yoyo Cooperation"
+source = "script"
+
+[demozoo.120012]
+title = "Yum-Yum"
+group = "Dual Crew"
+source = "script"
+
+[demozoo.18409]
+title = "Yuwalane Root - Elixir Of Past"
+group = "Y-Crew"
+source = "script"

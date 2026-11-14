@@ -1,0 +1,130 @@
+[demozoo.7735]
+title = "#?"
+group = "dFX"
+source = "script"
+machine = "a1200"
+
+[demozoo.187535]
+title = "$180 Demo"
+group = "Software of Sweden"
+source = "script"
+
+[demozoo.207096]
+title = "$623"
+group = "Clique"
+source = "script"
+result = "unknown"
+
+[demozoo.239506]
+title = "(Ass)embler"
+group = "Damage"
+source = "script"
+
+[demozoo.378185]
+title = "(H)Omo Total"
+group = "Uld-I-Mund"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.24667]
+title = "(H)OmoTotal"
+group = "Dr. Albanan"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.259274]
+title = "(Welcome to the) Fogroom"
+group = "Spaceballs"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.388334]
+title = "+=+"
+group = "Spreadpoint"
+source = "script"
+
+[demozoo.374877]
+title = "...And One Up The Sleeve"
+group = "Lemon."
+source = "script"
+
+[demozoo.18985]
+title = ".plong"
+group = "Contraz"
+source = "script"
+machine = "a1200_fast"
+run = ".plong.exe"
+
+[demozoo.87231]
+title = "@party Party demo"
+group = "Syntax Party Crew"
+source = "script"
+
+[demozoo.25676]
+title = "[choke]"
+group = "Spaceballs"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.26162]
+title = "[Mind][Matter][Electricity]"
+group = "Reason"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.22682]
+title = "Älä ota sitä vakavasti"
+group = "dA JoRMaS"
+source = "script"
+machine = "a1200"
+
+[demozoo.1775]
+title = "äMPäri3"
+group = "Dekadence"
+source = "script"
+
+[demozoo.161722]
+title = "Är Ni Död?"
+group = "Lynx"
+source = "script"
+
+[demozoo.366278]
+title = "Återbetalning"
+group = "Helsingfors Svenska Demoscensklubben rf"
+source = "script"
+
+[demozoo.7200]
+title = "Ærtesuppe"
+group = "Disaster Design"
+source = "script"
+machine = "a1200"
+
+[demozoo.226712]
+title = "Ønsketro"
+group = "SKB"
+source = "script"
+
+[demozoo.208495]
+title = "Über Alles"
+group = "Fucking Nerds"
+source = "script"
+
+[demozoo.18200]
+title = "Übergirl"
+group = "Subspace"
+source = "script"
+machine = "a1200"
+
+[demozoo.390907]
+title = "Вовка в 3/9 царстве"
+group = "Outsiders"
+source = "script"
+result = "unknown"
+run = "Karate"
+
+[demozoo.390908]
+title = "Я сделяль"
+group = "Outsiders"
+source = "script"
+result = "unknown"
+run = "Karate"

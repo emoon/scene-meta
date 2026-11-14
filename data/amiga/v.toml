@@ -1,0 +1,1880 @@
+[demozoo.153822]
+title = "V.O.I.D"
+group = "Quadriga"
+source = "script"
+
+[demozoo.242714]
+title = "Va?"
+group = "Elefantklubben"
+source = "script"
+
+[demozoo.236533]
+title = "Vaaleansininen huivi"
+group = "Carillon"
+source = "script"
+
+[demozoo.342445]
+title = "VAAU"
+group = "Numpties"
+source = "script"
+result = "unknown"
+
+[demozoo.70702]
+title = "Vabank"
+group = "High Quality"
+source = "script"
+machine = "a1200"
+
+[demozoo.252357]
+title = "Vacation"
+group = "Oblivion"
+source = "script"
+
+[demozoo.252953]
+title = "Vacation 2"
+group = "Passion"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.178668]
+title = "Vach"
+group = "Deathless"
+source = "script"
+machine = "a1200_fast"
+run = "vach.exe"
+
+[demozoo.156633]
+title = "Vactro 2"
+group = "Angels"
+source = "script"
+
+[demozoo.32006]
+title = "Vacuum"
+group = "Amacon"
+source = "script"
+machine = "a1200"
+
+[demozoo.119623]
+title = "Vade Intro"
+group = "New Generation Crew"
+source = "script"
+
+[demozoo.224698]
+title = "Vafflus"
+group = "Warfare"
+source = "script"
+
+[demozoo.223392]
+title = "Vagabond"
+group = "Simplex Inc."
+source = "script"
+
+[demozoo.224988]
+title = "Vagina - Joke Intro"
+group = "Vitun Elitet"
+source = "script"
+machine = "a1200"
+
+[demozoo.22472]
+title = "Vaginal Massacre"
+group = "U.D.O."
+source = "script"
+
+[demozoo.37744]
+title = "vaihda"
+group = "Jumalauta"
+source = "script"
+
+[demozoo.195017]
+title = "Valaistus"
+group = "Zigag / Destiny"
+source = "script"
+
+[demozoo.195606]
+title = "Valentines Day"
+group = "Maniacs"
+source = "script"
+
+[demozoo.8261]
+title = "Valhalla"
+group = "Loonies"
+source = "script"
+machine = "a1200_fast"
+run = "Valhalla.nofpu"
+
+[demozoo.233662]
+title = "Valis"
+group = "Applause"
+source = "script"
+machine = "a1200"
+
+[demozoo.168114]
+title = "Vallejo Amplifier"
+group = "The Electronic Knights"
+source = "script"
+
+[demozoo.244286]
+title = "Valløby"
+group = "Fnuque"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.246765]
+title = "Vamptro"
+group = "Interactive"
+source = "script"
+
+[demozoo.228149]
+title = "Van It"
+group = "HJK"
+source = "script"
+
+[demozoo.255477]
+title = "Vaporization (of the Sushieating Species)"
+group = "Ram Jam"
+source = "script"
+
+[demozoo.177748]
+title = "Varathron"
+group = "Suspect"
+source = "script"
+
+[demozoo.195516]
+title = "Varathron"
+group = "Kane"
+source = "script"
+
+[demozoo.295014]
+title = "VarezMUI 2.0"
+group = "Resistance"
+source = "script"
+result = "unknown"
+
+[demozoo.32737]
+title = "Vart är mitt F.O.L."
+group = "G'Force"
+source = "script"
+
+[demozoo.306146]
+title = "Vartin Intro"
+group = "Stream"
+source = "script"
+
+[demozoo.100516]
+title = "Vatten"
+group = "Five Finger Punch"
+source = "script"
+
+[demozoo.4909]
+title = "Vauxhall"
+group = "Unique"
+source = "script"
+result = "unknown"
+
+[demozoo.232774]
+title = "VecBalls"
+group = "The Timecircle"
+source = "script"
+
+[demozoo.215943]
+title = "Veccies"
+group = "Goonies 2041"
+source = "script"
+
+[demozoo.241358]
+title = "Vecmania"
+group = "D-Mob"
+source = "script"
+
+[demozoo.258718]
+title = "Vectalizer"
+group = "Slipstream"
+source = "script"
+
+[demozoo.9613]
+title = "Vector"
+group = "Pussy"
+source = "script"
+
+[demozoo.124213]
+title = "Vector"
+group = "OKS Import Division"
+source = "script"
+
+[demozoo.230089]
+title = "Vector"
+group = "Trinomic"
+source = "script"
+
+[demozoo.242114]
+title = "Vector"
+group = "Ecstasy"
+source = "script"
+
+[demozoo.243154]
+title = "Vector"
+group = "Outlaws"
+source = "script"
+
+[demozoo.348690]
+title = "Vector"
+group = "INXS"
+source = "script"
+
+[demozoo.117906]
+title = "Vector Ball"
+group = "No Limits"
+source = "script"
+
+[demozoo.221011]
+title = "Vector Ball"
+group = "Catch 22"
+source = "script"
+
+[demozoo.231741]
+title = "Vector Ball Logo"
+group = "Crusaders"
+source = "script"
+
+[demozoo.154541]
+title = "Vector Balls"
+group = "TomSoft"
+source = "script"
+
+[demozoo.230503]
+title = "Vector Balls"
+group = "Reality"
+source = "script"
+
+[demozoo.294345]
+title = "Vector Balls v1.2"
+group = "TomSoft"
+source = "script"
+
+[demozoo.265244]
+title = "Vector Beast"
+group = "Vision Factory"
+source = "script"
+
+[demozoo.188245]
+title = "Vector Bob Demo"
+group = "The Silents"
+source = "script"
+
+[demozoo.230448]
+title = "Vector Bobs"
+group = "Bamiga Sector One / Quoram"
+source = "script"
+
+[demozoo.315447]
+title = "Vector Bobs"
+group = "Modesty"
+source = "script"
+
+[demozoo.151967]
+title = "Vector Bobs 90"
+group = "Anarchy"
+source = "script"
+
+[demozoo.247214]
+title = "Vector Bobs aka Molecules"
+group = "It"
+source = "script"
+
+[demozoo.261141]
+title = "Vector Bugs"
+group = "Zenith"
+source = "script"
+
+[demozoo.136507]
+title = "Vector Demo"
+group = "Threat"
+source = "script"
+
+[demozoo.137282]
+title = "Vector Demo"
+group = "Live Act"
+source = "script"
+
+[demozoo.212364]
+title = "Vector Demo"
+group = "Energy"
+source = "script"
+
+[demozoo.220587]
+title = "Vector Demo"
+group = "Dual Access / Amilink Computing"
+source = "script"
+
+[demozoo.223839]
+title = "Vector Demo"
+group = "Danish Dragons"
+source = "script"
+
+[demozoo.229242]
+title = "Vector Demo"
+group = "Elite Inc."
+source = "script"
+
+[demozoo.229423]
+title = "Vector Demo"
+group = "Abandon"
+source = "script"
+
+[demozoo.232927]
+title = "Vector Demo"
+group = "The Hacking Relation"
+source = "script"
+
+[demozoo.241359]
+title = "Vector Demo"
+group = "D-Mob"
+source = "script"
+
+[demozoo.243744]
+title = "Vector Demo"
+group = "Fairlight"
+source = "script"
+
+[demozoo.317418]
+title = "Vector Demo"
+group = "Spice"
+source = "script"
+
+[demozoo.153772]
+title = "Vector Demo (aka 264 Line Object, Interpol)"
+group = "North Star"
+source = "script"
+
+[demozoo.232928]
+title = "Vector Demo 3"
+group = "The Hacking Relation"
+source = "script"
+
+[demozoo.232929]
+title = "Vector Demo 4"
+group = "The Hacking Relation"
+source = "script"
+
+[demozoo.234964]
+title = "Vector Demo v0.1"
+group = "Australian Crackers United"
+source = "script"
+
+[demozoo.154114]
+title = "Vector Designer v1.0"
+group = "The Special Brothers"
+source = "script"
+
+[demozoo.131523]
+title = "Vector Dream"
+group = "Amaze"
+source = "script"
+
+[demozoo.121887]
+title = "Vector Dreams"
+group = "Ksylitol"
+source = "script"
+result = "unknown"
+
+[demozoo.229889]
+title = "Vector Dreams 1"
+group = "The Style Council"
+source = "script"
+
+[demozoo.9190]
+title = "Vector Editor"
+group = "Phoenix"
+source = "script"
+
+[demozoo.112465]
+title = "Vector Equ"
+group = "Phenomena"
+source = "script"
+
+[demozoo.169516]
+title = "Vector Equalizer aka 3rd Intro"
+group = "Phalanx"
+source = "script"
+
+[demozoo.19072]
+title = "Vector Exterminator"
+group = "Shining"
+source = "script"
+
+[demozoo.165579]
+title = "Vector Eye-Candy"
+group = "iNSANE"
+source = "script"
+
+[demozoo.22234]
+title = "Vector Fart 2"
+group = "Scoopex"
+source = "script"
+machine = "a500_ks12"
+
+[demozoo.216454]
+title = "Vector Fun"
+group = "Northern Lights"
+source = "script"
+
+[demozoo.253457]
+title = "Vector Gfx"
+group = "Panic"
+source = "script"
+
+[demozoo.232678]
+title = "Vector Graphics Megademo"
+group = "Threat"
+source = "script"
+
+[demozoo.229130]
+title = "Vector Hangover -Think Of Glenz-"
+group = "Vectra"
+source = "script"
+
+[demozoo.165034]
+title = "Vector Imperium"
+group = "Gate"
+source = "script"
+
+[demozoo.210444]
+title = "Vector Import"
+group = "Paranoid"
+source = "script"
+
+[demozoo.195641]
+title = "Vector Inspiration From a Man in Danger"
+group = "Compact Inc."
+source = "script"
+
+[demozoo.153770]
+title = "Vector Intro"
+group = "The Prophets AG"
+source = "script"
+
+[demozoo.190280]
+title = "Vector Intro"
+group = "Pendle Europa"
+source = "script"
+
+[demozoo.209620]
+title = "Vector Intro"
+group = "Light"
+source = "script"
+
+[demozoo.214033]
+title = "Vector Intro"
+group = "Overload"
+source = "script"
+
+[demozoo.215944]
+title = "Vector Intro"
+group = "Goonies 2041"
+source = "script"
+
+[demozoo.216787]
+title = "Vector Intro"
+group = "DutchCrack"
+source = "script"
+result = "unknown"
+
+[demozoo.223454]
+title = "Vector Intro"
+group = "The Perfect Crime"
+source = "script"
+
+[demozoo.233687]
+title = "Vector Intro"
+group = "Altair"
+source = "script"
+
+[demozoo.235178]
+title = "Vector Intro"
+group = "Arcane"
+source = "script"
+
+[demozoo.236549]
+title = "Vector Intro"
+group = "Cascade 1733"
+source = "script"
+
+[demozoo.250626]
+title = "Vector Intro"
+group = "Metallians"
+source = "script"
+
+[demozoo.255340]
+title = "Vector Intro"
+group = "Rage"
+source = "script"
+
+[demozoo.243038]
+title = "Vector Letters"
+group = "Enemies"
+source = "script"
+
+[demozoo.238597]
+title = "Vector Logo"
+group = "Black Monks"
+source = "script"
+
+[demozoo.262512]
+title = "Vector Magic"
+group = "The Powerlords"
+source = "script"
+
+[demozoo.262511]
+title = "Vector Magic Preview"
+group = "The Powerlords"
+source = "script"
+
+[demozoo.232930]
+title = "Vector Objects -Vobs-"
+group = "The Hacking Relation"
+source = "script"
+
+[demozoo.253783]
+title = "Vector Part"
+group = "Phoenix"
+source = "script"
+
+[demozoo.92372]
+title = "Vector Preview"
+group = "Complex"
+source = "script"
+
+[demozoo.208311]
+title = "Vector Scroll"
+group = "Tribe / Unique"
+source = "script"
+
+[demozoo.221583]
+title = "Vector Scroll"
+group = "The Living Box"
+source = "script"
+
+[demozoo.392038]
+title = "Vector Shock"
+group = "BlackTech"
+source = "script"
+
+[demozoo.221179]
+title = "Vector Vocation"
+group = "Nova"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.262739]
+title = "Vector-Ference"
+group = "The Special Brothers"
+source = "script"
+
+[demozoo.248252]
+title = "Vector-Intro"
+group = "Complex"
+source = "script"
+
+[demozoo.230297]
+title = "Vector-Logo"
+group = "Quartex"
+source = "script"
+
+[demozoo.242852]
+title = "Vectorama"
+group = "End of Century 1999"
+source = "script"
+
+[demozoo.137715]
+title = "Vectorball"
+group = "Phenomena"
+source = "script"
+
+[demozoo.110]
+title = "Vectorballs"
+group = "Impact Inc."
+source = "script"
+
+[demozoo.47310]
+title = "Vectorballs"
+group = "Dual Crew"
+source = "script"
+
+[demozoo.246371]
+title = "Vectorballs"
+group = "Hypnosis"
+source = "script"
+
+[demozoo.249158]
+title = "Vectorballs"
+group = "Level 4"
+source = "script"
+
+[demozoo.208124]
+title = "Vectorballs 1989"
+group = "Storm"
+source = "script"
+
+[demozoo.26521]
+title = "Vectorballs Demo"
+group = "Mystix"
+source = "script"
+
+[demozoo.246370]
+title = "Vectorballs v3.0"
+group = "Hypnosis"
+source = "script"
+
+[demozoo.6924]
+title = "Vectorbirds"
+group = "Panic"
+source = "script"
+
+[demozoo.232542]
+title = "Vectorbobs"
+group = "Magnetic Fields"
+source = "script"
+
+[demozoo.257020]
+title = "Vectorbobs Intro"
+group = "Savage"
+source = "script"
+
+[demozoo.238653]
+title = "Vectorcubes"
+group = "Bonzai"
+source = "script"
+machine = "a1200"
+
+[demozoo.168271]
+title = "Vectordance"
+group = "Cult"
+source = "script"
+result = "unknown"
+
+[demozoo.168272]
+title = "Vectordance 2"
+group = "Cult"
+source = "script"
+
+[demozoo.147103]
+title = "Vectordemo"
+group = "Celtic"
+source = "script"
+
+[demozoo.265594]
+title = "Vectoria"
+group = "Vectors"
+source = "script"
+
+[demozoo.262957]
+title = "Vectorintro V1.0"
+group = "Them"
+source = "script"
+
+[demozoo.374653]
+title = "Vectorius Simplicissimus"
+group = "Starlight"
+source = "script"
+
+[demozoo.152263]
+title = "Vectorize"
+group = "Red Sector Inc."
+source = "script"
+
+[demozoo.233518]
+title = "Vectorlogos"
+group = "Level 4 / Alpha Flight"
+source = "script"
+
+[demozoo.262690]
+title = "Vectorluni"
+group = "Electronic Artists"
+source = "script"
+
+[demozoo.22194]
+title = "Vectormania"
+group = "Phenomena"
+source = "script"
+
+[demozoo.229689]
+title = "Vectormania"
+group = "Tech"
+source = "script"
+
+[demozoo.233270]
+title = "Vectormania"
+group = "The Sunriders / X-Factor"
+source = "script"
+
+[demozoo.265284]
+title = "Vectormania"
+group = "Visdom"
+source = "script"
+
+[demozoo.137712]
+title = "Vectors"
+group = "Public Enemies"
+source = "script"
+
+[demozoo.212617]
+title = "Vectors"
+group = "Securitate"
+source = "script"
+
+[demozoo.215356]
+title = "Vectors"
+group = "Master Crew"
+source = "script"
+machine = "a500_ks12"
+
+[demozoo.245116]
+title = "Vectors"
+group = "Grace"
+source = "script"
+
+[demozoo.251639]
+title = "Vectors"
+group = "Mystix"
+source = "script"
+
+[demozoo.252741]
+title = "Vectors"
+group = "Omicron"
+source = "script"
+
+[demozoo.253784]
+title = "Vectors"
+group = "Phoenix"
+source = "script"
+
+[demozoo.282259]
+title = "Vectors"
+group = "Mercenary"
+source = "script"
+
+[demozoo.338892]
+title = "Vectors Again?"
+group = "TomSoft"
+source = "script"
+
+[demozoo.21918]
+title = "Vectors For All"
+group = "Vertigo"
+source = "script"
+
+[demozoo.206806]
+title = "Vectors n' Logos"
+group = "Action"
+source = "script"
+
+[demozoo.245604]
+title = "Vectors Only"
+group = "Talent"
+source = "script"
+
+[demozoo.304189]
+title = "Vectors32"
+group = "Vectors"
+source = "script"
+
+[demozoo.154721]
+title = "Vectorscroll"
+group = "Magnetic Fields"
+source = "script"
+
+[demozoo.229575]
+title = "Vectorscroller"
+group = "Pulsar"
+source = "script"
+machine = "a500_512k"
+
+[demozoo.232931]
+title = "Vectorsine"
+group = "The Hacking Relation"
+source = "script"
+
+[demozoo.119230]
+title = "Vectory"
+group = "Rebels"
+source = "script"
+
+[demozoo.224766]
+title = "Vectory"
+group = "Ravish"
+source = "script"
+
+[demozoo.287330]
+title = "Vectory"
+group = "Septic"
+source = "script"
+
+[demozoo.216740]
+title = "Vectory Intro"
+group = "Rebels"
+source = "script"
+
+[demozoo.246974]
+title = "Vectraz"
+group = "Inner City"
+source = "script"
+
+[demozoo.22214]
+title = "Vectrex"
+group = "Scoopex"
+source = "script"
+
+[demozoo.221897]
+title = "Vectris"
+group = "Toxic Trooper"
+source = "script"
+
+[demozoo.227820]
+title = "Vectro"
+group = "Marram"
+source = "script"
+
+[demozoo.244465]
+title = "Vectro"
+group = "Frantic"
+source = "script"
+
+[demozoo.172156]
+title = "Vedder 40 Birthro"
+group = "iNSANE"
+source = "script"
+
+[demozoo.178417]
+title = "Vegemite - Beyond Taste"
+group = "Frontier"
+source = "script"
+result = "unknown"
+
+[demozoo.209772]
+title = "Veil of Sorrow 2"
+group = "Gamma"
+source = "script"
+
+[demozoo.215652]
+title = "Vektor Demo"
+group = "Tracheen"
+source = "script"
+
+[demozoo.229736]
+title = "Vektor Demo"
+group = "Amiga Industries"
+source = "script"
+
+[demozoo.233519]
+title = "Vektor Demo"
+group = "Demons"
+source = "script"
+
+[demozoo.160604]
+title = "Vektor Dreamz"
+group = "Absolute!"
+source = "script"
+
+[demozoo.254351]
+title = "Vektor Hektor"
+group = "PowerDrive"
+source = "script"
+
+[demozoo.253917]
+title = "Vektor Scroll"
+group = "Piranhas / Aces"
+source = "script"
+
+[demozoo.248253]
+title = "VektoriJa Viuhahdus"
+group = "Complex / Scoopex"
+source = "script"
+
+[demozoo.240497]
+title = "Vektors Forever"
+group = "Defjam"
+source = "script"
+
+[demozoo.253169]
+title = "Veloci-Vendors"
+group = "Parallax"
+source = "script"
+result = "unknown"
+
+[demozoo.144833]
+title = "Velociraptore"
+group = "Melting Pot"
+source = "script"
+machine = "a1200"
+
+[demozoo.24867]
+title = "Velocity"
+group = "Creative Minds"
+source = "script"
+result = "unknown"
+run = "demo"
+
+[demozoo.228689]
+title = "Velvet Creation"
+group = "Extince"
+source = "script"
+
+[demozoo.21835]
+title = "Vendetta"
+group = "Nuance"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.254905]
+title = "Vengeance"
+group = "Pure Metal Coders"
+source = "script"
+
+[demozoo.228397]
+title = "Venitian Blind Sin-Wave"
+group = "Dr. Trog"
+source = "script"
+
+[demozoo.246098]
+title = "Venlo Copy Party"
+group = "Hotline"
+source = "script"
+
+[demozoo.265245]
+title = "Venlo Party Demo"
+group = "Vision Factory"
+source = "script"
+
+[demozoo.189353]
+title = "Ventilator"
+group = "A.S.A. / T.B.K."
+source = "script"
+machine = "a1200"
+
+[demozoo.225299]
+title = "Ventilatör"
+group = "Dgf"
+source = "script"
+
+[demozoo.196068]
+title = "Vention's Intro"
+group = "Kefrens"
+source = "script"
+
+[demozoo.2059]
+title = "Ventro"
+group = "Vendetta Productions"
+source = "script"
+
+[demozoo.328983]
+title = "Venture - Feeling Like Fucking A Dog"
+group = "Alpha Flight"
+source = "script"
+
+[demozoo.222190]
+title = "Venue BBS"
+group = "Genetics"
+source = "script"
+result = "unknown"
+
+[demozoo.229774]
+title = "Verdict Pack 17 Intro"
+group = "Orion"
+source = "script"
+
+[demozoo.260107]
+title = "Versitro -Very Simple Intro-"
+group = "Symbiosis"
+source = "script"
+result = "unknown"
+
+[demozoo.36112]
+title = "Versor"
+group = "Anadune"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.210448]
+title = "Vertex"
+group = "Red Chrome"
+source = "script"
+run = "Vertex"
+
+[demozoo.154433]
+title = "Vertical Insanity"
+group = "Razor 1911"
+source = "script"
+
+[demozoo.265281]
+title = "Vertical Pulse"
+group = "Visdom"
+source = "script"
+
+[demozoo.32537]
+title = "Vertigo"
+group = "Abyss"
+source = "script"
+result = "unknown"
+
+[demozoo.109183]
+title = "Vertigo"
+group = "Y-Crew"
+source = "script"
+
+[demozoo.42035]
+title = "Vertus"
+group = "Potion"
+source = "script"
+machine = "a1200"
+run = "Vertus.exe"
+
+[demozoo.247702]
+title = "Very Angry"
+group = "Katharsis"
+source = "script"
+result = "unknown"
+
+[demozoo.2883]
+title = "Very Best Demo"
+group = "Apathy"
+source = "script"
+machine = "a1200"
+
+[demozoo.253744]
+title = "Very Drunk"
+group = "Phuture 303"
+source = "script"
+
+[demozoo.246141]
+title = "Very Easy Intro"
+group = "Horizon"
+source = "script"
+
+[demozoo.189779]
+title = "Very First Intro"
+group = "Antiriad"
+source = "script"
+
+[demozoo.240055]
+title = "Very First Intro"
+group = "Mirage International / Deathstar"
+source = "script"
+
+[demozoo.249590]
+title = "Very First Intro"
+group = "Mad Elks"
+source = "script"
+
+[demozoo.286571]
+title = "Very First Intro"
+group = "X-Factor"
+source = "script"
+
+[demozoo.329361]
+title = "Very First Intro"
+group = "The Bladerunners"
+source = "script"
+
+[demozoo.351848]
+title = "Very First Intro"
+group = "Magnetic Fields"
+source = "script"
+
+[demozoo.225008]
+title = "Very Good Intro"
+group = "The Dream Masters"
+source = "script"
+
+[demozoo.173654]
+title = "Very Hard"
+group = "Hardcore Mofokkahz"
+source = "script"
+
+[demozoo.214675]
+title = "Very New Stuff 14.04.1988 Intro"
+group = "PHR Crew"
+source = "script"
+
+[demozoo.214677]
+title = "Very New Stuff 29.04.1988 Intro"
+group = "PHR Crew"
+source = "script"
+
+[demozoo.218079]
+title = "Very Quickly Coded Proggy"
+group = "European Software Agency"
+source = "script"
+
+[demozoo.218546]
+title = "Very Small Intro"
+group = "Krypton Force"
+source = "script"
+
+[demozoo.223097]
+title = "Very Small Intro"
+group = "Destroyers"
+source = "script"
+
+[demozoo.292878]
+title = "Very Small Intro"
+group = "Eternity"
+source = "script"
+
+[demozoo.191777]
+title = "Very Small Shitty Tro"
+group = "Przyjaciele Stefana B. / 8 Bits"
+source = "script"
+result = "unknown"
+
+[demozoo.241080]
+title = "Very Tired"
+group = "Diffusion"
+source = "script"
+
+[demozoo.262510]
+title = "Very Usual"
+group = "The Powerlords"
+source = "script"
+
+[demozoo.96612]
+title = "Vesc"
+group = "Rebels"
+source = "script"
+
+[demozoo.223520]
+title = "Vexar Intro"
+group = "Vexar"
+source = "script"
+
+[demozoo.32972]
+title = "Vi Elsker Darkhawk"
+group = "Depth"
+source = "script"
+machine = "a1200"
+
+[demozoo.235473]
+title = "Vi Naar Det Nok"
+group = "Bacteria"
+source = "script"
+
+[demozoo.183490]
+title = "Vi Skal På Ferie"
+group = "Co-Co Arts"
+source = "script"
+
+[demozoo.229576]
+title = "Via Porno II"
+group = "Pulsar"
+source = "script"
+machine = "a500_ks12"
+
+[demozoo.224872]
+title = "Viaje Al Centro de la Tierra"
+group = "Peninsul Team"
+source = "script"
+
+[demozoo.33980]
+title = "Vibes"
+group = "Oops!"
+source = "script"
+machine = "a1200"
+boot = "floppy"
+result = "crashes-later"
+
+[demozoo.214163]
+title = "Vibrating Arrow"
+group = "Red Rats"
+source = "script"
+
+[demozoo.221967]
+title = "Vibrations"
+group = "Pici"
+source = "script"
+
+[demozoo.261140]
+title = "Vibrations"
+group = "Zenith"
+source = "script"
+
+[demozoo.56217]
+title = "Vice"
+group = "V-Nom"
+source = "script"
+result = "unknown"
+
+[demozoo.233945]
+title = "Victims 1St"
+group = "Animators"
+source = "script"
+
+[demozoo.260268]
+title = "Victims of the Future"
+group = "Syntex"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.252954]
+title = "Victor's Victor"
+group = "Passion"
+source = "script"
+machine = "a1200"
+
+[demozoo.81068]
+title = "Victory"
+group = "V-Nom"
+source = "script"
+result = "unknown"
+
+[demozoo.185947]
+title = "Victory"
+group = "Headway"
+source = "script"
+machine = "a1200"
+
+[demozoo.312871]
+title = "Vidar"
+group = "The Magic Circle"
+source = "script"
+
+[demozoo.100936]
+title = "Vidar!"
+group = "Stone Arts"
+source = "script"
+machine = "a1200"
+
+[demozoo.265342]
+title = "VidGen v1.0"
+group = "Vision"
+source = "script"
+result = "unknown"
+
+[demozoo.242936]
+title = "Vidi Mice 1.0"
+group = "Endless Piracy"
+source = "script"
+
+[demozoo.222317]
+title = "Viking E-Dude"
+group = "ERS 98"
+source = "script"
+machine = "a1200"
+
+[demozoo.114783]
+title = "Villed Factors - History of Vectors"
+group = "23 Celsius Crew"
+source = "script"
+
+[demozoo.254522]
+title = "Vindication"
+group = "Przyjaciele Stefana B."
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.318905]
+title = "Vindication"
+group = "Arttec"
+source = "script"
+
+[demozoo.213301]
+title = "Vinh's BBS"
+group = "LSD"
+source = "script"
+
+[demozoo.22590]
+title = "Vinner"
+group = "Baseballs"
+source = "script"
+result = "unknown"
+
+[demozoo.342443]
+title = "Vintage Glow"
+group = "X-Men"
+source = "script"
+
+[demozoo.2873]
+title = "Vintage hardcore fuck"
+group = "Team Karbis"
+source = "script"
+result = "unknown"
+run = "8f"
+
+[demozoo.241100]
+title = "Vintertid"
+group = "Direct"
+source = "script"
+
+[demozoo.257502]
+title = "Violation 70 - menu"
+group = "Scoopex"
+source = "script"
+
+[demozoo.257506]
+title = "Violation 84 intro"
+group = "Scoopex"
+source = "script"
+
+[demozoo.28973]
+title = "Violator"
+group = "Absence"
+source = "script"
+
+[demozoo.393924]
+title = "Violence"
+group = "Anthrox"
+source = "script"
+
+[demozoo.23772]
+title = "Violent Dumb (The Demo)"
+group = "Mankind"
+source = "script"
+result = "unknown"
+
+[demozoo.231190]
+title = "Violin Power"
+group = "Creators"
+source = "script"
+
+[demozoo.182835]
+title = "Viper's Demo"
+group = "Viper"
+source = "script"
+
+[demozoo.250920]
+title = "Viper's Party Demo"
+group = "Mirage International"
+source = "script"
+
+[demozoo.156034]
+title = "Virgill 42 Birthtro"
+group = "iNSANE"
+source = "script"
+
+[demozoo.18873]
+title = "Virtual"
+group = "Skahn-X"
+source = "script"
+machine = "a1200_fast"
+run = "virtual.exe"
+
+[demozoo.250792]
+title = "Virtual Conspiracy 95 Party Invitation"
+group = "Moment 22"
+source = "script"
+result = "unknown"
+
+[demozoo.29784]
+title = "Virtual Conspiracy Intro"
+group = "iNSANE"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.30469]
+title = "Virtual Illusion"
+group = "Illusion"
+source = "script"
+result = "unknown"
+
+[demozoo.1939]
+title = "Virtual Intelligence"
+group = "Horizon"
+source = "script"
+
+[demozoo.206719]
+title = "Virtual Intelligence - Party Version"
+group = "Horizon"
+source = "script"
+
+[demozoo.5796]
+title = "Virtual Journey"
+group = "Defiance"
+source = "script"
+machine = "a1200"
+
+[demozoo.390582]
+title = "Virtual Kanser Deluxe"
+group = "Project Zero"
+source = "script"
+
+[demozoo.5318]
+title = "Virtual Meltdown"
+group = "Paradise"
+source = "script"
+machine = "a1200_030"
+disks = ["Paradise-VirtualMeltdownA.dms", "Paradise-VirtualMeltdownB.dms"]
+swaps = [{ disk = 2, at = 508.8, key = "lmb" }]
+
+[demozoo.318803]
+title = "Virtual Pain"
+group = "Jelly"
+source = "script"
+machine = "a1200"
+
+[demozoo.21612]
+title = "Virtual Pancakes"
+group = "Artificial People"
+source = "script"
+result = "unknown"
+
+[demozoo.88603]
+title = "Virtual World"
+group = "TomSoft"
+source = "script"
+
+[demozoo.197374]
+title = "Virus Boot"
+group = "Random Access"
+source = "script"
+result = "unknown"
+
+[demozoo.219942]
+title = "Virus Destruction Kit v1.0"
+group = "Tartan Army"
+source = "script"
+
+[demozoo.260812]
+title = "Virus Hunter v4.3"
+group = "The Band"
+source = "script"
+
+[demozoo.254496]
+title = "Virus Protector v2.0 Intro"
+group = "Pseudo-Ops"
+source = "script"
+
+[demozoo.235444]
+title = "Virus Terminator 2.0"
+group = "Bamiga Sector One"
+source = "script"
+
+[demozoo.262736]
+title = "Viruskiller Update Intro"
+group = "The Special Brothers"
+source = "script"
+
+[demozoo.263612]
+title = "Viruskiller V1.0 Intro"
+group = "Tristar"
+source = "script"
+result = "unknown"
+
+[demozoo.220483]
+title = "Visibility"
+group = "Toxic Track"
+source = "script"
+
+[demozoo.248742]
+title = "Visible World Preview"
+group = "Madwizards"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.7614]
+title = "Vision"
+group = "Oxygene"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.224582]
+title = "Vision"
+group = "Software Runners from Hell"
+source = "script"
+
+[demozoo.217534]
+title = "Vision Party Demo"
+group = "Lazer"
+source = "script"
+
+[demozoo.246643]
+title = "Vision Thing BBS & Endor BBS"
+group = "Infect"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.177836]
+title = "Vision-Party-Intro"
+group = "Pegasus"
+source = "script"
+
+[demozoo.255478]
+title = "Visions"
+group = "Ram Jam"
+source = "script"
+result = "unknown"
+
+[demozoo.322615]
+title = "Visor Beams"
+group = "Nah-Kolor"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.246688]
+title = "Vistademo 1991"
+group = "Image"
+source = "script"
+
+[demozoo.10363]
+title = "Visual Distortion"
+group = "Anarchy"
+source = "script"
+
+[demozoo.221306]
+title = "Visual Dream"
+group = "Cromex"
+source = "script"
+
+[demozoo.182978]
+title = "Visual Impression"
+group = "Mean Machine"
+source = "script"
+
+[demozoo.195573]
+title = "Visual Intensity 2 - Headlinetro"
+group = "Dual Format"
+source = "script"
+
+[demozoo.213311]
+title = "Visual Party Invitation"
+group = "Zelax"
+source = "script"
+
+[demozoo.92791]
+title = "Vita di Merda"
+group = "Figa Production"
+source = "script"
+machine = "a1200"
+run = "VitaDiMerda.exe"
+
+[demozoo.342961]
+title = "Vitae"
+group = "Marquee Design"
+source = "script"
+result = "unknown"
+
+[demozoo.139137]
+title = "Vital"
+group = "Mystic"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.22196]
+title = "Vitsippe Hater"
+group = "Dual Crew"
+source = "script"
+
+[demozoo.378809]
+title = "Vittu"
+group = "Vitun Elitet"
+source = "script"
+
+[demozoo.254258]
+title = "Vittuliukaste -Vittu, pakko kai tää on julkasta ku tuli tehtyä-"
+group = "Poro"
+source = "script"
+machine = "a1200"
+
+[demozoo.247637]
+title = "Vitun Munkit"
+group = "Kinky"
+source = "script"
+machine = "a1200"
+run = "vitun"
+
+[demozoo.109896]
+title = "Vitusatana"
+group = "Sonik Clique / CNCD"
+source = "script"
+
+[demozoo.333085]
+title = "Vituttaa"
+group = "Bloodsuckers"
+source = "script"
+
+[demozoo.27712]
+title = "Vivat Slovakia"
+group = "Vegatronik"
+source = "script"
+machine = "a1200"
+
+[demozoo.21052]
+title = "Vivid"
+group = "Iris"
+source = "script"
+
+[demozoo.253818]
+title = "Vivisect 4"
+group = "Phenomena"
+source = "script"
+
+[demozoo.97929]
+title = "Vixen"
+group = "Interactive"
+source = "script"
+
+[demozoo.385553]
+title = "Vixtro"
+group = "Awesome Games"
+source = "script"
+
+[demozoo.262379]
+title = "Viz and Chase"
+group = "The Silents"
+source = "script"
+run = "ib"
+
+[demozoo.213303]
+title = "Viz Book Of Crap Jokes Advertise"
+group = "LSD"
+source = "script"
+
+[demozoo.260788]
+title = "Vizawrite v1.0"
+group = "The Bitstoppers"
+source = "script"
+
+[demozoo.368480]
+title = "VM i OS"
+group = "T.E.T. Offensiven"
+source = "script"
+machine = "a1200_030"
+run = "3.dat"
+
+[demozoo.160498]
+title = "VOD"
+group = "Void / Candle"
+source = "script"
+result = "unknown"
+
+[demozoo.261736]
+title = "Vodka Dreams"
+group = "Vixen"
+source = "script"
+
+[demozoo.249834]
+title = "Voice Bridge"
+group = "Maniacs"
+source = "script"
+
+[demozoo.248571]
+title = "Voice From Another Planet 2  - Menu"
+group = "Laserdance"
+source = "script"
+
+[demozoo.28497]
+title = "Voices From The Dark"
+group = "Promise"
+source = "script"
+machine = "a1200"
+
+[demozoo.202454]
+title = "Void Versus Cubes"
+group = "Void"
+source = "script"
+
+[demozoo.185206]
+title = "Voidboot"
+group = "Void"
+source = "script"
+
+[demozoo.156165]
+title = "Voids Are Back In Town"
+group = "Void"
+source = "script"
+
+[demozoo.176339]
+title = "Volcano"
+group = "Disknet"
+source = "script"
+machine = "a1200"
+
+[demozoo.38241]
+title = "Vold"
+group = "Spaceballs"
+source = "script"
+
+[demozoo.252358]
+title = "Vold Er Ingen Hindring - Part 1"
+group = "Oblivion"
+source = "script"
+
+[demozoo.252359]
+title = "Vold Er Ingen Hindring - Part 2"
+group = "Oblivion"
+source = "script"
+
+[demozoo.7888]
+title = "Voll Crass"
+group = "Abyss"
+source = "script"
+machine = "a1200"
+
+[demozoo.92793]
+title = "Volta10000"
+group = "Mankind"
+source = "script"
+result = "unknown"
+run = "volta1oooo.exe"
+
+[demozoo.122376]
+title = "Vomit Visions"
+group = "The Electronic Knights"
+source = "script"
+
+[demozoo.196125]
+title = "Vomitro"
+group = "Enigma"
+source = "script"
+
+[demozoo.182269]
+title = "Voodoo"
+group = "Puzzle"
+source = "script"
+machine = "a1200"
+
+[demozoo.258329]
+title = "Vore"
+group = "Skulls"
+source = "script"
+
+[demozoo.1321]
+title = "Vortex 42 Party Demo 1"
+group = "The Young Ones"
+source = "script"
+
+[demozoo.1323]
+title = "Vortex 42 Party Demo 2"
+group = "The Young Ones"
+source = "script"
+result = "unknown"
+
+[demozoo.313806]
+title = "Vote for \"Bridge\""
+group = "Tribe"
+source = "script"
+
+[demozoo.155224]
+title = "Vote For Evilbot! Amiga Edition"
+group = "Czhulhu"
+source = "script"
+result = "unknown"
+
+[demozoo.8388]
+title = "Vote Now"
+group = "Apathy"
+source = "script"
+result = "unknown"
+
+[demozoo.346437]
+title = "Votebastards"
+group = "Nukleus"
+source = "script"
+
+[demozoo.244879]
+title = "Vox Pop -Snowfight in The Heaven-"
+group = "Gnu Design"
+source = "script"
+
+[demozoo.118024]
+title = "Voxelnoid Theme"
+group = "Triace"
+source = "script"
+
+[demozoo.3122]
+title = "Voy-Voy"
+group = "Void"
+source = "script"
+
+[demozoo.1914]
+title = "Voyage"
+group = "Razor 1911"
+source = "script"
+
+[demozoo.92619]
+title = "Voyage"
+group = "Fantasy Force"
+source = "script"
+
+[demozoo.258757]
+title = "Voyage"
+group = "Software of Sweden"
+source = "script"
+
+[demozoo.250497]
+title = "Voyage au Centre de la Terre"
+group = "Megaforce"
+source = "script"
+
+[demozoo.9807]
+title = "Voyage In Storm"
+group = "Impulse"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.142071]
+title = "Voyager"
+group = "Batman Group"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.218080]
+title = "Voyager"
+group = "European Software Agency"
+source = "script"
+
+[demozoo.241455]
+title = "Voyager's Demo"
+group = "Doom"
+source = "script"
+result = "unknown"
+
+[demozoo.220412]
+title = "Vranov '94"
+group = "Vectors / Pici / Agony / Division"
+source = "script"
+
+[demozoo.230504]
+title = "Vroom"
+group = "Reality"
+source = "script"
+
+[demozoo.227333]
+title = "Vroom - Import"
+group = "Parallax"
+source = "script"
+
+[demozoo.167242]
+title = "Vrroemm?!"
+group = "Desire"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.2155]
+title = "Vuku"
+group = "Arcadia Team"
+source = "script"
+
+[demozoo.238782]
+title = "VUmeters"
+group = "Bounty"
+source = "script"
+
+[demozoo.223273]
+title = "VWSWAC Intro"
+group = "Paralax Systems"
+source = "script"
+
+[demozoo.58815]
+title = "Vänner Från Förr"
+group = "Laxative Effects"
+source = "script"
+machine = "a1200"
+
+[demozoo.105983]
+title = "Växthus 7"
+group = "SKBG All-Stars"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.310071]
+title = "VëRÿ HäRD 25 year anniversary edition"
+group = "Hardcore Mofokkahz"
+source = "script"

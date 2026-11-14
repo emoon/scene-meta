@@ -1,0 +1,627 @@
+[demozoo.262508]
+title = "X Copy 3 Special"
+group = "The Powerlords"
+source = "script"
+
+[demozoo.218989]
+title = "X Trax"
+group = "Triflex"
+source = "script"
+
+[demozoo.234720]
+title = "X-Cad"
+group = "Axxess"
+source = "script"
+
+[demozoo.257518]
+title = "X-Cad Newest Version"
+group = "Share and Enjoy / Scoopex"
+source = "script"
+
+[demozoo.227810]
+title = "X-Centric"
+group = "Dopex"
+source = "script"
+
+[demozoo.30464]
+title = "X-Com"
+group = "Nexus"
+source = "script"
+machine = "a1200"
+
+[demozoo.208723]
+title = "X-Copy"
+group = "Shining 8 / Silver Hawks / Phaze101"
+source = "script"
+
+[demozoo.266014]
+title = "X-Copy Demo"
+group = "Wizards"
+source = "script"
+
+[demozoo.217575]
+title = "X-Copy III Demo"
+group = "Axept"
+source = "script"
+
+[demozoo.229391]
+title = "X-Copy Intro"
+group = "Argon"
+source = "script"
+
+[demozoo.268843]
+title = "X-Copy V4.0"
+group = "Express"
+source = "script"
+boot = "floppy"
+
+[demozoo.222233]
+title = "X-Cuse"
+group = "Strato-impact"
+source = "script"
+machine = "a1200"
+
+[demozoo.194778]
+title = "X-Day"
+group = "I486"
+source = "script"
+machine = "a1200"
+
+[demozoo.249010]
+title = "X-Es Techno"
+group = "Legend"
+source = "script"
+
+[demozoo.249011]
+title = "X-Es Techno - Matje"
+group = "Legend"
+source = "script"
+
+[demozoo.249012]
+title = "X-Es Techno -No Limits-"
+group = "Legend"
+source = "script"
+
+[demozoo.38201]
+title = "X-Files"
+group = "Ciapciusie"
+source = "script"
+machine = "a1200_030"
+run = "X00000002.dat"
+
+[demozoo.229899]
+title = "X-Files"
+group = "TBL2"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.130221]
+title = "X-Files Intro"
+group = "Nuance"
+source = "script"
+machine = "a1200"
+
+[demozoo.153769]
+title = "X-Large"
+group = "Spreadpoint"
+source = "script"
+
+[demozoo.227121]
+title = "X-Mag 1 Intro /Brain"
+group = "Inf."
+source = "script"
+
+[demozoo.227122]
+title = "X-Mag 1 Intro /Katani"
+group = "Inf."
+source = "script"
+
+[demozoo.215316]
+title = "X-Mas"
+group = "The Supply Team"
+source = "script"
+
+[demozoo.236586]
+title = "X-Mas"
+group = "Candle"
+source = "script"
+machine = "a1200"
+
+[demozoo.242855]
+title = "X-Mas"
+group = "End of Century 1999"
+source = "script"
+
+[demozoo.258761]
+title = "X-Mas"
+group = "Software of Sweden"
+source = "script"
+
+[demozoo.102569]
+title = "X-Mas -91"
+group = "Disknet"
+source = "script"
+
+[demozoo.246933]
+title = "X-Mas 2018"
+group = "iNSANE"
+source = "script"
+
+[demozoo.240788]
+title = "X-Mas 90"
+group = "Desire"
+source = "script"
+
+[demozoo.321659]
+title = "X-Mas 91"
+group = "Shining 8"
+source = "script"
+
+[demozoo.236529]
+title = "X-Mas 96"
+group = "Carnage"
+source = "script"
+
+[demozoo.165643]
+title = "X-Mas Demo"
+group = "Intense"
+source = "script"
+
+[demozoo.186595]
+title = "X-Mas Demo"
+group = "Cavemen"
+source = "script"
+
+[demozoo.193520]
+title = "X-Mas Demo"
+group = "Depredators"
+source = "script"
+
+[demozoo.208313]
+title = "X-Mas Demo"
+group = "Unique"
+source = "script"
+
+[demozoo.213984]
+title = "X-Mas Demo"
+group = "Alfa Crew"
+source = "script"
+
+[demozoo.224793]
+title = "X-Mas Demo"
+group = "Matti & Teppo"
+source = "script"
+
+[demozoo.232828]
+title = "X-mas Demo"
+group = "Unicorn"
+source = "script"
+
+[demozoo.234811]
+title = "X-Mas Demo"
+group = "Axel Retro-Software"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.258805]
+title = "X-Mas Demo"
+group = "Sonic"
+source = "script"
+
+[demozoo.260596]
+title = "X-Mas Demo"
+group = "Tetragon"
+source = "script"
+
+[demozoo.267268]
+title = "X-Mas Demo"
+group = "Mezcal"
+source = "script"
+
+[demozoo.289342]
+title = "X-Mas demo"
+group = "Star"
+source = "script"
+
+[demozoo.331539]
+title = "X-Mas Demo"
+group = "Recall"
+source = "script"
+
+[demozoo.354352]
+title = "X-Mas Demo"
+group = "The Special Brothers"
+source = "script"
+
+[demozoo.169486]
+title = "X-Mas Dentro"
+group = "Shining 8"
+source = "script"
+
+[demozoo.210887]
+title = "X-MAS Dentro / Revenge 2"
+group = "Vertical Syndicate"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.256645]
+title = "X-Mas Extra"
+group = "Ruskean Reian Ritarit"
+source = "script"
+machine = "a1200"
+
+[demozoo.215948]
+title = "X-mas Greetings"
+group = "Goonies 2041"
+source = "script"
+
+[demozoo.2041]
+title = "X-Mas Intro"
+group = "Vixen"
+source = "script"
+
+[demozoo.238992]
+title = "X-Mas Intro"
+group = "Bronx"
+source = "script"
+
+[demozoo.240634]
+title = "X-Mas Intro"
+group = "Dexion"
+source = "script"
+
+[demozoo.258998]
+title = "X-Mas Intro"
+group = "Spreadpoint"
+source = "script"
+
+[demozoo.261640]
+title = "X-Mas Intro"
+group = "X-Trade"
+source = "script"
+machine = "a1200"
+
+[demozoo.237840]
+title = "X-Mas Intro 1997"
+group = "Crux"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.111238]
+title = "X-Mas Intro aka X-mas Time"
+group = "Skid Row"
+source = "script"
+
+[demozoo.249938]
+title = "X-mas Intro to Remind You of Our Boards"
+group = "Majic 12"
+source = "script"
+
+[demozoo.215357]
+title = "X-Mas Orgy"
+group = "Master Crew"
+source = "script"
+
+[demozoo.2664]
+title = "X-Mas Party Intro"
+group = "Frantic"
+source = "script"
+
+[demozoo.252230]
+title = "X-mas Silvester"
+group = "Nuance"
+source = "script"
+
+[demozoo.196448]
+title = "X-Mas Special (Tolupukkirap)"
+group = "Damage"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.5801]
+title = "X-mass Time"
+group = "Damage / DTS"
+source = "script"
+
+[demozoo.8465]
+title = "X-Mastro"
+group = "Zenon"
+source = "script"
+result = "unknown"
+
+[demozoo.223393]
+title = "X-Mastro"
+group = "Simplex Inc."
+source = "script"
+
+[demozoo.204046]
+title = "X-max Intro"
+group = "Antarkos"
+source = "script"
+
+[demozoo.223127]
+title = "X-movement"
+group = "The Feigling Crew"
+source = "script"
+result = "unknown"
+
+[demozoo.10157]
+title = "X-Orgasm"
+group = "Syndrome"
+source = "script"
+result = "unknown"
+run = "->X-Orgasm<-"
+
+[demozoo.237352]
+title = "X-Pack 4 Intro"
+group = "Cinefex Design"
+source = "script"
+
+[demozoo.8670]
+title = "X-Perience"
+group = "Madwizards"
+source = "script"
+machine = "a1200_fast"
+run = "MWI-X-perience.decrunched"
+
+[demozoo.286]
+title = "X-Ray"
+group = "Abyss"
+source = "script"
+
+[demozoo.221533]
+title = "X-Rayz BBS"
+group = "X-Rayz"
+source = "script"
+machine = "a1200"
+
+[demozoo.352393]
+title = "X-Rayz Production"
+group = "Bamiga Sector One / The Kent Team / Inertia / X-Rayz"
+source = "script"
+
+[demozoo.215620]
+title = "X-Small Intro"
+group = "Atomic Intelligence"
+source = "script"
+
+[demozoo.233795]
+title = "Xanadu-Box BBS"
+group = "Analog"
+source = "script"
+
+[demozoo.329781]
+title = "XCopy Demo"
+group = "Draco"
+source = "script"
+
+[demozoo.142341]
+title = "Xenium"
+group = "Old Bulls"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.299151]
+title = "Xenium 2021"
+group = "CrapTeam"
+source = "script"
+
+[demozoo.228320]
+title = "Xenomorphosis IV"
+group = "New Order"
+source = "script"
+
+[demozoo.213541]
+title = "Xenon 2 Intro"
+group = "Quartet"
+source = "script"
+
+[demozoo.255824]
+title = "Xenon 2 Music Rip"
+group = "Red Sector Inc."
+source = "script"
+
+[demozoo.257521]
+title = "Xenon 2: Megablast Music Rip"
+group = "Share and Enjoy / Scoopex"
+source = "script"
+boot = "floppy"
+
+[demozoo.210542]
+title = "Xenon 2: Megablast Rip"
+group = "Factor 4"
+source = "script"
+
+[demozoo.262707]
+title = "Xenon III"
+group = "The Web Inc."
+source = "script"
+
+[demozoo.89971]
+title = "Xenophobia"
+group = "Subspace"
+source = "script"
+machine = "a1200_fast"
+run = "chunky.dat"
+
+[demozoo.211809]
+title = "Xenox Demo"
+group = "Clones"
+source = "script"
+
+[demozoo.208920]
+title = "Xerxes"
+group = "Xerxes"
+source = "script"
+
+[demozoo.229224]
+title = "Xerxes Music"
+group = "Voice / Tommyknockers"
+source = "script"
+
+[demozoo.21508]
+title = "XIII"
+group = "Oxyron"
+source = "script"
+result = "unknown"
+
+[demozoo.229225]
+title = "Xion Is Back"
+group = "Tommyknockers"
+source = "script"
+
+[demozoo.28357]
+title = "XLN-35"
+group = "Super Mario Brothers"
+source = "script"
+machine = "a1200"
+
+[demozoo.121675]
+title = "Xmas"
+group = "Recall"
+source = "script"
+
+[demozoo.151767]
+title = "Xmas 2015"
+group = "PACiF!C"
+source = "script"
+
+[demozoo.204072]
+title = "Xmas 89"
+group = "Savage"
+source = "script"
+
+[demozoo.2358]
+title = "Xmas Demo"
+group = "Cyclone"
+source = "script"
+
+[demozoo.214269]
+title = "Xmas Demo"
+group = "Digital Artists Inc."
+source = "script"
+
+[demozoo.223229]
+title = "Xmas Demo"
+group = "Beyond 2000"
+source = "script"
+
+[demozoo.255483]
+title = "Xmas Demo 1991"
+group = "Ram Jam"
+source = "script"
+
+[demozoo.303526]
+title = "Xmas Intro"
+group = "Exeron / Maniac"
+source = "script"
+
+[demozoo.166338]
+title = "Xmas Lights"
+group = "Void"
+source = "script"
+machine = "a1200"
+
+[demozoo.379688]
+title = "XMas Quick Intro"
+group = "Pendle Europa"
+source = "script"
+
+[demozoo.223864]
+title = "Xmas Special"
+group = "The Console Connection"
+source = "script"
+
+[demozoo.257522]
+title = "XmasDemo"
+group = "Scoopex"
+source = "script"
+machine = "a1200_fast"
+run = "XMasDemo"
+
+[demozoo.167646]
+title = "Xmases"
+group = "Dekadence"
+source = "script"
+run = "dkd-xmases_safeandslow.exe"
+
+[demozoo.211373]
+title = "Xmass Demo 2"
+group = "Jolly"
+source = "script"
+machine = "a1200"
+
+[demozoo.62868]
+title = "xmen@p2b"
+group = "X-Men"
+source = "script"
+result = "unknown"
+
+[demozoo.240406]
+title = "Xor Boot v1.1"
+group = "Delight"
+source = "script"
+
+[demozoo.314262]
+title = "XorMaybe"
+group = "no9"
+source = "script"
+machine = "a1200"
+
+[demozoo.96277]
+title = "Xpose"
+group = "The Silents"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.26940]
+title = "XS"
+group = "Reflex"
+source = "script"
+
+[demozoo.219311]
+title = "XTC Rave"
+group = "Spacecake"
+source = "script"
+
+[demozoo.96294]
+title = "XTC.EXE"
+group = "Floppy / Applause"
+source = "script"
+machine = "a1200"
+
+[demozoo.191796]
+title = "XTD=KGB"
+group = "Wiadomosci"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.255482]
+title = "XTME"
+group = "Ram Jam"
+source = "script"
+machine = "a1200"
+run = "xtme.exe"
+
+[demozoo.207956]
+title = "XXX"
+group = "Leader Productions"
+source = "script"
+
+[demozoo.8398]
+title = "XXX Video"
+group = "Apathy"
+source = "script"
+result = "unknown"
+run = "XXX_Video.exe"
+
+[demozoo.6927]
+title = "XXX-Mess Demo"
+group = "Pussy"
+source = "script"
+
+[demozoo.8194]
+title = "Xybernection"
+group = "Sector 7"
+source = "script"
+machine = "a1200"

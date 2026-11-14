@@ -1,0 +1,3476 @@
+[demozoo.8395]
+title = "R"
+group = "Specter"
+source = "script"
+machine = "a1200"
+
+[demozoo.223615]
+title = "R-9 First Intro"
+group = "Prodigy"
+source = "script"
+
+[demozoo.386475]
+title = "R-Soft Intro"
+group = "R-Soft"
+source = "script"
+
+[demozoo.386474]
+title = "R-Soft IntroA"
+group = "R-Soft"
+source = "script"
+result = "unknown"
+
+[demozoo.234951]
+title = "R-Type Demo"
+group = "Australian Crackers United"
+source = "script"
+
+[demozoo.342664]
+title = "R-Type Demo"
+group = "Starlight"
+source = "script"
+result = "unknown"
+
+[demozoo.238582]
+title = "R-Type II Prerelease"
+group = "Black Monks / High Quality Crackings"
+source = "script"
+
+[demozoo.244376]
+title = "R-Type Mini Intro"
+group = "Freestyle UK"
+source = "script"
+
+[demozoo.341048]
+title = "R.A.W #5 Intro"
+group = "Spaceballs"
+source = "script"
+
+[demozoo.339489]
+title = "R.A.W 1 Intro"
+group = "New Wave / Pure Metal Coders"
+source = "script"
+
+[demozoo.270096]
+title = "R.A.W 2 Intro"
+group = "Spaceballs"
+source = "script"
+
+[demozoo.26786]
+title = "R.A.W 3 Intro"
+group = "Pure Metal Coders / Offence"
+source = "script"
+
+[demozoo.73402]
+title = "R0gar som b0gar"
+group = "Keso"
+source = "script"
+machine = "a1200"
+
+[demozoo.385484]
+title = "R4aCPC"
+group = "Virgill"
+source = "script"
+result = "unknown"
+run = "Virgill-R4aCPC_writer.exe"
+
+[demozoo.307940]
+title = "R4CraptroFiller"
+group = "Luc3k"
+source = "script"
+
+[demozoo.40329]
+title = "Ra-wicz"
+group = "Phase Truce"
+source = "script"
+result = "unknown"
+run = "Missed.not_crunched"
+
+[demozoo.25673]
+title = "Rabb-It"
+group = "Squirrelz"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.235100]
+title = "Rabbit"
+group = "Arise"
+source = "script"
+machine = "a1200"
+
+[demozoo.216688]
+title = "Rabbit Demo"
+group = "Rebels"
+source = "script"
+
+[demozoo.213475]
+title = "Rabbitmania"
+group = "Secret System Scientist"
+source = "script"
+
+[demozoo.7626]
+title = "Rabies"
+group = "Rage"
+source = "script"
+result = "unknown"
+
+[demozoo.112788]
+title = "Rabies"
+group = "Golems"
+source = "script"
+
+[demozoo.220743]
+title = "Raccadab"
+group = "Defiance"
+source = "script"
+
+[demozoo.294248]
+title = "Race Demo"
+group = "TomSoft"
+source = "script"
+
+[demozoo.191791]
+title = "Racibórz"
+group = "Spy"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.251630]
+title = "Rad Demo"
+group = "Mystix"
+source = "script"
+
+[demozoo.32372]
+title = "Radar"
+group = "Vector"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.46522]
+title = "Radial Blur"
+group = "Harvester"
+source = "script"
+machine = "a1200_fast"
+run = "hvr_radialblur.not_cr"
+
+[demozoo.24032]
+title = "Radianze"
+group = "Contraz"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.112724]
+title = "Radiateur"
+group = "PURe"
+source = "script"
+result = "unknown"
+run = "rad.3"
+
+[demozoo.38799]
+title = "Radiation"
+group = "The Camel Drivers"
+source = "script"
+result = "unknown"
+
+[demozoo.152626]
+title = "Radiation"
+group = "Solaris"
+source = "script"
+
+[demozoo.210884]
+title = "Radiation"
+group = "Vertical Syndicate"
+source = "script"
+machine = "a1200_fast"
+run = "radiation.exe"
+
+[demozoo.88618]
+title = "Radical"
+group = "Vision"
+source = "script"
+
+[demozoo.217]
+title = "Radikal"
+group = "Haujobb"
+source = "script"
+
+[demozoo.257404]
+title = "Radio Gargaj"
+group = "Scoopex"
+source = "script"
+
+[demozoo.8669]
+title = "Radio In Your Eyes"
+group = "Madwizards"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.377584]
+title = "Radioactive"
+group = "Rabies"
+source = "script"
+
+[demozoo.252541]
+title = "Radioactivity"
+group = "Obscene"
+source = "script"
+
+[demozoo.250914]
+title = "RAF Party Music"
+group = "Mirage"
+source = "script"
+
+[demozoo.141567]
+title = "Rage"
+group = "Old Bulls"
+source = "script"
+machine = "a1200"
+run = "11-Joker.Focus"
+
+[demozoo.275586]
+title = "Rage & DNS Party Demo"
+group = "Dynamic Systems / Rage"
+source = "script"
+
+[demozoo.46525]
+title = "Rage Against The Female"
+group = "Reason"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.310325]
+title = "Rage OS"
+group = "AttentionWhore"
+source = "script"
+
+[demozoo.27789]
+title = "Raggy"
+group = "Eltech"
+source = "script"
+machine = "a1200"
+
+[demozoo.32604]
+title = "Rahow Paradise"
+group = "P.H. Prod"
+source = "script"
+result = "unknown"
+
+[demozoo.245729]
+title = "Rahow Paradise"
+group = "Haujobb / Silicon / PSY-S"
+source = "script"
+machine = "a1200"
+boot = "floppy"
+
+[demozoo.209967]
+title = "Raiders On The Storm"
+group = "Deffpaccers"
+source = "script"
+
+[demozoo.23432]
+title = "Rain"
+group = "The Black Lotus"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.224240]
+title = "Rain"
+group = "Protogenic"
+source = "script"
+
+[demozoo.258967]
+title = "Rain Demo"
+group = "Spreadpoint"
+source = "script"
+
+[demozoo.92050]
+title = "Rainbow"
+group = "Robinsoft"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.196094]
+title = "Rainbow BBS"
+group = "Dictators"
+source = "script"
+
+[demozoo.190877]
+title = "Rainbow Intro"
+group = "Lunatic Earls"
+source = "script"
+
+[demozoo.229856]
+title = "Rainbow Islands"
+group = "Cabe"
+source = "script"
+
+[demozoo.226606]
+title = "Rainbow Islands demo"
+group = "Illusion"
+source = "script"
+
+[demozoo.209774]
+title = "Rainbow Party 2 Invitation - Radwar Party 9"
+group = "Spreadpoint / Tristar and Red Sector Inc. / Hoodlum / Radwar"
+source = "script"
+
+[demozoo.209775]
+title = "Rainbow Party Invitation"
+group = "Radwar / Spreadpoint / Tristar and Red Sector Inc."
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.192979]
+title = "Rainer the Passion"
+group = "Leader Productions"
+source = "script"
+
+[demozoo.59882]
+title = "Rainmaking"
+group = "JazzCat"
+source = "script"
+
+[demozoo.243304]
+title = "Raising Hell"
+group = "Eremation"
+source = "script"
+
+[demozoo.10335]
+title = "Raistlin Pack #9 Menu"
+group = "Anarchy"
+source = "script"
+
+[demozoo.234251]
+title = "Raistlin Pack 6 Intro"
+group = "Anarchy"
+source = "script"
+
+[demozoo.234253]
+title = "Raistlin's Message Box 3 Intro"
+group = "Anarchy"
+source = "script"
+
+[demozoo.234254]
+title = "Raistlin's Slipstream Party Intro"
+group = "Anarchy"
+source = "script"
+
+[demozoo.223226]
+title = "Raistlins First Product"
+group = "Beyond 2000"
+source = "script"
+
+[demozoo.68724]
+title = "Ral (borntro)"
+group = "Subcult"
+source = "script"
+
+[demozoo.243392]
+title = "Ralf Reifen Comic"
+group = "Exterminators"
+source = "script"
+
+[demozoo.259844]
+title = "Rally Cross Challenge"
+group = "Supplex"
+source = "script"
+
+[demozoo.223734]
+title = "Ram Pack Wobble 9 Intro"
+group = "Alarm"
+source = "script"
+
+[demozoo.324592]
+title = "Ram Pam Pam"
+group = "WojT / Magnetic-Fox"
+source = "script"
+machine = "a1200"
+
+[demozoo.216424]
+title = "Rambo 3 - The Megademo"
+group = "Maxima"
+source = "script"
+machine = "a500_ks12"
+
+[demozoo.250480]
+title = "Rambo III Demo"
+group = "Megaforce"
+source = "script"
+
+[demozoo.212678]
+title = "RamJam"
+group = "Scorpik / Randy / Luca Elia"
+source = "script"
+run = "Bmap"
+
+[demozoo.306967]
+title = "Ramontic Getaway"
+group = "Desire"
+source = "script"
+run = "ramontic_getaway_uncrunched.exe"
+
+[demozoo.111386]
+title = "Rampage"
+group = "The Electronic Knights"
+source = "script"
+result = "unknown"
+run = "Rampage"
+
+[demozoo.294825]
+title = "Rampage Announcement"
+group = "Jengrove Enterprises Ltd."
+source = "script"
+
+[demozoo.217949]
+title = "Rampages First Intro"
+group = "Intryx"
+source = "script"
+
+[demozoo.61493]
+title = "Ramses & Paso Birthday Party Invitation-Intro"
+group = "U.D.O."
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.253730]
+title = "Ramsmash 1996"
+group = "Phuture 303"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.85710]
+title = "Random Syntax Party Demo"
+group = "cTrix"
+source = "script"
+
+[demozoo.94346]
+title = "Randomized.sheep"
+group = "Loonies"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.164025]
+title = "Randy Recliner"
+group = "iNSANE"
+source = "script"
+
+[demozoo.41045]
+title = "Randy World 2"
+group = "Figa Production"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.250481]
+title = "Ranger Smashing Some Messages"
+group = "Megaforce"
+source = "script"
+
+[demozoo.263829]
+title = "Rank Xerox Super Demo"
+group = "Triangle"
+source = "script"
+
+[demozoo.254514]
+title = "Rantka"
+group = "Przyjaciele Stefana B."
+source = "script"
+machine = "a1200"
+
+[demozoo.35146]
+title = "ranuL - seluR"
+group = "Thefect"
+source = "script"
+result = "unknown"
+
+[demozoo.45795]
+title = "Raos"
+group = "Weeds / Potion"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.243423]
+title = "Rap Around The Clock"
+group = "Extend"
+source = "script"
+
+[demozoo.232567]
+title = "Rap Total"
+group = "Triplex"
+source = "script"
+
+[demozoo.242991]
+title = "Rape Em All"
+group = "Equinox"
+source = "script"
+
+[demozoo.236349]
+title = "Rapiad"
+group = "Byterapers"
+source = "script"
+
+[demozoo.211952]
+title = "Rapid House BBS"
+group = "Relax"
+source = "script"
+
+[demozoo.241124]
+title = "Rapier International Intro"
+group = "Dimension X"
+source = "script"
+
+[demozoo.4285]
+title = "Rapo Diablo"
+group = "Ephidrena / Loonies"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.1609]
+title = "Rapo Diablo 5000"
+group = "Ephidrena / Loonies"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.32983]
+title = "Raptor"
+group = "Moxxom"
+source = "script"
+machine = "a1200"
+
+[demozoo.255620]
+title = "Rash's Remix"
+group = "Rash"
+source = "script"
+
+[demozoo.194954]
+title = "Rasta Bars"
+group = "Movement"
+source = "script"
+machine = "a1200"
+
+[demozoo.313252]
+title = "Raster and Servant"
+group = "Resistance"
+source = "script"
+machine = "a1200"
+
+[demozoo.231378]
+title = "Raster Blaster"
+group = "Crack"
+source = "script"
+
+[demozoo.229219]
+title = "Raster Demo"
+group = "Tommyknockers"
+source = "script"
+
+[demozoo.311005]
+title = "Raster First Demo"
+group = "Triax"
+source = "script"
+
+[demozoo.323381]
+title = "Raster Intro"
+group = "The New Concept"
+source = "script"
+result = "unknown"
+
+[demozoo.194951]
+title = "Raster Magic"
+group = "Megaforce"
+source = "script"
+
+[demozoo.352712]
+title = "Raster Master"
+group = "Resistance"
+source = "script"
+result = "unknown"
+
+[demozoo.247182]
+title = "Raster Masters First for IBB"
+group = "Italian Bad Boys"
+source = "script"
+
+[demozoo.394520]
+title = "Rasterfable"
+group = "Triumph"
+source = "script"
+
+[demozoo.252901]
+title = "Rastermania"
+group = "Overkill"
+source = "script"
+result = "unknown"
+
+[demozoo.252578]
+title = "Rastorbars"
+group = "Orb"
+source = "script"
+
+[demozoo.195794]
+title = "Ratapik Pulez"
+group = "Illusion"
+source = "script"
+result = "unknown"
+
+[demozoo.234278]
+title = "Rational Prodigy"
+group = "Analogy"
+source = "script"
+
+[demozoo.233936]
+title = "Ratman's Revenge"
+group = "Animators"
+source = "script"
+
+[demozoo.448]
+title = "Ratstro"
+group = "Space"
+source = "script"
+
+[demozoo.252623]
+title = "Rattle Copy II"
+group = "Oracle"
+source = "script"
+
+[demozoo.60195]
+title = "Rauhaa"
+group = "Ninja GeFilus"
+source = "script"
+machine = "a1200"
+
+[demozoo.95405]
+title = "Rauhaa - The Psilocybin Remix"
+group = "Ninja GeFilus"
+source = "script"
+machine = "a1200"
+
+[demozoo.223460]
+title = "Rave"
+group = "Wizzy & Tom-cat"
+source = "script"
+
+[demozoo.224173]
+title = "Rave Demo #1"
+group = "Hacktrick Cracking Crew"
+source = "script"
+
+[demozoo.212204]
+title = "Rave Dude 1"
+group = "Rave Nation / Sycres"
+source = "script"
+
+[demozoo.325748]
+title = "Rave Dude 2"
+group = "Sycres / Rave Nation"
+source = "script"
+
+[demozoo.212206]
+title = "Rave Dude 4"
+group = "Rave Nation / Sycres"
+source = "script"
+
+[demozoo.250187]
+title = "Rave Nation III Invitation"
+group = "Maximum"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.217267]
+title = "Rave Olympia"
+group = "Overlords"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.222484]
+title = "Ravehour"
+group = "Doom"
+source = "script"
+machine = "a1200"
+
+[demozoo.255640]
+title = "Raveland 1"
+group = "Rave Network Overscan"
+source = "script"
+
+[demozoo.248938]
+title = "RaveMix III"
+group = "Legend"
+source = "script"
+
+[demozoo.222314]
+title = "Raven"
+group = "ERS 98"
+source = "script"
+machine = "a1200"
+
+[demozoo.241001]
+title = "Raver Demo - Intro"
+group = "Digital Access"
+source = "script"
+
+[demozoo.263169]
+title = "RaveTown 1"
+group = "Trance Inc."
+source = "script"
+
+[demozoo.263168]
+title = "RaveTown 10"
+group = "Trance Inc."
+source = "script"
+
+[demozoo.263167]
+title = "RaveTown 2"
+group = "Trance Inc."
+source = "script"
+
+[demozoo.263166]
+title = "RaveTown 3"
+group = "Trance Inc."
+source = "script"
+
+[demozoo.263165]
+title = "RaveTown 4"
+group = "Trance Inc."
+source = "script"
+
+[demozoo.263164]
+title = "RaveTown 5"
+group = "Trance Inc."
+source = "script"
+
+[demozoo.263163]
+title = "RaveTown 6"
+group = "Trance Inc."
+source = "script"
+
+[demozoo.263162]
+title = "RaveTown 7"
+group = "Trance Inc."
+source = "script"
+
+[demozoo.263161]
+title = "RaveTown 8"
+group = "Trance Inc."
+source = "script"
+
+[demozoo.263160]
+title = "RaveTown 9"
+group = "Trance Inc."
+source = "script"
+
+[demozoo.263159]
+title = "Ravetro"
+group = "Trance Inc."
+source = "script"
+
+[demozoo.122309]
+title = "Raw"
+group = "Plague"
+source = "script"
+
+[demozoo.254929]
+title = "RAW 4 Headlines"
+group = "Pure Metal Coders"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.234633]
+title = "RAW 4 Intro"
+group = "Andromeda"
+source = "script"
+
+[demozoo.88825]
+title = "Raw 7 Intro"
+group = "Spaceballs"
+source = "script"
+
+[demozoo.265371]
+title = "RAW 8 Intro"
+group = "Virtual Dreams"
+source = "script"
+
+[demozoo.252345]
+title = "Raw Pack 8 Intro"
+group = "North Star"
+source = "script"
+machine = "a500_512k"
+
+[demozoo.223957]
+title = "Raw Plasma"
+group = "Business After Dark"
+source = "script"
+
+[demozoo.213257]
+title = "Raw Semen"
+group = "LSD"
+source = "script"
+
+[demozoo.195575]
+title = "Raw Socket"
+group = "Eremation"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.79193]
+title = "Rawcycle"
+group = "Rave Network Overscan"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.167316]
+title = "Rawtro"
+group = "Pure Metal Coders"
+source = "script"
+
+[demozoo.102231]
+title = "Ray of Hope"
+group = "Majic 12"
+source = "script"
+
+[demozoo.737]
+title = "Ray of Hope 2"
+group = "Majic 12"
+source = "script"
+
+[demozoo.246515]
+title = "Ray's First Demo for Humanoids"
+group = "Humanoids"
+source = "script"
+
+[demozoo.21511]
+title = "Raybong"
+group = "Loveboat"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.250389]
+title = "Rayon"
+group = "Mellow"
+source = "script"
+
+[demozoo.24457]
+title = "Rays"
+group = "Whelpz"
+source = "script"
+result = "unknown"
+
+[demozoo.119229]
+title = "Raytracing"
+group = "Fairlight"
+source = "script"
+
+[demozoo.63702]
+title = "Raytro"
+group = "Tristar and Red Sector Inc."
+source = "script"
+machine = "a1200"
+
+[demozoo.164759]
+title = "Rayworld"
+group = "Investation / Deform"
+source = "script"
+machine = "a1200_fast"
+disks = ["Deform&Investation-RayworldA.dms", "Deform&Investation-RayworldB.dms", "Deform&Investation-RayworldC.dms"]
+swaps = [{ disk = 2, at = 54.8, key = "lmb" }, { disk = 3, at = 347.0, key = "lmb" }]
+
+[demozoo.222917]
+title = "Razor 1911 and Illusion Summer Party Invitation"
+group = "Razor 1911 / Illusion"
+source = "script"
+
+[demozoo.255714]
+title = "Razor Is Sharper"
+group = "Razor 1911"
+source = "script"
+
+[demozoo.213881]
+title = "Razor Party Demo"
+group = "Scientific Cracking Team"
+source = "script"
+result = "unknown"
+
+[demozoo.94019]
+title = "Razorback"
+group = "Reason"
+source = "script"
+result = "unknown"
+
+[demozoo.271174]
+title = "Razzle-Dazzle"
+group = "Y-Crew"
+source = "script"
+
+[demozoo.232671]
+title = "Re-Released"
+group = "Threat"
+source = "script"
+
+[demozoo.224050]
+title = "Reach the Sun"
+group = "Uranus"
+source = "script"
+machine = "a1200"
+
+[demozoo.39715]
+title = "React"
+group = "Absurd"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.265583]
+title = "Reactor"
+group = "Vector"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.232764]
+title = "Read Em and Weep"
+group = "The Timecircle"
+source = "script"
+
+[demozoo.285501]
+title = "Read Terror"
+group = "Napalm"
+source = "script"
+
+[demozoo.132664]
+title = "Readers Digest Announcement Demo"
+group = "The Special Brothers"
+source = "script"
+
+[demozoo.89546]
+title = "Real"
+group = "Complex"
+source = "script"
+machine = "a1200"
+
+[demozoo.178727]
+title = "Real 2 Real"
+group = "Maniacs"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.235604]
+title = "Real American Roadmovie"
+group = "Banal Projects"
+source = "script"
+
+[demozoo.1945]
+title = "Real Empathy"
+group = "Virtual"
+source = "script"
+disks = ["Virtual-RealEmpathyA.dms", "Virtual-RealEmpathyB.dms"]
+swaps = [{ disk = 2, at = 385.7 }]
+
+[demozoo.18446]
+title = "Real FD"
+group = "Focus Design"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.268827]
+title = "Real First Demo"
+group = "Mci"
+source = "script"
+
+[demozoo.221763]
+title = "Real First Intro"
+group = "TGM-Crew"
+source = "script"
+
+[demozoo.224452]
+title = "Real First Intro"
+group = "Strange 42"
+source = "script"
+
+[demozoo.381926]
+title = "Real Intro II"
+group = "Amiga Cracking Service"
+source = "script"
+
+[demozoo.214004]
+title = "Real Light-speed Intro"
+group = "Black Sinus"
+source = "script"
+
+[demozoo.114794]
+title = "Real Looping"
+group = "Rebels"
+source = "script"
+
+[demozoo.222741]
+title = "Real Looping"
+group = "Tardex"
+source = "script"
+
+[demozoo.248031]
+title = "Real Motivation"
+group = "Jugi"
+source = "script"
+
+[demozoo.7607]
+title = "Real Paradise - Paradise@08"
+group = "Push Entertainment"
+source = "script"
+result = "unknown"
+
+[demozoo.52593]
+title = "Real Paradize 10"
+group = "Push Entertainment"
+source = "script"
+result = "unknown"
+
+[demozoo.211920]
+title = "Real Paradize 8"
+group = "Push Entertainment / 3 Amigos"
+source = "script"
+result = "unknown"
+
+[demozoo.262318]
+title = "Real Small Intro"
+group = "Giants"
+source = "script"
+machine = "a1200"
+
+[demozoo.7628]
+title = "Real Surreal"
+group = "Impact DK"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.220582]
+title = "Real Thing"
+group = "Flash Light Design"
+source = "script"
+result = "unknown"
+
+[demozoo.265555]
+title = "Real Thing"
+group = "Vega"
+source = "script"
+
+[demozoo.265373]
+title = "Real Time Demo"
+group = "Virtual"
+source = "script"
+
+[demozoo.253778]
+title = "Real Time Fractal"
+group = "Phoenix"
+source = "script"
+
+[demozoo.241299]
+title = "Real Time is Fucked up Preview"
+group = "Divina"
+source = "script"
+
+[demozoo.228633]
+title = "Real Time Raytracing Demo"
+group = "Blitz / Digital Design"
+source = "script"
+
+[demozoo.373654]
+title = "Real Virtuality"
+group = "MuMu21"
+source = "script"
+
+[demozoo.230498]
+title = "Realaxation"
+group = "Reality / Axiom"
+source = "script"
+
+[demozoo.210147]
+title = "Realistic"
+group = "Skenge"
+source = "script"
+
+[demozoo.239494]
+title = "Reality"
+group = "Cycron"
+source = "script"
+
+[demozoo.7733]
+title = "Reality Bytes"
+group = "Noice"
+source = "script"
+machine = "a1200"
+
+[demozoo.89679]
+title = "Reality Has No Meaning"
+group = "Balance"
+source = "script"
+
+[demozoo.244743]
+title = "Reality Pack 17 Intro"
+group = "Ghost"
+source = "script"
+
+[demozoo.249176]
+title = "Realm of Chaos BBStro"
+group = "Limited Edition"
+source = "script"
+
+[demozoo.153776]
+title = "Realm of Stone"
+group = "Alpha Flight"
+source = "script"
+
+[demozoo.192997]
+title = "Realms"
+group = "Leader Productions"
+source = "script"
+
+[demozoo.10380]
+title = "Realms Of Alchemy"
+group = "Crack UK"
+source = "script"
+
+[demozoo.45605]
+title = "RealTime Ascii aka Normalan Intro"
+group = "Zaïebanï"
+source = "script"
+machine = "a1200"
+
+[demozoo.148571]
+title = "Realtime Margherita"
+group = "Arise"
+source = "script"
+
+[demozoo.248465]
+title = "Realtime Ugabuh-Zumbalai"
+group = "Krafted"
+source = "script"
+
+[demozoo.208869]
+title = "Realy First Intro"
+group = "Red Thread / Panzerfaust"
+source = "script"
+
+[demozoo.385959]
+title = "Ream's Singularity"
+group = "Ream RIC"
+source = "script"
+
+[demozoo.262520]
+title = "Reaper Demo 1"
+group = "The Powerlords"
+source = "script"
+
+[demozoo.262519]
+title = "Reaper's Third - 132 Bobs"
+group = "The Powerlords"
+source = "script"
+
+[demozoo.156295]
+title = "ReAppearance"
+group = "Core"
+source = "script"
+result = "unknown"
+run = "ReApp.EXE"
+
+[demozoo.217624]
+title = "Rebel Charge at Chickamauga"
+group = "Punk Croc Crew"
+source = "script"
+
+[demozoo.264599]
+title = "Rebel Charge at Chickamauga v1.0"
+group = "World of Wonders"
+source = "script"
+
+[demozoo.128779]
+title = "Rebel Without A Cause"
+group = "Rebels"
+source = "script"
+
+[demozoo.156231]
+title = "Rebelina"
+group = "Rebels"
+source = "script"
+
+[demozoo.195598]
+title = "Rebellion"
+group = "Maniacs"
+source = "script"
+
+[demozoo.96611]
+title = "Rebels Music Boot"
+group = "Rebels"
+source = "script"
+
+[demozoo.334]
+title = "Rebirth"
+group = "Tribe"
+source = "script"
+machine = "a1200"
+
+[demozoo.193272]
+title = "Rebirth"
+group = "Absence"
+source = "script"
+
+[demozoo.218636]
+title = "Rebirth"
+group = "Rare"
+source = "script"
+
+[demozoo.336635]
+title = "Rebirth"
+group = "Binary"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.111083]
+title = "Reborn"
+group = "D.T.A. Software Studio"
+source = "script"
+machine = "a1200_030"
+run = "DTA-Reborn.exe"
+
+[demozoo.136145]
+title = "Reborn"
+group = "Appendix"
+source = "script"
+machine = "a1200_060"
+
+[demozoo.137774]
+title = "Reborn"
+group = "The Link"
+source = "script"
+
+[demozoo.216562]
+title = "Reborn"
+group = "Front 242"
+source = "script"
+
+[demozoo.233685]
+title = "Reborn"
+group = "Altair"
+source = "script"
+
+[demozoo.239381]
+title = "Reborn"
+group = "Cyanide"
+source = "script"
+
+[demozoo.252346]
+title = "Reborn"
+group = "North Star"
+source = "script"
+
+[demozoo.38233]
+title = "Reboxer"
+group = "Elude"
+source = "script"
+result = "unknown"
+run = "eld-rbx.exe"
+
+[demozoo.310281]
+title = "Recall Members"
+group = "Recall"
+source = "script"
+
+[demozoo.254200]
+title = "Rechoice"
+group = "Platin"
+source = "script"
+
+[demozoo.222409]
+title = "Reciente Importacion"
+group = "Odyssey"
+source = "script"
+
+[demozoo.273000]
+title = "Recoil intro"
+group = "Scoopex"
+source = "script"
+
+[demozoo.253403]
+title = "Record Bumper"
+group = "Paradise / Subzero"
+source = "script"
+
+[demozoo.195599]
+title = "Recruitment"
+group = "Maniacs"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.234808]
+title = "Recruitment"
+group = "Axel Retro-Software"
+source = "script"
+
+[demozoo.242818]
+title = "Recruitment Intro V1"
+group = "End of Century 1999"
+source = "script"
+
+[demozoo.8407]
+title = "Recycled"
+group = "Ephidrena"
+source = "script"
+machine = "a1200"
+
+[demozoo.270678]
+title = "Recycled aka Arkihuolesi Kaikki Heitae"
+group = "Vectra"
+source = "script"
+
+[demozoo.284683]
+title = "Recycled Squares"
+group = "Destruction"
+source = "script"
+
+[demozoo.281617]
+title = "Red"
+group = "Samar Productions"
+source = "script"
+
+[demozoo.246921]
+title = "Red Alert"
+group = "iNSANE"
+source = "script"
+
+[demozoo.358488]
+title = "Red And Black"
+group = "Afc"
+source = "script"
+
+[demozoo.215031]
+title = "Red and Blue"
+group = "Infinity"
+source = "script"
+
+[demozoo.281317]
+title = "Red Artifact"
+group = "Software Failure"
+source = "script"
+
+[demozoo.212327]
+title = "Red Bobs"
+group = "Energy"
+source = "script"
+
+[demozoo.219788]
+title = "Red Bobs"
+group = "ESG"
+source = "script"
+
+[demozoo.237973]
+title = "Red Bobs & Yello Scroller"
+group = "Cryptoburners"
+source = "script"
+
+[demozoo.263812]
+title = "Red Bull"
+group = "Tribe"
+source = "script"
+machine = "a1200"
+
+[demozoo.233689]
+title = "Red Hair Redemption"
+group = "Amiga Birthday Committee"
+source = "script"
+
+[demozoo.212162]
+title = "Red is Green is Blue"
+group = "Amnesia"
+source = "script"
+
+[demozoo.257006]
+title = "Red It Intro"
+group = "Savage"
+source = "script"
+
+[demozoo.231714]
+title = "Red Lightning"
+group = "Crusaders"
+source = "script"
+
+[demozoo.219747]
+title = "Red Line Goes Teladon"
+group = "Teladon"
+source = "script"
+
+[demozoo.178342]
+title = "Red Planet"
+group = "Cydonia"
+source = "script"
+
+[demozoo.330849]
+title = "Red Scrollers Greetings"
+group = "Prologic"
+source = "script"
+
+[demozoo.35138]
+title = "Red Stars"
+group = "Mroovek"
+source = "script"
+result = "unknown"
+
+[demozoo.213905]
+title = "Red Storm Rising"
+group = "Harman Kardon"
+source = "script"
+
+[demozoo.20970]
+title = "Red-Eye"
+group = "Sonik Clique"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.267467]
+title = "red."
+group = "K-Power"
+source = "script"
+
+[demozoo.385171]
+title = "Reddy"
+group = "Unreal"
+source = "script"
+
+[demozoo.265102]
+title = "Redecor 8 vol1"
+group = "Voodoo Design"
+source = "script"
+
+[demozoo.265103]
+title = "Redecor-8 Volume 2"
+group = "Voodoo Design"
+source = "script"
+
+[demozoo.248640]
+title = "Redemption"
+group = "Lego / Shrimps Design"
+source = "script"
+machine = "a1200"
+
+[demozoo.165998]
+title = "Rednex"
+group = "TBL2"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.123631]
+title = "Redscreen"
+group = "Lightstorm Inc."
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.5328]
+title = "Reductio Ad Absurdum"
+group = "Noice"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.228020]
+title = "Redundancy Intro"
+group = "Phoenix"
+source = "script"
+boot = "floppy"
+
+[demozoo.249191]
+title = "Reflex"
+group = "Liquid"
+source = "script"
+
+[demozoo.8191]
+title = "Reflexity"
+group = "Sector 7"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.147487]
+title = "refocus"
+group = "PACiF!C"
+source = "script"
+
+[demozoo.231952]
+title = "Reform Pack 18 Intro"
+group = "Absence"
+source = "script"
+
+[demozoo.194517]
+title = "Reform Pack 26 Intro"
+group = "Absence"
+source = "script"
+
+[demozoo.231953]
+title = "Reform Pack 27 Intro"
+group = "Absence"
+source = "script"
+
+[demozoo.231954]
+title = "Reform Pack 29 Intro"
+group = "Absence"
+source = "script"
+
+[demozoo.161745]
+title = "Reform Pack 31 Intro"
+group = "Absence"
+source = "script"
+
+[demozoo.201600]
+title = "Reform Pack 33 Intro"
+group = "Absence"
+source = "script"
+
+[demozoo.231955]
+title = "Reform Pack 35 Intro"
+group = "Absence"
+source = "script"
+
+[demozoo.231956]
+title = "Reform Pack 37 Intro"
+group = "Absence"
+source = "script"
+
+[demozoo.201601]
+title = "Reform Pack 40 Intro"
+group = "Absence"
+source = "script"
+
+[demozoo.231957]
+title = "Reform Pack 42 Intro"
+group = "Absence"
+source = "script"
+
+[demozoo.8573]
+title = "Reformation"
+group = "Phase Truce"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.33193]
+title = "Refuse"
+group = "Drifters"
+source = "script"
+machine = "a1200"
+
+[demozoo.214158]
+title = "Regality-Swaptro"
+group = "Regality"
+source = "script"
+
+[demozoo.214267]
+title = "Regeneration"
+group = "Digital Artists Inc."
+source = "script"
+
+[demozoo.137814]
+title = "Regnhagen"
+group = "Pure Metal Coders"
+source = "script"
+
+[demozoo.4862]
+title = "Regrets"
+group = "Moods Plateau"
+source = "script"
+machine = "a1200"
+
+[demozoo.27292]
+title = "Regulate"
+group = "Melting Pot"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.239900]
+title = "Regulate"
+group = "DD-Style"
+source = "script"
+
+[demozoo.232430]
+title = "Reidars Verden"
+group = "After Eights"
+source = "script"
+result = "unknown"
+run = "friendsonly.exe"
+
+[demozoo.92620]
+title = "Reincarnation"
+group = "Mean Machine"
+source = "script"
+
+[demozoo.227315]
+title = "Rejs"
+group = "Rockfor / Brygada RR"
+source = "script"
+result = "unknown"
+
+[demozoo.2193]
+title = "Rejsor"
+group = "Route 66"
+source = "script"
+
+[demozoo.236580]
+title = "Rekcartorp"
+group = "Candle"
+source = "script"
+machine = "a1200"
+
+[demozoo.2506]
+title = "Rekord"
+group = "Ephidrena"
+source = "script"
+result = "unknown"
+run = "dA-fONK.exe"
+
+[demozoo.18196]
+title = "Rektum Analis"
+group = "C-Lous"
+source = "script"
+machine = "a1200"
+
+[demozoo.242819]
+title = "Rektum Rider's Intro"
+group = "End of Century 1999"
+source = "script"
+
+[demozoo.174306]
+title = "Relation"
+group = "Hardline"
+source = "script"
+
+[demozoo.224936]
+title = "Relax"
+group = "Misfits Of Science"
+source = "script"
+
+[demozoo.239976]
+title = "Relax"
+group = "Dazzle"
+source = "script"
+
+[demozoo.211953]
+title = "Relax and BSS Kick the Shit Out of Sweden"
+group = "Relax"
+source = "script"
+result = "unknown"
+
+[demozoo.220963]
+title = "Release Intro"
+group = "Aspect"
+source = "script"
+
+[demozoo.250952]
+title = "Release#001"
+group = "Mono"
+source = "script"
+machine = "a1200"
+
+[demozoo.123014]
+title = "Released A New Intro Again"
+group = "The Sunriders"
+source = "script"
+
+[demozoo.233637]
+title = "Released Before"
+group = "Amaze"
+source = "script"
+
+[demozoo.219119]
+title = "Released by Macron"
+group = "Pegasus"
+source = "script"
+
+[demozoo.190650]
+title = "Releasetro"
+group = "Nerve Axis"
+source = "script"
+
+[demozoo.20963]
+title = "Relic"
+group = "Nerve Axis"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.8027]
+title = "Relievo"
+group = "Agravedict"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.379041]
+title = "Reliquidize"
+group = "Fnuque / Depth"
+source = "script"
+
+[demozoo.310452]
+title = "Rema Rules"
+group = "Maniacs of Noise / Offence"
+source = "script"
+
+[demozoo.218092]
+title = "Remarkable Intro"
+group = "The Outrunners"
+source = "script"
+result = "unknown"
+
+[demozoo.223668]
+title = "Remedy"
+group = "Etilik"
+source = "script"
+
+[demozoo.389752]
+title = "Remember Tribute"
+group = "Fanatic2k"
+source = "script"
+
+[demozoo.159472]
+title = "Remindtro"
+group = "Craze"
+source = "script"
+
+[demozoo.19403]
+title = "Remix"
+group = "Limited Edition"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.247808]
+title = "Remix"
+group = "Zenon"
+source = "script"
+machine = "a1200"
+run = "10.dat"
+
+[demozoo.232765]
+title = "Remix-X"
+group = "The Timecircle"
+source = "script"
+
+[demozoo.34910]
+title = "Rendervous"
+group = "Ozone Free"
+source = "script"
+machine = "a1200"
+
+[demozoo.6373]
+title = "Rendezvous 93 Intro"
+group = "Iris"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.256414]
+title = "Renegade & Wolfman Intro"
+group = "Royal Amiga Force"
+source = "script"
+
+[demozoo.185211]
+title = "Renouncetro"
+group = "Capsule"
+source = "script"
+machine = "a1200_060"
+
+[demozoo.391]
+title = "Repo"
+group = "Vectra"
+source = "script"
+
+[demozoo.195600]
+title = "Reprisal"
+group = "Maniacs"
+source = "script"
+
+[demozoo.35337]
+title = "Repugnance"
+group = "Powerline"
+source = "script"
+machine = "a1200_fast"
+run = "Repugnance"
+
+[demozoo.151368]
+title = "Reqtools"
+group = "Nexus"
+source = "script"
+machine = "a1200"
+
+[demozoo.4019]
+title = "Requiem"
+group = "The Black Lotus"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.104376]
+title = "Requiem"
+group = "Arkham / Advanced Artists"
+source = "script"
+
+[demozoo.178350]
+title = "ReRun!"
+group = "Cydonia"
+source = "script"
+
+[demozoo.4863]
+title = "Res Cogitans"
+group = "Software Failure"
+source = "script"
+result = "unknown"
+
+[demozoo.240148]
+title = "Rescue 358"
+group = "Decnite"
+source = "script"
+
+[demozoo.40478]
+title = "Reserve"
+group = "Ozone"
+source = "script"
+machine = "a1200_fast"
+run = "reserve.exe"
+
+[demozoo.137493]
+title = "resetkani Ascii"
+group = "MarK"
+source = "script"
+result = "unknown"
+
+[demozoo.31460]
+title = "RESETkání 2012 Invitation"
+group = "AmiGanS"
+source = "script"
+result = "unknown"
+run = "Karate"
+
+[demozoo.202820]
+title = "RESETkání 2019 Invitation"
+group = "kLik"
+source = "script"
+result = "unknown"
+run = "Karate"
+
+[demozoo.218721]
+title = "Resident 2 Intro"
+group = "Angelica"
+source = "script"
+result = "unknown"
+
+[demozoo.36805]
+title = "Resist"
+group = "Resistance"
+source = "script"
+
+[demozoo.194691]
+title = "Resolution"
+group = "Complex"
+source = "script"
+
+[demozoo.273419]
+title = "Resolutions"
+group = "iNSANE"
+source = "script"
+
+[demozoo.227826]
+title = "Respect"
+group = "8 Bits"
+source = "script"
+machine = "a1200"
+
+[demozoo.257536]
+title = "Respect"
+group = "Scum"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.190601]
+title = "Respect Revolution"
+group = "Fanatic"
+source = "script"
+
+[demozoo.3609]
+title = "Respirator Stories"
+group = "Ephidrena"
+source = "script"
+result = "unknown"
+
+[demozoo.7237]
+title = "Response"
+group = "Avalon"
+source = "script"
+machine = "a1200"
+
+[demozoo.156555]
+title = "Ressurrection #1"
+group = "Slope"
+source = "script"
+machine = "a1200"
+
+[demozoo.27824]
+title = "Rest"
+group = "Code Busters"
+source = "script"
+machine = "a1200"
+
+[demozoo.162283]
+title = "Rest 2"
+group = "Code Busters"
+source = "script"
+result = "unknown"
+
+[demozoo.9390]
+title = "Restito"
+group = "Embora"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.162001]
+title = "Restricted"
+group = "Army of Lamers"
+source = "script"
+result = "unknown"
+run = "Restricted.exe"
+
+[demozoo.236280]
+title = "Restricted"
+group = "Cadaver"
+source = "script"
+
+[demozoo.40181]
+title = "Restricted Rmx"
+group = "Army of Lamers"
+source = "script"
+result = "unknown"
+run = "RestrictedV1.1.EXE"
+
+[demozoo.241125]
+title = "Retina Burn One"
+group = "Dimension X"
+source = "script"
+
+[demozoo.145350]
+title = "Retirement"
+group = "Orient"
+source = "script"
+
+[demozoo.79157]
+title = "Retro"
+group = "Nukleus"
+source = "script"
+
+[demozoo.211926]
+title = "Retro"
+group = "Vortex"
+source = "script"
+result = "unknown"
+run = "retro"
+
+[demozoo.213258]
+title = "Retro"
+group = "LSD"
+source = "script"
+result = "unknown"
+
+[demozoo.40852]
+title = "Retro 64k"
+group = "Instinct"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.155672]
+title = "Retro Dentro (Revenge of 1990)"
+group = "Rebels / Neural"
+source = "script"
+
+[demozoo.393024]
+title = "Retro Glenz"
+group = "Nightfall"
+source = "script"
+
+[demozoo.10409]
+title = "Retro Intro"
+group = "Neural"
+source = "script"
+
+[demozoo.228094]
+title = "Retro Intro Demos"
+group = "Oldsk00l Crackers"
+source = "script"
+
+[demozoo.228095]
+title = "Retro Intro Demos Games"
+group = "Oldsk00l Crackers"
+source = "script"
+
+[demozoo.334642]
+title = "Retro Love"
+group = "Nightfall"
+source = "script"
+
+[demozoo.371078]
+title = "Retro32"
+group = "Moods Plateau / The Twitch Elite"
+source = "script"
+
+[demozoo.91689]
+title = "Retrobution"
+group = "PACiF!C"
+source = "script"
+
+[demozoo.137476]
+title = "RetroDemo"
+group = "Mistic JOE"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.256141]
+title = "Retroference"
+group = "Retro"
+source = "script"
+
+[demozoo.168118]
+title = "Retrokomp & Load Error 2017 Invitation"
+group = "Resistance / Wanted Team"
+source = "script"
+
+[demozoo.136339]
+title = "RetroKomp + LOAD ERROR 2o15 - party invitation"
+group = "Wanted Team / Lamers"
+source = "script"
+machine = "a1200"
+
+[demozoo.307938]
+title = "Retronizacja 4"
+group = "CrapTeam"
+source = "script"
+machine = "a1200"
+
+[demozoo.3776]
+title = "Retropical"
+group = "Drifters"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.2878]
+title = "Retrospectacular"
+group = "Contraz"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.170895]
+title = "RetroVision"
+group = "iNSANE"
+source = "script"
+
+[demozoo.97984]
+title = "Return Intro"
+group = "Black Turk"
+source = "script"
+machine = "a1200"
+
+[demozoo.221369]
+title = "Return Of Papnæsen"
+group = "Lasses Venner"
+source = "script"
+
+[demozoo.229220]
+title = "Return Of Santa"
+group = "Tommyknockers"
+source = "script"
+
+[demozoo.232056]
+title = "Return Of The Living Dead"
+group = "Accession"
+source = "script"
+
+[demozoo.193825]
+title = "Return Of The Living Death"
+group = "Trackers"
+source = "script"
+
+[demozoo.72056]
+title = "Return Of The Space Cowboys"
+group = "Abyss"
+source = "script"
+machine = "a1200"
+run = "Abyss.ReturnOfTheSpaceCowboys"
+
+[demozoo.375337]
+title = "Return to Gaza"
+group = "Ghostown"
+source = "script"
+
+[demozoo.224348]
+title = "Reumatic Orgasm"
+group = "Rectum Research"
+source = "script"
+
+[demozoo.249332]
+title = "Reunion"
+group = "Lloret Free Byte / Ozone / Mezcal"
+source = "script"
+
+[demozoo.59883]
+title = "Revasion"
+group = "Serpent"
+source = "script"
+
+[demozoo.157417]
+title = "Revector Intro"
+group = "Odyssey"
+source = "script"
+
+[demozoo.7538]
+title = "Revelation"
+group = "Shrimps Design"
+source = "script"
+machine = "a1200"
+
+[demozoo.203938]
+title = "Revenge"
+group = "Fraxion"
+source = "script"
+
+[demozoo.223672]
+title = "Revenge"
+group = "Etilik"
+source = "script"
+disks = ["Etilik-RevengeA.dms", "Etilik-RevengeB.dms"]
+swaps = [{ disk = 2, at = 260.0 }]
+
+[demozoo.224444]
+title = "Revenge"
+group = "Enator"
+source = "script"
+
+[demozoo.236731]
+title = "Revenge Of Bobs"
+group = "Cave"
+source = "script"
+
+[demozoo.277875]
+title = "Revenge of Molly Butterkeks"
+group = "Sign"
+source = "script"
+
+[demozoo.254349]
+title = "Revenge of Mr. Party IV Invitation"
+group = "Polaris"
+source = "script"
+
+[demozoo.221370]
+title = "Revenge Of Papnæsen"
+group = "Lasses Venner"
+source = "script"
+
+[demozoo.238424]
+title = "Revenge Of Pipunaasen"
+group = "Bloodsuckers"
+source = "script"
+
+[demozoo.238425]
+title = "Revenge of Pipunaasen 2"
+group = "Bloodsuckers"
+source = "script"
+
+[demozoo.241144]
+title = "Revenge of Sins"
+group = "Disknet"
+source = "script"
+
+[demozoo.215395]
+title = "Revenge of Star"
+group = "Bad Trip"
+source = "script"
+
+[demozoo.232531]
+title = "Revenge Party Invitation"
+group = "Magnetic Fields"
+source = "script"
+
+[demozoo.232532]
+title = "Revenge Party Update"
+group = "Magnetic Fields"
+source = "script"
+
+[demozoo.243410]
+title = "Revenge To The Suckers"
+group = "Extensors"
+source = "script"
+
+[demozoo.193236]
+title = "Revenge!"
+group = "Abort / Insanity"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.210885]
+title = "Reverse"
+group = "Vertical Syndicate"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.222123]
+title = "Reverse"
+group = "Doxos Industrie"
+source = "script"
+
+[demozoo.236732]
+title = "Reverse"
+group = "Cave"
+source = "script"
+
+[demozoo.254233]
+title = "Reverse Time"
+group = "Plague"
+source = "script"
+
+[demozoo.23457]
+title = "Revision"
+group = "Extreme Entertainment"
+source = "script"
+machine = "a1200_fast"
+run = "revision060.exe"
+
+[demozoo.27258]
+title = "Revision 2012 Invitation"
+group = "Focus Design"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.277027]
+title = "Revision 2020 Mini-Intro"
+group = "Void"
+source = "script"
+machine = "a1200"
+
+[demozoo.168117]
+title = "Revision Invitation"
+group = "iNSANE"
+source = "script"
+
+[demozoo.251780]
+title = "Revista Fanzine 1 Intro"
+group = "Necropolis"
+source = "script"
+
+[demozoo.231896]
+title = "Revista Fanzine 3 Intro"
+group = "Necropolis / Fifth Generation"
+source = "script"
+
+[demozoo.231897]
+title = "Revista Fanzine 4 Intro"
+group = "Necropolis / Fifth Generation"
+source = "script"
+
+[demozoo.231898]
+title = "Revista Fanzine 5 Intro"
+group = "Necropolis / Fifth Generation"
+source = "script"
+
+[demozoo.231899]
+title = "Revista Fanzine 6 Intro"
+group = "Lloret Free Byte"
+source = "script"
+
+[demozoo.235050]
+title = "Revista Fanzine 7 Intro"
+group = "Artifizial"
+source = "script"
+
+[demozoo.98526]
+title = "Revival"
+group = "Razer And Heathen God Design"
+source = "script"
+
+[demozoo.255883]
+title = "Revival"
+group = "Rednex"
+source = "script"
+machine = "a1200"
+
+[demozoo.36296]
+title = "Revlection of Australia"
+group = "Alcatraz"
+source = "script"
+
+[demozoo.137866]
+title = "Revolution"
+group = "Vortex 42"
+source = "script"
+
+[demozoo.153821]
+title = "Revolution"
+group = "Quadriga"
+source = "script"
+
+[demozoo.155049]
+title = "Revolution"
+group = "Nah-Kolor"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.181429]
+title = "Revolution"
+group = "Anathema"
+source = "script"
+machine = "a1200"
+run = "revolution.Exe"
+
+[demozoo.222076]
+title = "Revolution"
+group = "Badboys"
+source = "script"
+
+[demozoo.231379]
+title = "Revolution"
+group = "Crack"
+source = "script"
+
+[demozoo.236759]
+title = "Revolution"
+group = "Chemotox"
+source = "script"
+
+[demozoo.235103]
+title = "Revolution - Announcement Intro"
+group = "Arise"
+source = "script"
+
+[demozoo.40850]
+title = "Revolution 909"
+group = "Madwizards"
+source = "script"
+machine = "a1200"
+
+[demozoo.297066]
+title = "Revolution Demo"
+source = "script"
+
+[demozoo.224576]
+title = "Revolution in Russia"
+group = "Pepsi Drinkers Inc / Red Spectres"
+source = "script"
+
+[demozoo.231380]
+title = "Revolution Intro"
+group = "Crack"
+source = "script"
+
+[demozoo.196616]
+title = "Revolutionary Beehaviour"
+group = "iNSANE / Five Finger Punch"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.216126]
+title = "Revolutions"
+group = "Synergy"
+source = "script"
+
+[demozoo.224369]
+title = "Revolutions 1"
+group = "Dual Power"
+source = "script"
+
+[demozoo.255642]
+title = "Revolutions Behind It"
+group = "Rave Network Overscan"
+source = "script"
+
+[demozoo.255643]
+title = "Revolutions Behind It 2"
+group = "Rave Network Overscan"
+source = "script"
+
+[demozoo.239077]
+title = "Revolutix II"
+group = "Chiparus"
+source = "script"
+
+[demozoo.232270]
+title = "Revolvin' Double"
+group = "Adict"
+source = "script"
+
+[demozoo.213259]
+title = "Reward Terry Fuckwitt"
+group = "LSD"
+source = "script"
+
+[demozoo.342440]
+title = "Rewardision"
+group = "Scoopex / Offence / Complex"
+source = "script"
+
+[demozoo.3002]
+title = "Rewired"
+group = "Instinct"
+source = "script"
+result = "unknown"
+
+[demozoo.31934]
+title = "Rex"
+group = "Turnips"
+source = "script"
+result = "unknown"
+
+[demozoo.46724]
+title = "Rex Polyhedron"
+group = "The Silents"
+source = "script"
+
+[demozoo.209475]
+title = "Reyntune"
+group = "Bug"
+source = "script"
+
+[demozoo.70691]
+title = "RGB"
+group = "Union"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.190655]
+title = "RGB"
+group = "Nebula"
+source = "script"
+
+[demozoo.361828]
+title = "RGB and Focus"
+group = "Joel Hagen"
+source = "script"
+result = "unknown"
+
+[demozoo.210960]
+title = "RGB Bump"
+group = "Informer / Space"
+source = "script"
+result = "unknown"
+
+[demozoo.302445]
+title = "RGB Cube"
+group = "9-Design"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.89378]
+title = "RGB Demo"
+group = "Spaceballs"
+source = "script"
+
+[demozoo.239686]
+title = "RGB Party Intro"
+group = "Darkness"
+source = "script"
+
+[demozoo.167202]
+title = "RGB-Plasma"
+group = "Curacy"
+source = "script"
+
+[demozoo.46059]
+title = "rgbsnakeskull"
+group = "Zymosis"
+source = "script"
+
+[demozoo.20639]
+title = "Ribba"
+group = "Nature"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.20648]
+title = "Ribba Ut"
+group = "Traktor"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.359510]
+title = "Ribbons"
+group = "Crass"
+source = "script"
+
+[demozoo.179535]
+title = "Richie on the moon"
+group = "Ghostown"
+source = "script"
+
+[demozoo.212328]
+title = "Rick Lives"
+group = "Energy"
+source = "script"
+
+[demozoo.94792]
+title = "Ricktro"
+group = "Mellow"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.6853]
+title = "Ride"
+group = "Oxygene"
+source = "script"
+machine = "a1200"
+
+[demozoo.32602]
+title = "Ride!"
+group = "Silicon"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.109185]
+title = "Rift"
+group = "The Black Lotus"
+source = "script"
+machine = "a1200_060"
+
+[demozoo.159364]
+title = "Rigmalore Intro"
+group = "Complex"
+source = "script"
+
+[demozoo.211389]
+title = "Rigor Mortis Collection 16 Intro"
+group = "Rigor Mortis"
+source = "script"
+boot = "floppy"
+
+[demozoo.227395]
+title = "Rime"
+group = "Mr. Underwater"
+source = "script"
+
+[demozoo.253864]
+title = "Rime"
+group = "Pirates"
+source = "script"
+
+[demozoo.194630]
+title = "Ring Linda!"
+group = "Weird"
+source = "script"
+
+[demozoo.226624]
+title = "Ring Of Stupidity"
+group = "Exodus"
+source = "script"
+
+[demozoo.250983]
+title = "Ringing a Doorbell"
+group = "Movement"
+source = "script"
+result = "unknown"
+
+[demozoo.163]
+title = "Rink A Dink"
+group = "Lemon."
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.59657]
+title = "Rink A Dink: Redux"
+group = "Lemon."
+source = "script"
+
+[demozoo.9564]
+title = "Riot"
+group = "Appendix"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.375927]
+title = "RIP Bill Atkinson of HACKERS"
+group = "Hackers Media Industries"
+source = "script"
+
+[demozoo.222808]
+title = "Rip V4.50 Intro"
+group = "Talents"
+source = "script"
+
+[demozoo.699]
+title = "Ripmon Intro"
+group = "United Forces"
+source = "script"
+
+[demozoo.95404]
+title = "Ripoff"
+group = "dA PoSSu"
+source = "script"
+machine = "a1200"
+
+[demozoo.235104]
+title = "Ripp 34 intro"
+group = "Arise"
+source = "script"
+result = "unknown"
+
+[demozoo.235105]
+title = "Ripp 40 Intro"
+group = "Arise"
+source = "script"
+
+[demozoo.235106]
+title = "Ripp 44 Intro"
+group = "Arise"
+source = "script"
+
+[demozoo.241622]
+title = "Rippdemo Hybris"
+group = "Celtic"
+source = "script"
+
+[demozoo.241623]
+title = "Rippdemo Rock N Roll"
+group = "Celtic"
+source = "script"
+
+[demozoo.226625]
+title = "Ripped Dreams Intro"
+group = "Exodus"
+source = "script"
+
+[demozoo.262412]
+title = "Ripped Fonts v1.0"
+group = "The Silents"
+source = "script"
+
+[demozoo.262781]
+title = "Ripped Megaparts Shortie"
+group = "The Special Brothers"
+source = "script"
+
+[demozoo.231381]
+title = "Ripped Music 5"
+group = "Crack"
+source = "script"
+
+[demozoo.223735]
+title = "Ripped'n'Torn"
+group = "Alarm"
+source = "script"
+
+[demozoo.20822]
+title = "Rise"
+group = "Mellow Chips"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.1133]
+title = "Rising"
+group = "Cascade"
+source = "script"
+
+[demozoo.151404]
+title = "Rising"
+group = "Tolkien"
+source = "script"
+machine = "a1200"
+
+[demozoo.249178]
+title = "Ritual"
+group = "Limited Edition"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.314217]
+title = "River Snake"
+group = "Fnuque"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.32968]
+title = "Riverhorse LSD Mix"
+group = "Ambrosia"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.240067]
+title = "Riviera"
+group = "Dean"
+source = "script"
+
+[demozoo.255445]
+title = "RJ-Comm V2.31"
+group = "Ram Jam"
+source = "script"
+
+[demozoo.307070]
+title = "RMC Retro Amiga Demo"
+source = "script"
+
+[demozoo.186620]
+title = "Road House Intro 1"
+group = "World Federation of Mad Hackers / Road House"
+source = "script"
+
+[demozoo.186621]
+title = "Road House Intro 2"
+group = "World Federation of Mad Hackers / Road House"
+source = "script"
+
+[demozoo.137871]
+title = "Road Rasters aka First Real Demo"
+group = "Vision Factory / The Bencor Brothers"
+source = "script"
+
+[demozoo.158315]
+title = "Road Rider Party Demo"
+group = "Brainwave"
+source = "script"
+
+[demozoo.226742]
+title = "Roadrunner"
+group = "Copperteam"
+source = "script"
+result = "unknown"
+
+[demozoo.209736]
+title = "Roadzanity"
+group = "Atomic"
+source = "script"
+
+[demozoo.140970]
+title = "Robaczek"
+group = "AT-Bus"
+source = "script"
+result = "unknown"
+run = "WHEREFUNROLEZ.EXE"
+
+[demozoo.39007]
+title = "Robbo"
+group = "Spaceballs"
+source = "script"
+result = "unknown"
+run = "10.dat"
+
+[demozoo.336543]
+title = "Robert the Mercenary 2"
+group = "End of Century 1999"
+source = "script"
+
+[demozoo.197054]
+title = "Robocop"
+group = "Neutron Dance"
+source = "script"
+
+[demozoo.227233]
+title = "RoboCop"
+group = "The Floppies"
+source = "script"
+
+[demozoo.247664]
+title = "Robocop 2"
+group = "Joker"
+source = "script"
+
+[demozoo.233640]
+title = "Robocop 2 Import"
+group = "Amaze"
+source = "script"
+
+[demozoo.246683]
+title = "Robocop II Trainer - Spreading Intro"
+group = "Image"
+source = "script"
+
+[demozoo.247039]
+title = "Robocopper"
+group = "Ipec Elite"
+source = "script"
+
+[demozoo.238005]
+title = "Robomix"
+group = "Cryptic"
+source = "script"
+
+[demozoo.166095]
+title = "Robot Gang"
+group = "God / Neuroflip / Skynet"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.313534]
+title = "Robots"
+group = "System of Sound"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.24189]
+title = "Roboty"
+group = "Tulou"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.111]
+title = "Rock Da Nation"
+group = "Flash Production"
+source = "script"
+
+[demozoo.325462]
+title = "Rock is jarig!"
+group = "Nico"
+source = "script"
+
+[demozoo.257715]
+title = "Rock N Roll Party Demo"
+group = "Semtex"
+source = "script"
+
+[demozoo.182761]
+title = "Rock'n Frog"
+group = "Royal Amiga Force / Synergy"
+source = "script"
+
+[demozoo.209243]
+title = "ROCKet"
+group = "Ronan / Noogman / Deelite"
+source = "script"
+result = "unknown"
+
+[demozoo.184244]
+title = "Rodeo"
+group = "Banal Projects"
+source = "script"
+
+[demozoo.280963]
+title = "Rodonea"
+group = "Ozzyboshi"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.258872]
+title = "Roede Hunde"
+group = "Static Bytes"
+source = "script"
+
+[demozoo.357042]
+title = "Roger Juggler Demo"
+group = "Cure"
+source = "script"
+
+[demozoo.206986]
+title = "Roger Rabbit Demo"
+group = "Abnormal"
+source = "script"
+
+[demozoo.215838]
+title = "Roger Rabbit Demo"
+group = "Crush"
+source = "script"
+
+[demozoo.221357]
+title = "Roger Rabbit Intro"
+group = "Ydex / Hi-Tech"
+source = "script"
+
+[demozoo.220718]
+title = "Rok U Again"
+group = "Razkels"
+source = "script"
+
+[demozoo.229975]
+title = "Rolf and Grandma Again"
+group = "Technoflight"
+source = "script"
+
+[demozoo.333509]
+title = "Rolf Shitro"
+group = "Bizz Nizz"
+source = "script"
+
+[demozoo.351841]
+title = "Roll Intro"
+group = "Magnetic Fields"
+source = "script"
+
+[demozoo.233937]
+title = "Roll or Die Comercial"
+group = "Animators"
+source = "script"
+
+[demozoo.242820]
+title = "Roller"
+group = "End of Century 1999"
+source = "script"
+result = "unknown"
+
+[demozoo.81514]
+title = "Rollin' Dice"
+group = "Laxative Effects"
+source = "script"
+machine = "a1200_fast"
+run = "lax-roll.exe"
+
+[demozoo.181427]
+title = "ROM 3 Announce Intro"
+group = "Sonik"
+source = "script"
+result = "unknown"
+
+[demozoo.150543]
+title = "ROM 4 Intro"
+group = "Essence"
+source = "script"
+machine = "a1200"
+
+[demozoo.275078]
+title = "ROM 9 Intro"
+group = "C-Lous"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.79113]
+title = "Rombodemo"
+group = "Hack n' Trade"
+source = "script"
+
+[demozoo.223906]
+title = "Rompa"
+group = "Mokka Crew"
+source = "script"
+
+[demozoo.258746]
+title = "Ron's First Intro"
+group = "Software of Sweden"
+source = "script"
+
+[demozoo.159494]
+title = "Ronus Demo"
+group = "Prong"
+source = "script"
+
+[demozoo.147743]
+title = "Roobaalii"
+group = "Wanted Team"
+source = "script"
+
+[demozoo.173478]
+title = "Rookie's Delight"
+group = "Curacy"
+source = "script"
+
+[demozoo.212329]
+title = "Room"
+group = "Energy"
+source = "script"
+
+[demozoo.79440]
+title = "Rootcanal"
+group = "Axis"
+source = "script"
+result = "unknown"
+run = "LE-window6.12"
+
+[demozoo.169901]
+title = "ROOTro"
+group = "DTS"
+source = "script"
+machine = "a1200_fast"
+disks = ["rootro-disk_1.dms", "rootro-disk_2.dms"]
+swaps = [{ disk = 2, at = 264.7 }]
+
+[demozoo.6954]
+title = "Roots"
+group = "Sanity"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.222728]
+title = "Ropeet"
+group = "The Perfects"
+source = "script"
+
+[demozoo.257007]
+title = "Rorke's Drift & To One Intro"
+group = "Savage"
+source = "script"
+
+[demozoo.28146]
+title = "Rosa Bananer"
+group = "Tronix"
+source = "script"
+result = "unknown"
+run = "rosa_banan.exe"
+
+[demozoo.223552]
+title = "Rosa Bananer 2"
+group = "Spiritual Productions"
+source = "script"
+machine = "a1200"
+
+[demozoo.28548]
+title = "Rose"
+group = "Chryseis"
+source = "script"
+machine = "a1200"
+
+[demozoo.281276]
+title = "Rose Intro"
+group = "Graffiti"
+source = "script"
+
+[demozoo.228848]
+title = "Rosebud Meeting"
+group = "Rosebud"
+source = "script"
+
+[demozoo.228849]
+title = "Rosebud's Digital Illusions Slideshow"
+group = "Rosebud"
+source = "script"
+
+[demozoo.210262]
+title = "Roskilde Meeting Demo"
+group = "Depredators"
+source = "script"
+
+[demozoo.21932]
+title = "Rossoliina"
+group = "Midnightsun"
+source = "script"
+
+[demozoo.243213]
+title = "Rosta Mina Russin, Han Har Mulat"
+group = "Esau"
+source = "script"
+machine = "a1200"
+
+[demozoo.62859]
+title = "Roswell"
+group = "Ramses"
+source = "script"
+result = "unknown"
+
+[demozoo.223652]
+title = "Rot2-1"
+group = "Dream's Day"
+source = "script"
+result = "unknown"
+
+[demozoo.28208]
+title = "Rotate Mania"
+group = "Union"
+source = "script"
+
+[demozoo.268127]
+title = "Rotating Bobs Boot Intro"
+group = "British Swapping Syndicate"
+source = "script"
+result = "unknown"
+
+[demozoo.195194]
+title = "Rotating Cheque Board"
+group = "Anarchy"
+source = "script"
+
+[demozoo.260114]
+title = "Rotating Delirium"
+group = "Symbiosis"
+source = "script"
+
+[demozoo.229810]
+title = "Rotating Logo"
+group = "Sinners"
+source = "script"
+result = "unknown"
+
+[demozoo.210388]
+title = "Rotating Sine"
+group = "Paradise / Brainwalker"
+source = "script"
+
+[demozoo.212330]
+title = "Rotation Intro"
+group = "Energy"
+source = "script"
+
+[demozoo.18534]
+title = "Rotator"
+group = "Klone"
+source = "script"
+result = "unknown"
+
+[demozoo.30439]
+title = "Rotator"
+group = "Darkness"
+source = "script"
+
+[demozoo.51579]
+title = "Rotek"
+group = "Focus Design / Depth"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.314264]
+title = "Rotkappchen"
+group = "Floppy"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.46983]
+title = "Rotor"
+group = "Vektor"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.243658]
+title = "Rotor - megatrainer intro"
+group = "Fairlight"
+source = "script"
+
+[demozoo.323003]
+title = "Rotozoom - Batman Vuelve Advert Intro"
+group = "Batman Group"
+source = "script"
+
+[demozoo.189694]
+title = "Rotten Pack 4 Intro"
+group = "Intuition"
+source = "script"
+boot = "floppy"
+
+[demozoo.248948]
+title = "Rotterdam House One"
+group = "Legend"
+source = "script"
+
+[demozoo.248949]
+title = "Rotterdam House vol 2"
+group = "Legend"
+source = "script"
+
+[demozoo.166678]
+title = "rotz"
+group = "AttentionWhore"
+source = "script"
+
+[demozoo.44915]
+title = "Rouge"
+group = "Copy And Paste Productions"
+source = "script"
+machine = "a1200"
+
+[demozoo.151469]
+title = "Rouge-o-Matic"
+group = "Copy And Paste Productions"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.262410]
+title = "Round"
+group = "The Silents"
+source = "script"
+
+[demozoo.242830]
+title = "Round About Pack 8 - menu"
+group = "End of Century 1999"
+source = "script"
+
+[demozoo.351342]
+title = "Roundabout"
+group = "The Softkiller Crew"
+source = "script"
+
+[demozoo.42047]
+title = "Rout"
+group = "Potion"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.241355]
+title = "Route 66"
+group = "D-Mob"
+source = "script"
+
+[demozoo.331865]
+title = "RowHAMmer"
+group = "Platon42"
+source = "script"
+
+[demozoo.1998]
+title = "Roxette"
+group = "United Lamers"
+source = "script"
+
+[demozoo.194757]
+title = "Roy Black"
+group = "Shrimps Design / Lego"
+source = "script"
+machine = "a1200"
+
+[demozoo.151976]
+title = "Royal Amiga Conference Intro"
+group = "Decade"
+source = "script"
+
+[demozoo.227118]
+title = "Royal Blue"
+group = "Inf."
+source = "script"
+
+[demozoo.256416]
+title = "Royal Conference Invitation"
+group = "Royal Amiga Force"
+source = "script"
+
+[demozoo.256417]
+title = "Royal Conference Party Pack Intro"
+group = "Royal Amiga Force"
+source = "script"
+
+[demozoo.276250]
+title = "Royal Conference Partydemo"
+group = "Hyperion"
+source = "script"
+
+[demozoo.256420]
+title = "Royal Information 3 - preview"
+group = "Royal Amiga Force"
+source = "script"
+
+[demozoo.189850]
+title = "Royal Palms"
+group = "Y-Crew"
+source = "script"
+
+[demozoo.200973]
+title = "RR-i01"
+group = "Brygada RR"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.228638]
+title = "RSI Demomaker Intro"
+group = "Doozer"
+source = "script"
+
+[demozoo.228639]
+title = "RSI Demomaker Intro 2"
+group = "Doozer"
+source = "script"
+
+[demozoo.87150]
+title = "RSIDM Halloween Experience"
+group = "cTrix"
+source = "script"
+
+[demozoo.228008]
+title = "Rubber Boys First"
+group = "Phoenix"
+source = "script"
+
+[demozoo.229221]
+title = "Rubber Goonies"
+group = "Tommyknockers"
+source = "script"
+
+[demozoo.29338]
+title = "Rubber Mania"
+group = "Latex"
+source = "script"
+machine = "a1200"
+run = "Rubber_Mania.Exe"
+
+[demozoo.184483]
+title = "Rubber Phone - When Clark Kent Fucked Lois Lane For The 3rd Time"
+group = "Reflectors"
+source = "script"
+
+[demozoo.249179]
+title = "Rubber Soul"
+group = "Limited Edition"
+source = "script"
+
+[demozoo.167504]
+title = "Rubbish"
+group = "Amega Industries"
+source = "script"
+
+[demozoo.384810]
+title = "Rubbur"
+group = "Steffest"
+source = "script"
+
+[demozoo.258803]
+title = "Rubicon"
+group = "Sonic"
+source = "script"
+
+[demozoo.121257]
+title = "Rubzilla"
+group = "Spaceballs"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.195543]
+title = "Ruesselsheim"
+group = "Maximum"
+source = "script"
+
+[demozoo.281223]
+title = "Ruff"
+group = "neXus"
+source = "script"
+
+[demozoo.296085]
+title = "Rule 30"
+group = "Andromeda"
+source = "script"
+
+[demozoo.262408]
+title = "Rule Disk 8 Intro"
+group = "The Silents"
+source = "script"
+machine = "a500_ks12"
+
+[demozoo.227326]
+title = "Rulez"
+group = "Brygada RR"
+source = "script"
+result = "unknown"
+
+[demozoo.27136]
+title = "Rumble Rubble"
+group = "Beton Design"
+source = "script"
+machine = "a1200"
+
+[demozoo.196199]
+title = "Rumours Intro"
+group = "Dictators"
+source = "script"
+
+[demozoo.31928]
+title = "Rumpelstiltckin"
+group = "Floppy"
+source = "script"
+machine = "a1200"
+run = "11-Joker.Focus"
+
+[demozoo.188118]
+title = "Runaway"
+group = "Logic System / 2000 A.D."
+source = "script"
+disks = ["2KAD&LS-RunawayA.dms", "2KAD&LS-RunawayB.dms"]
+swaps = [{ disk = 2, at = 53.5 }]
+
+[demozoo.6582]
+title = "Runaway Brain"
+group = "Sector T"
+source = "script"
+machine = "a1200"
+
+[demozoo.300997]
+title = "Runaway Mike"
+group = "Amiga Breaking Crew"
+source = "script"
+machine = "a500_512k"
+
+[demozoo.329358]
+title = "Runner"
+group = "Dope"
+source = "script"
+
+[demozoo.250622]
+title = "Running Free"
+group = "Metallians"
+source = "script"
+
+[demozoo.216851]
+title = "Running Indy Demo"
+group = "Team-X"
+source = "script"
+
+[demozoo.216852]
+title = "Running Indy Intro"
+group = "Team-X"
+source = "script"
+
+[demozoo.242273]
+title = "Running Man"
+group = "The Eleminator & Lucifer Software Team"
+source = "script"
+
+[demozoo.257412]
+title = "Running Man"
+group = "Scoopex"
+source = "script"
+
+[demozoo.6756]
+title = "Runtro II - The Next Chapter"
+group = "Genocide"
+source = "script"
+
+[demozoo.6586]
+title = "Rush"
+group = "Stone Arts"
+source = "script"
+machine = "a1200"
+
+[demozoo.108698]
+title = "Rushin"
+group = "MDMA"
+source = "script"
+
+[demozoo.234809]
+title = "Russel"
+group = "Axel Retro-Software"
+source = "script"
+
+[demozoo.334641]
+title = "RUSTEATER"
+group = "KONEY"
+source = "script"
+
+[demozoo.234952]
+title = "RVF Honda - Import"
+group = "Australian Crackers United"
+source = "script"
+
+[demozoo.42059]
+title = "Ryba"
+group = "Przyjaciele Stefana B."
+source = "script"
+result = "unknown"
+
+[demozoo.95443]
+title = "Rybik & Alien"
+group = "Przyjaciele Stefana B."
+source = "script"
+machine = "a1200"
+
+[demozoo.163835]
+title = "Ryboza"
+group = "Agressiva Due"
+source = "script"
+machine = "a1200"
+
+[demozoo.39804]
+title = "Rycerze okraglego stolca"
+group = "Odbyt"
+source = "script"
+machine = "a1200"
+run = "ODB-ROS.005"
+
+[demozoo.325757]
+title = "Rydzyk Skurwysynu"
+group = "Socjalistic Union of Scene Youth"
+source = "script"
+result = "unknown"
+
+[demozoo.46978]
+title = "Rymd"
+group = "Nukleus"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.7723]
+title = "Rynkeby Morgenmild"
+group = "Ambrosia"
+source = "script"
+machine = "a1200"
+
+[demozoo.35498]
+title = "Rysiek Wyruza"
+group = "Odbyt Design"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.222709]
+title = "Röwstration"
+group = "Sug Röw / Rage"
+source = "script"
+machine = "a1200"

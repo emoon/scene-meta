@@ -1,0 +1,1831 @@
+[demozoo.32751]
+title = "o'64"
+group = "O'Moses"
+source = "script"
+machine = "a1200"
+
+[demozoo.35135]
+title = "o.k."
+group = "Phace Truce"
+source = "script"
+result = "unknown"
+run = "OTLUE2Z61.exe"
+
+[demozoo.34783]
+title = "o2"
+group = "Nexus Team"
+source = "script"
+machine = "a1200"
+
+[demozoo.182370]
+title = "Oach Da"
+group = "Risk Inc."
+source = "script"
+
+[demozoo.9049]
+title = "Oaid"
+group = "Madwizards"
+source = "script"
+machine = "a1200_030"
+run = "MWI-Oaid4k.notcrunched"
+
+[demozoo.127456]
+title = "Oano"
+group = "Hallon"
+source = "script"
+machine = "a1200"
+
+[demozoo.98119]
+title = "Oasis BBS Intro"
+group = "Crystal"
+source = "script"
+
+[demozoo.122145]
+title = "Oasis Intro"
+group = "Stellar"
+source = "script"
+machine = "a1200"
+
+[demozoo.259087]
+title = "Obeeh Tulo"
+group = "Spedes"
+source = "script"
+result = "unknown"
+
+[demozoo.242946]
+title = "Oberheim Power"
+group = "Emax"
+source = "script"
+
+[demozoo.7488]
+title = "Oberon"
+group = "Yodel"
+source = "script"
+machine = "a1200"
+
+[demozoo.204758]
+title = "Oberon"
+group = "Onslaught / Defame"
+source = "script"
+
+[demozoo.219612]
+title = "Obey Your Master 2"
+group = "Danish Piracy Society 2010"
+source = "script"
+
+[demozoo.219613]
+title = "Obey Your Master 2 Intro"
+group = "Danish Piracy Society 2010"
+source = "script"
+
+[demozoo.244275]
+title = "Obituary"
+group = "Focus Design"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.268786]
+title = "Obituary 5 Menu"
+group = "Amnesia"
+source = "script"
+
+[demozoo.222195]
+title = "Obitus 1991"
+group = "Genestealers"
+source = "script"
+
+[demozoo.216522]
+title = "Oblique Infinity"
+group = "Goldfire"
+source = "script"
+
+[demozoo.227071]
+title = "Obliterator"
+group = "Squadream"
+source = "script"
+
+[demozoo.326639]
+title = "Obliterator Intro"
+group = "Incredible Ketchup Stars"
+source = "script"
+
+[demozoo.207824]
+title = "Oblivion"
+group = "Slipstream / Chaos"
+source = "script"
+
+[demozoo.226903]
+title = "Obraz Kontrolny"
+group = "Zack Team"
+source = "script"
+
+[demozoo.195073]
+title = "Obsolete and Happy"
+group = "Software Failure"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.6918]
+title = "Obvious Disaster"
+group = "Phenomena"
+source = "script"
+
+[demozoo.253809]
+title = "Obvious Disaster - Final"
+group = "Phenomena"
+source = "script"
+
+[demozoo.251803]
+title = "Obviousness"
+group = "NeXT"
+source = "script"
+
+[demozoo.24862]
+title = "Ocean"
+group = "Gunnars Farvebio"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.306982]
+title = "Ocean Floor"
+group = "Ghetto Crew"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.270570]
+title = "Ocean Intro"
+group = "Active"
+source = "script"
+
+[demozoo.4]
+title = "Ocean Machine"
+group = "The Black Lotus"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.60742]
+title = "ochFrommaDeVar"
+group = "Browallia / dIS / Balder"
+source = "script"
+machine = "a1200"
+run = "ochFrommaDeVar.nukleus.jrp02"
+
+[demozoo.287695]
+title = "octember"
+group = "iNSANE"
+source = "script"
+
+[demozoo.237019]
+title = "Octopussy"
+group = "Chryseis"
+source = "script"
+
+[demozoo.124377]
+title = "Octorubber"
+group = "Loonies / PACiF!C"
+source = "script"
+machine = "a500_1mb"
+run = "Octorubber_onlychip"
+
+[demozoo.237638]
+title = "Oda Kralju"
+group = "Corrosion"
+source = "script"
+machine = "a1200"
+
+[demozoo.259368]
+title = "Odd Disk 2 - menu"
+group = "Subway"
+source = "script"
+
+[demozoo.19042]
+title = "Odd Gunnar"
+group = "Ephidrena"
+source = "script"
+result = "unknown"
+
+[demozoo.223495]
+title = "Odds and Ends"
+group = "Accooon"
+source = "script"
+
+[demozoo.241111]
+title = "Ode to ATCW"
+group = "Ghost / Dimension X"
+source = "script"
+result = "unknown"
+
+[demozoo.221213]
+title = "Ode to Sonic"
+group = "Doom Uk"
+source = "script"
+
+[demozoo.252378]
+title = "Ode to Triace"
+group = "OCS-Farts"
+source = "script"
+
+[demozoo.376436]
+title = "Odelsgutt"
+group = "Paramount Productions"
+source = "script"
+
+[demozoo.6369]
+title = "Odelsgutt 2"
+group = "Paramount Productions"
+source = "script"
+
+[demozoo.202306]
+title = "Odelsgutt 3"
+group = "Paramount Productions"
+source = "script"
+
+[demozoo.10332]
+title = "Odeon Intro"
+group = "Anarchy"
+source = "script"
+
+[demozoo.223014]
+title = "Odessy"
+group = "Nasty Boyz"
+source = "script"
+
+[demozoo.242814]
+title = "Odi Demo"
+group = "End of Century 1999"
+source = "script"
+
+[demozoo.237175]
+title = "Odious - The BBS Intro"
+group = "C-Lous"
+source = "script"
+
+[demozoo.191785]
+title = "Odlot"
+group = "Monar Records / Odbyt Design"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.158709]
+title = "Odorless"
+group = "EMS Design"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.1910]
+title = "Odyssey"
+group = "Alcatraz"
+source = "script"
+disks = ["atz-ody1.dms", "atz-ody2.dms", "atz-ody3.dms", "atz-ody4.dms", "atz-ody5.dms"]
+swaps = [{ disk = 2, at = 519.8, key = "lmb" }, { disk = 3, at = 905.4, key = "lmb" }, { disk = 4, at = 1653.2, key = "lmb" }, { disk = 5, at = 2174.0, key = "lmb" }]
+
+[demozoo.233071]
+title = "Odyssey Preview"
+group = "Alcatraz"
+source = "script"
+
+[demozoo.257090]
+title = "Oepir Risti 5 Trailer"
+group = "Sardonyx"
+source = "script"
+
+[demozoo.239370]
+title = "Oerks"
+group = "Cybex"
+source = "script"
+
+[demozoo.322729]
+title = "Off the Main Course"
+group = "Charon"
+source = "script"
+
+[demozoo.23455]
+title = "Offbeat"
+group = "Loveboat"
+source = "script"
+machine = "a1200"
+run = "intro.exe"
+
+[demozoo.240195]
+title = "Official"
+group = "Defcon One"
+source = "script"
+
+[demozoo.262322]
+title = "Official Alf Demo"
+group = "The Giants"
+source = "script"
+
+[demozoo.237176]
+title = "Official Greetings"
+group = "C-Lous"
+source = "script"
+
+[demozoo.208325]
+title = "Official Intro"
+group = "Finnish Gold"
+source = "script"
+
+[demozoo.296812]
+title = "Official Intro to Flummy"
+group = "North Star"
+source = "script"
+
+[demozoo.96271]
+title = "Official Plasma"
+group = "Vega"
+source = "script"
+
+[demozoo.241084]
+title = "Official Starting Demo"
+group = "Dictators"
+source = "script"
+
+[demozoo.215716]
+title = "Official Supervisors Copy Party Demo"
+group = "Alcatraz / The Supervisors"
+source = "script"
+
+[demozoo.199777]
+title = "OffShore #1"
+group = "Apathy"
+source = "script"
+result = "unknown"
+
+[demozoo.151502]
+title = "Offworld 1 Intro"
+group = "Reason"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.9385]
+title = "Oh"
+group = "Whelpz"
+source = "script"
+result = "unknown"
+run = "wpz-oh.exe.uncrunched"
+
+[demozoo.1927]
+title = "Oh Crinkey What A Shit"
+group = "Sanity"
+source = "script"
+
+[demozoo.144251]
+title = "Oh Five!"
+group = "PACiF!C"
+source = "script"
+
+[demozoo.207936]
+title = "Oh No!"
+group = "Beyond Force"
+source = "script"
+
+[demozoo.245502]
+title = "Oh No! More Vectors"
+group = "Hardcore Design"
+source = "script"
+
+[demozoo.241354]
+title = "Oh No! Not Another One of Those Bob-Demos"
+group = "D-Mob"
+source = "script"
+
+[demozoo.227239]
+title = "Oh No, More Plastic"
+group = "Toayen"
+source = "script"
+result = "unknown"
+
+[demozoo.252532]
+title = "Oh Valentine"
+group = "Obsession"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.242710]
+title = "Oh, Bryan - Bryan Adams Tribute"
+group = "Elefantklubben"
+source = "script"
+
+[demozoo.45342]
+title = "OK, Komputer"
+group = "Industry / Mindnever / iq2000"
+source = "script"
+result = "unknown"
+
+[demozoo.311017]
+title = "Oklagija"
+group = "Avnoj"
+source = "script"
+result = "unknown"
+
+[demozoo.227310]
+title = "Oko Do Bazy"
+group = "Water Closet Design"
+source = "script"
+
+[demozoo.33871]
+title = "Okselzweet"
+group = "Desire"
+source = "script"
+machine = "a1200"
+
+[demozoo.219592]
+title = "Oktagon"
+group = "Netzwerk"
+source = "script"
+
+[demozoo.308293]
+title = "Oktalyzer"
+group = "Suxxess"
+source = "script"
+
+[demozoo.262805]
+title = "Olaus Petri"
+group = "The Special Brothers"
+source = "script"
+
+[demozoo.262433]
+title = "Old 64 Fonts Converted to Amiga CLI"
+group = "The Silents"
+source = "script"
+
+[demozoo.376127]
+title = "Old Boyz"
+group = "Istari"
+source = "script"
+
+[demozoo.358514]
+title = "Old Code (New Stuff)"
+group = "Future Light"
+source = "script"
+
+[demozoo.80386]
+title = "Old Cranky Style"
+group = "Genesis Project"
+source = "script"
+
+[demozoo.100529]
+title = "Old Habits Die Hard"
+group = "iNSANE"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.155098]
+title = "Old Intro 1"
+group = "Kefrens"
+source = "script"
+
+[demozoo.246830]
+title = "Old Prod"
+group = "Intense"
+source = "script"
+machine = "a1200"
+
+[demozoo.6592]
+title = "Old School"
+group = "Movement"
+source = "script"
+
+[demozoo.57719]
+title = "Old School"
+group = "New Generation Crew"
+source = "script"
+machine = "a1200"
+
+[demozoo.227203]
+title = "Old Stuff"
+group = "Overlords"
+source = "script"
+
+[demozoo.235464]
+title = "Old Stuff 2 Intro"
+group = "Balance"
+source = "script"
+
+[demozoo.330000]
+title = "old'scool"
+group = "Resistance"
+source = "script"
+result = "unknown"
+
+[demozoo.44910]
+title = "Old.Skool"
+group = "Apathy"
+source = "script"
+machine = "a1200"
+
+[demozoo.39720]
+title = "old10mhz"
+group = "Tresore"
+source = "script"
+machine = "a1200"
+
+[demozoo.32600]
+title = "Oldies But Goodies"
+group = "Intense"
+source = "script"
+machine = "a1200"
+
+[demozoo.78431]
+title = "Oldschool-Intro"
+group = "PureLamers"
+source = "script"
+machine = "a1200"
+
+[demozoo.30040]
+title = "Oldskool"
+group = "Resistance"
+source = "script"
+
+[demozoo.318223]
+title = "Oldskool"
+group = "Megastyle"
+source = "script"
+
+[demozoo.190313]
+title = "Oldskool Brettchen"
+group = "Triace"
+source = "script"
+
+[demozoo.24479]
+title = "Oldskool Fools"
+group = "Mandel Bros."
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.294511]
+title = "Oldskool Vibes"
+group = "Dekadence"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.208033]
+title = "Olle40"
+group = "gemini / Dalton / Spot / Tecon / Kymert / Esau / Pumbaa / Optic / Browallia / Leia / Corial / Malmix / D Vibe / Hencox / InStream / luNix"
+source = "script"
+
+[demozoo.24199]
+title = "Olstorp Tidan"
+group = "Laxative Effects"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.6963]
+title = "Olympe"
+group = "Gods"
+source = "script"
+machine = "a1200"
+
+[demozoo.254639]
+title = "Olympia - The Official Olympictro"
+group = "Profecy"
+source = "script"
+
+[demozoo.247326]
+title = "Olympia Demo"
+group = "Iris"
+source = "script"
+
+[demozoo.210980]
+title = "Olympic Intro"
+group = "Powerslaves"
+source = "script"
+result = "unknown"
+
+[demozoo.386470]
+title = "Ome Henk Demo"
+group = "Mirrorman"
+source = "script"
+
+[demozoo.216278]
+title = "Omed Dica"
+group = "Plasma Force"
+source = "script"
+
+[demozoo.224628]
+title = "Omega Demo"
+group = "Amiga Arts"
+source = "script"
+machine = "a500_512k"
+
+[demozoo.296818]
+title = "Omega Demo 2"
+group = "North Star"
+source = "script"
+
+[demozoo.241917]
+title = "Omegas Boring Pack"
+group = "Dual Crew"
+source = "script"
+
+[demozoo.234156]
+title = "Omen"
+group = "Anathema"
+source = "script"
+machine = "a1200"
+
+[demozoo.245503]
+title = "Omicron"
+group = "Limited Edition / Hardcore Design"
+source = "script"
+
+[demozoo.306712]
+title = "Omicron Demo Mix 29 - intro"
+group = "Omicron"
+source = "script"
+
+[demozoo.207825]
+title = "Omni-Play Basketball v1.0"
+group = "Slipstream / Chaos"
+source = "script"
+
+[demozoo.24025]
+title = "Omnicrom"
+group = "Ephidrena"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.160811]
+title = "Omnimetatheorem"
+group = "Software Failure"
+source = "script"
+result = "unknown"
+
+[demozoo.167485]
+title = "Omnipotent"
+group = "Tulou"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.20967]
+title = "Omnirush"
+group = "Mystic"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.259100]
+title = "On a Wing and a Prayer Preview"
+group = "Spectre"
+source = "script"
+
+[demozoo.214338]
+title = "On Da Movement"
+group = "Magicians"
+source = "script"
+
+[demozoo.292293]
+title = "On Fire"
+group = "Nah-Kolor"
+source = "script"
+
+[demozoo.182595]
+title = "On Line With The Future"
+group = "IMP-666 / The Band / The Final Suppliers"
+source = "script"
+
+[demozoo.233446]
+title = "On the Air"
+group = "Alpha Flight"
+source = "script"
+
+[demozoo.208717]
+title = "On The Groove"
+group = "Phaze101"
+source = "script"
+
+[demozoo.30468]
+title = "On The Knees!"
+group = "Venus Art"
+source = "script"
+result = "unknown"
+run = "LE-window6.12"
+
+[demozoo.27965]
+title = "On The Rush"
+group = "Melting Pot"
+source = "script"
+machine = "a1200"
+
+[demozoo.195577]
+title = "On The Side"
+group = "Lard Design"
+source = "script"
+
+[demozoo.2881]
+title = "OnaNina"
+group = "Depth"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.18025]
+title = "Once Upon A Time"
+group = "Ward"
+source = "script"
+machine = "a1200"
+
+[demozoo.186618]
+title = "Once Upon A Time"
+group = "World Federation of Mad Hackers"
+source = "script"
+
+[demozoo.20692]
+title = "One"
+group = "Nature"
+source = "script"
+machine = "a1200_030"
+run = "Nature-One.uncr"
+
+[demozoo.267658]
+title = "One"
+group = "Desire"
+source = "script"
+
+[demozoo.240594]
+title = "One Arm"
+group = "Dexion"
+source = "script"
+machine = "a500_ks12"
+
+[demozoo.288215]
+title = "One Christmas night"
+group = "Prophesy"
+source = "script"
+result = "unknown"
+run = "Merry"
+
+[demozoo.203]
+title = "One Day"
+group = "Haujobb"
+source = "script"
+machine = "a1200"
+
+[demozoo.250668]
+title = "One Day"
+group = "Mexx"
+source = "script"
+
+[demozoo.254153]
+title = "One Day Meetro"
+group = "Pleasure"
+source = "script"
+
+[demozoo.230385]
+title = "One Disk Demo"
+group = "Quartz"
+source = "script"
+
+[demozoo.18079]
+title = "One Finger"
+group = "Reality"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.28453]
+title = "One Frame"
+group = "Floppy"
+source = "script"
+machine = "a1200"
+
+[demozoo.242345]
+title = "One Hell of a Boring BBS-Intro"
+group = "Effect"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.27485]
+title = "One Hot Minute"
+group = "Focus Design"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.259370]
+title = "One Long Night"
+group = "Subway"
+source = "script"
+
+[demozoo.203250]
+title = "One Message"
+group = "Honoo"
+source = "script"
+machine = "a1200"
+
+[demozoo.259945]
+title = "One Module Music Pack 1"
+group = "Super Team"
+source = "script"
+
+[demozoo.379981]
+title = "One More Time"
+group = "Giants"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.249189]
+title = "One Night"
+group = "Liquid"
+source = "script"
+
+[demozoo.208700]
+title = "One Night Demo"
+group = "Zombie Boys"
+source = "script"
+
+[demozoo.237128]
+title = "One Night Mega Intro"
+group = "Carillon & Cyberiad"
+source = "script"
+
+[demozoo.215666]
+title = "One Of Three"
+group = "Abakus"
+source = "script"
+
+[demozoo.209650]
+title = "One Pixel Sinus"
+group = "Aero"
+source = "script"
+
+[demozoo.86082]
+title = "One Screen for Bonkers"
+group = "Tulou"
+source = "script"
+machine = "a1200"
+
+[demozoo.297777]
+title = "One Stone -Sport Aid-"
+group = "Quest"
+source = "script"
+
+[demozoo.210712]
+title = "One Two Three"
+group = "Scalaris"
+source = "script"
+
+[demozoo.373942]
+title = "One Way Dreams"
+group = "Defenders"
+source = "script"
+
+[demozoo.211715]
+title = "One Week Demo"
+group = "Animate!"
+source = "script"
+
+[demozoo.236729]
+title = "One Weekend Intro"
+group = "Cave"
+source = "script"
+
+[demozoo.248773]
+title = "One Wine"
+group = "Legacy"
+source = "script"
+
+[demozoo.257091]
+title = "One Year of Glory"
+group = "Sardonyx"
+source = "script"
+
+[demozoo.209617]
+title = "Onepixel RGB Plasma in A Vectorcube"
+group = "Light"
+source = "script"
+
+[demozoo.251928]
+title = "Onion Peel"
+group = "Neural / Rebels"
+source = "script"
+
+[demozoo.151353]
+title = "Onkel Vanja"
+group = "neXus"
+source = "script"
+
+[demozoo.257746]
+title = "Online Box BBS intro"
+group = "Shrimps Design"
+source = "script"
+
+[demozoo.257745]
+title = "Online Box BBS Intro (small)"
+group = "Shrimps Design"
+source = "script"
+
+[demozoo.224578]
+title = "Only a Mini Intro"
+group = "Specialized"
+source = "script"
+
+[demozoo.266539]
+title = "Only Amiga"
+group = "The 7th Division"
+source = "script"
+
+[demozoo.197052]
+title = "Only an Intro"
+group = "Heavy Duty"
+source = "script"
+
+[demozoo.262432]
+title = "Only Danish Megademo Part"
+group = "The Silents"
+source = "script"
+
+[demozoo.239358]
+title = "Only For Fun"
+group = "Cyclone"
+source = "script"
+
+[demozoo.228104]
+title = "Only Music One Intro"
+group = "Atomic"
+source = "script"
+
+[demozoo.299987]
+title = "Only One"
+group = "United Force / Absolute!"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.258959]
+title = "Only The Best Stands The Rest Of Time... -Rotating Stars-"
+group = "Spreadpoint / Amiga Industries"
+source = "script"
+
+[demozoo.182845]
+title = "Onslaught"
+group = "Factor 4"
+source = "script"
+
+[demozoo.249823]
+title = "Onslaught Soundtrack"
+group = "Maniacs of Noise"
+source = "script"
+
+[demozoo.1071]
+title = "Ontoclasia"
+group = "Software Failure"
+source = "script"
+result = "unknown"
+
+[demozoo.133632]
+title = "oo"
+group = "Mankind"
+source = "script"
+result = "unknown"
+run = "Karate"
+
+[demozoo.232528]
+title = "Ooby Dooby"
+group = "Magnetic Fields"
+source = "script"
+
+[demozoo.234244]
+title = "Ooh! It's Obscene II"
+group = "Anarchy"
+source = "script"
+result = "unknown"
+
+[demozoo.234245]
+title = "Ooh! It's Obscene III"
+group = "Anarchy"
+source = "script"
+result = "unknown"
+
+[demozoo.234246]
+title = "Ooh! It's Obscene IV"
+group = "Anarchy"
+source = "script"
+
+[demozoo.234247]
+title = "Ooh! It's Obscene V"
+group = "Anarchy"
+source = "script"
+machine = "a1200_030"
+disks = ["Anarchy-Obscene05A.adf", "Anarchy-Obscene05B.adf"]
+swaps = [{ disk = 2, at = 77.8 }]
+
+[demozoo.210713]
+title = "Oops 1"
+group = "Scalaris"
+source = "script"
+
+[demozoo.30462]
+title = "Oops!"
+group = "Venus Art / Appendix"
+source = "script"
+result = "unknown"
+
+[demozoo.246611]
+title = "Oops!"
+group = "Infect"
+source = "script"
+
+[demozoo.411]
+title = "Oops! Is Born"
+group = "The Silents / Oops! Productions"
+source = "script"
+
+[demozoo.102217]
+title = "Opal Se Futec"
+group = "Exile"
+source = "script"
+machine = "a1200"
+
+[demozoo.221743]
+title = "Opec Letter Writer"
+group = "Opec"
+source = "script"
+
+[demozoo.221745]
+title = "Opec-Slideshow Number One - Demo"
+group = "Opec"
+source = "script"
+
+[demozoo.266668]
+title = "Opel Kadeath Intro"
+group = "Taipan"
+source = "script"
+
+[demozoo.239491]
+title = "Opel Vector"
+group = "Cycron"
+source = "script"
+
+[demozoo.241298]
+title = "Open to Me My Sister"
+group = "Divina"
+source = "script"
+
+[demozoo.223562]
+title = "Open Your Eyes"
+group = "Funx Crack Band"
+source = "script"
+
+[demozoo.292537]
+title = "Open your mind let us inside"
+group = "Void"
+source = "script"
+machine = "a1200_fast"
+run = "final.exe"
+
+[demozoo.249175]
+title = "Ophir Chasma"
+group = "Limited Edition"
+source = "script"
+
+[demozoo.231708]
+title = "Optic Illusion"
+group = "Crusaders"
+source = "script"
+
+[demozoo.129474]
+title = "Optical Illusions"
+group = "Septic"
+source = "script"
+
+[demozoo.247088]
+title = "Optical Race"
+group = "Investation"
+source = "script"
+
+[demozoo.144737]
+title = "Optical Race Demo"
+group = "Apex"
+source = "script"
+
+[demozoo.247089]
+title = "Optical Race Intro"
+group = "Investation"
+source = "script"
+
+[demozoo.127519]
+title = "Optigan"
+group = "Traction"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.153486]
+title = "Optikal"
+group = "K!nky"
+source = "script"
+machine = "a1200"
+run = "part2"
+
+[demozoo.276972]
+title = "Optimal Workflow"
+group = "Teo"
+source = "script"
+
+[demozoo.96836]
+title = "Optimum Fuckup"
+group = "Sanity"
+source = "script"
+
+[demozoo.177744]
+title = "Opto Copper II"
+group = "Suspect"
+source = "script"
+
+[demozoo.252617]
+title = "Oracle Intro V4.0"
+group = "Oracle"
+source = "script"
+
+[demozoo.248709]
+title = "Orb & Psionic Meeting Demo"
+group = "Psionic"
+source = "script"
+
+[demozoo.233447]
+title = "Orbit"
+group = "Alpha Flight"
+source = "script"
+
+[demozoo.218704]
+title = "Orbit - The First Intro"
+group = "The Orb"
+source = "script"
+
+[demozoo.260599]
+title = "Orbit's Party Demo"
+group = "Tetragon"
+source = "script"
+
+[demozoo.3576]
+title = "Orcane"
+group = "Boozoholics"
+source = "script"
+machine = "a1200"
+
+[demozoo.241071]
+title = "Orchasm"
+group = "Diffusion"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.232763]
+title = "Orchestral Delight"
+group = "The Timecircle"
+source = "script"
+
+[demozoo.213234]
+title = "Orcrist's Dentro"
+group = "LSD"
+source = "script"
+
+[demozoo.246612]
+title = "Ordeal 40k Party Intro"
+group = "Infect"
+source = "script"
+
+[demozoo.335741]
+title = "Ordo"
+group = "Steffest"
+source = "script"
+
+[demozoo.160768]
+title = "Org-asm"
+group = "Fat Cat With A Top Hat"
+source = "script"
+machine = "a1200"
+
+[demozoo.8576]
+title = "Organic"
+group = "Phase Truce"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.162297]
+title = "Organizer Tro"
+group = "Success"
+source = "script"
+
+[demozoo.261692]
+title = "Orgasm Addict"
+group = "X-Men"
+source = "script"
+
+[demozoo.6594]
+title = "Orgasmatron"
+group = "Balance"
+source = "script"
+
+[demozoo.262431]
+title = "Orgasmatron Demo"
+group = "The Silents"
+source = "script"
+
+[demozoo.194288]
+title = "Orgasmodrome"
+group = "Ozone Free"
+source = "script"
+machine = "a1200"
+
+[demozoo.198988]
+title = "Orgazm 3 Preview"
+group = "Scum"
+source = "script"
+machine = "a1200"
+
+[demozoo.194974]
+title = "Oriental Wonderland"
+group = "Spirit"
+source = "script"
+
+[demozoo.5782]
+title = "Origin"
+group = "Complex"
+source = "script"
+machine = "a1200"
+disks = ["complex.origin-1.dms", "complex.origin-2.dms"]
+swaps = [{ disk = 2, at = 51.5, key = "lmb" }]
+
+[demozoo.212626]
+title = "Original Rips 6"
+group = "Scandal"
+source = "script"
+
+[demozoo.202826]
+title = "Origins"
+group = "Unique"
+source = "script"
+result = "unknown"
+
+[demozoo.222805]
+title = "Origo"
+group = "Talents"
+source = "script"
+
+[demozoo.261374]
+title = "Oriole"
+group = "Y-Crew"
+source = "script"
+
+[demozoo.218073]
+title = "Orions First"
+group = "European Software Agency"
+source = "script"
+
+[demozoo.295332]
+title = "Ork +4"
+group = "Alpha Flight"
+source = "script"
+
+[demozoo.353199]
+title = "Orlanski Intro 3"
+group = "Freestyle UK"
+source = "script"
+
+[demozoo.92779]
+title = "Orneta"
+group = "Vodka Design"
+source = "script"
+result = "unknown"
+
+[demozoo.265149]
+title = "Orneta"
+group = "Vodka People"
+source = "script"
+result = "unknown"
+
+[demozoo.209925]
+title = "Orthodox Meditation"
+group = "Dark Reign / Interactive"
+source = "script"
+
+[demozoo.140968]
+title = "Osnisty Fraktal"
+group = "Domel"
+source = "script"
+result = "unknown"
+run = "WHEREFUNROLEZ.EXE"
+
+[demozoo.228637]
+title = "Osnisty Fraktal"
+group = "Domel"
+source = "script"
+
+[demozoo.259310]
+title = "Ostival"
+group = "Sumpen"
+source = "script"
+
+[demozoo.360027]
+title = "Oswald"
+group = "Triax"
+source = "script"
+
+[demozoo.385833]
+title = "Oswald Intro"
+group = "The Tycoons"
+source = "script"
+
+[demozoo.262922]
+title = "Otti im Moni"
+group = "Thrust"
+source = "script"
+
+[demozoo.262921]
+title = "Ottifanten"
+group = "Thrust"
+source = "script"
+
+[demozoo.209402]
+title = "Otto"
+group = "Trash"
+source = "script"
+
+[demozoo.35131]
+title = "Oubliette"
+group = "Venus Art"
+source = "script"
+result = "unknown"
+run = "OTLUE2Z61.exe"
+
+[demozoo.89446]
+title = "Our 2nd Intro"
+group = "Heavy Duty"
+source = "script"
+
+[demozoo.36292]
+title = "Our Address Is"
+group = "Complex Inc."
+source = "script"
+
+[demozoo.5352]
+title = "Our Contribution"
+group = "Legend"
+source = "script"
+
+[demozoo.18532]
+title = "Our Contribution"
+group = "Giants"
+source = "script"
+machine = "a1200"
+
+[demozoo.226108]
+title = "Our Contribution To The 40Kb Intro-Competition"
+group = "Airline Design"
+source = "script"
+
+[demozoo.218630]
+title = "Our Crew"
+group = "Rare"
+source = "script"
+
+[demozoo.324072]
+title = "Our First Demo"
+group = "The Scientific Frontiers / Fashion"
+source = "script"
+
+[demozoo.330969]
+title = "Our First Demo"
+group = "Bloodsuckers"
+source = "script"
+
+[demozoo.184161]
+title = "Our First Intro"
+group = "Paradise"
+source = "script"
+
+[demozoo.195706]
+title = "Our First Intro"
+group = "Public Image Limited"
+source = "script"
+
+[demozoo.114245]
+title = "Our First Real Intro"
+group = "Altered Brains"
+source = "script"
+
+[demozoo.195754]
+title = "Our First Release"
+group = "Sudden Sex"
+source = "script"
+
+[demozoo.212839]
+title = "Our First Release"
+group = "The Syndicate"
+source = "script"
+
+[demozoo.218074]
+title = "Our House"
+group = "European Software Agency"
+source = "script"
+
+[demozoo.316315]
+title = "Our Hut"
+group = "Laddh"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.223956]
+title = "Our Latest Products"
+group = "Business After Dark"
+source = "script"
+
+[demozoo.228325]
+title = "Our Mascot"
+group = "Clever Boyz"
+source = "script"
+
+[demozoo.348319]
+title = "Our Monochrome Sandcastle"
+group = "Hackers"
+source = "script"
+
+[demozoo.323]
+title = "Our Nation"
+group = "Axis"
+source = "script"
+
+[demozoo.171898]
+title = "Our New Intro"
+group = "Genesis"
+source = "script"
+
+[demozoo.259715]
+title = "Our New Modem"
+group = "Supreme"
+source = "script"
+
+[demozoo.239710]
+title = "Our Newest Intro"
+group = "Darklight"
+source = "script"
+
+[demozoo.256031]
+title = "Our Newest Intro"
+group = "Renegade"
+source = "script"
+
+[demozoo.262702]
+title = "Our Second Demo on The Amiga"
+group = "The Softkiller Crew"
+source = "script"
+machine = "a500_ks12"
+
+[demozoo.344596]
+title = "Our Sinus Intro"
+group = "Vision"
+source = "script"
+
+[demozoo.244389]
+title = "Our Small Party Intro"
+group = "Freelance"
+source = "script"
+
+[demozoo.27956]
+title = "Out"
+group = "Mad Dogs"
+source = "script"
+machine = "a1200"
+
+[demozoo.41598]
+title = "Out"
+group = "Industry"
+source = "script"
+machine = "a1200"
+
+[demozoo.114041]
+title = "Out of Bounds"
+group = "Subject"
+source = "script"
+
+[demozoo.212615]
+title = "Out of Knee-Cap"
+group = "Securitate"
+source = "script"
+
+[demozoo.234157]
+title = "Out of Order"
+group = "Anathema"
+source = "script"
+
+[demozoo.20570]
+title = "Out of Space"
+group = "Session"
+source = "script"
+machine = "a1200"
+
+[demozoo.35445]
+title = "Out of Space"
+group = "Whelpz"
+source = "script"
+result = "unknown"
+run = "_negerkuß!!.exe"
+
+[demozoo.33437]
+title = "Out Of Spice"
+group = "Kinky"
+source = "script"
+machine = "a1200_fast"
+run = "worst"
+
+[demozoo.83321]
+title = "Out of Style III"
+group = "The SandS / Storm Studios"
+source = "script"
+result = "unknown"
+run = "engine"
+
+[demozoo.233630]
+title = "Out of Swapping"
+group = "Amaze"
+source = "script"
+
+[demozoo.242985]
+title = "Out Of The Ashes"
+group = "Razor 1911 / Equinox"
+source = "script"
+
+[demozoo.196051]
+title = "Out of Time - The Preview"
+group = "Decept"
+source = "script"
+
+[demozoo.243641]
+title = "Out Run"
+group = "Fairlight / North Star"
+source = "script"
+
+[demozoo.238477]
+title = "Outbreak BBS"
+group = "Blitz"
+source = "script"
+
+[demozoo.32611]
+title = "Outburst"
+group = "Mentasm"
+source = "script"
+machine = "a1200"
+
+[demozoo.276673]
+title = "Outcast 02 Menu"
+group = "Neo"
+source = "script"
+
+[demozoo.195699]
+title = "Outdated"
+group = "Trance Inc."
+source = "script"
+
+[demozoo.254326]
+title = "Outer Limits 2 Intro"
+group = "Polaris"
+source = "script"
+
+[demozoo.254328]
+title = "Outer Limits 3 Intro"
+group = "Polaris"
+source = "script"
+
+[demozoo.254330]
+title = "Outer Limits 4 Intro"
+group = "Polaris"
+source = "script"
+
+[demozoo.254332]
+title = "Outer Limits 5 Intro"
+group = "Polaris"
+source = "script"
+result = "unknown"
+
+[demozoo.8881]
+title = "Outgrowing"
+group = "Potion"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.112824]
+title = "Outland"
+group = "Rebels"
+source = "script"
+
+[demozoo.177745]
+title = "Outland"
+group = "Suspect"
+source = "script"
+
+[demozoo.244576]
+title = "Outland"
+group = "Freezers"
+source = "script"
+machine = "a1200"
+
+[demozoo.63625]
+title = "Outlander"
+group = "Ukonx"
+source = "script"
+machine = "a1200_fast"
+run = "outlander.exe"
+
+[demozoo.243296]
+title = "Outlaw Advertisment"
+group = "Eremation"
+source = "script"
+result = "unknown"
+
+[demozoo.43846]
+title = "Outside"
+group = "Keso"
+source = "script"
+machine = "a1200"
+
+[demozoo.111958]
+title = "Outside Planet Earth"
+group = "Australian Drug Foundation"
+source = "script"
+result = "unknown"
+
+[demozoo.394286]
+title = "Outsider"
+group = "Outsiders"
+source = "script"
+result = "unknown"
+run = "Karate"
+
+[demozoo.268585]
+title = "Outskirts"
+group = "The Electronic Knights"
+source = "script"
+
+[demozoo.215874]
+title = "Outstanding Demo"
+group = "Fat Boys / Swedish Commodore Cracking Service"
+source = "script"
+
+[demozoo.23775]
+title = "Outta Space"
+group = "Secretly!"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.33412]
+title = "Over"
+group = "X-Zone"
+source = "script"
+machine = "a1200"
+
+[demozoo.5079]
+title = "Over Control"
+group = "AceMan"
+source = "script"
+run = "AceMan - Over Control.exe"
+
+[demozoo.96274]
+title = "Over Dimension"
+group = "Aero"
+source = "script"
+
+[demozoo.224367]
+title = "Over the Blue Moon"
+group = "The Cyborgs"
+source = "script"
+
+[demozoo.102208]
+title = "Overcharge"
+group = "Ozone Free"
+source = "script"
+machine = "a1200"
+
+[demozoo.147660]
+title = "Overdose"
+group = "Delight"
+source = "script"
+
+[demozoo.228890]
+title = "Overdrive Demo"
+group = "Level 4 / Shadow Light"
+source = "script"
+
+[demozoo.188248]
+title = "Overdue"
+group = "Magnetic Fields"
+source = "script"
+
+[demozoo.92775]
+title = "Overhead"
+group = "Dinx Project"
+source = "script"
+machine = "a1200"
+run = "end"
+
+[demozoo.365420]
+title = "Overkill Will Never Die!"
+group = "Overkill"
+source = "script"
+
+[demozoo.259877]
+title = "Overload BBS"
+group = "Supplex"
+source = "script"
+
+[demozoo.372022]
+title = "Overstar"
+group = "Elimination"
+source = "script"
+machine = "a500_ks12"
+
+[demozoo.104101]
+title = "Overt Enemy"
+group = "Harvester"
+source = "script"
+result = "unknown"
+run = "!tunnel"
+
+[demozoo.185214]
+title = "Overtone"
+group = "Nah-Kolor / ADDiCT"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.9062]
+title = "Overview 1 - Apocalypse 1999 Edition"
+group = "Madwizards"
+source = "script"
+machine = "a1200"
+
+[demozoo.9532]
+title = "Overview 9 - Delirium 2001 Edition"
+group = "Madwizards"
+source = "script"
+result = "unknown"
+run = "mwi-ove9.exe"
+
+[demozoo.96643]
+title = "Overvision"
+group = "Blaze"
+source = "script"
+
+[demozoo.27856]
+title = "Oxigene IV"
+group = "Centolos"
+source = "script"
+machine = "a1200"
+
+[demozoo.196039]
+title = "Oxymoron"
+group = "Universal Soldiers"
+source = "script"
+machine = "a1200"
+
+[demozoo.185213]
+title = "Oxyre \"Ochseier\""
+group = "Oxyron / Desire"
+source = "script"
+
+[demozoo.216942]
+title = "Oz Con Placings"
+group = "Alchemy"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.305865]
+title = "OZ Friendship Compilation 5 Intro"
+group = "Switch"
+source = "script"
+
+[demozoo.240032]
+title = "Oz Summer Conference 90"
+group = "Decay"
+source = "script"
+
+[demozoo.229412]
+title = "Ozone Coding"
+group = "Abandon"
+source = "script"
+
+[demozoo.21451]
+title = "Ozone Cracktro"
+group = "Ozone"
+source = "script"
+result = "unknown"
+
+[demozoo.70700]
+title = "Ozone Friendly"
+group = "The Interceptors"
+source = "script"
+machine = "a1200"
+
+[demozoo.252834]
+title = "Ozone Partyintro II"
+group = "Ozone"
+source = "script"
+
+[demozoo.229413]
+title = "Ozones First For Abandon"
+group = "Abandon"
+source = "script"
+
+[demozoo.196797]
+title = "Oztro"
+group = "Fun Factory"
+source = "script"
+
+[demozoo.377671]
+title = "Ozzy Demo"
+group = "Zymosis"
+source = "script"

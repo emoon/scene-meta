@@ -1,0 +1,626 @@
+[demozoo.254535]
+title = "Z-Out"
+group = "Proton Ltd"
+source = "script"
+
+[demozoo.208638]
+title = "Zaganuga Intro"
+group = "Alpha Flight / Zylon"
+source = "script"
+
+[demozoo.359665]
+title = "Zajawka (Anty wojna)"
+group = "Zack Team"
+source = "script"
+result = "unknown"
+
+[demozoo.324613]
+title = "Zajawka AmiParty (Bulbmaster)"
+group = "Stoopi"
+source = "script"
+
+[demozoo.263680]
+title = "Zak McKracken Import"
+group = "Trilogy"
+source = "script"
+
+[demozoo.42169]
+title = "zakazany owoc"
+group = "MaxSoft"
+source = "script"
+result = "unknown"
+
+[demozoo.215646]
+title = "Zantifancy Intro"
+group = "Scrapers"
+source = "script"
+
+[demozoo.221508]
+title = "Zap Disk 03 - intro"
+group = "Finnish Bit Wizards"
+source = "script"
+
+[demozoo.221510]
+title = "Zap Disk 05 - intro"
+group = "Finnish Bit Wizards"
+source = "script"
+
+[demozoo.221513]
+title = "Zap Disk 09 - intro"
+group = "Finnish Bit Wizards"
+source = "script"
+
+[demozoo.182706]
+title = "Zap Man Demo"
+group = "Supplex"
+source = "script"
+
+[demozoo.257524]
+title = "Zap V2.05 Intro"
+group = "Scoopex"
+source = "script"
+
+[demozoo.377282]
+title = "ZapDemo"
+group = "Master Zap"
+source = "script"
+
+[demozoo.266604]
+title = "Zaphod Collection 2"
+group = "Zaphod"
+source = "script"
+
+[demozoo.219898]
+title = "Zapp Is Still Alive"
+group = "The Zapp"
+source = "script"
+
+[demozoo.234796]
+title = "Zappa Zoo / DPaint Unpack"
+group = "Axenon"
+source = "script"
+
+[demozoo.310421]
+title = "Zapped In"
+group = "Abyss"
+source = "script"
+
+[demozoo.208507]
+title = "Zappel Demo"
+group = "Zodiac"
+source = "script"
+
+[demozoo.289073]
+title = "Zaproszenie Na Party"
+group = "Ladybird Design / Lamers"
+source = "script"
+
+[demozoo.194949]
+title = "Zarbi"
+group = "Hemoroids"
+source = "script"
+
+[demozoo.220096]
+title = "Zarch Music Collection 3 - F5"
+group = "Zarch"
+source = "script"
+
+[demozoo.209604]
+title = "Zarch's First Intro"
+group = "Zarch / Nuke / Wizoid"
+source = "script"
+
+[demozoo.231907]
+title = "Zardisk 8 Packmenu"
+group = "Fifth Generation"
+source = "script"
+
+[demozoo.245295]
+title = "Zarified"
+group = "Hemoroids"
+source = "script"
+result = "unknown"
+
+[demozoo.217546]
+title = "Zarter Schmelz"
+group = "Irongods"
+source = "script"
+
+[demozoo.223470]
+title = "Zaxs Intro"
+group = "Trilogy / Zaxs"
+source = "script"
+
+[demozoo.45343]
+title = "Zaïebanï"
+group = "Zaïebanï"
+source = "script"
+
+[demozoo.191793]
+title = "Zbocz"
+group = "Trzech Zgrzybialych Pedofiluuf"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.176973]
+title = "Zczota Lurez"
+group = "Beacon"
+source = "script"
+
+[demozoo.326330]
+title = "Zdzich"
+group = "Roger / Kylo / Booshman"
+source = "script"
+result = "unknown"
+
+[demozoo.247810]
+title = "Ze Intro"
+group = "Zenon"
+source = "script"
+
+[demozoo.66652]
+title = "Zebra"
+group = "Pas Maters"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.3116]
+title = "Zeebeeking"
+group = "Apathy"
+source = "script"
+result = "unknown"
+
+[demozoo.92783]
+title = "Zemsta Robola"
+group = "Socjopata"
+source = "script"
+machine = "a1200"
+
+[demozoo.261130]
+title = "Zen Pack 2 Intro"
+group = "Zenith"
+source = "script"
+
+[demozoo.179531]
+title = "Zener Drive"
+group = "Altair"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.261122]
+title = "Zenith Pack 8 Menu"
+group = "Zenith"
+source = "script"
+
+[demozoo.128897]
+title = "Zenpack 7 Intro"
+group = "Zenith"
+source = "script"
+
+[demozoo.95004]
+title = "Zentro"
+group = "Zenith"
+source = "script"
+
+[demozoo.119637]
+title = "Zentro 4"
+group = "Zenith"
+source = "script"
+
+[demozoo.24881]
+title = "Zeon"
+group = "Nature"
+source = "script"
+machine = "a1200_030"
+run = "Nature-Zeon.uncr"
+
+[demozoo.182271]
+title = "Zer0 - No Sense aka Ground Zero"
+group = "C-Lous"
+source = "script"
+machine = "a1200"
+
+[demozoo.3591]
+title = "Zer0-FX"
+group = "Moods Plateau"
+source = "script"
+machine = "a1200"
+
+[demozoo.247198]
+title = "Zero Defecation"
+group = "Italian Bad Boys / Piranhas"
+source = "script"
+
+[demozoo.49455]
+title = "Zero Divide"
+group = "Grim Project / Intense"
+source = "script"
+result = "unknown"
+run = "zerodivide.cgx"
+
+[demozoo.50583]
+title = "Zero Divide RMX"
+group = "Grim Project"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.7718]
+title = "Zero Gravity"
+group = "Scoopex"
+source = "script"
+machine = "a1200"
+
+[demozoo.23615]
+title = "Zero Gravity"
+group = "Venus Art / Appendix"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.18510]
+title = "Zero-G 2"
+group = "Scoopex"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.19194]
+title = "Zero-G III"
+group = "Scoopex"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.183357]
+title = "Zeroes and Ones"
+group = "Asylum"
+source = "script"
+machine = "a1200"
+
+[demozoo.236552]
+title = "Zerox"
+group = "Cascade 1733"
+source = "script"
+
+[demozoo.116158]
+title = "Zetaniks"
+group = "The Specials"
+source = "script"
+
+[demozoo.193828]
+title = "Zeus Meeting Intro"
+group = "Trackers"
+source = "script"
+
+[demozoo.245971]
+title = "Zgon"
+group = "Hlor Dezing"
+source = "script"
+
+[demozoo.259850]
+title = "Zhembar"
+group = "Supplex"
+source = "script"
+
+[demozoo.7467]
+title = "ZIF"
+group = "Parallax"
+source = "script"
+machine = "a1200"
+run = "ZiF.run"
+
+[demozoo.241456]
+title = "Zig-Zag Demo"
+group = "Doom"
+source = "script"
+
+[demozoo.28967]
+title = "Zimbabwe"
+group = "Bizarre Arts"
+source = "script"
+machine = "a1200"
+
+[demozoo.102215]
+title = "Zimbabwe"
+group = "Convex"
+source = "script"
+machine = "a1200"
+
+[demozoo.229745]
+title = "Zimbabwe"
+group = "Vision Soft"
+source = "script"
+
+[demozoo.260595]
+title = "Zimmi's Intro"
+group = "Tetragon"
+source = "script"
+
+[demozoo.40861]
+title = "Zimny Kaloryfer"
+group = "Random22"
+source = "script"
+result = "unknown"
+
+[demozoo.116170]
+title = "Zine 11 Headlines - Blue Incantation"
+group = "Brainstorm"
+source = "script"
+
+[demozoo.238761]
+title = "Zine 7 Headlines"
+group = "Brainstorm"
+source = "script"
+
+[demozoo.268126]
+title = "Zine 7 Intro"
+group = "Brainstorm"
+source = "script"
+
+[demozoo.116174]
+title = "Zine 8 Headlines"
+group = "Brainstorm"
+source = "script"
+
+[demozoo.238762]
+title = "Zine 8 Headlines 1991"
+group = "Brainstorm"
+source = "script"
+
+[demozoo.238763]
+title = "Zine 9 Headlines"
+group = "Brainstorm"
+source = "script"
+
+[demozoo.154110]
+title = "Zine 9 Headlines Intro"
+group = "Brainstorm"
+source = "script"
+
+[demozoo.238764]
+title = "Zine Title Page"
+group = "Brainstorm"
+source = "script"
+result = "unknown"
+
+[demozoo.224645]
+title = "Zini Zine Sine Intro"
+group = "Idiosyncatris"
+source = "script"
+
+[demozoo.254299]
+title = "Zinko -The Sign-"
+group = "Polka Brothers"
+source = "script"
+machine = "a1200"
+
+[demozoo.1136]
+title = "Zinustus"
+group = "Midnightsun"
+source = "script"
+
+[demozoo.307966]
+title = "Zitrax +1"
+group = "Crack Band Crew"
+source = "script"
+result = "unknown"
+
+[demozoo.215870]
+title = "Zitrax Intro"
+group = "Magnificent Force"
+source = "script"
+
+[demozoo.229788]
+title = "Zivotinja"
+group = "Enemy"
+source = "script"
+
+[demozoo.132795]
+title = "Zkloff"
+group = "Dazzle"
+source = "script"
+
+[demozoo.208496]
+title = "Zneipens Kuk"
+group = "Fucking Nerds"
+source = "script"
+
+[demozoo.211701]
+title = "Zodiac"
+group = "Dusk"
+source = "script"
+machine = "a1200"
+
+[demozoo.284682]
+title = "Zodiaco"
+group = "Octagon"
+source = "script"
+
+[demozoo.233091]
+title = "Zodmania"
+group = "Alcatraz"
+source = "script"
+
+[demozoo.207496]
+title = "Zombie Intro, The"
+group = "Genocide"
+source = "script"
+
+[demozoo.160630]
+title = "Zombie Pacman"
+group = "Scoopex / Tulou"
+source = "script"
+
+[demozoo.215358]
+title = "Zombies First"
+group = "Master Crew"
+source = "script"
+
+[demozoo.257747]
+title = "Zone One BBS 3"
+group = "Shrimps Design"
+source = "script"
+
+[demozoo.257749]
+title = "Zone One BBS intro (1)"
+group = "Shrimps Design"
+source = "script"
+machine = "a1200"
+
+[demozoo.257748]
+title = "Zone One BBS intro (2)"
+group = "Shrimps Design"
+source = "script"
+
+[demozoo.249436]
+title = "Zone One BBSTro"
+group = "Loons"
+source = "script"
+
+[demozoo.773]
+title = "Zoo"
+group = "Puzzle"
+source = "script"
+result = "unknown"
+run = "pzlzoo34.dat"
+
+[demozoo.318340]
+title = "Zoo-TV"
+group = "Young Offenders"
+source = "script"
+
+[demozoo.246891]
+title = "Zool Pack 12 Menu"
+group = "Intense"
+source = "script"
+result = "unknown"
+
+[demozoo.19191]
+title = "Zoom"
+group = "Anadune"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.253819]
+title = "Zoom"
+group = "Phenomena"
+source = "script"
+result = "unknown"
+
+[demozoo.262692]
+title = "Zoom"
+group = "The Softkiller Crew"
+source = "script"
+
+[demozoo.221705]
+title = "Zoom Parallax Demo"
+group = "Balance"
+source = "script"
+
+[demozoo.28443]
+title = "Zoombi"
+group = "Union / Public Image Limited"
+source = "script"
+machine = "a1200"
+
+[demozoo.366948]
+title = "Zoombi - bonus version"
+group = "Public Image Limited / Union"
+source = "script"
+machine = "a1200"
+
+[demozoo.243005]
+title = "Zoomed Reality BBS Intro"
+group = "Equinox"
+source = "script"
+
+[demozoo.234793]
+title = "Zoomer - Slideshow Advert"
+group = "Axis"
+source = "script"
+
+[demozoo.237354]
+title = "Zooming Scroller"
+group = "Cinefex Design"
+source = "script"
+
+[demozoo.249940]
+title = "ZoomIt"
+group = "Majic 12"
+source = "script"
+
+[demozoo.249941]
+title = "ZoomIt 2"
+group = "Majic 12"
+source = "script"
+
+[demozoo.183568]
+title = "Zoomtro"
+group = "Surprise! Productions / Creator"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.6957]
+title = "Zootje"
+group = "Tragedy"
+source = "script"
+machine = "a1200"
+
+[demozoo.227328]
+title = "Zorek"
+group = "Brygada RR"
+source = "script"
+machine = "a1200"
+
+[demozoo.227311]
+title = "ZSMP"
+group = "Water Closet Design"
+source = "script"
+
+[demozoo.254646]
+title = "ZTP"
+group = "Profecy"
+source = "script"
+
+[demozoo.254647]
+title = "ZTP II Demo"
+group = "Profecy"
+source = "script"
+
+[demozoo.258762]
+title = "ZuttZutt"
+group = "Software of Sweden"
+source = "script"
+
+[demozoo.305378]
+title = "ZX 512K"
+group = "djay"
+source = "script"
+
+[demozoo.5326]
+title = "Zyclonium"
+group = "Parasite"
+source = "script"
+
+[demozoo.127515]
+title = "Zymoscii"
+group = "Zymosis / Accession"
+source = "script"
+
+[demozoo.243758]
+title = "Zymox Megademo Part"
+group = "Fairlight"
+source = "script"
+machine = "a500_ks12"
+
+[demozoo.226679]
+title = "Zyntro"
+group = "The Zynaps"
+source = "script"
+
+[demozoo.221584]
+title = "Zzzod Intro"
+group = "The Living Box"
+source = "script"
+
+[demozoo.221585]
+title = "Zzzod Intro Small"
+group = "The Living Box"
+source = "script"

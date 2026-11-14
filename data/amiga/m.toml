@@ -1,0 +1,7559 @@
+[demozoo.101069]
+title = "M Dentro - Research of Musicians"
+group = "Apex"
+source = "script"
+machine = "a1200"
+
+[demozoo.9335]
+title = "M-31 The Comeback"
+group = "Andromeda"
+source = "script"
+
+[demozoo.257347]
+title = "M-U-Later"
+group = "Share and Enjoy / Scoopex"
+source = "script"
+
+[demozoo.209926]
+title = "M. Bison"
+group = "Zoltar"
+source = "script"
+
+[demozoo.265098]
+title = "Maa Beef"
+group = "Voodoo Design"
+source = "script"
+
+[demozoo.61527]
+title = "Maailmanloppu"
+group = "Rappioryhmä"
+source = "script"
+
+[demozoo.247208]
+title = "Maase Demo"
+group = "It"
+source = "script"
+
+[demozoo.233804]
+title = "Maastro"
+group = "Analog"
+source = "script"
+
+[demozoo.257348]
+title = "Mac Clip-Art 1"
+group = "Scoopex"
+source = "script"
+
+[demozoo.22217]
+title = "Mac Fonts 1"
+group = "Scoopex"
+source = "script"
+
+[demozoo.250553]
+title = "Mac Melon Mullo Mania Intro"
+group = "Melon Dezign"
+source = "script"
+
+[demozoo.215485]
+title = "Mace Demo 2"
+group = "Necatrix"
+source = "script"
+
+[demozoo.136309]
+title = "MacGyver"
+group = "The Gang"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.151834]
+title = "Machiavel"
+group = "Chryseis"
+source = "script"
+
+[demozoo.262350]
+title = "Machine Code Programming Tooldisk"
+group = "The Gang"
+source = "script"
+
+[demozoo.21526]
+title = "Machinery"
+group = "Factor"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.59939]
+title = "Machinist"
+group = "Elude"
+source = "script"
+result = "unknown"
+run = "eld-machinist"
+
+[demozoo.32592]
+title = "Macho Man 3"
+group = "Syndrome"
+source = "script"
+result = "unknown"
+
+[demozoo.357726]
+title = "Macintrash Simulator"
+group = "Ecthelion Softworks Productions"
+source = "script"
+
+[demozoo.209646]
+title = "Mad"
+group = "Aero"
+source = "script"
+
+[demozoo.281895]
+title = "Mad"
+group = "Aldi"
+source = "script"
+
+[demozoo.207030]
+title = "Mad But True"
+group = "Beyond"
+source = "script"
+
+[demozoo.147663]
+title = "Mad Cow Disease"
+group = "Delight"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.1922]
+title = "Mad Decision"
+group = "Majic 12"
+source = "script"
+
+[demozoo.263471]
+title = "Mad Hatter BBS Intro 1"
+group = "Tristar and Red Sector Inc."
+source = "script"
+
+[demozoo.27138]
+title = "Mad Man"
+group = "Delta"
+source = "script"
+
+[demozoo.261188]
+title = "Mad mod"
+group = "Zenith"
+source = "script"
+
+[demozoo.190275]
+title = "Mad Sine Intro 1"
+group = "Pendle Europa"
+source = "script"
+
+[demozoo.190279]
+title = "Mad Sine Intro 2"
+group = "Pendle Europa"
+source = "script"
+
+[demozoo.226735]
+title = "Mad Vector"
+group = "Aliens"
+source = "script"
+
+[demozoo.314280]
+title = "Mad Vibe"
+group = "Outsiders"
+source = "script"
+result = "unknown"
+run = "Karate"
+
+[demozoo.228360]
+title = "Mad-Balls"
+group = "Last Gear"
+source = "script"
+
+[demozoo.224679]
+title = "Madd Hatter BBS"
+group = "Saber-matrix Productions"
+source = "script"
+
+[demozoo.349335]
+title = "Made In Austria"
+group = "Scoopex"
+source = "script"
+result = "unknown"
+
+[demozoo.110590]
+title = "Made In Croatia"
+group = "Binary"
+source = "script"
+
+[demozoo.209253]
+title = "Made in Denmark"
+group = "Bastards"
+source = "script"
+run = "intro"
+
+[demozoo.239680]
+title = "Made In Japan"
+group = "Darkness"
+source = "script"
+
+[demozoo.231054]
+title = "Made in Norway"
+group = "Cartel"
+source = "script"
+
+[demozoo.89303]
+title = "Made In the Name of the Schwartz"
+group = "Spaceballs"
+source = "script"
+
+[demozoo.10324]
+title = "Madness"
+group = "Anarchy"
+source = "script"
+
+[demozoo.32001]
+title = "Madness"
+group = "Destruction"
+source = "script"
+machine = "a1200"
+
+[demozoo.10325]
+title = "Madness 2 - The Search for Sanity"
+group = "Anarchy"
+source = "script"
+
+[demozoo.260275]
+title = "Madness Week"
+group = "Syntex"
+source = "script"
+disks = ["Syntex-MadnessWeek1.adf", "Syntex-MadnessWeek2.adf"]
+swaps = [{ disk = 2, at = 35.0 }]
+
+[demozoo.227089]
+title = "Madonna Demo"
+group = "Hysteria"
+source = "script"
+
+[demozoo.196091]
+title = "Madpack 42 - menu"
+group = "Dictators"
+source = "script"
+
+[demozoo.246507]
+title = "Madplayfield"
+group = "Humanoids"
+source = "script"
+
+[demozoo.262621]
+title = "Maffia is Born"
+group = "The Maffia"
+source = "script"
+
+[demozoo.164967]
+title = "Maga Uncut"
+group = "Zymosis"
+source = "script"
+
+[demozoo.242707]
+title = "Magda, Dhe Necrofil"
+group = "Elefantklubben"
+source = "script"
+
+[demozoo.207484]
+title = "Mage's Staff 2 Intro"
+group = "Genocide"
+source = "script"
+
+[demozoo.248231]
+title = "Maggy 12 Intro"
+group = "Complex"
+source = "script"
+
+[demozoo.189787]
+title = "Maggy 9 Intro"
+group = "Complex"
+source = "script"
+
+[demozoo.3148]
+title = "Magia"
+group = "The Black Lotus"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.24879]
+title = "Magic"
+group = "Nah-Kolor"
+source = "script"
+machine = "a1200_fast"
+run = "Magic"
+
+[demozoo.95400]
+title = "Magic"
+group = "Embassy"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.235484]
+title = "Magic Arts"
+group = "Beastie Boys"
+source = "script"
+
+[demozoo.250179]
+title = "Magic Carpet"
+group = "Mayhem"
+source = "script"
+
+[demozoo.167523]
+title = "Magic Code"
+group = "Action Direct"
+source = "script"
+
+[demozoo.272077]
+title = "Magic Copper"
+group = "Questor"
+source = "script"
+
+[demozoo.224501]
+title = "Magic Demo"
+group = "Diabolics"
+source = "script"
+
+[demozoo.262447]
+title = "Magic Dimension of Scrolling"
+group = "The Silents"
+source = "script"
+
+[demozoo.241127]
+title = "Magic Fever"
+group = "Divas"
+source = "script"
+machine = "a1200"
+
+[demozoo.94791]
+title = "Magic Happens In 1991"
+group = "BAAMI Inc. / TSRI"
+source = "script"
+
+[demozoo.49645]
+title = "Magic Happens in Eersel"
+group = "Baami"
+source = "script"
+machine = "a1200"
+
+[demozoo.4349]
+title = "Magic Happens in Saarbrucken"
+group = "TSRI"
+source = "script"
+machine = "a1200"
+
+[demozoo.222939]
+title = "Magic Melodies III"
+group = "M.C.MP"
+source = "script"
+
+[demozoo.216210]
+title = "Magic Moments"
+group = "Relay / Ipec Elite"
+source = "script"
+
+[demozoo.262539]
+title = "Magic Music Disk"
+group = "The Powerlords"
+source = "script"
+
+[demozoo.253723]
+title = "Magic Power Disk"
+group = "Phuture 303"
+source = "script"
+
+[demozoo.262823]
+title = "Magic Riddle"
+group = "The Special Brothers"
+source = "script"
+
+[demozoo.215361]
+title = "Magic Roundabout"
+group = "Alienation"
+source = "script"
+
+[demozoo.213574]
+title = "Magic Touch"
+group = "Sam"
+source = "script"
+
+[demozoo.283566]
+title = "Magic World"
+group = "Kefrens"
+source = "script"
+
+[demozoo.220873]
+title = "Magic World of Steel Pulse"
+group = "Steel Pulse"
+source = "script"
+
+[demozoo.217543]
+title = "Magic-Boxes"
+group = "Irongods"
+source = "script"
+
+[demozoo.164338]
+title = "Magical Box"
+group = "Grasshopper Developments"
+source = "script"
+result = "unknown"
+
+[demozoo.224738]
+title = "Magical Moments"
+group = "Stoer & Nutteloos"
+source = "script"
+
+[demozoo.371079]
+title = "Magical OCS"
+group = "Agima"
+source = "script"
+
+[demozoo.253357]
+title = "Magical Zone 1 Menu"
+group = "Paradise"
+source = "script"
+result = "unknown"
+
+[demozoo.253365]
+title = "Magical Zone 20 Intro"
+group = "Paradise"
+source = "script"
+
+[demozoo.253374]
+title = "Magical Zone 7 Intro"
+group = "Paradise"
+source = "script"
+
+[demozoo.224529]
+title = "Magicpack 8 Intro"
+group = "The Magiclords"
+source = "script"
+
+[demozoo.151439]
+title = "Magnar"
+group = "Amiga Birthday Committee"
+source = "script"
+
+[demozoo.359853]
+title = "Magnar 50"
+group = "Amiga Birthday Committee"
+source = "script"
+
+[demozoo.241032]
+title = "Magnetic Dreams"
+group = "Digital"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.234225]
+title = "Magnetic Fields Party Mini-Intro"
+group = "Anarchy"
+source = "script"
+
+[demozoo.232521]
+title = "Magnetic Madness"
+group = "Magnetic Fields"
+source = "script"
+
+[demozoo.166240]
+title = "Magnificent"
+group = "Unicorn"
+source = "script"
+
+[demozoo.346201]
+title = "Magnificent 78 Menu"
+group = "Triangle 3532"
+source = "script"
+
+[demozoo.217290]
+title = "Magnificent Collection 14 Intro"
+group = "Election"
+source = "script"
+
+[demozoo.391827]
+title = "Magnificient 35 - Intro"
+group = "Triangle 3532"
+source = "script"
+
+[demozoo.104095]
+title = "Magnify"
+group = "Absurd"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.331872]
+title = "Magnum A.I."
+group = "Planet Jazz"
+source = "script"
+
+[demozoo.258895]
+title = "Magnum's Demo"
+group = "Starline"
+source = "script"
+machine = "a500_ks12"
+
+[demozoo.184552]
+title = "Magtro"
+group = "Technology"
+source = "script"
+
+[demozoo.242330]
+title = "Magtro"
+group = "Effect"
+source = "script"
+
+[demozoo.250554]
+title = "Maharischi Mahesch Yogi Poppers"
+group = "Melon Dezign"
+source = "script"
+
+[demozoo.230202]
+title = "Maiden Demo"
+group = "Quadlite"
+source = "script"
+
+[demozoo.233424]
+title = "Maimtronix BBS Intro"
+group = "Alpha Flight"
+source = "script"
+
+[demozoo.262446]
+title = "Main Battle Tank"
+group = "The Silents"
+source = "script"
+run = "ib"
+
+[demozoo.122314]
+title = "Main Event 4 Hours Realtime Intro"
+group = "Anarchy"
+source = "script"
+
+[demozoo.241034]
+title = "Main Event Last Minute Party Info"
+group = "Digital"
+source = "script"
+
+[demozoo.213211]
+title = "Main Event Report"
+group = "LSD"
+source = "script"
+
+[demozoo.337125]
+title = "Mainland"
+group = "V-Nom"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.171102]
+title = "Maja The Pszczolka"
+group = "Przyjaciele Stefana B."
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.30552]
+title = "Maja The Pszczółka"
+group = "Przyjaciele Stefana B."
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.238744]
+title = "Majestic's Zine Information"
+group = "Brainstorm"
+source = "script"
+
+[demozoo.259278]
+title = "Major Asshole's Bootintro"
+group = "Spaceballs"
+source = "script"
+result = "unknown"
+
+[demozoo.243623]
+title = "Major Delight 1 Intro"
+group = "Fairlight"
+source = "script"
+
+[demozoo.178539]
+title = "Major Delight 6 Intro"
+group = "Fairlight"
+source = "script"
+
+[demozoo.183818]
+title = "Major Fuckup"
+group = "Traktor"
+source = "script"
+machine = "a1200"
+
+[demozoo.385564]
+title = "Major Lagberg"
+group = "Dead Hackers Society"
+source = "script"
+
+[demozoo.77216]
+title = "Major Release"
+group = "dA JoRMaS"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.18441]
+title = "Makaveli"
+group = "Essence"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.196268]
+title = "Make Love Not War"
+group = "Euphoria"
+source = "script"
+
+[demozoo.233247]
+title = "Making Your Monitor Rock"
+group = "Freedom Force / The Sunriders"
+source = "script"
+
+[demozoo.276681]
+title = "Makkara"
+group = "Ninja GeFilus"
+source = "script"
+machine = "a1200"
+
+[demozoo.227943]
+title = "Maksoft Dreams 2"
+group = "Maksoft"
+source = "script"
+
+[demozoo.168122]
+title = "Makt"
+group = "Spaceballs"
+source = "script"
+
+[demozoo.222554]
+title = "Mal Function"
+group = "Psycho Source"
+source = "script"
+
+[demozoo.210654]
+title = "Maldorors First"
+group = "Sect"
+source = "script"
+
+[demozoo.221696]
+title = "Malestar General"
+group = "Balance"
+source = "script"
+result = "unknown"
+
+[demozoo.207485]
+title = "Malfunction"
+group = "Genocide"
+source = "script"
+
+[demozoo.228396]
+title = "Malfunction"
+group = "Dr. Trog"
+source = "script"
+
+[demozoo.258676]
+title = "Malfunction"
+group = "Slambam"
+source = "script"
+
+[demozoo.167990]
+title = "Malmix"
+group = "Amiga Birthday Committee"
+source = "script"
+
+[demozoo.238968]
+title = "Malnutrition"
+group = "Bronx"
+source = "script"
+
+[demozoo.28550]
+title = "Malta Intro"
+group = "Essence"
+source = "script"
+machine = "a1200"
+run = "startme.exe"
+
+[demozoo.200165]
+title = "Maltese Cross Intro"
+group = "Black Rose Cult"
+source = "script"
+
+[demozoo.210427]
+title = "Malzbier Trinker"
+group = "Paranoid"
+source = "script"
+
+[demozoo.33441]
+title = "Mamey Bay"
+group = "Kinky"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.32740]
+title = "Mamma"
+group = "Elefantklubben"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.198159]
+title = "Mamma Mia"
+group = "Menthos"
+source = "script"
+
+[demozoo.225466]
+title = "Mammoth Boing"
+group = "Dark Unicorn / Psychosoft"
+source = "script"
+machine = "a1200"
+
+[demozoo.245571]
+title = "Mamor Intro"
+group = "Hardline"
+source = "script"
+
+[demozoo.10006]
+title = "Man on the Moon"
+group = "Faculty"
+source = "script"
+machine = "a1200_fast"
+run = "DATA1.BIN"
+
+[demozoo.233930]
+title = "Man Who Counts"
+group = "Animators"
+source = "script"
+
+[demozoo.374182]
+title = "Mandaelbro"
+group = "Goblins"
+source = "script"
+result = "unknown"
+
+[demozoo.326647]
+title = "Mandel bootblock"
+group = "The Frog Buds / Skid Row / Fisc"
+source = "script"
+
+[demozoo.6377]
+title = "Mandelbrot"
+group = "Beyond Force"
+source = "script"
+
+[demozoo.8258]
+title = "Mandelbrot"
+group = "The Special Brothers"
+source = "script"
+
+[demozoo.151295]
+title = "Manel"
+group = "NewWave"
+source = "script"
+result = "unknown"
+
+[demozoo.215918]
+title = "Manhattan Dealers"
+group = "Goonies 2041"
+source = "script"
+result = "unknown"
+
+[demozoo.250464]
+title = "Manhatten Dealers"
+group = "Megaforce"
+source = "script"
+
+[demozoo.263623]
+title = "Manhunter"
+group = "Tristar"
+source = "script"
+result = "unknown"
+
+[demozoo.215676]
+title = "Mania"
+group = "Coast"
+source = "script"
+
+[demozoo.262620]
+title = "Maniac"
+group = "The Maffia"
+source = "script"
+
+[demozoo.281940]
+title = "Maniac demo down"
+group = "Crazy Maniacs of Hades"
+source = "script"
+
+[demozoo.263721]
+title = "Maniac Mansion"
+group = "Trilogy"
+source = "script"
+
+[demozoo.195596]
+title = "Maniac Zone"
+group = "Maniacs"
+source = "script"
+
+[demozoo.242792]
+title = "Manic Dance 3"
+group = "End of Century 1999"
+source = "script"
+
+[demozoo.82038]
+title = "Manifesty"
+group = "Skrolli"
+source = "script"
+
+[demozoo.28189]
+title = "Manipulations"
+group = "Venus Art"
+source = "script"
+machine = "a1200"
+boot = "hd"
+
+[demozoo.45602]
+title = "Mankind suckz"
+group = "iq2000"
+source = "script"
+result = "unknown"
+run = "ms-05.iq2k"
+
+[demozoo.179935]
+title = "Mankind's Big Sprite Demo 100%"
+group = "Mankind"
+source = "script"
+machine = "a1200"
+
+[demozoo.240758]
+title = "Manriki BBS Intro"
+group = "Desire"
+source = "script"
+
+[demozoo.42042]
+title = "Mansion of Illusion"
+group = "Potion"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.214335]
+title = "Manslayor's New Demo"
+group = "Nukebusters"
+source = "script"
+
+[demozoo.79141]
+title = "Manta"
+group = "Corpse"
+source = "script"
+result = "unknown"
+
+[demozoo.7241]
+title = "Manual Override"
+group = "Subacid"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.64105]
+title = "Manure"
+group = "3 Amigos"
+source = "script"
+result = "unknown"
+
+[demozoo.229400]
+title = "Mapper Demo"
+group = "Voids"
+source = "script"
+result = "unknown"
+
+[demozoo.206960]
+title = "Marantz BBS Intro"
+group = "Robster"
+source = "script"
+
+[demozoo.236578]
+title = "Marave II"
+group = "Candle"
+source = "script"
+machine = "a1200"
+
+[demozoo.258253]
+title = "Marble Sine Intro"
+group = "Cyrus"
+source = "script"
+
+[demozoo.194953]
+title = "Marbles"
+group = "Crusaders"
+source = "script"
+
+[demozoo.257351]
+title = "Marbles Intro"
+group = "Scoopex"
+source = "script"
+
+[demozoo.143740]
+title = "Marchewki"
+group = "Alchemy"
+source = "script"
+
+[demozoo.276761]
+title = "Marching On"
+group = "iNSANE"
+source = "script"
+
+[demozoo.244468]
+title = "Mardacon"
+group = "Frantic"
+source = "script"
+
+[demozoo.313118]
+title = "Mare"
+group = "Ephidrena / Loonies / Skuggimadr"
+source = "script"
+result = "unknown"
+
+[demozoo.263720]
+title = "Maria's Christmas Box"
+group = "Trilogy"
+source = "script"
+
+[demozoo.191790]
+title = "Marianna"
+group = "Spy"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.226711]
+title = "Marijuana"
+group = "SKB"
+source = "script"
+
+[demozoo.218435]
+title = "Mario Lai Might Eat or Fart"
+group = "Male Chauvinist Pigs"
+source = "script"
+machine = "a1200"
+
+[demozoo.260591]
+title = "Mario Meets Mortal Kombat"
+group = "Tesko"
+source = "script"
+
+[demozoo.230203]
+title = "Mark 2 Introducing"
+group = "Quadlite"
+source = "script"
+
+[demozoo.227858]
+title = "Mark 2 Ripper v2.0 Intro"
+group = "Dragnet"
+source = "script"
+
+[demozoo.230204]
+title = "Mark 2 Soundmonitor Introducing Intro"
+group = "Quadlite"
+source = "script"
+
+[demozoo.257074]
+title = "Mark II Ripper v1.1 and ST-Ripper v1.8"
+group = "Sargon"
+source = "script"
+
+[demozoo.222908]
+title = "Mark II Sound System intro"
+group = "Cachet Software"
+source = "script"
+
+[demozoo.262928]
+title = "Mark II Soundsystem Demo"
+group = "Thrust"
+source = "script"
+
+[demozoo.256939]
+title = "Marlon Intro"
+group = "Saints"
+source = "script"
+
+[demozoo.227387]
+title = "Marry Xmas & Fucking Happy New Year"
+group = "Twilight"
+source = "script"
+
+[demozoo.297584]
+title = "Marshmallow Express"
+group = "B-Towne"
+source = "script"
+
+[demozoo.95406]
+title = "Marsuladian Onnenpaeivae"
+group = "Larit"
+source = "script"
+result = "unknown"
+
+[demozoo.255771]
+title = "Martin Galway Music Show"
+group = "Red Sector Inc."
+source = "script"
+result = "unknown"
+
+[demozoo.251623]
+title = "Marvelous"
+group = "Mystix"
+source = "script"
+
+[demozoo.251624]
+title = "Marvelous II - The Way Back"
+group = "Mystix"
+source = "script"
+
+[demozoo.246604]
+title = "Mary's Magic"
+group = "Infect"
+source = "script"
+
+[demozoo.217322]
+title = "Mask Solution Demo"
+group = "Stack / X-Men"
+source = "script"
+machine = "a500_ks12"
+
+[demozoo.284545]
+title = "Maskpapp"
+group = "Troon"
+source = "script"
+
+[demozoo.27646]
+title = "Masque"
+group = "C-Lous"
+source = "script"
+machine = "a1200"
+
+[demozoo.252513]
+title = "Massacre"
+group = "Odbyt Design"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.247634]
+title = "Massiivinen Fallos"
+group = "Kinky"
+source = "script"
+
+[demozoo.4351]
+title = "Massive"
+group = "Skarla"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.123600]
+title = "Massive"
+group = "Defjam"
+source = "script"
+
+[demozoo.222189]
+title = "Massive Kill"
+group = "Genetics"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.37021]
+title = "Massive Killing Capacity"
+group = "Ram Jam"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.317172]
+title = "Massive Luxury Overdose 19 - menu"
+group = "Zeus"
+source = "script"
+
+[demozoo.240818]
+title = "Massive's Pack"
+group = "Vanish"
+source = "script"
+
+[demozoo.235082]
+title = "Masslos"
+group = "Arise"
+source = "script"
+
+[demozoo.19443]
+title = "Master Blaster"
+group = "Gunnars Farvebio"
+source = "script"
+machine = "a1200_fast"
+run = "MasterBlaster.exe"
+
+[demozoo.142854]
+title = "Master Control Program"
+group = "Desire"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.241991]
+title = "Master Devpac 1.0a Intro"
+group = "D-Tect"
+source = "script"
+
+[demozoo.256830]
+title = "Master Menu System"
+group = "Sanity"
+source = "script"
+
+[demozoo.256994]
+title = "Master Mix"
+group = "Savage"
+source = "script"
+
+[demozoo.357569]
+title = "Master Music Show"
+group = "PARALAX Software"
+source = "script"
+
+[demozoo.374154]
+title = "Master Of Ceremony Demo"
+group = "Troon"
+source = "script"
+
+[demozoo.374155]
+title = "Master Of Ceremony Intro"
+group = "Troon"
+source = "script"
+
+[demozoo.10326]
+title = "Master of Magic Intro"
+group = "Anarchy"
+source = "script"
+
+[demozoo.200534]
+title = "Master Of the Town - Music Rip"
+group = "Vision"
+source = "script"
+
+[demozoo.261902]
+title = "Master Piece"
+group = "The Exceptions"
+source = "script"
+
+[demozoo.262820]
+title = "Master Utilities"
+group = "The Special Brothers"
+source = "script"
+
+[demozoo.277724]
+title = "Masterbrain"
+group = "Crime"
+source = "script"
+
+[demozoo.233052]
+title = "Masterdemo 2"
+group = "Alcatraz"
+source = "script"
+
+[demozoo.230430]
+title = "Mastering CLI"
+group = "Bamiga Sector One / Quoram"
+source = "script"
+
+[demozoo.216451]
+title = "Masterpiece"
+group = "Northern Lights"
+source = "script"
+machine = "a500_ks12"
+
+[demozoo.210633]
+title = "Masterpiece of Computer Art"
+group = "Apex"
+source = "script"
+
+[demozoo.214759]
+title = "MasterSeka 1.31 Intro"
+group = "Prism"
+source = "script"
+
+[demozoo.164319]
+title = "MasterSeka 1.51 (Introducing)"
+group = "Prism / Illusion"
+source = "script"
+
+[demozoo.214760]
+title = "MasterSeka 1.53 Introducing"
+group = "Prism / Illusion"
+source = "script"
+
+[demozoo.224607]
+title = "Masturbation"
+group = "Fluffy Bears"
+source = "script"
+
+[demozoo.343140]
+title = "Mat"
+group = "Megaklopparna"
+source = "script"
+
+[demozoo.251778]
+title = "Matea"
+group = "Necropolis"
+source = "script"
+machine = "a1200"
+
+[demozoo.113574]
+title = "Materialized"
+group = "Cryptoburners"
+source = "script"
+run = "Materie.Music"
+
+[demozoo.260784]
+title = "Math-Amation"
+group = "The Bitstoppers"
+source = "script"
+
+[demozoo.224054]
+title = "Mathematical Stripes"
+group = "Velcro Fly"
+source = "script"
+
+[demozoo.219650]
+title = "Mathematics Intro"
+group = "British Swapping Syndicate"
+source = "script"
+machine = "a500_ks12"
+
+[demozoo.221372]
+title = "Mathik"
+group = "Mathic Entertainment"
+source = "script"
+machine = "a500_1mb"
+disks = ["MATHIC-MegademoA.DMS", "MATHIC-MegademoB.DMS"]
+swaps = [{ disk = 2, at = 405.0 }]
+
+[demozoo.188221]
+title = "Maths Essay"
+group = "Black Monks"
+source = "script"
+
+[demozoo.328099]
+title = "Matka Natura"
+group = "Marquee Design"
+source = "script"
+result = "unknown"
+
+[demozoo.7738]
+title = "Matrix"
+group = "Sigmate"
+source = "script"
+machine = "a1200"
+
+[demozoo.253832]
+title = "Matrix Joined"
+group = "Phantasy"
+source = "script"
+result = "unknown"
+
+[demozoo.193531]
+title = "Matrix's First Intro"
+group = "Wiz"
+source = "script"
+
+[demozoo.231371]
+title = "Matrix's Latest Piece of Code"
+group = "Crack"
+source = "script"
+
+[demozoo.216357]
+title = "Mats First Muzak"
+group = "Feinbein Software"
+source = "script"
+
+[demozoo.256995]
+title = "Matscho's Intro"
+group = "Savage"
+source = "script"
+
+[demozoo.246828]
+title = "Matt's Intro"
+group = "Intense"
+source = "script"
+
+[demozoo.211311]
+title = "Matujussi"
+group = "Wunderbaum"
+source = "script"
+machine = "a1200"
+
+[demozoo.227587]
+title = "Matura '97"
+group = "Gothic"
+source = "script"
+
+[demozoo.235186]
+title = "Max Headroom"
+group = "The Arcadia Team"
+source = "script"
+
+[demozoo.221514]
+title = "Max Headroom Demo"
+group = "Supra Soft Inc"
+source = "script"
+
+[demozoo.333048]
+title = "Max Mix 05 Intro"
+group = "Top Swap"
+source = "script"
+
+[demozoo.8434]
+title = "Maxima"
+group = "The Frog Buds / Scoopex"
+source = "script"
+
+[demozoo.8257]
+title = "Maximum Overdrive"
+group = "The Special Brothers"
+source = "script"
+
+[demozoo.255323]
+title = "Maximum Overdrive"
+group = "Rage"
+source = "script"
+machine = "a1200"
+disks = ["RGE-MAX1.DMS", "RGE-MAX2.DMS"]
+swaps = [{ disk = 2, at = 47.3, key = "lmb" }]
+
+[demozoo.262819]
+title = "Maximum Overdrive"
+group = "The Special Brothers"
+source = "script"
+disks = ["TSB-MaximumOverdriveA.adf", "TSB-MaximumOverdriveB.adf"]
+swaps = [{ disk = 2, at = 531.6 }]
+
+[demozoo.255324]
+title = "Maximum Overdrive 2 Intro"
+group = "Rage"
+source = "script"
+machine = "a1200"
+
+[demozoo.6832]
+title = "Maximum Overdrive II"
+group = "Rage"
+source = "script"
+machine = "a1200"
+disks = ["rage1.dms", "rage2.dms", "rage3.dms"]
+swaps = [{ disk = 2, at = 132.4, key = "lmb" }, { disk = 3, at = 191.4, key = "lmb" }]
+
+[demozoo.169004]
+title = "Maximum Pleasure Party Intro"
+group = "Decade"
+source = "script"
+
+[demozoo.88125]
+title = "Maximum Superprocess"
+group = "Software Failure"
+source = "script"
+result = "unknown"
+
+[demozoo.170158]
+title = "Maximum Taste - No Sugar"
+group = "Impact DK"
+source = "script"
+machine = "a1200"
+
+[demozoo.116290]
+title = "Maximum Velocity"
+group = "The Silents"
+source = "script"
+
+[demozoo.340235]
+title = "MaxiPlan Plus v1.8g"
+group = "Defjam"
+source = "script"
+machine = "a1200"
+
+[demozoo.415]
+title = "Maxtro"
+group = "Analog"
+source = "script"
+
+[demozoo.225128]
+title = "Maxtro"
+group = "The Kings Of Biscuits"
+source = "script"
+
+[demozoo.144552]
+title = "May 31st"
+group = "Amaze"
+source = "script"
+
+[demozoo.196043]
+title = "Mayday"
+group = "Atac"
+source = "script"
+machine = "a1200"
+
+[demozoo.5329]
+title = "MayDay Resistance"
+group = "Adict"
+source = "script"
+
+[demozoo.9558]
+title = "Mayhem"
+group = "Appendix"
+source = "script"
+result = "unknown"
+
+[demozoo.192368]
+title = "Mazinger Z Slideshow"
+group = "jojo073"
+source = "script"
+
+[demozoo.386337]
+title = "MB-Crew Party Demo"
+group = "Cyclone"
+source = "script"
+
+[demozoo.233054]
+title = "Mc Disk 4 Intro"
+group = "Alcatraz"
+source = "script"
+
+[demozoo.263465]
+title = "Mc Disk 5 - spread intro"
+group = "Tristar and Red Sector Inc."
+source = "script"
+result = "unknown"
+
+[demozoo.223971]
+title = "MC1310P"
+group = "Turk"
+source = "script"
+
+[demozoo.21937]
+title = "MC68000"
+group = "Cave"
+source = "script"
+
+[demozoo.237481]
+title = "McDisk 1 Intro"
+group = "Coma"
+source = "script"
+
+[demozoo.237482]
+title = "McDisk 2 Intro"
+group = "Coma"
+source = "script"
+
+[demozoo.237483]
+title = "McDisk 3 Intro"
+group = "Coma"
+source = "script"
+
+[demozoo.263464]
+title = "McDisk 4 Spread Intro"
+group = "Tristar and Red Sector Inc."
+source = "script"
+result = "unknown"
+
+[demozoo.272371]
+title = "McDisk 5 Intro"
+group = "Alcatraz"
+source = "script"
+
+[demozoo.7156]
+title = "McIntro (Lola)"
+group = "Fresh Prince"
+source = "script"
+machine = "a1200"
+
+[demozoo.242097]
+title = "MCS Easter Party '95 Invitation"
+group = "Moment 22 / Duplo"
+source = "script"
+machine = "a1200"
+
+[demozoo.29828]
+title = "Md4i"
+group = "Centolos"
+source = "script"
+machine = "a1200"
+
+[demozoo.177333]
+title = "Meadows"
+group = "Rift"
+source = "script"
+
+[demozoo.294042]
+title = "Meaningless"
+group = "Quixotic"
+source = "script"
+
+[demozoo.206391]
+title = "Meanwhile"
+group = "Nukleus"
+source = "script"
+
+[demozoo.262445]
+title = "Meatheads Party Demo"
+group = "The Silents"
+source = "script"
+machine = "a500_ks12"
+
+[demozoo.229378]
+title = "Meating Intro"
+group = "Argon"
+source = "script"
+
+[demozoo.43282]
+title = "Mecanica"
+group = "Software Failure"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.393933]
+title = "Mech Utilities 1 Intro"
+group = "The Mechanic"
+source = "script"
+result = "unknown"
+
+[demozoo.225210]
+title = "Mech Utilities 2 Intro"
+group = "The Mechanic"
+source = "script"
+result = "unknown"
+
+[demozoo.294130]
+title = "MECHMICROBES"
+group = "KONEY"
+source = "script"
+
+[demozoo.254883]
+title = "Med-Res Vectors"
+group = "Pussy"
+source = "script"
+
+[demozoo.214175]
+title = "Med-Res-Revolution"
+group = "Mindkillers"
+source = "script"
+
+[demozoo.211217]
+title = "Med-Sine"
+group = "Backslash"
+source = "script"
+
+[demozoo.234228]
+title = "Mediator's 2nd Party Intro"
+group = "Anarchy"
+source = "script"
+
+[demozoo.234229]
+title = "Mediator's Party Demo"
+group = "Anarchy"
+source = "script"
+
+[demozoo.165041]
+title = "Meditation No XIII Menu"
+group = "Humanoids"
+source = "script"
+
+[demozoo.263300]
+title = "Medley Relation"
+group = "Treacl"
+source = "script"
+
+[demozoo.189190]
+title = "Meeretro"
+group = "The Dark Demon"
+source = "script"
+
+[demozoo.261807]
+title = "MeereTro II"
+group = "The Dark Demon"
+source = "script"
+
+[demozoo.255004]
+title = "Meesterbrein"
+group = "Punishers"
+source = "script"
+
+[demozoo.261375]
+title = "Meet-Tro"
+group = "mAZE / Y-Crew"
+source = "script"
+
+[demozoo.190178]
+title = "Meeting"
+group = "Virtual"
+source = "script"
+
+[demozoo.207269]
+title = "Meeting"
+group = "Awesome"
+source = "script"
+
+[demozoo.211941]
+title = "Meeting"
+group = "The Gang / Airwalk"
+source = "script"
+
+[demozoo.233626]
+title = "Meeting"
+group = "United Forces / Amaze / Red Sector Inc."
+source = "script"
+
+[demozoo.252859]
+title = "Meeting"
+group = "Oxyron"
+source = "script"
+machine = "a1200"
+
+[demozoo.253770]
+title = "Meeting"
+group = "Phoenix"
+source = "script"
+
+[demozoo.337615]
+title = "Meeting"
+group = "Control"
+source = "script"
+
+[demozoo.229670]
+title = "Meeting - Bob Intro"
+group = "Tech"
+source = "script"
+
+[demozoo.227318]
+title = "Meeting 1999"
+group = "Brygada RR"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.216667]
+title = "Meeting And Party Intro"
+group = "Panic / Rebels"
+source = "script"
+
+[demozoo.238969]
+title = "Meeting BBS Intro"
+group = "Bronx"
+source = "script"
+
+[demozoo.243445]
+title = "Meeting Beating 2 Intro"
+group = "Exotic Men"
+source = "script"
+
+[demozoo.188227]
+title = "Meeting Demo"
+group = "Level Four"
+source = "script"
+
+[demozoo.219118]
+title = "Meeting Demo"
+group = "Pegasus"
+source = "script"
+
+[demozoo.219966]
+title = "Meeting Demo"
+group = "Abel"
+source = "script"
+
+[demozoo.229911]
+title = "Meeting Demo"
+group = "World Vision"
+source = "script"
+
+[demozoo.233956]
+title = "Meeting Demo"
+group = "Anal Intruders"
+source = "script"
+
+[demozoo.241444]
+title = "Meeting Demo"
+group = "Doom"
+source = "script"
+
+[demozoo.241620]
+title = "Meeting Demo"
+group = "Celtic"
+source = "script"
+
+[demozoo.301453]
+title = "Meeting In Kouvola"
+group = "Amaze"
+source = "script"
+
+[demozoo.8973]
+title = "Meeting Intro"
+group = "Action / Panic"
+source = "script"
+
+[demozoo.196062]
+title = "Meeting Intro"
+group = "Patriots"
+source = "script"
+
+[demozoo.196092]
+title = "Meeting Intro"
+group = "Dictators"
+source = "script"
+
+[demozoo.196093]
+title = "Meeting Intro"
+group = "Dictators / Euphoria"
+source = "script"
+
+[demozoo.207486]
+title = "Meeting Intro"
+group = "Genocide / Amaze"
+source = "script"
+
+[demozoo.208120]
+title = "Meeting Intro"
+group = "Storm"
+source = "script"
+
+[demozoo.208306]
+title = "Meeting Intro"
+group = "Unique"
+source = "script"
+
+[demozoo.214228]
+title = "Meeting Intro"
+group = "The Magic Guild"
+source = "script"
+
+[demozoo.219520]
+title = "Meeting Intro"
+group = "Risk Inc."
+source = "script"
+
+[demozoo.220716]
+title = "Meeting Intro"
+group = "Razkels"
+source = "script"
+
+[demozoo.233427]
+title = "Meeting Intro"
+group = "Alpha Flight"
+source = "script"
+
+[demozoo.236379]
+title = "Meeting Intro"
+group = "Byte Busters"
+source = "script"
+
+[demozoo.241139]
+title = "Meeting Intro"
+group = "Disknet"
+source = "script"
+
+[demozoo.254614]
+title = "Meeting Intro"
+group = "Prologic"
+source = "script"
+result = "unknown"
+run = "Intro.main"
+
+[demozoo.262818]
+title = "Meeting Intro"
+group = "The Special Brothers"
+source = "script"
+
+[demozoo.281896]
+title = "Meeting Intro"
+group = "Aldi"
+source = "script"
+
+[demozoo.308212]
+title = "Meeting Intro"
+group = "Atomic"
+source = "script"
+
+[demozoo.150528]
+title = "Meeting Intro 93"
+group = "Essence"
+source = "script"
+
+[demozoo.333]
+title = "Meeting Intro 94"
+group = "Essence"
+source = "script"
+
+[demozoo.247318]
+title = "Meeting Party"
+group = "Iris"
+source = "script"
+
+[demozoo.208978]
+title = "Meeting Time 2"
+group = "Acume"
+source = "script"
+
+[demozoo.190600]
+title = "Meetings"
+group = "Fanatic"
+source = "script"
+
+[demozoo.144209]
+title = "Meetro"
+group = "Sceptic"
+source = "script"
+
+[demozoo.189198]
+title = "Meetro"
+group = "Reflectors"
+source = "script"
+
+[demozoo.194040]
+title = "Meetro"
+group = "Maximum"
+source = "script"
+
+[demozoo.229671]
+title = "Meetro"
+group = "Tech"
+source = "script"
+
+[demozoo.239369]
+title = "Meetro"
+group = "The Electronic Knights / Cybex"
+source = "script"
+
+[demozoo.239974]
+title = "Meetro"
+group = "Dazzle"
+source = "script"
+
+[demozoo.251673]
+title = "Meetro"
+group = "The Electronic Knights / Mystic"
+source = "script"
+
+[demozoo.156250]
+title = "Meetro 11"
+group = "iNSANE"
+source = "script"
+
+[demozoo.235457]
+title = "Meetro 93"
+group = "Balance"
+source = "script"
+
+[demozoo.246337]
+title = "Meetro no. 2"
+group = "Hysteric"
+source = "script"
+
+[demozoo.239728]
+title = "Meetro Preview"
+group = "Danger Productions"
+source = "script"
+
+[demozoo.219084]
+title = "Meetropolitan"
+group = "Cyborx"
+source = "script"
+
+[demozoo.165367]
+title = "Mega Bob-Demo"
+group = "Genesis"
+source = "script"
+
+[demozoo.208622]
+title = "Mega Cool BBSs"
+group = "Zylon"
+source = "script"
+
+[demozoo.352396]
+title = "Mega Cool Demo"
+group = "Bach T P / Zark"
+source = "script"
+
+[demozoo.140847]
+title = "Mega Demo"
+group = "Sunlight"
+source = "script"
+
+[demozoo.153780]
+title = "Mega Demo"
+group = "Deathstar"
+source = "script"
+disks = ["Deathstar-MegademoA.dms", "Deathstar-MegademoB.dms"]
+swaps = [{ disk = 2, at = 25.7, key = "lmb" }]
+
+[demozoo.153783]
+title = "Mega Demo"
+group = "Sargon"
+source = "script"
+
+[demozoo.153786]
+title = "Mega Demo"
+group = "Phoenix"
+source = "script"
+
+[demozoo.162691]
+title = "Mega Demo"
+group = "Level One / The Dream Team"
+source = "script"
+
+[demozoo.188229]
+title = "Mega Demo"
+group = "Dual Crew"
+source = "script"
+
+[demozoo.221574]
+title = "Mega Demo 1"
+group = "Robots"
+source = "script"
+
+[demozoo.230493]
+title = "Mega Dycpers"
+group = "Reality"
+source = "script"
+
+[demozoo.247936]
+title = "Mega Flying Stars"
+group = "Joy Division"
+source = "script"
+
+[demozoo.225495]
+title = "Mega Hjuldemo 89"
+group = "Megaklopparna"
+source = "script"
+
+[demozoo.219950]
+title = "Mega Intro"
+group = "Hell Order Team"
+source = "script"
+
+[demozoo.224876]
+title = "Mega Intro"
+group = "Personal Crackings Crew"
+source = "script"
+
+[demozoo.228578]
+title = "Mega Intro"
+group = "Tony the Destroyer"
+source = "script"
+
+[demozoo.231372]
+title = "Mega Intro"
+group = "Crack"
+source = "script"
+
+[demozoo.242892]
+title = "Mega Intro"
+group = "Endless Piracy"
+source = "script"
+
+[demozoo.331059]
+title = "Mega Intro"
+group = "Artstate"
+source = "script"
+
+[demozoo.354350]
+title = "Mega Intro"
+group = "The Special Brothers"
+source = "script"
+
+[demozoo.231373]
+title = "Mega Intro 2"
+group = "Crack"
+source = "script"
+
+[demozoo.238568]
+title = "Mega Menu"
+group = "Black Monks"
+source = "script"
+
+[demozoo.245508]
+title = "Mega Mighty Over Dimensional Super Fantastic Demo"
+group = "Happy Cracking Service"
+source = "script"
+boot = "floppy"
+
+[demozoo.21940]
+title = "Mega Million Bob Demo"
+group = "Mexican Boys"
+source = "script"
+
+[demozoo.216395]
+title = "Mega Mini Demo"
+group = "Fluid Design"
+source = "script"
+
+[demozoo.233250]
+title = "Mega Mix 88"
+group = "The Sunriders"
+source = "script"
+
+[demozoo.238972]
+title = "Mega Pack 1 - Menu"
+group = "Bronx"
+source = "script"
+
+[demozoo.232523]
+title = "Mega Party (The Revenge) - invitation"
+group = "Magnetic Fields"
+source = "script"
+
+[demozoo.225455]
+title = "Mega Party Invitation Demo"
+group = "The Qualityzers / Dream Factory"
+source = "script"
+
+[demozoo.245726]
+title = "Mega Phoenix Trainer"
+group = "Quartix"
+source = "script"
+
+[demozoo.213538]
+title = "Mega Plotter"
+group = "Quartet"
+source = "script"
+
+[demozoo.255772]
+title = "Mega Quick Intro"
+group = "Red Sector Inc."
+source = "script"
+
+[demozoo.252334]
+title = "Mega Red Balls Invasion"
+group = "The Silents / North Star"
+source = "script"
+
+[demozoo.318918]
+title = "Mega Sliding"
+group = "Ipec Elite"
+source = "script"
+
+[demozoo.257353]
+title = "Mega Soundcracker - intro"
+group = "Scoopex"
+source = "script"
+
+[demozoo.192366]
+title = "Mega Syf 1"
+group = "Sordan / Elektro"
+source = "script"
+
+[demozoo.299152]
+title = "Mega Syf 4"
+group = "Undiagnosed Asperger's Bastards"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.219745]
+title = "Mega-Demo"
+group = "Teladon"
+source = "script"
+
+[demozoo.263299]
+title = "Mega-Demo"
+group = "Treacl"
+source = "script"
+disks = ["Treacl-MegademoA.dms", "Treacl-MegademoB.dms", "Treacl-MegademoC.dms"]
+swaps = [{ disk = 2, at = 160.0 }, { disk = 3, at = 230.0 }]
+
+[demozoo.19014]
+title = "Mega-Demo Preview"
+group = "Action / Vamps"
+source = "script"
+
+[demozoo.218098]
+title = "Mega-Demo-Disk 2"
+group = "Wings of Tomorrow"
+source = "script"
+machine = "a500_ks12"
+
+[demozoo.340049]
+title = "Mega-Flip"
+group = "Big Brother / Damage Inc."
+source = "script"
+
+[demozoo.227201]
+title = "Mega-Hyper-Demo"
+group = "Overlords"
+source = "script"
+
+[demozoo.260993]
+title = "Mega-lo-Mania"
+group = "The Power Connection"
+source = "script"
+machine = "a1200"
+
+[demozoo.233249]
+title = "Mega-Lomania Demo"
+group = "The Sunriders"
+source = "script"
+
+[demozoo.216843]
+title = "Mega-mini-mega-demo - 1st part"
+group = "Team-X"
+source = "script"
+
+[demozoo.216844]
+title = "Mega-Mini-Mega-Demo - 2nd Part"
+group = "Team-X"
+source = "script"
+
+[demozoo.19082]
+title = "Mega-Mon V1.7 Intro"
+group = "Endless Piracy"
+source = "script"
+
+[demozoo.182928]
+title = "Mega-Scrolly"
+group = "Mean Machine"
+source = "script"
+
+[demozoo.214046]
+title = "Megablast"
+group = "Creative Thought"
+source = "script"
+
+[demozoo.250141]
+title = "Megaboard V3.0 Intro"
+group = "Masquerade"
+source = "script"
+
+[demozoo.190876]
+title = "Megabug"
+group = "The Rising Force"
+source = "script"
+
+[demozoo.304698]
+title = "Megabug Demo"
+group = "Latex"
+source = "script"
+
+[demozoo.209232]
+title = "Megabyte's Demo"
+group = "Atomic Team"
+source = "script"
+
+[demozoo.253381]
+title = "Megacool Effort for the Kickstart-Maxon-Competition"
+group = "Paradise"
+source = "script"
+
+[demozoo.210408]
+title = "Megacrash"
+group = "Avalanche"
+source = "script"
+
+[demozoo.287286]
+title = "Megadef Downsmashing Intro"
+group = "Cannon"
+source = "script"
+
+[demozoo.233]
+title = "Megademo"
+group = "Dreamdealers"
+source = "script"
+
+[demozoo.1325]
+title = "Megademo"
+group = "Vortex 42"
+source = "script"
+
+[demozoo.1943]
+title = "Megademo"
+group = "United Lamers"
+source = "script"
+run = "Part8"
+
+[demozoo.2020]
+title = "Megademo"
+group = "Budbrain"
+source = "script"
+disks = ["BUDBRAIN-Megademo1a.dms", "BUDBRAIN-Megademo1b.dms"]
+swaps = [{ disk = 2, at = 317.8, key = "lmb" }]
+
+[demozoo.2183]
+title = "Megademo"
+group = "Cryptoburners"
+source = "script"
+
+[demozoo.5206]
+title = "Megademo"
+group = "The Giants"
+source = "script"
+
+[demozoo.10297]
+title = "Megademo"
+group = "Red Sector Inc."
+source = "script"
+disks = ["RSI-MegademoA.dms", "RSI-MegademoB.dms"]
+swaps = [{ disk = 2, at = 81.1, key = "lmb" }]
+
+[demozoo.22680]
+title = "Megademo"
+group = "Mystic"
+source = "script"
+machine = "a1200_fast"
+run = "main"
+
+[demozoo.36288]
+title = "Megademo"
+group = "Angels"
+source = "script"
+
+[demozoo.47302]
+title = "Megademo"
+group = "Science 451"
+source = "script"
+
+[demozoo.53586]
+title = "Megademo"
+group = "Dexion"
+source = "script"
+
+[demozoo.60654]
+title = "Megademo"
+group = "Static Bytes"
+source = "script"
+
+[demozoo.69970]
+title = "Megademo"
+group = "Royal Amiga Force"
+source = "script"
+disks = ["RAF-Megademo-A.DMS", "RAF-Megademo-B.DMS"]
+swaps = [{ disk = 2, at = 270.7, key = "lmb" }]
+
+[demozoo.70419]
+title = "Megademo"
+group = "Balloons"
+source = "script"
+result = "unknown"
+disks = ["BALLOONS-MegademoA.dms", "BALLOONS-MegademoB.dms"]
+
+[demozoo.145642]
+title = "Megademo"
+group = "Megaforce"
+source = "script"
+
+[demozoo.145644]
+title = "Megademo"
+group = "Share and Enjoy"
+source = "script"
+
+[demozoo.147101]
+title = "Megademo"
+group = "Mirage"
+source = "script"
+result = "unknown"
+
+[demozoo.153782]
+title = "Megademo"
+group = "It"
+source = "script"
+
+[demozoo.154472]
+title = "Megademo"
+group = "United Forces"
+source = "script"
+disks = ["UFO-MegademoA.adf", "UFO-MegademoB.dms"]
+swaps = [{ disk = 2, at = 79.0, key = "lmb" }]
+
+[demozoo.154550]
+title = "Megademo"
+group = "The Link"
+source = "script"
+
+[demozoo.154551]
+title = "Megademo"
+group = "Digitech / Italian Bad Boys"
+source = "script"
+
+[demozoo.154552]
+title = "Megademo"
+group = "Electronic Artists"
+source = "script"
+
+[demozoo.156141]
+title = "Megademo"
+group = "Dragons"
+source = "script"
+
+[demozoo.156153]
+title = "Megademo"
+group = "Phenomena"
+source = "script"
+
+[demozoo.158885]
+title = "Megademo"
+group = "Powerslaves"
+source = "script"
+machine = "a500_1mb"
+disks = ["Powerslaves-MegademoA.dms", "Powerslaves-MegademoB.dms"]
+swaps = [{ disk = 2, at = 145.0, key = "lmb" }]
+
+[demozoo.158893]
+title = "Megademo"
+group = "Freedom Force"
+source = "script"
+
+[demozoo.164990]
+title = "Megademo"
+group = "Asperity"
+source = "script"
+
+[demozoo.166861]
+title = "Megademo"
+group = "Legion 7"
+source = "script"
+
+[demozoo.167262]
+title = "Megademo"
+group = "Intuition"
+source = "script"
+
+[demozoo.167317]
+title = "Megademo"
+group = "Alcatraz"
+source = "script"
+
+[demozoo.167514]
+title = "Megademo"
+group = "Digilogic"
+source = "script"
+
+[demozoo.167516]
+title = "Megademo"
+group = "Doctor Destroy Team"
+source = "script"
+
+[demozoo.167578]
+title = "Megademo"
+group = "Pseudo-Ops"
+source = "script"
+
+[demozoo.167581]
+title = "Megademo"
+group = "Excellence"
+source = "script"
+
+[demozoo.169236]
+title = "MegaDemo"
+group = "Pyrrusians"
+source = "script"
+
+[demozoo.173113]
+title = "Megademo"
+group = "Cult"
+source = "script"
+
+[demozoo.178441]
+title = "Megademo"
+group = "Abandon"
+source = "script"
+
+[demozoo.178782]
+title = "Megademo"
+group = "Eltech"
+source = "script"
+machine = "a1200"
+
+[demozoo.179733]
+title = "Megademo"
+group = "Cave"
+source = "script"
+
+[demozoo.183968]
+title = "Megademo"
+group = "The Silents"
+source = "script"
+
+[demozoo.188230]
+title = "Megademo"
+group = "Demons"
+source = "script"
+
+[demozoo.193110]
+title = "Megademo"
+group = "Abel"
+source = "script"
+
+[demozoo.195999]
+title = "Megademo"
+group = "Vermin"
+source = "script"
+
+[demozoo.206765]
+title = "Megademo"
+group = "Acme Factories"
+source = "script"
+
+[demozoo.207822]
+title = "Megademo"
+group = "Chaos / Megadeth"
+source = "script"
+
+[demozoo.208521]
+title = "Megademo"
+group = "Top Swap"
+source = "script"
+machine = "a500_ks12"
+
+[demozoo.208742]
+title = "Megademo"
+group = "Zeus"
+source = "script"
+
+[demozoo.209558]
+title = "Megademo"
+group = "The Errors"
+source = "script"
+
+[demozoo.213880]
+title = "Megademo"
+group = "Scientific Cracking Team"
+source = "script"
+
+[demozoo.215859]
+title = "Megademo"
+group = "Magnificent Force / The Jungle Command / Joy"
+source = "script"
+
+[demozoo.216293]
+title = "Megademo"
+group = "Bass"
+source = "script"
+
+[demozoo.216520]
+title = "Megademo"
+group = "Goldfire"
+source = "script"
+
+[demozoo.217187]
+title = "Megademo"
+group = "The Professionals"
+source = "script"
+
+[demozoo.217622]
+title = "Megademo"
+group = "Punk Croc Crew"
+source = "script"
+result = "unknown"
+
+[demozoo.217769]
+title = "Megademo"
+group = "Bignonia"
+source = "script"
+
+[demozoo.218668]
+title = "Megademo"
+group = "Hellraisers / Dawn"
+source = "script"
+
+[demozoo.219105]
+title = "Megademo"
+group = "Ian And Mic"
+source = "script"
+
+[demozoo.219603]
+title = "Megademo"
+group = "The Gallows"
+source = "script"
+
+[demozoo.221279]
+title = "Megademo"
+group = "Ringard Production"
+source = "script"
+disks = ["Ringard-MegademoA.dms", "Ringard-MegademoB.dms"]
+swaps = [{ disk = 2, at = 26.5, key = "lmb" }]
+
+[demozoo.221515]
+title = "Megademo"
+group = "Amiga Mania"
+source = "script"
+
+[demozoo.221520]
+title = "Megademo"
+group = "The Dark Ram Service"
+source = "script"
+
+[demozoo.221840]
+title = "Megademo"
+group = "Predators"
+source = "script"
+machine = "a500_512k"
+disks = ["Predators-MegademoI-A.dms", "Predators-MegademoI-B.dms"]
+swaps = [{ disk = 2, at = 20.0 }]
+
+[demozoo.222080]
+title = "Megademo"
+group = "The Unknown Five"
+source = "script"
+
+[demozoo.223673]
+title = "Megademo"
+group = "Pseudoplast"
+source = "script"
+
+[demozoo.224091]
+title = "Megademo"
+group = "Death Handlers"
+source = "script"
+machine = "a1200"
+disks = ["DH-MegademoA.adf", "DH-MegademoB.adf"]
+swaps = [{ disk = 2, at = 135.8 }]
+
+[demozoo.225442]
+title = "Megademo"
+group = "Design House"
+source = "script"
+
+[demozoo.227083]
+title = "Megademo"
+group = "Necropolis"
+source = "script"
+
+[demozoo.227608]
+title = "Megademo"
+group = "MC-ZZZ"
+source = "script"
+
+[demozoo.227789]
+title = "Megademo"
+group = "The Galaxy Hitchhickers"
+source = "script"
+
+[demozoo.228102]
+title = "Megademo"
+group = "Madness"
+source = "script"
+
+[demozoo.229723]
+title = "Megademo"
+group = "Amiga Industries"
+source = "script"
+
+[demozoo.234289]
+title = "Megademo"
+group = "Acon"
+source = "script"
+
+[demozoo.234826]
+title = "Megademo"
+group = "Avenger"
+source = "script"
+
+[demozoo.235187]
+title = "Megademo"
+group = "The Arcadia Team"
+source = "script"
+
+[demozoo.235486]
+title = "Megademo"
+group = "Beastie Boys"
+source = "script"
+
+[demozoo.236507]
+title = "Megademo"
+group = "Cascade 1733"
+source = "script"
+
+[demozoo.240710]
+title = "Megademo"
+group = "Destiny Seven"
+source = "script"
+
+[demozoo.242890]
+title = "Megademo"
+group = "Endless Piracy"
+source = "script"
+
+[demozoo.244617]
+title = "Megademo"
+group = "Gate"
+source = "script"
+
+[demozoo.246508]
+title = "Megademo"
+group = "Humanoids"
+source = "script"
+
+[demozoo.247135]
+title = "Megademo"
+group = "Ivory"
+source = "script"
+machine = "a500_ks12"
+
+[demozoo.249140]
+title = "Megademo"
+group = "Level 4"
+source = "script"
+run = "MMS03"
+
+[demozoo.251535]
+title = "Megademo"
+group = "Lemmus"
+source = "script"
+machine = "a1200"
+
+[demozoo.252335]
+title = "Megademo"
+group = "North Star"
+source = "script"
+
+[demozoo.252750]
+title = "Megademo"
+group = "Omega"
+source = "script"
+
+[demozoo.254909]
+title = "Megademo"
+group = "Pure Metal Coders"
+source = "script"
+result = "unknown"
+
+[demozoo.257713]
+title = "Megademo"
+group = "Semtex"
+source = "script"
+
+[demozoo.257735]
+title = "Megademo"
+group = "Sector 5"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.258738]
+title = "Megademo"
+group = "Software of Sweden"
+source = "script"
+
+[demozoo.260600]
+title = "Megademo"
+group = "Tetragon"
+source = "script"
+
+[demozoo.261062]
+title = "Megademo"
+group = "Vox Dei"
+source = "script"
+
+[demozoo.263719]
+title = "Megademo"
+group = "Trilogy"
+source = "script"
+machine = "a1200_fast"
+disks = ["TRILOGY-MegademoA.DMS", "TRILOGY-MegademoB.DMS"]
+swaps = [{ disk = 2, at = 23.9, key = "lmb" }]
+
+[demozoo.269713]
+title = "Megademo"
+group = "Abyss"
+source = "script"
+result = "unknown"
+
+[demozoo.270574]
+title = "Megademo"
+group = "X-Ray"
+source = "script"
+
+[demozoo.296286]
+title = "Megademo"
+group = "Mindwarp"
+source = "script"
+
+[demozoo.298934]
+title = "Megademo"
+group = "Slipstream"
+source = "script"
+
+[demozoo.320225]
+title = "Megademo"
+group = "Shadow"
+source = "script"
+disks = ["Shadow-MegademoA.adf", "Shadow-MegademoB.adf"]
+swaps = [{ disk = 2, at = 177.1, key = "lmb" }]
+
+[demozoo.321243]
+title = "Megademo"
+group = "Excel"
+source = "script"
+
+[demozoo.330664]
+title = "Megademo"
+group = "Macron I"
+source = "script"
+
+[demozoo.370614]
+title = "Megademo"
+group = "Blackbirds"
+source = "script"
+
+[demozoo.390099]
+title = "Megademo"
+group = "The Fast Guys"
+source = "script"
+
+[demozoo.97452]
+title = "Megademo $B"
+group = "Gunnars Farvebio"
+source = "script"
+result = "unknown"
+run = "_negerkuß!!.exe"
+
+[demozoo.44911]
+title = "Megademo $c"
+group = "Gunnars Farvebio"
+source = "script"
+machine = "a1200_fast"
+run = "MDCtrad.exe"
+
+[demozoo.37806]
+title = "Megademo $d"
+group = "Gunnars Farvebio"
+source = "script"
+machine = "a1200_030"
+run = "1991.exe"
+
+[demozoo.134963]
+title = "Megademo (1)"
+group = "Crionics"
+source = "script"
+
+[demozoo.104336]
+title = "Megademo (2)"
+group = "Crionics"
+source = "script"
+
+[demozoo.230377]
+title = "Megademo (UK)"
+group = "Quartz"
+source = "script"
+
+[demozoo.262327]
+title = "Megademo - Beta"
+group = "The Giants"
+source = "script"
+
+[demozoo.238864]
+title = "Megademo - Kaos Part"
+group = "Budbrain"
+source = "script"
+
+[demozoo.244249]
+title = "Megademo - Masters At Work"
+group = "Flash Production"
+source = "script"
+disks = ["FP-MastersAtWorkA.adf", "FP-MastersAtWorkB.adf"]
+swaps = [{ disk = 2, at = 81.6, key = "lmb" }]
+
+[demozoo.356965]
+title = "Megademo - Part 4"
+group = "The Link"
+source = "script"
+
+[demozoo.216812]
+title = "Megademo - Preview"
+group = "Sunlight"
+source = "script"
+
+[demozoo.393930]
+title = "Megademo - Ted & Shuriken Part"
+group = "Top Swap"
+source = "script"
+machine = "a500_ks12"
+
+[demozoo.393928]
+title = "Megademo - The End Part"
+group = "Top Swap"
+source = "script"
+
+[demozoo.393929]
+title = "Megademo - Toshi's Power Part"
+group = "Top Swap"
+source = "script"
+
+[demozoo.194460]
+title = "Megademo 0"
+group = "Zymosis Boozing Society"
+source = "script"
+
+[demozoo.223944]
+title = "Megademo 0.5"
+group = "Business After Dark"
+source = "script"
+
+[demozoo.9690]
+title = "Megademo 1"
+group = "Vision"
+source = "script"
+
+[demozoo.74052]
+title = "Megademo 1"
+group = "The Silents"
+source = "script"
+machine = "a500_ks12"
+
+[demozoo.74054]
+title = "Megademo 1"
+group = "Rebels"
+source = "script"
+
+[demozoo.108934]
+title = "Megademo 1"
+group = "Syndicate"
+source = "script"
+
+[demozoo.167812]
+title = "Megademo 1"
+group = "Powerstars"
+source = "script"
+
+[demozoo.169876]
+title = "Megademo 1"
+group = "Proxis"
+source = "script"
+
+[demozoo.219533]
+title = "Megademo 1"
+group = "Fanatix"
+source = "script"
+result = "unknown"
+run = "ramos1.2"
+
+[demozoo.221472]
+title = "Megademo 1"
+group = "Perfect Cracking Team"
+source = "script"
+
+[demozoo.223764]
+title = "Megademo 1"
+group = "Bad Syntax"
+source = "script"
+run = "a1"
+
+[demozoo.223948]
+title = "Megademo 1"
+group = "Business After Dark"
+source = "script"
+result = "crashes-later"
+disks = ["BAD-CopperAtWorkMD1a.adf", "BAD-CopperAtWorkMD1b.adf"]
+swaps = [{ disk = 2, at = 145.0 }]
+
+[demozoo.224423]
+title = "Megademo 1"
+group = "Starrangers"
+source = "script"
+
+[demozoo.229885]
+title = "Megademo 1"
+group = "The Style Council"
+source = "script"
+
+[demozoo.239682]
+title = "Megademo 1"
+group = "Darkness"
+source = "script"
+
+[demozoo.242793]
+title = "Megademo 1"
+group = "End of Century 1999"
+source = "script"
+
+[demozoo.248098]
+title = "Megademo 1"
+group = "The Starlight Project"
+source = "script"
+
+[demozoo.258658]
+title = "Megademo 1 - 2nd Part - 222 Bobs"
+group = "Slipstream"
+source = "script"
+
+[demozoo.258659]
+title = "Megademo 1 - 3rd Part - Psychotic Bobs"
+group = "Slipstream"
+source = "script"
+
+[demozoo.245161]
+title = "Megademo 1 - Storstrømsbroen"
+group = "Gunnars Farvebio"
+source = "script"
+
+[demozoo.262444]
+title = "Megademo 1 Last Part"
+group = "The Silents"
+source = "script"
+machine = "a500_ks12"
+
+[demozoo.9691]
+title = "Megademo 2"
+group = "Vision"
+source = "script"
+
+[demozoo.53583]
+title = "Megademo 2"
+group = "Alcatraz"
+source = "script"
+
+[demozoo.74053]
+title = "Megademo 2"
+group = "The Silents"
+source = "script"
+machine = "a500_ks12"
+
+[demozoo.74055]
+title = "Megademo 2"
+group = "Rebels"
+source = "script"
+
+[demozoo.92664]
+title = "Megademo 2"
+group = "Dexion"
+source = "script"
+
+[demozoo.153463]
+title = "Megademo 2"
+group = "Cult"
+source = "script"
+
+[demozoo.159245]
+title = "Megademo 2"
+group = "Mindwarp"
+source = "script"
+
+[demozoo.167583]
+title = "Megademo 2"
+group = "Darkness"
+source = "script"
+
+[demozoo.223953]
+title = "Megademo 2"
+group = "Business After Dark"
+source = "script"
+
+[demozoo.227371]
+title = "Megademo 2"
+group = "2001 Datakill"
+source = "script"
+
+[demozoo.238970]
+title = "Megademo 2"
+group = "Bronx"
+source = "script"
+
+[demozoo.241129]
+title = "Megademo 2"
+group = "Disorder"
+source = "script"
+
+[demozoo.242794]
+title = "Megademo 2"
+group = "End of Century 1999"
+source = "script"
+
+[demozoo.245162]
+title = "Megademo 2"
+group = "Gunnars Farvebio"
+source = "script"
+
+[demozoo.248099]
+title = "Megademo 2"
+group = "The Starlight Project"
+source = "script"
+machine = "a1200"
+run = "TSP6"
+
+[demozoo.252336]
+title = "Megademo 2"
+group = "North Star"
+source = "script"
+
+[demozoo.257354]
+title = "Megademo 2"
+group = "Scoopex"
+source = "ai"
+kind = "menu"
+disks = ["SCOOPEX-Megademo2A.DMS", "SCOOPEX-Megademo2B.DMS", "SCOOPEX-Megademo2C.DMS"]
+note = "Scoopex Megademo II part list (preface, opening, ...)"
+
+[demozoo.265078]
+title = "Megademo 2"
+group = "Vortex 42"
+source = "script"
+
+[demozoo.216669]
+title = "Megademo 2 - Alta Part"
+source = "script"
+
+[demozoo.237963]
+title = "Megademo 2 - preview"
+group = "Cryptoburners"
+source = "script"
+
+[demozoo.236725]
+title = "Megademo 2 - Towards The Cave"
+group = "Cave"
+source = "script"
+run = "PumpUpTheJet"
+
+[demozoo.256411]
+title = "Megademo 2 Announcing"
+group = "Royal Amiga Force"
+source = "script"
+
+[demozoo.8357]
+title = "Megademo 2000"
+group = "Haujobb"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.66843]
+title = "Megademo 2003"
+group = "Finnish Amiga Group"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.150135]
+title = "Megademo 2015"
+group = "Finnish Amiga Group"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.135109]
+title = "Megademo 3"
+group = "Gunnars Farvebio"
+source = "script"
+
+[demozoo.154341]
+title = "Megademo 3"
+group = "Alcatraz"
+source = "script"
+
+[demozoo.219534]
+title = "Megademo 3"
+group = "Fanatix"
+source = "script"
+drives = 2
+disks = ["Fanatix-Megademo3a.adf", "Fanatix-Megademo3b.adf"]
+
+[demozoo.228499]
+title = "Megademo 3"
+group = "Exit"
+source = "script"
+
+[demozoo.233055]
+title = "Megademo 3 - Claude In Space"
+group = "Alcatraz"
+source = "script"
+
+[demozoo.233057]
+title = "Megademo 3 - Intro"
+group = "Alcatraz"
+source = "script"
+
+[demozoo.296807]
+title = "Megademo 3 - part 5"
+group = "North Star"
+source = "script"
+
+[demozoo.296808]
+title = "Megademo 3 - part 6"
+group = "Fairlight"
+source = "script"
+
+[demozoo.233058]
+title = "Megademo 3 - The Castle"
+group = "Alcatraz"
+source = "script"
+
+[demozoo.296815]
+title = "Megademo 3 - The End"
+group = "North Star"
+source = "script"
+
+[demozoo.178442]
+title = "Megademo 4"
+group = "Vision"
+source = "script"
+
+[demozoo.188557]
+title = "Megademo 4"
+group = "Kefrens / 7up Crew"
+source = "script"
+
+[demozoo.219535]
+title = "Megademo 4"
+group = "Fanatix"
+source = "script"
+drives = 2
+disks = ["Fanatix-Megademo4A.adf", "Fanatix-Megademo4B.adf"]
+
+[demozoo.5322]
+title = "Megademo 4 - Bogøfærgerne II"
+group = "Gunnars Farvebio"
+source = "script"
+
+[demozoo.53588]
+title = "Megademo 5"
+group = "Kefrens"
+source = "script"
+
+[demozoo.219536]
+title = "Megademo 5"
+group = "Fanatix"
+source = "script"
+
+[demozoo.245164]
+title = "Megademo 5 - Knæhøj Karse"
+group = "Gunnars Farvebio"
+source = "script"
+
+[demozoo.333141]
+title = "Megademo 5 - Part 2"
+group = "Kefrens"
+source = "script"
+
+[demozoo.336660]
+title = "Megademo 5 - Part 7: Pharao's Fantasy"
+group = "Kefrens"
+source = "script"
+
+[demozoo.245165]
+title = "Megademo 5 Reklame Intro"
+group = "Gunnars Farvebio"
+source = "script"
+
+[demozoo.245166]
+title = "Megademo 6 - Gunslev Brugs"
+group = "Gunnars Farvebio"
+source = "script"
+
+[demozoo.151971]
+title = "Megademo 6 / Demo Disk #6"
+group = "Kefrens"
+source = "script"
+
+[demozoo.283608]
+title = "Megademo 6 Loader"
+group = "Kefrens"
+source = "script"
+
+[demozoo.73567]
+title = "Megademo 7"
+group = "Kefrens"
+source = "script"
+
+[demozoo.119679]
+title = "Megademo 7"
+group = "Gunnars Farvebio"
+source = "script"
+machine = "a1200"
+
+[demozoo.377595]
+title = "Megademo 7"
+group = "Fanatix"
+source = "script"
+drives = 2
+disks = ["Fanatix-Megademo7_D1.adf", "Fanatix-Megademo7_D2.adf", "Fanatix-Megademo7_D3.adf"]
+swaps = [{ disk = 3, at = 30.0 }]
+
+[demozoo.71940]
+title = "Megademo 8"
+group = "Laxative Effects"
+source = "script"
+
+[demozoo.245167]
+title = "Megademo 8"
+group = "Gunnars Farvebio"
+source = "script"
+
+[demozoo.245169]
+title = "Megademo 8 Trailer 3 - Find 5 Fejl"
+group = "Gunnars Farvebio"
+source = "script"
+machine = "a1200"
+
+[demozoo.245170]
+title = "Megademo 8 Trailer Reprise"
+group = "Gunnars Farvebio"
+source = "script"
+machine = "a1200"
+
+[demozoo.245171]
+title = "Megademo 9"
+group = "Gunnars Farvebio"
+source = "script"
+machine = "a1200"
+
+[demozoo.228901]
+title = "Megademo Ad"
+group = "Sirocco"
+source = "script"
+result = "unknown"
+
+[demozoo.244394]
+title = "Megademo Advertising"
+group = "Freedom Force"
+source = "script"
+
+[demozoo.222223]
+title = "Megademo Advertising Intro"
+group = "Ghostbusters"
+source = "script"
+
+[demozoo.189733]
+title = "Megademo Credits Part"
+group = "Intuition"
+source = "script"
+
+[demozoo.245172]
+title = "Megademo D Trailer"
+group = "Gunnars Farvebio"
+source = "script"
+result = "unknown"
+
+[demozoo.167567]
+title = "Megademo Disk"
+group = "United Software Rebels"
+source = "script"
+
+[demozoo.236509]
+title = "Megademo Disk"
+group = "Cascade 1733"
+source = "script"
+
+[demozoo.252337]
+title = "Megademo Disk 2"
+group = "North Star"
+source = "script"
+
+[demozoo.2021]
+title = "Megademo II"
+group = "Budbrain"
+source = "script"
+
+[demozoo.157427]
+title = "Megademo II"
+group = "Cryptoburners"
+source = "script"
+
+[demozoo.190832]
+title = "Megademo II"
+group = "Gate"
+source = "script"
+
+[demozoo.216294]
+title = "Megademo II"
+group = "Bass"
+source = "script"
+
+[demozoo.224507]
+title = "Megademo II"
+group = "Cybornetics"
+source = "script"
+result = "unknown"
+
+[demozoo.167365]
+title = "Megademo II - Back to the Roots"
+group = "Drix"
+source = "script"
+
+[demozoo.235]
+title = "Megademo II: Think Over The Star"
+group = "Dreamdealers"
+source = "script"
+
+[demozoo.45034]
+title = "Megademo III"
+group = "Fairlight / North Star"
+source = "script"
+disks = ["NST_FLT-Megademo3A.dms", "NST_FLT-Megademo3B.dms"]
+swaps = [{ disk = 2, at = 80.6, key = "lmb" }]
+
+[demozoo.224508]
+title = "Megademo III"
+group = "Cybornetics"
+source = "script"
+result = "unknown"
+
+[demozoo.219790]
+title = "Megademo In Fall"
+group = "ESG"
+source = "script"
+
+[demozoo.20360]
+title = "Megademo IV 2"
+group = "Artwork"
+source = "script"
+result = "unknown"
+
+[demozoo.116196]
+title = "Megademo IV: Devil's Key"
+group = "Alcatraz"
+source = "script"
+disks = ["Alcatraz-Megademo4a.dms", "Alcatraz-Megademo4b.dms", "Alcatraz-Megademo4c.dms"]
+swaps = [{ disk = 2, at = 292.4, key = "lmb" }, { disk = 3, at = 809.4, key = "lmb" }]
+
+[demozoo.228143]
+title = "Megademo Last Part"
+group = "Saxxon"
+source = "script"
+machine = "a500_ks12"
+
+[demozoo.211002]
+title = "Megademo Loader"
+group = "Intuition"
+source = "script"
+result = "unknown"
+
+[demozoo.278232]
+title = "Megademo number 1"
+group = "KGB"
+source = "script"
+
+[demozoo.167580]
+title = "Megademo One"
+group = "Manowar"
+source = "script"
+
+[demozoo.247690]
+title = "Megademo One"
+group = "Katharsis"
+source = "script"
+
+[demozoo.223732]
+title = "Megademo One - Out of Nowhere"
+group = "Alarm"
+source = "script"
+
+[demozoo.214002]
+title = "Megademo Part"
+group = "Bytestar"
+source = "script"
+
+[demozoo.236511]
+title = "Megademo Part"
+group = "Cascade 1733"
+source = "script"
+
+[demozoo.266603]
+title = "Megademo Part"
+group = "Zaphod"
+source = "script"
+
+[demozoo.244618]
+title = "Megademo Part 1"
+group = "Gate"
+source = "script"
+
+[demozoo.244619]
+title = "Megademo Part 2"
+group = "Gate"
+source = "script"
+
+[demozoo.244621]
+title = "Megademo Part 4"
+group = "Gate"
+source = "script"
+
+[demozoo.244622]
+title = "Megademo Part 6"
+group = "Gate"
+source = "script"
+
+[demozoo.213537]
+title = "Megademo Preview"
+group = "Quartet"
+source = "script"
+
+[demozoo.236512]
+title = "Megademo Two"
+group = "Cascade 1733"
+source = "script"
+
+[demozoo.240474]
+title = "Megademo v1.0"
+group = "Defjam"
+source = "script"
+
+[demozoo.153156]
+title = "Megademo v1.0 Intro"
+group = "Defjam"
+source = "script"
+
+[demozoo.9857]
+title = "Megademo VIII"
+group = "Kefrens"
+source = "script"
+disks = ["Kefrens-MegademoVIII-A.adf", "Kefrens-MegademoVIII-B.adf"]
+note = "the sweep only reached disk 1 of 2"
+
+[demozoo.313933]
+title = "Megademo-Disk"
+group = "Cor-dezign / Disasters"
+source = "script"
+
+[demozoo.228956]
+title = "Megadeth"
+group = "S-Xpress"
+source = "script"
+
+[demozoo.222197]
+title = "Megadisk"
+group = "Starline Software"
+source = "script"
+
+[demozoo.229751]
+title = "Megadisk Part 3"
+group = "Paramount"
+source = "script"
+
+[demozoo.224460]
+title = "Megadome BBS"
+group = "The Cooperation"
+source = "script"
+
+[demozoo.245096]
+title = "Megafast Mintro"
+group = "Grace"
+source = "script"
+
+[demozoo.214162]
+title = "Megaintro"
+group = "Red Rats"
+source = "script"
+
+[demozoo.241140]
+title = "Megaintro"
+group = "Disknet"
+source = "script"
+
+[demozoo.226588]
+title = "MegaIntro 3D"
+group = "The One Ltd."
+source = "script"
+
+[demozoo.214055]
+title = "Megaklopparna 1"
+group = "Amiga Lords"
+source = "script"
+
+[demozoo.245234]
+title = "Megalo-Pack - Menu"
+group = "Hemoroids"
+source = "script"
+
+[demozoo.2188]
+title = "Megamaid"
+group = "The Band / Pixar"
+source = "script"
+
+[demozoo.263833]
+title = "Megaman's Hot Stuff Intro"
+group = "Triangle"
+source = "script"
+
+[demozoo.225459]
+title = "Megamighty Intromaker"
+group = "Amiga Designs"
+source = "script"
+
+[demozoo.272078]
+title = "Megamix '90"
+group = "Questor"
+source = "script"
+
+[demozoo.272079]
+title = "Megamix 1"
+group = "Questor"
+source = "script"
+
+[demozoo.254276]
+title = "Megamon V1.5 Intro"
+group = "Possessed"
+source = "script"
+
+[demozoo.242894]
+title = "Megamon V1.82 Intro"
+group = "Endless Piracy"
+source = "script"
+
+[demozoo.250142]
+title = "Megamon V2.4 Intro"
+group = "Masquerade"
+source = "script"
+
+[demozoo.196071]
+title = "Megamon V3.2 Intro"
+group = "Masquerade"
+source = "script"
+
+[demozoo.28726]
+title = "Megane Rellu"
+group = "dA JoRMaS"
+source = "script"
+
+[demozoo.375553]
+title = "Megapack - menu"
+group = "The Band"
+source = "script"
+
+[demozoo.243404]
+title = "Megapack 2"
+group = "Extensors"
+source = "script"
+
+[demozoo.240475]
+title = "Megapicture"
+group = "Defjam / Computerbrains Copy Service"
+source = "script"
+
+[demozoo.207823]
+title = "Megapornomeetingintro"
+group = "Mexx / Chaos"
+source = "script"
+machine = "a1200"
+
+[demozoo.8393]
+title = "Megascroller"
+group = "Apathy"
+source = "script"
+
+[demozoo.228835]
+title = "Megashow"
+group = "Power 68000"
+source = "script"
+
+[demozoo.354257]
+title = "Megastrobo 1.8"
+group = "Degens"
+source = "script"
+result = "unknown"
+run = "MEGA-STROBO"
+
+[demozoo.232915]
+title = "Megatracker Intro"
+group = "The Hacking Relation"
+source = "script"
+
+[demozoo.215359]
+title = "Megatro '92"
+group = "Guclu Ozduman / Beatles"
+source = "script"
+
+[demozoo.265079]
+title = "Megatut"
+group = "Vortex 42"
+source = "script"
+
+[demozoo.233975]
+title = "Megavectors"
+group = "Armada"
+source = "script"
+
+[demozoo.237818]
+title = "mEGGa&symPOSEium"
+group = "Crux"
+source = "script"
+machine = "a1200"
+
+[demozoo.250431]
+title = "Mekatro"
+group = "Meka Design"
+source = "script"
+
+[demozoo.18771]
+title = "Mekka"
+group = "Columbus"
+source = "script"
+result = "unknown"
+
+[demozoo.19433]
+title = "Mekka & Symposium 98 Invitation"
+group = "Lego"
+source = "script"
+
+[demozoo.219085]
+title = "Mekkademo"
+group = "Cyborx"
+source = "script"
+disks = ["CYBORX-MekkaDemo_A.dms", "CYBORX-MekkaDemo_B.dms"]
+swaps = [{ disk = 2, at = 26.8, key = "lmb" }]
+
+[demozoo.9559]
+title = "Melba"
+group = "Appendix"
+source = "script"
+result = "unknown"
+run = "Melba.uncrunched"
+
+[demozoo.246668]
+title = "Melchior"
+group = "Impact DK"
+source = "script"
+machine = "a1200"
+run = "part2.obj"
+
+[demozoo.6847]
+title = "Meliopolis"
+group = "iNSANE"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.19404]
+title = "Mellow Yellow"
+group = "Factor"
+source = "script"
+machine = "a1200"
+
+[demozoo.229697]
+title = "Mellownees"
+group = "Experience"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.62832]
+title = "Melody"
+group = "Ramses"
+source = "script"
+result = "unknown"
+
+[demozoo.250550]
+title = "Melon Is To Rent"
+group = "Melon Dezign"
+source = "script"
+
+[demozoo.390021]
+title = "Melon Vibes (Partymix)"
+group = "Grillcrew"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.79441]
+title = "Melons 2: The Little Render-Engine That Could"
+group = "Smellon Design"
+source = "script"
+result = "unknown"
+run = "LE-window6.12"
+
+[demozoo.277864]
+title = "Melt"
+group = "Sign"
+source = "script"
+
+[demozoo.207968]
+title = "Melt Effect"
+group = "Savage"
+source = "script"
+
+[demozoo.262443]
+title = "Melt Effect"
+group = "The Silents"
+source = "script"
+
+[demozoo.154350]
+title = "Meltdown"
+group = "Absence / Excellence"
+source = "script"
+
+[demozoo.344829]
+title = "Meltdown"
+group = "Odyssey"
+source = "script"
+
+[demozoo.219865]
+title = "Melting"
+group = "Antiriad"
+source = "script"
+
+[demozoo.194629]
+title = "Member Intro"
+group = "Weird"
+source = "script"
+
+[demozoo.220403]
+title = "Member Intro"
+group = "Cadaver / Sudden Sex"
+source = "script"
+
+[demozoo.243446]
+title = "Member Intro"
+group = "Exotic Men"
+source = "script"
+
+[demozoo.281897]
+title = "Memberintro For Gastarbeiter"
+group = "Aldi"
+source = "script"
+
+[demozoo.227350]
+title = "Memberlist 10/96"
+group = "Mantra"
+source = "script"
+
+[demozoo.97469]
+title = "Memberlist Intro"
+group = "Ethic"
+source = "script"
+
+[demozoo.233059]
+title = "Memberlist Intro"
+group = "Alcatraz"
+source = "script"
+
+[demozoo.217979]
+title = "Members Demo"
+group = "DGSA"
+source = "script"
+
+[demozoo.1921]
+title = "Members Intro"
+group = "Spaceballs"
+source = "script"
+
+[demozoo.207101]
+title = "Members Intro"
+group = "Clique"
+source = "script"
+
+[demozoo.214287]
+title = "Members Intro"
+group = "Headwave"
+source = "script"
+
+[demozoo.254491]
+title = "Members Intro"
+group = "Pseudo-Ops"
+source = "script"
+
+[demozoo.206769]
+title = "Members Introducing"
+group = "Acme Factories"
+source = "script"
+
+[demozoo.184252]
+title = "Members Wanted"
+group = "Platin"
+source = "script"
+
+[demozoo.208743]
+title = "Members Wanted"
+group = "Zeus"
+source = "script"
+result = "unknown"
+
+[demozoo.222418]
+title = "Members Wanted"
+group = "Ringleaders"
+source = "script"
+
+[demozoo.228732]
+title = "Members Wanted"
+group = "Kryptic"
+source = "script"
+
+[demozoo.244623]
+title = "Members Wanted"
+group = "Gate"
+source = "script"
+
+[demozoo.256012]
+title = "Members Wanted"
+group = "Resistance"
+source = "script"
+result = "unknown"
+
+[demozoo.263290]
+title = "Members Wanted"
+group = "Tresoree"
+source = "script"
+
+[demozoo.263289]
+title = "Members Wanted 2"
+group = "Tresoree"
+source = "script"
+
+[demozoo.182844]
+title = "Membership"
+group = "Celtic"
+source = "script"
+
+[demozoo.212085]
+title = "Membersintro"
+group = "ISCH Crew"
+source = "script"
+
+[demozoo.8587]
+title = "Memberstro"
+group = "Rave Network Overscan"
+source = "script"
+
+[demozoo.194500]
+title = "Memberstro"
+group = "Flying Cows Inc."
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.247320]
+title = "Memberstro"
+group = "Iris"
+source = "script"
+
+[demozoo.255639]
+title = "Memberstro 2"
+group = "Rave Network Overscan"
+source = "script"
+
+[demozoo.219075]
+title = "Membertro"
+group = "Motive"
+source = "script"
+
+[demozoo.222877]
+title = "MemberTro"
+group = "Zeroline"
+source = "script"
+
+[demozoo.226641]
+title = "Membertro"
+group = "Reality"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.236424]
+title = "Membotro"
+group = "Byte Busters"
+source = "script"
+
+[demozoo.243277]
+title = "Membtro"
+group = "Eremation"
+source = "script"
+
+[demozoo.180315]
+title = "Memnonia"
+group = "Triangle 3532"
+source = "script"
+
+[demozoo.246991]
+title = "Memorial Speech"
+group = "Infocorner"
+source = "script"
+
+[demozoo.31854]
+title = "Memories"
+group = "Factor"
+source = "script"
+machine = "a1200"
+run = "ftr-memories.exe"
+
+[demozoo.182529]
+title = "Memories"
+group = "No Limits"
+source = "script"
+
+[demozoo.19197]
+title = "Memories of Fog"
+group = "Radio"
+source = "script"
+machine = "a1200"
+
+[demozoo.244624]
+title = "Memory Disk for Blob"
+group = "Gate"
+source = "script"
+
+[demozoo.226602]
+title = "Memory Dumper Intro"
+group = "Paragon"
+source = "script"
+
+[demozoo.225254]
+title = "Memory Overload"
+group = "The Independents"
+source = "script"
+
+[demozoo.247139]
+title = "Memorys"
+group = "Ivory"
+source = "script"
+machine = "a1200"
+
+[demozoo.354]
+title = "Memtro"
+group = "Oracle"
+source = "script"
+
+[demozoo.165078]
+title = "Memtro"
+group = "Desire"
+source = "script"
+
+[demozoo.230494]
+title = "Memtro"
+group = "Reality"
+source = "script"
+
+[demozoo.243435]
+title = "Memtro"
+group = "Experiment 4"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.254817]
+title = "Memtro 1"
+group = "Paragon"
+source = "script"
+
+[demozoo.111222]
+title = "Menace"
+group = "Desire"
+source = "script"
+
+[demozoo.224572]
+title = "Menace"
+group = "Sly And Warrior"
+source = "script"
+
+[demozoo.1073]
+title = "Menace 2"
+group = "Desire"
+source = "script"
+machine = "a1200_030"
+run = "part1.dsr"
+
+[demozoo.67524]
+title = "Mental"
+group = "Push Entertainment"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.99033]
+title = "Mental Brain Disorder"
+group = "Loonies"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.330362]
+title = "Mental Collection 17 Intro"
+group = "X-Men"
+source = "script"
+
+[demozoo.217324]
+title = "Mental Collection 2 Intro"
+group = "Stack / X-Men"
+source = "script"
+machine = "a500_ks12"
+
+[demozoo.261704]
+title = "Mental Collection 20 Intro"
+group = "X-Men"
+source = "script"
+
+[demozoo.261703]
+title = "Mental Collection 23 Intro"
+group = "X-Men"
+source = "script"
+
+[demozoo.261697]
+title = "Mental Collection 25 Intro 1"
+group = "X-Men"
+source = "script"
+
+[demozoo.330363]
+title = "Mental Collection 25 Intro 2"
+group = "X-Men"
+source = "script"
+
+[demozoo.261701]
+title = "Mental Collection 27 Intro"
+group = "X-Men"
+source = "script"
+
+[demozoo.217325]
+title = "Mental Collection 3 Intro"
+group = "Stack / X-Men"
+source = "script"
+machine = "a500_ks12"
+
+[demozoo.217327]
+title = "Mental Collection 8 Intro"
+group = "Stack"
+source = "script"
+machine = "a500_ks12"
+
+[demozoo.314222]
+title = "Mental Disaster"
+group = "Cyan"
+source = "script"
+result = "unknown"
+
+[demozoo.253806]
+title = "Mental Distortion"
+group = "Phenomena"
+source = "script"
+
+[demozoo.22186]
+title = "Mental Hangover"
+group = "Scoopex"
+source = "script"
+
+[demozoo.210595]
+title = "Mental Insanity BBStro"
+group = "Edge"
+source = "script"
+machine = "a1200"
+
+[demozoo.232268]
+title = "Mental Rave Series 1 - Night Exploitation"
+group = "Adict"
+source = "script"
+
+[demozoo.232269]
+title = "Mental Rave Series 3 - Ambient Metastasis"
+group = "Adict"
+source = "script"
+
+[demozoo.298118]
+title = "Mental Relapse!"
+group = "Defekt"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.215193]
+title = "Mental Scrollover"
+group = "Kyrios"
+source = "script"
+
+[demozoo.308211]
+title = "Mental Slavery 10 Menu"
+group = "Atomic"
+source = "script"
+
+[demozoo.235088]
+title = "Mental Slavery Preview"
+group = "Arise"
+source = "script"
+
+[demozoo.215195]
+title = "Mental Turricanover"
+group = "Kyrios"
+source = "script"
+
+[demozoo.261871]
+title = "Mental Wankover"
+group = "Flashing Bytes"
+source = "script"
+
+[demozoo.261696]
+title = "Mental XXV-2"
+group = "X-Men"
+source = "script"
+
+[demozoo.270851]
+title = "Menu"
+group = "The Great Swappers"
+source = "script"
+
+[demozoo.245572]
+title = "Menutro"
+group = "Hardline"
+source = "script"
+
+[demozoo.309118]
+title = "Mercifully Short"
+group = "The 7th Division"
+source = "script"
+
+[demozoo.64415]
+title = "Merdé"
+group = "Hotdog Productions"
+source = "script"
+machine = "a1200"
+
+[demozoo.245173]
+title = "Mere Guld 1991-94"
+group = "Gunnars Farvebio"
+source = "script"
+run = "SIN"
+
+[demozoo.213214]
+title = "Merlin Computer & Business Centre"
+group = "LSD"
+source = "script"
+
+[demozoo.272700]
+title = "Merry And Happy"
+group = "Agima"
+source = "script"
+machine = "a1200"
+
+[demozoo.334637]
+title = "Merry BeerMas"
+group = "The Electronic Knights"
+source = "script"
+
+[demozoo.215920]
+title = "Merry Christmas"
+group = "Goonies 2041"
+source = "script"
+
+[demozoo.224581]
+title = "Merry Christmas"
+group = "Software Runners from Hell"
+source = "script"
+
+[demozoo.228249]
+title = "Merry Christmas"
+group = "Gods of Desire"
+source = "script"
+
+[demozoo.238973]
+title = "Merry Christmas"
+group = "Bronx"
+source = "script"
+
+[demozoo.257784]
+title = "Merry Christmas"
+group = "Shining 8"
+source = "script"
+
+[demozoo.334788]
+title = "Merry Christmas"
+group = "Nah-Kolor"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.154329]
+title = "Merry Christmas 1989"
+group = "Neutron Dance"
+source = "script"
+
+[demozoo.265113]
+title = "Merry Christmas 2002"
+group = "Void"
+source = "script"
+
+[demozoo.223053]
+title = "Merry Christmas and Ha-ha-happy New Year"
+group = "Nation X"
+source = "script"
+
+[demozoo.242912]
+title = "Merry Christmas Demo"
+group = "Embassy"
+source = "script"
+
+[demozoo.363576]
+title = "Merry Christmas!"
+group = "Artstate"
+source = "script"
+run = "mc"
+
+[demozoo.218702]
+title = "Merry Exitus"
+group = "The Orb"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.343139]
+title = "Merry Krismass"
+group = "Megaklopparna"
+source = "script"
+
+[demozoo.5798]
+title = "Merry X-Mas"
+group = "Silicon Ltd."
+source = "script"
+machine = "a1200"
+
+[demozoo.224739]
+title = "Merry X-Mas - Happy New Year 1995"
+group = "Stoer & Nutteloos"
+source = "script"
+
+[demozoo.209561]
+title = "Merry X-Mas And Happy New Year"
+group = "The Errors"
+source = "script"
+
+[demozoo.227104]
+title = "Merry Xmas"
+group = "Sauron Society"
+source = "script"
+machine = "a1200"
+
+[demozoo.85903]
+title = "Merry Xmas 96"
+group = "Honoo"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.159251]
+title = "Mesmerized"
+group = "Pure Metal Coders"
+source = "script"
+
+[demozoo.261870]
+title = "Message"
+group = "Flashing Bytes"
+source = "script"
+machine = "a500_ks12"
+
+[demozoo.380473]
+title = "Message"
+group = "The New Age"
+source = "script"
+
+[demozoo.205390]
+title = "Message Box"
+group = "Zero Defects"
+source = "script"
+
+[demozoo.227172]
+title = "Message Box"
+group = "Passion"
+source = "script"
+
+[demozoo.216289]
+title = "Message Box 1"
+group = "Flashers"
+source = "script"
+
+[demozoo.232249]
+title = "Message Box 1"
+group = "Accuracy"
+source = "script"
+
+[demozoo.240721]
+title = "Message Box 2"
+group = "Destiny"
+source = "script"
+
+[demozoo.265099]
+title = "Message Box 2"
+group = "Voodoo Design"
+source = "script"
+
+[demozoo.232313]
+title = "Message Center 09-91 Intro"
+group = "Addonic"
+source = "script"
+
+[demozoo.232315]
+title = "Message Center 4 Intro"
+group = "Addonic"
+source = "script"
+
+[demozoo.196107]
+title = "Message Center 5 Intro"
+group = "Addonic"
+source = "script"
+
+[demozoo.232316]
+title = "Message Center 6 Intro"
+group = "Addonic"
+source = "script"
+result = "unknown"
+
+[demozoo.232319]
+title = "Message Center Editor II V1.1E Intro"
+group = "Addonic"
+source = "script"
+result = "unknown"
+
+[demozoo.353131]
+title = "Message To The Wankers"
+group = "Pendle Europa"
+source = "script"
+
+[demozoo.255440]
+title = "Message To The World"
+group = "Ram Jam"
+source = "script"
+
+[demozoo.221527]
+title = "Message to Trilogy"
+group = "Kermie"
+source = "script"
+
+[demozoo.224644]
+title = "Messages"
+group = "Idiosyncatris"
+source = "script"
+
+[demozoo.246338]
+title = "Messtro"
+group = "Hysteric"
+source = "script"
+
+[demozoo.219791]
+title = "Messy Intro"
+group = "ESG"
+source = "script"
+
+[demozoo.228014]
+title = "Mestro"
+group = "Phoenix"
+source = "script"
+result = "unknown"
+
+[demozoo.191218]
+title = "Meta Brain"
+group = "DATAMAN"
+source = "script"
+result = "unknown"
+
+[demozoo.313254]
+title = "METAdemo"
+group = "Talent"
+source = "script"
+
+[demozoo.222715]
+title = "Metal"
+group = "Bundies"
+source = "script"
+
+[demozoo.211876]
+title = "Metal Bars II"
+group = "Defeat"
+source = "script"
+
+[demozoo.244269]
+title = "Metal Connextion BBS"
+group = "Focus Design"
+source = "script"
+
+[demozoo.266252]
+title = "Metal Death's First"
+group = "Leprosy"
+source = "script"
+
+[demozoo.238745]
+title = "Metal Demo"
+group = "Brainstorm"
+source = "script"
+
+[demozoo.270922]
+title = "Metal Demo"
+group = "HMX Swissteam"
+source = "script"
+
+[demozoo.200002]
+title = "Metal Demo 2"
+group = "Black Monks"
+source = "script"
+
+[demozoo.276849]
+title = "Metal Disaster"
+group = "Splash"
+source = "script"
+
+[demozoo.254196]
+title = "Metal Hammer 1 Packmenu"
+group = "Platin"
+source = "script"
+
+[demozoo.224819]
+title = "Metal Impact BBS Intro"
+group = "Outrage"
+source = "script"
+
+[demozoo.204089]
+title = "Metal Melissa The Pisser"
+group = "Animators"
+source = "script"
+
+[demozoo.219792]
+title = "Metal Strike Back"
+group = "ESG"
+source = "script"
+
+[demozoo.250620]
+title = "Metal X-Mas"
+group = "Metallians"
+source = "script"
+
+[demozoo.240026]
+title = "Metalic's First Demo"
+group = "Decay"
+source = "script"
+
+[demozoo.182926]
+title = "Metallic"
+group = "Mean Machine"
+source = "script"
+
+[demozoo.254342]
+title = "Metallpower"
+group = "PowerDrive"
+source = "script"
+
+[demozoo.215328]
+title = "Metamorph"
+group = "Nostrum"
+source = "script"
+
+[demozoo.116244]
+title = "Metamorphosis"
+group = "Brainstorm"
+source = "script"
+
+[demozoo.9063]
+title = "Metatag Lock K-231277"
+group = "Madwizards"
+source = "script"
+machine = "a1200_030"
+result = "crashes-later"
+run = "mwi-mtag.030"
+
+[demozoo.236338]
+title = "Meteli 1"
+group = "Byterapers"
+source = "script"
+
+[demozoo.236339]
+title = "Meteli 2"
+group = "Byterapers"
+source = "script"
+result = "unknown"
+
+[demozoo.236340]
+title = "Meteli 3"
+group = "Byterapers"
+source = "script"
+result = "unknown"
+
+[demozoo.236341]
+title = "Meteli 4 - Jumala Special"
+group = "Byterapers"
+source = "ai"
+kind = "menu"
+disks = ["BRS-Meteli4A.dms", "BRS-Meteli4B.dms"]
+swaps = [{ disk = 2, at = 80.0 }]
+note = "part list under the Meteli IV logo, scroller"
+
+[demozoo.236342]
+title = "Meteli 5"
+group = "Byterapers"
+source = "script"
+result = "unknown"
+
+[demozoo.236343]
+title = "Meteli 6"
+group = "Byterapers"
+source = "script"
+result = "unknown"
+
+[demozoo.244270]
+title = "Methylate"
+group = "Focus Design"
+source = "script"
+machine = "a1200"
+
+[demozoo.249708]
+title = "Methylated Spirits 0 Preview"
+group = "Magic"
+source = "script"
+
+[demozoo.223286]
+title = "Metinki 9 Intro -2 Years Anniversary Intro-"
+group = "Bold And The Beautiful"
+source = "script"
+machine = "a1200"
+
+[demozoo.227741]
+title = "Meto One"
+group = "Metonics"
+source = "script"
+
+[demozoo.253166]
+title = "Metro 1"
+group = "Parallax"
+source = "script"
+
+[demozoo.253167]
+title = "Metro 2"
+group = "Parallax"
+source = "script"
+
+[demozoo.278648]
+title = "Metro Party Demo"
+group = "The Newton Company"
+source = "script"
+
+[demozoo.208481]
+title = "Metroplex's First"
+group = "The Warfalcons"
+source = "script"
+
+[demozoo.720]
+title = "Metropolice"
+group = "Rave Network Overscan / Ghostown"
+source = "script"
+result = "unknown"
+
+[demozoo.222847]
+title = "Metsaerules"
+group = "Poorsoft"
+source = "script"
+
+[demozoo.204419]
+title = "Mezcaltro"
+group = "Mezcal"
+source = "script"
+machine = "a1200"
+
+[demozoo.241477]
+title = "Mezzy BBS Intro"
+group = "Donut Fetish"
+source = "script"
+machine = "a1200"
+
+[demozoo.234233]
+title = "MF Party Releases - intro"
+group = "Anarchy"
+source = "script"
+
+[demozoo.81517]
+title = "MFD"
+group = "CMD / 8BitError"
+source = "script"
+
+[demozoo.261898]
+title = "MGF - JOY Megaintrodisk Trainer Intro"
+group = "The Firm Inc."
+source = "script"
+
+[demozoo.317579]
+title = "mhm-hny2023"
+group = "mayHem"
+source = "script"
+machine = "a1200_030"
+run = "dhl2023.aga"
+
+[demozoo.107019]
+title = "Mi lett volna ha..."
+group = "W.A.T.T."
+source = "script"
+result = "unknown"
+run = "INFOCHANNEL.GFX"
+
+[demozoo.9297]
+title = "MI05"
+group = "Rave Network Overscan"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.237085]
+title = "Miami Vice Sampled Music"
+group = "Chrome"
+source = "script"
+
+[demozoo.205175]
+title = "Miami Vice Theme"
+group = "Swiss Cracking Association"
+source = "script"
+disks = ["SCA-MiamiViceA.adf", "SCA-MiamiViceB.adf", "SCA-MiamiViceC.adf", "SCA-MiamiViceD.adf"]
+swaps = [{ disk = 2, at = 100.2 }, { disk = 3, at = 196.2 }, { disk = 4, at = 292.2 }]
+
+[demozoo.52048]
+title = "MiBootie"
+group = "Itch"
+source = "script"
+
+[demozoo.210655]
+title = "Mice In Peanut Butter Soup"
+group = "Sect"
+source = "script"
+
+[demozoo.179741]
+title = "Michaela"
+group = "Surprise! Productions"
+source = "script"
+
+[demozoo.247806]
+title = "Michel Angelotus"
+group = "Zenon"
+source = "script"
+
+[demozoo.258956]
+title = "MichelSoft 2 v1.1"
+group = "Spreadpoint"
+source = "script"
+
+[demozoo.154328]
+title = "Mickey Mouse"
+group = "Alcatraz"
+source = "script"
+
+[demozoo.10328]
+title = "Micro Budget"
+group = "Anarchy"
+source = "script"
+
+[demozoo.250901]
+title = "Micro Budjet Intro"
+group = "Mirage International"
+source = "script"
+
+[demozoo.371987]
+title = "Micro Concerto For An Artificial Intelligence"
+group = "Neural"
+source = "script"
+
+[demozoo.186617]
+title = "Micro Demo"
+group = "World Federation of Mad Hackers"
+source = "script"
+
+[demozoo.238777]
+title = "Micro Hot Stuff Intro"
+group = "Bounty"
+source = "script"
+
+[demozoo.250902]
+title = "Micro Prime"
+group = "Mirage"
+source = "script"
+machine = "a1200"
+
+[demozoo.222224]
+title = "Micro Shite Intro"
+group = "Ghostbusters"
+source = "script"
+
+[demozoo.193836]
+title = "Micro-Intro"
+group = "Sagazity"
+source = "script"
+
+[demozoo.299519]
+title = "Micro-Intro"
+group = "Elite"
+source = "script"
+
+[demozoo.329779]
+title = "Micro-Intro"
+group = "Draco"
+source = "script"
+
+[demozoo.215218]
+title = "Microbe"
+group = "Unlimited"
+source = "script"
+machine = "a1200"
+
+[demozoo.247717]
+title = "Microburst BBS"
+group = "Keso"
+source = "script"
+
+[demozoo.250698]
+title = "Microforce Medley"
+group = "Microforce"
+source = "script"
+
+[demozoo.208779]
+title = "Micromachine BBS Intro"
+group = "Duke"
+source = "script"
+
+[demozoo.30698]
+title = "Micromonster"
+group = "Contraz"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.184251]
+title = "Micron"
+group = "Surprise! Productions / Micron"
+source = "script"
+
+[demozoo.222738]
+title = "MicroProse Formula One Grand Prix"
+group = "The Foul Critters"
+source = "script"
+
+[demozoo.215349]
+title = "Microwaver Demo"
+group = "Master Crew"
+source = "script"
+
+[demozoo.248546]
+title = "Mid School Demo"
+group = "Latex"
+source = "script"
+result = "unknown"
+run = "Greets.ltx"
+
+[demozoo.9560]
+title = "Midge"
+group = "Appendix"
+source = "script"
+result = "unknown"
+run = "Midge"
+
+[demozoo.151273]
+title = "Midnight Blue"
+group = "Ram Jam"
+source = "script"
+result = "unknown"
+
+[demozoo.241000]
+title = "Midnight Caller BBS Intro"
+group = "Digital Access"
+source = "script"
+result = "unknown"
+
+[demozoo.294225]
+title = "Midnight Madness"
+group = "Power House"
+source = "script"
+
+[demozoo.290629]
+title = "Midnight Sun BBS"
+group = "Nation"
+source = "script"
+
+[demozoo.223829]
+title = "Midnite BBS"
+group = "The Carpet People"
+source = "script"
+
+[demozoo.261805]
+title = "Midnite Mess 1 Announce Intro"
+group = "The Dark Demon"
+source = "script"
+
+[demozoo.261803]
+title = "Midnite Mess 2 Intro"
+group = "The Dark Demon"
+source = "script"
+result = "unknown"
+
+[demozoo.261802]
+title = "Midnite Mess 3 Advertising"
+group = "The Dark Demon"
+source = "script"
+machine = "a1200"
+
+[demozoo.268119]
+title = "Midsummer Dentro aka Second To None"
+group = "Active"
+source = "script"
+
+[demozoo.27647]
+title = "Midvinternattens Köld är Hård"
+group = "3 Little Elks"
+source = "script"
+machine = "a1200"
+
+[demozoo.44889]
+title = "Mieso"
+group = "Przyjaciele Kashany P."
+source = "script"
+result = "unknown"
+
+[demozoo.261390]
+title = "Miggybyte Christmas Intro"
+group = "Mr. Tickle"
+source = "script"
+result = "unknown"
+
+[demozoo.243790]
+title = "Mighty Bob Party Vol 1"
+group = "Fashion"
+source = "script"
+
+[demozoo.266833]
+title = "Mike's Pack 48 Intro"
+group = "Elite"
+source = "script"
+
+[demozoo.3982]
+title = "Mikrobi"
+group = "Moods Plateau"
+source = "script"
+machine = "a1200"
+
+[demozoo.215760]
+title = "Mikrobitti Demo"
+group = "Slaverider / Black Jack"
+source = "script"
+
+[demozoo.4318]
+title = "Mild Fantasy Violence"
+group = "Haujobb"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.222644]
+title = "Millenium"
+group = "Venom"
+source = "script"
+result = "unknown"
+
+[demozoo.28768]
+title = "Millennium"
+group = "Scoopex"
+source = "script"
+
+[demozoo.207031]
+title = "Millions"
+group = "Abyss"
+source = "script"
+machine = "a1200"
+
+[demozoo.223650]
+title = "Millions of Bugs"
+group = "Dream's Day"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.63622]
+title = "Mime!"
+group = "Silicon"
+source = "script"
+machine = "a1200_fast"
+run = "Mime!_030.exe"
+
+[demozoo.101067]
+title = "Mimosa House"
+group = "PSY-S"
+source = "script"
+result = "unknown"
+run = "Kyoko"
+
+[demozoo.223627]
+title = "Min Andra Demo"
+group = "Arcana"
+source = "script"
+
+[demozoo.110949]
+title = "Min Morfar Går med Käppar"
+group = "SüG RøR"
+source = "script"
+
+[demozoo.222707]
+title = "Min Morfar Går Med Käppar"
+group = "Sug Röw"
+source = "script"
+
+[demozoo.212305]
+title = "Mina I"
+group = "Xerox / Energy"
+source = "script"
+
+[demozoo.244814]
+title = "Minas Morgul BBS Intro"
+group = "Genesis"
+source = "script"
+
+[demozoo.139174]
+title = "Mind"
+group = "The Edge"
+source = "script"
+
+[demozoo.635]
+title = "Mind Crime"
+group = "No Limits"
+source = "script"
+
+[demozoo.231791]
+title = "Mind Crime 04 Intro"
+group = "No Limits"
+source = "script"
+
+[demozoo.231792]
+title = "Mind Crime 06 Intro"
+group = "No Limits"
+source = "script"
+
+[demozoo.231793]
+title = "Mind Crime 07 Intro"
+group = "No Limits"
+source = "script"
+
+[demozoo.231794]
+title = "Mind Crime 08 Intro"
+group = "No Limits"
+source = "script"
+
+[demozoo.231795]
+title = "Mind Crime 18 Intro"
+group = "No Limits"
+source = "script"
+
+[demozoo.231796]
+title = "Mind Crime 20 Intro"
+group = "No Limits"
+source = "script"
+
+[demozoo.263880]
+title = "Mind Crime 26 - intro"
+group = "Utopia"
+source = "script"
+
+[demozoo.21926]
+title = "Mind Disaster"
+group = "Cave"
+source = "script"
+
+[demozoo.5802]
+title = "Mind Expanding"
+group = "Melon Dezign"
+source = "script"
+result = "unknown"
+
+[demozoo.234979]
+title = "Mind Field - Demo"
+group = "Aurora"
+source = "script"
+
+[demozoo.234980]
+title = "Mind Field - Intro"
+group = "Aurora"
+source = "script"
+
+[demozoo.118409]
+title = "Mind Floating Palace"
+group = "Software Failure"
+source = "script"
+result = "unknown"
+
+[demozoo.248669]
+title = "Mind Flux"
+group = "Kronical"
+source = "script"
+
+[demozoo.261947]
+title = "Mind Funk Preview"
+group = "The Electronic Knights"
+source = "script"
+result = "unknown"
+
+[demozoo.366040]
+title = "Mind Illusions"
+group = "Cyan"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.9334]
+title = "Mind Riot"
+group = "Andromeda"
+source = "script"
+
+[demozoo.28158]
+title = "Mind The Carrot"
+group = "The Black Lotus"
+source = "script"
+machine = "a1200"
+
+[demozoo.31852]
+title = "Mind the Carrot 2"
+group = "The Black Lotus"
+source = "script"
+machine = "a1200"
+
+[demozoo.27788]
+title = "Mind the Coop"
+group = "The Black Lotus / Axis"
+source = "script"
+machine = "a1200"
+
+[demozoo.28467]
+title = "Mind The Riot"
+group = "The Black Lotus"
+source = "script"
+machine = "a1200"
+
+[demozoo.32583]
+title = "Mind Traveller"
+group = "Limited Edition"
+source = "script"
+result = "unknown"
+run = "WHEREFUNROLEZ.EXE"
+
+[demozoo.18185]
+title = "Mindabuse"
+group = "Limited Edition"
+source = "script"
+result = "unknown"
+run = "Mindabuse.ex1"
+
+[demozoo.288559]
+title = "Mindblaster Dentro"
+group = "Addonic"
+source = "script"
+
+[demozoo.125217]
+title = "Mindblasting Intro aka Vectors"
+group = "Zero Defects"
+source = "script"
+
+[demozoo.233976]
+title = "Mindblasting Release"
+group = "Armada"
+source = "script"
+
+[demozoo.255775]
+title = "Mindblasting Vectorballs"
+group = "Red Sector Inc."
+source = "script"
+
+[demozoo.283166]
+title = "Mindcrush Pack Intro"
+group = "Animators"
+source = "script"
+
+[demozoo.6827]
+title = "Mindflow"
+group = "Stellar"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.71080]
+title = "MindFlux"
+group = "Software Failure"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.6858]
+title = "Mindfuck"
+group = "iNSANE"
+source = "script"
+machine = "a1200"
+
+[demozoo.252860]
+title = "Mindless BBS"
+group = "Oxyron"
+source = "script"
+
+[demozoo.7627]
+title = "Mindprobe"
+group = "The Black Lotus"
+source = "script"
+result = "unknown"
+run = "landtunnel"
+
+[demozoo.285207]
+title = "Mindsurfin'"
+group = "Vectors"
+source = "script"
+
+[demozoo.40318]
+title = "MindWalker"
+group = "Vegas"
+source = "script"
+result = "unknown"
+run = "mindwalker.exe"
+
+[demozoo.218877]
+title = "Mindworks Intro"
+group = "Perspex"
+source = "script"
+
+[demozoo.236606]
+title = "Mindwrack"
+group = "Cerberos"
+source = "script"
+
+[demozoo.242795]
+title = "Mini"
+group = "End of Century 1999"
+source = "script"
+
+[demozoo.251474]
+title = "Mini"
+group = "Miracle"
+source = "script"
+
+[demozoo.238974]
+title = "Mini  BBS Intro"
+group = "Bronx"
+source = "script"
+
+[demozoo.355]
+title = "Mini BBS Intro"
+group = "World Industries"
+source = "script"
+
+[demozoo.229199]
+title = "Mini BBS Intro"
+group = "Impact"
+source = "script"
+
+[demozoo.216521]
+title = "Mini Borntro"
+group = "Goldfire"
+source = "script"
+
+[demozoo.248100]
+title = "Mini Budget Kebab v2.1"
+group = "Kefrens"
+source = "script"
+
+[demozoo.257847]
+title = "Mini Copy Party"
+group = "Share and Enjoy"
+source = "script"
+
+[demozoo.254921]
+title = "Mini Data Marked"
+group = "Pure Metal Coders"
+source = "script"
+
+[demozoo.243823]
+title = "Mini Demo"
+group = "Falcons"
+source = "script"
+
+[demozoo.257666]
+title = "Mini Demo"
+group = "Sepultura"
+source = "script"
+
+[demozoo.238975]
+title = "Mini Fonts Disk 2 Intro"
+group = "Bronx"
+source = "script"
+
+[demozoo.318347]
+title = "Mini Game Disk 2"
+group = "Bamiga Sector One / Cybertech"
+source = "script"
+
+[demozoo.264678]
+title = "Mini Info Intro"
+group = "Wizzcat"
+source = "script"
+
+[demozoo.755]
+title = "Mini Intro"
+group = "Talent"
+source = "script"
+
+[demozoo.157272]
+title = "Mini Intro"
+group = "Spetsnatz"
+source = "script"
+result = "unknown"
+
+[demozoo.187533]
+title = "Mini Intro"
+group = "Intuition"
+source = "script"
+
+[demozoo.196960]
+title = "Mini Intro"
+group = "Pirates"
+source = "script"
+
+[demozoo.207954]
+title = "Mini Intro"
+group = "Leader Productions"
+source = "script"
+
+[demozoo.208987]
+title = "Mini Intro"
+group = "Abakus / Doughnut Cracking Service"
+source = "script"
+
+[demozoo.210513]
+title = "Mini Intro"
+group = "Mythos"
+source = "script"
+
+[demozoo.217579]
+title = "Mini Intro"
+group = "Spectral"
+source = "script"
+
+[demozoo.218068]
+title = "Mini Intro"
+group = "European Software Agency"
+source = "script"
+
+[demozoo.222008]
+title = "Mini Intro"
+group = "The Fire Starters"
+source = "script"
+
+[demozoo.222999]
+title = "Mini Intro"
+group = "Radical Can Killers"
+source = "script"
+
+[demozoo.223679]
+title = "Mini Intro"
+group = "Freehand"
+source = "script"
+
+[demozoo.223986]
+title = "Mini Intro"
+group = "Sacreds"
+source = "script"
+
+[demozoo.234234]
+title = "Mini Intro"
+group = "Anarchy"
+source = "script"
+
+[demozoo.238074]
+title = "Mini Intro"
+group = "Astra"
+source = "script"
+
+[demozoo.238976]
+title = "Mini Intro"
+group = "Bronx"
+source = "script"
+
+[demozoo.243278]
+title = "Mini Intro"
+group = "Eremation"
+source = "script"
+result = "unknown"
+
+[demozoo.243825]
+title = "Mini Intro"
+group = "Falcons"
+source = "script"
+
+[demozoo.251755]
+title = "Mini Intro"
+group = "Nemesis"
+source = "script"
+
+[demozoo.258671]
+title = "Mini Intro"
+group = "Slipstream"
+source = "script"
+result = "unknown"
+
+[demozoo.258672]
+title = "Mini Intro"
+group = "Slipstream"
+source = "script"
+
+[demozoo.262703]
+title = "Mini Intro"
+group = "The Softkiller Crew"
+source = "script"
+
+[demozoo.294516]
+title = "Mini Intro"
+group = "Crime"
+source = "script"
+
+[demozoo.385684]
+title = "Mini Intro"
+group = "Megapowers"
+source = "script"
+
+[demozoo.228733]
+title = "Mini Intro Number One aka Fantasia"
+group = "Kryptic"
+source = "script"
+
+[demozoo.336462]
+title = "Mini Intro v2.0"
+group = "Illusions U.K."
+source = "script"
+
+[demozoo.257667]
+title = "Mini Lametro"
+group = "Sepultura"
+source = "script"
+
+[demozoo.262442]
+title = "Mini Logo Intro"
+group = "The Silents"
+source = "script"
+result = "unknown"
+
+[demozoo.167569]
+title = "Mini Mega Demo"
+group = "Supplex"
+source = "script"
+
+[demozoo.268845]
+title = "Mini Mega Demo"
+group = "Express"
+source = "script"
+
+[demozoo.251625]
+title = "Mini Mega Intro"
+group = "Mystix"
+source = "script"
+
+[demozoo.221210]
+title = "Mini Megademo"
+group = "Doom Uk"
+source = "script"
+result = "unknown"
+
+[demozoo.254996]
+title = "Mini Megademo"
+group = "Reaktor"
+source = "script"
+
+[demozoo.259718]
+title = "Mini Micro Intro"
+group = "Supreme"
+source = "script"
+result = "unknown"
+
+[demozoo.223684]
+title = "Mini Partintro"
+group = "Nuclear Dezign"
+source = "script"
+
+[demozoo.380272]
+title = "Mini Party 2 Invitation"
+group = "Diabolos"
+source = "script"
+
+[demozoo.140838]
+title = "Mini Party Intro"
+group = "Coma"
+source = "script"
+
+[demozoo.258795]
+title = "Mini Party Intro"
+group = "Sonic"
+source = "script"
+
+[demozoo.210528]
+title = "Mini Wobbler Intro"
+group = "Factor 4"
+source = "script"
+
+[demozoo.10329]
+title = "Mini-Intro"
+group = "Anarchy"
+source = "script"
+
+[demozoo.246107]
+title = "Mini-Intro"
+group = "Hotdog Productions"
+source = "script"
+result = "unknown"
+
+[demozoo.249171]
+title = "Mini-Intro"
+group = "Limited Edition"
+source = "script"
+
+[demozoo.229106]
+title = "Mini-Meeting Intro"
+group = "Addicts / The Family"
+source = "script"
+
+[demozoo.247029]
+title = "Mini-mini Crap Intro"
+group = "Ipec Elite"
+source = "script"
+
+[demozoo.247030]
+title = "Mini-mini OK Intro"
+group = "Ipec Elite"
+source = "script"
+
+[demozoo.22216]
+title = "Mini-Sine Intro aka English Lessons"
+group = "Share and Enjoy / Scoopex"
+source = "script"
+result = "unknown"
+
+[demozoo.242891]
+title = "Mini-Vector Intro"
+group = "Empire"
+source = "script"
+
+[demozoo.220742]
+title = "Minidemo"
+group = "Defiance"
+source = "script"
+
+[demozoo.253384]
+title = "Minidemo"
+group = "Paradise"
+source = "script"
+
+[demozoo.278426]
+title = "Minigolf Muzak"
+group = "The Link"
+source = "script"
+
+[demozoo.287201]
+title = "Miniintro"
+group = "Revolution"
+source = "script"
+
+[demozoo.251714]
+title = "Minimeeting Demo"
+group = "Mute 101"
+source = "script"
+
+[demozoo.168562]
+title = "Minimig"
+group = "AlienTech"
+source = "script"
+
+[demozoo.262816]
+title = "Miniscanmegaintro"
+group = "The Special Brothers"
+source = "script"
+
+[demozoo.100501]
+title = "Ministorm"
+group = "Losso"
+source = "script"
+
+[demozoo.262441]
+title = "Ministry"
+group = "The Silents"
+source = "script"
+
+[demozoo.127528]
+title = "Ministry of funny afros"
+group = "Ananasmurska"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.207370]
+title = "Minor Defects"
+group = "World Industries"
+source = "script"
+
+[demozoo.7242]
+title = "Mint"
+group = "Teenage Crime"
+source = "script"
+machine = "a1200"
+
+[demozoo.34512]
+title = "Mint"
+group = "Instinct"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.229554]
+title = "Mint"
+group = "The Blue Locomotive"
+source = "script"
+machine = "a1200"
+
+[demozoo.179]
+title = "Mintro"
+group = "Haujobb"
+source = "script"
+
+[demozoo.94453]
+title = "Mintro"
+group = "Amaze / Quartex"
+source = "script"
+
+[demozoo.103794]
+title = "Mintro"
+group = "Arkham"
+source = "script"
+machine = "a1200"
+
+[demozoo.123624]
+title = "Mintro"
+group = "Vision"
+source = "script"
+
+[demozoo.214493]
+title = "Mintro"
+group = "Coroner"
+source = "script"
+result = "unknown"
+
+[demozoo.224760]
+title = "Mintro"
+group = "Militia"
+source = "script"
+
+[demozoo.229679]
+title = "Mintro"
+group = "Tech"
+source = "script"
+
+[demozoo.252242]
+title = "Mintro"
+group = "Noxious"
+source = "script"
+
+[demozoo.258796]
+title = "Mintro"
+group = "Sonic"
+source = "script"
+
+[demozoo.254226]
+title = "Mintro 2"
+group = "Plague"
+source = "script"
+
+[demozoo.254227]
+title = "Mintro 3"
+group = "Plague"
+source = "script"
+
+[demozoo.254228]
+title = "Mintro 4"
+group = "Plague"
+source = "script"
+
+[demozoo.216944]
+title = "Mintrox 2"
+group = "Optimal"
+source = "script"
+
+[demozoo.241068]
+title = "Minttutro"
+group = "Diffusion"
+source = "script"
+
+[demozoo.24672]
+title = "Minus 4"
+group = "Rave Network Overscan"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.89549]
+title = "Minä Omistan"
+group = "Movement"
+source = "script"
+machine = "a1200"
+
+[demozoo.210879]
+title = "MIP invitation"
+group = "Vertical Syndicate"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.386362]
+title = "Miracle Pack #09 Menu"
+group = "Barrakuda / Chuck"
+source = "script"
+
+[demozoo.7469]
+title = "Miracles"
+group = "Stellar"
+source = "script"
+result = "unknown"
+run = "Miracles.exe"
+
+[demozoo.250903]
+title = "Mirage Music"
+group = "Mirage"
+source = "script"
+
+[demozoo.241645]
+title = "Mirror"
+group = "Dragons"
+source = "script"
+
+[demozoo.40846]
+title = "Mirrors -srorriM-"
+group = "Endzeit"
+source = "script"
+result = "unknown"
+
+[demozoo.44892]
+title = "Mirrors 2"
+group = "Maq"
+source = "script"
+result = "unknown"
+
+[demozoo.7478]
+title = "Misery"
+group = "The Black Lotus"
+source = "script"
+machine = "a1200"
+
+[demozoo.29094]
+title = "Misery"
+group = "Zenon"
+source = "script"
+machine = "a1200_fast"
+run = "Part2.exe"
+
+[demozoo.132661]
+title = "Misery"
+group = "The Black Robes"
+source = "script"
+
+[demozoo.259671]
+title = "Misery Dentro - Final Version"
+group = "Tristar and Red Sector Inc. / Surprise! Productions"
+source = "script"
+
+[demozoo.263461]
+title = "Misery Dentro - Preview"
+group = "Tristar and Red Sector Inc."
+source = "script"
+
+[demozoo.8969]
+title = "Misery Dentro 2"
+group = "Masque / Tristar and Red Sector Inc."
+source = "script"
+
+[demozoo.181977]
+title = "Mish-Mash"
+group = "Domination"
+source = "script"
+machine = "a1200"
+
+[demozoo.178448]
+title = "Miss"
+group = "Absurd"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.237086]
+title = "Miss Take"
+group = "Chrome"
+source = "script"
+
+[demozoo.9048]
+title = "Missed"
+group = "Madwizards"
+source = "script"
+result = "unknown"
+run = "Missed.not_crunched"
+
+[demozoo.209615]
+title = "Missing Link"
+group = "Light"
+source = "script"
+
+[demozoo.7495]
+title = "Mission Impossible"
+group = "Amacon"
+source = "script"
+machine = "a1200"
+
+[demozoo.213903]
+title = "Mission Impossible Demo"
+group = "Harman Kardon"
+source = "script"
+
+[demozoo.244271]
+title = "Mission Nostromo"
+group = "Focus Design"
+source = "script"
+
+[demozoo.178224]
+title = "Mission Nostromo II"
+group = "Focus Design"
+source = "script"
+
+[demozoo.211219]
+title = "Mistery Is A Line In The Ninja Sword- BBS Intro"
+group = "Backlash"
+source = "script"
+
+[demozoo.1918]
+title = "Mistle-tro"
+group = "Doom Uk"
+source = "script"
+
+[demozoo.210107]
+title = "Mistral Partypack"
+group = "Euphoria"
+source = "script"
+
+[demozoo.94244]
+title = "Mitosis"
+group = "Software Failure"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.237741]
+title = "Mitt Liv Som Pixel"
+group = "Craze"
+source = "script"
+result = "unknown"
+
+[demozoo.29098]
+title = "Mitä Hirmu sanoo?"
+group = "Poro Productions"
+source = "script"
+result = "unknown"
+run = "demo.exe"
+
+[demozoo.17993]
+title = "Mixed Emotions"
+group = "C-Lous"
+source = "script"
+machine = "a1200"
+
+[demozoo.209773]
+title = "Mixed Intro"
+group = "Spacepigs"
+source = "script"
+
+[demozoo.244250]
+title = "Mixin Mach II"
+group = "Flash Production"
+source = "script"
+result = "unknown"
+
+[demozoo.268123]
+title = "Mixture 12 Menu"
+group = "Backlash"
+source = "script"
+
+[demozoo.209711]
+title = "Mlynek"
+group = "Zeeball"
+source = "script"
+result = "unknown"
+
+[demozoo.59679]
+title = "Mmama Llama"
+group = "Planet Jazz"
+source = "script"
+machine = "a1200"
+
+[demozoo.313256]
+title = "MMXXII"
+group = "Cocoon"
+source = "script"
+
+[demozoo.2498]
+title = "Mnemonic"
+group = "Ephidrena"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.229]
+title = "Mnemonics"
+group = "Haujobb"
+source = "script"
+machine = "a1200"
+
+[demozoo.52038]
+title = "Mo'Saik"
+group = "Focus Design"
+source = "script"
+machine = "a1200_060"
+
+[demozoo.281898]
+title = "Mobile 2 - I'm Lost"
+group = "Aldi"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.4220]
+title = "Mobile: Destination Unknown"
+group = "Spaceballs"
+source = "script"
+
+[demozoo.226849]
+title = "Moby-Dick!!!"
+group = "Beuhhh"
+source = "script"
+
+[demozoo.372887]
+title = "Mobyle"
+group = "Abyss"
+source = "script"
+
+[demozoo.24871]
+title = "Moca"
+group = "Floppy"
+source = "script"
+result = "unknown"
+
+[demozoo.241747]
+title = "Modeler Converter"
+group = "Drifters"
+source = "script"
+
+[demozoo.21379]
+title = "Models Inc."
+group = "Mirage"
+source = "script"
+machine = "a1200"
+run = "startme.exe"
+
+[demozoo.178341]
+title = "Models Inc."
+group = "Cydonia"
+source = "script"
+machine = "a1200"
+
+[demozoo.151366]
+title = "Modem"
+group = "Nexus"
+source = "script"
+machine = "a1200"
+
+[demozoo.305839]
+title = "Modem Help Pro v2.0 - intro"
+group = "Switch"
+source = "script"
+
+[demozoo.305843]
+title = "Modem Help Pro v2.2 - intro"
+group = "Switch"
+source = "script"
+
+[demozoo.305845]
+title = "Modem Help Pro v2.4 - intro"
+group = "Switch"
+source = "script"
+
+[demozoo.257786]
+title = "Modem Trading"
+group = "Shining 8 / Centurion"
+source = "script"
+
+[demozoo.299158]
+title = "Modernation"
+group = "Duskwave"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.221353]
+title = "Modesty's Intro"
+group = "Ydex"
+source = "script"
+
+[demozoo.208089]
+title = "Modula"
+group = "D-29"
+source = "script"
+
+[demozoo.24669]
+title = "Modular"
+group = "Haujobb"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.226897]
+title = "Modular Abyss BBS"
+group = "Emax / Snozz"
+source = "script"
+result = "unknown"
+
+[demozoo.262326]
+title = "Moduleplayer V3.0 & 3.1 Intro"
+group = "The Giants"
+source = "script"
+
+[demozoo.153157]
+title = "Modulo Demo"
+group = "Alpha Flight"
+source = "script"
+
+[demozoo.379980]
+title = "Moebius - The Orb Of Celestial Harmony"
+group = "The Movers"
+source = "script"
+
+[demozoo.296493]
+title = "Mogwai and The Control's First"
+group = "The Force"
+source = "script"
+
+[demozoo.232565]
+title = "Moin"
+group = "Triplex"
+source = "script"
+
+[demozoo.169804]
+title = "Moin Jungs"
+group = "Doctor Mabuse Orgasm Crackings"
+source = "script"
+
+[demozoo.207487]
+title = "Mokkula Intro"
+group = "Genocide"
+source = "script"
+
+[demozoo.2229]
+title = "Moldavia"
+group = "The Silents"
+source = "script"
+
+[demozoo.136140]
+title = "Mole"
+group = "Y-Crew"
+source = "script"
+
+[demozoo.227023]
+title = "Molestantos Tiltos Muertos"
+group = "Dachau Dezign"
+source = "script"
+
+[demozoo.250384]
+title = "Molested Music"
+group = "Mellow"
+source = "script"
+
+[demozoo.265609]
+title = "Molly - The Intro"
+group = "Vanity"
+source = "script"
+machine = "a1200"
+
+[demozoo.155051]
+title = "mOmento"
+group = "Nah-Kolor"
+source = "script"
+result = "unknown"
+run = "mOmento.nocrunched"
+
+[demozoo.42072]
+title = "Moments"
+group = "Old Bulls"
+source = "script"
+machine = "a1200"
+
+[demozoo.136310]
+title = "mOmentum"
+group = "Nah-Kolor"
+source = "script"
+result = "unknown"
+
+[demozoo.240328]
+title = "MomoCompilStuff IV Intro"
+group = "Delight"
+source = "script"
+
+[demozoo.38739]
+title = "Mona Lisa Overdrive"
+group = "Motion"
+source = "script"
+
+[demozoo.148]
+title = "Mona Lisa Was A Man"
+group = "Abyss"
+source = "script"
+
+[demozoo.179740]
+title = "Mona Lisa Was Not A Man aka Killraven Did Not Join TSB"
+group = "Paradise"
+source = "script"
+
+[demozoo.186001]
+title = "Mona Lissa"
+group = "The Softkiller Crew"
+source = "script"
+
+[demozoo.228016]
+title = "Monaco Intro"
+group = "Phoenix"
+source = "script"
+
+[demozoo.20704]
+title = "Monday"
+group = "Tulou"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.40456]
+title = "Money"
+group = "Amiga Circle"
+source = "script"
+machine = "a1200"
+
+[demozoo.125806]
+title = "Money"
+source = "script"
+machine = "a1200"
+
+[demozoo.211635]
+title = "Money - preview"
+group = "Amiga Circle"
+source = "script"
+machine = "a1200"
+
+[demozoo.235090]
+title = "Money Is Gone Preview"
+group = "Arise"
+source = "script"
+
+[demozoo.326955]
+title = "Moneypositas"
+group = "The 7th Division / Nerdy Family"
+source = "script"
+
+[demozoo.320]
+title = "Mongerful Smile"
+group = "Admirals"
+source = "script"
+
+[demozoo.2659]
+title = "Monkey"
+group = "Boozoholics"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.3124]
+title = "Monkey Business"
+group = "Apathy"
+source = "script"
+machine = "a1200"
+
+[demozoo.191787]
+title = "Monkey Mafia"
+group = "Przyjaciele Stefana B."
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.229635]
+title = "Mono"
+group = "Tomtemaffia"
+source = "script"
+result = "unknown"
+
+[demozoo.315769]
+title = "Monochrome"
+group = "Spreadpoint"
+source = "script"
+
+[demozoo.229266]
+title = "Monochrome Megalomania"
+group = "Cytax"
+source = "script"
+
+[demozoo.277280]
+title = "Monodon Monoceros"
+group = "Void"
+source = "script"
+
+[demozoo.256477]
+title = "Monolith Preview"
+group = "Over The Top"
+source = "script"
+
+[demozoo.168121]
+title = "Monomateria"
+group = "PACiF!C"
+source = "script"
+
+[demozoo.151531]
+title = "Monomeno #70"
+group = "dA JoRMaS"
+source = "script"
+
+[demozoo.190914]
+title = "MonoMeno 66"
+group = "dA JoRMaS"
+source = "script"
+machine = "a1200"
+
+[demozoo.239589]
+title = "Monomeno 67"
+group = "dA JoRMaS"
+source = "script"
+
+[demozoo.239590]
+title = "MonoMeno 68 - 4 Years of Pure World Ejaculation"
+group = "dA JoRMaS"
+source = "script"
+
+[demozoo.43999]
+title = "Monotit, lines & arrows"
+group = "Focus Design"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.44463]
+title = "Monotonik"
+group = "Ihana"
+source = "script"
+machine = "a1200"
+
+[demozoo.322599]
+title = "Monotropic"
+group = "Desire"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.197061]
+title = "Monoxide"
+group = "Vanish"
+source = "script"
+
+[demozoo.375022]
+title = "Monster"
+group = "Woorlic"
+source = "script"
+result = "unknown"
+run = "motorAmiga68k"
+
+[demozoo.237901]
+title = "Monster Demo"
+group = "Cult"
+source = "script"
+
+[demozoo.221426]
+title = "Montezuma Tekktro"
+group = "Rappists"
+source = "script"
+
+[demozoo.210011]
+title = "Monthly Party Invitation - 04/94"
+group = "Silicon Limited"
+source = "script"
+
+[demozoo.213217]
+title = "Monty Python's"
+group = "LSD"
+source = "script"
+
+[demozoo.245071]
+title = "MooKYMoo! MooSIC DEMo"
+group = "Grasshopper Developments"
+source = "script"
+machine = "a1200"
+
+[demozoo.3126]
+title = "Moon City"
+group = "Apathy"
+source = "script"
+result = "unknown"
+
+[demozoo.232321]
+title = "Moon Intro"
+group = "Addonic"
+source = "script"
+
+[demozoo.390020]
+title = "Moonbase"
+group = "Ghetto Crew"
+source = "script"
+
+[demozoo.226594]
+title = "Moone Sampla 3"
+group = "Fresh"
+source = "script"
+machine = "a1200"
+
+[demozoo.324344]
+title = "Moone Sampla 4"
+group = "Fresh"
+source = "script"
+machine = "a1200"
+
+[demozoo.249172]
+title = "Moonfall Prophecies"
+group = "Limited Edition"
+source = "script"
+
+[demozoo.307043]
+title = "Moonlight"
+group = "Teo"
+source = "script"
+run = "teo_-_moonlight.exe"
+
+[demozoo.290048]
+title = "Moonlight Party 1992 Invitation"
+group = "Moonlight"
+source = "script"
+
+[demozoo.188178]
+title = "Moonlight Shadow"
+group = "Moonlight Productions"
+source = "script"
+
+[demozoo.256996]
+title = "Moonlightning Demo"
+group = "Savage"
+source = "script"
+
+[demozoo.154323]
+title = "Moonlightning-Demo"
+group = "Overload"
+source = "script"
+
+[demozoo.337616]
+title = "Moonstrike"
+group = "Control"
+source = "script"
+
+[demozoo.237125]
+title = "Moontimer"
+group = "Carillon & Cyberiad"
+source = "script"
+
+[demozoo.36014]
+title = "Moonwalker"
+group = "Tulou"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.60959]
+title = "Mooo (The Art of the Wibble)"
+group = "Defekt"
+source = "script"
+
+[demozoo.243630]
+title = "Moorhill"
+group = "Fairlight"
+source = "script"
+
+[demozoo.318192]
+title = "Moose on the Loose"
+group = "Tecon"
+source = "script"
+
+[demozoo.366657]
+title = "Mooshine"
+group = "Nukleus"
+source = "script"
+
+[demozoo.81515]
+title = "Mopedboy"
+group = "Tulou"
+source = "script"
+machine = "a1200_030"
+run = "tlu_mboy.exe"
+
+[demozoo.130121]
+title = "Mopsalarm"
+group = "Code Red"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.385550]
+title = "Moral Fiber"
+group = "Nah-Kolor"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.241272]
+title = "Morbid Visions"
+group = "Division"
+source = "script"
+
+[demozoo.224363]
+title = "Morbid X-Mas"
+group = "Morbid Angels"
+source = "script"
+
+[demozoo.265143]
+title = "Morbus Gravis"
+group = "Voice"
+source = "script"
+
+[demozoo.232666]
+title = "Mordillo's New Demo"
+group = "Threat"
+source = "script"
+
+[demozoo.196933]
+title = "More"
+group = "Agoa"
+source = "script"
+
+[demozoo.228824]
+title = "More Blood"
+group = "Phokuz"
+source = "script"
+machine = "a500_1mb"
+run = "mb"
+
+[demozoo.137863]
+title = "More Bobs"
+group = "Complex"
+source = "script"
+
+[demozoo.270098]
+title = "More Contacts"
+group = "Mantronix / Mad"
+source = "script"
+
+[demozoo.1339]
+title = "More Friends And Contacts"
+group = "Offworld"
+source = "script"
+
+[demozoo.232566]
+title = "More Great Stuff"
+group = "Triplex"
+source = "script"
+
+[demozoo.260635]
+title = "More Groovy Compilation"
+group = "Accumulators"
+source = "script"
+
+[demozoo.188963]
+title = "More High Quality Imports and Spreads"
+group = "Biotech"
+source = "script"
+
+[demozoo.7536]
+title = "More Members Intro"
+group = "Birdhouse Projects"
+source = "script"
+
+[demozoo.216276]
+title = "More New Stuff"
+group = "Plasma Force"
+source = "script"
+
+[demozoo.284340]
+title = "More Quality Software"
+group = "Biotech"
+source = "script"
+
+[demozoo.261064]
+title = "More Than A Feeling 50 - menu"
+group = "Vox Dei"
+source = "script"
+
+[demozoo.246896]
+title = "More Than Ever Before"
+group = "Insanity"
+source = "script"
+
+[demozoo.183071]
+title = "More Than One Part Demo"
+group = "The Round Circle"
+source = "script"
+
+[demozoo.8650]
+title = "Morgoth"
+group = "Madwizards"
+source = "script"
+machine = "a1200"
+
+[demozoo.252163]
+title = "Morning After Pack Preview"
+group = "Nuance"
+source = "script"
+
+[demozoo.391872]
+title = "Morning Glitch"
+group = "Zymosis"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.43286]
+title = "Morph"
+group = "Darkage"
+source = "script"
+result = "unknown"
+run = "Morph.exe"
+
+[demozoo.166144]
+title = "Morpheus"
+group = "Desire"
+source = "script"
+
+[demozoo.137721]
+title = "Morpheus Coding"
+group = "Deadzone"
+source = "script"
+
+[demozoo.292539]
+title = "Morphine"
+group = "Offence"
+source = "script"
+
+[demozoo.112328]
+title = "Morpho"
+group = "Dual Crew"
+source = "script"
+
+[demozoo.163674]
+title = "Morphy Brown"
+group = "Status OK"
+source = "script"
+result = "unknown"
+
+[demozoo.211711]
+title = "Mortal Sin 001"
+group = "Animate!"
+source = "script"
+
+[demozoo.19406]
+title = "Mortality"
+group = "Tulou"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.139681]
+title = "MOS 2"
+group = "MarK"
+source = "script"
+result = "unknown"
+
+[demozoo.144697]
+title = "Mosaik"
+group = "Artificial People"
+source = "script"
+machine = "a1200"
+
+[demozoo.218069]
+title = "Mosh Demo"
+group = "European Software Agency"
+source = "script"
+
+[demozoo.227998]
+title = "Mosh's 2nd Demo"
+group = "Phoenix"
+source = "script"
+
+[demozoo.5349]
+title = "Moshintro"
+group = "Yela"
+source = "script"
+
+[demozoo.196001]
+title = "Mosquito Coast BBS"
+group = "Vision"
+source = "script"
+
+[demozoo.262349]
+title = "Motala Party Demo"
+group = "The Gang"
+source = "script"
+machine = "a500_512k"
+boot = "floppy"
+
+[demozoo.5125]
+title = "Mother mother, there are clowns in my bed!"
+group = "Boozoholics"
+source = "script"
+machine = "a1200"
+
+[demozoo.196270]
+title = "Motherfuckin Parallax"
+group = "Euphoria"
+source = "script"
+
+[demozoo.243405]
+title = "Mothermilk"
+group = "Extensors"
+source = "script"
+
+[demozoo.307044]
+title = "Mothership"
+group = "Virgill"
+source = "script"
+run = "teo_-_moonlight.exe"
+
+[demozoo.46521]
+title = "Motion Blur"
+group = "Horizontal Lamerz"
+source = "script"
+machine = "a1200"
+run = "hla-motionblur_uncrunched.exe"
+
+[demozoo.6949]
+title = "Motion: Origin II"
+group = "Bomb"
+source = "script"
+machine = "a1200"
+disks = ["motion1.dms", "motion2.dms"]
+swaps = [{ disk = 2, at = 77.7 }]
+
+[demozoo.151402]
+title = "Motions"
+group = "Whelpz"
+source = "script"
+machine = "a1200"
+
+[demozoo.233068]
+title = "Motley Crue Team is now Alcatraz"
+group = "Alcatraz"
+source = "script"
+
+[demozoo.242982]
+title = "Motown BBS"
+group = "Equinox"
+source = "script"
+
+[demozoo.245099]
+title = "Mountain Congress 1993 Invitation 100%"
+group = "Grace"
+source = "script"
+
+[demozoo.283573]
+title = "Mountains"
+group = "Trilogy"
+source = "script"
+
+[demozoo.330450]
+title = "Mountains"
+group = "United Forces"
+source = "script"
+
+[demozoo.240711]
+title = "Mountains Demo"
+group = "Destiny Seven"
+source = "script"
+
+[demozoo.110589]
+title = "Move Any Mountain"
+group = "Lazy Bones"
+source = "script"
+
+[demozoo.225338]
+title = "Move It Remix"
+group = "Another Demension"
+source = "script"
+
+[demozoo.255776]
+title = "Move The Mouse"
+group = "Red Sector Inc."
+source = "script"
+
+[demozoo.218544]
+title = "Move Your Ass"
+group = "Krypton Force"
+source = "script"
+
+[demozoo.214749]
+title = "Move Your Body"
+group = "Synergy Design"
+source = "script"
+
+[demozoo.250136]
+title = "Move Your Brain"
+group = "Maniax"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.240048]
+title = "Move Your Mouse"
+group = "Deathstar"
+source = "script"
+
+[demozoo.245968]
+title = "Move Your Mouse"
+group = "Hoaxers"
+source = "script"
+
+[demozoo.224391]
+title = "Move Your Rat"
+group = "Cor-dezign / Tronex"
+source = "script"
+
+[demozoo.229724]
+title = "Move'm Demo"
+group = "Amiga Industries"
+source = "script"
+
+[demozoo.212668]
+title = "Move.L"
+group = "Crack Force Five"
+source = "script"
+
+[demozoo.232322]
+title = "Moviedemo No. 1"
+group = "Addonic"
+source = "script"
+
+[demozoo.21523]
+title = "Moving"
+group = "Scoopex / Darkage"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.238414]
+title = "Mr & Mrs Pacman"
+group = "Bloodsuckers"
+source = "script"
+
+[demozoo.241748]
+title = "Mr. Bluesky Pack Intro"
+group = "Drifters"
+source = "script"
+
+[demozoo.155079]
+title = "Mr. Fido"
+group = "Kefrens"
+source = "script"
+
+[demozoo.230378]
+title = "Mr. Lazy"
+group = "Quartz / Lunatics"
+source = "script"
+
+[demozoo.232667]
+title = "Mr. Magic 40 zooming stars"
+group = "Threat"
+source = "script"
+
+[demozoo.235392]
+title = "Mr. Megaforce Messages"
+group = "Bamiga Sector One"
+source = "script"
+
+[demozoo.230379]
+title = "Mr. Mischief"
+group = "Quartz / Lunatics"
+source = "script"
+
+[demozoo.119667]
+title = "Mr. Monkey"
+group = "Rebels"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.248105]
+title = "Mr. Munk In Fluidland"
+group = "Kefrens"
+source = "script"
+
+[demozoo.213218]
+title = "Mr. Natural Says Happy X-Mas"
+group = "LSD"
+source = "script"
+
+[demozoo.230380]
+title = "Mr. Nonsense"
+group = "Quartz / Lunatics"
+source = "script"
+
+[demozoo.241909]
+title = "Mr. Peq's Amiga First"
+group = "Dual Crew"
+source = "script"
+
+[demozoo.353867]
+title = "Mr. Proper Copper"
+group = "Goblins"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.382204]
+title = "Mr. T vs. Britney Spears"
+group = "Przyjaciele Stefana B."
+source = "script"
+result = "unknown"
+run = "ScalaMM"
+
+[demozoo.238415]
+title = "Mr. Wiz's Demo"
+group = "Bloodsuckers"
+source = "script"
+machine = "a500_ks12"
+
+[demozoo.230381]
+title = "Mr. Worry"
+group = "Quartz / Lunatics"
+source = "script"
+
+[demozoo.155949]
+title = "MRK 39 Birthday"
+group = "iNSANE"
+source = "script"
+
+[demozoo.238977]
+title = "MS Why Buy PC?"
+group = "Bronx"
+source = "script"
+
+[demozoo.254361]
+title = "MS-Dots"
+group = "Prime"
+source = "script"
+
+[demozoo.247172]
+title = "MSS Advertisement"
+group = "Italian Bad Boys"
+source = "script"
+
+[demozoo.292858]
+title = "MTV News"
+group = "Anarchy"
+source = "script"
+
+[demozoo.6958]
+title = "Much Ado About Nothing"
+group = "Duplo"
+source = "script"
+machine = "a1200"
+
+[demozoo.301909]
+title = "MUH II"
+group = "Power"
+source = "script"
+
+[demozoo.224868]
+title = "Mulkro"
+group = "Philips"
+source = "script"
+
+[demozoo.196003]
+title = "Multi Circle Delirium"
+group = "Extensors"
+source = "script"
+
+[demozoo.213995]
+title = "Multi Demo"
+group = "SJE / Marshal Law"
+source = "script"
+
+[demozoo.236727]
+title = "Multi Fart"
+group = "Cave"
+source = "script"
+
+[demozoo.215277]
+title = "Multi Function Demo"
+group = "The Supply Team"
+source = "script"
+
+[demozoo.295812]
+title = "Multi Media Maker v1.0"
+group = "Moxil 89"
+source = "script"
+
+[demozoo.218497]
+title = "Multi Musics"
+group = "Beta 5"
+source = "script"
+
+[demozoo.218275]
+title = "Multi Part BBS Intro"
+group = "Death Defiers"
+source = "script"
+
+[demozoo.248708]
+title = "Multi Part Demo"
+group = "Psionic"
+source = "script"
+result = "unknown"
+
+[demozoo.251422]
+title = "Multi Part Demo"
+group = "Timex"
+source = "script"
+
+[demozoo.178418]
+title = "Multi Parts"
+group = "Concept"
+source = "script"
+
+[demozoo.210392]
+title = "Multi Party Scroller"
+group = "Extacy"
+source = "script"
+
+[demozoo.262439]
+title = "Multi Player Soccer Manager"
+group = "The Silents"
+source = "script"
+run = "ib"
+
+[demozoo.189732]
+title = "Multi Scrapper Scroller"
+group = "Intuition"
+source = "script"
+
+[demozoo.208714]
+title = "Multi Scroll"
+group = "Phaze101"
+source = "script"
+result = "unknown"
+
+[demozoo.247031]
+title = "Multi Scroll"
+group = "Ipec Elite"
+source = "script"
+
+[demozoo.300135]
+title = "Multi Scrolls Demo"
+group = "The Kirschwasser Crew"
+source = "script"
+
+[demozoo.224092]
+title = "Multi Text Demo"
+group = "Mind Warriors"
+source = "script"
+
+[demozoo.98162]
+title = "Multi-Colour Intro"
+group = "Hardline"
+source = "script"
+
+[demozoo.182396]
+title = "Multi-Cube"
+group = "Dimension X"
+source = "script"
+
+[demozoo.329]
+title = "Multi-Demo"
+group = "Ecstasy"
+source = "script"
+
+[demozoo.116189]
+title = "Multi-Intro"
+group = "Genocide"
+source = "script"
+
+[demozoo.228039]
+title = "Multi-Ripper V1.18 Intro"
+group = "Fantasy"
+source = "script"
+
+[demozoo.240759]
+title = "Multi-Scroll Intro"
+group = "Desire"
+source = "script"
+
+[demozoo.4171]
+title = "Multica"
+group = "Andromeda"
+source = "script"
+
+[demozoo.68487]
+title = "Multicolor"
+group = "Unique"
+source = "script"
+
+[demozoo.88819]
+title = "Multidemo"
+group = "Shade"
+source = "script"
+
+[demozoo.89379]
+title = "Multidemo"
+group = "Spaceballs"
+source = "script"
+
+[demozoo.211713]
+title = "Multidemo"
+group = "Animate! / Scoopex"
+source = "script"
+
+[demozoo.263830]
+title = "Multidemo"
+group = "Triangle"
+source = "script"
+
+[demozoo.368877]
+title = "Multidemo 2000"
+group = "Tankard"
+source = "script"
+
+[demozoo.207270]
+title = "Multiintro"
+group = "Awesome"
+source = "script"
+run = "2"
+
+[demozoo.259086]
+title = "Multimedia Megademo 1"
+group = "Spedes"
+source = "script"
+result = "unknown"
+
+[demozoo.33853]
+title = "Multimedialna zwora"
+group = "Big-Bit Design"
+source = "script"
+machine = "a1200"
+
+[demozoo.269716]
+title = "Multipart"
+group = "Accept"
+source = "script"
+
+[demozoo.223982]
+title = "Multipart Demo"
+group = "Circus of Power"
+source = "script"
+
+[demozoo.236516]
+title = "Multipart Demo"
+group = "Cascade 1733"
+source = "script"
+
+[demozoo.264420]
+title = "Multipart Demo"
+group = "Tronix"
+source = "script"
+
+[demozoo.265550]
+title = "Multipart Demo"
+group = "Vega"
+source = "script"
+
+[demozoo.248560]
+title = "Multiple Orgasms Preview"
+group = "Laserdance"
+source = "script"
+
+[demozoo.237345]
+title = "Multiplex My Brain"
+group = "Cinefex Design"
+source = "script"
+
+[demozoo.207935]
+title = "Multiplexor"
+group = "Beyond Force"
+source = "script"
+
+[demozoo.258957]
+title = "Multiscanner"
+group = "Spreadpoint"
+source = "script"
+
+[demozoo.215861]
+title = "Multiscroll"
+group = "Magnificent Force / Joy"
+source = "script"
+
+[demozoo.353202]
+title = "Multiscroll Intro"
+group = "Manowar"
+source = "script"
+
+[demozoo.241445]
+title = "Multiscroller"
+group = "Doom"
+source = "script"
+
+[demozoo.241993]
+title = "Multiscroller"
+group = "D-Tect"
+source = "script"
+
+[demozoo.238778]
+title = "Multiscroller Intro"
+group = "Bounty"
+source = "script"
+
+[demozoo.244626]
+title = "Multiscroller System"
+group = "Gate"
+source = "script"
+
+[demozoo.230382]
+title = "Multiscrolls"
+group = "Quartz"
+source = "script"
+
+[demozoo.257358]
+title = "Multisine Intro 9"
+group = "Share and Enjoy / Scoopex"
+source = "script"
+
+[demozoo.215951]
+title = "Multitude Demo 1989"
+group = "Newtech"
+source = "script"
+
+[demozoo.3774]
+title = "Multiverse"
+group = "Loonies"
+source = "script"
+machine = "a1200_030"
+run = "Multiverse.exe"
+
+[demozoo.244740]
+title = "Multro"
+group = "Ghost"
+source = "script"
+
+[demozoo.151078]
+title = "Mumin"
+group = "3 Little Elks"
+source = "script"
+machine = "a1200"
+
+[demozoo.224715]
+title = "Munaa Kaikille Intro"
+group = "Wc Software"
+source = "script"
+
+[demozoo.138429]
+title = "Munch Your Lunch"
+group = "AceMan"
+source = "script"
+
+[demozoo.193953]
+title = "Mundgoria 1"
+group = "Sardonyx"
+source = "script"
+
+[demozoo.8565]
+title = "Murderer"
+group = "Veezya"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.23774]
+title = "Murderous"
+group = "Floppy"
+source = "script"
+machine = "a1200_060"
+
+[demozoo.232049]
+title = "Muromies-Demon intro"
+group = "Accession"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.18197]
+title = "Murr"
+group = "New Age"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.283555]
+title = "Musax"
+group = "Action Force / The Warp System"
+source = "script"
+
+[demozoo.9765]
+title = "Muscles"
+group = "Impulse"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.221211]
+title = "Mush III Party Glentro"
+group = "Doom Uk"
+source = "script"
+
+[demozoo.139169]
+title = "Mushroom"
+group = "Casyopea"
+source = "script"
+
+[demozoo.216541]
+title = "Mushroom 1"
+group = "Delite"
+source = "script"
+
+[demozoo.216542]
+title = "Mushroom 2"
+group = "Delite"
+source = "script"
+
+[demozoo.216543]
+title = "Mushroom BBS"
+group = "Delite"
+source = "script"
+
+[demozoo.263180]
+title = "Mushroom Every Where"
+group = "Trance Inc."
+source = "script"
+
+[demozoo.45791]
+title = "Mushrooms Haloons"
+group = "Embora"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.209187]
+title = "Music Box 5 Intro"
+group = "Exort"
+source = "script"
+
+[demozoo.209189]
+title = "Music Box 8 Intro"
+group = "Exort"
+source = "script"
+
+[demozoo.324332]
+title = "Music Collection 07 intro"
+group = "Triumph"
+source = "script"
+
+[demozoo.255093]
+title = "Music Collection 3 Intro"
+group = "Vision One"
+source = "script"
+
+[demozoo.229333]
+title = "Music Competetion"
+group = "Midnightsun"
+source = "script"
+
+[demozoo.217254]
+title = "Music Demo 1"
+source = "script"
+
+[demozoo.211788]
+title = "Music Disk 2 Intro"
+group = "Clones"
+source = "script"
+machine = "a500_ks12"
+
+[demozoo.262814]
+title = "Music For You 03 Intro"
+group = "The Special Brothers"
+source = "script"
+
+[demozoo.213558]
+title = "Music For Your Instincts"
+group = "Moods Plateau / Hullabaloo Machinery"
+source = "script"
+result = "unknown"
+run = "moods.exe"
+
+[demozoo.261946]
+title = "Music For Your Tape Recorder"
+group = "The Electronic Knights"
+source = "script"
+
+[demozoo.210387]
+title = "Music Inferno 3 Intro"
+group = "Dragons / Brainwalker"
+source = "script"
+
+[demozoo.195015]
+title = "Music Intro"
+group = "Zigag / Destiny"
+source = "script"
+
+[demozoo.221266]
+title = "Music Invasion 1 Intro"
+group = "The Jungle Command"
+source = "script"
+
+[demozoo.221269]
+title = "Music Invasion II Intro"
+group = "The Jungle Command"
+source = "script"
+
+[demozoo.225141]
+title = "Music Madness - intro"
+group = "The Amiga Superiors"
+source = "script"
+
+[demozoo.215643]
+title = "Music Pack 90 Intro"
+group = "Scrapers"
+source = "script"
+
+[demozoo.243453]
+title = "Music Party"
+group = "Exit"
+source = "script"
+
+[demozoo.258291]
+title = "Music Rip 1"
+group = "Silicon League"
+source = "script"
+
+[demozoo.258739]
+title = "Music Selector 1"
+group = "Software of Sweden"
+source = "script"
+
+[demozoo.258740]
+title = "Music Selector 2"
+group = "Software of Sweden"
+source = "script"
+
+[demozoo.216846]
+title = "Music to be Murdered by"
+group = "Team-X"
+source = "script"
+
+[demozoo.128886]
+title = "Music With A Message!!!"
+group = "Magnetic Fields"
+source = "script"
+
+[demozoo.237053]
+title = "Musical Pharmacy BBS"
+group = "Chronos"
+source = "script"
+
+[demozoo.218703]
+title = "Musical Scale"
+group = "The Orb"
+source = "script"
+
+[demozoo.243792]
+title = "Musicdisk Intro"
+group = "Fashion"
+source = "script"
+
+[demozoo.250386]
+title = "Musicdisk Preview"
+group = "Mellow"
+source = "script"
+
+[demozoo.219086]
+title = "Musician Wanted"
+group = "Cyborx"
+source = "script"
+
+[demozoo.211003]
+title = "Musicripper V2.99 Intro"
+group = "Intuition"
+source = "script"
+boot = "floppy"
+
+[demozoo.237172]
+title = "Mustard - X-Mas Intro"
+group = "C-Lous"
+source = "script"
+machine = "a1200"
+
+[demozoo.239892]
+title = "Mustro"
+group = "Deadline"
+source = "script"
+
+[demozoo.182369]
+title = "Mutamania - Demo"
+group = "Risk Inc."
+source = "script"
+
+[demozoo.219521]
+title = "Mutamania - Intro"
+group = "Risk Inc."
+source = "script"
+
+[demozoo.212731]
+title = "Mutation"
+group = "Crass"
+source = "script"
+
+[demozoo.9058]
+title = "Mute 12"
+group = "Madwizards"
+source = "script"
+result = "unknown"
+
+[demozoo.185480]
+title = "Mute 13"
+group = "Lamers"
+source = "script"
+machine = "a1200_fast"
+run = "!MUTE13!.exe"
+
+[demozoo.251715]
+title = "Mute One'o'One"
+group = "Mute 101"
+source = "script"
+
+[demozoo.6430]
+title = "Mutilated Disk 2 Intro"
+group = "Mute 101"
+source = "script"
+
+[demozoo.229277]
+title = "Mutter"
+group = "Reflectors"
+source = "script"
+
+[demozoo.2165]
+title = "Mutually Excluded"
+group = "Crusaders"
+source = "script"
+result = "unknown"
+
+[demozoo.337617]
+title = "Muuntuja"
+group = "Control"
+source = "script"
+
+[demozoo.340611]
+title = "Muzak-disk Intro"
+group = "Strangers"
+source = "script"
+
+[demozoo.236534]
+title = "Muzax Disk Intro"
+group = "Cascade 1733"
+source = "script"
+
+[demozoo.329780]
+title = "Muzzy's first intro"
+group = "Draco"
+source = "script"
+
+[demozoo.229937]
+title = "My Bloody Amiga"
+group = "Venator"
+source = "script"
+
+[demozoo.258153]
+title = "My Brain Is On Fire"
+group = "Skid Row"
+source = "script"
+
+[demozoo.195990]
+title = "My Dad Is Crying Coz My Little Sister Kicked Him"
+group = "Justice"
+source = "script"
+
+[demozoo.9019]
+title = "My Definition in Blue"
+group = "Scarab"
+source = "script"
+result = "unknown"
+run = "S_MDIB_starter"
+
+[demozoo.219452]
+title = "My Dog Ben"
+group = "Dual Format"
+source = "script"
+result = "unknown"
+
+[demozoo.267721]
+title = "My Fair Lady Nomad"
+group = "Ace"
+source = "script"
+
+[demozoo.347760]
+title = "My First Amiga Intro"
+group = "Psykotrope"
+source = "script"
+run = "14"
+
+[demozoo.318910]
+title = "My First Demo Ever"
+group = "Rincewind"
+source = "script"
+
+[demozoo.120389]
+title = "My First Intro"
+group = "Commander"
+source = "script"
+machine = "a1200"
+
+[demozoo.260590]
+title = "My God Its Full Of Stars"
+group = "Tesko"
+source = "script"
+
+[demozoo.240049]
+title = "My Home Town"
+group = "Deathstar"
+source = "script"
+
+[demozoo.24030]
+title = "My House"
+group = "Darkage"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.90]
+title = "My Kingdom"
+group = "Haujobb / Scoopex"
+source = "script"
+machine = "a1200_fast"
+run = "PART3.EXE"
+
+[demozoo.335]
+title = "My Life As A Pizza"
+group = "Arise"
+source = "script"
+
+[demozoo.183437]
+title = "My Lucky Number"
+group = "Loonies"
+source = "script"
+
+[demozoo.242098]
+title = "My Mama Is a Vampire"
+group = "Duplo"
+source = "script"
+machine = "a1200_030"
+drives = 2
+disks = ["Duplo-MyMamaVampireA.dms", "Duplo-MyMamaVampireB.dms"]
+
+[demozoo.3006]
+title = "My Pain"
+group = "Planet Jazz"
+source = "script"
+result = "unknown"
+run = "_negerkuß!!.exe"
+
+[demozoo.137711]
+title = "My Room"
+group = "Fairlight"
+source = "script"
+
+[demozoo.235064]
+title = "My Wolf"
+group = "Arpegiator"
+source = "script"
+
+[demozoo.227721]
+title = "MyFunTro"
+group = "Paul Barnard"
+source = "script"
+
+[demozoo.148748]
+title = "Mygg40"
+group = "iNSANE"
+source = "script"
+
+[demozoo.159442]
+title = "Myopcharts intro"
+group = "Hemoroids"
+source = "script"
+
+[demozoo.242983]
+title = "Mys Pys"
+group = "Equinox"
+source = "script"
+
+[demozoo.243614]
+title = "Myspys"
+group = "Factor"
+source = "script"
+machine = "a1200"
+
+[demozoo.32526]
+title = "Myst"
+group = "Universe"
+source = "script"
+result = "unknown"
+
+[demozoo.151441]
+title = "Myster & Tremor The Demor"
+group = "Embassy"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.158491]
+title = "Mysterious"
+group = "World Fantasies"
+source = "script"
+result = "unknown"
+run = "LE-window6.12"
+
+[demozoo.186586]
+title = "Mysterious Mixture"
+group = "Beyond Force"
+source = "script"
+
+[demozoo.251675]
+title = "Mysterious Thoughts"
+group = "Mystic"
+source = "script"
+
+[demozoo.8572]
+title = "Mystery"
+group = "Phase Truce"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.92669]
+title = "Mystery"
+group = "Titanbytes"
+source = "script"
+
+[demozoo.111202]
+title = "Mystery"
+group = "Virtual"
+source = "script"
+
+[demozoo.255441]
+title = "Mystery Tour BBS"
+group = "Ram Jam"
+source = "script"
+
+[demozoo.257822]
+title = "Mystic Lights"
+group = "Sharp"
+source = "script"
+
+[demozoo.241910]
+title = "Mystical"
+group = "Dual Crew"
+source = "script"
+
+[demozoo.265100]
+title = "Mystical Brine - Doom is dead"
+group = "Voodoo Design"
+source = "script"
+
+[demozoo.265101]
+title = "Mystical Brine II"
+group = "Voodoo Design"
+source = "script"
+
+[demozoo.360]
+title = "Mystical Dreep"
+group = "Subzero"
+source = "script"
+
+[demozoo.18023]
+title = "Mystiq"
+group = "Contraz"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.9561]
+title = "Mystique"
+group = "Appendix"
+source = "script"
+machine = "a1200_fast"
+run = "Start.exe"
+
+[demozoo.251626]
+title = "Mystro"
+group = "Mystix"
+source = "script"
+
+[demozoo.33846]
+title = "Mysza"
+group = "Przyjaciele Stefana B."
+source = "script"
+result = "unknown"
+run = "Mysza.exe"
+
+[demozoo.42058]
+title = "Myth"
+group = "Potion"
+source = "script"
+result = "unknown"
+
+[demozoo.255952]
+title = "Myth"
+group = "Rektum"
+source = "script"
+
+[demozoo.362809]
+title = "Märr i krimskrams"
+group = "Istari"
+source = "script"
+
+[demozoo.280173]
+title = "mÖGTRO2020"
+group = "Ghostriders"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.154325]
+title = "Mökktro"
+group = "Zymosis"
+source = "script"
+
+[demozoo.1897]
+title = "Mölndal"
+group = "Elcrew"
+source = "script"
+machine = "a1200"
+
+[demozoo.2861]
+title = "Møkkademo 2001"
+group = "Epadrena"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.245174]
+title = "Mømb A1200 Remix"
+group = "Gunnars Farvebio"
+source = "script"
+result = "unknown"
+
+[demozoo.258797]
+title = "Müsli Demo"
+group = "Sonic"
+source = "script"

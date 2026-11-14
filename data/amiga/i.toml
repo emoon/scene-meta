@@ -1,0 +1,3598 @@
+[demozoo.68321]
+title = "I Am Back"
+group = "Chucky"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.394159]
+title = "I Be Falling"
+group = "Grotesticle / Hoodlum"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.31857]
+title = "I Dina Drömmar"
+group = "Smart"
+source = "script"
+machine = "a1200_fast"
+run = "1.Decay.Exe"
+
+[demozoo.4591]
+title = "I Even Did My Hay For You"
+group = "Novel"
+source = "script"
+
+[demozoo.81516]
+title = "I Feel You"
+group = "Traktor"
+source = "script"
+machine = "a1200"
+
+[demozoo.318830]
+title = "I Got Busted"
+group = "Mrs. King"
+source = "script"
+
+[demozoo.4322]
+title = "I Has A Demomaker"
+group = "Salami Tactics"
+source = "script"
+result = "unknown"
+run = "karate"
+
+[demozoo.123674]
+title = "I Have A Dog!"
+group = "Enemy"
+source = "script"
+
+[demozoo.145669]
+title = "I Like Traffic Lights"
+group = "LSD"
+source = "script"
+
+[demozoo.219581]
+title = "I Love Argus"
+group = "Argus"
+source = "script"
+
+[demozoo.165826]
+title = "I Love Commodore"
+group = "Lamer Crew"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.205968]
+title = "I Love It Loud"
+group = "Browbeat"
+source = "script"
+
+[demozoo.367573]
+title = "I meet my teenage love"
+group = "valeureux"
+source = "script"
+
+[demozoo.137127]
+title = "I Moan"
+group = "Dual Crew Shining"
+source = "script"
+result = "unknown"
+run = "x-pLICT.exe"
+
+[demozoo.215383]
+title = "I Must Be Crazy"
+group = "Jetspeed"
+source = "script"
+
+[demozoo.247026]
+title = "I Pick A Light"
+group = "Ipec Elite"
+source = "script"
+
+[demozoo.7174]
+title = "I Shot Kurt Cobain"
+group = "Razor 1911"
+source = "script"
+machine = "a1200"
+
+[demozoo.9404]
+title = "I Want To Be Machine"
+group = "Appendix"
+source = "script"
+result = "unknown"
+
+[demozoo.32609]
+title = "I Want To Believe"
+group = "Arkham"
+source = "script"
+machine = "a1200"
+
+[demozoo.242328]
+title = "I Want Your Sperm"
+group = "Effect"
+source = "script"
+
+[demozoo.8733]
+title = "I Wonder If"
+group = "Looker House"
+source = "script"
+machine = "a1200"
+
+[demozoo.161422]
+title = "I Would Rather"
+group = "Saksalainen Laatu"
+source = "script"
+
+[demozoo.240665]
+title = "I'm a Devil !"
+group = "Devils"
+source = "script"
+
+[demozoo.248883]
+title = "I'm Gonna Dis You A Little Mix"
+group = "Legend"
+source = "script"
+
+[demozoo.374848]
+title = "I've Fallen and I Can't Get Up"
+group = "Spectre"
+source = "script"
+
+[demozoo.9989]
+title = "I-Surf"
+group = "Iris"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.295180]
+title = "I.C.E 1 Intro"
+group = "Cytax"
+source = "script"
+
+[demozoo.268240]
+title = "I.C.E 6 Intro"
+group = "Cytax"
+source = "script"
+
+[demozoo.229261]
+title = "I.C.E. 2 Intro"
+group = "Cytax"
+source = "script"
+
+[demozoo.229262]
+title = "I.C.E. 3 Intro"
+group = "Cytax"
+source = "script"
+
+[demozoo.197249]
+title = "I.C.E. 7 Intro"
+group = "Cytax"
+source = "script"
+
+[demozoo.229263]
+title = "I.C.E. Info Intro"
+group = "Cytax"
+source = "script"
+
+[demozoo.61428]
+title = "Iamweek"
+group = "Acidrain"
+source = "script"
+machine = "a1200"
+
+[demozoo.287666]
+title = "Iapetus"
+group = "Onslaught"
+source = "script"
+
+[demozoo.60791]
+title = "Ib"
+group = "The Silents"
+source = "script"
+
+[demozoo.262455]
+title = "IB,Filled Vectors"
+group = "The Silents"
+source = "script"
+
+[demozoo.374300]
+title = "Ican1"
+group = "Ismael Cansino"
+source = "script"
+
+[demozoo.220859]
+title = "Icarus Joined"
+group = "Alliance"
+source = "script"
+result = "unknown"
+
+[demozoo.88605]
+title = "Ice"
+group = "The Silents"
+source = "script"
+
+[demozoo.274578]
+title = "Ice -The Intro"
+group = "Rebecca"
+source = "script"
+
+[demozoo.253804]
+title = "Ice Cold Coke"
+group = "Phenomena"
+source = "script"
+
+[demozoo.242975]
+title = "Ice Cool 24 - menu"
+group = "Equinox"
+source = "script"
+
+[demozoo.213047]
+title = "ICE Information Intro"
+group = "LSD"
+source = "script"
+
+[demozoo.210106]
+title = "Ice Pack Intro"
+group = "Euphoria"
+source = "script"
+
+[demozoo.258648]
+title = "Ice Warrior"
+group = "Slipstream"
+source = "script"
+
+[demozoo.261709]
+title = "Icebreaker's Vector Demo"
+group = "X-Men"
+source = "script"
+
+[demozoo.320258]
+title = "IceDemo 3"
+group = "Mirage UK"
+source = "script"
+
+[demozoo.236505]
+title = "Icehouse BBS"
+group = "Cascade 1733"
+source = "script"
+
+[demozoo.254271]
+title = "Icewind Dale BBS Intro"
+group = "Possessed"
+source = "script"
+
+[demozoo.222664]
+title = "Ich Ficke Meine Mutti"
+group = "Anti Hardcore Crew"
+source = "script"
+
+[demozoo.245124]
+title = "Ich Liebe Die Entartete Kunst"
+group = "Goto80"
+source = "script"
+
+[demozoo.143534]
+title = "Ich liebe die entartete kunst -aka Bleu de prusse 2-"
+group = "Nori K"
+source = "script"
+
+[demozoo.220872]
+title = "ICI Of Taurus 1 Final Demo"
+group = "Steel Pulse"
+source = "script"
+
+[demozoo.209713]
+title = "Icing 97 beta invitation"
+group = "Devotion / Fender"
+source = "script"
+machine = "a1200"
+
+[demozoo.34227]
+title = "Idea"
+group = "Depth"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.320249]
+title = "Ideal Sound Utilities v1.5 Intro"
+group = "The Powerlords"
+source = "script"
+
+[demozoo.168116]
+title = "Ideograph"
+group = "iNSANE / Five Finger Punch"
+source = "script"
+
+[demozoo.174681]
+title = "Idi Ami(n)ga"
+group = "Boozoholics"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.19405]
+title = "Idoru"
+group = "Depth"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.90016]
+title = "If There Was No Gravity"
+group = "dA JoRMaS"
+source = "script"
+machine = "a1200"
+
+[demozoo.18199]
+title = "Ifa"
+group = "Extend"
+source = "script"
+machine = "a1200"
+
+[demozoo.318540]
+title = "IFF Converter v1.0 Intro"
+group = "The Flame Arrows"
+source = "script"
+
+[demozoo.235167]
+title = "IFF Master V1.0 Intro"
+group = "Arcane"
+source = "script"
+
+[demozoo.177780]
+title = "Ignis"
+group = "Investation"
+source = "script"
+
+[demozoo.40180]
+title = "Ihana Elamae"
+group = "Snus"
+source = "script"
+machine = "a1200_030"
+result = "crashes-later"
+
+[demozoo.115246]
+title = "IKA I Rutan"
+group = "Chucky"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.1059]
+title = "Ikadalawampu"
+group = "Loonies"
+source = "script"
+result = "unknown"
+
+[demozoo.3574]
+title = "Ikanim"
+group = "Loonies"
+source = "script"
+machine = "a1200_030"
+run = "IkanimHires"
+
+[demozoo.246564]
+title = "Ikari's 1st"
+group = "Ikari"
+source = "script"
+
+[demozoo.2938]
+title = "Ikke Bare Rabarbra"
+group = "Team Karbis"
+source = "script"
+result = "unknown"
+run = "friendsonly.exe"
+
+[demozoo.240465]
+title = "Il Scuros 1st"
+group = "Defjam"
+source = "script"
+
+[demozoo.27135]
+title = "Ilex"
+group = "Mystic"
+source = "script"
+machine = "a1200"
+
+[demozoo.104956]
+title = "Ill"
+group = "Secretly!"
+source = "script"
+machine = "a1200"
+
+[demozoo.6836]
+title = "Ill Flower"
+group = "Scum Of The Earth"
+source = "script"
+machine = "a1200"
+
+[demozoo.214453]
+title = "Illegal Nonsense"
+group = "X-Tension"
+source = "script"
+
+[demozoo.36347]
+title = "Illicity"
+group = "Extasy"
+source = "script"
+machine = "a1200_fast"
+run = "k642.Impulse"
+
+[demozoo.224731]
+title = "Illimitable Noices 1"
+group = "Stoer & Nutteloos"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.195379]
+title = "Illusion Demo"
+group = "Resolution 101"
+source = "script"
+result = "unknown"
+
+[demozoo.260573]
+title = "Illusion Pictures"
+group = "Terminators / Fluid Design"
+source = "script"
+result = "unknown"
+
+[demozoo.250459]
+title = "Illusion's Intro"
+group = "Share and Enjoy / Megaforce"
+source = "script"
+
+[demozoo.1959]
+title = "Illusions"
+group = "Aurora"
+source = "script"
+
+[demozoo.276860]
+title = "Illusions"
+group = "Antares"
+source = "script"
+
+[demozoo.254612]
+title = "Illusions 1 Intro"
+group = "Prologic"
+source = "script"
+boot = "floppy"
+
+[demozoo.43280]
+title = "Ilmarako"
+group = "Rave Network Overscan / Darkage"
+source = "script"
+machine = "a1200"
+run = "Ilmarako.exe"
+
+[demozoo.241852]
+title = "Ilmufantro"
+group = "Dual Crew Shining"
+source = "script"
+machine = "a1200"
+
+[demozoo.6850]
+title = "Iltis"
+group = "Pointless"
+source = "script"
+machine = "a1200"
+
+[demozoo.6830]
+title = "Ilyad"
+group = "Asphyxia Design / Alcatraz"
+source = "script"
+result = "unknown"
+
+[demozoo.170749]
+title = "Imacennial"
+group = "Dekadence"
+source = "script"
+
+[demozoo.196009]
+title = "Imagems (German)"
+group = "Tristar and Red Sector Inc."
+source = "script"
+
+[demozoo.20770]
+title = "Imitation [none]"
+group = "The Black Lotus"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.253353]
+title = "Imitiertes Holzbein"
+group = "Paradise"
+source = "script"
+
+[demozoo.348]
+title = "Immaculate Conception"
+group = "Stellar"
+source = "script"
+
+[demozoo.171970]
+title = "Immortal Visions"
+group = "Suspect"
+source = "script"
+
+[demozoo.195515]
+title = "Immortal Visions"
+group = "Kane"
+source = "script"
+
+[demozoo.151386]
+title = "Impact"
+group = "Moons"
+source = "script"
+machine = "a1200_030"
+run = "impact_nc.exe"
+
+[demozoo.239910]
+title = "Impact"
+group = "DC.Clark"
+source = "script"
+result = "unknown"
+run = "impact020.exe"
+
+[demozoo.139426]
+title = "Impassioned"
+group = "Onslaught"
+source = "script"
+
+[demozoo.222366]
+title = "Imperium - Freaky Siner Intro"
+group = "Culprits"
+source = "script"
+
+[demozoo.362353]
+title = "Impertinence Info"
+group = "The Fear"
+source = "script"
+
+[demozoo.31954]
+title = "Implant"
+group = "Turnips Productions"
+source = "script"
+machine = "a1200"
+run = "11-Joker.Focus"
+
+[demozoo.33851]
+title = "Imples"
+group = "Lamers"
+source = "script"
+machine = "a1200"
+
+[demozoo.221695]
+title = "Implosion"
+group = "Balance"
+source = "script"
+result = "unknown"
+
+[demozoo.247687]
+title = "Import"
+group = "Katharsis"
+source = "script"
+
+[demozoo.167261]
+title = "Import Intro"
+group = "Intuition"
+source = "script"
+
+[demozoo.167898]
+title = "Import Intro"
+group = "Kefrens"
+source = "script"
+
+[demozoo.220837]
+title = "Import Intro"
+group = "Scandalous"
+source = "script"
+
+[demozoo.223743]
+title = "Import Intro"
+group = "Flamingo Computer"
+source = "script"
+
+[demozoo.223856]
+title = "Import Intro"
+group = "The Flying Star"
+source = "script"
+
+[demozoo.225005]
+title = "Import Intro"
+group = "The Boot Wizard"
+source = "script"
+
+[demozoo.227942]
+title = "Import Intro"
+group = "Maksoft"
+source = "script"
+
+[demozoo.228137]
+title = "Import Intro"
+group = "I Love Cement Crew"
+source = "script"
+
+[demozoo.229742]
+title = "Import Intro"
+group = "Vision Soft"
+source = "script"
+
+[demozoo.232755]
+title = "Import Intro"
+group = "The Timecircle"
+source = "script"
+
+[demozoo.234935]
+title = "Import intro"
+group = "Australian Crackers United"
+source = "script"
+
+[demozoo.244366]
+title = "Import Intro"
+group = "Freestyle UK"
+source = "script"
+
+[demozoo.262454]
+title = "Import Intro"
+group = "The Silents"
+source = "script"
+
+[demozoo.263519]
+title = "Import Intro"
+group = "Tristar and Red Sector Inc."
+source = "script"
+
+[demozoo.266662]
+title = "Import Intro"
+group = "Taipan"
+source = "script"
+
+[demozoo.266663]
+title = "Import Intro"
+group = "Taipan"
+source = "script"
+
+[demozoo.266664]
+title = "Import Intro"
+group = "Taipan"
+source = "script"
+
+[demozoo.266665]
+title = "Import Intro"
+group = "Taipan"
+source = "script"
+
+[demozoo.312834]
+title = "Import Intro"
+group = "Swiss Copy Force"
+source = "script"
+
+[demozoo.312876]
+title = "Import Intro"
+group = "The Unknown Five"
+source = "script"
+
+[demozoo.330950]
+title = "Import Intro"
+group = "Alpha Flight"
+source = "script"
+
+[demozoo.213048]
+title = "Import Intro 1"
+group = "LSD"
+source = "script"
+
+[demozoo.237344]
+title = "Important Information"
+group = "Cinefex Design"
+source = "script"
+
+[demozoo.228582]
+title = "Important News From Immortal"
+group = "Immortal"
+source = "script"
+
+[demozoo.119663]
+title = "Important Note"
+group = "Analog"
+source = "script"
+
+[demozoo.165032]
+title = "Important Notice"
+group = "Analog"
+source = "script"
+
+[demozoo.23456]
+title = "Impossible"
+group = "Loonies"
+source = "script"
+result = "unknown"
+
+[demozoo.61605]
+title = "Impossible Cube"
+group = "Nerve Axis"
+source = "script"
+machine = "a1200"
+
+[demozoo.241801]
+title = "Impossible Debility"
+group = "Dreamer"
+source = "script"
+machine = "a1200"
+
+[demozoo.235259]
+title = "Impossible Gold"
+group = "Apathy"
+source = "script"
+machine = "a1200"
+
+[demozoo.221539]
+title = "Impossible Mission"
+group = "Obelisk Crew / Xcalibur"
+source = "script"
+
+[demozoo.196013]
+title = "Impossible Mission 2015"
+group = "Hoodlum"
+source = "script"
+
+[demozoo.4749]
+title = "Impossible Playfields"
+group = "Share and Enjoy"
+source = "script"
+
+[demozoo.28441]
+title = "Impossible Possibility"
+group = "Mystic"
+source = "script"
+result = "unknown"
+
+[demozoo.283498]
+title = "Impossible Scrolls"
+group = "Cyberaktif"
+source = "script"
+
+[demozoo.192977]
+title = "Impotenssi"
+group = "Leader Productions"
+source = "script"
+
+[demozoo.378378]
+title = "Impressions"
+group = "Amigals"
+source = "script"
+
+[demozoo.6046]
+title = "Improvement"
+group = "The Errors"
+source = "script"
+
+[demozoo.307282]
+title = "Impuls"
+group = "Pampers"
+source = "script"
+machine = "a1200"
+run = "SKR1"
+
+[demozoo.96644]
+title = "Impulse"
+group = "Tilt"
+source = "script"
+disks = ["TILT-ImpulseA.DMS", "TILT-ImpulseB.DMS"]
+swaps = [{ disk = 2, at = 72.5, key = "lmb" }]
+
+[demozoo.171972]
+title = "Impulse 2"
+group = "Old Bulls / Tilt"
+source = "script"
+disks = ["Tilt-Impulse2-a.dms", "Tilt-Impulse2-b.dms"]
+swaps = [{ disk = 2, at = 72.5, key = "lmb" }]
+
+[demozoo.70683]
+title = "Impulse 3.09"
+group = "Tilt"
+source = "script"
+machine = "a1200"
+
+[demozoo.177757]
+title = "Impulse Preview"
+group = "Old Bulls"
+source = "script"
+
+[demozoo.255398]
+title = "Imuzination"
+group = "Ram Jam"
+source = "script"
+machine = "a1200_fast"
+disks = ["RAMJAM-MuziNation-A.DMS", "RAMJAM-MuziNation-B.DMS"]
+swaps = [{ disk = 2, at = 410.0 }]
+
+[demozoo.227096]
+title = "IMX 1990 Demo"
+group = "IMX"
+source = "script"
+
+[demozoo.123676]
+title = "In A Dream"
+group = "Equinox"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.6959]
+title = "In A World of ASCII"
+group = "Impact DK"
+source = "script"
+machine = "a1200"
+
+[demozoo.150552]
+title = "In Another Dimension"
+group = "Raize"
+source = "script"
+
+[demozoo.7244]
+title = "In Bloom"
+group = "Rats"
+source = "script"
+
+[demozoo.281228]
+title = "In Bloom"
+group = "Orion / Tommy / Exalt"
+source = "script"
+machine = "a1200"
+
+[demozoo.193959]
+title = "In Code We Trust"
+group = "Aphrasia"
+source = "script"
+
+[demozoo.318852]
+title = "In Coma II"
+group = "3 Little Elks"
+source = "script"
+machine = "a1200"
+
+[demozoo.220955]
+title = "In Flagranti"
+group = "Aspect"
+source = "script"
+
+[demozoo.172964]
+title = "In Full Affect"
+group = "Wildfire"
+source = "script"
+
+[demozoo.68792]
+title = "In Memorium Of ZX"
+group = "KYO Corp"
+source = "script"
+result = "unknown"
+run = "IMoZX.eXe"
+
+[demozoo.314014]
+title = "In Memory Of Maf"
+group = "Cocoon"
+source = "script"
+
+[demozoo.84408]
+title = "In Memory Of..."
+group = "PuReL4m3rs"
+source = "script"
+result = "unknown"
+run = "karate"
+
+[demozoo.49760]
+title = "In Monaco"
+group = "Desire"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.156022]
+title = "In My Dreams"
+group = "Embassy"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.172777]
+title = "In My Pond"
+group = "AceMan"
+source = "script"
+
+[demozoo.225018]
+title = "In No Sense, Nonsense Intro"
+group = "20th Century Of Noise"
+source = "script"
+machine = "a1200"
+
+[demozoo.167333]
+title = "In Progress"
+group = "Darkness"
+source = "script"
+
+[demozoo.227221]
+title = "In Search Of Forever"
+group = "New Age"
+source = "script"
+
+[demozoo.264672]
+title = "In September"
+group = "Wizzcat"
+source = "script"
+
+[demozoo.210632]
+title = "In Stereo! Demo"
+group = "Apex"
+source = "script"
+
+[demozoo.94246]
+title = "In The Air 1"
+group = "Embassy"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.217540]
+title = "In The Army Now"
+group = "Irongods"
+source = "script"
+
+[demozoo.121890]
+title = "In The Beginning God Created the Heaven and the Earth"
+group = "Halo"
+source = "script"
+machine = "a1200"
+
+[demozoo.229783]
+title = "In the Closet"
+group = "Enemy"
+source = "script"
+
+[demozoo.391868]
+title = "In the Forest"
+group = "Azure Onyx"
+source = "script"
+
+[demozoo.8988]
+title = "In the Kitchen"
+group = "Anarchy"
+source = "script"
+
+[demozoo.262951]
+title = "In The Year of Zen"
+group = "Therapy"
+source = "script"
+
+[demozoo.24198]
+title = "In Your Face"
+group = "Chrilles Cracking Crew"
+source = "script"
+result = "unknown"
+
+[demozoo.278071]
+title = "Incantation"
+group = "The Lunatics"
+source = "script"
+
+[demozoo.373199]
+title = "Incantation"
+group = "Manitou"
+source = "script"
+
+[demozoo.171969]
+title = "Incarcerated"
+group = "Asylum"
+source = "script"
+machine = "a1200"
+
+[demozoo.194472]
+title = "Inception"
+group = "Resurrected"
+source = "script"
+
+[demozoo.20580]
+title = "Incident"
+group = "Breathe / Oxygen"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.195557]
+title = "Incik Boncuk Versene Lan"
+group = "Legacy"
+source = "script"
+
+[demozoo.24449]
+title = "Incision"
+group = "Exploder"
+source = "script"
+result = "unknown"
+
+[demozoo.277973]
+title = "Incommunicable"
+group = "Voodoo"
+source = "script"
+
+[demozoo.221872]
+title = "Incommunicado"
+group = "Bootleggers"
+source = "script"
+
+[demozoo.262856]
+title = "Inconvenient Intro"
+group = "The Special Brothers"
+source = "script"
+
+[demozoo.216941]
+title = "Inconvex Vector"
+group = "Alchemy"
+source = "script"
+
+[demozoo.236604]
+title = "Incredible Kewl Intro"
+group = "Cerberos"
+source = "script"
+
+[demozoo.233623]
+title = "Ind-x Meeting Demo"
+group = "Amaze"
+source = "script"
+
+[demozoo.270845]
+title = "Indecent Dreams Preview"
+group = "Corpse"
+source = "script"
+
+[demozoo.229430]
+title = "Independence Intro"
+group = "Nikki Corruptions"
+source = "script"
+
+[demozoo.38146]
+title = "Index1.0Coma"
+group = "RetroActive"
+source = "script"
+machine = "a1200_fast"
+run = "64k_index1.0coma.dcr"
+
+[demozoo.207513]
+title = "Indiantro 1"
+group = "Manitou"
+source = "script"
+
+[demozoo.207516]
+title = "Indiantro 2"
+group = "Manitou"
+source = "script"
+
+[demozoo.7720]
+title = "Indifference"
+group = "Abyss"
+source = "script"
+machine = "a1200"
+
+[demozoo.6961]
+title = "Indigo"
+group = "Oxygene"
+source = "ai"
+result = "broken"
+disks = ["indigo1.dms", "indigo2.dms"]
+note = "indigo1.dms is truncated (xdms: unexpected end of file); Software Failure after disk 2"
+
+[demozoo.294131]
+title = "Indirection"
+group = "Fatal"
+source = "script"
+
+[demozoo.215741]
+title = "Indoor Sports"
+group = "The Movers"
+source = "script"
+
+[demozoo.29928]
+title = "Indre Glede"
+group = "Frequent"
+source = "script"
+
+[demozoo.35132]
+title = "Industrial"
+group = "Whelpz"
+source = "script"
+result = "unknown"
+run = "OTLUE2Z61.exe"
+
+[demozoo.171895]
+title = "Industrial Fudge - The Director's Cut"
+group = "Frontier"
+source = "script"
+machine = "a1200"
+
+[demozoo.254292]
+title = "Indvielsen"
+group = "Polka Brothers"
+source = "script"
+result = "unknown"
+
+[demozoo.21849]
+title = "Ines"
+group = "Faque"
+source = "script"
+machine = "a1200"
+
+[demozoo.220770]
+title = "Inf-Tro"
+group = "Mador"
+source = "script"
+
+[demozoo.28193]
+title = "Infamia"
+group = "Three Times No"
+source = "script"
+machine = "a1200_fast"
+disks = ["io2-ttn1.dms", "io2-ttn2.dms"]
+swaps = [{ disk = 2, at = 48.2 }]
+
+[demozoo.357316]
+title = "Infamia 0 Intro"
+group = "Randy"
+source = "script"
+
+[demozoo.195635]
+title = "Infected Mind"
+group = "Dual Format"
+source = "script"
+
+[demozoo.107020]
+title = "Infernal"
+group = "Whelpz / Destiny"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.207198]
+title = "Infernal Infinity"
+group = "The Ultimate ComputerClub"
+source = "script"
+
+[demozoo.27842]
+title = "Inferno"
+group = "Ozone"
+source = "script"
+
+[demozoo.243613]
+title = "Inferno"
+group = "Factor"
+source = "script"
+machine = "a1200"
+
+[demozoo.262631]
+title = "Inferno BBS Intro"
+group = "The Lowlifes"
+source = "script"
+machine = "a1200"
+
+[demozoo.257309]
+title = "Infestation Pack Preview"
+group = "Scoopex"
+source = "script"
+
+[demozoo.184269]
+title = "Infinate Control"
+group = "Futura"
+source = "script"
+
+[demozoo.171894]
+title = "Infinite Dreams"
+group = "Paradise"
+source = "script"
+
+[demozoo.261656]
+title = "Infinite Dreams 0 Preview - Menu"
+group = "X-Trade"
+source = "script"
+
+[demozoo.170653]
+title = "Infinite Silence"
+group = "Frantic"
+source = "script"
+
+[demozoo.40851]
+title = "Infinity"
+group = "Reality"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.2501]
+title = "Inflamed"
+group = "X-Factor"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.28190]
+title = "Infliction"
+group = "Anadune"
+source = "script"
+machine = "a1200"
+
+[demozoo.72283]
+title = "Info Freako"
+group = "Melon Dezign"
+source = "script"
+
+[demozoo.249707]
+title = "Info Intro"
+group = "Magic"
+source = "script"
+
+[demozoo.258415]
+title = "Info Intro"
+group = "Soc. Brigade"
+source = "script"
+
+[demozoo.222665]
+title = "Info Suxxtro"
+group = "Anti Hardcore Crew"
+source = "script"
+
+[demozoo.216292]
+title = "Info-Box"
+group = "Bass"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.219040]
+title = "Info-Maniac"
+group = "Trazion"
+source = "script"
+machine = "a500_ks12"
+
+[demozoo.252026]
+title = "Info-tro December '92"
+group = "Nightfall"
+source = "script"
+
+[demozoo.221016]
+title = "Infodemo"
+group = "Celeste / Waltons"
+source = "script"
+
+[demozoo.246657]
+title = "Information"
+group = "Impulse"
+source = "script"
+
+[demozoo.246823]
+title = "Information"
+group = "Intense"
+source = "script"
+machine = "a1200"
+
+[demozoo.247532]
+title = "Information"
+group = "Jetset"
+source = "script"
+
+[demozoo.97927]
+title = "information [none]"
+group = "Dual Crew Shining"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.241617]
+title = "Information Demo"
+group = "Celtic"
+source = "script"
+
+[demozoo.214075]
+title = "Information Intro"
+group = "Proline"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.242784]
+title = "Information Intro"
+group = "End of Century 1999"
+source = "script"
+
+[demozoo.196045]
+title = "Informer"
+group = "Iris"
+source = "script"
+machine = "a1200"
+
+[demozoo.289061]
+title = "Informer"
+group = "Veto"
+source = "script"
+
+[demozoo.204905]
+title = "Informer aka Table 48"
+group = "Iris"
+source = "script"
+machine = "a1200"
+
+[demozoo.339200]
+title = "InfoSuxxtro"
+group = "Anti Coldstone Crew"
+source = "script"
+
+[demozoo.34761]
+title = "Infotro"
+group = "Moods Plateau"
+source = "script"
+machine = "a1200"
+
+[demozoo.223462]
+title = "Infotro"
+group = "West Wind"
+source = "script"
+
+[demozoo.241161]
+title = "Infotro"
+group = "Disaster Design"
+source = "script"
+
+[demozoo.247305]
+title = "Infotro"
+group = "Iris"
+source = "script"
+machine = "a1200"
+
+[demozoo.248884]
+title = "Infotro"
+group = "Legend"
+source = "script"
+
+[demozoo.265607]
+title = "Infotro"
+group = "Vanity"
+source = "script"
+machine = "a1200"
+
+[demozoo.262604]
+title = "Infotron"
+group = "Lunatics"
+source = "script"
+
+[demozoo.219082]
+title = "Inftro"
+group = "Cyborx"
+source = "script"
+
+[demozoo.237526]
+title = "Inftro"
+group = "Convex"
+source = "script"
+
+[demozoo.239518]
+title = "Inftro 2"
+group = "Damage"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.206188]
+title = "INGE #9"
+group = "Response"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.366668]
+title = "Inhuman Defender"
+group = "Five Finger Punch"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.236377]
+title = "Inintro"
+group = "Byte Busters"
+source = "script"
+
+[demozoo.149642]
+title = "Ink"
+group = "Up Rough"
+source = "script"
+
+[demozoo.300931]
+title = "Inner City"
+group = "Universe"
+source = "script"
+machine = "a1200"
+
+[demozoo.246667]
+title = "Inner Decay"
+group = "Impact DK"
+source = "script"
+
+[demozoo.200021]
+title = "Inner Madness"
+group = "Anthrox"
+source = "script"
+
+[demozoo.237]
+title = "Inner Vision"
+group = "Dreamdealers"
+source = "script"
+
+[demozoo.96544]
+title = "Innergate"
+group = "Necropolis"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.224506]
+title = "Innocence of Mind"
+group = "Cybornetics"
+source = "script"
+result = "unknown"
+
+[demozoo.212816]
+title = "Innovation - Preversion"
+group = "Axxis"
+source = "script"
+
+[demozoo.154112]
+title = "Innovation Part Two"
+group = "Axxis"
+source = "script"
+
+[demozoo.131451]
+title = "Innuendo"
+group = "Rednex"
+source = "script"
+
+[demozoo.18187]
+title = "Insane"
+group = "Extend"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.194132]
+title = "Insane"
+group = "Sagazity"
+source = "script"
+
+[demozoo.248667]
+title = "Insane Overdose BBS Intro"
+group = "Kronical"
+source = "script"
+
+[demozoo.252733]
+title = "Insanity"
+group = "Omicron"
+source = "script"
+
+[demozoo.6581]
+title = "Insant Moonshine"
+group = "Sir Cactus"
+source = "script"
+machine = "a1200"
+
+[demozoo.308622]
+title = "Insect Sounds"
+group = "V-Nom"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.249819]
+title = "Insects In Space Soundeffects"
+group = "Maniacs of Noise"
+source = "script"
+result = "unknown"
+
+[demozoo.7740]
+title = "Inside"
+group = "iNSANE"
+source = "script"
+machine = "a1200"
+
+[demozoo.8577]
+title = "Inside"
+group = "Phase Truce"
+source = "script"
+result = "unknown"
+run = "Inside.exe.notcrunched"
+
+[demozoo.31951]
+title = "Inside"
+group = "Bucket"
+source = "script"
+machine = "a1200"
+run = "11-Joker.Focus"
+
+[demozoo.254293]
+title = "Inside"
+group = "Polka Brothers"
+source = "script"
+machine = "a1200"
+
+[demozoo.372605]
+title = "Inside 68.0kHz"
+group = "Greippi"
+source = "script"
+
+[demozoo.172885]
+title = "Inside Anarchy"
+group = "23 Celsius Crew"
+source = "script"
+
+[demozoo.151400]
+title = "Inside Deluxe"
+group = "Degeneration"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.260399]
+title = "Inside Out BBS"
+group = "Taurus"
+source = "script"
+
+[demozoo.358704]
+title = "Inside the Machine"
+group = "Desire"
+source = "script"
+
+[demozoo.234142]
+title = "Insipid Injection"
+group = "Anathema"
+source = "script"
+machine = "a1200"
+
+[demozoo.35145]
+title = "Insomnia"
+group = "Union"
+source = "script"
+result = "unknown"
+
+[demozoo.190895]
+title = "Insomnia"
+group = "Nexus"
+source = "script"
+
+[demozoo.241853]
+title = "Insomnia 2 Intro"
+group = "Dual Crew Shining"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.326625]
+title = "Insomniac Contemplation"
+group = "Software Failure"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.151438]
+title = "Inspector Magic v4.0"
+group = "Amiga Birthday Committee"
+source = "script"
+
+[demozoo.307045]
+title = "Inspiracer"
+group = "Curt Cool"
+source = "script"
+run = "teo_-_moonlight.exe"
+
+[demozoo.253721]
+title = "Inspiral"
+group = "Phuture 303"
+source = "script"
+
+[demozoo.266057]
+title = "Inspiration"
+group = "The Wave"
+source = "script"
+
+[demozoo.195760]
+title = "Inspiration Has Come"
+group = "Kefrens"
+source = "script"
+
+[demozoo.96703]
+title = "Inspiration Is Gone"
+group = "Kefrens"
+source = "script"
+
+[demozoo.164179]
+title = "Inspiration Is Gone 2"
+group = "Kefrens"
+source = "script"
+
+[demozoo.248089]
+title = "Inspiration Is Gone 4.571"
+group = "Kefrens"
+source = "script"
+
+[demozoo.10301]
+title = "Inspiration Is None"
+group = "Anarchy"
+source = "script"
+
+[demozoo.179542]
+title = "Inspirited"
+group = "The Electronic Knights"
+source = "script"
+
+[demozoo.231695]
+title = "Instant Delivery BBS Intro"
+group = "Wizzcat / Crusaders"
+source = "script"
+
+[demozoo.195133]
+title = "Instant Pleasure BBS ad (1)"
+group = "Craze"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.195134]
+title = "Instant Pleasure BBS Ad (2)"
+group = "Craze"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.174307]
+title = "Instant Thing"
+group = "Visdom"
+source = "script"
+
+[demozoo.148840]
+title = "Instinct"
+group = "C-Lous"
+source = "script"
+machine = "a1200"
+run = "Instinct.Exe"
+
+[demozoo.291465]
+title = "Instinct"
+group = "Sensation"
+source = "script"
+
+[demozoo.262718]
+title = "Instrument Collection 1 intro"
+group = "The Web Inc."
+source = "script"
+
+[demozoo.287325]
+title = "Inte Utan Min Farfars Gröna Slips"
+group = "Septic"
+source = "script"
+
+[demozoo.230733]
+title = "Intel Inside"
+group = "Appendix"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.232433]
+title = "Intel Inside"
+group = "Aesthetica"
+source = "script"
+machine = "a1200"
+
+[demozoo.18009]
+title = "Intel Outside"
+group = "Birra Bros"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.214448]
+title = "Intel Outside"
+group = "Intruders"
+source = "script"
+
+[demozoo.235049]
+title = "Intel Outside"
+group = "Artifizial"
+source = "script"
+machine = "a1200"
+
+[demozoo.244480]
+title = "Intel Outside"
+group = "Funzine"
+source = "script"
+
+[demozoo.325764]
+title = "Intel Outside"
+group = "Gorzyga / Dzez"
+source = "script"
+result = "unknown"
+
+[demozoo.163596]
+title = "Intel Outside 2"
+group = "Psycho Killers"
+source = "script"
+
+[demozoo.264036]
+title = "Intel Outside Party 2 Invitation"
+group = "Union"
+source = "script"
+machine = "a1200"
+
+[demozoo.136021]
+title = "Intel Toilet"
+group = "T.C.W"
+source = "script"
+machine = "a1200"
+
+[demozoo.40183]
+title = "Intel Toilet 2"
+group = "T.C.W"
+source = "script"
+machine = "a1200"
+
+[demozoo.212098]
+title = "Intel Toilet 2"
+group = "Thoron / Welmin / Carkki"
+source = "script"
+machine = "a1200"
+
+[demozoo.240999]
+title = "Intent - Da Party 2"
+group = "Digital Access"
+source = "script"
+
+[demozoo.178070]
+title = "Intentro"
+group = "Intense"
+source = "script"
+
+[demozoo.45340]
+title = "Inter$+ellarTeknoBrain"
+group = "The Bullshit Artists"
+source = "script"
+result = "unknown"
+
+[demozoo.208005]
+title = "Interactive BBS intro"
+group = "Outlaws"
+source = "script"
+
+[demozoo.247114]
+title = "Interceptia"
+group = "Lord Interface"
+source = "script"
+
+[demozoo.371368]
+title = "Interceptor Intro"
+group = "Zymosis / Complex"
+source = "script"
+
+[demozoo.200020]
+title = "Interchange Informer"
+group = "Kefrens"
+source = "script"
+machine = "a1200"
+
+[demozoo.341395]
+title = "Interface 37"
+group = "Stonehead"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.207368]
+title = "Interfax 2 Menu"
+group = "World Industries"
+source = "script"
+
+[demozoo.8991]
+title = "Interference"
+group = "Sanity"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.263607]
+title = "Interference BBS"
+group = "Triumph"
+source = "script"
+
+[demozoo.240851]
+title = "Interferencing"
+group = "Depth"
+source = "script"
+
+[demozoo.267744]
+title = "Interferon 0.1 Intro"
+group = "Magnetic Fields"
+source = "script"
+
+[demozoo.232514]
+title = "Interferon 2.0 Intro"
+group = "Magnetic Fields"
+source = "script"
+
+[demozoo.272502]
+title = "Intergalactic Starschip On Dual-Playfield"
+group = "Incredible Ketchup Stars"
+source = "script"
+
+[demozoo.200022]
+title = "Interlude"
+group = "The Lowlifes"
+source = "script"
+
+[demozoo.252866]
+title = "Intermission"
+group = "Oxygen"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.26997]
+title = "Internal Exile"
+group = "Perseus"
+source = "script"
+
+[demozoo.270767]
+title = "Internal Meeting Demo"
+group = "Syntax Error"
+source = "script"
+
+[demozoo.234976]
+title = "Internal Meeting Intro"
+group = "Aurora"
+source = "script"
+
+[demozoo.238965]
+title = "Internal Meeting Intro"
+group = "Bronx"
+source = "script"
+
+[demozoo.245091]
+title = "Internal Meeting Intro"
+group = "Grace"
+source = "script"
+
+[demozoo.193833]
+title = "Internal Party"
+group = "Cabe"
+source = "script"
+
+[demozoo.208595]
+title = "International"
+group = "Avoid"
+source = "script"
+
+[demozoo.207433]
+title = "International Karate + Trainer Intro"
+group = "Cosmos"
+source = "script"
+
+[demozoo.243315]
+title = "International Soccer Challenge"
+group = "Exage"
+source = "script"
+result = "unknown"
+
+[demozoo.179439]
+title = "International Super-Best"
+group = "Zymosis"
+source = "script"
+
+[demozoo.248051]
+title = "Internium"
+group = "Justice"
+source = "script"
+
+[demozoo.136164]
+title = "Interparallactic"
+group = "Unique"
+source = "script"
+
+[demozoo.250611]
+title = "Interphase BBS"
+group = "Metallians"
+source = "script"
+
+[demozoo.211396]
+title = "Interphase BBS Changed Numbers"
+group = "Conqueror / Zike / Tuneman / Zin"
+source = "script"
+
+[demozoo.208621]
+title = "Interphase Design Kit"
+group = "Zylon"
+source = "script"
+
+[demozoo.247]
+title = "Interpol"
+group = "Dreamdealers"
+source = "script"
+
+[demozoo.207005]
+title = "Interpol BBS intro"
+group = "Submission"
+source = "script"
+
+[demozoo.232756]
+title = "Interpreter"
+group = "The Timecircle"
+source = "script"
+
+[demozoo.310920]
+title = "Intersection"
+group = "Software Failure"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.172883]
+title = "Interspace"
+group = "Phenomena"
+source = "script"
+
+[demozoo.131272]
+title = "Interspace Demo"
+group = "KGB"
+source = "script"
+
+[demozoo.212104]
+title = "Interuptor Pro 0.9"
+group = "Testament"
+source = "script"
+
+[demozoo.243821]
+title = "Intmo"
+group = "Falcons"
+source = "script"
+
+[demozoo.254213]
+title = "Into Realms of Alchemy BBS"
+group = "Plague"
+source = "script"
+
+[demozoo.229718]
+title = "Into the Dragon Intro"
+group = "Amiga Industries / Freedom Force"
+source = "script"
+
+[demozoo.96412]
+title = "Into The Void"
+group = "Subspace"
+source = "script"
+machine = "a1200"
+
+[demozoo.164980]
+title = "Intoxication"
+group = "Triangle 3532"
+source = "script"
+
+[demozoo.231972]
+title = "Intoxication"
+group = "Abyss"
+source = "script"
+result = "unknown"
+
+[demozoo.102221]
+title = "Intrigue"
+group = "Intruders"
+source = "script"
+machine = "a1200"
+
+[demozoo.5355]
+title = "Intro"
+group = "Dash"
+source = "script"
+
+[demozoo.5738]
+title = "Intro"
+group = "Melone"
+source = "script"
+
+[demozoo.7714]
+title = "Intro"
+group = "Chasm"
+source = "script"
+machine = "a1200"
+
+[demozoo.7719]
+title = "Intro"
+group = "Efreet"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.20697]
+title = "Intro"
+group = "Laxative Effects"
+source = "script"
+
+[demozoo.80313]
+title = "Intro"
+group = "Wayne"
+source = "script"
+result = "unknown"
+run = "engine"
+
+[demozoo.131928]
+title = "Intro"
+group = "Desire"
+source = "script"
+
+[demozoo.136527]
+title = "Intro"
+group = "Manowar"
+source = "script"
+
+[demozoo.137921]
+title = "Intro"
+group = "Sygma"
+source = "script"
+
+[demozoo.151515]
+title = "Intro"
+group = "Abatom"
+source = "script"
+machine = "a1200"
+
+[demozoo.158306]
+title = "Intro"
+group = "Brainwave"
+source = "script"
+
+[demozoo.182764]
+title = "Intro"
+group = "Synergy"
+source = "script"
+
+[demozoo.182839]
+title = "Intro"
+group = "Black Knight"
+source = "script"
+
+[demozoo.183776]
+title = "Intro"
+group = "Delicious Designs"
+source = "script"
+result = "unknown"
+
+[demozoo.188201]
+title = "Intro"
+group = "2d Team"
+source = "script"
+
+[demozoo.205955]
+title = "Intro"
+group = "Fulcrum"
+source = "script"
+
+[demozoo.206762]
+title = "Intro"
+group = "Acme Factories"
+source = "script"
+
+[demozoo.207584]
+title = "Intro"
+group = "Xentrix"
+source = "script"
+
+[demozoo.207820]
+title = "Intro"
+group = "Chaos"
+source = "script"
+
+[demozoo.207960]
+title = "Intro"
+group = "Eagles"
+source = "script"
+
+[demozoo.209259]
+title = "Intro"
+group = "Agima"
+source = "script"
+result = "unknown"
+
+[demozoo.209625]
+title = "Intro"
+group = "Sharks"
+source = "script"
+
+[demozoo.210390]
+title = "Intro"
+group = "Extacy"
+source = "script"
+
+[demozoo.211939]
+title = "Intro"
+group = "Airwalk"
+source = "script"
+
+[demozoo.212489]
+title = "Intro"
+group = "Insider"
+source = "script"
+
+[demozoo.213051]
+title = "Intro"
+group = "LSD"
+source = "script"
+
+[demozoo.214174]
+title = "Intro"
+group = "Mindkillers"
+source = "script"
+
+[demozoo.215327]
+title = "Intro"
+group = "Mystic Art"
+source = "script"
+
+[demozoo.215660]
+title = "Intro"
+group = "Abakus"
+source = "script"
+
+[demozoo.217556]
+title = "Intro"
+group = "Savory"
+source = "script"
+
+[demozoo.221231]
+title = "Intro"
+group = "Full-evil"
+source = "script"
+
+[demozoo.221690]
+title = "Intro"
+group = "Brainstormers"
+source = "script"
+
+[demozoo.222498]
+title = "Intro"
+group = "Megalight"
+source = "script"
+
+[demozoo.222823]
+title = "Intro"
+group = "The Bos Team"
+source = "script"
+
+[demozoo.223337]
+title = "Intro"
+group = "Angels"
+source = "script"
+
+[demozoo.223566]
+title = "Intro"
+group = "Black Light Inc."
+source = "script"
+
+[demozoo.223598]
+title = "Intro"
+group = "Pube"
+source = "script"
+
+[demozoo.223841]
+title = "Intro"
+group = "Crazy Crowd"
+source = "script"
+
+[demozoo.223959]
+title = "Intro"
+group = "Troniton"
+source = "script"
+
+[demozoo.223966]
+title = "Intro"
+group = "The Techno Knights"
+source = "script"
+
+[demozoo.224122]
+title = "Intro"
+group = "Life Force"
+source = "script"
+
+[demozoo.224330]
+title = "Intro"
+group = "Napal Death"
+source = "script"
+
+[demozoo.224333]
+title = "Intro"
+group = "The Image Makers"
+source = "script"
+
+[demozoo.224521]
+title = "Intro"
+group = "Legion Software Alliance"
+source = "script"
+
+[demozoo.224664]
+title = "Intro"
+group = "Tampax"
+source = "script"
+
+[demozoo.224697]
+title = "Intro"
+group = "Lamer Exterminator"
+source = "script"
+
+[demozoo.224718]
+title = "Intro"
+group = "Digitz"
+source = "script"
+
+[demozoo.224764]
+title = "Intro"
+group = "Regular Crime"
+source = "script"
+
+[demozoo.224875]
+title = "Intro"
+group = "Personal Crackings Crew"
+source = "script"
+
+[demozoo.224882]
+title = "Intro"
+group = "Amateurs 4711"
+source = "script"
+
+[demozoo.224883]
+title = "Intro"
+group = "Trax Production"
+source = "script"
+result = "unknown"
+
+[demozoo.224911]
+title = "Intro"
+group = "Atrium Commodore Center"
+source = "script"
+
+[demozoo.224917]
+title = "Intro"
+group = "Ht Bilgisayar"
+source = "script"
+
+[demozoo.224918]
+title = "Intro"
+group = "Peken Bilgisayar"
+source = "script"
+
+[demozoo.225000]
+title = "Intro"
+group = "Softgallo / Liano Team"
+source = "script"
+
+[demozoo.225075]
+title = "Intro"
+group = "The Great Balls Of Fire"
+source = "script"
+
+[demozoo.225255]
+title = "Intro"
+group = "Improbatur"
+source = "script"
+
+[demozoo.226753]
+title = "Intro"
+group = "Spiff and the Spacemen"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.226789]
+title = "Intro"
+group = "Meditation"
+source = "script"
+
+[demozoo.226834]
+title = "Intro"
+group = "Charly 88"
+source = "script"
+
+[demozoo.226845]
+title = "Intro"
+group = "Aliens"
+source = "script"
+
+[demozoo.226859]
+title = "Intro"
+group = "Metal Design"
+source = "script"
+
+[demozoo.227731]
+title = "Intro"
+group = "Sacramento Amiga Computer Club"
+source = "script"
+
+[demozoo.227733]
+title = "Intro"
+group = "Star Bilgisayar"
+source = "script"
+result = "unknown"
+
+[demozoo.228012]
+title = "Intro"
+group = "Phoenix"
+source = "script"
+
+[demozoo.228205]
+title = "Intro"
+group = "Enano-Soft"
+source = "script"
+
+[demozoo.228225]
+title = "Intro"
+group = "Yugoslavian Cracking Service"
+source = "script"
+
+[demozoo.228246]
+title = "Intro"
+group = "Amiga Expert Team"
+source = "script"
+
+[demozoo.228273]
+title = "Intro"
+group = "P.O.W."
+source = "script"
+
+[demozoo.229568]
+title = "Intro"
+group = "Pulsar"
+source = "script"
+
+[demozoo.229928]
+title = "Intro"
+group = "The Bass"
+source = "script"
+
+[demozoo.230086]
+title = "Intro"
+group = "Trinomic"
+source = "script"
+
+[demozoo.232809]
+title = "Intro"
+group = "Unicorn"
+source = "script"
+
+[demozoo.233690]
+title = "Intro"
+group = "Amigalovers"
+source = "script"
+
+[demozoo.238776]
+title = "Intro"
+group = "Bounty"
+source = "script"
+boot = "floppy"
+
+[demozoo.239486]
+title = "Intro"
+group = "Cycron"
+source = "script"
+
+[demozoo.239969]
+title = "Intro"
+group = "Dazzle"
+source = "script"
+
+[demozoo.241348]
+title = "Intro"
+group = "D-Mob"
+source = "script"
+
+[demozoo.243035]
+title = "Intro"
+group = "Enemies / The Giants"
+source = "script"
+
+[demozoo.243389]
+title = "Intro"
+group = "Exterminators"
+source = "script"
+
+[demozoo.243565]
+title = "Intro"
+group = "Faculty"
+source = "script"
+
+[demozoo.244473]
+title = "Intro"
+group = "Foundation"
+source = "script"
+
+[demozoo.245727]
+title = "Intro"
+group = "Hawaii Brothers"
+source = "script"
+
+[demozoo.246758]
+title = "Intro"
+group = "Interactive"
+source = "script"
+result = "unknown"
+
+[demozoo.248455]
+title = "Intro"
+group = "Kreator"
+source = "script"
+result = "unknown"
+
+[demozoo.252056]
+title = "Intro"
+group = "New Wave"
+source = "script"
+result = "unknown"
+
+[demozoo.253848]
+title = "Intro"
+group = "Phalanx"
+source = "script"
+machine = "a1200"
+
+[demozoo.254272]
+title = "Intro"
+group = "Possessed"
+source = "script"
+
+[demozoo.255565]
+title = "Intro"
+group = "Random Access"
+source = "script"
+machine = "a500_ks12"
+
+[demozoo.261100]
+title = "Intro"
+group = "Zomo"
+source = "script"
+
+[demozoo.261199]
+title = "Intro"
+group = "Willow"
+source = "script"
+
+[demozoo.263957]
+title = "Intro"
+group = "University of Drinking"
+source = "script"
+machine = "a1200"
+
+[demozoo.264195]
+title = "Intro"
+group = "U.G.A Software"
+source = "script"
+
+[demozoo.264741]
+title = "Intro"
+group = "Wiz / TFT"
+source = "script"
+
+[demozoo.270850]
+title = "Intro"
+group = "The Great Swappers"
+source = "script"
+
+[demozoo.272073]
+title = "Intro"
+group = "Questor"
+source = "script"
+
+[demozoo.272503]
+title = "Intro"
+group = "Incredible Ketchup Stars"
+source = "script"
+
+[demozoo.275928]
+title = "Intro"
+group = "Fresh"
+source = "script"
+
+[demozoo.282762]
+title = "Intro"
+group = "The Clan"
+source = "script"
+
+[demozoo.306138]
+title = "Intro"
+group = "Cytax"
+source = "script"
+
+[demozoo.307967]
+title = "Intro"
+group = "Crack Band Crew"
+source = "script"
+result = "unknown"
+
+[demozoo.312838]
+title = "Intro"
+group = "IRQ"
+source = "script"
+result = "unknown"
+
+[demozoo.312898]
+title = "Intro"
+group = "Seven Up Import Division"
+source = "script"
+
+[demozoo.329357]
+title = "Intro"
+group = "Dope"
+source = "script"
+boot = "floppy"
+
+[demozoo.332811]
+title = "Intro"
+group = "Cascade"
+source = "script"
+
+[demozoo.333890]
+title = "Intro"
+group = "Powers of Pain"
+source = "script"
+
+[demozoo.344313]
+title = "Intro"
+group = "The Outlaw"
+source = "script"
+
+[demozoo.351259]
+title = "Intro"
+group = "Vortex 42"
+source = "script"
+
+[demozoo.353249]
+title = "Intro"
+group = "Chronos / Automation"
+source = "script"
+
+[demozoo.365774]
+title = "Intro"
+group = "Swiss-British Connection"
+source = "script"
+
+[demozoo.368479]
+title = "Intro"
+group = "TEC"
+source = "script"
+
+[demozoo.371513]
+title = "Intro"
+group = "Extacy"
+source = "script"
+
+[demozoo.380159]
+title = "Intro"
+group = "Ecthelion"
+source = "script"
+
+[demozoo.385450]
+title = "Intro"
+group = "System X"
+source = "script"
+
+[demozoo.385701]
+title = "Intro"
+group = "Magical Soft"
+source = "script"
+
+[demozoo.227036]
+title = "Intro '94"
+group = "Anthares"
+source = "script"
+run = "intro.exe"
+
+[demozoo.385699]
+title = "Intro (2)"
+group = "Magical Soft"
+source = "script"
+
+[demozoo.385700]
+title = "Intro (3)"
+group = "Magical Soft"
+source = "script"
+
+[demozoo.385698]
+title = "Intro (4)"
+group = "Magical Soft"
+source = "script"
+
+[demozoo.242789]
+title = "Intro -Jumping Logo-"
+group = "End of Century 1999"
+source = "script"
+
+[demozoo.242788]
+title = "Intro -Jumping Logo- (Different Music)"
+group = "End of Century 1999"
+source = "script"
+
+[demozoo.212376]
+title = "Intro 1"
+group = "The Future Boys"
+source = "script"
+
+[demozoo.223819]
+title = "Intro 1"
+group = "Crysis"
+source = "script"
+
+[demozoo.263903]
+title = "Intro 1"
+group = "Upfront"
+source = "script"
+
+[demozoo.272504]
+title = "Intro 1"
+group = "Incredible Ketchup Stars"
+source = "script"
+
+[demozoo.354862]
+title = "Intro 1"
+group = "Triad"
+source = "script"
+
+[demozoo.211566]
+title = "Intro 2"
+group = "The Light Circle"
+source = "script"
+result = "unknown"
+
+[demozoo.214342]
+title = "Intro 2"
+group = "J-Beam"
+source = "script"
+
+[demozoo.218543]
+title = "Intro 2"
+group = "Krypton Force"
+source = "script"
+
+[demozoo.228190]
+title = "Intro 2"
+group = "The Professionals"
+source = "script"
+
+[demozoo.232757]
+title = "Intro 2"
+group = "The Timecircle"
+source = "script"
+
+[demozoo.263254]
+title = "Intro 2"
+group = "Triad"
+source = "script"
+
+[demozoo.308271]
+title = "Intro 2"
+group = "N.A.T.O. / The Electronic Warriors"
+source = "script"
+machine = "a500_ks12"
+
+[demozoo.326640]
+title = "Intro 2"
+group = "Incredible Ketchup Stars"
+source = "script"
+
+[demozoo.232758]
+title = "Intro 2 - Different Music"
+group = "The Timecircle"
+source = "script"
+
+[demozoo.212666]
+title = "Intro 2 - New User Disk 2 Intro"
+group = "Crack Force Five"
+source = "script"
+
+[demozoo.250461]
+title = "Intro 3"
+group = "Megaforce"
+source = "script"
+
+[demozoo.29833]
+title = "Intro 4K Musica"
+group = "Drareg"
+source = "script"
+result = "unknown"
+
+[demozoo.221471]
+title = "Intro 5"
+group = "Perfect Cracking Team"
+source = "script"
+
+[demozoo.240316]
+title = "Intro 5 Preview"
+group = "Delight"
+source = "script"
+
+[demozoo.240317]
+title = "Intro 7 Preview"
+group = "Delight"
+source = "script"
+
+[demozoo.226652]
+title = "Intro 93"
+group = "The Zynaps"
+source = "script"
+
+[demozoo.301633]
+title = "Intro A1"
+group = "Smooth Soft"
+source = "script"
+result = "unknown"
+
+[demozoo.301634]
+title = "Intro A2"
+group = "Smooth Soft"
+source = "script"
+result = "unknown"
+
+[demozoo.247168]
+title = "Intro by Big Muff"
+group = "Italian Bad Boys"
+source = "script"
+
+[demozoo.96106]
+title = "Intro By Cytax"
+group = "Cytax"
+source = "script"
+
+[demozoo.252900]
+title = "Intro by Maddox"
+group = "Overkill"
+source = "script"
+
+[demozoo.227996]
+title = "Intro by Proton"
+group = "Phoenix"
+source = "script"
+
+[demozoo.193639]
+title = "Intro Coded By Sabbath"
+group = "Ecstasy"
+source = "script"
+
+[demozoo.214319]
+title = "Intro Coded by TPD"
+group = "Mirage UK"
+source = "script"
+
+[demozoo.260125]
+title = "Intro Codée pour la FNAC"
+group = "Symbiosis"
+source = "script"
+
+[demozoo.379187]
+title = "Intro Demo"
+group = "The Kent Team"
+source = "script"
+machine = "a500_512k"
+
+[demozoo.40934]
+title = "Intro Do JaJa"
+group = "bRRRthday pRRRoductions"
+source = "script"
+machine = "a1200"
+
+[demozoo.225154]
+title = "Intro Do Jaja"
+group = "Brdzej"
+source = "script"
+
+[demozoo.252964]
+title = "Intro Ferens"
+group = "Pas Maters"
+source = "script"
+
+[demozoo.242225]
+title = "Intro Final Release"
+group = "Dytec"
+source = "script"
+
+[demozoo.230339]
+title = "Intro For All"
+group = "Quartz"
+source = "script"
+
+[demozoo.111595]
+title = "Intro For Lemphobia"
+group = "Disknet"
+source = "script"
+
+[demozoo.159431]
+title = "Intro For Molested Music II"
+group = "Mellow"
+source = "script"
+
+[demozoo.92402]
+title = "Intro For Nothing"
+group = "Zero Defects"
+source = "script"
+
+[demozoo.259325]
+title = "Intro for Nothing"
+group = "Subzero"
+source = "script"
+
+[demozoo.210527]
+title = "Intro for Pack or Megademo"
+group = "Factor 4"
+source = "script"
+
+[demozoo.190902]
+title = "Intro for Posadas III"
+group = "Batman Group"
+source = "script"
+
+[demozoo.217450]
+title = "Intro For Smau"
+group = "The Evil Forces / Best Amiga Dominator"
+source = "script"
+
+[demozoo.112932]
+title = "Intro For The Unknown Territory BBS"
+group = "The Silents / No-Soul Produkktions"
+source = "script"
+
+[demozoo.169000]
+title = "Intro For Turtle-Party"
+group = "Equinox"
+source = "script"
+
+[demozoo.141363]
+title = "Intro For Zig Zag"
+group = "Union"
+source = "script"
+machine = "a1200"
+run = "11-Joker.Focus"
+
+[demozoo.250975]
+title = "Intro Fuglebad"
+group = "Movement"
+source = "script"
+
+[demozoo.219525]
+title = "Intro Good Bye"
+group = "Armageddon"
+source = "script"
+
+[demozoo.208247]
+title = "Intro I"
+group = "Commando Frontier"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.223892]
+title = "Intro II"
+group = "International Digital Studio"
+source = "script"
+
+[demozoo.257054]
+title = "Intro In 1991"
+group = "Saturne"
+source = "script"
+
+[demozoo.281892]
+title = "Intro In Dutch"
+group = "Aldi"
+source = "script"
+
+[demozoo.231253]
+title = "Intro Incredible Part KillDisney"
+group = "Crystal / Melon Dezign"
+source = "script"
+
+[demozoo.262603]
+title = "Intro Intro"
+group = "Lunatics"
+source = "script"
+
+[demozoo.237356]
+title = "Intro Intro and Intro Is Gone"
+group = "Confusion"
+source = "script"
+
+[demozoo.223901]
+title = "Intro Just for Fun"
+group = "Ordeal"
+source = "script"
+
+[demozoo.261300]
+title = "Intro Made by Phantom"
+group = "The Evil Forces"
+source = "script"
+
+[demozoo.223400]
+title = "Intro No 1"
+group = "Robot Session"
+source = "script"
+
+[demozoo.169215]
+title = "Intro No. One"
+group = "Deathstar"
+source = "script"
+
+[demozoo.228275]
+title = "Intro Nr. I"
+group = "Atlcom"
+source = "script"
+
+[demozoo.221959]
+title = "Intro Number 2"
+group = "Alpha Cracking Service Team"
+source = "script"
+
+[demozoo.221960]
+title = "Intro Number 3"
+group = "Alpha Cracking Service Team"
+source = "script"
+
+[demozoo.221961]
+title = "Intro Number 4"
+group = "Alpha Cracking Service Team"
+source = "script"
+
+[demozoo.379383]
+title = "Intro Number Five"
+group = "Shut Berlin"
+source = "script"
+
+[demozoo.254637]
+title = "Intro on a Sunday"
+group = "Profecy"
+source = "script"
+
+[demozoo.215661]
+title = "Intro Preview"
+group = "Abakus"
+source = "script"
+
+[demozoo.229935]
+title = "Intro Preview"
+group = "Venator"
+source = "script"
+
+[demozoo.195576]
+title = "Intro Tech"
+group = "Lard Design"
+source = "script"
+
+[demozoo.336461]
+title = "Intro Time"
+group = "Illusions"
+source = "script"
+
+[demozoo.365285]
+title = "Intro to NY"
+group = "Nihirashi"
+source = "script"
+machine = "a1200"
+
+[demozoo.231185]
+title = "Intro to Salvation"
+group = "Creators"
+source = "script"
+result = "unknown"
+
+[demozoo.113903]
+title = "Intro To Trinity"
+group = "Monk"
+source = "script"
+
+[demozoo.240191]
+title = "Intro v0.666"
+group = "Defcon One"
+source = "script"
+
+[demozoo.224010]
+title = "Intro v1.5"
+group = "Law Enforcement"
+source = "script"
+
+[demozoo.97980]
+title = "Intro which has no name"
+group = "Hemoroids"
+source = "script"
+
+[demozoo.252461]
+title = "Intro, Luego Existo"
+group = "Odrusba"
+source = "script"
+
+[demozoo.316104]
+title = "Intro-Maker V1.0 example"
+group = "Dope"
+source = "script"
+
+[demozoo.240756]
+title = "Intro2015"
+group = "Desire"
+source = "script"
+
+[demozoo.314260]
+title = "Intro36k"
+group = "Project R3D"
+source = "script"
+machine = "a1200_060"
+
+[demozoo.322354]
+title = "Intro64kB"
+group = "Dreamolers CAPS"
+source = "script"
+
+[demozoo.352809]
+title = "Intro92"
+group = "Majic 12"
+source = "script"
+
+[demozoo.330909]
+title = "Introcollection 91 Menu"
+group = "Questor"
+source = "script"
+
+[demozoo.241349]
+title = "Introdisk Menu"
+group = "D-Mob"
+source = "script"
+
+[demozoo.43858]
+title = "Introducin'"
+group = "Up Rough"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.224509]
+title = "Introducing"
+group = "Et Cetera"
+source = "script"
+machine = "a1200"
+
+[demozoo.231826]
+title = "Introducing"
+group = "Contrast"
+source = "script"
+
+[demozoo.193440]
+title = "Introducing EON"
+group = "Eon"
+source = "script"
+
+[demozoo.259537]
+title = "Introducing Stone Arts"
+group = "Stone Arts"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.47364]
+title = "Introduction"
+group = "Nuance"
+source = "script"
+
+[demozoo.221965]
+title = "Introduction"
+group = "Pici"
+source = "script"
+
+[demozoo.226747]
+title = "Introduction"
+group = "Cods"
+source = "script"
+
+[demozoo.240025]
+title = "Introduction"
+group = "Decay"
+source = "script"
+
+[demozoo.293148]
+title = "Introduction"
+group = "Starfleet"
+source = "script"
+
+[demozoo.254908]
+title = "Introduction - PMC is born"
+group = "Pure Metal Coders"
+source = "script"
+
+[demozoo.196436]
+title = "Introduction Intro"
+group = "Damage"
+source = "script"
+
+[demozoo.154755]
+title = "Introduction To Seduction"
+group = "Rebels"
+source = "script"
+
+[demozoo.258652]
+title = "Introette"
+group = "Slipstream"
+source = "script"
+result = "unknown"
+
+[demozoo.258653]
+title = "Introette '92"
+group = "Slipstream"
+source = "script"
+
+[demozoo.232267]
+title = "InTrog BBS"
+group = "Adict"
+source = "script"
+
+[demozoo.32525]
+title = "Introga"
+group = "Les Shadock"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.34781]
+title = "Introglicerina"
+group = "Software Failure"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.319710]
+title = "IntroGPT"
+group = "AttentionWhore"
+source = "script"
+
+[demozoo.165995]
+title = "IntrOKO"
+group = "Appendix"
+source = "script"
+machine = "a1200"
+run = "introko.exe"
+
+[demozoo.316103]
+title = "Intromaker Intro"
+group = "Dope"
+source = "script"
+
+[demozoo.169658]
+title = "Introscope"
+group = "D.T.A. Software Studio"
+source = "script"
+result = "unknown"
+
+[demozoo.208713]
+title = "Introspective"
+group = "Introspective"
+source = "script"
+
+[demozoo.242150]
+title = "Introtus"
+group = "Eclipse"
+source = "script"
+result = "unknown"
+
+[demozoo.384971]
+title = "IntroYodel"
+group = "Yodel"
+source = "script"
+
+[demozoo.245233]
+title = "Intryx Are The Besteur"
+group = "Hemoroids"
+source = "script"
+
+[demozoo.222717]
+title = "Intui-Tracker 2.0 - pre-release"
+group = "Genocide"
+source = "script"
+
+[demozoo.385170]
+title = "Intuition Demo"
+group = "Unreal"
+source = "script"
+
+[demozoo.263606]
+title = "Intuitracker Informer Intro"
+group = "Triumph"
+source = "script"
+
+[demozoo.263605]
+title = "Intuitracker V1.1 Intro"
+group = "Triumph"
+source = "script"
+
+[demozoo.222718]
+title = "Intuitracker v1.20 Pre Intro"
+group = "Genocide"
+source = "script"
+
+[demozoo.32301]
+title = "Inv"
+group = "Investation"
+source = "script"
+result = "unknown"
+
+[demozoo.278028]
+title = "Invaders"
+group = "The Gallows"
+source = "script"
+
+[demozoo.265453]
+title = "Invaginate"
+group = "Vicious"
+source = "script"
+
+[demozoo.125967]
+title = "Invasion"
+group = "Ukonx"
+source = "script"
+machine = "a1200_fast"
+run = "invasion.exe"
+
+[demozoo.215147]
+title = "Invasion of the Mutant Scrollers"
+group = "Archaos"
+source = "script"
+
+[demozoo.6587]
+title = "Invention"
+group = "Triumph"
+source = "script"
+machine = "a1200"
+
+[demozoo.185603]
+title = "Invertebrates"
+group = "AttentionWhore"
+source = "script"
+
+[demozoo.260780]
+title = "Investor's Advantage v1.02"
+group = "The Bitstoppers"
+source = "script"
+
+[demozoo.196614]
+title = "Invit"
+group = "Nature"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.20824]
+title = "Invitation [none]"
+group = "Sonik Clique"
+source = "script"
+machine = "a1200_fast"
+run = "s-invnon.pal"
+
+[demozoo.256991]
+title = "Invitation Intro"
+group = "Savage"
+source = "script"
+
+[demozoo.213052]
+title = "Invites You To Call Some Boards..."
+group = "LSD"
+source = "script"
+
+[demozoo.222473]
+title = "Inzine"
+group = "Puddle"
+source = "script"
+
+[demozoo.40321]
+title = "IO Party 5 Invitation"
+group = "Union"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.27713]
+title = "IOI!"
+group = "Magic Owls"
+source = "script"
+result = "unknown"
+run = "Yoj.exe"
+
+[demozoo.391865]
+title = "Ionah"
+group = "Spreadpoint"
+source = "script"
+
+[demozoo.236576]
+title = "IQ 0,03"
+group = "Candle"
+source = "script"
+result = "unknown"
+
+[demozoo.246996]
+title = "IQ2000 Goes Str8"
+group = "iq2000"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.6925]
+title = "Iraq Demo"
+group = "Animators"
+source = "script"
+
+[demozoo.324589]
+title = "IRepoMeiita"
+group = "Harvester"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.237017]
+title = "Iris"
+group = "Chryseis / Hoodlum"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.247309]
+title = "Iris Demo 32 Intro"
+group = "Iris"
+source = "script"
+
+[demozoo.247310]
+title = "Iris Demo Vol. 19 Greetings"
+group = "Iris"
+source = "script"
+
+[demozoo.237651]
+title = "Iris New Year Conference"
+group = "Corpse"
+source = "script"
+
+[demozoo.254638]
+title = "Iris party"
+group = "Profecy"
+source = "script"
+
+[demozoo.44913]
+title = "Irish Socks"
+group = "Unique"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.330904]
+title = "IrocDemo"
+group = "Quackers"
+source = "script"
+
+[demozoo.221259]
+title = "Iron Eagle Mega Super Special New Exititing Devastiting Plus Intro"
+group = "The Jungle Command"
+source = "script"
+
+[demozoo.223298]
+title = "Iron Intro"
+group = "The Flying Rabbits"
+source = "script"
+
+[demozoo.211875]
+title = "Iron Maiden"
+group = "Defeat"
+source = "script"
+machine = "a1200"
+
+[demozoo.217542]
+title = "Irongods-Talk"
+group = "Irongods"
+source = "script"
+
+[demozoo.6388]
+title = "Irrepressible"
+group = "Sonik Clique"
+source = "script"
+
+[demozoo.245092]
+title = "Irritation"
+group = "Grace"
+source = "script"
+
+[demozoo.224455]
+title = "Is Back"
+group = "Hipower"
+source = "script"
+
+[demozoo.240813]
+title = "Is Born"
+group = "Vanish"
+source = "script"
+
+[demozoo.205388]
+title = "Is It Possible To Make An Ollie Plus A 360 Variation Without Being Seen?"
+group = "Zero Defects"
+source = "script"
+
+[demozoo.92559]
+title = "Is It Really All?"
+group = "Racoon"
+source = "script"
+
+[demozoo.385570]
+title = "Is My Parent a Scener?"
+group = "Istari"
+source = "script"
+
+[demozoo.336642]
+title = "Is Real"
+group = "Desire"
+source = "script"
+
+[demozoo.22315]
+title = "Iso"
+group = "Scoopex"
+source = "script"
+machine = "a1200"
+disks = ["SCOOPEX-Iso_A.dms", "SCOOPEX-Iso_B.dms"]
+swaps = [{ disk = 2, at = 92.7, key = "lmb" }]
+
+[demozoo.295540]
+title = "IsoMessages"
+group = "Ian Moran"
+source = "script"
+
+[demozoo.195732]
+title = "Isto"
+group = "Alien Adenoids"
+source = "script"
+
+[demozoo.6593]
+title = "Isvektor"
+group = "Elefantklubben"
+source = "script"
+
+[demozoo.252057]
+title = "It Came From The Bush"
+group = "New Wave"
+source = "script"
+
+[demozoo.260992]
+title = "It Came From The Desert"
+group = "The Power Connection"
+source = "script"
+
+[demozoo.89548]
+title = "It Can't Be Done"
+group = "Ram Jam"
+source = "script"
+machine = "a1200"
+disks = ["RamJam-ItCantBeDoneA.dms", "!RamJam-ItCantBeDoneB.dms"]
+swaps = [{ disk = 2, at = 90.6 }]
+
+[demozoo.145578]
+title = "It is New, It Is Great"
+group = "Alpha Flight"
+source = "script"
+
+[demozoo.174680]
+title = "It Never Sleeps"
+group = "Void"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.154342]
+title = "It Takes A Nation Of Millions To Hold Us Back"
+group = "Atomic Intelligence"
+source = "script"
+
+[demozoo.225206]
+title = "It Takes a Nation of Millions to Hold Us Back"
+group = "New Style Inc"
+source = "script"
+
+[demozoo.225207]
+title = "It Takes a Nation of Millions to Hold Us Back Part 2"
+group = "New Style Inc"
+source = "script"
+result = "unknown"
+run = "demo2"
+
+[demozoo.214785]
+title = "It Used To Be My Playground"
+group = "Spirit"
+source = "script"
+
+[demozoo.217886]
+title = "It Will Make You Mad"
+group = "Intryx"
+source = "script"
+
+[demozoo.88411]
+title = "It Worked On My Computer"
+group = "BooZombies"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.252355]
+title = "It's a Lifestyle"
+group = "Oblivion"
+source = "script"
+
+[demozoo.168110]
+title = "It's a sin"
+group = "Planet Jazz"
+source = "script"
+
+[demozoo.233624]
+title = "It's All Gonna Blow"
+group = "Amaze"
+source = "script"
+result = "unknown"
+
+[demozoo.84238]
+title = "It's been a while tro"
+group = "Damones"
+source = "script"
+
+[demozoo.224457]
+title = "It's Birthday"
+group = "Arctic Coders"
+source = "script"
+
+[demozoo.163308]
+title = "It's Carnival!"
+group = "Birdhouse Project"
+source = "script"
+machine = "a500_1mb"
+boot = "floppy"
+
+[demozoo.216274]
+title = "It's Coke Time"
+group = "Plasma Force"
+source = "script"
+
+[demozoo.38734]
+title = "It's Getting Harder"
+group = "New Wave"
+source = "script"
+
+[demozoo.252058]
+title = "It's Getting Harder B"
+group = "New Wave"
+source = "script"
+
+[demozoo.296444]
+title = "It's Mental 1"
+group = "British Swapping Syndicate"
+source = "script"
+result = "unknown"
+
+[demozoo.216973]
+title = "It's Never Too Late"
+group = "Prestige"
+source = "script"
+
+[demozoo.234022]
+title = "It's Not Over Until It's Over"
+group = "Andy P."
+source = "script"
+
+[demozoo.32588]
+title = "It's Only A Little Contact-Tro"
+group = "Arkos"
+source = "script"
+machine = "a1200"
+
+[demozoo.210447]
+title = "It's Simple Logic"
+group = "Red Chrome"
+source = "script"
+
+[demozoo.193946]
+title = "It's So Boring"
+group = "TEDP"
+source = "script"
+
+[demozoo.236714]
+title = "It's So Cool"
+group = "Cave"
+source = "script"
+result = "unknown"
+
+[demozoo.122156]
+title = "It's Tricky"
+group = "Surprise! Productions"
+source = "script"
+
+[demozoo.226563]
+title = "It's Us Again"
+group = "Nova"
+source = "script"
+
+[demozoo.223165]
+title = "It's You"
+group = "Smellon"
+source = "script"
+result = "unknown"
+
+[demozoo.9383]
+title = "Italian Disco"
+group = "ITB"
+source = "script"
+result = "unknown"
+
+[demozoo.259818]
+title = "Italy Megademo"
+group = "Supplex"
+source = "script"
+
+[demozoo.215662]
+title = "Its new Intro"
+group = "Abakus"
+source = "script"
+
+[demozoo.254300]
+title = "Ivory Tower"
+group = "Jukebox"
+source = "script"
+
+[demozoo.254273]
+title = "Iys Time"
+group = "Possessed"
+source = "script"

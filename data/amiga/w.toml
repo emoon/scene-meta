@@ -1,0 +1,2651 @@
+[demozoo.235054]
+title = "W Krainie Disko Polo"
+group = "Art-C"
+source = "script"
+machine = "a1200"
+run = "1"
+
+[demozoo.225157]
+title = "W0!"
+group = "Warp Zero"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.44751]
+title = "W4rp"
+group = "dA JoRMaS"
+source = "script"
+machine = "a1200_fast"
+run = "w4rp_unpacked"
+
+[demozoo.240787]
+title = "Wacky Pack - preview"
+group = "Desire"
+source = "script"
+
+[demozoo.240785]
+title = "Wacky Pack 09 - menu"
+group = "Desire"
+source = "script"
+
+[demozoo.137144]
+title = "Wadda"
+group = "PowerDrive"
+source = "script"
+
+[demozoo.225097]
+title = "Wafer Demo"
+group = "Corleon's Family / Deep"
+source = "script"
+
+[demozoo.128568]
+title = "Wafflehour"
+group = "Mahoney / Flex"
+source = "script"
+
+[demozoo.183872]
+title = "Wafflenut"
+group = "Traktor"
+source = "script"
+machine = "a1200"
+
+[demozoo.237745]
+title = "Wafflenut (Craze Version)"
+group = "Craze"
+source = "script"
+machine = "a1200"
+
+[demozoo.310453]
+title = "Waffles of Math Construction"
+group = "Alcatraz / Desire"
+source = "script"
+run = "waffles_uncrunched.exe"
+
+[demozoo.207587]
+title = "Waisting Our Time"
+group = "Xentrix"
+source = "script"
+
+[demozoo.97460]
+title = "Wait"
+group = "Gunnars Farvebio"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.287291]
+title = "Wait"
+group = "The Warp System"
+source = "script"
+
+[demozoo.247667]
+title = "Waiting For Another Little Beer"
+group = "Joker"
+source = "script"
+
+[demozoo.36548]
+title = "Waiting For Pizza"
+group = "Deesane"
+source = "script"
+machine = "a1200"
+
+[demozoo.69395]
+title = "Wake Up"
+group = "Rebels"
+source = "script"
+machine = "a1200"
+
+[demozoo.254210]
+title = "Wake Up"
+group = "Platin"
+source = "script"
+
+[demozoo.228957]
+title = "Wake Up Dead"
+group = "S-Xpress"
+source = "script"
+machine = "a1200"
+
+[demozoo.233522]
+title = "Wake Up!"
+group = "Alpha Flight"
+source = "script"
+
+[demozoo.59910]
+title = "Waldtro"
+group = "Remedy"
+source = "script"
+
+[demozoo.111363]
+title = "Walec"
+group = "Odbyt Design"
+source = "script"
+machine = "a1200_fast"
+result = "crashes-later"
+
+[demozoo.163834]
+title = "Waleczne Maciory w Akcji II"
+group = "Jehowa Dezign"
+source = "script"
+machine = "a1200"
+
+[demozoo.147106]
+title = "Walk Into The Future"
+group = "EAS Spreadings / F4 Amiga"
+source = "script"
+
+[demozoo.70680]
+title = "Walk Over"
+group = "Resurrected"
+source = "script"
+machine = "a1200"
+
+[demozoo.2166]
+title = "Walker"
+group = "Crusaders"
+source = "script"
+
+[demozoo.193399]
+title = "Walker Demo (Amiga)"
+group = "Imaginetics"
+source = "script"
+result = "unknown"
+
+[demozoo.193400]
+title = "Walker Demo 2 Trailer"
+group = "Imaginetics"
+source = "script"
+machine = "a1200"
+disks = ["walk2_1.dms", "walk2_2.dms"]
+swaps = [{ disk = 2, at = 102.3 }]
+
+[demozoo.257508]
+title = "Walker Demo 2 Trailer Intro"
+group = "Share and Enjoy / Scoopex"
+source = "script"
+
+[demozoo.5114]
+title = "Walking in Circles"
+group = "Amiga Demoscene Archive"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.235198]
+title = "Walking Shoes"
+group = "The Arcadia Team"
+source = "script"
+
+[demozoo.371758]
+title = "Walpurgisnacht"
+group = "Outsiders / Russian Prestige"
+source = "script"
+result = "unknown"
+run = "Karate"
+
+[demozoo.225119]
+title = "Wanker Demo"
+group = "Executioners"
+source = "script"
+
+[demozoo.35341]
+title = "Wannabe"
+group = "Nature"
+source = "script"
+machine = "a1200_fast"
+run = "jox"
+
+[demozoo.237922]
+title = "Want New Musicians"
+group = "Cult"
+source = "script"
+
+[demozoo.398]
+title = "Wanted"
+group = "Manitou"
+source = "script"
+
+[demozoo.184051]
+title = "Wanted"
+group = "Spasm"
+source = "script"
+machine = "a1200"
+
+[demozoo.220585]
+title = "Wanted"
+group = "Flash Light Design"
+source = "script"
+
+[demozoo.247067]
+title = "Wanted"
+group = "Ipec Elite"
+source = "script"
+
+[demozoo.257678]
+title = "Wanted Intro"
+group = "Sepultura"
+source = "script"
+
+[demozoo.174305]
+title = "Wanted Musicians"
+group = "Vanish"
+source = "script"
+
+[demozoo.187927]
+title = "War !"
+group = "Zenith"
+source = "script"
+
+[demozoo.247792]
+title = "War Bulletin"
+group = "Zero Defects"
+source = "script"
+
+[demozoo.188560]
+title = "War Demo"
+group = "7up Crew / Trilogy"
+source = "script"
+
+[demozoo.177736]
+title = "War Ensemble Preview"
+group = "Platin"
+source = "script"
+
+[demozoo.227063]
+title = "War Machine"
+group = "Orion"
+source = "script"
+
+[demozoo.222711]
+title = "Warez!"
+group = "Sug Röw"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.394518]
+title = "Wargames"
+group = "Triumph"
+source = "script"
+
+[demozoo.254352]
+title = "Warlock"
+group = "PowerDrive"
+source = "script"
+
+[demozoo.232159]
+title = "Warlock & Revenge Trainer"
+group = "Ackerlight"
+source = "script"
+
+[demozoo.250396]
+title = "Warning - Radioactive Sceners"
+group = "Mellow"
+source = "script"
+result = "unknown"
+
+[demozoo.299]
+title = "Warp 69"
+group = "Abyss"
+source = "script"
+machine = "a1200"
+
+[demozoo.210539]
+title = "Warrior's Story"
+group = "Factor 4"
+source = "script"
+
+[demozoo.259107]
+title = "Wash-Out"
+group = "Spectre"
+source = "script"
+machine = "a1200"
+
+[demozoo.27858]
+title = "Wasi"
+group = "Amiga Circle"
+source = "script"
+machine = "a1200"
+
+[demozoo.264704]
+title = "Wasp Pack 57 - intro"
+group = "Wizzcat"
+source = "script"
+
+[demozoo.264705]
+title = "Wasp Pack 8 Intro"
+group = "Wizzcat"
+source = "script"
+result = "unknown"
+
+[demozoo.380103]
+title = "Waste"
+group = "EMS Design"
+source = "script"
+result = "unknown"
+
+[demozoo.245870]
+title = "Waste Lands pre-tro"
+group = "Hellfire"
+source = "script"
+
+[demozoo.264382]
+title = "Waste of Breath"
+group = "Tulou"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.156291]
+title = "Waste of Space"
+group = "Tulou"
+source = "script"
+machine = "a1200_fast"
+run = "WasteOfSpace.exe"
+
+[demozoo.167486]
+title = "Waste of Time"
+group = "Tulou"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.231830]
+title = "Wasted Sperm for Hertel 14 Intro"
+group = "Contrast"
+source = "script"
+
+[demozoo.219598]
+title = "Wasted Time"
+group = "Xerox"
+source = "script"
+
+[demozoo.212367]
+title = "Wasted Time II"
+group = "Energy"
+source = "script"
+
+[demozoo.5113]
+title = "Wasted Years"
+group = "Moods Plateau"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.7172]
+title = "Wat een gore kop"
+group = "Quartex"
+source = "script"
+machine = "a1200"
+
+[demozoo.186787]
+title = "Watch It Pal"
+group = "Teladon"
+source = "script"
+result = "unknown"
+
+[demozoo.370109]
+title = "Watch Out !"
+group = "M.E.T.A.F.O.X. DKHQ"
+source = "script"
+
+[demozoo.38733]
+title = "Watch This"
+group = "Network"
+source = "script"
+
+[demozoo.251640]
+title = "Watching Demo"
+group = "Mystix"
+source = "script"
+
+[demozoo.232932]
+title = "Watchmen Demo"
+group = "The Hacking Relation"
+source = "script"
+
+[demozoo.176274]
+title = "Water and Fire II"
+group = "Therapy"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.238759]
+title = "Water Demo"
+group = "Brainstorm"
+source = "script"
+
+[demozoo.250498]
+title = "Water Dragon"
+group = "Share and Enjoy"
+source = "script"
+
+[demozoo.261139]
+title = "Water Drop"
+group = "Zenith"
+source = "script"
+
+[demozoo.231742]
+title = "Water Effects"
+group = "Crusaders"
+source = "script"
+
+[demozoo.206789]
+title = "Water Intro"
+group = "Acme Factories"
+source = "script"
+
+[demozoo.318226]
+title = "Water My Grey Beard"
+group = "Loonies / Struts"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.342178]
+title = "Water Our Blueberry"
+group = "Amiga Scene All-Stars"
+source = "script"
+
+[demozoo.237023]
+title = "Water Whisper"
+group = "Hoodlum / Chryseis"
+source = "script"
+machine = "a1200"
+
+[demozoo.29162]
+title = "Water'n'Fire"
+group = "Therapy"
+source = "script"
+result = "unknown"
+run = "WHEREFUNROLEZ.EXE"
+
+[demozoo.223876]
+title = "Wateraxion"
+group = "The Mighty Druids"
+source = "script"
+
+[demozoo.252755]
+title = "Watercloset"
+group = "Omega"
+source = "script"
+
+[demozoo.121892]
+title = "Waterfall"
+group = "Analogy"
+source = "script"
+machine = "a1200"
+
+[demozoo.257022]
+title = "Waterfront"
+group = "Savage"
+source = "script"
+
+[demozoo.177751]
+title = "Waterless Intro"
+group = "Suspect"
+source = "script"
+
+[demozoo.246644]
+title = "Waterlow"
+group = "Infect"
+source = "script"
+
+[demozoo.120387]
+title = "Waterproof"
+group = "Nuance"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.143531]
+title = "Waterproof"
+group = "Rebels"
+source = "script"
+
+[demozoo.252229]
+title = "Waterproof - Fixed Version"
+group = "Nuance"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.216741]
+title = "Waterproof Final -Waterproof v1.1-"
+group = "Rebels"
+source = "script"
+
+[demozoo.210445]
+title = "Waterscroll"
+group = "Paranoid"
+source = "script"
+
+[demozoo.242657]
+title = "Wattsitouchstone"
+group = "Eltech"
+source = "script"
+
+[demozoo.222978]
+title = "Wave"
+group = "Aminox"
+source = "script"
+
+[demozoo.223176]
+title = "Wave 2000%"
+group = "Azure / Platon"
+source = "script"
+result = "unknown"
+
+[demozoo.19452]
+title = "Wave 40%"
+group = "Bizarre Arts / Artwork"
+source = "script"
+result = "unknown"
+
+[demozoo.235042]
+title = "Wave 50%"
+group = "Artwork / Bizarre Arts"
+source = "script"
+machine = "a1200"
+
+[demozoo.367752]
+title = "Wave Coupling"
+group = "gigabates"
+source = "script"
+
+[demozoo.270806]
+title = "Wave Demo"
+group = "The Dark Ram Service"
+source = "script"
+
+[demozoo.231811]
+title = "Wave Intro 1"
+group = "No Limits"
+source = "script"
+result = "unknown"
+
+[demozoo.231812]
+title = "Wave Intro 2"
+group = "No Limits"
+source = "script"
+
+[demozoo.182464]
+title = "Wave Intro 3"
+group = "No Limits"
+source = "script"
+
+[demozoo.231813]
+title = "Wave Intro 4"
+group = "No Limits"
+source = "script"
+
+[demozoo.202455]
+title = "Wave of Lights"
+group = "Void"
+source = "script"
+
+[demozoo.244380]
+title = "Wavellite 3000+"
+group = "Share and Enjoy / Freestyle UK"
+source = "script"
+machine = "a1200"
+
+[demozoo.257511]
+title = "Wavellizer"
+group = "Share and Enjoy / Scoopex"
+source = "script"
+
+[demozoo.265092]
+title = "Waves -Tut Ench Amun-"
+group = "Vortex 42"
+source = "script"
+
+[demozoo.222654]
+title = "Way Of Light"
+group = "Hellfire"
+source = "script"
+
+[demozoo.277035]
+title = "Way Too Rude"
+group = "Loonies / Logicoma"
+source = "script"
+run = "lgc_lns_-_way_too_rude_low_ram.exe"
+
+[demozoo.4162]
+title = "Wayfarer"
+group = "Spaceballs"
+source = "script"
+
+[demozoo.89040]
+title = "Wayfarer 2"
+group = "Spaceballs"
+source = "script"
+machine = "a1200"
+run = "part3"
+
+[demozoo.27257]
+title = "Wayne Bars (TV Noise bootblock 2)"
+group = "Loonies / Darklite"
+source = "script"
+
+[demozoo.235046]
+title = "Waynedemo"
+group = "ArtWay"
+source = "script"
+result = "unknown"
+run = "engine"
+
+[demozoo.7475]
+title = "Wc Goes To WC"
+group = "Zymosis"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.180206]
+title = "WC ZSMP"
+group = "Water Closet Design"
+source = "script"
+run = "WC_ZSMP.exe"
+
+[demozoo.227503]
+title = "We"
+group = "Demogorgon"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.220737]
+title = "We Are A New Group"
+group = "Excess"
+source = "script"
+machine = "a1200"
+
+[demozoo.142596]
+title = "We Are Back"
+group = "Rebels"
+source = "script"
+
+[demozoo.145215]
+title = "We Are Back"
+group = "Tech"
+source = "script"
+
+[demozoo.151514]
+title = "We Are Back"
+group = "Eltech"
+source = "script"
+machine = "a1200"
+
+[demozoo.219605]
+title = "We Are Back"
+group = "The Gallows"
+source = "script"
+
+[demozoo.245150]
+title = "We Are Back"
+group = "Gothic"
+source = "script"
+
+[demozoo.248500]
+title = "We Are Back"
+group = "Laban"
+source = "script"
+machine = "a1200"
+
+[demozoo.336652]
+title = "We Are Back"
+group = "iNSANE"
+source = "script"
+
+[demozoo.343925]
+title = "We Are Back"
+group = "Swiss Amiga Duo"
+source = "script"
+
+[demozoo.259677]
+title = "We Are Born In The Land of the Vikings"
+group = "Tristar and Red Sector Inc. / Surprise! Productions"
+source = "script"
+
+[demozoo.89953]
+title = "We Are Cle(a)ver"
+group = "Stellar"
+source = "script"
+
+[demozoo.206807]
+title = "We are Dead"
+group = "Action"
+source = "script"
+
+[demozoo.154327]
+title = "We Are First"
+group = "Alcatraz"
+source = "script"
+
+[demozoo.191430]
+title = "We Are Huge"
+group = "Giants"
+source = "script"
+machine = "a1200"
+
+[demozoo.287988]
+title = "We Are Looking For Good And Reliable Contacts"
+group = "Level 4"
+source = "script"
+
+[demozoo.235264]
+title = "We Are Mungoz"
+group = "Apathy"
+source = "script"
+result = "unknown"
+
+[demozoo.244466]
+title = "We Are Not Dead"
+group = "Frantic"
+source = "script"
+result = "unknown"
+
+[demozoo.256156]
+title = "We Are Retro"
+group = "Retro"
+source = "script"
+
+[demozoo.232355]
+title = "We Are Still Alive"
+group = "Addonic"
+source = "script"
+
+[demozoo.236550]
+title = "We are Still Alive"
+group = "Cascade 1733"
+source = "script"
+
+[demozoo.253460]
+title = "We are still Alive"
+group = "Panic"
+source = "script"
+
+[demozoo.253745]
+title = "We Are The Future"
+group = "Phuture 303"
+source = "script"
+
+[demozoo.260267]
+title = "We are the lamers"
+group = "Syntex"
+source = "script"
+run = "part2"
+
+[demozoo.119]
+title = "We Are The People"
+group = "Trilogy"
+source = "script"
+boot = "floppy"
+
+[demozoo.116793]
+title = "We Are The Scene"
+group = "iNSANE"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.224987]
+title = "We Are the World's Numba 1"
+group = "Elite Hacking Crew"
+source = "script"
+
+[demozoo.26914]
+title = "We Believe"
+group = "Oxygen"
+source = "script"
+
+[demozoo.336]
+title = "We Believe In Pizza"
+group = "Arise"
+source = "script"
+
+[demozoo.89488]
+title = "We Can Code Again"
+group = "Whelpz"
+source = "script"
+result = "unknown"
+
+[demozoo.1066]
+title = "We Come In Peace"
+group = "Elude"
+source = "script"
+result = "unknown"
+run = "eld-wcip_uae"
+
+[demozoo.30651]
+title = "We Don't Understand"
+group = "Rave Network Overscan / Spaceballs"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.334587]
+title = "We Eat Crackers For Breakfast"
+group = "Outlaws / Escape"
+source = "script"
+
+[demozoo.194744]
+title = "We Exist"
+group = "Flying Cows Inc."
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.274162]
+title = "We Exist And Want Traders"
+group = "neXus"
+source = "script"
+
+[demozoo.178316]
+title = "We Fight The Grey"
+group = "Laserdance"
+source = "script"
+
+[demozoo.262593]
+title = "We Formed Lunatics Austria"
+group = "Lunatics"
+source = "script"
+
+[demozoo.159445]
+title = "We Funk You"
+group = "Hemoroids"
+source = "script"
+
+[demozoo.224825]
+title = "We Go To Xtremes For Kickstart"
+group = "X-treme Design"
+source = "script"
+
+[demozoo.151388]
+title = "We Hate Flameduck"
+group = "Cute"
+source = "script"
+result = "unknown"
+
+[demozoo.208707]
+title = "We Hate Kiros"
+group = "Zombie Boys"
+source = "script"
+
+[demozoo.238337]
+title = "We Hate You"
+group = "Black Jack"
+source = "script"
+
+[demozoo.238338]
+title = "We Hate You 2"
+group = "Black Jack"
+source = "script"
+boot = "floppy"
+
+[demozoo.165999]
+title = "We Have"
+group = "Monar"
+source = "script"
+result = "unknown"
+run = "_negerkuß!!.exe"
+
+[demozoo.247897]
+title = "We Import All to Finland"
+group = "Ksylitol"
+source = "script"
+
+[demozoo.176250]
+title = "We Look For Silicon"
+group = "Software Failure"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.189884]
+title = "We Love C"
+group = "Void"
+source = "script"
+
+[demozoo.381615]
+title = "We Love Cracktros!"
+group = "Oranges"
+source = "script"
+machine = "a1200"
+
+[demozoo.183342]
+title = "We Love Melon."
+group = "Hazard"
+source = "script"
+
+[demozoo.46297]
+title = "We Love Snails"
+group = "Remedy"
+source = "script"
+
+[demozoo.23434]
+title = "We Love You"
+group = "Replay"
+source = "script"
+machine = "a1200"
+
+[demozoo.257023]
+title = "We Need Beer"
+group = "Savage"
+source = "script"
+
+[demozoo.193300]
+title = "We Need Members"
+group = "Cosmic Pirates"
+source = "script"
+machine = "a1200"
+
+[demozoo.231831]
+title = "We Need Members"
+group = "Contrast"
+source = "script"
+
+[demozoo.238339]
+title = "We Need Members"
+group = "Black Jack"
+source = "script"
+machine = "a1200"
+
+[demozoo.214150]
+title = "We Need More"
+group = "Aq"
+source = "script"
+
+[demozoo.239979]
+title = "We Need More CODERS"
+group = "Dazzle"
+source = "script"
+
+[demozoo.134]
+title = "We Need Original Suppliers"
+group = "Rebels"
+source = "script"
+
+[demozoo.252425]
+title = "We Need You"
+group = "Nukleus"
+source = "script"
+
+[demozoo.366656]
+title = "We Needed A Coder 30 Years Ago"
+group = "Grotesticle"
+source = "script"
+machine = "a1200"
+
+[demozoo.263686]
+title = "We Rule"
+group = "Trilogy / X-Men"
+source = "script"
+
+[demozoo.193230]
+title = "We Saw The King"
+group = "Abnormeda"
+source = "script"
+machine = "a500_1mb"
+run = "Abnormeda"
+
+[demozoo.46290]
+title = "We Shave Ass"
+group = "Razor 1911"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.224086]
+title = "We Want To Join"
+group = "Zek & Styx"
+source = "script"
+
+[demozoo.119633]
+title = "We Were There"
+group = "Liquid"
+source = "script"
+
+[demozoo.237333]
+title = "We Will Come To Da VTL-Party"
+group = "Circle"
+source = "script"
+
+[demozoo.250991]
+title = "We Will Never Forget 7. April 1990"
+group = "Motion"
+source = "script"
+
+[demozoo.122152]
+title = "We Will Smash You"
+group = "Tristar and Red Sector Inc."
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.259329]
+title = "We Wish You a Merry X-Mas"
+group = "Subzero"
+source = "script"
+
+[demozoo.213784]
+title = "We're Back"
+group = "Fusion"
+source = "script"
+
+[demozoo.253918]
+title = "We're Back"
+group = "Piranhas"
+source = "script"
+
+[demozoo.139358]
+title = "We're Back!"
+group = "The Doodles Foundation"
+source = "script"
+
+[demozoo.3773]
+title = "We're Still Alive"
+group = "Depth"
+source = "script"
+machine = "a1200"
+
+[demozoo.243310]
+title = "We're Still Alive"
+group = "Eremation"
+source = "script"
+machine = "a1200"
+
+[demozoo.371147]
+title = "Weakend"
+group = "Pink"
+source = "script"
+
+[demozoo.257866]
+title = "Weapon"
+group = "Share and Enjoy"
+source = "script"
+
+[demozoo.3121]
+title = "Webification"
+group = "Regulus / Tjomp"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.257738]
+title = "Webtro"
+group = "Sector 5"
+source = "script"
+machine = "a1200"
+
+[demozoo.160564]
+title = "Wedding Wishes Optic"
+group = "OCS-Farts"
+source = "script"
+
+[demozoo.32749]
+title = "Weed"
+group = "Jakkar / Nailon"
+source = "script"
+machine = "a1200"
+
+[demozoo.224001]
+title = "Weekend Chaos"
+group = "Subterranean Pioneers"
+source = "script"
+
+[demozoo.132786]
+title = "Weekend Coding"
+group = "Cytax"
+source = "script"
+
+[demozoo.246889]
+title = "Weekend Infotro"
+group = "Intense"
+source = "script"
+
+[demozoo.111594]
+title = "Weekend Production"
+group = "Complex"
+source = "script"
+
+[demozoo.259569]
+title = "Weekly 1 - I am Proud of my Tits"
+group = "Stellar"
+source = "script"
+
+[demozoo.259570]
+title = "Weekly 2 -Timo Salonen Found in Sahara-"
+group = "Stellar"
+source = "script"
+
+[demozoo.259571]
+title = "Weekly 3 -Wasn't This Left Unreleased-"
+group = "Stellar"
+source = "script"
+
+[demozoo.259572]
+title = "Weekly 4 -Todays News and Much More-"
+group = "Stellar"
+source = "script"
+
+[demozoo.259573]
+title = "Weekly 5 -Advertisement Space to be Sold-"
+group = "Stellar"
+source = "script"
+
+[demozoo.259574]
+title = "Weekly 6 -Pope Catched Swimming-"
+group = "Stellar"
+source = "script"
+
+[demozoo.259575]
+title = "Weekly 7: Dalmak Can Dance"
+group = "Stellar"
+source = "script"
+
+[demozoo.259576]
+title = "Weekly 8 -Mac Approaching Teen-Age-"
+group = "Stellar"
+source = "script"
+
+[demozoo.189193]
+title = "Weektro"
+group = "Hardline"
+source = "script"
+
+[demozoo.165229]
+title = "Wein, Weib, Pillen und Gesang"
+group = "MDMA Germany"
+source = "script"
+machine = "a1200"
+
+[demozoo.249642]
+title = "Wein, Weib, Pillen und Gesang"
+group = "MDMA Germany"
+source = "script"
+machine = "a1200"
+
+[demozoo.262681]
+title = "Weinglas Presents"
+group = "Accession"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.219147]
+title = "Weird"
+group = "Fabiness"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.231918]
+title = "Weird"
+group = "Trilogy / 7up Crew"
+source = "script"
+
+[demozoo.206976]
+title = "Weird Experiment"
+group = "Cavalry / Megastyle"
+source = "script"
+
+[demozoo.224089]
+title = "Weird Intro"
+group = "Sscg"
+source = "script"
+
+[demozoo.242115]
+title = "Weird Pack Intro"
+group = "Ecstasy"
+source = "script"
+
+[demozoo.235148]
+title = "Weird Technology Demo"
+group = "Area 08"
+source = "script"
+
+[demozoo.230013]
+title = "Weird-Acid"
+group = "The Mafia"
+source = "script"
+
+[demozoo.218637]
+title = "Weirdo Demo"
+group = "Rare"
+source = "script"
+
+[demozoo.163842]
+title = "wektor point"
+group = "Union"
+source = "script"
+result = "unknown"
+run = "LE-window6.12"
+
+[demozoo.104385]
+title = "Welcome"
+group = "Arkham"
+source = "script"
+
+[demozoo.208875]
+title = "Welcome"
+group = "Panzerfaust"
+source = "script"
+
+[demozoo.234274]
+title = "Welcome"
+group = "Anarchy"
+source = "script"
+
+[demozoo.235517]
+title = "Welcome"
+group = "Batman Group"
+source = "script"
+
+[demozoo.345967]
+title = "Welcome"
+group = "The Breakfast Club"
+source = "script"
+
+[demozoo.194952]
+title = "Welcome Demo"
+group = "Alcatraz"
+source = "script"
+
+[demozoo.59678]
+title = "Welcome Eddie!"
+group = "Moods Plateau"
+source = "script"
+machine = "a1200"
+
+[demozoo.163663]
+title = "Welcome In 4K Intro"
+group = "Rektum"
+source = "script"
+
+[demozoo.302337]
+title = "Welcome Intro"
+group = "Melon Dezign"
+source = "script"
+
+[demozoo.236515]
+title = "Welcome Intro (Move the Scene)"
+group = "Cascade 1733"
+source = "script"
+
+[demozoo.72220]
+title = "Welcome On Amiga"
+group = "The Silents"
+source = "script"
+
+[demozoo.216932]
+title = "Welcome Summer Conference 1992"
+group = "Oxygen / Abstract"
+source = "script"
+
+[demozoo.234786]
+title = "Welcome to a BBS Intro"
+group = "Axis"
+source = "script"
+
+[demozoo.59911]
+title = "Welcome to Acen"
+group = "Remedy"
+source = "script"
+
+[demozoo.241317]
+title = "Welcome to our First Amiga Intro"
+group = "Doctor Mabuse Orgasm Crackings"
+source = "script"
+
+[demozoo.23771]
+title = "Welcome To Our World"
+group = "Darkage"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.24877]
+title = "Welcome To Our World 2"
+group = "Darkage / Iris"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.246645]
+title = "Welcome To Party!"
+group = "Infect"
+source = "script"
+machine = "a1200"
+
+[demozoo.215672]
+title = "Welcome to the Autumn Party"
+group = "Abakus / Sidon"
+source = "script"
+
+[demozoo.189851]
+title = "Welcome to the Jungle"
+group = "The Gang"
+source = "script"
+
+[demozoo.247196]
+title = "Welcome To Xebec"
+group = "Italian Bad Boys"
+source = "script"
+
+[demozoo.237923]
+title = "Welcome User"
+group = "Cult"
+source = "script"
+
+[demozoo.250165]
+title = "Welcometro"
+group = "Marshals"
+source = "script"
+machine = "a1200"
+
+[demozoo.252856]
+title = "Welcometro"
+group = "Ozone"
+source = "script"
+
+[demozoo.232543]
+title = "Well 'Ard Wares"
+group = "Magnetic Fields"
+source = "script"
+
+[demozoo.354774]
+title = "Well Never Mind What - Megademo Part"
+group = "Rebels"
+source = "script"
+
+[demozoo.248634]
+title = "Welon"
+group = "Lamers"
+source = "script"
+
+[demozoo.195700]
+title = "Weltro"
+group = "Trance Inc."
+source = "script"
+
+[demozoo.548]
+title = "Wentro"
+group = "Sceptic"
+source = "script"
+
+[demozoo.58596]
+title = "Wer Braucht Torus Eigentlich?"
+group = "Bluebox Cinematique Gmbh"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.9284]
+title = "Wer hat dicke Eier?"
+group = "Depth / Efreet"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.257024]
+title = "Wer re Going In"
+group = "Savage"
+source = "script"
+
+[demozoo.227500]
+title = "Werbung"
+group = "FB Softwares"
+source = "script"
+machine = "a1200"
+
+[demozoo.227231]
+title = "Werner Flaschbier"
+group = "Sky Devils"
+source = "script"
+
+[demozoo.233523]
+title = "Werner Flaschbier Boot Intro"
+group = "Level 4 / Alpha Flight"
+source = "script"
+result = "unknown"
+
+[demozoo.249160]
+title = "Werner Flaschbier Demo"
+group = "Level 4"
+source = "script"
+
+[demozoo.77258]
+title = "Wessyde"
+group = "Rave Network Overscan"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.237658]
+title = "West Point 1 Menu"
+group = "Corpse"
+source = "script"
+
+[demozoo.6951]
+title = "Whammer Slammer"
+group = "Rebels"
+source = "script"
+machine = "a1200"
+disks = ["rbs-ws1.dms", "rbs-ws2.dms", "rbs-ws3.dms"]
+swaps = [{ disk = 2, at = 142.2 }, { disk = 3, at = 365.1 }]
+
+[demozoo.228015]
+title = "What a Lame Demo"
+group = "Phoenix"
+source = "script"
+
+[demozoo.208708]
+title = "What A Rush"
+group = "Zombie Boys / Bronx"
+source = "script"
+
+[demozoo.209591]
+title = "What About?"
+group = "Inzzest"
+source = "script"
+
+[demozoo.242854]
+title = "What Can You Do For Me"
+group = "End of Century 1999"
+source = "script"
+
+[demozoo.232544]
+title = "What Ever you Like to Call it"
+group = "Magnetic Fields"
+source = "script"
+
+[demozoo.385265]
+title = "What Might Have Been"
+group = "Wrangler"
+source = "script"
+result = "unknown"
+
+[demozoo.2493]
+title = "What The Hell Was I Thinking"
+group = "Depth"
+source = "script"
+
+[demozoo.365421]
+title = "What We Are"
+group = "Overkill"
+source = "script"
+
+[demozoo.41038]
+title = "What We Like of Women"
+group = "Figa Production"
+source = "script"
+result = "unknown"
+
+[demozoo.77304]
+title = "What You Say?"
+group = "Mankind"
+source = "script"
+result = "unknown"
+run = "Karate"
+
+[demozoo.213852]
+title = "What!?"
+group = "Subject"
+source = "script"
+
+[demozoo.137913]
+title = "What's Up Doc"
+group = "Intense"
+source = "script"
+
+[demozoo.256656]
+title = "Whatever"
+group = "S2"
+source = "script"
+
+[demozoo.88948]
+title = "Whatever Rocks Your Boat"
+group = "Spaceballs"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.236551]
+title = "Whee's Demo"
+group = "Cascade 1733"
+source = "script"
+
+[demozoo.135]
+title = "Wheels of Steel"
+group = "Rebels"
+source = "script"
+
+[demozoo.214223]
+title = "Wheeltro"
+group = "Chaos AD"
+source = "script"
+
+[demozoo.92577]
+title = "When A Tree Is A Circuitless Graph"
+group = "Zero Defects"
+source = "script"
+
+[demozoo.249193]
+title = "When Gum Is Not Enough"
+group = "Liquid"
+source = "script"
+
+[demozoo.388773]
+title = "When Three People Thinking About Title"
+group = "Venture / Lamers"
+source = "script"
+machine = "a1200"
+
+[demozoo.21834]
+title = "When We Ride On Our Enemies"
+group = "Skarla"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.240962]
+title = "When you Argue with The System"
+group = "Iris / Depth"
+source = "script"
+result = "unknown"
+
+[demozoo.176809]
+title = "Where Are We Going"
+group = "Zenon"
+source = "script"
+machine = "a1200"
+
+[demozoo.263685]
+title = "Where in Europe is Carmen in San Diego"
+group = "Trilogy"
+source = "script"
+boot = "floppy"
+
+[demozoo.240037]
+title = "Where in Time is Carmen Sandiego - Import"
+group = "Decay"
+source = "script"
+
+[demozoo.89556]
+title = "Where Is My Conscience?"
+group = "Melon Dezign"
+source = "script"
+machine = "a1200"
+
+[demozoo.147701]
+title = "Where Is Pacman?"
+group = "Delight"
+source = "script"
+machine = "a1200"
+
+[demozoo.49458]
+title = "Where is she"
+group = "Gothix"
+source = "script"
+
+[demozoo.195545]
+title = "Where Is That Bottle?"
+group = "Movement / Melon Dezign"
+source = "script"
+
+[demozoo.134640]
+title = "Where Life Ends and Death Begins"
+group = "Sepultura"
+source = "script"
+
+[demozoo.109145]
+title = "Whereabouts"
+group = "Planet Jazz"
+source = "script"
+machine = "a1200"
+
+[demozoo.1333]
+title = "While The City Sleeps Part 1"
+group = "Switch"
+source = "script"
+
+[demozoo.195733]
+title = "Whip My Vulva"
+group = "Alien Adenoids"
+source = "script"
+
+[demozoo.238760]
+title = "Whirlwind Demo"
+group = "Brainstorm"
+source = "script"
+
+[demozoo.228829]
+title = "Whiskey Sunrise"
+group = "Phokuz"
+source = "script"
+
+[demozoo.77460]
+title = "White"
+group = "The Gang"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.207831]
+title = "White Dot Demo"
+group = "Chaos"
+source = "script"
+
+[demozoo.248128]
+title = "White Lines"
+group = "Kefrens"
+source = "script"
+
+[demozoo.261137]
+title = "White Night"
+group = "Zenith"
+source = "script"
+
+[demozoo.254523]
+title = "White Room"
+group = "Przyjaciele Stefana B."
+source = "script"
+
+[demozoo.204895]
+title = "White X-Mas"
+group = "Atomic"
+source = "script"
+machine = "a1200"
+
+[demozoo.63277]
+title = "Whiteroom Remix"
+group = "Przyjaciele Stefana B."
+source = "script"
+machine = "a1200"
+
+[demozoo.33743]
+title = "Whizzz!"
+group = "Anadune"
+source = "script"
+result = "unknown"
+
+[demozoo.214019]
+title = "Who Are Us?"
+group = "Ghostly Spreaders"
+source = "script"
+
+[demozoo.234789]
+title = "Who Carez Demo"
+group = "Axis"
+source = "script"
+
+[demozoo.224780]
+title = "Who Else"
+group = "CP-Dezajn"
+source = "script"
+
+[demozoo.234691]
+title = "Who Stole My Cuica"
+group = "Anders Hamre"
+source = "script"
+
+[demozoo.195607]
+title = "Who the F*ck ..."
+group = "Maniacs"
+source = "script"
+
+[demozoo.222593]
+title = "Who the Hell Fucks alice"
+group = "Ultimate DJ Team"
+source = "script"
+
+[demozoo.216947]
+title = "Who We Are"
+group = "Optimal"
+source = "script"
+
+[demozoo.237845]
+title = "Why Not Make Some Balls"
+group = "Crionics"
+source = "script"
+
+[demozoo.263367]
+title = "Why Not!"
+group = "Tristar and Red Sector Inc."
+source = "script"
+
+[demozoo.259005]
+title = "Why?"
+group = "Spoon"
+source = "script"
+result = "unknown"
+
+[demozoo.204896]
+title = "Whydows?"
+group = "The Ugly Ducklings"
+source = "script"
+machine = "a1200"
+
+[demozoo.241]
+title = "Whytro"
+group = "Dreamdealers"
+source = "script"
+
+[demozoo.258758]
+title = "Wibbe's First Demo"
+group = "Software of Sweden"
+source = "script"
+
+[demozoo.258760]
+title = "Wibbe's First Sine Scroll"
+group = "Software of Sweden"
+source = "script"
+
+[demozoo.241289]
+title = "Wibbleque"
+group = "Divine"
+source = "script"
+machine = "a1200"
+
+[demozoo.232545]
+title = "Wibbly Wobbly"
+group = "Magnetic Fields"
+source = "script"
+
+[demozoo.323909]
+title = "Wibbly Wobbly"
+group = "Quantum Mechanix"
+source = "script"
+
+[demozoo.63791]
+title = "Wicked Sensation"
+group = "Masque"
+source = "script"
+disks = ["TRSI-WickedSensationA.DMS", "TRSI-WickedSensationB.DMS"]
+swaps = [{ disk = 2, at = 131.7, key = "lmb" }]
+
+[demozoo.240056]
+title = "Wickeds Intro"
+group = "Deathstar"
+source = "script"
+
+[demozoo.44909]
+title = "Wielblad"
+group = "Lamers"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.32739]
+title = "Wierd"
+group = "Strange"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.190946]
+title = "Wierdo Style"
+group = "The Supply Team / Tartan Army"
+source = "script"
+
+[demozoo.40933]
+title = "wigt"
+group = "koalicija zajedno"
+source = "script"
+result = "unknown"
+
+[demozoo.246998]
+title = "WIGT"
+group = "iq2000 / Nevermind"
+source = "script"
+result = "unknown"
+
+[demozoo.179377]
+title = "Wiiizzz"
+group = "Vital-Motion!"
+source = "script"
+
+[demozoo.45917]
+title = "WILD"
+group = "Nevermind"
+source = "script"
+machine = "a1200"
+run = "Wild_Engine"
+
+[demozoo.225159]
+title = "Wild"
+group = "Formacja Zdechlych Psow"
+source = "script"
+
+[demozoo.156367]
+title = "Wild Announcement Intro"
+group = "Nuance"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.207943]
+title = "Wild Beast"
+group = "Beyond Force"
+source = "script"
+
+[demozoo.232648]
+title = "Wild Blitter"
+group = "KGB"
+source = "script"
+
+[demozoo.110605]
+title = "Wild Bunch"
+group = "Cryptoburners"
+source = "script"
+
+[demozoo.214028]
+title = "Wild Copper's Megalo Demos"
+group = "Wild Copper / TecSoft"
+source = "script"
+
+[demozoo.117908]
+title = "Wild Demo"
+group = "Attitude"
+source = "script"
+
+[demozoo.234965]
+title = "Wild Life"
+group = "Australian Crackers United"
+source = "script"
+
+[demozoo.242621]
+title = "Wild Palms BBStro"
+group = "Effect"
+source = "script"
+result = "unknown"
+
+[demozoo.242622]
+title = "Wild Palms Reopening"
+group = "Effect"
+source = "script"
+result = "unknown"
+
+[demozoo.455]
+title = "Wild Thing"
+group = "Stellar"
+source = "script"
+
+[demozoo.188033]
+title = "Wild Tremlo"
+group = "Share and Enjoy"
+source = "script"
+
+[demozoo.223457]
+title = "Wild Vektors"
+group = "Vektor Force"
+source = "script"
+
+[demozoo.230505]
+title = "Wild Wheels"
+group = "Reality"
+source = "script"
+
+[demozoo.147738]
+title = "Wildcat"
+group = "Digital Mafia"
+source = "script"
+
+[demozoo.214029]
+title = "WildCopper's Megalo Demos - Intro"
+group = "TecSoft"
+source = "script"
+
+[demozoo.26947]
+title = "Wildfire"
+group = "7 Awards"
+source = "script"
+
+[demozoo.21509]
+title = "Wildlife"
+group = "Abyss"
+source = "script"
+machine = "a1200_fast"
+run = "wildlife.exe"
+
+[demozoo.184897]
+title = "Willin"
+group = "Cyclone"
+source = "script"
+machine = "a1200"
+
+[demozoo.170081]
+title = "Willow"
+group = "Ukonx"
+source = "script"
+result = "unknown"
+run = "willow.exe"
+
+[demozoo.24671]
+title = "Willy Bogner"
+group = "Spaceballs"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.140228]
+title = "Win"
+group = "Majddar"
+source = "script"
+result = "unknown"
+
+[demozoo.255553]
+title = "Win95"
+group = "Ramses"
+source = "script"
+result = "unknown"
+
+[demozoo.32801]
+title = "Wind!"
+group = "Frame18"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.219610]
+title = "Windows '95 Demo"
+group = "Allman"
+source = "script"
+
+[demozoo.46923]
+title = "Windowz 4k"
+group = "4th Dimension"
+source = "script"
+result = "unknown"
+run = "sonnencreme.exe"
+
+[demozoo.346684]
+title = "Windy Day"
+group = "Zymosis"
+source = "script"
+
+[demozoo.230835]
+title = "Wing Commander"
+group = "Gothic / Diamonds and Rust"
+source = "script"
+
+[demozoo.183969]
+title = "Wings of Victory"
+group = "The Warfalcons"
+source = "script"
+
+[demozoo.220756]
+title = "Winnerdemo"
+group = "Newline"
+source = "script"
+
+[demozoo.281478]
+title = "Winners don't use... weeed"
+group = "Applause"
+source = "script"
+machine = "a1200"
+
+[demozoo.223998]
+title = "Winny Dotties"
+group = "Wind Of Night"
+source = "script"
+
+[demozoo.71703]
+title = "Wino Premium"
+group = "Odbyt Design"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.304309]
+title = "Winona"
+group = "Pain"
+source = "script"
+machine = "a1200"
+
+[demozoo.2942]
+title = "Winona Ryder"
+group = "Donut Fetish"
+source = "script"
+machine = "a1200_fast"
+run = "main.exe"
+
+[demozoo.232546]
+title = "Winter Conference '91 Report"
+group = "Magnetic Fields"
+source = "script"
+
+[demozoo.230302]
+title = "Winter Conference 1991 Advertisment"
+group = "Quartex"
+source = "script"
+
+[demozoo.10364]
+title = "Winter Conference 1991 Party Pack Menu"
+group = "Anarchy"
+source = "script"
+
+[demozoo.181441]
+title = "Winter Nights"
+group = "D.T.A. Software Studio"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.246100]
+title = "Winter Olympiad 88"
+group = "Hotline"
+source = "script"
+result = "unknown"
+
+[demozoo.255821]
+title = "Wintermute BBS Intro"
+group = "Red Sector Inc."
+source = "script"
+
+[demozoo.246976]
+title = "WinTunnel"
+group = "Inikep"
+source = "script"
+result = "unknown"
+
+[demozoo.32376]
+title = "Wipe"
+group = "Session"
+source = "script"
+machine = "a1200"
+run = "tractorbeam.exe"
+
+[demozoo.242623]
+title = "Wipper Game Disk 1 - Intro"
+group = "Effect"
+source = "script"
+
+[demozoo.350152]
+title = "Wir Brauchen Mehr ZorroKarten"
+group = "Surprise!Productions"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.211303]
+title = "Wir Sind Die Roboten"
+group = "Bice Twice"
+source = "script"
+
+[demozoo.290111]
+title = "Wirus"
+group = "DZM"
+source = "script"
+
+[demozoo.2185]
+title = "Wirwar"
+group = "Razor 1911"
+source = "script"
+
+[demozoo.221094]
+title = "Wise Up, Sucker!"
+group = "Cyber Visions"
+source = "script"
+
+[demozoo.42770]
+title = "Wish"
+group = "Extreme Entertainment"
+source = "script"
+machine = "a1200"
+
+[demozoo.255481]
+title = "Wish I Was There"
+group = "Ram Jam"
+source = "script"
+
+[demozoo.5713]
+title = "Wish Us Luck"
+group = "Surprise! Productions"
+source = "script"
+
+[demozoo.99941]
+title = "Wish We Were in Italy"
+group = "Dominei / Slummy / Barry Blitter"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.2399]
+title = "Wish You A Merry X-Mas"
+group = "Amaze"
+source = "script"
+
+[demozoo.218763]
+title = "Wishes You a Merry X-Mas"
+group = "Power"
+source = "script"
+
+[demozoo.244602]
+title = "Wit"
+group = "Freezers"
+source = "script"
+
+[demozoo.254524]
+title = "Wit Porter"
+group = "Przyjaciele Stefana B."
+source = "script"
+machine = "a1200"
+
+[demozoo.70673]
+title = "Wit Premium"
+group = "Freezers"
+source = "script"
+machine = "a1200"
+
+[demozoo.264706]
+title = "Witchedpixelmixed Demo"
+group = "Wizzcat"
+source = "script"
+
+[demozoo.360866]
+title = "Witchfinder"
+group = "Quadtrip"
+source = "script"
+machine = "a1200_fast"
+boot = "hd"
+
+[demozoo.202]
+title = "With Style"
+group = "Haujobb"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.186622]
+title = "With Vectors To Heaven"
+group = "World Federation of Mad Hackers"
+source = "script"
+
+[demozoo.263243]
+title = "WiX Copy 4.0 Gold"
+group = "Triad"
+source = "script"
+
+[demozoo.221554]
+title = "Wiz Demo"
+group = "Beagle Boys"
+source = "script"
+
+[demozoo.218988]
+title = "Wiz Joined"
+group = "Triflex"
+source = "script"
+
+[demozoo.237985]
+title = "Wiz's First"
+group = "Cryptoburners"
+source = "script"
+
+[demozoo.263683]
+title = "Wizax's Demo"
+group = "Trilogy"
+source = "script"
+result = "unknown"
+
+[demozoo.233271]
+title = "Wizball"
+group = "The Sunriders"
+source = "script"
+
+[demozoo.250500]
+title = "Wizball Intro"
+group = "Megaforce"
+source = "script"
+
+[demozoo.214117]
+title = "Wizmars Musicdisk 2 Intro"
+group = "Artch"
+source = "script"
+
+[demozoo.190945]
+title = "Wizz' First Demo"
+group = "The Supply Team"
+source = "script"
+
+[demozoo.264721]
+title = "Wizzcat Sweden Born"
+group = "Wizzcat"
+source = "script"
+
+[demozoo.214331]
+title = "Wobble Intro"
+group = "Mirage UK"
+source = "script"
+
+[demozoo.229815]
+title = "Wobble Wobble"
+group = "German Spreading Crew"
+source = "script"
+
+[demozoo.224573]
+title = "Wobbler Demo"
+group = "Sly And Warrior"
+source = "script"
+
+[demozoo.218940]
+title = "WOC 1993 Invitation"
+group = "Big! Design"
+source = "script"
+
+[demozoo.218547]
+title = "WOC-ANSI-Slideshow"
+group = "Krypton Force"
+source = "script"
+
+[demozoo.257021]
+title = "WOCTro"
+group = "Savage"
+source = "script"
+machine = "a1200"
+
+[demozoo.191795]
+title = "Wojadzer"
+group = "Symulator"
+source = "script"
+result = "unknown"
+run = "inpart"
+
+[demozoo.244482]
+title = "Wojtek"
+group = "Funzine"
+source = "script"
+
+[demozoo.297828]
+title = "Wolf Lava"
+group = "The Electronic Knights"
+source = "script"
+
+[demozoo.227944]
+title = "Wolfpack"
+group = "Maksoft"
+source = "script"
+result = "unknown"
+
+[demozoo.250992]
+title = "Wolfpack - Import"
+group = "Motion"
+source = "script"
+result = "unknown"
+
+[demozoo.182771]
+title = "Wolfpack Playable Preview"
+group = "Oracle"
+source = "script"
+
+[demozoo.210946]
+title = "Wonder Gal"
+group = "Dalthon"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.265093]
+title = "Wonderboy's First"
+group = "Vortex 42"
+source = "script"
+
+[demozoo.22457]
+title = "Wonderful"
+group = "Voice"
+source = "script"
+
+[demozoo.6845]
+title = "Wonderland"
+group = "Oblivion"
+source = "script"
+machine = "a1200"
+
+[demozoo.316]
+title = "Wonderland BBS Intro"
+group = "Rebels"
+source = "script"
+
+[demozoo.364550]
+title = "Woo"
+group = "Dual Format"
+source = "script"
+
+[demozoo.195572]
+title = "Woo 2"
+group = "Dual Format"
+source = "script"
+
+[demozoo.179614]
+title = "WooBoo"
+group = "Iris"
+source = "script"
+machine = "a1200_fast"
+run = "IRIS-WooBoo.EXE"
+
+[demozoo.190646]
+title = "Wooden Moths"
+group = "Nerve Axis"
+source = "script"
+
+[demozoo.204903]
+title = "Wooden Oculus"
+group = "Ruskean Reian Ritarit"
+source = "script"
+machine = "a1200"
+
+[demozoo.254]
+title = "Woodstock"
+group = "Dreamdealers"
+source = "script"
+machine = "a1200"
+
+[demozoo.327930]
+title = "Woody"
+group = "Neo"
+source = "script"
+machine = "a1200"
+
+[demozoo.262377]
+title = "Woof Woof"
+group = "The Silents"
+source = "script"
+
+[demozoo.32607]
+title = "Wooga-Storm!"
+group = "Ramses Production"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.258997]
+title = "Wooow - Remix"
+group = "Depeche"
+source = "script"
+
+[demozoo.196207]
+title = "Woozy"
+group = "Dictators"
+source = "script"
+
+[demozoo.252643]
+title = "Words of Welcome"
+group = "Oracle"
+source = "script"
+
+[demozoo.213305]
+title = "Wordworth 1.1 Spreading"
+group = "LSD"
+source = "script"
+
+[demozoo.102210]
+title = "Work For Nothing"
+group = "Turnips"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.216751]
+title = "Workbench 2.1 Swap Ad"
+group = "Rebels"
+source = "script"
+
+[demozoo.32970]
+title = "Workbench 96"
+group = "Gunnars Farvebio"
+source = "script"
+machine = "a1200"
+run = "INTRO.exe"
+
+[demozoo.264769]
+title = "Workbench Demo"
+group = "Wild Copper"
+source = "script"
+
+[demozoo.244483]
+title = "Workbench Dla Opornych"
+group = "Funzine"
+source = "script"
+result = "unknown"
+
+[demozoo.215619]
+title = "Workbench Madness"
+group = "Atomic Intelligence"
+source = "script"
+
+[demozoo.122374]
+title = "Workfrench"
+group = "Alliance Design"
+source = "script"
+
+[demozoo.152929]
+title = "Works"
+group = "Coma"
+source = "script"
+
+[demozoo.28324]
+title = "Workstation"
+group = "Frame18"
+source = "script"
+machine = "a1200"
+
+[demozoo.221464]
+title = "World Championship Big Charset Contest"
+group = "Risky Business Boys"
+source = "script"
+
+[demozoo.237024]
+title = "World Dance"
+group = "Chryseis"
+source = "script"
+
+[demozoo.69932]
+title = "World Is Crazy"
+group = "The Firehawks"
+source = "script"
+
+[demozoo.224531]
+title = "World Madness"
+group = "Corosive"
+source = "script"
+
+[demozoo.210818]
+title = "World of Chips Info"
+group = "Clan"
+source = "script"
+machine = "a1200"
+
+[demozoo.9014]
+title = "World of Commodore"
+group = "Sanity"
+source = "script"
+
+[demozoo.256881]
+title = "World Of Commodore 92 Preview"
+group = "Sanity"
+source = "script"
+
+[demozoo.26909]
+title = "World of Confusion"
+group = "Vomit"
+source = "script"
+result = "unknown"
+
+[demozoo.88611]
+title = "World of Confusion"
+group = "Cream"
+source = "script"
+
+[demozoo.211808]
+title = "World of Fantastic Lamerism"
+group = "Clones / Nikki Corruptions"
+source = "script"
+run = "DEMO/sKulli"
+
+[demozoo.193827]
+title = "World of Freax"
+group = "Trackers"
+source = "script"
+
+[demozoo.100801]
+title = "World of Lies"
+group = "Planet Jazz"
+source = "script"
+machine = "a1200"
+run = "wol"
+
+[demozoo.241629]
+title = "World of Productions"
+group = "Celtic"
+source = "script"
+
+[demozoo.349342]
+title = "World of Wodka Preview"
+group = "Scoopex"
+source = "script"
+
+[demozoo.169961]
+title = "World of Wombles"
+group = "Hans / Mafia Joe / J.O.E."
+source = "script"
+
+[demozoo.351850]
+title = "World X50"
+group = "Magnetic Fields"
+source = "script"
+
+[demozoo.213306]
+title = "World's 1st Metamorph"
+group = "LSD"
+source = "script"
+
+[demozoo.206815]
+title = "Worldness X Intro"
+group = "Action"
+source = "script"
+result = "unknown"
+
+[demozoo.32536]
+title = "Worlds"
+group = "Gods"
+source = "script"
+machine = "a1200_fast"
+run = "WORLDS.exe"
+
+[demozoo.237659]
+title = "Worldwide Suicide"
+group = "Corpse"
+source = "script"
+
+[demozoo.246661]
+title = "Worm Galaxy Over the Snaky Way"
+group = "Impulse"
+source = "script"
+
+[demozoo.238340]
+title = "Worm War"
+group = "Black Jack"
+source = "script"
+result = "unknown"
+
+[demozoo.343]
+title = "Wormhole"
+group = "Complex"
+source = "script"
+result = "unknown"
+run = "3_Birra-Bros"
+
+[demozoo.24880]
+title = "Wormhole"
+group = "Apathy"
+source = "script"
+machine = "a1200_fast"
+run = "wormhole.exe"
+
+[demozoo.9400]
+title = "Worms From My Head"
+group = "Nah-Kolor"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.5347]
+title = "Wormtro"
+group = "Reflex"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.240038]
+title = "Wormtro"
+group = "Decay"
+source = "script"
+
+[demozoo.220977]
+title = "Wormy Bobs"
+group = "Bad Company"
+source = "script"
+
+[demozoo.277029]
+title = "Worn"
+group = "Void"
+source = "script"
+
+[demozoo.220769]
+title = "Worst Television"
+group = "Tonic"
+source = "script"
+machine = "a1200"
+
+[demozoo.207852]
+title = "Worstro"
+group = "Styline"
+source = "script"
+
+[demozoo.96794]
+title = "Woualaran"
+group = "Hemoroids"
+source = "script"
+
+[demozoo.249937]
+title = "Woui Dentreau"
+group = "Majic 12"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.5741]
+title = "Would You Like To Be My Donut"
+group = "Arise"
+source = "script"
+
+[demozoo.235499]
+title = "WOW party Demo"
+group = "Beastie Boys"
+source = "script"
+
+[demozoo.240633]
+title = "WOW Party Demo"
+group = "Dexion"
+source = "script"
+machine = "a500_ks12"
+
+[demozoo.245999]
+title = "Write 2 Mario - Contactro"
+group = "High Voltage"
+source = "script"
+
+[demozoo.104102]
+title = "Wtenczas Na Wschodzie"
+group = "Vectors"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.199820]
+title = "WWW-intro (old)"
+group = "Damones"
+source = "script"
+
+[demozoo.233946]
+title = "Www.animators.de Advert"
+group = "Animators"
+source = "script"
+
+[demozoo.24434]
+title = "Www.ebster"
+group = "Contraz"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.40184]
+title = "www.pefletti.com"
+group = "Piru"
+source = "script"
+machine = "a1200"
+
+[demozoo.1442]
+title = "WWWebster 2"
+group = "Contraz"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.22688]
+title = "wx-co 123"
+group = "Replay"
+source = "script"
+machine = "a1200"
+
+[demozoo.57832]
+title = "Wybory 2001"
+group = "Brygada RR"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.33845]
+title = "Wyklad"
+group = "Przyjaciele Stefana B."
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.1020]
+title = "Würzfleisch"
+group = "Selectanovel"
+source = "script"

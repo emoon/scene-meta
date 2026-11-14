@@ -1,0 +1,999 @@
+[demozoo.127446]
+title = "U Do The Gfx"
+group = "Five Finger Punch"
+source = "script"
+
+[demozoo.239532]
+title = "U-Tro"
+group = "Damage"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.172631]
+title = "U. B. - The Editor"
+group = "Byte-System"
+source = "script"
+
+[demozoo.247065]
+title = "U.K. Intro #1"
+group = "Ipec Elite"
+source = "script"
+
+[demozoo.94349]
+title = "Ubehageligt Død Tetris"
+group = "Blueberry"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.242713]
+title = "Ubq"
+group = "Elefantklubben"
+source = "script"
+
+[demozoo.9759]
+title = "UF40k"
+group = "United Force"
+source = "script"
+machine = "a1200"
+run = "UF40k"
+
+[demozoo.276850]
+title = "Uffse"
+group = "Splash"
+source = "script"
+
+[demozoo.34788]
+title = "UFO"
+group = "Ozone"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.224128]
+title = "UGA Music Intro"
+group = "U.G.A Software / Power Peak"
+source = "script"
+
+[demozoo.20775]
+title = "Uge Pappi the Age Pup"
+group = "dA JoRMaS"
+source = "script"
+
+[demozoo.89493]
+title = "Ugly"
+group = "Broken Cube"
+source = "script"
+result = "unknown"
+run = "BC_Ugly-NoCrunch"
+
+[demozoo.112463]
+title = "Ugly Faces"
+group = "Phenomena"
+source = "script"
+
+[demozoo.243037]
+title = "Ugly Intro"
+group = "Enemies"
+source = "script"
+
+[demozoo.221218]
+title = "UK Chart Inftro"
+group = "Doom Uk"
+source = "script"
+
+[demozoo.195605]
+title = "UK Charts"
+group = "Maniacs"
+source = "script"
+
+[demozoo.265107]
+title = "UK Charts 2"
+group = "Voodoo Design"
+source = "script"
+
+[demozoo.265109]
+title = "UK Charts 2 Message Box"
+group = "Voodoo Design"
+source = "script"
+
+[demozoo.249833]
+title = "UK Charts Informer"
+group = "Maniacs"
+source = "script"
+
+[demozoo.307531]
+title = "Ukramiga 32b"
+group = "Nosferatu"
+source = "script"
+result = "unknown"
+
+[demozoo.244]
+title = "Ulitro"
+group = "Dreamdealers"
+source = "script"
+
+[demozoo.255476]
+title = "Ullisprick - The Adventure Intro"
+group = "Ram Jam"
+source = "script"
+
+[demozoo.10195]
+title = "uloste"
+group = "Rave Network Overscan / Fit"
+source = "script"
+machine = "a1200"
+
+[demozoo.22604]
+title = "Ulsteri"
+group = "dA JoRMaS"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.224775]
+title = "Ultimate  Lomahömppä"
+group = "Acid Inc"
+source = "script"
+
+[demozoo.324590]
+title = "Ultimate 1000"
+group = "Project R3D"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.209062]
+title = "Ultimate Dream"
+group = "Infinite Perfection"
+source = "script"
+
+[demozoo.255041]
+title = "Ultimate Dream BBS Gets New Number"
+group = "Punishers"
+source = "script"
+
+[demozoo.216523]
+title = "Ultimate FX"
+group = "Goldfire"
+source = "script"
+
+[demozoo.241960]
+title = "Ultimate Golf - Demo Version"
+group = "Dual Crew"
+source = "script"
+
+[demozoo.226825]
+title = "Ultimate Intro"
+group = "JVC"
+source = "script"
+
+[demozoo.229436]
+title = "Ultimate Julgubbe Demo"
+group = "Nikki Corruptions"
+source = "script"
+
+[demozoo.221580]
+title = "Ultimate Pleasure"
+group = "Amigavision Crew"
+source = "script"
+
+[demozoo.229735]
+title = "Ultimate Rainbow-Intro"
+group = "Amiga Industries"
+source = "script"
+
+[demozoo.257805]
+title = "Ultimate Seduction"
+group = "Shining 8"
+source = "script"
+
+[demozoo.211807]
+title = "Ultimate Sine Demo"
+group = "Nikki Corruptions"
+source = "script"
+
+[demozoo.248249]
+title = "Ultimate Sinus Demo"
+group = "Complex"
+source = "script"
+
+[demozoo.10362]
+title = "Ultimate Soundmonitor Disk Intro"
+group = "Anarchy"
+source = "script"
+
+[demozoo.262709]
+title = "Ultimate Soundtracker Collection intro"
+group = "The Web Inc."
+source = "script"
+machine = "a500_ks12"
+
+[demozoo.7490]
+title = "Ultimate Stress"
+group = "Bomb Squad"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.229902]
+title = "Ultimates"
+group = "The Lost Boys"
+source = "script"
+
+[demozoo.249714]
+title = "Ultra BBS Intro"
+group = "Magic"
+source = "script"
+
+[demozoo.196100]
+title = "Ultra Bobs"
+group = "Armada"
+source = "script"
+
+[demozoo.265341]
+title = "Ultra Pack Intro"
+group = "Vision"
+source = "script"
+
+[demozoo.227208]
+title = "Ultra Pak 18 - intro"
+group = "The Droog's"
+source = "script"
+
+[demozoo.102441]
+title = "Ultra Small Intro"
+group = "Amaze"
+source = "script"
+
+[demozoo.216739]
+title = "Ultrademo"
+group = "Rebels"
+source = "script"
+machine = "a500_ks12"
+
+[demozoo.232786]
+title = "Ultrademo 1"
+group = "The Link"
+source = "script"
+
+[demozoo.140800]
+title = "Ulven"
+group = "Polka Brothers"
+source = "script"
+machine = "a1200"
+
+[demozoo.5115]
+title = "Umbilicus Mundi"
+group = "Software Failure"
+source = "script"
+result = "unknown"
+
+[demozoo.152871]
+title = "Umbra Et Imago"
+group = "Agnostic Front"
+source = "script"
+
+[demozoo.188212]
+title = "UMF1 (Useless Music File)"
+group = "Four Track Magic"
+source = "script"
+
+[demozoo.8940]
+title = "Un Amiga, Mil Sueños"
+group = "Odrusba"
+source = "script"
+
+[demozoo.260525]
+title = "Una Intro de Mierda"
+group = "Teleteria"
+source = "script"
+machine = "a1200"
+
+[demozoo.29829]
+title = "Unamuno Solo Tenia."
+group = "Phornee"
+source = "script"
+machine = "a1200"
+
+[demozoo.31929]
+title = "Unanimiter"
+group = "Floppy"
+source = "script"
+machine = "a1200"
+
+[demozoo.37215]
+title = "Unauthorized Lands"
+group = "Nah Kolor"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.221138]
+title = "Uncanny Intro"
+group = "Strontium"
+source = "script"
+
+[demozoo.253700]
+title = "Uncle Beaver's Summer Camp"
+group = "Pearl"
+source = "script"
+
+[demozoo.217585]
+title = "Uncoded"
+group = "Lustrones"
+source = "script"
+
+[demozoo.342403]
+title = "Undated"
+group = "Alcatraz / Desire"
+source = "script"
+
+[demozoo.225024]
+title = "Under Attack"
+group = "Torments"
+source = "script"
+
+[demozoo.43279]
+title = "Under Pressure"
+group = "Darkage"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.29823]
+title = "Under The Hammer"
+group = "Zaborra"
+source = "script"
+machine = "a1200_fast"
+run = "UnderTheHammer"
+
+[demozoo.245030]
+title = "Under The Surface"
+group = "Gin"
+source = "script"
+
+[demozoo.366659]
+title = "Under the Sycamore Trees"
+group = "Desire"
+source = "script"
+
+[demozoo.7721]
+title = "Underground"
+group = "Venture"
+source = "script"
+machine = "a1200"
+
+[demozoo.212095]
+title = "Underground"
+group = "ISCH Crew"
+source = "script"
+machine = "a1200"
+
+[demozoo.237738]
+title = "Underground"
+group = "Floppy / Crazy Drivers"
+source = "script"
+machine = "a1200"
+
+[demozoo.212096]
+title = "Underground  the Preview"
+group = "ISCH Crew"
+source = "script"
+
+[demozoo.246650]
+title = "Underground BBS"
+group = "Industry"
+source = "script"
+result = "unknown"
+
+[demozoo.151510]
+title = "Underground Tape"
+group = "Warp Zero"
+source = "script"
+machine = "a1200"
+
+[demozoo.217219]
+title = "Underground Terminal BBS"
+group = "Bright Brick / Mr. Lone"
+source = "script"
+
+[demozoo.236585]
+title = "UnderSheet"
+group = "Candle"
+source = "script"
+result = "unknown"
+
+[demozoo.7671]
+title = "Underworld"
+group = "Dreamline Designs"
+source = "script"
+result = "unknown"
+run = "UnderWorld"
+
+[demozoo.215231]
+title = "Underworld"
+group = "Unlimited"
+source = "script"
+
+[demozoo.249070]
+title = "Une Nouvelle Intro Avec"
+group = "Les Shadock"
+source = "script"
+machine = "a1200"
+
+[demozoo.119944]
+title = "Une Petite Demo"
+group = "Nori K"
+source = "script"
+
+[demozoo.256673]
+title = "Une Petite Demo"
+group = "SMT"
+source = "script"
+
+[demozoo.223896]
+title = "Une Petite Production"
+group = "Mystics"
+source = "script"
+
+[demozoo.174750]
+title = "unexpected"
+group = "Steroid"
+source = "script"
+machine = "a1200"
+
+[demozoo.301454]
+title = "Unexpected Quests"
+group = "Amaze"
+source = "script"
+
+[demozoo.209192]
+title = "Unfilled Vectors"
+group = "Exort"
+source = "script"
+
+[demozoo.3191]
+title = "Unfortunately"
+group = "Moods Plateau / Drifters"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.252332]
+title = "Ungarn 2 (A Little Funny Demo)"
+group = "North Star"
+source = "script"
+
+[demozoo.308836]
+title = "Unicode Attac"
+group = "Five Finger Punch"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.232827]
+title = "Unimation"
+group = "Unicorn"
+source = "script"
+
+[demozoo.248250]
+title = "Unintelligent Demo"
+group = "Complex"
+source = "script"
+
+[demozoo.248251]
+title = "Unintelligent Intro"
+group = "Complex"
+source = "script"
+
+[demozoo.214013]
+title = "Unique Intro"
+group = "Opus Mag"
+source = "script"
+
+[demozoo.40188]
+title = "Unite Ur Dreams"
+group = "Orchid"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.41777]
+title = "United"
+group = "Kangooroo"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.225454]
+title = "United"
+group = "Digital Projects"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.263963]
+title = "United Lamers Against Triad"
+group = "United Lamers"
+source = "script"
+
+[demozoo.92382]
+title = "Universal Intensity"
+group = "Complex"
+source = "script"
+
+[demozoo.156122]
+title = "Universal Pictures (Amiga)"
+group = "Unique"
+source = "script"
+
+[demozoo.208310]
+title = "Universal Pictures Part 2 - Licence To Fill"
+group = "Unique"
+source = "script"
+
+[demozoo.139138]
+title = "Unjust Sentence"
+group = "Appendix"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.95282]
+title = "Unknown Territory"
+group = "Axis"
+source = "script"
+
+[demozoo.270773]
+title = "Unknown Turning Silkworm"
+group = "Syntax Error"
+source = "script"
+
+[demozoo.270774]
+title = "Unknown Turning Silkworm - Circle Scroll"
+group = "Syntax Error"
+source = "script"
+
+[demozoo.169808]
+title = "Unknown's Pinboard"
+group = "Doctor Mabuse Orgasm Crackings"
+source = "script"
+
+[demozoo.193321]
+title = "Unlimited"
+group = "Arise"
+source = "script"
+
+[demozoo.189308]
+title = "Unlimited Bobs"
+group = "Intuition"
+source = "script"
+
+[demozoo.219098]
+title = "Unlimited Bobs"
+group = "Cyborx"
+source = "script"
+
+[demozoo.228894]
+title = "Unlimited Bobs"
+group = "Sidon"
+source = "script"
+
+[demozoo.240402]
+title = "Unlimited Pleasure"
+group = "Delight"
+source = "script"
+
+[demozoo.232264]
+title = "Unlimited Rastertime"
+group = "Admirals"
+source = "script"
+
+[demozoo.228610]
+title = "Unnamed"
+group = "Delta 9"
+source = "script"
+result = "unknown"
+run = "__2"
+
+[demozoo.219578]
+title = "Unnatural Forces"
+group = "Creator"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.165248]
+title = "Unnatural High 2"
+group = "MDMA"
+source = "script"
+
+[demozoo.211291]
+title = "Unnecessary Diskfiller"
+group = "Nuke / Rubber"
+source = "script"
+
+[demozoo.296811]
+title = "Unofficial Intro to Flummy"
+group = "North Star"
+source = "script"
+
+[demozoo.244283]
+title = "Unplugged"
+group = "Focus Design"
+source = "script"
+
+[demozoo.238781]
+title = "Unreadable Scroll"
+group = "Bounty"
+source = "script"
+
+[demozoo.147836]
+title = "Unreal"
+group = "Blaze"
+source = "script"
+
+[demozoo.228557]
+title = "Unreal"
+group = "Supreme"
+source = "script"
+machine = "a1200"
+run = "main"
+
+[demozoo.385175]
+title = "UnreaL intro"
+group = "Unreal"
+source = "script"
+
+[demozoo.232589]
+title = "Unreal Music Rip"
+group = "Trackers"
+source = "script"
+
+[demozoo.10377]
+title = "Unreleased demo"
+group = "Flash Production / Anarchy / Quartex"
+source = "script"
+
+[demozoo.7162]
+title = "Unsatisfied"
+group = "Universal Soldiers"
+source = "script"
+machine = "a1200"
+
+[demozoo.70679]
+title = "Unsorted Ideas"
+group = "Illusion"
+source = "script"
+machine = "a1200"
+
+[demozoo.170685]
+title = "Unstable Traktor"
+group = "AceMan"
+source = "script"
+run = "AceMan - Unstable Traktor (68000).exe"
+
+[demozoo.244841]
+title = "Unswerving"
+group = "Gods"
+source = "script"
+machine = "a1200_030"
+boot = "floppy"
+result = "crashes-later"
+
+[demozoo.35437]
+title = "Untitled"
+group = "Floppy"
+source = "script"
+machine = "a1200"
+run = "FLP-Untitled.exe"
+
+[demozoo.250957]
+title = "Untro"
+group = "Morbid"
+source = "script"
+
+[demozoo.193829]
+title = "Unusual Heat 7 - menu"
+group = "Trackers"
+source = "script"
+
+[demozoo.119178]
+title = "Unusual Suspects"
+group = "Mandarine / Mankind"
+source = "script"
+machine = "a1200"
+
+[demozoo.33742]
+title = "Up n'x"
+group = "Appendix"
+source = "script"
+machine = "a1200_fast"
+run = "UPN'X.exe"
+
+[demozoo.309628]
+title = "Up Rough Boulevard"
+group = "Up Rough"
+source = "script"
+
+[demozoo.236548]
+title = "Updated Version of Commodores Hard Disk Drivers"
+group = "Cascade 1733"
+source = "script"
+
+[demozoo.51580]
+title = "Updater 2010"
+group = "Moods Plateau"
+source = "script"
+
+[demozoo.18364]
+title = "Updater 2011"
+group = "Moods Plateau"
+source = "script"
+
+[demozoo.38855]
+title = "Updater 2012"
+group = "Moods Plateau"
+source = "script"
+
+[demozoo.287664]
+title = "Updater 2020 aka Postcard from Quarantania"
+group = "Moods Plateau / Desire"
+source = "script"
+
+[demozoo.353142]
+title = "Uperty 1"
+group = "Pendle Europa"
+source = "script"
+
+[demozoo.194259]
+title = "Upstream 1 Intro"
+group = "Frogs"
+source = "script"
+
+[demozoo.184041]
+title = "Upstream 8 Intro"
+group = "Balance"
+source = "script"
+machine = "a500_1mb"
+
+[demozoo.195542]
+title = "Upstream 9 Intro"
+group = "Balance"
+source = "script"
+
+[demozoo.209386]
+title = "Upstream Announcement"
+group = "Frogs"
+source = "script"
+
+[demozoo.96646]
+title = "Uquala"
+group = "Damage"
+source = "script"
+
+[demozoo.195753]
+title = "Urban"
+group = "C-Lous"
+source = "script"
+machine = "a1200"
+
+[demozoo.232067]
+title = "Urban Cowboy"
+group = "Accession"
+source = "script"
+
+[demozoo.23773]
+title = "Urea"
+group = "po-RNO"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.39866]
+title = "Uri Geller Experience"
+group = "Factor"
+source = "script"
+machine = "a1200"
+
+[demozoo.221468]
+title = "Uridium Demo"
+group = "Soft Sonic Force"
+source = "script"
+
+[demozoo.64107]
+title = "Urine"
+group = "3 Amigos"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.229113]
+title = "Urine Utils"
+group = "Addicts"
+source = "script"
+
+[demozoo.349]
+title = "US-Trader"
+group = "Italian Bad Boys"
+source = "script"
+
+[demozoo.223186]
+title = "Usefull Programms Collection Intro"
+group = "Evil Meditation"
+source = "script"
+boot = "floppy"
+
+[demozoo.9565]
+title = "Useless"
+group = "Appendix"
+source = "script"
+result = "unknown"
+
+[demozoo.24041]
+title = "Useless"
+group = "Bleifrei"
+source = "script"
+result = "unknown"
+
+[demozoo.237351]
+title = "User Analysis System 1"
+group = "Cinefex Design"
+source = "script"
+
+[demozoo.263825]
+title = "User Disk 5 Intro"
+group = "Triangle"
+source = "script"
+
+[demozoo.233221]
+title = "Userdisk v2.0 Intro"
+group = "Alive"
+source = "script"
+
+[demozoo.206901]
+title = "Users Home BBS Intro"
+group = "Wave"
+source = "script"
+
+[demozoo.238432]
+title = "Uses Your Brain For Fun"
+group = "Bloodsuckers"
+source = "script"
+
+[demozoo.264694]
+title = "Usual Demo"
+group = "Wizzcat"
+source = "script"
+
+[demozoo.231951]
+title = "Utah Saints Fan Club Intro"
+group = "Absolute!"
+source = "script"
+
+[demozoo.240057]
+title = "Utan Pengar"
+group = "Deathbringers"
+source = "script"
+result = "unknown"
+
+[demozoo.279567]
+title = "Utilities 1 - intro"
+group = "Liberty"
+source = "script"
+result = "unknown"
+
+[demozoo.222374]
+title = "Utilities 3 - Intro"
+group = "Nightmare Boyz / Illusion"
+source = "script"
+
+[demozoo.220954]
+title = "Utilities Compilation - intro"
+group = "Assassins"
+source = "script"
+
+[demozoo.218078]
+title = "Utility 1 Intro"
+group = "European Software Agency"
+source = "script"
+
+[demozoo.250687]
+title = "Utility Desaster Menu Preview"
+group = "Mexx"
+source = "script"
+
+[demozoo.262958]
+title = "Utility Disk 2 Intro"
+group = "Them"
+source = "script"
+
+[demozoo.344338]
+title = "Utility Disk 2.0"
+group = "The Warfalcons"
+source = "script"
+
+[demozoo.214371]
+title = "Utility Disk Intro"
+group = "NZ Express"
+source = "script"
+
+[demozoo.270725]
+title = "Utility Disk Intro"
+group = "Avenger"
+source = "script"
+
+[demozoo.275939]
+title = "Utility Disk Intro"
+group = "Fulcrum"
+source = "script"
+
+[demozoo.233517]
+title = "Utility Disk v5 - Menu"
+group = "Alpha Flight"
+source = "script"
+
+[demozoo.194633]
+title = "Utility Disk Volume 3 Intro"
+group = "Optical Illusions"
+source = "script"
+
+[demozoo.246630]
+title = "Utility Dream 49 - menu"
+group = "Infect"
+source = "script"
+
+[demozoo.246642]
+title = "Utility Dream 68 Menu"
+group = "Infect"
+source = "script"
+
+[demozoo.257683]
+title = "Utility Pack 1 Intro"
+group = "Sensor"
+source = "script"
+
+[demozoo.259859]
+title = "Utility Pack Intro"
+group = "Supplex"
+source = "script"
+
+[demozoo.218454]
+title = "Utility Pack Intro v1.0"
+group = "Q-Branch"
+source = "script"
+
+[demozoo.160120]
+title = "Utility Stuff Nr. Three Intro"
+group = "Hypnosis"
+source = "script"
+
+[demozoo.223235]
+title = "UtilityDisk #2 - intro"
+group = "Amiga Enterprises"
+source = "script"
+
+[demozoo.9285]
+title = "Utmost Vacancy"
+group = "Scum"
+source = "script"
+result = "unknown"
+run = "LE-window6.12"
+
+[demozoo.9056]
+title = "Utopia"
+group = "Madwizards"
+source = "script"
+machine = "a1200_fast"
+
+[demozoo.195761]
+title = "Utopia BBS"
+group = "Maniacs"
+source = "script"
+
+[demozoo.195567]
+title = "Utopian Boring"
+group = "Legacy"
+source = "script"
+
+[demozoo.149108]
+title = "Uulima"
+group = "CNCD"
+source = "script"
+result = "unknown"
+
+[demozoo.8260]
+title = "Uusi"
+group = "Cromatics"
+source = "script"
+machine = "a1200_030"
+
+[demozoo.195568]
+title = "Uykusuzluk"
+group = "Legacy"
+source = "script"
