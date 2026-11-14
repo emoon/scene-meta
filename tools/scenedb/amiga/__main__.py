@@ -5,12 +5,14 @@
     python3 -m scenedb amiga report
     python3 -m scenedb amiga export
     python3 -m scenedb amiga replay [--ids ...] [--jobs N]
+    python3 -m scenedb amiga migrate [scene.db]
 """
 
 import sys
 
 from ..core import cli
-from . import catalog, classes, export, fetch, media, replay, store, sweep
+from . import (catalog, classes, config, export, fetch, media, migrate, replay,
+               store, sweep)
 
 
 def _prods(args):
@@ -30,8 +32,10 @@ def main(argv=None):
 
     if args.cmd == "replay":    # reads the data files, not the database
         return replay.run(args.ids, jobs=args.jobs)
+    if args.cmd == "migrate":
+        return cli.migrate(migrate.run, args.db or config.RESULTS_DB)
 
-    db = store.Store()
+    db = cli.open_store("amiga", store.Store)
     try:
         if args.cmd == "fetch":
             fetch.fetch_all(_prods(args), db, rate=args.rate)

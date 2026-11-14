@@ -2,6 +2,9 @@
 productions are picked. A platform adds its own commands and options."""
 
 import argparse
+import sys
+
+from . import store
 
 
 def parser(platform):
@@ -14,6 +17,9 @@ def parser(platform):
     sweep.add_argument("--multi", action="store_true",
                        help="only multi-disk variants")
     sub.add_parser("report")
+    p = sub.add_parser("migrate", help="convert a sweep database from before"
+                                       " the shared schema, in place")
+    p.add_argument("db", nargs="?", help="default: the platform's database")
     return ap, sub, sweep
 
 
@@ -30,3 +36,19 @@ def selected(productions, args, keep=None):
     if keep:
         prods = [p for p in prods if keep(p)]
     return prods[:args.limit] if args.limit else prods
+
+
+def migrate(run, path):
+    """The ``migrate`` command: ``run(path)`` is the platform's migration."""
+    print(f"{path}: converted" if run(path) else
+          f"{path}: already has the shared schema")
+
+
+def open_store(platform, make):
+    """``make()``, the platform's store; exits with what to do when the file
+    is from before the shared schema."""
+    try:
+        return make()
+    except store.LegacyDatabase as e:
+        sys.exit(f"{e} predates the shared schema; convert it with"
+                 f" `python3 -m scenedb {platform} migrate {e}`")

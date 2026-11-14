@@ -1,14 +1,15 @@
 import unittest
 
 from scenedb.amiga import export
-from scenedb.amiga.export import Variant
+from scenedb.core.export import Variant
+from scenedb.core.result import Swap
 
 
 def variant(idx=0, kind="hd", disks=(), command='"demo"\n', note="", machine="a500",
             verdict="works", drives=1, reached=None, swaps=()):
     disks = list(disks)
-    return Variant(idx, kind, disks, command, note, machine, verdict, drives,
-                   len(disks) if reached is None else reached, list(swaps))
+    return Variant(idx, kind, disks, note, {"command": command}, machine, verdict,
+                   drives, len(disks) if reached is None else reached, list(swaps))
 
 
 def entry(*variants, cls=None, groups="Kefrens"):
@@ -26,9 +27,10 @@ class EntryTest(unittest.TestCase):
     def test_other_machine(self):
         self.assertEqual(entry(variant(machine="a1200_fast"))["machine"], "a1200_fast")
 
-    def test_swaps_in_seconds_and_click_only_when_pressed(self):
+    def test_swaps_to_a_tenth_of_a_second_and_key_only_when_pressed(self):
         e = entry(variant(kind="floppy", disks=["/nas/DD-A.adf", "/nas/DD-B.dms", "/nas/DD-C.dms"],
-                          swaps=[(26844, 2, "poll+click"), (40000, 3, "poll")]))
+                          swaps=[Swap(2, 536.88, "poll+click", key="lmb"),
+                                 Swap(3, 800.0, "poll")]))
         self.assertEqual(e["disks"], ["DD-A.adf", "DD-B.dms", "DD-C.dms"])
         self.assertEqual(e["swaps"], [{"disk": 2, "at": 536.9, "key": "lmb"},
                                       {"disk": 3, "at": 800.0}])

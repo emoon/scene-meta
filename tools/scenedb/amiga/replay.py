@@ -9,13 +9,13 @@ is needed only when the disk does not load without it.
 
 import concurrent.futures as cf
 import os
-import sys
 import tomllib
 
 from scenemeta import machines as presets
 
+from ..core.export import default_machine
 from . import config, emulator, machines, media, verdict
-from .export import FPS
+from .machines import FPS
 
 KEY_DELAY = 5.0      # seconds from an insert to its key, when not given
 BUTTONS = {"lmb": 0}
@@ -127,9 +127,7 @@ def run(ids=None, data=None, jobs=None, log=print):
     """Replay the productions ``ids``; without ids, every entry that has a
     key on a swap."""
     data = data or config.DATA_DIR
-    default, _, problems = presets.load(data / presets.FILE)
-    if problems:
-        sys.exit(f"{data / presets.FILE}: {problems[0]}")
+    default = default_machine(data)
     found = entries(data)
     todo = {p: e for p, e in found.items()
             if (p in ids if ids else _has_keys(e))}

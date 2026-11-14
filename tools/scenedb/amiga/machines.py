@@ -110,6 +110,8 @@ LADDER = (
 
 BY_NAME = {m.name: m for m in LADDER}
 
+FPS = 50   # every machine is PAL: frames of a run to seconds
+
 
 AGA_RELEASE = "1992-10"   # the A1200 and A4000 shipped
 

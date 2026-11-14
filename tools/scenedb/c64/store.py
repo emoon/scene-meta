@@ -1,57 +1,39 @@
-"""The results database (sqlite).
+"""The C64 sweep's log: the shared tables (core/store.py) and what was
+observed by hand.
 
-production  one row per Demozoo production in scope
-variant     each bootable thing found for a production (a disk set)
-run         one boot of one variant on one ladder machine
-flip        the disk changes a run made, for auto-flipping
-flip_window when a disk change should be made, per variant and disk; one row
-            per source: ``sweep`` (from the best run's accepted flips, rebuilt
-            by every sweep) or ``manual`` (observed by hand, never touched)
+swap_window when a disk change should be made, per variant and disk; one row
+            per source: ``sweep`` (from the best run's accepted swaps,
+            rebuilt by every sweep) or ``manual`` (observed by hand, never
+            touched)
 variant_class what a variant needs: flips | standalone | boot_fresh | collection;
             ``manual`` rows are hand-made, ``auto`` rows come from
             ``classify_collections``
+manual_boot where a hand-classified variant boots
 
-The view ``best`` gives each variant's chosen machine and its flip schedule.
 The view ``schedule`` gives one window per variant and disk (manual first).
 The view ``variant_status`` gives each variant's class (manual, auto, derived).
-Times are exact C64 cycles since power-on (``stopwatch``); the PAL clock is
-985248 Hz, NTSC 1022727 Hz.
+
+A variant's ``detail`` holds ``boot_disk`` and ``boot_file``; a run's holds
+the tail of the emulator ``log`` and ``asked_disk``, when the screen first
+asked for a disk. Times are seconds, as everywhere in the log; manual.json
+gives them in C64 cycles and is converted when it is loaded.
 """
 
 import json
 import os
-import sqlite3
-import time
 
-from . import config
+from ..core import store
+from . import config, machines
 
 SCHEMA = """
-create table if not exists production (
-    id integer primary key, title text, groups text, types text,
-    release_date text, media_problems text);
-create table if not exists variant (
-    id integer primary key, prod_id integer not null, idx integer not null,
-    kind text not null, disks text, disk_count integer, note text,
-    best_run_id integer, best_machine text, best_verdict text, done_at text,
-    boot_disk integer, boot_file text,
-    unique (prod_id, idx));
-create table if not exists run (
-    id integer primary key, variant_id integer not null, machine text not null,
-    budget integer, verdict text, alive integer, crash text,
-    crash_cycles integer, ended_cycles integer, wants_disk integer,
-    disks_reached integer, detail text, screenshot blob, at text);
-create table if not exists flip (
-    run_id integer not null, seq integer not null, disk integer,
-    trigger text, waiting_since integer, inserted integer, accepted integer,
-    screenshot blob, primary key (run_id, seq));
-create table if not exists flip_window (
+create table if not exists swap_window (
     prod_id integer not null, variant integer not null, disk integer not null,
     source text not null,
-    start integer,       -- cycles: the demo asks for the disk
-    insert_at integer,   -- cycles: an insert known to work
-    "end" integer,       -- cycles: last insert known to work; null: no limit seen
-    key text, key_delay integer,   -- key pressed this long after the insert
-    pre_keys text,       -- json [[cycles, key], ...]: menu keys before the insert
+    start real,          -- the demo asks for the disk
+    insert_at real,      -- an insert known to work
+    "end" real,          -- last insert known to work; null: no limit seen
+    key text, key_delay real,      -- key pressed this long after the insert
+    pre_keys text,       -- json [[seconds, key], ...]: menu keys before the insert
     note text,
     primary key (prod_id, variant, disk, source));
 create table if not exists variant_class (
@@ -63,22 +45,11 @@ create table if not exists manual_boot (   -- where a hand-classified variant bo
     boot_disk integer not null,   -- index into the variant's disks, 0 = first
     boot_file text,               -- directory entry; null = autostart the first file
     primary key (prod_id, variant));
-create index if not exists ix_run_variant on run(variant_id);
-drop view if exists best;
-create view best as
-    select p.id prod_id, p.title, p.groups, v.idx variant, v.kind,
-           v.disk_count, v.best_machine machine, v.best_verdict verdict,
-           r.id run_id, r.disks_reached, r.ended_cycles, r.wants_disk,
-           (select group_concat(f.disk || ':' || f.waiting_since || ':' ||
-                                f.trigger, ' ')
-              from flip f where f.run_id = r.id and f.accepted) flips
-    from variant v join production p on p.id = v.prod_id
-    left join run r on r.id = v.best_run_id;
 drop view if exists schedule;
 create view schedule as
-    select w.* from flip_window w
+    select w.* from swap_window w
     where w.source = 'manual'
-       or not exists (select 1 from flip_window m where m.prod_id = w.prod_id
+       or not exists (select 1 from swap_window m where m.prod_id = w.prod_id
                       and m.variant = w.variant and m.disk = w.disk
                       and m.source = 'manual');
 drop view if exists variant_status;
@@ -94,117 +65,42 @@ create view variant_status as
 """
 
 
-def _now():
-    return time.strftime("%Y-%m-%dT%H:%M:%S")
-
-
-class Store:
+class Store(store.Store):
     def __init__(self, path=None):
-        path = path or config.RESULTS_DB
-        path.parent.mkdir(parents=True, exist_ok=True)
-        self.db = sqlite3.connect(path, timeout=60)
-        self.db.execute("pragma journal_mode=wal")
-        self.db.executescript(SCHEMA)
-        if "key" not in {r[1] for r in self.db.execute("pragma table_info(flip)")}:
-            self.db.execute("alter table flip add column key text")
-        if "pre_keys" not in {r[1] for r in
-                              self.db.execute("pragma table_info(flip_window)")}:
-            self.db.execute("alter table flip_window add column pre_keys text")
-        if "boot_file" not in {r[1] for r in self.db.execute("pragma table_info(variant)")}:
-            self.db.execute("alter table variant add column boot_disk integer")
-            self.db.execute("alter table variant add column boot_file text")
-        if "asked_disk" not in {r[1] for r in self.db.execute("pragma table_info(run)")}:
-            self.db.execute("alter table run add column asked_disk integer")
-        if "key_at" not in {r[1] for r in self.db.execute("pragma table_info(flip)")}:
-            self.db.execute("alter table flip add column key_at integer")
+        super().__init__(path or config.RESULTS_DB, SCHEMA)
 
-    def close(self):
-        self.db.close()
-
-    # -- catalog -------------------------------------------------------------
-    def put_production(self, prod, problems=()):
-        self.db.execute(
-            "insert or replace into production values (?,?,?,?,?,?)",
-            (prod.id, prod.title, prod.groups, ",".join(prod.types),
-             prod.release_date, "; ".join(problems) or None))
-        self.db.commit()
-
-    def put_variants(self, prod_id, variants):
-        """Replace a production's variants (and their runs). Returns ids."""
-        for (vid,) in self.db.execute(
-                "select id from variant where prod_id=?", (prod_id,)).fetchall():
-            self._delete_runs(vid)
-        self.db.execute("delete from variant where prod_id=?", (prod_id,))
-        ids = []
+    def put_result(self, prod, problems, variants):
+        super().put_result(prod, problems, variants)
         for i, v in enumerate(variants):
-            cur = self.db.execute(
-                "insert into variant (prod_id, idx, kind, disks, disk_count, note,"
-                " boot_disk, boot_file) values (?,?,?,?,?,?,?,?)",
-                (prod_id, i, v.kind, json.dumps(v.disks), len(v.disks),
-                 v.note or None, v.boot_disk, v.boot_file or None))
-            ids.append(cur.lastrowid)
-        self.db.commit()
-        return ids
+            self.put_windows(prod.id, i, v.chosen.swaps)
 
-    def done_productions(self):
-        return {r[0] for r in self.db.execute(
-            "select prod_id from variant group by prod_id "
-            "having count(*) = count(done_at)")}
-
-    # -- runs ----------------------------------------------------------------
-    def put_run(self, variant_id, a):
-        """Store one sweep.Attempt."""
-        v, log = a.verdict, a.log
-        cur = self.db.execute(
-            "insert into run (variant_id, machine, budget, verdict, alive, crash,"
-            " crash_cycles, ended_cycles, wants_disk, disks_reached, detail,"
-            " screenshot, at, asked_disk) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
-            (variant_id, a.machine, a.budget, v.verdict, v.alive, v.crash,
-             v.crash_cycles, v.ended_cycles, int(v.wants_disk), a.reached,
-             log.detail or None, log.last_shot or None, _now(), log.asked_disk))
-        rid = cur.lastrowid
-        self.db.executemany(
-            "insert into flip (run_id, seq, disk, trigger, waiting_since, inserted,"
-            " accepted, screenshot, key, key_at) values (?,?,?,?,?,?,?,?,?,?)",
-            [(rid, i, f.disk, f.trigger, f.waiting_since, f.inserted,
-              int(f.accepted), f.shot or None, f.key, f.key_at)
-             for i, f in enumerate(log.flips)])
-        self.db.commit()
-        return rid
-
-    def put_windows(self, prod_id, variant, flips):
-        """Rebuild a variant's ``sweep`` windows from the accepted flips of its
-        best run. The first accepted flip to each disk is the one recorded."""
-        self.db.execute("delete from flip_window where prod_id=? and variant=?"
+    def put_windows(self, prod_id, variant, swaps):
+        """Rebuild a variant's ``sweep`` windows from the accepted swaps
+        (result.Swap) of its best run. The first accepted swap to each disk
+        is the one recorded."""
+        self.db.execute("delete from swap_window where prod_id=? and variant=?"
                         " and source='sweep'", (prod_id, variant))
         seen = set()
-        for f in flips:
-            if not f.accepted or f.disk in seen:
+        for s in swaps:
+            if not s.accepted or s.disk in seen:
                 continue
-            seen.add(f.disk)
-            delay = f.key_at - f.inserted if f.key and f.key_at else None
+            seen.add(s.disk)
+            delay = s.key_at - s.at if s.key and s.key_at else None
             self.db.execute(
-                "insert into flip_window (prod_id, variant, disk, source, start,"
+                "insert into swap_window (prod_id, variant, disk, source, start,"
                 " insert_at, key, key_delay) values (?,?,?,'sweep',?,?,?,?)",
-                (prod_id, variant, f.disk, f.waiting_since, f.inserted,
-                 f.key, delay))
+                (prod_id, variant, s.disk, s.waiting_since, s.at, s.key, delay))
         self.db.commit()
 
     def rebuild_windows(self):
         """Rebuild every variant's ``sweep`` windows from the stored best runs
         (for databases swept before windows were recorded)."""
-        from .runner import Flip
         rows = self.db.execute(
             "select p.id, v.idx, v.best_run_id from variant v"
             " join production p on p.id = v.prod_id"
             " where v.best_run_id is not null").fetchall()
         for prod_id, idx, run_id in rows:
-            flips = [Flip(d, trig, since, ins, bool(acc), key=key, key_at=key_at)
-                     for d, trig, since, ins, acc, key, key_at in self.db.execute(
-                         "select disk, trigger, waiting_since, inserted, accepted,"
-                         " key, key_at from flip where run_id=? order by seq",
-                         (run_id,))]
-            self.put_windows(prod_id, idx, flips)
+            self.put_windows(prod_id, idx, self.swaps(run_id))
 
     def classify_collections(self):
         """Mark the variants that did not reach all their disks and whose disk
@@ -233,14 +129,25 @@ class Store:
                         (prod_id, idx, f"disk set shared by {len(members)} productions"))
         self.db.commit()
 
+    def _hz(self, prod_id, variant):
+        """The clock of the machine chosen for a variant."""
+        row = self.db.execute("select best_machine from variant where prod_id=?"
+                              " and idx=?", (prod_id, variant)).fetchone()
+        return machines.hz(row[0] if row else None)
+
     def put_manual(self, entries):
-        """Load hand-observed windows and classes (see manual.json); rows from
-        an earlier load of the same variant are replaced."""
+        """Load hand-observed windows and classes (see manual.json, whose
+        times are cycles); rows from an earlier load of the same variant
+        are replaced."""
         for e in entries:
             key = (e["prod"], e.get("variant", 0))
+            hz = self._hz(*key)
+
+            def seconds(cycles):
+                return None if cycles is None else cycles / hz
             self.db.execute("delete from variant_class where prod_id=? and "
                             "variant=? and source='manual'", key)
-            self.db.execute("delete from flip_window where prod_id=? and "
+            self.db.execute("delete from swap_window where prod_id=? and "
                             "variant=? and source='manual'", key)
             self.db.execute("delete from manual_boot where prod_id=? and variant=?", key)
             if "boot_disk" in e or "boot_file" in e:
@@ -250,23 +157,14 @@ class Store:
                 "insert into variant_class values (?,?,?,'manual',?)",
                 (*key, e["class"], e.get("note")))
             for w in e.get("windows", ()):
+                pre_keys = [[seconds(at), k] for at, k in w.get("pre_keys") or ()]
                 self.db.execute(
-                    "insert into flip_window (prod_id, variant, disk, source, start,"
+                    "insert into swap_window (prod_id, variant, disk, source, start,"
                     " insert_at, \"end\", key, key_delay, pre_keys, note)"
                     " values (?,?,?,'manual',?,?,?,?,?,?,?)",
-                    (*key, w["disk"], w.get("start"), w.get("insert_at"),
-                     w.get("end"), w.get("key"), w.get("key_delay"),
-                     json.dumps(w["pre_keys"]) if w.get("pre_keys") else None,
+                    (*key, w["disk"], seconds(w.get("start")),
+                     seconds(w.get("insert_at")), seconds(w.get("end")),
+                     w.get("key"), seconds(w.get("key_delay")),
+                     json.dumps(pre_keys) if pre_keys else None,
                      w.get("note")))
         self.db.commit()
-
-    def finish_variant(self, variant_id, run_id, machine, verdict):
-        self.db.execute("update variant set best_run_id=?, best_machine=?,"
-                        " best_verdict=?, done_at=? where id=?",
-                        (run_id, machine, verdict, _now(), variant_id))
-        self.db.commit()
-
-    def _delete_runs(self, variant_id):
-        self.db.execute("delete from flip where run_id in "
-                        "(select id from run where variant_id=?)", (variant_id,))
-        self.db.execute("delete from run where variant_id=?", (variant_id,))

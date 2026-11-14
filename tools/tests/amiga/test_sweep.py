@@ -359,3 +359,22 @@ class SeedIsRecordedTest(unittest.TestCase):
             a = sweep.attempt(machines.BY_NAME["a500"], v, 250, seed=7)
         self.assertEqual(a.seed, 7)
         self.assertIn({"event": "seed", "seed": 7}, a.log.events)
+
+
+class RecordTest(unittest.TestCase):
+    def test_frames_and_samples_become_seconds(self):
+        log = RunLog([], [{"event": "halt"}], 3, False, "", b"png")
+        v = verdict.Verdict("works-then-crash", 9, "halt", 30000, wants_disk=True)
+        a = sweep.Attempt("a500", 72000, v, log,
+                          [(26844, 2, "poll+click"), (40000, 3, "idle")],
+                          drives=2, reached=3)
+        r = a.record()
+        self.assertEqual(
+            (r.machine, r.budget, r.verdict, r.alive, r.crash, r.crash_at,
+             r.ended_at, r.wants_disk, r.drives, r.reached, r.screenshot),
+            ("a500", 1440.0, "works-then-crash", 45.0, "halt", 600.0, None,
+             True, 2, 3, b"png"))
+        self.assertEqual(r.detail, {"returncode": 3, "events": [{"event": "halt"}]})
+        self.assertEqual([(s.disk, s.at, s.trigger, s.key, s.accepted) for s in r.swaps],
+                         [(2, 536.88, "poll+click", "lmb", True),
+                          (3, 800.0, "idle", None, True)])

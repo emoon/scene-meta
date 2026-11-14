@@ -3,11 +3,11 @@ import tempfile
 import unittest
 
 from scenedb.c64 import store
-from scenedb.c64.runner import Flip
+from scenedb.core.result import Swap
 
 
 def flip(disk, since, inserted, accepted=True, key=None, key_at=None):
-    return Flip(disk, "idle", since, inserted, accepted, key=key, key_at=key_at)
+    return Swap(disk, inserted, "idle", accepted, since, key, key_at)
 
 
 class Windows(unittest.TestCase):
@@ -34,18 +34,18 @@ class Windows(unittest.TestCase):
         self.assertEqual(self.rows(), [(2, "sweep", 100, 400, None, None)])
 
     def test_a_new_sweep_replaces_sweep_windows_only(self):
-        self.db.db.execute("insert into flip_window (prod_id, variant, disk, source,"
+        self.db.db.execute("insert into swap_window (prod_id, variant, disk, source,"
                            " start, insert_at) values (1, 0, 2, 'manual', 7, 9)")
         self.db.put_windows(1, 0, [flip(2, 100, 400)])
         self.db.put_windows(1, 0, [flip(2, 150, 450)])
-        sweep = self.db.db.execute("select start from flip_window "
+        sweep = self.db.db.execute("select start from swap_window "
                                    "where source='sweep'").fetchall()
         self.assertEqual(sweep, [(150,)])
         self.assertEqual(self.rows(), [(2, "manual", 7, 9, None, None)])
 
     def test_manual_window_hides_the_sweep_one_in_the_schedule(self):
         self.db.put_windows(1, 0, [flip(2, 100, 400)])
-        self.db.db.execute("insert into flip_window (prod_id, variant, disk, source,"
+        self.db.db.execute("insert into swap_window (prod_id, variant, disk, source,"
                            " start, insert_at) values (1, 0, 2, 'manual', 7, 9)")
         self.assertEqual(self.rows(), [(2, "manual", 7, 9, None, None)])
 
@@ -54,7 +54,7 @@ class Windows(unittest.TestCase):
         q("insert into production (id, title) values (1, 'x')")
         q("insert into variant (id, prod_id, idx, kind, disk_count, best_run_id)"
           " values (1, 1, 0, 'k', 2, 5)")
-        q("insert into flip (run_id, seq, disk, trigger, waiting_since, inserted,"
+        q("insert into swap (run_id, seq, disk, trigger, waiting_since, at,"
           " accepted, key, key_at) values (5, 0, 2, 'idle', 100, 400, 1, 'space', 420)")
         self.db.rebuild_windows()
         self.assertEqual(self.rows(), [(2, "sweep", 100, 400, "space", 20)])
@@ -95,6 +95,21 @@ class Windows(unittest.TestCase):
         self.assertEqual(boot(), [(1, "bcf")])
         self.db.put_manual([{"prod": 1, "class": "standalone"}])
         self.assertEqual(boot(), [])
+
+    def test_manual_times_are_cycles_on_the_variants_clock(self):
+        q = self.db.db.execute
+        q("insert into variant (prod_id, idx, kind, best_machine)"
+          " values (2, 0, 'k', 'ntsc_1541')")
+        window = {"disk": 2, "start": 985_248 * 10, "insert_at": 1_022_727 * 20,
+                  "key": "space", "key_delay": 985_248 * 5,
+                  "pre_keys": [[985_248 * 3, "space"]]}
+        for prod in (1, 2):     # 1: no variant known, PAL
+            self.db.put_manual([{"prod": prod, "class": "flips", "windows": [window]}])
+        rows = q("select start, insert_at, key_delay, pre_keys from swap_window"
+                 " order by prod_id").fetchall()
+        self.assertEqual(rows[0][0], 10.0)
+        self.assertEqual(rows[0][2:], (5.0, '[[3.0, "space"]]'))
+        self.assertEqual(rows[1][1], 20.0)
 
 
 if __name__ == "__main__":

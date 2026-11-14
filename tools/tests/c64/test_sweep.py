@@ -98,5 +98,26 @@ class ReuText(unittest.TestCase):
         self.assertFalse(runner.wants_reu(self.screen("PREUSS AND REUSE")))
 
 
+class RecordTest(unittest.TestCase):
+    def test_cycles_become_seconds_on_the_machines_clock(self):
+        hz = machines.NTSC_HZ
+        log = runner.RunLog([], set(), [
+            runner.Flip(2, "poll", 100 * hz, 120 * hz, True, b"png", "space", 125 * hz),
+            runner.Flip(3, "idle", 300 * hz, 330 * hz)])
+        log.asked_disk, log.detail = 90 * hz, "tail"
+        v = verdict.Verdict("works-then-crash", 60 * hz, "jam", 400 * hz)
+        r = sweep.Attempt("ntsc_1541", 720 * hz, v, log).record()
+        self.assertEqual(
+            (r.machine, r.budget, r.verdict, r.alive, r.crash, r.crash_at,
+             r.ended_at, r.drives, r.reached),
+            ("ntsc_1541", 720.0, "works-then-crash", 60.0, "jam", 400.0, None, 1, 2))
+        self.assertEqual(r.detail, {"log": "tail", "asked_disk": 90.0})
+        self.assertEqual(
+            [(s.disk, s.at, s.trigger, s.accepted, s.waiting_since, s.key,
+              s.key_at, s.screenshot) for s in r.swaps],
+            [(2, 120.0, "poll", True, 100.0, "space", 125.0, b"png"),
+             (3, 330.0, "idle", False, 300.0, None, None, b"")])
+
+
 if __name__ == "__main__":
     unittest.main()

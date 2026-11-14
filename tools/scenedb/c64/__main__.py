@@ -3,13 +3,14 @@ sets ask for the next disk.
 
     python3 -m scenedb c64 sweep [--ids ...] [--limit N] [--jobs N] [--multi]
     python3 -m scenedb c64 report
+    python3 -m scenedb c64 migrate [scene.db]
 """
 
 import json
 import sys
 
 from ..core import cli
-from . import catalog, config, store, sweep
+from . import catalog, config, migrate, store, sweep
 
 MANUAL = config.ROOT / "manual.json"
 
@@ -28,7 +29,10 @@ def main(argv=None):
     sub.add_parser("manual", help="rebuild windows and collections, load manual.json")
     args = ap.parse_args(argv)
 
-    db = store.Store()
+    if args.cmd == "migrate":
+        return cli.migrate(migrate.run, args.db or config.RESULTS_DB)
+
+    db = cli.open_store("c64", store.Store)
     try:
         if args.cmd == "sweep":
             sweep.run_all(_prods(args), db, jobs=args.jobs,
@@ -50,7 +54,7 @@ def report(db):
                  "group by 1, 2 order by 1, 2"):
         print("  %-12s %-18s %6d" % row)
     rows = q("""select prod_id, title, machine, verdict, disk_count,
-                       disks_reached, flips
+                       disks_reached, swaps
                 from best where disk_count > 1 order by prod_id""").fetchall()
     short = [r for r in rows if r[5] < r[4]]
     print(f"multi-disk variants, all disks reached / not: "

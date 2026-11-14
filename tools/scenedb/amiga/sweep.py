@@ -2,10 +2,11 @@
 
 import concurrent.futures as cf
 import dataclasses
-import os
-import traceback
+import functools
 
+from ..core import result, sweep as driver
 from . import catalog, emulator, machines, media, verdict
+from .machines import FPS
 
 SINGLE_DISK_FRAMES = 9000       # 3 minutes of a demo
 # Disks of a set can play for a long time before asking for the next one
@@ -53,6 +54,20 @@ class Attempt:
         return (self.ran, self.reached, not crashed, self.verdict.alive,
                 verdict.progress(self.log.samples),
                 machines.BY_NAME[self.machine].fast_ram)
+
+    def record(self):
+        """The run as the store keeps it: frames and samples to seconds."""
+        def seconds(frames):
+            return None if frames is None else frames / FPS
+        v, log = self.verdict, self.log
+        return result.Run(
+            self.machine, seconds(self.frames), v.verdict,
+            seconds(v.alive * SAMPLE_FRAMES), v.crash, seconds(v.crash_frame),
+            seconds(v.ended_frame), v.wants_disk, self.drives, self.reached,
+            [result.Swap(disk, seconds(frame), how,
+                         key="lmb" if "click" in how else None)
+             for frame, disk, how in self.swaps],
+            {"returncode": log.returncode, "events": log.events}, log.last_shot)
 
 
 CLICK_EVERY = 1500    # 30 s between nudges on the click retry
@@ -306,57 +321,35 @@ def fallbacks(v, prod):
     return out
 
 
+def _record(v, attempts, best):
+    """Variant ``v`` and its runs as the store keeps them."""
+    return result.Variant(
+        v.kind, v.disks, v.note,
+        {"root": v.root, "command": v.command, "complete": v.complete},
+        [a.record() for a in attempts],
+        next(i for i, a in enumerate(attempts) if a is best))
+
+
 def _job(prod, multi_only=False):
     """Worker: build the production's variants and climb each one."""
-    try:
-        variants, problems = media.variants(prod.id, prod.title)
-        if multi_only:
-            variants = [v for v in variants if len(v.disks) > 1]
-        aga_only = catalog.is_aga(prod)
-        results = [climb(v, aga_only, prod.release_date) for v in variants]
-        for v, (_, best) in list(zip(variants, results)):
-            if best.verdict.works:
-                continue
-            for make in fallbacks(v, prod):
-                fv = make()
-                if fv:
-                    variants.append(fv)
-                    results.append(climb(fv, aga_only, prod.release_date))
-                    if results[-1][1].verdict.works:
-                        break
-        return prod, variants, problems, results, None
-    except Exception:  # noqa: BLE001 - reported per production
-        return prod, [], [], [], traceback.format_exc()
+    variants, problems = media.variants(prod.id, prod.title)
+    if multi_only:
+        variants = [v for v in variants if len(v.disks) > 1]
+    aga_only = catalog.is_aga(prod)
+    results = [climb(v, aga_only, prod.release_date) for v in variants]
+    for v, (_, best) in list(zip(variants, results)):
+        if best.verdict.works:
+            continue
+        for make in fallbacks(v, prod):
+            fv = make()
+            if fv:
+                variants.append(fv)
+                results.append(climb(fv, aga_only, prod.release_date))
+                if results[-1][1].verdict.works:
+                    break
+    return problems, [_record(v, *r) for v, r in zip(variants, results)]
 
 
 def run_all(prods, store, jobs=None, multi_only=False, log=print):
-    jobs = jobs or max(1, (os.cpu_count() or 2) * 3 // 4)
-    done = store.done_productions()
-    todo = [p for p in prods if p.id not in done]
-    log(f"{len(todo)} productions to run ({len(prods) - len(todo)} done), "
-        f"{jobs} jobs")
-    with cf.ProcessPoolExecutor(jobs) as pool:
-        futs = [pool.submit(_job, p, multi_only) for p in todo]
-        for n, fut in enumerate(cf.as_completed(futs), 1):
-            prod, variants, problems, results, err = fut.result()
-            if err:
-                problems = problems + [f"internal-error: {err.splitlines()[-1]}"]
-                log(err)
-            store.put_production(prod, problems)
-            ids = store.put_variants(prod.id, variants)
-            for vid, (attempts, best) in zip(ids, results):
-                best_id = None
-                for a in attempts:
-                    rid = store.put_run(vid, a)
-                    if a is best:
-                        best_id = rid
-                store.finish_variant(vid, best_id, best.machine,
-                                     best.verdict.verdict)
-            summary = ", ".join(
-                f"{b.machine}:{b.verdict.verdict}"
-                + (f" {b.reached}/{len(v.disks)} disks" if len(v.disks) > 1 else "")
-                + (f" {b.drives} drives" if b.drives > 1 else "")
-                for v, (_, b) in zip(variants, results)) or \
-                "; ".join(problems) or "-"
-            log(f"[{n}/{len(todo)}] {prod.id} {prod.title} -> {summary}",
-                flush=True)
+    driver.run_all(prods, store, functools.partial(_job, multi_only=multi_only),
+                   jobs, log)
