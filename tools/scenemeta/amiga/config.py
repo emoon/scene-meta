@@ -10,8 +10,7 @@ ROOT, ROM_DIR, WORK, RESULTS_DB, DATA_DIR = home("amiga")
 STATE_DB = NAS / "meta" / "state.sqlite"
 DEMOZOO_DIR = NAS / "demozoo"
 
-AMIBERRY = pathlib.Path(os.environ.get(
-    "SCENEMETA_AMIBERRY", BUILD / "amiberry" / "amiberry"))
+AMIBERRY = BUILD / "amiberry" / "amiberry"
 # Libraries from a Workbench disk, put in LIBS: of hard-drive boots (optional).
 LIBS_DIR = pathlib.Path(os.environ.get("SCENEMETA_LIBS", ROOT / "libs"))
 

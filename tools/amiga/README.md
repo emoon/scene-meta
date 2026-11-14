@@ -95,7 +95,7 @@ every entry that has a key on a swap. Left mouse button only so far, and
 swapped disks always go into DF0.
 
 Build Amiberry, from the top of the repo. Everything built goes into
-`build/`, which is git-ignored (`SCENEMETA_AMIBERRY` overrides the binary):
+`build/`, which is git-ignored, and the sweeper runs the binary from there:
 
 ```bash
 CC=clang CXX=clang++ cmake -S tools/amiga/amiberry -B build/amiberry -G Ninja \
