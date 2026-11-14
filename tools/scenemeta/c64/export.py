@@ -2,15 +2,17 @@
 data files (``data/c64``, see docs/DESIGN.md): one entry per production.
 
 A production the sweep found is ``script``; one with a hand observation
-(manual.json) is ``ai``. The merge replaces only ``script`` entries, so
+(manual.json) is ``ai``. The SID model comes from Demozoo's tags (sid.py),
+on top of the machine the sweep chose. The merge replaces only ``script`` entries, so
 whatever somebody edited in the data files stays.
 """
 
 import dataclasses
 import os
 
+from .. import machines
 from ..core import export
-from . import config
+from . import config, sid
 
 _RESULT = {"works-then-crash": "crashes-later", "crash": "broken"}
 _KIND = ("collection", "standalone", "boot_fresh")
@@ -25,6 +27,30 @@ class Seen:
     boot_disk: int = 0       # index of the disk to boot
     boot_file: str = None    # its directory entry; None: the first file
     windows: list = dataclasses.field(default_factory=list)   # store.Window
+
+
+@dataclasses.dataclass
+class Presets:
+    """The machines an entry can name (machines.toml)."""
+    default: str
+    presets: dict            # name -> its fields
+
+    def _hardware(self, name):
+        return {f: self.presets[name][f]
+                for f in machines.hardware_fields(self.presets)
+                if f in self.presets[name]}
+
+    def fields(self, name, model=None):
+        """The entry fields that say preset ``name`` with SID ``model``
+        (None: not known): the preset that is exactly that machine, else
+        ``name`` with the model on top. The default preset is left out."""
+        want = {**self._hardware(name), **({"sid": model} if model else {})}
+        match = next((n for n in (name, *self.presets)
+                      if self._hardware(n) == want), None)
+        fields = {"machine": match} if match else {"machine": name, "sid": model}
+        if fields["machine"] == self.default:
+            del fields["machine"]
+        return fields
 
 
 def seen(store, prod_id, v):
@@ -63,9 +89,9 @@ def _note(seen):
                      [f"disk {w.disk}: {w.note}" for w in seen.windows if w.note])
 
 
-def entry(title, groups, v, seen, default):
-    """The data-file entry of one production from its export.Variant and
-    what was Seen of it."""
+def entry(title, groups, v, seen, model, presets):
+    """The data-file entry of one production from its export.Variant, what
+    was Seen of it and its SID ``model`` (None: not known)."""
     if seen.cls == "broken":
         result = "broken"
     elif v.verdict == "works" or (seen.manual and seen.cls == "flips"):
@@ -80,8 +106,9 @@ def entry(title, groups, v, seen, default):
     if groups:
         e["group"] = groups
     e["source"] = "ai" if seen.manual else "script"
-    if runs and v.machine != default:
-        e["machine"] = v.machine
+    # A production that does not run has no machine of its own, but its
+    # music still names a chip.
+    e.update(presets.fields(v.machine if runs else presets.default, model))
     if seen.cls in _KIND:
         e["kind"] = seen.cls
     if result:
@@ -104,15 +131,16 @@ def entry(title, groups, v, seen, default):
     return e
 
 
-def entries(store, default):
+def entries(store, models, presets):
     """``(namespace, id, entry)`` of every production with a finished
-    variant. The media gives a production one variant: its disk set."""
+    variant. The media gives a production one variant: its disk set.
+    ``models``: sid.models()."""
     for prod, title, groups, variants in export.productions(store):
         v = variants[0]
         yield "demozoo", prod, entry(title, groups, v, seen(store, prod, v),
-                                     default)
+                                     models.get(prod), presets)
 
 
 def run(store, data=None):
     data = data or config.DATA_DIR
-    export.run(data, entries(store, export.default_machine(data)))
+    export.run(data, entries(store, sid.models(), Presets(*export.presets(data))))

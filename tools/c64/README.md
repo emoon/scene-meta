@@ -122,6 +122,9 @@ makes a contact sheet of screenshots.
   `key` and `key_delay`), `keys` from the windows' `pre_keys`. A set classed
   `standalone`, `collection` or `boot_fresh` gets its `kind` and no swaps.
 - `boot_disk` and `boot_file` from `manual.json`, else the sweep's.
+- The SID model, where Demozoo's tags give one: `machine = "pal_1541_8580"`,
+  or `sid = "8580"` on a machine that has no such preset. A 6581 is the
+  default and says nothing.
 - `note`: the hand notes of the production and of each disk.
 
 A hand observation is of a disk set. Where the media now finds a single disk
@@ -146,7 +149,9 @@ for the production it is not applied.
   `idle` flip is only found for still or tightly looping prompts.
 - A false trigger is taken back out when the demo ignores the disk, but a demo
   that reads the wrong disk first can hang or crash.
-- Only 1541 + PAL/NTSC is tried: no REU, no 1541-II, no other SID models. Cartridge
+- The SID model is not swept: sound is off and a run cannot tell. The export
+  takes it from Demozoo's `6581` and `8580` tags (`../scenemeta/c64/sid.py`).
+- Only 1541 + PAL/NTSC is tried, and a REU for a demo that asks: no 1541-II. Cartridge
   and PRG-only releases are not picked up (disk images only).
 - The insert happens 20-30 s after the demo asked (the detector needs the drive quiet that long);
   `waiting_since` is the better "asked at" estimate.

@@ -79,6 +79,36 @@ def productions(platforms, types, ids=None, link_classes=()):
     return out
 
 
+def tagged(names):
+    """``{production id: its tags among names}`` of every production that
+    has one of them."""
+    db = _connect()
+    q = ",".join("?" * len(names))
+    out = collections.defaultdict(set)
+    for pid, tag in db.execute(f"""
+            select ti.object_id, t.name
+            from taggit_taggeditem ti
+            join taggit_tag t on t.id = ti.tag_id
+            join django_content_type c on c.id = ti.content_type_id
+            where c.app_label = 'productions' and c.model = 'production'
+              and t.name in ({q})""", tuple(names)):
+        out[pid].add(tag)
+    db.close()
+    return dict(out)
+
+
+def soundtracks():
+    """``{production id: the ids of its soundtracks}``: the music
+    productions Demozoo links it to."""
+    db = _connect()
+    out = collections.defaultdict(list)
+    for pid, track in db.execute(
+            "select production_id, soundtrack_id from productions_soundtracklink"):
+        out[pid].append(track)
+    db.close()
+    return dict(out)
+
+
 def _chunks(seq, n):
     for i in range(0, len(seq), n):
         yield seq[i:i + n]

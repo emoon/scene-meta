@@ -1,20 +1,33 @@
 # C64 machine presets. An entry names one with `machine` and may override
 # single fields on top of it. Sizes are K or M.
+#
+# `sid` is the chip the music was written for: 6581 (the older C64s) or 8580
+# (the C64C). An entry whose chip is not known is on a 6581 preset like one
+# known to want it, so only an 8580 is a finding.
 
 default = "pal_1541"
 
 [pal_1541]
-description = "C64 PAL (6569) with a 1541"
+description = "C64 PAL (6569) with a 6581 SID and a 1541"
 video = "pal"
+sid = "6581"
+drive = "1541"
+
+[pal_1541_8580]
+description = "C64 PAL (6569) with an 8580 SID and a 1541"
+video = "pal"
+sid = "8580"
 drive = "1541"
 
 [ntsc_1541]
-description = "C64 NTSC (6567R8) with a 1541"
+description = "C64 NTSC (6567R8) with a 6581 SID and a 1541"
 video = "ntsc"
+sid = "6581"
 drive = "1541"
 
 [pal_1541_reu]
-description = "C64 PAL (6569) with a 1541 and a 16M REU"
+description = "C64 PAL (6569) with a 6581 SID, a 1541 and a 16M REU"
 video = "pal"
+sid = "6581"
 drive = "1541"
 reu = "16M"

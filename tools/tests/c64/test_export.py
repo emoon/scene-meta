@@ -3,7 +3,7 @@ import tempfile
 import unittest
 
 from scenemeta.c64 import export, store
-from scenemeta.c64.export import Seen
+from scenemeta.c64.export import Presets, Seen
 from scenemeta.c64.store import Window
 from scenemeta.core.export import Variant
 
@@ -19,9 +19,15 @@ def window(disk, at, until=None, key=None, key_delay=None, pre_keys=(), note=Non
     return Window(disk, at, until, key, key_delay, list(pre_keys), note)
 
 
-def entry(v=None, seen=None, groups="Booze Design"):
+PRESETS = Presets("pal_1541", {
+    "pal_1541": {"description": "old SID", "video": "pal", "sid": "6581", "drive": "1541"},
+    "pal_1541_8580": {"description": "new SID", "video": "pal", "sid": "8580", "drive": "1541"},
+    "ntsc_1541": {"video": "ntsc", "sid": "6581", "drive": "1541"}})
+
+
+def entry(v=None, seen=None, groups="Booze Design", model=None):
     return export.entry("Edge of Disgrace", groups, v or variant(), seen or Seen(),
-                        "pal_1541")
+                        model, PRESETS)
 
 
 TWO = ("/nas/eod-a.d64", "/nas/eod-b.d64")
@@ -37,6 +43,22 @@ class EntryTest(unittest.TestCase):
 
     def test_other_machine(self):
         self.assertEqual(entry(variant(machine="ntsc_1541"))["machine"], "ntsc_1541")
+
+    def test_sid_model_picks_the_preset_that_has_it(self):
+        self.assertEqual(entry(model="8580")["machine"], "pal_1541_8580")
+        self.assertNotIn("sid", entry(model="8580"))
+
+    def test_sid_model_of_the_default_says_nothing(self):
+        self.assertEqual(entry(model="6581"), entry())
+
+    def test_sid_model_no_preset_has_is_an_override(self):
+        e = entry(variant(machine="ntsc_1541"), model="8580")
+        self.assertEqual((e["machine"], e["sid"]), ("ntsc_1541", "8580"))
+        self.assertNotIn("sid", entry(variant(machine="ntsc_1541"), model="6581"))
+
+    def test_failing_production_still_names_its_sid(self):
+        e = entry(variant(machine="ntsc_1541", verdict="no-activity"), model="8580")
+        self.assertEqual((e["machine"], e["result"]), ("pal_1541_8580", "unknown"))
 
     def test_failing_production_has_no_machine(self):
         e = entry(variant(machine="ntsc_1541", verdict="no-activity"))

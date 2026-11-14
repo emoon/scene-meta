@@ -132,6 +132,9 @@ disagreement goes into a report for a person to look at.
 - The Amiga sweep's `+click` becomes `key = "lmb"` on the swap, only where
   the sweep actually had to click.
 - Frame and cycle counts are converted to seconds.
+- A C64 production's SID model is not something a sweep can find. It comes
+  from Demozoo's `6581` and `8580` tags on the production or on its
+  soundtracks, where they agree.
 - A sweep boots one production several ways (its executable from a hard
   drive, the same files on a floppy, each disk set). The entry is the way
   that got furthest; the first one found wins a tie. The others are not
