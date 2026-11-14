@@ -1,0 +1,49 @@
+import pathlib
+import tempfile
+import unittest
+
+from scenemeta.core import result, store, sweep
+from scenemeta.core.catalog import Production
+
+
+def prod(id_):
+    return Production(id_, f"demo {id_}", "group", ("p",), ("Demo",), "", [])
+
+
+def job(p):
+    """Leaves out production 2, fails on 3."""
+    if p.id == 2:
+        return None
+    if p.id == 3:
+        raise ValueError("no emulator")
+    return [], [result.Variant("floppy", ["a"], runs=[result.Run("m", 1, "works", 1)])]
+
+
+class RunAll(unittest.TestCase):
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.db = store.Store(pathlib.Path(self.tmp.name) / "t.db")
+
+    def tearDown(self):
+        self.db.close()
+        self.tmp.cleanup()
+
+    def stored(self):
+        return self.db.db.execute(
+            "select p.id, p.media_problems, v.best_verdict from production p"
+            " left join variant v on v.prod_id = p.id order by p.id").fetchall()
+
+    def test_stores_each_result_and_reports_a_failure(self):
+        sweep.run_all([prod(1), prod(3)], self.db, job, jobs=1, log=lambda *a, **k: None)
+        self.assertEqual(self.stored(), [
+            (1, None, "works"), (3, "internal-error: ValueError: no emulator", None)])
+
+    def test_a_production_the_job_leaves_out_keeps_what_is_stored(self):
+        self.db.put_result(prod(2), [], job(prod(1))[1])
+        self.db.db.execute("update variant set done_at = null")   # not finished: runs again
+        sweep.run_all([prod(2)], self.db, job, jobs=1, log=lambda *a, **k: None)
+        self.assertEqual(self.stored(), [(2, None, "works")])
+
+
+if __name__ == "__main__":
+    unittest.main()

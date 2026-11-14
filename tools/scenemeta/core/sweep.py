@@ -9,10 +9,9 @@ import traceback
 def _guarded(job, prod):
     """Worker: ``job(prod)``, an exception reported per production."""
     try:
-        problems, variants = job(prod)
-        return prod, problems, variants, None
+        return prod, job(prod), None
     except Exception:  # noqa: BLE001 - reported per production
-        return prod, [], [], traceback.format_exc()
+        return prod, ([], []), traceback.format_exc()
 
 
 def summary(variants):
@@ -29,7 +28,8 @@ def run_all(prods, store, job, jobs=None, log=print):
 
     ``job(prod)`` is the platform's work on one production, run in a worker
     process (so it must pickle): it returns ``(problems, variants)``, the
-    media problems as strings and a result.Variant per bootable thing.
+    media problems as strings and a result.Variant per bootable thing, or
+    None for a production it leaves out: what the store holds of it stays.
     """
     jobs = jobs or max(1, (os.cpu_count() or 2) * 3 // 4)
     done = store.done_productions()
@@ -39,7 +39,12 @@ def run_all(prods, store, job, jobs=None, log=print):
     with cf.ProcessPoolExecutor(jobs) as pool:
         futs = [pool.submit(_guarded, job, p) for p in todo]
         for n, fut in enumerate(cf.as_completed(futs), 1):
-            prod, problems, variants, err = fut.result()
+            prod, result, err = fut.result()
+            if result is None:
+                log(f"[{n}/{len(todo)}] {prod.id} {prod.title} -> left out",
+                    flush=True)
+                continue
+            problems, variants = result
             if err:
                 problems = problems + [f"internal-error: {err.splitlines()[-1]}"]
                 log(err)

@@ -126,10 +126,11 @@ def _record(v, attempts, best):
 
 
 def _job(prod, multi_only=False, pick_boot=False):
-    """Worker: build the production's variants and climb each one."""
+    """Worker: build the production's variants and climb each one. None
+    when only multi-disk sets are wanted and the production has none."""
     variants, problems = media.variants(prod)
-    if multi_only:
-        variants = [v for v in variants if len(v.disks) > 1]
+    if multi_only and not any(len(v.disks) > 1 for v in variants):
+        return None       # stored with its one disk, or not at all: it stays
     # The record is made after the climb: it settles the variant's boot file.
     return problems, [_record(v, *climb_variant(prod, v, pick_boot))
                       for v in variants]
