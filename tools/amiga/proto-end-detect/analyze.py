@@ -65,6 +65,7 @@ def stable_runs(lag, tol=0, min_len=200):
 
 BURST = 5     # new instructions in a frame that mean "something new started"
 DRONE = 1500  # frames without a Paula write that make a sound still playing a drone
+SHOWN = 50    # frames the picture changes in that booting to the shell alone takes
 HELD = 9000   # frames a silent single screen with no end of its own is given
 SPARSE = 0.01 # share of frames with Paula writes below which they carry no music
 
@@ -79,6 +80,11 @@ def video_loop(cells, t0):
     if not loops or any(k[0] == "open" for k in kinds):
         return 0, 0, kinds
     return max(k[1] for k in loops), max(k[2] for k in kinds), kinds
+
+
+def kinds_open(kinds):
+    """Cells that still change and no period explains."""
+    return sum(k[0] in ("open", "noisy") for k in kinds)
 
 
 def silence_landmark(rows, new):
@@ -138,6 +144,10 @@ def verdict(rows, cells, song, halted=False):
         # no code but the Kickstart's ever ran (its insert-disk screen):
         # nothing was loaded, so there is no end and no length
         out["ending"] = "not-started"
+    elif stopped and not out["sound"] and len(moved) < SHOWN:
+        # back at the shell (or halted) having shown and played nothing: the
+        # program did not load or gave up at once
+        out["ending"] = "not-started"
     elif stopped:
         out["ending"] = "exits" if rom > 0.5 else "stops"
         out["end"] = sec(max(still, over))
@@ -167,6 +177,10 @@ def verdict(rows, cells, song, halted=False):
             # as it is given: it has no end of its own, so it gets a default
             out["ending"] = "held"
             out["end"] = max(round(HELD / FPS, 1), out["last_new"])
+    # an end that rests on the song or a landmark while the picture has
+    # cells no period explains: text may still be running, so it is unsure
+    if out["ending"] in ("loops", "end-loop") and not vp and kinds_open(kinds):
+        out["unsure"] = True
     # how sure: the trace must run on well past the last new code
     out["after"] = round((n - new) / FPS)
     return out
