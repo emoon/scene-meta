@@ -83,7 +83,12 @@ def verdict(rows, vlag, alag, changed, t):
     mp, ms = dominant(alag, new + (n - new) // 2)
     played = rows[new]["frame"]
     if still < n - 500 and sil < n - 500:
-        kind = f"STOPS: still and silent from {t(max(still, sil))}"
+        tail = range(max(0, n - 1000), n)
+        rom = sum(rows[i]["rom"] for i in tail) / (sum(rows[i]["instr"] for i in tail) or 1)
+        where = "EXITS to the OS" if rom > 0.5 else "STOPS inside the program (frozen or waiting)"
+        kind = f"{where}: still and silent from {t(max(still, sil))}"
+        if sil == 0:
+            kind += "; never made a sound"
     else:
         p = vp if vs >= 0.5 else mp if ms >= 0.3 else 0
         whole = p and p >= 0.6 * played
@@ -95,7 +100,9 @@ def verdict(rows, vlag, alag, changed, t):
                     f"all shown once by ~{(rows[new]['frame'] + p) / FPS:.0f}s")
         else:
             kind = f"END PART, open: from ~{t(new)}, no period found"
-        if sil < n - 500:
+        if sil == 0:
+            kind += "; never made a sound"
+        elif sil < n - 500:
             kind += f"; music over at {t(sil)}"
     out.append(kind)
     out.append(f"evidence: video period {vp} ({vs:.0%}), music period {mp} ({ms:.0%}), "

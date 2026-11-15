@@ -46,12 +46,14 @@ def main():
     ap.add_argument("--save-at", type=int, nargs="*", default=[])
     ap.add_argument("--state", type=int, help="restore the state saved at this frame")
     ap.add_argument("--machine")
+    ap.add_argument("--variant", type=int, help="index into media.variants")
     ap.add_argument("--sound", default="interrupts")
     a = ap.parse_args()
 
     e = entry_of(a.prod)
     machine = machines.BY_NAME[a.machine or e.get("machine", default_machine(config.DATA_DIR))]
-    v = variant_of(a.prod, e)
+    v = (media.variants(a.prod, e["title"])[0][a.variant]
+         if a.variant is not None else variant_of(a.prod, e))
     out = OUT / str(a.prod)
     out.mkdir(parents=True, exist_ok=True)
     text, swaps = emulator._uae_config(machine, v, out, e.get("drives", 1))
