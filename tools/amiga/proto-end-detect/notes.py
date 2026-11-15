@@ -73,14 +73,18 @@ def song_loop(path, log=lambda *a: None):
         live = [s for s in shares if s is not None]
         score = round(min(live), 2) if live else 0
         if score >= 0.8:
-            passed.append(p)
+            passed.append((-score, p))
             if best is None or (-score, p) < best:
                 best = (-score, p)
     best = best and best[1]
     if best:
         # A multiple of the period matches as well or better (its tolerance
-        # is wider): take the shortest passing period the best is a multiple of.
-        best = min(p for p in passed if abs(best - round(best / p) * p) <= max(BIN, best // 100))
+        # is wider): take the passing period the best is the highest multiple
+        # of. Several bins pass around each such period (the tolerance spans
+        # them): of those the best-scoring one, as for the best itself.
+        tol = max(BIN, best // 100)
+        subs = [(-round(best / p), s, p) for s, p in passed if abs(best - round(best / p) * p) <= tol]
+        best = min(subs)[2]
     if best is None:
         log("no loop found")
         return None
