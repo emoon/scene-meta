@@ -21,16 +21,18 @@ def load(path):
     rows = []
     with open(path) as f:
         r = csv.reader(f)
-        # (traces recorded before the alert column have none)
+        # (traces recorded before the alert and newram columns have none)
         head = next(r)
         alert = head.index("alert") if "alert" in head else None
+        newram = head.index("newram") if "newram" in head else None
         for x in r:
             rows.append(dict(
                 frame=int(x[0]), dmacon=int(x[1], 16), aw=x[2], awrites=int(x[3]),
                 aenergy=int(x[4]), apeak=int(x[5]), newpc=int(x[7]),
                 instr=int(x[8]), rom=int(x[9]), lastdma=int(x[10]),
                 resets=int(x[11]), chan=x[13],
-                alert=int(x[alert], 16) if alert is not None else 0))
+                alert=int(x[alert], 16) if alert is not None else 0,
+                newram=int(x[newram]) if newram is not None else None))
     return rows, load_cells(path)
 
 
@@ -132,6 +134,10 @@ def verdict(rows, cells, song, halted=False):
         out["ending"] = "crashed"
         out["alert"] = f"{rows[guru]['alert']:08x}" if guru is not None else "halt"
         out["crashed"] = sec(guru if guru is not None else n - 1)
+    elif rows[0]["newram"] is not None and not any(r["newram"] for r in rows):
+        # no code but the Kickstart's ever ran (its insert-disk screen):
+        # nothing was loaded, so there is no end and no length
+        out["ending"] = "not-started"
     elif stopped:
         out["ending"] = "exits" if rom > 0.5 else "stops"
         out["end"] = sec(max(still, over))

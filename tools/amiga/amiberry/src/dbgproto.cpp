@@ -899,7 +899,7 @@ static FILE *notes_fp = NULL;   /* PATH.notes: frame,channel,reg,value */
 #define TR_ROWS 8
 static uint8_t *cov_bits = NULL;          /* (pc, opcode) seen before */
 #define COV_BITS (1u << 26)
-static long tr_new_pc = 0, tr_instr = 0, tr_rom_instr = 0;
+static long tr_new_pc = 0, tr_new_ram = 0, tr_instr = 0, tr_rom_instr = 0;
 static uint32_t tr_awhash = 2166136261u;  /* Paula register writes */
 static long tr_awrites = 0;
 static long tr_aenergy = 0;               /* sum |output step| over channels */
@@ -953,11 +953,16 @@ static void trace_instr(uaecptr pc)
 	tr_instr++;
 	if (pc >= 0xe00000 && pc <= 0xffffff)
 		tr_rom_instr++;
-	uint32_t h = (pc * 2654435761u) ^ ((uint32_t)(currprefs.cpu_model >= 68020 ? regs.irc : regs.opcode) * 40503u);
+	const uint32_t op = currprefs.cpu_model >= 68020 ? regs.irc : regs.opcode;
+	uint32_t h = (pc * 2654435761u) ^ (op * 40503u);
 	h &= COV_BITS - 1;
 	if (!(cov_bits[h >> 3] & (1 << (h & 7)))) {
 		cov_bits[h >> 3] |= 1 << (h & 7);
 		tr_new_pc++;
+		/* new code in RAM, a library's jump table (JMP abs.l) aside: only
+		   something loaded runs that, the Kickstart alone never does */
+		if (pc < 0xe00000 && get_word(pc) != 0x4ef9)
+			tr_new_ram++;
 	}
 }
 
@@ -1014,13 +1019,13 @@ static void trace_vsync(void)
 		fputc(tr_chen[i] == 0 ? 'S' : tr_same[i] >= 2 ? 'R' : 'P', trace_fp);
 		tr_chen[i] = 0;
 	}
-	fprintf(trace_fp, ",%x", trace_alert());
+	fprintf(trace_fp, ",%x,%ld", trace_alert(), tr_new_ram);
 	for (int r = 0; r < TR_ROWS; r++)
 		for (int c = 0; c < TR_COLS; c++)
 			fprintf(trace_fp, ",%08x", (uint32_t)(cell[r][c] ^ cell[r][c] >> 32));
 	fputc('\n', trace_fp);
 	tr_awhash = 2166136261u;
-	tr_awrites = tr_aenergy = tr_asamples = tr_new_pc = tr_instr = tr_rom_instr = 0;
+	tr_awrites = tr_aenergy = tr_asamples = tr_new_pc = tr_new_ram = tr_instr = tr_rom_instr = 0;
 	tr_apeak = 0;
 }
 
@@ -1035,7 +1040,7 @@ static void cmd_trace(int s, const std::string &cmd, const std::string &path)
 	if (!cov_bits)
 		cov_bits = (uint8_t *)calloc(COV_BITS / 8, 1);
 	fprintf(trace_fp, "frame,dmacon,awhash,awrites,aenergy,apeak,asamples,"
-		"newpc,instr,rominstr,lastdma,resets,pc,chan,alert");
+		"newpc,instr,rominstr,lastdma,resets,pc,chan,alert,newram");
 	for (int i = 0; i < TR_ROWS * TR_COLS; i++)
 		fprintf(trace_fp, ",v%d", i);
 	fputc('\n', trace_fp);
