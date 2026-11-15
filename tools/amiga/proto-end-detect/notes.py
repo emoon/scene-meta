@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """PROTOTYPE (throwaway): does the song loop? Matches the note events (Paula
-pointer, length and period writes, in order) of each channel, not frames.
+pointer and period writes, in order) of each channel, not frames.
 
     python3 amiga/proto-end-detect/notes.py TRACE.csv.notes
 """
@@ -31,6 +31,10 @@ def song_loop(path, log=lambda *a: None):
     chans, cur = collections.defaultdict(list), {}
     for line in open(path):
         f, ch, reg, v = line.rstrip().split(",")
+        # A length write is not a note: The Chaos Engine's player writes
+        # lengths that differ from one pass of the song to the next.
+        if reg == "3":
+            continue
         # A period written again with the value it has is not a note
         # (Desert Dream's player rewrites all four every frame).
         if reg == "2":
