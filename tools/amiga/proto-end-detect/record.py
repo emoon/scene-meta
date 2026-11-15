@@ -44,6 +44,8 @@ def main():
     ap.add_argument("prod", type=int)
     ap.add_argument("--frames", type=int, default=45000)
     ap.add_argument("--save-at", type=int, nargs="*", default=[])
+    ap.add_argument("--shots", type=int, nargs="*", default=[],
+                    help="frames to take a screenshot at (shot-<frame>.png)")
     ap.add_argument("--state", type=int, help="restore the state saved at this frame")
     ap.add_argument("--machine")
     ap.add_argument("--variant", type=int, help="index into media.variants")
@@ -73,6 +75,7 @@ def main():
             acts.append((round((s["at"] + s.get("key_delay", 5.0)) * machines.FPS),
                          "input mouse click 0"))
     acts += [(f, f"state save {out / f'state-{f}.uss'}") for f in a.save_at]
+    acts += [(f, f"screenshot {out / f'shot-{f}.png'}") for f in a.shots]
     acts = sorted(x for x in acts if x[0] > start)
     cmds, at = ["warp on", "disk autoswap off", f"trace {trace}"], start
     end = start + a.frames
