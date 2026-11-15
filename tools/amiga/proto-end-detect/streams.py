@@ -3,7 +3,10 @@
 The trace's ``.reads`` file lists, per frame, the first few bytes an
 instruction read that it had not read before. A text, a script or a pattern
 is read as a stream: each new byte lies just above the reader's last new
-one. Table lookups jump about, and go on finding new entries for ever.
+one, with nothing the reader has read before right above it. Table lookups
+jump about and go on finding new entries for ever; an index that moves
+smoothly (an angle into a sine table) fills the gaps between entries it has
+read, which is not a stream either.
 """
 import collections, os
 
@@ -19,16 +22,18 @@ def stream_end(reads):
     trace has no reads file (recorded before there was one)."""
     if not os.path.exists(reads):
         return None
-    last, at = {}, collections.defaultdict(list)
+    last, seen, at = {}, collections.defaultdict(set), collections.defaultdict(list)
     with open(reads) as f:
         for line in f:
             frame, kind, pc, addr = line.split(",")
             addr = int(addr, 16)
             if kind != "S" or addr < VECTORS:
                 continue
-            if pc in last and 0 < addr - last[pc] <= STEP:
+            if pc in last and 0 < addr - last[pc] <= STEP and not any(
+                    a in seen[pc] for a in range(addr + 1, addr + STEP + 1)):
                 at[pc].append(int(frame))
             last[pc] = addr
+            seen[pc].add(addr)
     end = 0
     for frames in at.values():
         for k in range(NEED - 1, len(frames)):
