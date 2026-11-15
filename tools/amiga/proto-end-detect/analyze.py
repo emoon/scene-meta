@@ -5,7 +5,10 @@
 
 Prints one row per bucket (the state, to eyeball), then the events derived.
 """
-import argparse, csv, sys
+import argparse, csv, json, os, sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from notes import song_loop  # noqa: E402
 
 K = 100       # frames of Paula writes that make one "bar" of music to match
 FPS = 50
@@ -64,51 +67,58 @@ def dominant(lag, start, tol=8):
     return p, sum(abs(x - p) <= tol for x in lag[start:]) / max(1, len(lag) - start)
 
 
-def verdict(rows, vlag, alag, changed, t):
+def verdict(rows, vlag, alag, changed, t, notes=None):
     """The model: nothing new runs after the last burst of new code. What
-    the demo does from there says how it ends."""
+    the demo does from there says how it ends. Returns a dict, times in s."""
     n = len(rows)
+    sec = lambda i: round(rows[min(i, n - 1)]["frame"] / FPS, 1)
     new = max((i for i in range(n) if rows[i]["newpc"] >= BURST), default=0)
-    after = n - new
-    out = [f"last new code {t(new)} ({after / FPS:.0f}s of trace after it)"]
     sil = n   # no channel plays anything but silence or one unchanged loop
     while sil > 0 and "P" not in rows[sil - 1]["chan"]:
         sil -= 1
-    drone = "R" in rows[-1]["chan"]
     still = n
     while still > 0 and changed[still - 1] == 0:
         still -= 1
-    reset_after = rows[-1]["resets"] > rows[new]["resets"]
-    dma_after = rows[-1]["lastdma"] > rows[new]["frame"] + 250
+    tail = range(max(0, n - 1000), n)
+    rom = sum(rows[i]["rom"] for i in tail) / (sum(rows[i]["instr"] for i in tail) or 1)
     vp, vs = dominant(vlag, new + (n - new) // 2)
-    mp, ms = dominant(alag, new + (n - new) // 2)
+    song = song_loop(notes) if notes and os.path.exists(notes) else None
     played = rows[new]["frame"]
-    if still < n - 500 and sil < n - 500:
-        tail = range(max(0, n - 1000), n)
-        rom = sum(rows[i]["rom"] for i in tail) / (sum(rows[i]["instr"] for i in tail) or 1)
-        where = "EXITS to the OS" if rom > 0.5 else "STOPS inside the program (frozen or waiting)"
-        kind = f"{where}: still and silent from {t(max(still, sil))}"
-        if sil == 0:
-            kind += "; never made a sound"
+    out = dict(trace=sec(n - 1), last_new=sec(new), sound=sil > 0,
+               resets=rows[-1]["resets"],
+               reset_after=rows[-1]["resets"] > rows[new]["resets"],
+               disk_after=rows[-1]["lastdma"] > rows[new]["frame"] + 250,
+               video_period=round(vp / FPS, 1) if vs >= 0.5 else None,
+               song_period=round(song[0] / FPS, 1) if song else None,
+               song_second_pass=round(song[1] / FPS, 1) if song else None,
+               music_over=sec(sil) if 0 < sil < n - 500 else None,
+               drone="R" in rows[-1]["chan"])
+    stopped = still < n - 500 and sil < n - 500
+    period = (vp if vs >= 0.5 else 0) or (song[0] if song else 0)
+    if stopped:
+        out["ending"] = "exits" if rom > 0.5 else "stops"
+        out["end"] = sec(max(still, sil))
+    elif out["reset_after"] or (period and period >= 0.6 * played):
+        # the loop holds the whole production: a demo that starts over, or
+        # one screen whose song comes round
+        out["ending"] = "restarts" if out["reset_after"] or out["disk_after"] else "loops"
+        out["end"] = round(max(played, period) / FPS, 1)
+    elif period:
+        out["ending"] = "end-loop"
+        out["end_part"] = sec(new)
+        # all shown once: one video period into the end part, and the
+        # song into its second pass
+        done = [played + vp] if vs >= 0.5 else []
+        done += [song[1]] if song else []
+        out["end"] = round(max(done + [played]) / FPS, 1)
     else:
-        p = vp if vs >= 0.5 else mp if ms >= 0.3 else 0
-        whole = p and p >= 0.6 * played
-        if whole or reset_after:
-            kind = (f"RESTARTS: the whole demo plays again, length "
-                    f"{(p or played) / FPS:.0f}s")
-        elif p:
-            kind = (f"END LOOP: period {p / FPS:.1f}s; end part from ~{t(new)}, "
-                    f"all shown once by ~{(rows[new]['frame'] + p) / FPS:.0f}s")
-        else:
-            kind = f"END PART, open: from ~{t(new)}, no period found"
-        if sil == 0:
-            kind += "; never made a sound"
-        elif sil < n - 500:
-            kind += f"; music over at {t(sil)}" + (" (a loop drones on)" if drone else "")
-    out.append(kind)
-    out.append(f"evidence: video period {vp} ({vs:.0%}), music period {mp} ({ms:.0%}), "
-               f"reset after {reset_after}, disk after {dma_after}")
-    print("  VERDICT: " + "\n           ".join(out))
+        out["ending"] = "open"
+        out["end_part"] = sec(new)
+        if out["music_over"]:
+            out["end"] = max(out["music_over"], out["last_new"])
+    # how sure: the trace must run on well past the last new code
+    out["after"] = round((n - new) / FPS)
+    return out
 
 
 def main():
@@ -116,6 +126,7 @@ def main():
     ap.add_argument("trace")
     ap.add_argument("--bucket", type=int, default=1000)
     ap.add_argument("--quiet", action="store_true")
+    ap.add_argument("--json", action="store_true")
     a = ap.parse_args()
     rows = load(a.trace)
     n = len(rows)
@@ -129,6 +140,9 @@ def main():
     alag = lags(akeys)
     changed = [0] + [sum(a != b for a, b in zip(vkeys[i], vkeys[i - 1])) for i in range(1, n)]
 
+    if a.json:
+        print(json.dumps(verdict(rows, vlag, alag, changed, t, a.trace + ".notes")))
+        return
     if not a.quiet:
         print("   time  vchg  cells vnew%  vlag(mode)  aenergy  awr  anew% alag(mode) newpc rom% dma")
         for b in range(0, n, a.bucket):
@@ -175,7 +189,7 @@ def main():
                   f"first pass began {t(max(0, s - p))}  [{len(runs)} runs]")
         else:
             print(f"  {name} repeats: no")
-    verdict(rows, vlag, alag, changed, t)
+    print("  VERDICT:", json.dumps(verdict(rows, vlag, alag, changed, t, a.trace + ".notes")))
     tail = range(max(0, n - 1000), n)
     ins = sum(rows[i]["instr"] for i in tail) or 1
     print(f"  ROM share of the last 1000 frames: {sum(rows[i]['rom'] for i in tail) / ins:.0%}; resets {rows[-1]['resets']}")
