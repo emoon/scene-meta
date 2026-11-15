@@ -961,6 +961,17 @@ static void trace_instr(uaecptr pc)
 	}
 }
 
+/* exec's LastAlert: the number of the Guru shown, 0 for none. Read only
+   while location 4 still points at an ExecBase (its ChkBase agrees). */
+static uint32_t trace_alert(void)
+{
+	uaecptr eb = get_long(4);
+	if ((eb & 1) || !valid_address(eb, 0x20a) || (uae_u32)get_long(eb + 38) != ~eb)
+		return 0;
+	uint32_t n = get_long(eb + 0x202);
+	return n == 0xffffffffu ? 0 : n;
+}
+
 static void trace_vsync(void)
 {
 	SDL_Surface *sf = get_amiga_surface(0);
@@ -1003,6 +1014,7 @@ static void trace_vsync(void)
 		fputc(tr_chen[i] == 0 ? 'S' : tr_same[i] >= 2 ? 'R' : 'P', trace_fp);
 		tr_chen[i] = 0;
 	}
+	fprintf(trace_fp, ",%x", trace_alert());
 	for (int r = 0; r < TR_ROWS; r++)
 		for (int c = 0; c < TR_COLS; c++)
 			fprintf(trace_fp, ",%08x", (uint32_t)(cell[r][c] ^ cell[r][c] >> 32));
@@ -1023,7 +1035,7 @@ static void cmd_trace(int s, const std::string &cmd, const std::string &path)
 	if (!cov_bits)
 		cov_bits = (uint8_t *)calloc(COV_BITS / 8, 1);
 	fprintf(trace_fp, "frame,dmacon,awhash,awrites,aenergy,apeak,asamples,"
-		"newpc,instr,rominstr,lastdma,resets,pc,chan");
+		"newpc,instr,rominstr,lastdma,resets,pc,chan,alert");
 	for (int i = 0; i < TR_ROWS * TR_COLS; i++)
 		fprintf(trace_fp, ",v%d", i);
 	fputc('\n', trace_fp);

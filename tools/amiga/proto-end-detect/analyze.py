@@ -21,13 +21,16 @@ def load(path):
     rows = []
     with open(path) as f:
         r = csv.reader(f)
-        next(r)
+        # (traces recorded before the alert column have none)
+        head = next(r)
+        alert = head.index("alert") if "alert" in head else None
         for x in r:
             rows.append(dict(
                 frame=int(x[0]), dmacon=int(x[1], 16), aw=x[2], awrites=int(x[3]),
                 aenergy=int(x[4]), apeak=int(x[5]), newpc=int(x[7]),
                 instr=int(x[8]), rom=int(x[9]), lastdma=int(x[10]),
-                resets=int(x[11]), chan=x[13]))
+                resets=int(x[11]), chan=x[13],
+                alert=int(x[alert], 16) if alert is not None else 0))
     return rows, load_cells(path)
 
 
@@ -60,6 +63,7 @@ def stable_runs(lag, tol=0, min_len=200):
 
 BURST = 5     # new instructions in a frame that mean "something new started"
 DRONE = 1500  # frames without a Paula write that make a sound still playing a drone
+HELD = 9000   # frames a silent single screen with no end of its own is given
 SPARSE = 0.01 # share of frames with Paula writes below which they carry no music
 
 
@@ -84,10 +88,11 @@ def silence_landmark(rows, new):
     return chain_period(onsets(silent), new, len(rows), MIN_LANDMARK)
 
 
-def verdict(rows, cells, song):
+def verdict(rows, cells, song, halted=False):
     """The model: nothing new runs after the last burst of new code. What
     the demo does from there says how it ends. ``song`` is what
-    ``song_loop`` found. Returns a dict, times in s."""
+    ``song_loop`` found, ``halted`` whether the CPU halted at the end of
+    the trace. Returns a dict, times in s."""
     n = len(rows)
     sec = lambda i: round(rows[min(i, n - 1)]["frame"] / FPS, 1)
     new = max((i for i in range(n) if rows[i]["newpc"] >= BURST), default=0)
@@ -120,7 +125,14 @@ def verdict(rows, cells, song):
     over = sil if sil < n - 500 else quiet if quiet < n - DRONE else n
     stopped = still < n - 500 and over < n
     period = max(vp, song[0] if song else 0, lp)
-    if stopped:
+    guru = next((i for i in range(n) if rows[i]["alert"]), None)
+    if guru is not None or halted:
+        # a Guru or a halted CPU: the production crashed, so it has no end
+        # and no length
+        out["ending"] = "crashed"
+        out["alert"] = f"{rows[guru]['alert']:08x}" if guru is not None else "halt"
+        out["crashed"] = sec(guru if guru is not None else n - 1)
+    elif stopped:
         out["ending"] = "exits" if rom > 0.5 else "stops"
         out["end"] = sec(max(still, over))
     elif out["reset_after"] or (period and period >= 0.6 * played):
@@ -144,6 +156,11 @@ def verdict(rows, cells, song):
         out["end_part"] = sec(new)
         if out["music_over"]:
             out["end"] = max(out["music_over"], out["last_new"])
+        elif not out["sound"] and not out["disk_after"] and n - new >= HELD:
+            # one silent screen that moves for good, nothing new for as long
+            # as it is given: it has no end of its own, so it gets a default
+            out["ending"] = "held"
+            out["end"] = max(round(HELD / FPS, 1), out["last_new"])
     # how sure: the trace must run on well past the last new code
     out["after"] = round((n - new) / FPS)
     return out
@@ -152,6 +169,12 @@ def verdict(rows, cells, song):
 def song_of(trace):
     notes = trace + ".notes"
     return song_loop(notes) if os.path.exists(notes) else None
+
+
+def halted_of(trace):
+    """Did the CPU halt in the run? The emulator says so in the run's output."""
+    log = os.path.join(os.path.dirname(trace), "stdout.log")
+    return os.path.exists(log) and '"event":"halt"' in open(log).read()
 
 
 def main():
@@ -174,7 +197,7 @@ def main():
     changed = [0] + (cells[1:] != cells[:-1]).sum(axis=1).tolist()
 
     if a.json:
-        print(json.dumps(verdict(rows, cells, song_of(a.trace))))
+        print(json.dumps(verdict(rows, cells, song_of(a.trace), halted_of(a.trace))))
         return
     if not a.quiet:
         print("   time  vchg  cells vnew%  vlag(mode)  aenergy  awr  anew% alag(mode) newpc rom% dma")
@@ -222,7 +245,7 @@ def main():
                   f"first pass began {t(max(0, s - p))}  [{len(runs)} runs]")
         else:
             print(f"  {name} repeats: no")
-    print("  VERDICT:", json.dumps(verdict(rows, cells, song_of(a.trace))))
+    print("  VERDICT:", json.dumps(verdict(rows, cells, song_of(a.trace), halted_of(a.trace))))
     tail = range(max(0, n - 1000), n)
     ins = sum(rows[i]["instr"] for i in tail) or 1
     print(f"  ROM share of the last 1000 frames: {sum(rows[i]['rom'] for i in tail) / ins:.0%}; resets {rows[-1]['resets']}")
