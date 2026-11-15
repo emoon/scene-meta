@@ -948,10 +948,55 @@ void dbgproto_note_audio_sample(int nr, int sample, int vol)
 	tr_asamples++;
 }
 
+/* Data read for the first time: one bit per byte of RAM (24-bit space below
+   the CIAs, the slow RAM at $C00000, 64 MB of Zorro III). Instruction
+   fetches do not come through here. `newread` counts bytes no instruction
+   read before, `newsite` bytes the reading instruction did not read before
+   (an unpacker reading back its own output does not use up the text for
+   the scroller). PATH.reads lists the first few of each per frame. */
+int dbgproto_read_trace = 0;
+static uint8_t *read_bits = NULL;
+static uint8_t *site_bits = NULL;
+static FILE *reads_fp = NULL;   /* PATH.reads: frame,kind,pc,addr */
+#define READ_LOW 0x1000000u
+#define READ_Z3 0x40000000u
+#define READ_Z3_SIZE 0x4000000u
+#define SITE_BITS (1u << 29)
+#define READS_LOGGED 4
+static long tr_new_read = 0, tr_new_site = 0;
+static uaecptr tr_pc = 0;
+
+void dbgproto_note_read(uaecptr addr, int size)
+{
+	uint32_t i;
+	if (addr < 0xa00000 || (addr >= 0xc00000 && addr < 0xd80000))
+		i = addr;
+	else if (addr >= READ_Z3 && addr < READ_Z3 + READ_Z3_SIZE - 4)
+		i = READ_LOW + (addr - READ_Z3);
+	else
+		return;
+	for (; size > 0; size--, i++) {
+		if (!(read_bits[i >> 3] & (1 << (i & 7)))) {
+			read_bits[i >> 3] |= 1 << (i & 7);
+			if (tr_new_read++ < READS_LOGGED && reads_fp)
+				fprintf(reads_fp, "%ld,A,%x,%x\n", frame_counter, tr_pc, addr);
+		}
+		uint32_t h = (i * 2654435761u) ^ (tr_pc * 2246822519u);
+		h = (h ^ h >> 15) & (SITE_BITS - 1);
+		if (!(site_bits[h >> 3] & (1 << (h & 7)))) {
+			site_bits[h >> 3] |= 1 << (h & 7);
+			if (tr_new_site++ < READS_LOGGED && reads_fp)
+				fprintf(reads_fp, "%ld,S,%x,%x\n", frame_counter, tr_pc, addr);
+		}
+	}
+}
+
 static void trace_instr(uaecptr pc)
 {
+	tr_pc = pc;
 	tr_instr++;
-	if (pc >= 0xe00000 && pc <= 0xffffff)
+	const bool rom = pc >= 0xe00000 && pc <= 0xffffff;
+	if (rom)
 		tr_rom_instr++;
 	const uint32_t op = currprefs.cpu_model >= 68020 ? regs.irc : regs.opcode;
 	uint32_t h = (pc * 2654435761u) ^ (op * 40503u);
@@ -961,8 +1006,10 @@ static void trace_instr(uaecptr pc)
 		tr_new_pc++;
 		/* new code in RAM, a library's jump table (JMP abs.l) aside: only
 		   something loaded runs that, the Kickstart alone never does */
-		if (pc < 0xe00000 && get_word(pc) != 0x4ef9)
+		dbgproto_read_trace = 0;   /* the trace's own reads are not the demo's */
+		if (!rom && get_word(pc) != 0x4ef9)
 			tr_new_ram++;
+		dbgproto_read_trace = 1;
 	}
 }
 
@@ -1019,13 +1066,16 @@ static void trace_vsync(void)
 		fputc(tr_chen[i] == 0 ? 'S' : tr_same[i] >= 2 ? 'R' : 'P', trace_fp);
 		tr_chen[i] = 0;
 	}
-	fprintf(trace_fp, ",%x,%ld", trace_alert(), tr_new_ram);
+	dbgproto_read_trace = 0;
+	const uint32_t alert = trace_alert();
+	dbgproto_read_trace = 1;
+	fprintf(trace_fp, ",%x,%ld,%ld,%ld", alert, tr_new_ram, tr_new_read, tr_new_site);
 	for (int r = 0; r < TR_ROWS; r++)
 		for (int c = 0; c < TR_COLS; c++)
 			fprintf(trace_fp, ",%08x", (uint32_t)(cell[r][c] ^ cell[r][c] >> 32));
 	fputc('\n', trace_fp);
 	tr_awhash = 2166136261u;
-	tr_awrites = tr_aenergy = tr_asamples = tr_new_pc = tr_new_ram = tr_instr = tr_rom_instr = 0;
+	tr_awrites = tr_aenergy = tr_asamples = tr_new_pc = tr_new_ram = tr_new_read = tr_new_site = tr_instr = tr_rom_instr = 0;
 	tr_apeak = 0;
 }
 
@@ -1039,8 +1089,14 @@ static void cmd_trace(int s, const std::string &cmd, const std::string &path)
 	notes_fp = fopen((path + ".notes").c_str(), "w");
 	if (!cov_bits)
 		cov_bits = (uint8_t *)calloc(COV_BITS / 8, 1);
+	if (!read_bits)
+		read_bits = (uint8_t *)calloc((READ_LOW + READ_Z3_SIZE) / 8, 1);
+	if (!site_bits)
+		site_bits = (uint8_t *)calloc(SITE_BITS / 8, 1);
+	reads_fp = fopen((path + ".reads").c_str(), "w");
+	dbgproto_read_trace = 1;
 	fprintf(trace_fp, "frame,dmacon,awhash,awrites,aenergy,apeak,asamples,"
-		"newpc,instr,rominstr,lastdma,resets,pc,chan,alert,newram");
+		"newpc,instr,rominstr,lastdma,resets,pc,chan,alert,newram,newread,newsite");
 	for (int i = 0; i < TR_ROWS * TR_COLS; i++)
 		fprintf(trace_fp, ",v%d", i);
 	fputc('\n', trace_fp);

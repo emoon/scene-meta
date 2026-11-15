@@ -35,6 +35,8 @@ void dbgproto_halt(int id);                   /* from cpu_halt() */
 void dbgproto_note_audio_reg(int nr, int reg, unsigned v);   /* PROTOTYPE */
 void dbgproto_note_audio_loop(int nr);                        /* PROTOTYPE */
 void dbgproto_note_audio_sample(int nr, int sample, int vol); /* PROTOTYPE */
+extern int dbgproto_read_trace;                               /* PROTOTYPE */
+void dbgproto_note_read(uaecptr addr, int size);              /* PROTOTYPE */
 void dbgproto_note_cpu_reset(void);           /* from cpureset(), the RESET op */
 
 /* Swap-wait detector notes, called from disk.cpp (cheap counters; the

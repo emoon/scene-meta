@@ -9,6 +9,7 @@ import argparse, csv, json, os, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from notes import song_loop  # noqa: E402
+from streams import stream_end  # noqa: E402
 from video import cell_periods, chain_period, landmark, load_cells, onsets, MIN_LANDMARK  # noqa: E402
 
 K = 100       # frames of Paula writes that make one "bar" of music to match
@@ -96,11 +97,12 @@ def silence_landmark(rows, new):
     return chain_period(onsets(silent), new, len(rows), MIN_LANDMARK)
 
 
-def verdict(rows, cells, song, halted=False):
+def verdict(rows, cells, song, halted=False, data=None):
     """The model: nothing new runs after the last burst of new code. What
     the demo does from there says how it ends. ``song`` is what
     ``song_loop`` found, ``halted`` whether the CPU halted at the end of
-    the trace. Returns a dict, times in s."""
+    the trace, ``data`` the frame of the last new data read as a stream
+    (None: not recorded). Returns a dict, times in s."""
     n = len(rows)
     sec = lambda i: round(rows[min(i, n - 1)]["frame"] / FPS, 1)
     new = max((i for i in range(n) if rows[i]["newpc"] >= BURST), default=0)
@@ -178,9 +180,14 @@ def verdict(rows, cells, song, halted=False):
             out["ending"] = "held"
             out["end"] = max(round(HELD / FPS, 1), out["last_new"])
     # an end that rests on the song or a landmark while the picture has
-    # cells no period explains: text may still be running, so it is unsure
+    # cells no period explains: text may still be running. The last new
+    # data read says when it has all been shown; without it the end is unsure
     if out["ending"] in ("loops", "end-loop") and not vp and kinds_open(kinds):
-        out["unsure"] = True
+        if data is None:
+            out["unsure"] = True
+        else:
+            out["last_data"] = round(data / FPS, 1)
+            out["end"] = max(out["end"], out["last_data"])
     # how sure: the trace must run on well past the last new code
     out["after"] = round((n - new) / FPS)
     return out
@@ -189,6 +196,10 @@ def verdict(rows, cells, song, halted=False):
 def song_of(trace):
     notes = trace + ".notes"
     return song_loop(notes) if os.path.exists(notes) else None
+
+
+def data_of(trace):
+    return stream_end(trace + ".reads")
 
 
 def halted_of(trace):
@@ -217,7 +228,7 @@ def main():
     changed = [0] + (cells[1:] != cells[:-1]).sum(axis=1).tolist()
 
     if a.json:
-        print(json.dumps(verdict(rows, cells, song_of(a.trace), halted_of(a.trace))))
+        print(json.dumps(verdict(rows, cells, song_of(a.trace), halted_of(a.trace), data_of(a.trace))))
         return
     if not a.quiet:
         print("   time  vchg  cells vnew%  vlag(mode)  aenergy  awr  anew% alag(mode) newpc rom% dma")

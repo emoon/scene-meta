@@ -17,6 +17,7 @@
 #include "options.h"
 #include "uae.h"
 #include "memory.h"
+#include "dbgproto.h"
 #include "rommgr.h"
 #include "zfile.h"
 #ifdef AMIBERRY
@@ -4274,6 +4275,8 @@ uae_u32 memory_get_wordi(uaecptr addr)
 }
 uae_u32 memory_get_long(uaecptr addr)
 {
+	if (dbgproto_read_trace) /* PROTOTYPE (end detection) */
+		dbgproto_note_read(addr, 4);
 	addrbank *ab = &get_mem_bank(addr);
 	if (!ab->baseaddr_direct_r) {
 		return call_mem_get_func(ab->lget, addr);
@@ -4287,6 +4290,8 @@ uae_u32 memory_get_long(uaecptr addr)
 }
 uae_u32 memory_get_word(uaecptr addr)
 {
+	if (dbgproto_read_trace) /* PROTOTYPE (end detection) */
+		dbgproto_note_read(addr, 2);
 	addrbank *ab = &get_mem_bank(addr);
 	if (!ab->baseaddr_direct_r) {
 		return call_mem_get_func(ab->wget, addr);
@@ -4300,6 +4305,8 @@ uae_u32 memory_get_word(uaecptr addr)
 }
 uae_u32 memory_get_byte(uaecptr addr)
 {
+	if (dbgproto_read_trace) /* PROTOTYPE (end detection) */
+		dbgproto_note_read(addr, 1);
 	addrbank *ab = &get_mem_bank(addr);
 	if (!ab->baseaddr_direct_r) {
 		return call_mem_get_func(ab->bget, addr);
