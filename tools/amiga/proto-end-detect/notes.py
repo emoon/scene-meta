@@ -11,6 +11,7 @@ FPS = 50
 BIN = 10      # frames: candidate periods are counted in bins this wide
 MIN_PERIOD = 250
 TAIL = 3000    # frames at the end of the trace the loop is looked for in
+BEND = 0.03    # share a period may move from the last note's and not be a note
 
 
 def channel(ev):
@@ -35,12 +36,15 @@ def song_loop(path, log=lambda *a: None):
         # lengths that differ from one pass of the song to the next.
         if reg == "3":
             continue
-        # A period written again with the value it has is not a note
-        # (Desert Dream's player rewrites all four every frame).
+        # A period within a quarter tone of the last note's is not a note:
+        # the value it has written again (Desert Dream's player rewrites
+        # all four every frame), or a vibrato, which need not keep step
+        # with the song (Assemblers of Infinity 3).
         if reg == "2":
-            if cur.get(ch) == v:
+            per = int(v, 16)
+            if abs(per - cur.get(ch, 0)) <= BEND * per:
                 continue
-            cur[ch] = v
+            cur[ch] = per
         chans[ch].append((int(f), (reg, v)))
     data = {ch: channel(ev) for ch, ev in sorted(chans.items())}
     if not data:
@@ -55,7 +59,7 @@ def song_loop(path, log=lambda *a: None):
                 for f in where[keys[i]]:
                     if fr[i] - f >= MIN_PERIOD:
                         hist[(fr[i] - f) // BIN] += 1
-    best = None
+    best, passed = None, []
     for b, _ in hist.most_common(20):
         p = b * BIN + BIN // 2
         tol = max(BIN, p // 100)
@@ -68,9 +72,15 @@ def song_loop(path, log=lambda *a: None):
         log(f"  candidate {p / FPS:6.1f}s: per channel {txt}")
         live = [s for s in shares if s is not None]
         score = round(min(live), 2) if live else 0
-        if score >= 0.8 and (best is None or (-score, p) < best):
-            best = (-score, p)
+        if score >= 0.8:
+            passed.append(p)
+            if best is None or (-score, p) < best:
+                best = (-score, p)
     best = best and best[1]
+    if best:
+        # A multiple of the period matches as well or better (its tolerance
+        # is wider): take the shortest passing period the best is a multiple of.
+        best = min(p for p in passed if abs(best - round(best / p) * p) <= max(BIN, best // 100))
     if best is None:
         log("no loop found")
         return None
