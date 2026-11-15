@@ -56,6 +56,8 @@ def main():
          if a.variant is not None else variant_of(a.prod, e))
     out = OUT / str(a.prod)
     out.mkdir(parents=True, exist_ok=True)
+    import shutil
+    shutil.rmtree(out / "hd", ignore_errors=True)
     text, swaps = emulator._uae_config(machine, v, out, e.get("drives", 1))
     text = text.replace("sound_output=none", f"sound_output={a.sound}")
     (out / "machine.uae").write_text(text)

@@ -21,7 +21,7 @@ def load(path):
                 frame=int(x[0]), dmacon=int(x[1], 16), aw=x[2], awrites=int(x[3]),
                 aenergy=int(x[4]), apeak=int(x[5]), newpc=int(x[7]),
                 instr=int(x[8]), rom=int(x[9]), lastdma=int(x[10]),
-                resets=int(x[11]), cells=tuple(x[13:])))
+                resets=int(x[11]), chan=x[13], cells=tuple(x[14:])))
     return rows
 
 
@@ -71,9 +71,10 @@ def verdict(rows, vlag, alag, changed, t):
     new = max((i for i in range(n) if rows[i]["newpc"] >= BURST), default=0)
     after = n - new
     out = [f"last new code {t(new)} ({after / FPS:.0f}s of trace after it)"]
-    sil = n
-    while sil > 0 and rows[sil - 1]["aenergy"] == 0:
+    sil = n   # no channel plays anything but silence or one unchanged loop
+    while sil > 0 and "P" not in rows[sil - 1]["chan"]:
         sil -= 1
+    drone = "R" in rows[-1]["chan"]
     still = n
     while still > 0 and changed[still - 1] == 0:
         still -= 1
@@ -103,7 +104,7 @@ def verdict(rows, vlag, alag, changed, t):
         if sil == 0:
             kind += "; never made a sound"
         elif sil < n - 500:
-            kind += f"; music over at {t(sil)}"
+            kind += f"; music over at {t(sil)}" + (" (a loop drones on)" if drone else "")
     out.append(kind)
     out.append(f"evidence: video period {vp} ({vs:.0%}), music period {mp} ({ms:.0%}), "
                f"reset after {reset_after}, disk after {dma_after}")

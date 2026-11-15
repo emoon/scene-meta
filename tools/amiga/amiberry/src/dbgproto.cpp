@@ -905,12 +905,28 @@ static long tr_aenergy = 0;               /* sum |output step| over channels */
 static long tr_asamples = 0;
 static int tr_aout[4];
 static int tr_apeak = 0;
+/* Per channel: the data of one pass of its sample loop, hashed, and how
+ * many passes in a row were the same with no register written between. */
+static uint32_t tr_pass[4], tr_prev_pass[4];
+static int tr_same[4];
+static long tr_chen[4];
+
+void dbgproto_note_audio_loop(int nr)
+{
+	if (!trace_fp)
+		return;
+	tr_same[nr] = tr_pass[nr] == tr_prev_pass[nr] ? tr_same[nr] + 1 : 0;
+	tr_prev_pass[nr] = tr_pass[nr];
+	tr_pass[nr] = 2166136261u;
+}
 
 void dbgproto_note_audio_reg(int nr, int reg, unsigned v)
 {
 	if (!trace_fp)
 		return;
 	tr_awhash = (tr_awhash ^ (uint32_t)(nr | reg << 4 | v << 8)) * 16777619u;
+	tr_same[nr] = 0;
+	tr_prev_pass[nr] = 0;
 	tr_awrites++;
 }
 
@@ -921,6 +937,8 @@ void dbgproto_note_audio_sample(int nr, int sample, int vol)
 	int out = sample * vol;
 	int d = out - tr_aout[nr];
 	tr_aenergy += d < 0 ? -d : d;
+	tr_chen[nr] += d < 0 ? -d : d;
+	tr_pass[nr] = (tr_pass[nr] ^ (uint32_t)(out & 0xffff)) * 16777619u;
 	tr_aout[nr] = out;
 	if ((out < 0 ? -out : out) > tr_apeak)
 		tr_apeak = out < 0 ? -out : out;
@@ -976,6 +994,12 @@ static void trace_vsync(void)
 		frame_counter, (unsigned)cs.dmacon, tr_awhash, tr_awrites,
 		tr_aenergy, tr_apeak, tr_asamples, tr_new_pc, tr_instr,
 		tr_rom_instr, last_dma_frame, reset_counter, (unsigned)m68k_getpc());
+	/* per channel: S silent, R repeating one loop unchanged, P playing */
+	fputc(',', trace_fp);
+	for (int i = 0; i < 4; i++) {
+		fputc(tr_chen[i] == 0 ? 'S' : tr_same[i] >= 2 ? 'R' : 'P', trace_fp);
+		tr_chen[i] = 0;
+	}
 	for (int r = 0; r < TR_ROWS; r++)
 		for (int c = 0; c < TR_COLS; c++)
 			fprintf(trace_fp, ",%08x", (uint32_t)(cell[r][c] ^ cell[r][c] >> 32));
@@ -995,7 +1019,7 @@ static void cmd_trace(int s, const std::string &cmd, const std::string &path)
 	if (!cov_bits)
 		cov_bits = (uint8_t *)calloc(COV_BITS / 8, 1);
 	fprintf(trace_fp, "frame,dmacon,awhash,awrites,aenergy,apeak,asamples,"
-		"newpc,instr,rominstr,lastdma,resets,pc");
+		"newpc,instr,rominstr,lastdma,resets,pc,chan");
 	for (int i = 0; i < TR_ROWS * TR_COLS; i++)
 		fprintf(trace_fp, ",v%d", i);
 	fputc('\n', trace_fp);

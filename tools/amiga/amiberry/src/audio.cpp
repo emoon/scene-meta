@@ -2542,6 +2542,7 @@ void event_audxdat_func(uae_u32 v)
 #endif
 			if (cdp->wlen == 1) {
 				cdp->wlen = cdp->len;
+				dbgproto_note_audio_loop(nr); /* PROTOTYPE */
 				audio_low_period_hack(cdp);
 				if (!(v & 0x80000000)) {
 					cdp->intreq2 = true;
