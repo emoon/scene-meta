@@ -21,6 +21,7 @@
 #include "newcpu.h"
 #include "gensound.h"
 #include "audio.h"
+#include "dbgproto.h"
 #include "sounddep/sound.h"
 #include "events.h"
 #include "savestate.h"
@@ -1584,6 +1585,7 @@ static void newsample(int nr, sample8_t sample)
 #endif
 	if (!(audio_channel_mask & (1 << nr)))
 		sample = 0;
+	dbgproto_note_audio_sample(nr, sample, cdp->data.audvol); /* PROTOTYPE */
 	if (currprefs.sound_volcnt) {
 		cdp->data.new_sample = sample;
 	} else {
@@ -2648,6 +2650,7 @@ uaecptr audio_getloadpt(int nr)
 
 void AUDxLCH(int nr, uae_u16 v)
 {
+	dbgproto_note_audio_reg(nr, 0, v); /* PROTOTYPE */
 	struct audio_channel_data *cdp = audio_channel + nr;
 	audio_activate();
 	update_audio();
@@ -2677,6 +2680,7 @@ void AUDxLCH(int nr, uae_u16 v)
 
 void AUDxLCL(int nr, uae_u16 v)
 {
+	dbgproto_note_audio_reg(nr, 1, v); /* PROTOTYPE */
 	struct audio_channel_data *cdp = audio_channel + nr;
 	audio_activate();
 	update_audio();
@@ -2703,6 +2707,7 @@ void AUDxLCL(int nr, uae_u16 v)
 
 void AUDxPER (int nr, uae_u16 v)
 {
+	dbgproto_note_audio_reg(nr, 2, v); /* PROTOTYPE */
 	struct audio_channel_data *cdp = audio_channel + nr;
 
 	audio_activate ();
@@ -2739,6 +2744,7 @@ void AUDxPER (int nr, uae_u16 v)
 
 void AUDxLEN (int nr, uae_u16 v)
 {
+	dbgproto_note_audio_reg(nr, 3, v); /* PROTOTYPE */
 	struct audio_channel_data *cdp = audio_channel + nr;
 	audio_activate ();
 	update_audio ();
@@ -2751,6 +2757,7 @@ void AUDxLEN (int nr, uae_u16 v)
 
 void AUDxVOL (int nr, uae_u16 v)
 {
+	dbgproto_note_audio_reg(nr, 4, v); /* PROTOTYPE */
 	struct audio_channel_data *cdp = audio_channel + nr;
 
 	audio_activate ();

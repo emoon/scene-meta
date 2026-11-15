@@ -30,6 +30,7 @@
 #include "gui.h"
 #include "inputdevice.h"
 #include "dbgproto.h"
+#include "savestate.h"
 #include "osdep/target.h"
 #include "osdep/amiberry_gfx.h"
 
@@ -286,10 +287,11 @@ static void quit_batch(void)
 	set_special(SPCFLAG_BRK | SPCFLAG_MODE_CHANGE);
 }
 
+static FILE *trace_fp_get(void);
 static void update_instr_gate(void)
 {
 	dbgproto_instr_gate = dbgproto_active &&
-		(!started || (run_active == RUN_BP && bp_count > 0)
+		(!started || trace_fp_get() || (run_active == RUN_BP && bp_count > 0)
 		 || (run_active == RUN_WATCH && watch_size > 0));
 }
 
@@ -887,6 +889,129 @@ static void cmd_watch(int s, const std::string &cmd,
 /* Process commands until a `run` starts or the batch ends. Called from the
  * instruction hook (initial dispatch, breakpoint hit) and from the vsync
  * hook (frame countdown / audio-dma / run budget exhausted). */
+/* ---- PROTOTYPE (end detection): per-frame trace -------------------------
+ * `trace PATH` writes one CSV line per frame: what the display, Paula and
+ * the CPU did in it. Throwaway; the detector itself is prototyped host-side
+ * (tools/amiga/proto-end-detect/). */
+static FILE *trace_fp = NULL;
+#define TR_COLS 4
+#define TR_ROWS 8
+static uint8_t *cov_bits = NULL;          /* (pc, opcode) seen before */
+#define COV_BITS (1u << 26)
+static long tr_new_pc = 0, tr_instr = 0, tr_rom_instr = 0;
+static uint32_t tr_awhash = 2166136261u;  /* Paula register writes */
+static long tr_awrites = 0;
+static long tr_aenergy = 0;               /* sum |output step| over channels */
+static long tr_asamples = 0;
+static int tr_aout[4];
+static int tr_apeak = 0;
+
+void dbgproto_note_audio_reg(int nr, int reg, unsigned v)
+{
+	if (!trace_fp)
+		return;
+	tr_awhash = (tr_awhash ^ (uint32_t)(nr | reg << 4 | v << 8)) * 16777619u;
+	tr_awrites++;
+}
+
+void dbgproto_note_audio_sample(int nr, int sample, int vol)
+{
+	if (!trace_fp)
+		return;
+	int out = sample * vol;
+	int d = out - tr_aout[nr];
+	tr_aenergy += d < 0 ? -d : d;
+	tr_aout[nr] = out;
+	if ((out < 0 ? -out : out) > tr_apeak)
+		tr_apeak = out < 0 ? -out : out;
+	tr_asamples++;
+}
+
+static void trace_instr(uaecptr pc)
+{
+	tr_instr++;
+	if (pc >= 0xe00000 && pc <= 0xffffff)
+		tr_rom_instr++;
+	uint32_t h = (pc * 2654435761u) ^ ((uint32_t)(currprefs.cpu_model >= 68020 ? regs.irc : regs.opcode) * 40503u);
+	h &= COV_BITS - 1;
+	if (!(cov_bits[h >> 3] & (1 << (h & 7)))) {
+		cov_bits[h >> 3] |= 1 << (h & 7);
+		tr_new_pc++;
+	}
+}
+
+static void trace_vsync(void)
+{
+	SDL_Surface *sf = get_amiga_surface(0);
+	uint64_t cell[TR_ROWS][TR_COLS];
+	for (int r = 0; r < TR_ROWS; r++)
+		for (int c = 0; c < TR_COLS; c++)
+			cell[r][c] = 1469598103934665603ull;
+	if (sf && sf->pixels) {
+		const int bpp = SDL_BYTESPERPIXEL(sf->format);
+		for (int y = 0; y < sf->h; y++) {
+			const uint8_t *row = (const uint8_t *)sf->pixels + (size_t)y * sf->pitch;
+			int r = y * TR_ROWS / sf->h;
+			for (int c = 0; c < TR_COLS; c++) {
+				int x0 = sf->w * c / TR_COLS, x1 = sf->w * (c + 1) / TR_COLS;
+				uint64_t h = cell[r][c];
+				const uint8_t *p = row + (size_t)x0 * bpp;
+				size_t n = (size_t)(x1 - x0) * bpp;
+				size_t i = 0;
+				for (; i + 8 <= n; i += 8) {
+					uint64_t w;
+					memcpy(&w, p + i, 8);
+					h = (h ^ w) * 1099511628211ull;
+					h ^= h >> 29;
+				}
+				for (; i < n; i++)
+					h = (h ^ p[i]) * 1099511628211ull;
+				cell[r][c] = h;
+			}
+		}
+	}
+	struct dbgproto_custom_state cs;
+	dbgproto_custom_status(&cs);
+	fprintf(trace_fp, "%ld,%x,%x,%ld,%ld,%d,%ld,%ld,%ld,%ld,%ld,%d,%x",
+		frame_counter, (unsigned)cs.dmacon, tr_awhash, tr_awrites,
+		tr_aenergy, tr_apeak, tr_asamples, tr_new_pc, tr_instr,
+		tr_rom_instr, last_dma_frame, reset_counter, (unsigned)m68k_getpc());
+	for (int r = 0; r < TR_ROWS; r++)
+		for (int c = 0; c < TR_COLS; c++)
+			fprintf(trace_fp, ",%08x", (uint32_t)(cell[r][c] ^ cell[r][c] >> 32));
+	fputc('\n', trace_fp);
+	tr_awhash = 2166136261u;
+	tr_awrites = tr_aenergy = tr_asamples = tr_new_pc = tr_instr = tr_rom_instr = 0;
+	tr_apeak = 0;
+}
+
+static void cmd_trace(int s, const std::string &cmd, const std::string &path)
+{
+	trace_fp = fopen(path.c_str(), "w");
+	if (!trace_fp) {
+		emit_error(s, cmd, "cannot open trace file");
+		return;
+	}
+	if (!cov_bits)
+		cov_bits = (uint8_t *)calloc(COV_BITS / 8, 1);
+	fprintf(trace_fp, "frame,dmacon,awhash,awrites,aenergy,apeak,asamples,"
+		"newpc,instr,rominstr,lastdma,resets,pc");
+	for (int i = 0; i < TR_ROWS * TR_COLS; i++)
+		fprintf(trace_fp, ",v%d", i);
+	fputc('\n', trace_fp);
+	update_instr_gate();
+	emit(s, cmd, "{\"ok\":true}");
+}
+
+static void cmd_state_save(int s, const std::string &cmd, const std::string &path)
+{
+	savestate_initsave(path.c_str(), 1, 1, true);
+	savestate_state = STATE_SAVE;   /* written at the next hsync */
+	emit(s, cmd, "{\"ok\":true}");
+}
+static FILE *trace_fp_get(void) { return trace_fp; }
+/* ---- end PROTOTYPE ---------------------------------------------------- */
+
 static void dispatch(void)
 {
 	while (run_active == RUN_NONE && !finished) {
@@ -948,6 +1073,10 @@ static void dispatch(void)
 			cmd_disk(s, cmd, t);
 		} else if (t[0] == "input") {
 			cmd_input(s, cmd, t);
+		} else if (t[0] == "trace" && t.size() >= 2) {
+			cmd_trace(s, cmd, cmd.substr(cmd.find(' ') + 1));
+		} else if (t[0] == "state" && t.size() >= 3 && t[1] == "save") {
+			cmd_state_save(s, cmd, cmd.substr(cmd.find(t[2])));
 		} else {
 			emit_error(s, cmd, "unknown command");
 		}
@@ -970,6 +1099,8 @@ void dbgproto_instr(uaecptr pc)
 		dispatch();
 		return;
 	}
+	if (trace_fp)
+		trace_instr(pc);
 	if (run_active == RUN_BP) {
 		for (int i = 0; i < bp_count; i++) {
 			if (bps[i] == pc) {
@@ -1326,6 +1457,8 @@ void dbgproto_vsync(void)
 	if (!dbgproto_active || finished)
 		return;
 	frame_counter++;
+	if (trace_fp)
+		trace_vsync();
 	act_vsync();
 	swap_vsync();
 	if (dead_end())
