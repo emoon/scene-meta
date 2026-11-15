@@ -67,9 +67,10 @@ def dominant(lag, start, tol=8):
     return p, sum(abs(x - p) <= tol for x in lag[start:]) / max(1, len(lag) - start)
 
 
-def verdict(rows, vlag, alag, changed, t, notes=None):
+def verdict(rows, vlag, changed, song):
     """The model: nothing new runs after the last burst of new code. What
-    the demo does from there says how it ends. Returns a dict, times in s."""
+    the demo does from there says how it ends. ``song`` is what
+    ``song_loop`` found. Returns a dict, times in s."""
     n = len(rows)
     sec = lambda i: round(rows[min(i, n - 1)]["frame"] / FPS, 1)
     new = max((i for i in range(n) if rows[i]["newpc"] >= BURST), default=0)
@@ -82,7 +83,6 @@ def verdict(rows, vlag, alag, changed, t, notes=None):
     tail = range(max(0, n - 1000), n)
     rom = sum(rows[i]["rom"] for i in tail) / (sum(rows[i]["instr"] for i in tail) or 1)
     vp, vs = dominant(vlag, new + (n - new) // 2)
-    song = song_loop(notes) if notes and os.path.exists(notes) else None
     played = rows[new]["frame"]
     out = dict(trace=sec(n - 1), last_new=sec(new), sound=sil > 0,
                resets=rows[-1]["resets"],
@@ -121,6 +121,11 @@ def verdict(rows, vlag, alag, changed, t, notes=None):
     return out
 
 
+def song_of(trace):
+    notes = trace + ".notes"
+    return song_loop(notes) if os.path.exists(notes) else None
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("trace")
@@ -141,7 +146,7 @@ def main():
     changed = [0] + [sum(a != b for a, b in zip(vkeys[i], vkeys[i - 1])) for i in range(1, n)]
 
     if a.json:
-        print(json.dumps(verdict(rows, vlag, alag, changed, t, a.trace + ".notes")))
+        print(json.dumps(verdict(rows, vlag, changed, song_of(a.trace))))
         return
     if not a.quiet:
         print("   time  vchg  cells vnew%  vlag(mode)  aenergy  awr  anew% alag(mode) newpc rom% dma")
@@ -189,7 +194,7 @@ def main():
                   f"first pass began {t(max(0, s - p))}  [{len(runs)} runs]")
         else:
             print(f"  {name} repeats: no")
-    print("  VERDICT:", json.dumps(verdict(rows, vlag, alag, changed, t, a.trace + ".notes")))
+    print("  VERDICT:", json.dumps(verdict(rows, vlag, changed, song_of(a.trace))))
     tail = range(max(0, n - 1000), n)
     ins = sum(rows[i]["instr"] for i in tail) or 1
     print(f"  ROM share of the last 1000 frames: {sum(rows[i]['rom'] for i in tail) / ins:.0%}; resets {rows[-1]['resets']}")
