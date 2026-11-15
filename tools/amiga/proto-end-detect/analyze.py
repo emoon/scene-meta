@@ -185,6 +185,10 @@ def verdict(rows, cells, song, halted=False, data=None):
     if out["ending"] in ("loops", "end-loop") and not vp and kinds_open(kinds):
         if data is None:
             out["unsure"] = True
+        elif data >= rows[-1]["frame"] - 500:
+            # still being read when the trace ends: longer than the trace
+            out["last_data"] = round(data / FPS, 1)
+            out["unsure"] = True
         else:
             out["last_data"] = round(data / FPS, 1)
             out["end"] = max(out["end"], out["last_data"])
