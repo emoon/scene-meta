@@ -894,6 +894,7 @@ static void cmd_watch(int s, const std::string &cmd,
  * the CPU did in it. Throwaway; the detector itself is prototyped host-side
  * (tools/amiga/proto-end-detect/). */
 static FILE *trace_fp = NULL;
+static FILE *notes_fp = NULL;   /* PATH.notes: frame,channel,reg,value */
 #define TR_COLS 4
 #define TR_ROWS 8
 static uint8_t *cov_bits = NULL;          /* (pc, opcode) seen before */
@@ -927,6 +928,8 @@ void dbgproto_note_audio_reg(int nr, int reg, unsigned v)
 	tr_awhash = (tr_awhash ^ (uint32_t)(nr | reg << 4 | v << 8)) * 16777619u;
 	tr_same[nr] = 0;
 	tr_prev_pass[nr] = 0;
+	if (notes_fp && reg != 4)   /* the notes: every write but volume */
+		fprintf(notes_fp, "%ld,%d,%d,%x\n", frame_counter, nr, reg, v);
 	tr_awrites++;
 }
 
@@ -1016,6 +1019,7 @@ static void cmd_trace(int s, const std::string &cmd, const std::string &path)
 		emit_error(s, cmd, "cannot open trace file");
 		return;
 	}
+	notes_fp = fopen((path + ".notes").c_str(), "w");
 	if (!cov_bits)
 		cov_bits = (uint8_t *)calloc(COV_BITS / 8, 1);
 	fprintf(trace_fp, "frame,dmacon,awhash,awrites,aenergy,apeak,asamples,"
