@@ -36,7 +36,7 @@ class LadderTest(unittest.TestCase):
     def test_aga_only_tries_aga_first_then_the_a500s(self):
         n = names(machines.ladder_for(True, self.roms("kick12.rom")))
         self.assertEqual(n[0], "a1200")
-        self.assertEqual(n[-2:], ["a500_ks12", "a500_512k"])
+        self.assertEqual(n[-2:], ["a500_512k", "a500_1mb_chip"])
 
     def test_chip_only_a500_comes_after_the_slow_ram_ones(self):
         # A new rung must not change what already works further down.

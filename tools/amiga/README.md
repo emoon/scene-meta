@@ -18,6 +18,7 @@ one works.
 | `a500_1mb` | 68000, ECS Agnus, KS1.3, 1M chip + 512K slow |
 | `a500_ks12` | 68000, OCS, KS1.2, 512K chip + 512K slow |
 | `a500_512k` | 68000, OCS, KS1.3, 512K chip |
+| `a500_1mb_chip` | 68000, ECS Agnus, KS1.3, 1M chip |
 | `a1200` | 68EC020, AGA, KS3.0, 2M chip |
 | `a1200_fast` | 68020, AGA, KS3.0, 2M chip + 8M fast |
 | `a1200_030` | 68030 + 68882, AGA, KS3.0, 2M chip + 32M fast |
