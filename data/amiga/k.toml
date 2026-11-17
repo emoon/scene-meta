@@ -353,6 +353,7 @@ group = "Cult"
 source = "script"
 disks = ["Cult.Kefmania-1.dms", "Cult.Kefmania-2.dms"]
 swaps = [{ disk = 2, at = 43.3 }]
+machine = "a500_1mb_chip"
 
 [demozoo.248092]
 title = "Kefrens Demo"

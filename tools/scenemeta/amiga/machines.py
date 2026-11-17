@@ -91,6 +91,11 @@ LADDER = (
     Machine("a500_512k", "kick13.rom",
             _A500 + "chipset=ocs\nchipmem_size=1\nbogomem_size=0\n",
             False, "A500 68000, OCS, KS1.3, 512K chip"),
+    # With slow RAM present, Kefmania's own reboot into disk 2 Gurus during
+    # the boot; it also refuses to run on 512K chip ("REQUIRS 1MEG").
+    Machine("a500_1mb_chip", "kick13.rom",
+            _A500 + "chipset=ecs_agnus\nchipmem_size=2\nbogomem_size=0\n",
+            False, "A500 68000, ECS Agnus, KS1.3, 1M chip"),
     Machine("a1200", "kick30.rom", _A1200,
             True, "A1200 68EC020, AGA, KS3.0, 2M chip"),
     Machine("a1200_fast", "kick30.rom", _A1200.replace("cpu_24bit_addressing=true",
