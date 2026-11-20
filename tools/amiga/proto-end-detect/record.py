@@ -9,34 +9,14 @@ emulator's `trace` command on; the trace lands in $OUT/<id>/trace.csv
 (`--state F`: trace-from-F.csv, restored from the state saved at frame F).
 Question: which signals say a demo has ended, and when its end part began?
 """
-import argparse, os, pathlib, sys, tomllib, time
+import argparse, os, pathlib, sys, time
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[2]))
-from scenemeta.amiga import config, emulator, machines, media  # noqa: E402
+from scenemeta.amiga import config, emulator, player, replay   # noqa: E402
+from scenemeta.core.errors import CannotPlay                   # noqa: E402
 from scenemeta.core.export import default_machine              # noqa: E402
 
 OUT = pathlib.Path(os.environ.get("PROTO_OUT", "/tmp/proto-end-detect"))
-
-
-def entry_of(prod):
-    for path in config.DATA_DIR.glob("*.toml"):
-        e = tomllib.loads(path.read_text("utf-8")).get("demozoo", {}).get(str(prod))
-        if e:
-            return e
-    sys.exit(f"{prod}: not in data/amiga")
-
-
-def variant_of(prod, e):
-    vs = media.variants(prod, e["title"])[0]
-    for v in vs:
-        if e.get("disks") and v.kind == "floppy" and \
-                [os.path.basename(d) for d in v.disks] == e["disks"]:
-            return v
-        if e.get("run") and v.kind == "hd" and (v.command or "").strip() == e["run"]:
-            return v
-    if not vs:
-        sys.exit(f"{prod}: no media")
-    return vs[0]
 
 
 def main():
@@ -48,14 +28,19 @@ def main():
                     help="frames to take a screenshot at (shot-<frame>.png)")
     ap.add_argument("--state", type=int, help="restore the state saved at this frame")
     ap.add_argument("--machine")
-    ap.add_argument("--variant", type=int, help="index into media.variants")
     ap.add_argument("--sound", default="interrupts")
     a = ap.parse_args()
 
-    e = entry_of(a.prod)
-    machine = machines.BY_NAME[a.machine or e.get("machine", default_machine(config.DATA_DIR))]
-    v = (media.variants(a.prod, e["title"])[0][a.variant]
-         if a.variant is not None else variant_of(a.prod, e))
+    e = replay.all_entries(config.DATA_DIR).get(a.prod)
+    if not e:
+        sys.exit(f"{a.prod}: not in data/amiga")
+    if a.machine:
+        e = dict(e, machine=a.machine)
+    try:
+        ready = player.ready(a.prod, e, default_machine(config.DATA_DIR))
+    except CannotPlay as err:
+        sys.exit(f"{a.prod} {e['title']}: {err}")
+    machine, v = ready.machine, ready.variant
     out = OUT / str(a.prod)
     out.mkdir(parents=True, exist_ok=True)
     import shutil
@@ -66,14 +51,10 @@ def main():
 
     start = a.state or 0
     trace = out / (f"trace-from-{start}.csv" if start else "trace.csv")
-    first = e.get("drives", 1) + 1
     # (frame, command) relative to power-on
-    acts = [(round(s["at"] * machines.FPS), f"disk insert 0 {swaps[s['disk'] - first]}")
-            for s in e.get("swaps", [])]
-    for s in e.get("swaps", []):
-        if s.get("key") == "lmb":
-            acts.append((round((s["at"] + s.get("key_delay", 5.0)) * machines.FPS),
-                         "input mouse click 0"))
+    acts = [(f, f"disk insert 0 {swaps[arg]}" if what == "insert"
+             else f"input mouse click {arg}")
+            for f, what, arg in player.actions(e)]
     acts += [(f, f"state save {out / f'state-{f}.uss'}") for f in a.save_at]
     acts += [(f, f"screenshot {out / f'shot-{f}.png'}") for f in a.shots]
     acts = sorted(x for x in acts if x[0] > start)
