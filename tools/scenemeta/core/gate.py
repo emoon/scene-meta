@@ -45,6 +45,7 @@ class Judgement:
     passed: bool
     reason: str
     until: tuple = ()    # per swap: the latest insert that passed, seconds
+    seeds: tuple = ()    # of an entry: ``(seed, Judgement)`` of each seed
 
     def __str__(self):
         return f"{'pass' if self.passed else 'fail'} ({self.reason})"
@@ -140,23 +141,31 @@ def _until(entry, plays, seeds):
                  for i, swap in enumerate(entry.get("swaps", ())))
 
 
+def _on_seed(entry, plays, seed):
+    """The Judgement of ``entry`` on ``seed`` alone."""
+    fault = _fault(entry, plays, seed)
+    if fault:
+        return Judgement(False, fault)
+    return Judgement(True, judge(plays[Run(seed)]).reason +
+                     (", every key needed" if keys_of(entry) else ""))
+
+
 def verdict(entry, plays):
     """Pass when ``entry`` holds on every seed, else a fail that names the
     first seed it does not hold on. ``plays`` is the Play of each of
     ``runs(entry)``."""
-    seeds = sorted({r.seed for r in plays})
-    until = _until(entry, plays, seeds)
+    seeds = tuple((seed, _on_seed(entry, plays, seed))
+                  for seed in sorted({r.seed for r in plays}))
+    until = _until(entry, plays, [seed for seed, _ in seeds])
     proved = "".join(f"; disk {swap['disk']} until {u:.1f}"
                      for swap, u in zip(entry.get("swaps", ()), until)
                      if u is not None)
-    for seed in seeds:
-        fault = _fault(entry, plays, seed)
-        if fault:
-            return Judgement(False, f"seed {seed}: {fault}{proved}", until)
-    reason = f"{len(seeds)} seeds: " + judge(plays[Run(seeds[0])]).reason
-    if keys_of(entry):
-        reason += ", every key needed"
-    return Judgement(True, reason + proved, until)
+    for seed, said in seeds:
+        if not said.passed:
+            return Judgement(False, f"seed {seed}: {said.reason}{proved}",
+                             until, seeds)
+    return Judgement(True, f"{len(seeds)} seeds: {seeds[0][1].reason}{proved}",
+                     until, seeds)
 
 
 def check(entry, play, each=map):

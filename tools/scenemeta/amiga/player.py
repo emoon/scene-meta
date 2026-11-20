@@ -90,24 +90,30 @@ def play(prod, entry, default, keys=True, keep=None):
     return ready(prod, entry, default).play(keys, keep)
 
 
-def play_each(todo, one, jobs, log=print):
-    """Play every ``(prod, entry)`` of ``todo``, ``jobs`` at a time:
-    ``one(prod, entry)`` plays it and returns its report line. An entry that
-    cannot be played is reported as an error. Returns how many were.
+def each_played(todo, one, jobs):
+    """Play every ``(prod, entry)`` of ``todo``, ``jobs`` at a time. Yields
+    of each, in order, ``(prod, True, one(prod, entry))``, or ``(prod,
+    False, line)`` with the line that reports why it cannot be played.
     Raises CannotPlay when there is no mirror to play any of them from."""
     media.require_mirror()
 
     def report(prod, entry):
         try:
-            return True, one(prod, entry)
+            return prod, True, one(prod, entry)
         except CannotPlay as e:
-            return False, f"{prod} {entry['title']}: error: {e}"
+            return prod, False, f"{prod} {entry['title']}: error: {e}"
 
-    errors = 0
     with cf.ThreadPoolExecutor(jobs) as pool:
-        for ok, line in pool.map(lambda pe: report(*pe), todo):
-            errors += not ok
-            log(line, flush=True)
+        yield from pool.map(lambda pe: report(*pe), todo)
+
+
+def play_each(todo, one, jobs, log=print):
+    """Log the report line ``one(prod, entry)`` returns of each entry
+    played (see ``each_played``). Returns how many could not be played."""
+    errors = 0
+    for _, ok, line in each_played(todo, one, jobs):
+        errors += not ok
+        log(line, flush=True)
     return errors
 
 
