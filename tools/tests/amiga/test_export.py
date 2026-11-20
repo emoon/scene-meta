@@ -2,7 +2,7 @@ import unittest
 
 from scenemeta.amiga import export
 from scenemeta.core.export import Variant
-from scenemeta.core.result import Swap
+from scenemeta.core.result import Key, Swap
 
 
 def variant(idx=0, kind="hd", disks=(), command='"demo"\n', note="", machine="a500",
@@ -34,6 +34,13 @@ class EntryTest(unittest.TestCase):
         self.assertEqual(e["disks"], ["DD-A.adf", "DD-B.dms", "DD-C.dms"])
         self.assertEqual(e["swaps"], [{"disk": 2, "at": 536.9, "key": "lmb"},
                                       {"disk": 3, "at": 800.0}])
+
+    def test_keys_with_no_swap(self):
+        v = variant(kind="floppy", disks=["a", "b"])
+        v.keys = [Key(86.13, "lmb")]
+        e = entry(v)
+        self.assertEqual(e["keys"], [{"at": 86.1, "key": "lmb"}])
+        self.assertNotIn("swaps", e)
 
     def test_short_of_the_last_disk_says_so(self):
         e = entry(variant(kind="floppy", disks=["a", "b", "c"], reached=1))

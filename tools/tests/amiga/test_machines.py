@@ -74,3 +74,24 @@ class ConfigTest(unittest.TestCase):
         for m in machines.LADDER:
             text = machines.uae_text(m)
             self.assertNotIn("no_unimplemented=true", text, m.name)
+
+
+class StartTest(LadderTest):
+    def test_a_known_machine_skips_the_rungs_below_it(self):
+        n = names(machines.ladder_for(False, self.roms(), start="a500_512k"))
+        self.assertEqual(n[0], "a500_512k")
+        self.assertNotIn("a500", n)
+
+    def test_the_rungs_above_a_known_machine_stay(self):
+        n = names(machines.ladder_for(False, self.roms(), start="a1200"))
+        self.assertEqual(n, ["a1200", "a1200_fast", "a1200_030", "a1200_060"])
+
+    def test_start_follows_the_aga_only_order(self):
+        n = names(machines.ladder_for(True, self.roms(), start="a1200_fast"))
+        self.assertEqual(n[0], "a1200_fast")
+        self.assertIn("a500", n)
+
+    def test_an_unknown_start_changes_nothing(self):
+        d = self.roms()
+        self.assertEqual(names(machines.ladder_for(False, d, start="nope")),
+                         names(machines.ladder_for(False, d)))

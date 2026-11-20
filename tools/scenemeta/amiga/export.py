@@ -75,6 +75,8 @@ def entry(title, groups, variants, cls, default):
         e["swaps"] = [{"disk": s.disk, "at": round(s.at, 1),
                        **({"key": s.key} if s.key else {})}
                       for s in v.swaps]
+    if runs and v.keys:
+        e["keys"] = [{"at": round(k.at, 1), "key": k.key} for k in v.keys]
     if run := _run_file(v):
         e["run"] = run
     if note:

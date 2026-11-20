@@ -23,6 +23,17 @@ def _connect():
     return sqlite3.connect(f"file:{config.INDEX_DB}?mode=ro", uri=True)
 
 
+def ids_without_screenshots():
+    """The ids of the Demozoo productions that have no screenshot."""
+    db = _connect()
+    try:
+        return {pid for (pid,) in db.execute(
+            "select id from productions_production where id not in "
+            "(select production_id from productions_screenshot)")}
+    finally:
+        db.close()
+
+
 def productions(platforms, types, ids=None, link_classes=()):
     """The productions of ``platforms`` (Demozoo platform name -> tag) that
     have one of ``types``, ordered by id. Links of ``link_classes`` count as

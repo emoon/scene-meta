@@ -1,6 +1,10 @@
 """The Amiga productions in scope: OCS/ECS and AGA demos and intros."""
 
+import tomllib
+
+from .. import machines as presets
 from ..core import catalog
+from ..core.export import default_machine
 
 PLATFORMS = {"Amiga OCS/ECS": "ocs", "Amiga AGA": "aga"}
 # Executable demo/intro types only; music, packs, cracktros, diskmags etc. are out.
@@ -20,3 +24,16 @@ def productions(ids=None):
 def is_aga(prod):
     """Is ``prod`` tagged for AGA machines only?"""
     return "aga" in prod.platforms and "ocs" not in prod.platforms
+
+
+def known_machines(data):
+    """``{id: machine name}`` of the productions the data files already
+    file under a machine: a sweep starts there, not at the bottom."""
+    default = default_machine(data)
+    out = {}
+    for path in sorted(data.glob("*.toml")):
+        if path.name != presets.FILE:
+            for key, e in tomllib.loads(path.read_text("utf-8")) \
+                    .get("demozoo", {}).items():
+                out[int(key)] = e.get("machine", default)
+    return out

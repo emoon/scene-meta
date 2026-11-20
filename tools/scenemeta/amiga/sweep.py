@@ -5,7 +5,7 @@ import dataclasses
 import functools
 
 from ..core import result, sweep as driver
-from . import catalog, emulator, machines, media, verdict
+from . import catalog, config, emulator, machines, media, verdict
 from .machines import FPS
 
 SINGLE_DISK_FRAMES = 9000       # 3 minutes of a demo
@@ -34,6 +34,7 @@ class Attempt:
     click_every: int = 0
     key_every: int = 0
     seed: int = emulator.DEFAULT_SEED
+    clicks: tuple = ()    # frames of the clicks a run with no swap made
 
     @property
     def ran(self):
@@ -67,7 +68,8 @@ class Attempt:
             [result.Swap(disk, seconds(frame), how,
                          key="lmb" if "click" in how else None)
              for frame, disk, how in self.swaps],
-            {"returncode": log.returncode, "events": log.events}, log.last_shot)
+            {"returncode": log.returncode, "events": log.events}, log.last_shot,
+            [result.Key(seconds(f), "lmb") for f in self.clicks])
 
 
 CLICK_EVERY = 1500    # 30 s between nudges on the click retry
@@ -131,6 +133,13 @@ class _Tries:
     def stalled(self):
         return waits_for_click(self.tries)
 
+    def once(self, frames, **kw):
+        """One more attempt, for ``frames``: not one of the waves."""
+        got = attempt(self._run[0], self._run[1], frames, **kw)
+        self.tries.append(got)
+        self.asked.append(kw)
+        return got
+
     def wave(self, *kws):
         """Run one attempt per set of arguments, all at once."""
         # Every attempt rolls its own seed, as the wall clock did before
@@ -152,6 +161,7 @@ def try_machine(m, variant, frames):
     is the best."""
     t = _Tries(m, variant, frames)
     _try_external_drives(t, _try_triggers_and_nudges(t))
+    _try_clicks_only(t)
     _try_scheduled_swaps(t)
     best = _best(t)
     return [a for a in t.tries if a is not best] + [best]
@@ -262,6 +272,38 @@ def _best(t):
     return plain if as_far(plain, best) else best
 
 
+SWAP_CLICK_FRAMES = 250   # the detector clicks this long after an insert
+
+
+def _try_clicks_only(t):
+    """A set no run has got through, with a run that put a disk in, clicked
+    and crashed: that run again with the clicks and no disk. The detector also
+    takes a wait for a click for a wait for a disk (Megademo: "press the
+    button" at 81 s, and the part it then loads is on disk 1; with disk 2 in,
+    it jumps into a scrambled load). When that run plays without a crash,
+    the swap was false and the production only wants the clicks."""
+    # A run with nudge clicks too is fine: the replay has only the swap
+    # clicks, so a production that needed the nudges stalls and stays.
+    crashed = [a for a in t.tries
+               if a.verdict.crash is not None and a.drives == 1
+               and any("click" in how for _, _, how in a.swaps)]
+    # Not short(): the crashed run itself read the disk it was given, so it
+    # counts as having reached the last one. Only a run that got there and
+    # lived makes the swap proven.
+    proven = any(a.ran and a.reached >= t.n and a.verdict.crash is None
+                 for a in t.tries)
+    if t.n < 2 or proven or not crashed:
+        return
+    base = max(crashed, key=lambda a: a.rank)
+    clicks = tuple(f + SWAP_CLICK_FRAMES for f, _, how in base.swaps
+                   if "click" in how)
+    got = t.once(clicks[-1] + emulator.AUTOSWAP_TAIL_FRAMES, seed=base.seed,
+                 play=tuple((f, "click", 0) for f in clicks))
+    if got.verdict.works and got.verdict.crash is None:
+        # The set is not short of a disk the production does not ask for.
+        t.tries[-1] = dataclasses.replace(got, reached=t.n, clicks=clicks)
+
+
 def clicked_swap(a):
     """The insert frame of ``a``'s first swap that got a click, or None."""
     return next((f for f, _, how in a.swaps if "click" in how), None)
@@ -301,14 +343,14 @@ def swap_frames(a):
     return [f for f in out if crash is None or f < crash]
 
 
-def rungs(variant, aga_only, release_date=None):
+def rungs(variant, aga_only, release_date=None, start=None):
     """The machines to try ``variant`` on. A disk that boots from the Fast
     File System cannot be mounted by Kickstart 1.x: only the KS3 rungs."""
-    ladder = machines.ladder_for(aga_only, release_date=release_date)
+    ladder = machines.ladder_for(aga_only, release_date=release_date, start=start)
     return [m for m in ladder if m.aga] if variant.ffs else ladder
 
 
-def climb(variant, aga_only, release_date=None):
+def climb(variant, aga_only, release_date=None, start=None):
     """Run ``variant`` up the ladder until a machine works (and, for a disk
     set, reaches every disk).
 
@@ -317,7 +359,7 @@ def climb(variant, aga_only, release_date=None):
     frames = budget(variant)
     attempts, chosen = [], []
     n = len(variant.disks)
-    for m in rungs(variant, aga_only, release_date):
+    for m in rungs(variant, aga_only, release_date, start):
         tries = try_machine(m, variant, frames)
         attempts += tries
         chosen.append(tries[-1])
@@ -363,13 +405,14 @@ def _record(v, attempts, best):
         next(i for i, a in enumerate(attempts) if a is best))
 
 
-def _job(prod, multi_only=False):
+def _job(prod, multi_only=False, known=None):
     """Worker: build the production's variants and climb each one."""
     variants, problems = media.variants(prod.id, prod.title)
     if multi_only:
         variants = [v for v in variants if len(v.disks) > 1]
     aga_only = catalog.is_aga(prod)
-    results = [climb(v, aga_only, prod.release_date) for v in variants]
+    start = (known or {}).get(prod.id)
+    results = [climb(v, aga_only, prod.release_date, start) for v in variants]
     for v, (_, best) in list(zip(variants, results)):
         if best.verdict.works:
             continue
@@ -377,12 +420,13 @@ def _job(prod, multi_only=False):
             fv = make()
             if fv:
                 variants.append(fv)
-                results.append(climb(fv, aga_only, prod.release_date))
+                results.append(climb(fv, aga_only, prod.release_date, start))
                 if results[-1][1].verdict.works:
                     break
     return problems, [_record(v, *r) for v, r in zip(variants, results)]
 
 
 def run_all(prods, store, jobs=None, multi_only=False, log=print):
-    driver.run_all(prods, store, functools.partial(_job, multi_only=multi_only),
-                   jobs, log)
+    known = catalog.known_machines(config.DATA_DIR)
+    driver.run_all(prods, store, functools.partial(
+        _job, multi_only=multi_only, known=known), jobs, log)

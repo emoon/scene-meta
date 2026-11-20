@@ -23,6 +23,13 @@ class Swap:
 
 
 @dataclasses.dataclass
+class Key:
+    """A key press the production needs that no disk change goes with."""
+    at: float
+    key: str
+
+
+@dataclasses.dataclass
 class Run:
     """One boot of one variant on one machine."""
     machine: str
@@ -38,6 +45,7 @@ class Run:
     swaps: list = dataclasses.field(default_factory=list)
     detail: dict = dataclasses.field(default_factory=dict)  # the platform's own
     screenshot: bytes = b""      # the last screen
+    keys: list = dataclasses.field(default_factory=list)   # result.Key
 
 
 @dataclasses.dataclass

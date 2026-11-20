@@ -4,7 +4,7 @@ import unittest
 
 from scenemeta.core import export, store, sweep
 from scenemeta.core.catalog import Production
-from scenemeta.core.result import Run, Swap, Variant
+from scenemeta.core.result import Key, Run, Swap, Variant
 
 PROD = Production(7, "Demo", "Group", ("ocs",), ("Demo",), "1991", [])
 
@@ -36,6 +36,12 @@ class StoreTest(unittest.TestCase):
                          ("m1", "works", 1, 2))
         # Only the swaps the production took.
         self.assertEqual(v.swaps, [Swap(2, 536.88, "poll", key="lmb")])
+
+    def test_key_presses_with_no_swap_are_kept(self):
+        runs = [Run("m1", 180.0, "works", 60.0, keys=[Key(86.1, "lmb")])]
+        self.db.put_result(PROD, [], [variant(("a",), runs)])
+        (_, _, _, (v,)), = export.productions(self.db)
+        self.assertEqual(v.keys, [Key(86.1, "lmb")])
 
     def test_the_chosen_run_is_the_variants_best(self):
         runs = [Run("m1", 180.0, "crash", 0.0), Run("m2", 180.0, "works", 60.0)]

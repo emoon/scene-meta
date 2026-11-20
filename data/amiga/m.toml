@@ -2184,7 +2184,7 @@ title = "Megademo"
 group = "Red Sector Inc."
 source = "script"
 disks = ["RSI-MegademoA.dms", "RSI-MegademoB.dms"]
-swaps = [{ disk = 2, at = 81.1, key = "lmb" }]
+keys = [{ at = 86.1, key = "lmb" }]
 
 [demozoo.22680]
 title = "Megademo"
@@ -3265,7 +3265,7 @@ title = "Megademo III"
 group = "Fairlight / North Star"
 source = "script"
 disks = ["NST_FLT-Megademo3A.dms", "NST_FLT-Megademo3B.dms"]
-swaps = [{ disk = 2, at = 80.6, key = "lmb" }]
+keys = [{ at = 85.6, key = "lmb" }]
 
 [demozoo.224508]
 title = "Megademo III"

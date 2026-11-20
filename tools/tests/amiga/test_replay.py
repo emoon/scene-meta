@@ -1,4 +1,5 @@
 import unittest
+from unittest import mock
 
 from scenemeta.amiga import replay
 from scenemeta.amiga.emulator import Sample
@@ -33,6 +34,13 @@ class ActionsTest(unittest.TestCase):
         # With two drives disk 3 is the first one swapped in.
         entry = {"drives": 2, "swaps": [{"disk": 3, "at": 10}]}
         self.assertEqual(replay.actions(entry), [(500, "insert", 0)])
+
+    def test_keys_of_their_own(self):
+        # No disk goes in; the entry's keys come in time order.
+        entry = {"keys": [{"at": 90, "key": "lmb"}, {"at": 10, "key": "lmb"}]}
+        self.assertEqual(replay.actions(entry),
+                         [(500, "click", 0), (4500, "click", 0)])
+        self.assertEqual(replay.actions(entry, keys=False), [])
 
     def test_key_it_cannot_press(self):
         entry = {"swaps": [{"disk": 2, "at": 10, "key": "space"}]}
@@ -79,3 +87,33 @@ class JudgeTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class VariantOfTest(unittest.TestCase):
+    HD = replay.media.Variant("hd", [], root="/r", command="demo.exe")
+    ADF = replay.media.Variant("floppy", ["/d/a.adf"])
+    SET = replay.media.Variant("floppy", ["/d/a.adf", "/d/b.adf"])
+
+    def pick(self, variants, entry):
+        with mock.patch.object(replay.media, "variants",
+                               return_value=(variants, [])):
+            return replay.variant_of(1, {"title": "x", **entry})
+
+    def test_an_entry_naming_its_disks_gets_that_set(self):
+        got = self.pick([self.ADF, self.SET], {"disks": ["a.adf", "b.adf"]})
+        self.assertIs(got, self.SET)
+
+    def test_an_entry_naming_its_run_command_gets_that_directory(self):
+        self.assertIs(self.pick([self.ADF, self.HD], {"run": "demo.exe"}),
+                      self.HD)
+
+    def test_an_entry_naming_nothing_gets_the_first_variant(self):
+        self.assertIs(self.pick([self.HD, self.ADF], {}), self.HD)
+
+    def test_boot_names_the_kind_when_it_is_not_the_first(self):
+        self.assertIs(self.pick([self.HD, self.ADF], {"boot": "floppy"}),
+                      self.ADF)
+
+    def test_no_media_cannot_be_replayed(self):
+        with self.assertRaises(replay.CannotReplay):
+            self.pick([], {})

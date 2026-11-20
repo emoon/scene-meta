@@ -162,3 +162,16 @@ class AutoswapTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class SampleCommandsTest(unittest.TestCase):
+    def cmds(self, **kw):
+        return emulator._sample(3, "peek 4 4", pathlib.Path("/s"), False,
+                                emulator.Options(**kw))
+
+    def test_no_kept_shot_unless_asked(self):
+        self.assertFalse([c for c in self.cmds() if c.startswith("shot-new")])
+
+    def test_kept_shot_is_named_after_its_sample(self):
+        self.assertIn("shot-new 20 /keep/0003.png",
+                      self.cmds(keep=pathlib.Path("/keep")))

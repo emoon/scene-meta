@@ -286,6 +286,75 @@ class ClickNeededTest(unittest.TestCase):
         self.assertEqual(calls, [{}])
 
 
+class ClicksOnlyTest(unittest.TestCase):
+    """A crashed run's swap is false when the clicks alone play."""
+
+    def run_try(self, alone, reached=1):
+        calls = []
+
+        def fake(m, variant, frames, **kw):
+            calls.append((frames, kw))
+            if kw.get("play"):
+                return alone
+            return sweep.Attempt(
+                "a500", 9000, verdict.Verdict("works-then-crash", 20,
+                                              "alert:00000004", 5065),
+                RunLog([], [], 0, False, ""), [(4055, 2, "poll+click")],
+                reached=reached)
+
+        v = media.Variant("floppy", ["a.adf", "b.adf"])
+        with mock.patch.object(sweep, "attempt", fake):
+            tries = sweep.try_machine(machines.BY_NAME["a500"], v, 72000)
+        return calls, tries
+
+    def played(self, verdict_):
+        return sweep.Attempt("a500", 9000, verdict_,
+                             RunLog([], [], 0, False, ""), [], reached=1)
+
+    def test_clicks_that_play_are_all_the_production_wants(self):
+        calls, tries = self.run_try(self.played(verdict.Verdict("works", 20)))
+        frames, kw = next(c for c in calls if c[1].get("play"))
+        self.assertEqual(kw["play"], ((4305, "click", 0),))
+        self.assertEqual(frames, 4305 + emulator.AUTOSWAP_TAIL_FRAMES)
+        best = max(tries, key=lambda a: a.rank)
+        self.assertEqual((best.swaps, best.clicks, best.reached),
+                         ([], (4305,), 2))
+        self.assertEqual([(k.at, k.key) for k in best.record().keys],
+                         [(86.1, "lmb")])
+
+    def test_a_crash_that_read_the_disk_is_still_a_false_swap(self):
+        # Megademo III: the loader reads the scrambled disk B before it dies.
+        _, tries = self.run_try(self.played(verdict.Verdict("works", 20)),
+                                reached=2)
+        best = max(tries, key=lambda a: a.rank)
+        self.assertEqual((best.swaps, best.clicks), ([], (4305,)))
+
+    def test_a_run_with_nudge_clicks_is_replayed_too(self):
+        # Megademo III: the crashed run is the one that also nudged.
+        calls = []
+
+        def fake(m, variant, frames, **kw):
+            calls.append(kw)
+            if kw.get("play"):
+                return self.played(verdict.Verdict("works", 20))
+            return sweep.Attempt(
+                "a500", 9000, verdict.Verdict(
+                    "works-then-crash", 20, "alert:00000004", 5065),
+                RunLog([], [], 0, False, ""), [(4055, 2, "poll+click")],
+                reached=2, click_every=sweep.CLICK_EVERY)
+
+        v = media.Variant("floppy", ["a.adf", "b.adf"])
+        with mock.patch.object(sweep, "attempt", fake):
+            tries = sweep.try_machine(machines.BY_NAME["a500"], v, 72000)
+        best = max(tries, key=lambda a: a.rank)
+        self.assertEqual((best.swaps, best.clicks), ([], (4305,)))
+
+    def test_clicks_that_crash_too_leave_the_swap(self):
+        _, tries = self.run_try(self.played(verdict.Verdict(
+            "works-then-crash", 20, "alert:00000004", 5000)))
+        self.assertTrue(all(a.record().keys == [] for a in tries))
+
+
 class RungsTest(unittest.TestCase):
     def test_ffs_boot_disk_skips_kickstart_1(self):
         from scenemeta.amiga import media

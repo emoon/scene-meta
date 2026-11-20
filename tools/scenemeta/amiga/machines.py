@@ -131,21 +131,23 @@ def predates_aga(release_date):
     return release_date < AGA_RELEASE
 
 
-def ladder_for(aga_only, rom_dir=None, release_date=None):
+def ladder_for(aga_only, rom_dir=None, release_date=None, start=None):
     """The machines to try, in order. AGA-only productions start at the AGA
     rungs and only then try the OCS ones: Demozoo's platform tag can be
     wrong (Bliss Out, tagged AGA, runs on an A500 and not under KS3.0).
     Productions that predate AGA skip the 030/060 rungs: of the ~1650 that
     fail everywhere they cost two runs each, and 8 variants only worked
-    there."""
+    there. ``start`` names a machine already known to work: the rungs
+    before it are not tried again."""
     rom_dir = rom_dir or config.ROM_DIR
     early = predates_aga(release_date)
     rungs = [m for m in LADDER
              if (not m.optional or (rom_dir / m.rom).exists())
              and not (early and m.aga_era)]
-    if not aga_only:
-        return rungs
-    return [m for m in rungs if m.aga] + [m for m in rungs if not m.aga]
+    if aga_only:
+        rungs = [m for m in rungs if m.aga] + [m for m in rungs if not m.aga]
+    first = next((i for i, m in enumerate(rungs) if m.name == start), 0)
+    return rungs[first:]
 
 
 def uae_text(machine):
