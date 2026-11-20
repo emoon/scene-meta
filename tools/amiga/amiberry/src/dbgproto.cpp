@@ -320,6 +320,8 @@ static void finish_run(const char *stopped)
 	update_instr_gate();
 }
 
+static void cmd_pcs(int s, const std::string &cmd, long n);
+
 static void cmd_regs(int s, const std::string &cmd)
 {
 	MakeSR();
@@ -1173,6 +1175,8 @@ static void dispatch(void)
 			cmd_peek(s, cmd, parse_addr(t[1]), parse_num(t[2]));
 		} else if (t[0] == "regs") {
 			cmd_regs(s, cmd);
+		} else if (t[0] == "pcs") {
+			cmd_pcs(s, cmd, t.size() >= 2 ? parse_num(t[1]) : 64);
 		} else if (t[0] == "status") {
 			cmd_status(s, cmd);
 		} else if (t[0] == "screenshot" && t.size() >= 2) {
@@ -1214,6 +1218,29 @@ void dbgproto_add_command(const char *cmd)
 	dbgproto_instr_gate = 1; /* force initial dispatch at first instruction */
 }
 
+/* The last PC_RING instructions run under `run until=bp`, for walking back
+ * from a breakpoint to the jump that got there. */
+#define PC_RING 4096
+static uae_u32 pc_ring[PC_RING];
+static unsigned pc_ring_n = 0;
+
+static void cmd_pcs(int s, const std::string &cmd, long n)
+{
+	if (n < 1 || n > PC_RING)
+		n = 64;
+	if ((unsigned long)n > pc_ring_n)
+		n = pc_ring_n;
+	std::string body = "{\"pcs\":[";
+	char tmp[16];
+	for (long i = n; i > 0; i--) {
+		snprintf(tmp, sizeof tmp, "%s\"%x\"", i == n ? "" : ",",
+			pc_ring[(pc_ring_n - i) % PC_RING]);
+		body += tmp;
+	}
+	body += "]}";
+	emit(s, cmd, body.c_str());
+}
+
 void dbgproto_instr(uaecptr pc)
 {
 	if (!started) {
@@ -1224,6 +1251,7 @@ void dbgproto_instr(uaecptr pc)
 	if (trace_fp)
 		trace_instr(pc);
 	if (run_active == RUN_BP) {
+		pc_ring[pc_ring_n++ % PC_RING] = pc;
 		for (int i = 0; i < bp_count; i++) {
 			if (bps[i] == pc) {
 				finish_run("bp");
