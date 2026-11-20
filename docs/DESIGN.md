@@ -81,7 +81,7 @@ appears once per platform, as a key or as a cross-reference.
 | `result` | only when the production does not simply work: `broken`, `crashes-later`, `unknown` |
 | `boot` | `floppy` or `hd`: what to start it from, when that is not the first thing the download offers (an executable that only runs from a floppy, a disk set better run from its hard-drive archive) |
 | `kind` | `collection`, `standalone`, `separate-disks`, `menu`, `boot_fresh` |
-| `disks` | file names in disk order; multi-disk productions only |
+| `disks` | file names in disk order: a multi-disk production's, or the one disk meant where the download has several |
 | `swaps` | disk swaps: `disk`, `at`, and optionally `until`, `key`, `key_delay` |
 | `keys` | key presses at fixed times, other than a swap's own key: `at`, `key` |
 | `run` | the file to start, when the obvious one is wrong or ambiguous |

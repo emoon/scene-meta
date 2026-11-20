@@ -63,7 +63,7 @@ def entry(title, groups, variants, cls, default):
     else:
         result = _RESULT.get(v.verdict, "unknown")
     runs = result in (None, "crashes-later")
-    named = media.named(_media(v), variants[0].kind)
+    named = media.named(_media(v), [_media(o) for o in variants])
 
     e = {"title": title}
     if groups:

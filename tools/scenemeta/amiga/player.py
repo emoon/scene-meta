@@ -63,6 +63,8 @@ def ready(prod, entry, default):
     if name not in machines.BY_NAME:
         raise BadEntry(f"no machine {name!r}")
     machine = machines.BY_NAME[name]
+    if not 1 <= entry.get("drives", 1) <= emulator.MAX_DRIVES:
+        raise BadEntry(f"no machine with {entry['drives']} drives")
     # What costs nothing to find missing, before the download is unpacked.
     machines.require_rom(machine)
     actions(entry)
@@ -98,10 +100,18 @@ def play_each(todo, one, jobs, log=print):
 
 def actions(entry, keys=True):
     """What to do when, for emulator.Options' ``play``. Without ``keys`` the
-    disks go in and nothing is pressed."""
+    disks go in and nothing is pressed. Raises BadEntry for a key that
+    cannot be pressed and for a swap of a disk that cannot go in."""
     out = []
     first = entry.get("drives", 1) + 1      # the first disk that is swapped in
+    last = len(entry.get("disks", ()))
     for swap in entry.get("swaps", []):
+        if not first <= swap["disk"] <= last:
+            # A disk that sits in a drive from the start is not swapped in.
+            raise BadEntry(
+                f"no way to put in disk {swap['disk']}: " + (
+                    f"the disks to put in are {first} to {last}"
+                    if first <= last else "there is none to put in"))
         frame = round(swap["at"] * FPS)
         out.append((frame, "insert", swap["disk"] - first))
         if "key" in swap and keys:
@@ -140,32 +150,54 @@ def loaded(samples, inserts, unit=0):
 
 
 def _variant_of(prod, entry):
-    """The media of the entry: the one variant of the download an export
-    describes by the ``boot``, ``disks`` and ``run`` the entry has (see
-    media.named). The download's own variants are looked at first; the
-    other ways to run them, which a sweep tries when they do not work,
-    when none of those fits. Raises CannotPlay when the download has no
-    media, BadEntry when no variant fits or more than one does: never
-    another variant in the entry's place."""
-    title, run = entry["title"], entry.get("run")
-    variants, problems = media.variants(prod, title, run)
-    if not variants:
-        raise CannotPlay("no media: " + "; ".join(problems))
+    """The media of the entry: the one variant of the download that the
+    ``boot``, ``disks`` and ``run`` the entry has describe (see media.fits).
+    Raises CannotPlay when the download has no media, BadEntry when no
+    variant fits or more than one does: never another variant in the
+    entry's place. No variant fitting is a BadEntry only when all of the
+    download was there to look at; when some of it gave nothing it is a
+    CannotPlay that says what."""
     said = {k: entry[k] for k in ("boot", "disks", "run") if entry.get(k)}
-    first = variants[0].kind
-
-    def fits(found):
-        return [v for v in found if media.named(v, first) == said]
-
-    found = fits(variants) or fits(
-        made for v in variants
-        for make in media.fallbacks(v, prod, title, run) if (made := make()))
+    # As the media picks today first. Asked to start the entry's ``run``,
+    # every tree that holds the file starts it, and two that were told
+    # apart by what they pick are the same: only when nothing fits.
+    for run in dict.fromkeys((None, said.get("run"))):
+        found, problems = _fitting(prod, entry["title"], said, run)
+        if found:
+            break
     if len(found) == 1:
         return found[0]
     wanted = " and ".join(f"{k} {v!r}" for k, v in said.items()) \
         or "an entry with no boot, disks or run"
+    if found:
+        raise BadEntry(f"{wanted} fits {len(found)} of the download's variants"
+                       f" ({', '.join(v.label for v in found)}): its disks or"
+                       " run have to say which")
+    if problems:
+        raise CannotPlay(f"{wanted} fits none of the download's variants, and"
+                         " not all of it gave one: " + "; ".join(problems))
+    raise BadEntry(f"{wanted} fits none of the download's variants")
+
+
+def _fitting(prod, title, said, run):
+    """``(found, problems)``: the variants of the download that fit what
+    the entry says, the media asked to start ``run``, and what of the
+    download gave no variant. The download's own variants are looked at
+    first; the other ways to run them (see media.fallbacks) when none of
+    those fits, and of them only the kind the entry is of."""
+    variants, problems = media.variants(prod, title, run)
+    if not variants:
+        raise CannotPlay("no media: " + "; ".join(problems))
+    first = variants[0].kind
+    found = [v for v in variants if media.fits(v, said, first)]
     if not found:
-        raise BadEntry(f"{wanted} fits none of the download's variants")
-    raise BadEntry(f"{wanted} fits {len(found)} of the download's variants ("
-                   + ", ".join(v.label for v in found)
-                   + "): it does not say which")
+        for v in variants:
+            for kind, make in media.fallbacks(v, prod, title, run):
+                if kind != said.get("boot", first):
+                    continue
+                made = make()
+                if made is None:
+                    problems.append(f"{v.label}: no other {kind} to run it from")
+                elif media.fits(made, said, first):
+                    found.append(made)
+    return found, problems

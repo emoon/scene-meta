@@ -29,14 +29,31 @@ class ActionsTest(unittest.TestCase):
                          [(3305, "insert", 0), (6000, "insert", 1)])
 
     def test_key_delay(self):
-        entry = {"swaps": [{"disk": 2, "at": 10, "key": "lmb", "key_delay": 1.5}]}
+        entry = {"disks": ["a", "b"],
+                 "swaps": [{"disk": 2, "at": 10, "key": "lmb", "key_delay": 1.5}]}
         self.assertEqual(player.actions(entry),
                          [(500, "insert", 0), (575, "click", 0)])
 
     def test_disks_in_the_other_drives_are_not_on_the_swap_list(self):
         # With two drives disk 3 is the first one swapped in.
-        entry = {"drives": 2, "swaps": [{"disk": 3, "at": 10}]}
+        entry = {"drives": 2, "disks": ["a", "b", "c"],
+                 "swaps": [{"disk": 3, "at": 10}]}
         self.assertEqual(player.actions(entry), [(500, "insert", 0)])
+
+    def test_a_disk_that_cannot_go_in_is_an_error_not_another_disk(self):
+        def swap(disk, **entry):
+            return {"disks": ["a", "b", "c"], **entry,
+                    "swaps": [{"disk": disk, "at": 10}]}
+        # Disk 1 sits in the drive, and with two drives so does disk 2.
+        with self.assertRaisesRegex(BadEntry, "disk 1: .* are 2 to 3"):
+            player.actions(swap(1))
+        with self.assertRaisesRegex(BadEntry, "disk 2: .* are 3 to 3"):
+            player.actions(swap(2, drives=2))
+        with self.assertRaisesRegex(BadEntry, "disk 4: .* are 2 to 3"):
+            player.actions(swap(4))
+        # One disk, or a hard drive: nothing to swap.
+        with self.assertRaisesRegex(BadEntry, "disk 2: there is none"):
+            player.actions({"swaps": [{"disk": 2, "at": 10}]})
 
     def test_keys_of_their_own(self):
         # No disk goes in; the entry's keys come in time order.
@@ -46,7 +63,8 @@ class ActionsTest(unittest.TestCase):
         self.assertEqual(player.actions(entry, keys=False), [])
 
     def test_a_key_it_cannot_press_is_an_error_naming_the_key(self):
-        entry = {"swaps": [{"disk": 2, "at": 10, "key": "space"}]}
+        entry = {"disks": ["a", "b"],
+                 "swaps": [{"disk": 2, "at": 10, "key": "space"}]}
         with self.assertRaisesRegex(CannotPlay, "'space'"):
             player.actions(entry)
         entry = {"keys": [{"at": 10, "key": "return"}]}
@@ -90,13 +108,24 @@ class VariantOfTest(unittest.TestCase):
                                   run="demo", choice=True)
     ON_FLOPPY = player.media.Variant("floppy", ["/w/disk.adf"], run="only")
 
-    def pick(self, variants, entry, problems=(), fallbacks=()):
-        with mock.patch.object(player.media, "variants", return_value=(
-                variants, list(problems))) as found, \
-                mock.patch.object(player.media, "fallbacks", side_effect=[
-                    [lambda v=v: v for v in fallbacks]]
-                    + [[] for _ in variants]) as others:
-            self.found, self.others = found, others
+    def pick(self, variants, entry, problems=(), fallbacks=(), forced=None):
+        """The variant of ``entry``. ``fallbacks`` are the other ways to run
+        the first of ``variants`` (None: one that cannot be made);
+        ``forced`` is what the media gives when asked to start a file."""
+        self.made = []
+
+        def others(v, *_):
+            return [(f.kind if f else "floppy",
+                     lambda f=f: self.made.append(f) or f)
+                    for f in fallbacks] if v is variants[0] else []
+
+        def found(prod, title, run):
+            return (forced if run and forced else variants), list(problems)
+
+        with mock.patch.object(player.media, "variants",
+                               side_effect=found) as self.found, \
+                mock.patch.object(player.media, "fallbacks",
+                                  side_effect=others) as self.others:
             return player._variant_of(1, {"title": "x", **entry})
 
     def test_an_entry_naming_its_disks_gets_that_set(self):
@@ -109,9 +138,34 @@ class VariantOfTest(unittest.TestCase):
                                 {"boot": "hd", "run": "demo.exe"}), self.HD)
 
     def test_the_run_file_is_what_the_media_is_asked_to_start(self):
-        # Not whatever executable is picked today.
-        self.pick([self.HD], {"run": "demo.exe"})
-        self.found.assert_called_once_with(1, "x", "demo.exe")
+        # When it is not the executable picked today.
+        today = player.media.Variant("hd", [], root="/r", run="main.exe",
+                                     choice=True)
+        self.assertIs(self.pick([today], {"run": "demo.exe"},
+                                forced=[self.HD]), self.HD)
+        self.assertEqual([c.args for c in self.found.call_args_list],
+                         [(1, "x", None), (1, "x", "demo.exe")])
+
+    def test_the_media_is_not_asked_when_todays_pick_is_the_run_file(self):
+        # Asked to start it, the outer archive's tree would start it too.
+        outer = player.media.Variant("hd", [], root="/o", run="main.exe",
+                                     choice=True)
+        forced = [self.HD, player.media.Variant(
+            "hd", [], root="/o", run="demo.exe", choice=True)]
+        self.assertIs(self.pick([self.HD, outer], {"run": "demo.exe"},
+                                forced=forced), self.HD)
+        self.found.assert_called_once_with(1, "x", None)
+
+    def test_an_entry_may_say_more_than_an_export_would(self):
+        # The only executable, the kind of the first variant, the one disk.
+        self.assertIs(self.pick([self.PLAIN], {"run": "only"}), self.PLAIN)
+        self.assertIs(self.pick([self.PLAIN], {"boot": "hd"}), self.PLAIN)
+        self.assertIs(self.pick([self.ADF], {"disks": ["a.adf"]}), self.ADF)
+
+    def test_one_disk_of_two_is_the_one_the_entry_names(self):
+        other = player.media.Variant("floppy", ["/d/b.adf"])
+        self.assertIs(self.pick([self.ADF, other], {"disks": ["b.adf"]}),
+                      other)
 
     def test_an_entry_naming_nothing_gets_the_variant_with_nothing_to_name(self):
         self.assertIs(self.pick([self.PLAIN, self.HD, self.SET], {}),
@@ -141,6 +195,19 @@ class VariantOfTest(unittest.TestCase):
                                 fallbacks=every), self.ON_FLOPPY)
         self.others.assert_called_with(self.PLAIN, 1, "x", None)
 
+    def test_only_fallbacks_of_the_entrys_kind_are_made(self):
+        every = [self.LAUNCH, self.MERGED, self.ON_FLOPPY]
+        self.pick([self.SET, self.PLAIN], {"boot": "hd", "run": "demo"},
+                  fallbacks=every)
+        self.assertEqual(self.made, [self.MERGED])
+
+    def test_a_fallback_told_apart_by_its_file_is_not_the_disk_that_boots(self):
+        # As an export writes it when both are there (see media.named).
+        on_floppy = player.media.Variant("floppy", ["/w/disk.adf"],
+                                         run="demo.exe")
+        self.assertIs(self.pick([self.ADF, self.HD], {"run": "demo.exe"},
+                                fallbacks=[on_floppy]), on_floppy)
+
     def test_no_fallback_is_made_when_a_variant_of_the_download_fits(self):
         self.pick([self.ADF, self.PLAIN], {}, fallbacks=[self.ON_FLOPPY])
         self.others.assert_not_called()
@@ -163,6 +230,20 @@ class VariantOfTest(unittest.TestCase):
         with self.assertRaisesRegex(BadEntry, "fits 2 .*a.adf, b.adf"):
             self.pick([self.ADF, other], {})
 
+    def test_no_fit_in_a_download_that_did_not_all_unpack_is_not_the_entrys(self):
+        # An archive that timed out today may hold the variant: the entry
+        # is not filed as one that cannot be played.
+        with self.assertRaisesRegex(
+                CannotPlay, "fits none.*x.lha: unpack-error") as e:
+            self.pick([self.ADF], {"boot": "hd"},
+                      ["x.lha: unpack-error:TimeoutExpired"])
+        self.assertNotIsInstance(e.exception, BadEntry)
+        # Nor when another way to run a variant could not be made.
+        with self.assertRaisesRegex(
+                CannotPlay, "fits none.*a.adf: no other floppy") as e:
+            self.pick([self.ADF], {"run": "demo"}, fallbacks=[None])
+        self.assertNotIsInstance(e.exception, BadEntry)
+
     def test_no_media_is_its_own_error(self):
         with self.assertRaisesRegex(CannotPlay, "no media: no-files-on-nas") as e:
             self.pick([], {"disks": ["a.adf"]}, ["no-files-on-nas"])
@@ -174,7 +255,7 @@ class FramesTest(unittest.TestCase):
         self.assertEqual(player.frames_of({"title": "x"}), player.PLAIN_FRAMES)
 
     def test_a_set_plays_until_its_last_disk_has_loaded(self):
-        entry = {"swaps": [{"disk": 2, "at": 100}]}
+        entry = {"disks": ["a", "b"], "swaps": [{"disk": 2, "at": 100}]}
         self.assertEqual(player.frames_of(entry), 5000 + player.TAIL_FRAMES)
 
 

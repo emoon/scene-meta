@@ -11,7 +11,7 @@ A production with a ``meta.json`` is done and is not played again. One that
 could not be played is an error. When that is the entry's doing (a machine
 or a key the player does not have, media the download does not have) the
 ``meta.json`` says so, and the entry is not tried again as it is; a missing
-ROM or no media files nothing.
+ROM, no media, or media that did not all unpack files nothing.
 """
 
 import datetime

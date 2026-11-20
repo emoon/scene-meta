@@ -565,17 +565,40 @@ MERGED_NOTE = "set merged into one directory"
 LAUNCH_NOTE = "patched disk 1 runs"
 
 
-def named(v, first_kind):
-    """What an entry says of variant ``v``, of all the download offers: its
-    ``boot`` when that is not the kind of the first variant, its ``disks``
-    when it is a set, the file it ``run``s when the media left a choice."""
+def _disk_names(v):
+    return [os.path.basename(d) for d in v.disks]
+
+
+def fits(v, said, first_kind):
+    """Is ``v`` the variant an entry describes that says ``said`` of it
+    (the ``boot``, ``disks`` and ``run`` it has)? What it says is so, and
+    what it leaves out is as usual: the kind of the download's first
+    variant, no set of disks, no file there was a choice of."""
+    return (said.get("boot", first_kind) == v.kind
+            and (said["disks"] == _disk_names(v) if "disks" in said
+                 else len(v.disks) < 2)
+            and (said["run"] == v.run if "run" in said else not v.choice))
+
+
+def named(v, variants):
+    """What an entry says of variant ``v``, of all the download offers
+    (``variants``, ``v`` among them): its ``boot`` when that is not the
+    kind of the first variant, its ``disks`` when it is a set, the file it
+    ``run``s when the media left a choice. Where that fits another variant
+    too, the file it starts is named all the same, or else its one disk."""
+    first = variants[0].kind
     out = {}
-    if v.kind != first_kind:
+    if v.kind != first:
         out["boot"] = v.kind
     if len(v.disks) > 1:
-        out["disks"] = [os.path.basename(d) for d in v.disks]
+        out["disks"] = _disk_names(v)
     if v.choice:
         out["run"] = v.run
+    if sum(fits(o, out, first) for o in variants) > 1:
+        if v.run:
+            out["run"] = v.run
+        elif v.disks:
+            out["disks"] = _disk_names(v)
     return out
 
 
@@ -586,7 +609,8 @@ def merged_variant(disks, prod_id, title, run=None):
     the same directory"), leaves on a hard drive. None when that holds no
     executable. ``run`` is the script or executable an entry names."""
     work = config.WORK / "media" / str(prod_id)
-    root = work / "merged"
+    # A directory per set: the variant of one outlives the making of another.
+    root = work / "merged" / pathlib.Path(disks[0]).stem
     if root.exists():
         shutil.rmtree(root)
     root.mkdir(parents=True)
@@ -682,7 +706,9 @@ def floppy_variant(v, prod_id):
     root = pathlib.Path(v.root)
     if sum(p.stat().st_size for p in _walk_files(root)) > OFS_BYTES:
         return None
-    box = config.WORK / "media" / str(prod_id) / "fd" / root.name
+    # A box per tree, two of which may end in the same directory name.
+    box = config.WORK / "media" / str(prod_id) / "fd" / \
+        f"{root.name}-{hashlib.sha1(str(root).encode()).hexdigest()[:8]}"
     if box.exists():
         _rmtree(box)
     tree = box / "files"
@@ -707,17 +733,17 @@ def floppy_variant(v, prod_id):
 
 def fallbacks(v, prod_id, title="", run=None):
     """Other ways to run variant ``v``, in the order a sweep tries them when
-    it did not work: each makes a variant, or None. ``run`` is the file an
-    entry says to start."""
+    it did not work: ``(kind, make)`` each, where ``make()`` gives a variant
+    of that kind, or None. ``run`` is the file an entry says to start."""
     if v.kind == "hd":
         # Files a demo loads from DF0: rather than from its directory.
         return [] if v.command is None else \
-            [lambda: floppy_variant(v, prod_id)]
+            [("floppy", lambda: floppy_variant(v, prod_id))]
     # A floppy set that never got going may be a Workbench disk: run its
     # demo directly instead. A set that still does not may be meant to be
     # installed: run it from one directory holding every disk.
     out = [] if LAUNCH_NOTE in v.note else \
-        [lambda: launch_variant(v.disks, prod_id, run=run)]
+        [("floppy", lambda: launch_variant(v.disks, prod_id, run=run))]
     if len(v.disks) > 1:
-        out.append(lambda: merged_variant(v.disks, prod_id, title, run))
+        out.append(("hd", lambda: merged_variant(v.disks, prod_id, title, run)))
     return out

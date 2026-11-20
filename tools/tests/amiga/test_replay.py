@@ -24,7 +24,8 @@ class JudgeTest(unittest.TestCase):
 
 
 class ReportTest(unittest.TestCase):
-    ENTRY = {"title": "x", "swaps": [{"disk": 2, "at": 10, "key": "space"}]}
+    ENTRY = {"title": "x", "disks": ["a.adf", "b.adf"],
+             "swaps": [{"disk": 2, "at": 10, "key": "space"}]}
     ADF = player.media.Variant("floppy", ["/d/a.adf", "/d/b.adf"])
 
     def setUp(self):
@@ -45,33 +46,37 @@ class ReportTest(unittest.TestCase):
     def outcome(self, verdict, loaded):
         return player.Outcome("a500", Verdict(verdict, 0), loaded, None)
 
+    def one(self, entry, *outcomes):
+        """The report line of ``entry``, its runs giving ``outcomes``."""
+        with mock.patch.object(player, "ready") as self.ready:
+            self.play = self.ready.return_value.play
+            self.play.side_effect = outcomes
+            return replay._one(7, entry, "a500")
+
     def test_an_entry_with_keys_is_played_again_without_them(self):
         entry = {"title": "x", "swaps": [{"disk": 2, "at": 10, "key": "lmb"}]}
-        with mock.patch.object(player, "play", side_effect=[
-                self.outcome("works", [True]),
-                self.outcome("works", [False])]) as play:
-            line = replay._one(7, entry, "a500")
+        line = self.one(entry, self.outcome("works", [True]),
+                        self.outcome("works", [False]))
         self.assertEqual(line, "7 x: keys needed (as written: works, disks"
                          " loaded y; without keys: works, disks loaded n)")
-        self.assertEqual([c.kwargs for c in play.call_args_list],
+        self.assertEqual([c.kwargs for c in self.play.call_args_list],
                          [{}, {"keys": False}])
+        # Both from the media found once.
+        self.ready.assert_called_once_with(7, entry, "a500")
 
     def test_with_no_disk_to_put_in_the_run_itself_is_the_evidence(self):
         entry = {"title": "x", "keys": [{"at": 10, "key": "lmb"}]}
-        with mock.patch.object(player, "play", side_effect=[
-                self.outcome("works", []), self.outcome("crash", [])]):
-            line = replay._one(7, entry, "a500")
+        line = self.one(entry, self.outcome("works", []),
+                        self.outcome("crash", []))
         self.assertEqual(line, "7 x: keys needed (as written: works, disks"
                          " loaded y; without keys: crash, disks loaded n)")
 
     def test_an_entry_without_keys_is_played_once(self):
         entry = {"title": "x", "swaps": [{"disk": 2, "at": 10}]}
-        with mock.patch.object(player, "play", return_value=self.outcome(
-                "works-then-crash", [False])) as play:
-            line = replay._one(7, entry, "a500")
+        line = self.one(entry, self.outcome("works-then-crash", [False]))
         self.assertEqual(line, "7 x: does not replay (as written:"
                          " works-then-crash, disks loaded n)")
-        play.assert_called_once_with(7, entry, "a500")
+        self.play.assert_called_once_with()
 
     def test_the_run_counts_its_errors(self):
         lines = []

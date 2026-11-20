@@ -400,7 +400,7 @@ def _job(prod, multi_only=False, known=None):
     for v, (_, best) in list(zip(variants, results)):
         if best.verdict.works:
             continue
-        for make in media.fallbacks(v, prod.id, prod.title):
+        for _, make in media.fallbacks(v, prod.id, prod.title):
             fv = make()
             if fv:
                 variants.append(fv)

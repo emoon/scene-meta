@@ -50,10 +50,10 @@ def _has_keys(entry):
 def _one(prod, entry, default):
     """The report line of one production. Raises CannotPlay when something
     it needs is missing."""
-    runs = [("as written", player.play(prod, entry, default))]
+    ready = player.ready(prod, entry, default)
+    runs = [("as written", ready.play())]
     if _has_keys(entry):
-        runs.append(("without keys",
-                     player.play(prod, entry, default, keys=False)))
+        runs.append(("without keys", ready.play(keys=False)))
     # With no disk to put in, the run itself is the evidence.
     got = [(name, o.verdict.verdict, o.loaded or [o.verdict.works])
            for name, o in runs]
