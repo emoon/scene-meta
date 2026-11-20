@@ -7,7 +7,8 @@ filed under ``<root>/<id>/``:
     <root>/<id>/01.png ...   what the emulator wrote, unscaled
     <root>/<id>/meta.json    where each came from, or why there are none
 
-A production with a ``meta.json`` is done and is not played again.
+A production with a ``meta.json`` is done and is not played again. One that
+could not be played (a missing ROM, no media) gets none: it is an error.
 """
 
 import concurrent.futures as cf
@@ -105,14 +106,12 @@ def meta(prod, entry, machine, shots, status, reason=""):
 
 def capture(prod, entry, default, out):
     """Play ``entry`` and file what the emulator kept under ``out/<prod>``.
-    Returns the production's meta."""
+    Returns the production's meta. Raises CannotPlay when something the
+    run needs is missing."""
     name = entry.get("machine", default)
-    try:
-        machine = machines.BY_NAME[name]
-        variant = replay.variant_of(prod, entry)
-        acts = replay.actions(entry)
-    except CannotPlay as e:
-        return meta(prod, entry, name, [], "none", f"cannot replay: {e}")
+    machine = machines.BY_NAME[name]
+    variant = replay.variant_of(prod, entry)
+    acts = replay.actions(entry)
     frames = frames_of(entry)
     with tempfile.TemporaryDirectory(prefix=f"shots-{prod}-", dir=out) as t:
         keep = pathlib.Path(t)
@@ -137,11 +136,16 @@ def capture(prod, entry, default, out):
 
 
 def _one(prod, entry, default, out):
-    result = capture(prod, entry, default, out)
+    """``(ok, report line)`` of one production: not ok when it could not
+    be played, and then nothing is filed."""
+    try:
+        result = capture(prod, entry, default, out)
+    except CannotPlay as e:
+        return False, f"{prod} {entry['title']}: error: {e}"
     dest = out / str(prod)
     dest.mkdir(exist_ok=True)
     (dest / META).write_text(json.dumps(result, indent=1) + "\n")
-    return f"{prod} {entry['title']}: {result['status']}" + \
+    return True, f"{prod} {entry['title']}: {result['status']}" + \
         (f" ({len(result['shots'])})" if result["shots"] else f" ({result['reason']})")
 
 
@@ -153,6 +157,8 @@ def todo(found, wanted, without, done):
 
 
 def run(out, ids=None, data=None, jobs=None, log=print):
+    """File the screenshots under ``out``. Returns how many productions
+    could not be played."""
     out = pathlib.Path(out)
     if not out.is_dir():
         raise SystemExit(f"{out}: no such directory (is the share mounted?)")
@@ -164,6 +170,10 @@ def run(out, ids=None, data=None, jobs=None, log=print):
     default = default_machine(data)
     prods = todo(found, ids, demozoo.ids_without_screenshots(), done)
     jobs = jobs or max(1, (os.cpu_count() or 4) // 2)
+    errors = 0
     with cf.ThreadPoolExecutor(jobs) as pool:
-        for line in pool.map(lambda p: _one(p, found[p], default, out), prods):
+        for ok, line in pool.map(lambda p: _one(p, found[p], default, out),
+                                 prods):
+            errors += not ok
             log(line, flush=True)
+    return errors

@@ -1,3 +1,5 @@
+import pathlib
+import tempfile
 import unittest
 from unittest import mock
 
@@ -43,9 +45,12 @@ class ActionsTest(unittest.TestCase):
                          [(500, "click", 0), (4500, "click", 0)])
         self.assertEqual(replay.actions(entry, keys=False), [])
 
-    def test_key_it_cannot_press(self):
+    def test_a_key_it_cannot_press_is_an_error_naming_the_key(self):
         entry = {"swaps": [{"disk": 2, "at": 10, "key": "space"}]}
-        with self.assertRaises(CannotPlay):
+        with self.assertRaisesRegex(CannotPlay, "'space'"):
+            replay.actions(entry)
+        entry = {"keys": [{"at": 10, "key": "return"}]}
+        with self.assertRaisesRegex(CannotPlay, "'return'"):
             replay.actions(entry)
 
 
@@ -86,27 +91,26 @@ class JudgeTest(unittest.TestCase):
         self.assertEqual(replay.judge([False], None), "does not replay")
 
 
-if __name__ == "__main__":
-    unittest.main()
-
-
 class VariantOfTest(unittest.TestCase):
-    HD = replay.media.Variant("hd", [], root="/r", command="demo.exe")
+    HD = replay.media.Variant("hd", [], root="/r", command='"demo.exe"\n',
+                              note="2 executables, picked demo.exe")
+    PLAIN = replay.media.Variant("hd", [], root="/p", command='"only"\n')
     ADF = replay.media.Variant("floppy", ["/d/a.adf"])
     SET = replay.media.Variant("floppy", ["/d/a.adf", "/d/b.adf"])
 
-    def pick(self, variants, entry):
+    def pick(self, variants, entry, problems=()):
         with mock.patch.object(replay.media, "variants",
-                               return_value=(variants, [])):
+                               return_value=(variants, list(problems))):
             return replay.variant_of(1, {"title": "x", **entry})
 
     def test_an_entry_naming_its_disks_gets_that_set(self):
         got = self.pick([self.ADF, self.SET], {"disks": ["a.adf", "b.adf"]})
         self.assertIs(got, self.SET)
 
-    def test_an_entry_naming_its_run_command_gets_that_directory(self):
-        self.assertIs(self.pick([self.ADF, self.HD], {"run": "demo.exe"}),
-                      self.HD)
+    def test_an_entry_naming_its_run_file_gets_the_variant_that_runs_it(self):
+        # As the export writes it: the picked executable, unquoted.
+        self.assertIs(self.pick([self.ADF, self.PLAIN, self.HD],
+                                {"run": "demo.exe"}), self.HD)
 
     def test_an_entry_naming_nothing_gets_the_first_variant(self):
         self.assertIs(self.pick([self.HD, self.ADF], {}), self.HD)
@@ -115,6 +119,50 @@ class VariantOfTest(unittest.TestCase):
         self.assertIs(self.pick([self.HD, self.ADF], {"boot": "floppy"}),
                       self.ADF)
 
-    def test_no_media_cannot_be_replayed(self):
-        with self.assertRaises(CannotPlay):
-            self.pick([], {})
+    def test_disks_that_match_no_variant_are_an_error_not_another_variant(self):
+        with self.assertRaisesRegex(CannotPlay, "c.adf"):
+            self.pick([self.ADF, self.SET, self.HD],
+                      {"disks": ["a.adf", "c.adf"]})
+
+    def test_a_run_that_matches_no_variant_is_an_error_not_another_variant(self):
+        with self.assertRaisesRegex(CannotPlay, "other.exe"):
+            self.pick([self.HD, self.PLAIN, self.ADF], {"run": "other.exe"})
+
+    def test_a_boot_kind_the_download_has_none_of_is_an_error(self):
+        with self.assertRaisesRegex(CannotPlay, "floppy"):
+            self.pick([self.HD], {"boot": "floppy"})
+
+    def test_no_media_is_its_own_error(self):
+        with self.assertRaisesRegex(CannotPlay, "no media: no-files-on-nas"):
+            self.pick([], {"disks": ["a.adf"]}, ["no-files-on-nas"])
+
+
+class ReportTest(unittest.TestCase):
+    ENTRY = {"title": "x", "swaps": [{"disk": 2, "at": 10, "key": "space"}]}
+
+    def test_an_entry_that_cannot_be_played_is_an_error_and_nothing_runs(self):
+        with mock.patch.object(replay, "variant_of"), \
+                mock.patch.object(replay.emulator, "run") as run:
+            ok, line = replay._one(7, self.ENTRY, "a500")
+        self.assertFalse(ok)
+        self.assertEqual(line, "7 x: error: no way to press key 'space'")
+        run.assert_not_called()
+
+    def test_the_run_counts_its_errors(self):
+        lines = []
+        with tempfile.TemporaryDirectory() as d, \
+                mock.patch.object(replay, "entries",
+                                  return_value={7: self.ENTRY}), \
+                mock.patch.object(replay, "default_machine",
+                                  return_value="a500"), \
+                mock.patch.object(replay, "variant_of"), \
+                mock.patch.object(replay.emulator, "run") as run:
+            errors = replay.run(data=pathlib.Path(d), jobs=1,
+                                log=lambda line, **kw: lines.append(line))
+        self.assertEqual(errors, 1)
+        self.assertEqual(len(lines), 1)
+        run.assert_not_called()
+
+
+if __name__ == "__main__":
+    unittest.main()

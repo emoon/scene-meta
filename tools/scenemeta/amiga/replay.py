@@ -47,7 +47,7 @@ def actions(entry, keys=True):
 
 def _button(key):
     if key not in BUTTONS:
-        raise CannotPlay(f"key {key!r}")
+        raise CannotPlay(f"no way to press key {key!r}")
     return BUTTONS[key]
 
 
@@ -74,24 +74,32 @@ def judge(written, plain):
 
 
 def variant_of(prod, entry):
-    """The media of the entry: the disk set with its file names, or the
-    directory run by the entry's startup command. An entry that names
+    """The media of the entry: the first of the download's variants with
+    the disk file names and the ``run`` file it names. An entry that names
     neither is the first variant of its ``boot`` kind (the kind of the
-    production's first variant when it does not say)."""
-    variants = media.variants(prod, entry["title"])[0]
-    for v in variants:
-        if v.kind == "floppy" and entry.get("disks") and \
-                [os.path.basename(d) for d in v.disks] == entry["disks"]:
-            return v
-        if v.kind == "hd" and entry.get("run") \
-                and (v.command or "").strip() == entry["run"]:
-            return v
-    if not entry.get("disks") and not entry.get("run") and variants:
+    production's first variant when it does not say). Raises CannotPlay
+    when there is none: never another variant in its place."""
+    variants, problems = media.variants(prod, entry["title"])
+    if not variants:
+        raise CannotPlay("no media: " + "; ".join(problems))
+    named = {k: entry[k] for k in ("disks", "run") if entry.get(k)}
+    if named:
+        wanted = " and ".join(f"{k} {v!r}" for k, v in named.items())
+        fits = [v for v in variants
+                if all(_names(v)[k] == name for k, name in named.items())]
+    else:
         kind = entry.get("boot", variants[0].kind)
-        found = next((v for v in variants if v.kind == kind), None)
-        if found:
-            return found
-    raise CannotPlay("its media are not among the production's")
+        wanted = f"a {kind} boot"
+        fits = [v for v in variants if v.kind == kind]
+    if not fits:
+        raise CannotPlay(f"{wanted} is not among the download's variants")
+    return fits[0]
+
+
+def _names(variant):
+    """What an entry can name of ``variant``, as the export writes it."""
+    return {"disks": [os.path.basename(d) for d in variant.disks],
+            "run": media.run_file(variant.note, variant.command)}
 
 
 def play(machine, variant, entry, keys):
@@ -130,7 +138,8 @@ def _has_keys(entry):
 
 
 def _one(prod, entry, default):
-    """The report line of one production."""
+    """``(ok, report line)`` of one production: not ok when something it
+    needs is missing, and the line says what."""
     try:
         machine = machines.BY_NAME[entry.get("machine", default)]
         variant = variant_of(prod, entry)
@@ -138,17 +147,17 @@ def _one(prod, entry, default):
         if _has_keys(entry):
             runs.append(("without keys", play(machine, variant, entry, False)))
     except CannotPlay as e:
-        return f"{prod} {entry['title']}: cannot replay: {e}"
+        return False, f"{prod} {entry['title']}: error: {e}"
     said = judge(runs[0][1][1], runs[1][1][1] if len(runs) > 1 else None)
     detail = "; ".join(
         f"{name}: {v}, disks loaded "
         + "".join("y" if ok else "n" for ok in got) for name, (v, got) in runs)
-    return f"{prod} {entry['title']}: {said} ({detail})"
+    return True, f"{prod} {entry['title']}: {said} ({detail})"
 
 
 def run(ids=None, data=None, jobs=None, log=print):
     """Replay the productions ``ids``; without ids, every entry that has a
-    key, on a swap or of its own."""
+    key, on a swap or of its own. Returns how many could not be played."""
     data = data or config.DATA_DIR
     default = default_machine(data)
     found = entries(data)
@@ -158,6 +167,10 @@ def run(ids=None, data=None, jobs=None, log=print):
         log(f"{p}: no entry with swaps or keys")
     # Two emulators per production, each about two cores.
     jobs = jobs or max(1, (os.cpu_count() or 4) // 4)
+    errors = 0
     with cf.ThreadPoolExecutor(jobs) as pool:
-        for line in pool.map(lambda pe: _one(*pe, default), sorted(todo.items())):
+        for ok, line in pool.map(lambda pe: _one(*pe, default),
+                                 sorted(todo.items())):
+            errors += not ok
             log(line, flush=True)
+    return errors

@@ -427,6 +427,9 @@ def _job(prod, multi_only=False, known=None):
 
 
 def run_all(prods, store, jobs=None, multi_only=False, log=print):
+    # Before any production: a run without its ROM would be stored as one
+    # where nothing happened.
+    machines.require_roms()
     known = catalog.known_machines(config.DATA_DIR)
     driver.run_all(prods, store, functools.partial(
         _job, multi_only=multi_only, known=known), jobs, log)

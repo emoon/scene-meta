@@ -94,7 +94,7 @@ def _uae_config(machine, variant, tmp, drives=1, seed=DEFAULT_SEED):
     """The .uae text and the swap list. With ``drives`` > 1 the first disks
     of a set sit in DF0..DF<drives-1> from boot, as on a multi-drive Amiga."""
     lines = [machines.uae_text(machine),
-             f"kickstart_rom_file={config.ROM_DIR / machine.rom}\n",
+             f"kickstart_rom_file={machines.rom_path(machine)}\n",
              f"rndseed={seed}\n"]
     swaps = []
     if variant.kind == "floppy":
@@ -149,7 +149,7 @@ def execbase(machine, kind="floppy"):
                 media = f"nr_floppies=0\nfilesystem2=rw,DH0:Demo:{tmp / 'hd'},0\n"
             cfg = tmp / "machine.uae"
             cfg.write_text(machines.uae_text(machine)
-                           + f"kickstart_rom_file={config.ROM_DIR / machine.rom}\n"
+                           + f"kickstart_rom_file={machines.rom_path(machine)}\n"
                            + media)
             out = _invoke([str(config.AMIBERRY), "-f", str(cfg),
                            "--dbg", "warp on", "--dbg", "run frames=300",
@@ -229,7 +229,9 @@ class Options:
 
 def run(machine, variant, frames, opts=Options(), interval=250, timeout=None):
     """Run ``variant`` on ``machine`` for ``frames`` frames, sampling every
-    ``interval``. Returns a RunLog."""
+    ``interval``. Returns a RunLog. Raises errors.CannotPlay, before
+    anything is started, when the machine's ROM is missing."""
+    machines.require_rom(machine)
     # Warp runs well ahead of real time; slower than that means stuck, but
     # leave room for a loaded box (retries run several emulators at once).
     timeout = timeout or 60 + frames // 50

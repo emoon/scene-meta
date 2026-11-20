@@ -3,6 +3,7 @@ import tempfile
 import unittest
 
 from scenemeta.amiga import machines
+from scenemeta.amiga.errors import CannotPlay
 
 
 def names(ms):
@@ -95,3 +96,28 @@ class StartTest(LadderTest):
         d = self.roms()
         self.assertEqual(names(machines.ladder_for(False, d, start="nope")),
                          names(machines.ladder_for(False, d)))
+
+
+class RomTest(unittest.TestCase):
+    def roms(self, *files):
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        d = pathlib.Path(tmp.name)
+        for f in files:
+            (d / f).touch()
+        return d
+
+    def test_a_missing_rom_is_an_error_naming_it_and_where_it_was_sought(self):
+        d = self.roms("kick30.rom")
+        with self.assertRaises(CannotPlay) as e:
+            machines.require_rom(machines.BY_NAME["a500"], d)
+        self.assertIn("kick13.rom", str(e.exception))
+        self.assertIn(str(d), str(e.exception))
+
+    def test_a_rom_that_is_there_is_fine(self):
+        machines.require_rom(machines.BY_NAME["a500"], self.roms("kick13.rom"))
+
+    def test_the_ladder_needs_every_rom_but_the_optional_ones(self):
+        machines.require_roms(self.roms("kick13.rom", "kick30.rom"))
+        with self.assertRaisesRegex(CannotPlay, "kick30.rom"):
+            machines.require_roms(self.roms("kick13.rom", "kick12.rom"))

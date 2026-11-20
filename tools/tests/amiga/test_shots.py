@@ -1,9 +1,11 @@
 import tempfile
 import unittest
 import pathlib
+from unittest import mock
 
 from scenemeta.amiga import shots
 from scenemeta.amiga.emulator import Sample
+from scenemeta.amiga.errors import CannotPlay
 
 
 def sample(frame, pc=0x40000000, dmacon=0x39F):
@@ -104,3 +106,18 @@ class PngSizeTest(unittest.TestCase):
             p = pathlib.Path(d) / "a.png"
             p.write_bytes(head)
             self.assertEqual(shots.png_size(p), (704, 576))
+
+
+class CannotPlayTest(unittest.TestCase):
+    def test_an_error_is_reported_and_leaves_the_production_undone(self):
+        # A meta.json would mark it done: a missing ROM is not "no shots".
+        with tempfile.TemporaryDirectory() as d, \
+                mock.patch.object(shots.replay, "variant_of",
+                                  side_effect=CannotPlay("no media: x")), \
+                mock.patch.object(shots.emulator, "run") as run:
+            out = pathlib.Path(d)
+            ok, line = shots._one(7, {"title": "x"}, "a500", out)
+            self.assertFalse((out / "7" / shots.META).exists())
+        self.assertFalse(ok)
+        self.assertEqual(line, "7 x: error: no media: x")
+        run.assert_not_called()

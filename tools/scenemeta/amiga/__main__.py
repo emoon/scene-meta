@@ -15,6 +15,7 @@ import sys
 from ..core import cli
 from . import (catalog, classes, config, export, fetch, media, migrate, replay,
                shots, store, sweep)
+from .errors import CannotPlay
 
 
 def _prods(args):
@@ -38,12 +39,14 @@ def main(argv=None):
     p.add_argument("--jobs", type=int)
     args = ap.parse_args(argv)
 
-    if args.cmd == "replay":    # reads the data files, not the database
-        return replay.run(args.ids, jobs=args.jobs)
+    # Either reads the data files, not the database; an entry that could
+    # not be played fails the command.
+    if args.cmd == "replay":
+        return min(1, replay.run(args.ids, jobs=args.jobs))
     if args.cmd == "shots":
         if not args.out:
             ap.error("shots needs --out or $SCENEMETA_SHOTS")
-        return shots.run(args.out, args.ids, jobs=args.jobs)
+        return min(1, shots.run(args.out, args.ids, jobs=args.jobs))
     if args.cmd == "migrate":
         return cli.migrate(migrate.run, args.db or config.RESULTS_DB)
 
@@ -58,6 +61,8 @@ def main(argv=None):
             report(db)
         elif args.cmd == "export":
             export.run(db)
+    except CannotPlay as e:
+        sys.exit(f"scenemeta amiga {args.cmd}: {e}")
     finally:
         db.close()
 

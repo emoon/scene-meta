@@ -5,6 +5,7 @@ from unittest import mock
 
 from scenemeta.amiga import emulator, machines, media, sweep, verdict
 from scenemeta.amiga.emulator import RunLog, Sample
+from scenemeta.amiga.errors import CannotPlay
 
 
 def attempt(last_dmas, swaps=(), crash_frame=None):
@@ -447,3 +448,25 @@ class RecordTest(unittest.TestCase):
         self.assertEqual([(s.disk, s.at, s.trigger, s.key, s.accepted) for s in r.swaps],
                          [(2, 536.88, "poll+click", "lmb", True),
                           (3, 800.0, "idle", None, True)])
+
+
+class SetupTest(unittest.TestCase):
+    def test_a_sweep_without_its_roms_stops_before_any_production(self):
+        import pathlib
+        import tempfile
+        with tempfile.TemporaryDirectory() as empty, \
+                mock.patch.object(sweep.config, "ROM_DIR",
+                                  pathlib.Path(empty)), \
+                mock.patch.object(sweep.driver, "run_all") as run_all:
+            with self.assertRaisesRegex(CannotPlay, "kick13.rom"):
+                sweep.run_all([], store=None)
+        run_all.assert_not_called()
+
+    def test_a_production_with_no_media_has_a_problem_and_no_run(self):
+        prod = types.SimpleNamespace(id=7, title="x", release_date="",
+                                     platforms=("Amiga OCS/ECS",))
+        with mock.patch.object(media, "variants",
+                               return_value=([], ["no-files-on-nas"])), \
+                mock.patch.object(emulator, "run") as run:
+            self.assertEqual(sweep._job(prod), (["no-files-on-nas"], []))
+        run.assert_not_called()
