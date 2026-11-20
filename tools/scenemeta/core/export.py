@@ -27,6 +27,7 @@ class Variant:
     drives: int
     reached: int
     swaps: list         # the result.Swap the chosen run's production used
+    keys: list = dataclasses.field(default_factory=list)  # presses with no swap
 
 
 def variants(store):
@@ -42,7 +43,7 @@ def variants(store):
         out.setdefault(prod, []).append(Variant(
             idx, kind, json.loads(disks or "[]"), note or "",
             json.loads(detail or "{}"), machine, verdict, drives or 1,
-            reached or 0, swaps))
+            reached or 0, swaps, store.keys(run) if run else []))
     return out
 
 

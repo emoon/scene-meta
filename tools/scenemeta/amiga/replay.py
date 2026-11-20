@@ -1,10 +1,10 @@
 """Plays entries of the data files (``data/amiga``, see docs/DESIGN.md) exactly as
 written: the entry's machine, each disk put in at its time, each key pressed
-after its insert. Nothing is detected and nothing retried, so this shows
+after its insert, each key of ``keys`` at its time. Nothing is detected and nothing retried, so this shows
 what the entry says, not what a sweep can find.
 
-An entry with keys on its swaps is played a second time without them: a key
-is needed only when the disk does not load without it.
+An entry with keys, on its swaps or of its own, is played a second time without
+them: a key is needed only when the production does not run without it.
 """
 
 import concurrent.futures as cf
@@ -35,17 +35,23 @@ def actions(entry, keys=True):
     disks go in and nothing is pressed."""
     out = []
     first = entry.get("drives", 1) + 1      # the first disk that is swapped in
-    for swap in entry["swaps"]:
+    for swap in entry.get("swaps", []):
         frame = round(swap["at"] * FPS)
         out.append((frame, "insert", swap["disk"] - first))
-        if "key" in swap:
-            if swap["key"] not in BUTTONS:
-                raise CannotReplay(f"key {swap['key']!r}")
-            if keys:
-                delay = swap.get("key_delay", KEY_DELAY)
-                out.append((frame + round(delay * FPS), "click",
-                            BUTTONS[swap["key"]]))
-    return out
+        if "key" in swap and keys:
+            delay = swap.get("key_delay", KEY_DELAY)
+            out.append((frame + round(delay * FPS), "click",
+                        _button(swap["key"])))
+    if keys:
+        out += [(round(k["at"] * FPS), "click", _button(k["key"]))
+                for k in entry.get("keys", [])]
+    return sorted(out)
+
+
+def _button(key):
+    if key not in BUTTONS:
+        raise CannotReplay(f"key {key!r}")
+    return BUTTONS[key]
 
 
 def loaded(samples, inserts, unit=0):
@@ -70,47 +76,67 @@ def judge(written, plain):
     return "replays" if plain is None else "keys needed"
 
 
-def _variant(prod, entry):
-    """The media of the entry: the disk set with its file names."""
-    for v in media.variants(prod, entry["title"])[0]:
-        if v.kind == "floppy" and \
+def variant_of(prod, entry):
+    """The media of the entry: the disk set with its file names, or the
+    directory run by the entry's startup command. An entry that names
+    neither is the first variant of its ``boot`` kind (the kind of the
+    production's first variant when it does not say)."""
+    variants = media.variants(prod, entry["title"])[0]
+    for v in variants:
+        if v.kind == "floppy" and entry.get("disks") and \
                 [os.path.basename(d) for d in v.disks] == entry["disks"]:
             return v
-    raise CannotReplay("its disks are not among the production's media")
+        if v.kind == "hd" and entry.get("run") \
+                and (v.command or "").strip() == entry["run"]:
+            return v
+    if not entry.get("disks") and not entry.get("run") and variants:
+        kind = entry.get("boot", variants[0].kind)
+        found = next((v for v in variants if v.kind == kind), None)
+        if found:
+            return found
+    raise CannotReplay("its media are not among the production's")
 
 
 def play(machine, variant, entry, keys):
     """One run. Returns ``(verdict name, loaded per swap)``."""
     acts = actions(entry, keys)
     inserts = [f for f, what, _ in acts if what == "insert"]
-    frames = inserts[-1] + TAIL_FRAMES
+    # As long as the run as written, keys or not.
+    frames = actions(entry)[-1][0] + TAIL_FRAMES
     log = emulator.run(machine, variant, frames, emulator.Options(
         drives=entry.get("drives", 1), play=acts))
     v = verdict.classify(log, frames // 250)
-    return v.verdict, loaded(log.samples, inserts)
+    # With no disk to put in, the run itself is the evidence.
+    return v.verdict, loaded(log.samples, inserts) or [v.verdict == "works"]
 
 
-def entries(data):
-    """``{id: entry}`` of the Demozoo productions that have swaps."""
+def all_entries(data):
+    """``{id: entry}`` of every Demozoo production in the data files."""
     out = {}
     for path in sorted(data.glob("*.toml")):
         if path.name != presets.FILE:
             for key, e in tomllib.loads(path.read_text("utf-8")) \
                     .get("demozoo", {}).items():
-                if e.get("swaps"):
-                    out[int(key)] = e
+                out[int(key)] = e
     return out
 
 
+def entries(data):
+    """``{id: entry}`` of the Demozoo productions that have swaps or keys."""
+    return {p: e for p, e in all_entries(data).items()
+            if e.get("swaps") or e.get("keys")}
+
+
 def _has_keys(entry):
-    return any("key" in s for s in entry["swaps"])
+    return bool(entry.get("keys")) or \
+        any("key" in s for s in entry.get("swaps", []))
 
 
 def _one(prod, entry, default):
     """The report line of one production."""
     try:
         machine = machines.BY_NAME[entry.get("machine", default)]
-        variant = _variant(prod, entry)
+        variant = variant_of(prod, entry)
         runs = [("as written", play(machine, variant, entry, True))]
         if _has_keys(entry):
             runs.append(("without keys", play(machine, variant, entry, False)))
@@ -125,14 +151,14 @@ def _one(prod, entry, default):
 
 def run(ids=None, data=None, jobs=None, log=print):
     """Replay the productions ``ids``; without ids, every entry that has a
-    key on a swap."""
+    key, on a swap or of its own."""
     data = data or config.DATA_DIR
     default = default_machine(data)
     found = entries(data)
     todo = {p: e for p, e in found.items()
             if (p in ids if ids else _has_keys(e))}
     for p in sorted(set(ids or ()) - set(found)):
-        log(f"{p}: no entry with swaps")
+        log(f"{p}: no entry with swaps or keys")
     # Two emulators per production, each about two cores.
     jobs = jobs or max(1, (os.cpu_count() or 4) // 4)
     with cf.ThreadPoolExecutor(jobs) as pool:

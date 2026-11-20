@@ -13,11 +13,12 @@ machine and the swaps of its chosen run as ``at:disk:trigger``.
 A platform adds its own tables by passing more schema.
 """
 
+import dataclasses
 import json
 import sqlite3
 import time
 
-from .result import Swap
+from .result import Key, Swap
 
 VERSION = 1    # pragma user_version; 0 is a database from before this schema
 
@@ -52,6 +53,12 @@ create view best as
     from variant v join production p on p.id = v.prod_id
     left join run r on r.id = v.best_run_id;
 """
+
+
+def _with_keys(r):
+    """The run's detail; its key presses ride in it, as ``keys``."""
+    return {**r.detail, "keys": [dataclasses.asdict(k) for k in r.keys]} \
+        if r.keys else r.detail
 
 
 class LegacyDatabase(Exception):
@@ -133,7 +140,7 @@ class Store:
             " screenshot, at) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
             (variant_id, r.machine, r.budget, r.verdict, r.alive, r.crash,
              r.crash_at, r.ended_at, int(r.wants_disk), r.drives, r.reached,
-             json.dumps(r.detail), r.screenshot or None, _now()))
+             json.dumps(_with_keys(r)), r.screenshot or None, _now()))
         rid = cur.lastrowid
         self.db.executemany(
             "insert into swap (run_id, seq, disk, at, trigger, accepted,"
@@ -156,6 +163,12 @@ class Store:
         self.db.execute("delete from run where variant_id=?", (variant_id,))
 
     # -- reading -------------------------------------------------------------
+    def keys(self, run_id):
+        """The result.Key presses of one run."""
+        (detail,) = self.db.execute("select detail from run where id=?",
+                                    (run_id,)).fetchone()
+        return [Key(**k) for k in json.loads(detail or "{}").get("keys", [])]
+
     def swaps(self, run_id):
         """The result.Swap rows of one run, in order (screenshots left out)."""
         return [Swap(disk, at, trigger, bool(accepted), since, key, key_at)
