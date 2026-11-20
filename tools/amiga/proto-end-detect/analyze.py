@@ -97,12 +97,13 @@ def silence_landmark(rows, new):
     return chain_period(onsets(silent), new, len(rows), MIN_LANDMARK)
 
 
-def verdict(rows, cells, song, halted=False, data=None):
+def verdict(rows, cells, song, halted=False, data=None, swaps=()):
     """The model: nothing new runs after the last burst of new code. What
     the demo does from there says how it ends. ``song`` is what
     ``song_loop`` found, ``halted`` whether the CPU halted at the end of
     the trace, ``data`` the frame of the last new data read as a stream
-    (None: not recorded). Returns a dict, times in s."""
+    (None: not recorded), ``swaps`` the s at which the entry's script puts in
+    the next disk. Returns a dict, times in s."""
     n = len(rows)
     sec = lambda i: round(rows[min(i, n - 1)]["frame"] / FPS, 1)
     new = max((i for i in range(n) if rows[i]["newpc"] >= BURST), default=0)
@@ -192,6 +193,15 @@ def verdict(rows, cells, song, halted=False, data=None):
         else:
             out["last_data"] = round(data / FPS, 1)
             out["end"] = max(out["end"], out["last_data"])
+    # the script's disk swaps say how long the production is: the swap that
+    # the trace never reached means it runs longer than the trace; an end
+    # before the last swap that was made is not the end
+    if swaps:
+        out["swaps"] = list(swaps)
+        if swaps[-1] > out["trace"]:
+            out["swap_after_trace"] = True
+        elif "end" in out and out["end"] < swaps[-1]:
+            out["end_before_swap"] = True
     # how sure: the trace must run on well past the last new code
     out["after"] = round((n - new) / FPS)
     return out
