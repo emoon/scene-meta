@@ -84,6 +84,16 @@ class EntryTest(unittest.TestCase):
         e = entry(variant(command='"Greenday.exe"\n', note="12 executables, picked Greenday.exe"))
         self.assertEqual(e["run"], "Greenday.exe")
 
+    def test_the_file_is_the_one_the_sweep_stored(self):
+        # Not what its note reads as: the path has a bracket of its own.
+        v = variant(kind="floppy", disks=["x-launch.adf"], command=None, note=(
+            "launched; patched disk 1 runs Vol:Demo (final) (2 executables,"
+            " picked Demo (final))"))
+        v.detail.update(run="Demo (final)", choice=True)
+        self.assertEqual(entry(v)["run"], "Demo (final)")
+        v.detail.update(run="only", choice=False)
+        self.assertNotIn("run", entry(v))
+
     def test_launched_from_a_patched_disk(self):
         e = entry(variant(kind="floppy", disks=["x-launch.adf"], command="", note=(
             "launched; patched disk 1 runs Andromeda - 1992:Intro.exe"

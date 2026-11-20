@@ -33,27 +33,46 @@ class Outcome:
     log: emulator.RunLog
 
 
-def play(prod, entry, default, keys=True, keep=None):
-    """Play ``entry`` of production ``prod`` as written, on machine
-    ``default`` when it names none. Without ``keys`` the disks go in and
-    nothing is pressed, in a run as long. ``keep`` is a directory for the
-    pictures of the run (see emulator.Options). Raises CannotPlay, before
-    the emulator starts, when something the run needs is missing."""
+@dataclasses.dataclass(frozen=True)
+class Ready:
+    """An entry with its machine and media found: ``play`` runs it, as
+    often as wanted."""
+    entry: dict
+    machine: machines.Machine
+    variant: media.Variant
+
+    def play(self, keys=True, keep=None):
+        """Play the entry as written. Without ``keys`` the disks go in and
+        nothing is pressed, in a run as long. ``keep`` is a directory for
+        the pictures of the run (see emulator.Options)."""
+        acts = actions(self.entry, keys)
+        frames = frames_of(self.entry)
+        log = emulator.run(self.machine, self.variant, frames, emulator.Options(
+            drives=self.entry.get("drives", 1), play=tuple(acts), detect=False,
+            keep=keep))
+        inserts = [f for f, what, _ in acts if what == "insert"]
+        return Outcome(self.machine.name, verdict.classify(log, frames // 250),
+                       loaded(log.samples, inserts), log)
+
+
+def ready(prod, entry, default):
+    """``entry`` of production ``prod`` ready to play, on machine
+    ``default`` when it names none. Raises CannotPlay, before any emulator
+    starts, when something its run needs is missing."""
     name = entry.get("machine", default)
     if name not in machines.BY_NAME:
         raise BadEntry(f"no machine {name!r}")
     machine = machines.BY_NAME[name]
     # What costs nothing to find missing, before the download is unpacked.
     machines.require_rom(machine)
-    acts = actions(entry, keys)
-    frames = frames_of(entry)
-    variant = _variant_of(prod, entry)
-    log = emulator.run(machine, variant, frames, emulator.Options(
-        drives=entry.get("drives", 1), play=tuple(acts), detect=False,
-        keep=keep))
-    inserts = [f for f, what, _ in acts if what == "insert"]
-    return Outcome(name, verdict.classify(log, frames // 250),
-                   loaded(log.samples, inserts), log)
+    actions(entry)
+    return Ready(entry, machine, _variant_of(prod, entry))
+
+
+def play(prod, entry, default, keys=True, keep=None):
+    """Play ``entry`` of production ``prod`` once: see ``ready`` and
+    ``Ready.play``."""
+    return ready(prod, entry, default).play(keys, keep)
 
 
 def play_each(todo, one, jobs, log=print):
@@ -136,8 +155,7 @@ def _variant_of(prod, entry):
     first = variants[0].kind
 
     def fits(found):
-        return [v for v in found
-                if media.named(v.kind, v.disks, v.note, v.command, first) == said]
+        return [v for v in found if media.named(v, first) == said]
 
     found = fits(variants) or fits(
         made for v in variants

@@ -38,6 +38,8 @@ class Variant:
     command: str = None  # hd: startup-sequence text (None: the tree's own)
     note: str = ""
     ffs: bool = False   # floppy: disk 1 is Fast File System (needs KS2+)
+    run: str = None     # the file it starts, as an entry names it
+    choice: bool = False  # the media left a choice of it: an entry names it
 
     @property
     def label(self):
@@ -337,8 +339,8 @@ def _tree_variant(tree, title="", run=None):
             return Variant("hd", [], root=str(boot), command=None,
                            note="own startup-sequence")
         return None
-    return Variant("hd", [], root=str(exe.parent),
-                   command=f'"{exe.name}"\n', note=note)
+    return Variant("hd", [], root=str(exe.parent), command=f'"{exe.name}"\n',
+                   note=note, run=exe.name, choice=bool(note))
 
 
 def _norm(name):
@@ -387,7 +389,8 @@ def _exe_variant(exe, work):
     root = work / "exe" / exe.name
     root.mkdir(parents=True, exist_ok=True)
     shutil.copyfile(exe, root / exe.name)
-    return Variant("hd", [], root=str(root), command=f'"{exe.name}"\n')
+    return Variant("hd", [], root=str(root), command=f'"{exe.name}"\n',
+                   run=exe.name)
 
 
 CYLINDERS, CYL_BYTES = 80, 11264
@@ -562,33 +565,17 @@ MERGED_NOTE = "set merged into one directory"
 LAUNCH_NOTE = "patched disk 1 runs"
 
 
-def run_file(note, command):
-    """The file a variant with this ``note`` and ``command`` starts, when
-    the media left a choice; else None."""
-    def after(marker):
-        return note.split(marker, 1)[1].split(" (")[0].strip()
-    if LAUNCH_NOTE in note:          # "<volume>:<path>"
-        return after(LAUNCH_NOTE).split(":", 1)[-1]
-    if MERGED_NOTE in note:
-        return after("; runs ").removeprefix("script ")
-    command = command or ""
-    if "executables, picked" in note and command.count("\n") == 1:
-        return command.strip().strip('"')
-    return None
-
-
-def named(kind, disks, note, command, first_kind):
-    """What an entry says of the variant it describes, of all the download
-    offers: its ``boot`` when that is not the kind of the first variant,
-    its ``disks`` when it is a set, the file it ``run``s when the media
-    left a choice."""
+def named(v, first_kind):
+    """What an entry says of variant ``v``, of all the download offers: its
+    ``boot`` when that is not the kind of the first variant, its ``disks``
+    when it is a set, the file it ``run``s when the media left a choice."""
     out = {}
-    if kind != first_kind:
-        out["boot"] = kind
-    if len(disks) > 1:
-        out["disks"] = [os.path.basename(d) for d in disks]
-    if run := run_file(note, command):
-        out["run"] = run
+    if v.kind != first_kind:
+        out["boot"] = v.kind
+    if len(v.disks) > 1:
+        out["disks"] = [os.path.basename(d) for d in v.disks]
+    if v.choice:
+        out["run"] = v.run
     return out
 
 
@@ -622,13 +609,15 @@ def merged_variant(disks, prod_id, title, run=None):
         rel = _rel(script, root)
         return Variant("hd", [], root=str(script.parent),
                        command=script.read_text("latin-1"),
-                       note=f"{MERGED_NOTE}; runs script {rel}")
+                       note=f"{MERGED_NOTE}; runs script {rel}",
+                       run=rel, choice=True)
     exe, note = _pick_exe(root, title, run)
     if exe is None:
         return None
     rel = _rel(exe, root)
     return Variant("hd", [], root=str(exe.parent), command=f'"{exe.name}"\n',
-                   note=f"{MERGED_NOTE}; runs {rel}" + (f" ({note})" if note else ""))
+                   note=f"{MERGED_NOTE}; runs {rel}" + (f" ({note})" if note else ""),
+                   run=rel, choice=True)
 
 
 def launch_variant(disks, prod_id, only_unbootable=False, run=None):
@@ -677,7 +666,8 @@ def launch_variant(disks, prod_id, only_unbootable=False, run=None):
     why = "disk 1 not bootable" if not bootable(data) else "launched"
     return Variant("floppy", [str(patched)] + list(disks[1:]),
                    note=f"{why}; {LAUNCH_NOTE} {vol}:{rel}"
-                        + (f" ({note})" if note else ""))
+                        + (f" ({note})" if note else ""),
+                   run=rel, choice=True)
 
 
 TREE_NOTE = "files on a floppy"
@@ -710,7 +700,9 @@ def floppy_variant(v, prod_id):
                        capture_output=True, timeout=120, check=True)
     except (OSError, subprocess.SubprocessError):
         return None                             # does not fit after all
-    return Variant("floppy", [str(adf)], note=f"{TREE_NOTE}; {v.label}")
+    # Named by its boot alone, whatever choice the tree left.
+    return Variant("floppy", [str(adf)], note=f"{TREE_NOTE}; {v.label}",
+                   run=v.run)
 
 
 def fallbacks(v, prod_id, title="", run=None):

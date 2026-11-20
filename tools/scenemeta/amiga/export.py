@@ -24,6 +24,31 @@ def _rank(v):
     return running, share, -v.idx
 
 
+def _media(v):
+    """What the media made of a stored variant, as far as an entry names
+    it."""
+    d = v.detail
+    if "run" in d:
+        return media.Variant(v.kind, v.disks, run=d["run"], choice=d["choice"])
+    run = _run_of_note(v.note, d.get("command"))
+    return media.Variant(v.kind, v.disks, run=run, choice=run is not None)
+
+
+def _run_of_note(note, command):
+    """The file an entry names of a variant stored before its ``detail``
+    said: read out of its note."""
+    def after(marker):
+        return note.split(marker, 1)[1].split(" (")[0].strip()
+    if media.LAUNCH_NOTE in note:          # "<volume>:<path>"
+        return after(media.LAUNCH_NOTE).split(":", 1)[-1]
+    if media.MERGED_NOTE in note:
+        return after("; runs ").removeprefix("script ")
+    command = command or ""
+    if "executables, picked" in note and command.count("\n") == 1:
+        return command.strip().strip('"')
+    return None
+
+
 def entry(title, groups, variants, cls, default):
     """The data-file entry of one production from its export.Variant list.
     ``cls``: its ``(kind, note)`` of classes.tsv, or None."""
@@ -38,8 +63,7 @@ def entry(title, groups, variants, cls, default):
     else:
         result = _RESULT.get(v.verdict, "unknown")
     runs = result in (None, "crashes-later")
-    named = media.named(v.kind, v.disks, v.note, v.detail.get("command"),
-                        variants[0].kind)
+    named = media.named(_media(v), variants[0].kind)
 
     e = {"title": title}
     if groups:

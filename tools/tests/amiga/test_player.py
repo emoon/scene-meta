@@ -78,19 +78,17 @@ class LoadedTest(unittest.TestCase):
 
 class VariantOfTest(unittest.TestCase):
     HD = player.media.Variant("hd", [], root="/r", command='"demo.exe"\n',
-                              note="2 executables, picked demo.exe")
-    PLAIN = player.media.Variant("hd", [], root="/p", command='"only"\n')
+                              run="demo.exe", choice=True)
+    PLAIN = player.media.Variant("hd", [], root="/p", command='"only"\n',
+                                 run="only")
     ADF = player.media.Variant("floppy", ["/d/a.adf"])
     SET = player.media.Variant("floppy", ["/d/a.adf", "/d/b.adf"])
     # What a sweep makes of a variant that does not work as it is.
-    LAUNCH = player.media.Variant(
-        "floppy", ["/w/a-launch.adf"],
-        note="launched; patched disk 1 runs Vol:c/demo")
-    MERGED = player.media.Variant(
-        "hd", [], root="/m", command='"demo"\n',
-        note="set merged into one directory; runs demo")
-    ON_FLOPPY = player.media.Variant(
-        "floppy", ["/w/disk.adf"], note='files on a floppy; hd:"only"')
+    LAUNCH = player.media.Variant("floppy", ["/w/a-launch.adf"],
+                                  run="c/demo", choice=True)
+    MERGED = player.media.Variant("hd", [], root="/m", command='"demo"\n',
+                                  run="demo", choice=True)
+    ON_FLOPPY = player.media.Variant("floppy", ["/w/disk.adf"], run="only")
 
     def pick(self, variants, entry, problems=(), fallbacks=()):
         with mock.patch.object(player.media, "variants", return_value=(
@@ -125,9 +123,8 @@ class VariantOfTest(unittest.TestCase):
 
     def test_a_run_of_another_kind_is_not_the_entrys(self):
         # The floppy that runs demo is not the hard drive that does.
-        launch = player.media.Variant(
-            "floppy", ["/w/a-launch.adf"],
-            note="disk 1 not bootable; patched disk 1 runs Vol:demo")
+        launch = player.media.Variant("floppy", ["/w/a-launch.adf"],
+                                      run="demo", choice=True)
         merged = self.MERGED
         self.assertIs(self.pick([launch, merged],
                                 {"boot": "hd", "run": "demo"}), merged)

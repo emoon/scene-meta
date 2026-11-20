@@ -383,7 +383,8 @@ def _record(v, attempts, best):
     """Variant ``v`` and its runs as the store keeps them."""
     return result.Variant(
         v.kind, v.disks, v.note,
-        {"root": v.root, "command": v.command, "complete": v.complete},
+        {"root": v.root, "command": v.command, "complete": v.complete,
+         "run": v.run, "choice": v.choice},
         [a.record() for a in attempts],
         next(i for i, a in enumerate(attempts) if a is best))
 
