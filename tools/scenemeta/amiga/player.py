@@ -45,13 +45,15 @@ class Ready:
     machine: machines.Machine
     variant: media.Variant
 
-    def play(self, keys=True, keep=None, seed=emulator.DEFAULT_SEED):
+    def play(self, keys=True, keep=None, seed=emulator.DEFAULT_SEED,
+             frames=None):
         """Play the entry as written. Without ``keys`` the disks go in and
         nothing is pressed, in a run as long. ``keep`` is a directory for
         the pictures of the run, ``seed`` the emulator's (see
-        emulator.Options)."""
+        emulator.Options), ``frames`` how long when not the entry's own
+        time (see ``frames_of``)."""
         acts = actions(self.entry, keys)
-        frames = frames_of(self.entry)
+        frames = frames or frames_of(self.entry)
         log = emulator.run(self.machine, self.variant, frames, emulator.Options(
             drives=self.entry.get("drives", 1), play=tuple(acts), detect=False,
             keep=keep, seed=seed))
@@ -62,7 +64,8 @@ class Ready:
         return Outcome(self.machine.name, v, took, log, gate.Play(
             v.verdict in RAN, v.crash,
             tuple(gate.SwapTaken(first + i, ok)
-                  for (_, i), ok in zip(inserts, took))))
+                  for (_, i), ok in zip(inserts, took)),
+            last_read(log.samples)))
 
 
 def ready(prod, entry, default):
@@ -157,6 +160,13 @@ def loaded(samples, inserts, unit=0):
         out.append(any(frame < s.frame <= until and s.last_dma > frame
                        and s.cyls[unit] >= LOADED_CYL for s in samples))
     return out
+
+
+def last_read(samples):
+    """When a disk was last read, in seconds: how far a run got, for the
+    gate. A production that goes on after a key reads later than one left
+    waiting for it."""
+    return max((s.last_dma for s in samples), default=-1) / FPS
 
 
 def _variant_of(prod, entry):

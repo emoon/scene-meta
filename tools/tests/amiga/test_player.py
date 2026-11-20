@@ -295,7 +295,13 @@ class PlayTest(unittest.TestCase):
 
     def test_the_run_is_reported_as_the_record_of_every_platform(self):
         out, _ = self.play(self.ENTRY)
-        self.assertEqual(out.record, Play(False, None, (SwapTaken(2, True),)))
+        self.assertEqual(out.record,
+                         Play(False, None, (SwapTaken(2, True),), far=22.0))
+
+    def test_how_far_is_the_last_read_of_a_disk(self):
+        self.assertEqual(player.last_read(samples([(250, 240, 0), (500, 240, 0)])),
+                         4.8)
+        self.assertLess(player.last_read([]), 0)
 
     def test_the_record_numbers_a_disk_as_the_entry_does(self):
         entry = {**self.ENTRY, "drives": 2, "disks": ["a.adf", "b.adf", "c.adf"],
@@ -313,17 +319,24 @@ class PlayTest(unittest.TestCase):
                                    return_value=Verdict(verdict, 0, crash)):
                 out, _ = self.play({"title": "x", "disks": ["a.adf", "b.adf"]})
             return out.record
-        self.assertEqual(record("works"), Play(True))
-        self.assertEqual(record("works-short"), Play(True))
-        self.assertEqual(record("works-then-crash", "guru"), Play(True, "guru"))
-        self.assertEqual(record("crash", "halt"), Play(False, "halt"))
-        self.assertEqual(record("no-activity"), Play(False))
+        self.assertEqual(record("works"), Play(True, far=22.0))
+        self.assertEqual(record("works-short"), Play(True, far=22.0))
+        self.assertEqual(record("works-then-crash", "guru"), Play(True, "guru", far=22.0))
+        self.assertEqual(record("crash", "halt"), Play(False, "halt", far=22.0))
+        self.assertEqual(record("no-activity"), Play(False, far=22.0))
 
     def test_without_keys_runs_as_long_and_presses_nothing(self):
         _, run = self.play(self.ENTRY, keys=False)
         _, _, frames, opts = run.call_args.args
         self.assertEqual(frames, 1250 + player.TAIL_FRAMES)
         self.assertEqual(opts.play, ((1000, "insert", 0),))
+
+    def test_a_run_is_as_long_as_the_caller_says(self):
+        with mock.patch.object(player.emulator, "run",
+                               return_value=self.LOG) as run:
+            player.Ready(self.ENTRY, machines.BY_NAME["a500"],
+                         self.SET).play(frames=40000)
+        self.assertEqual(run.call_args.args[2], 40000)
 
     def test_an_entry_with_nothing_to_do_still_runs_undetected(self):
         out, run = self.play({"title": "x", "disks": ["a.adf", "b.adf"]})

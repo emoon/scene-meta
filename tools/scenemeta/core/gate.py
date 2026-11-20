@@ -1,11 +1,16 @@
 """The gate: is an entry of the data files correct? (docs/DESIGN.md, Replay)
 
 A platform's player plays the entry as written and returns a ``Play``, the
-same record on every platform; ``judge`` turns one into pass or fail with a
-reason.
+same record on every platform. ``check`` has an entry played on several
+seeds of the emulator's random state: as written, with its disks put in
+LATE seconds later, and once without each of its keys; it passes when every
+seed does.
 """
 
 import dataclasses
+
+SEEDS = (1, 2, 3)    # the last one only for an entry with swaps or keys
+LATE = 30.0          # seconds: a consumer's emulator has not the sweeper's timing
 
 
 @dataclasses.dataclass(frozen=True)
@@ -21,14 +26,25 @@ class Play:
     ran: bool            # the production came alive
     crash: str = None    # what stopped it, in the platform's words
     swaps: tuple = ()    # a SwapTaken per swap of the entry, in run order
-    keys: tuple = ()     # the keys shown to be needed
+    # How far it got, in the platform's own measure: only to set against
+    # another run of the same entry.
+    far: float = 0.0
     end: float = None    # when it had shown everything; None: not known
+
+
+@dataclasses.dataclass(frozen=True)
+class Run:
+    """One run the gate asks of an entry."""
+    seed: int
+    late: bool = False     # every disk goes in LATE seconds after its ``at``
+    without: int = None    # this one of ``keys_of`` the entry is not pressed
 
 
 @dataclasses.dataclass(frozen=True)
 class Judgement:
     passed: bool
     reason: str
+    until: tuple = ()    # per swap: the latest insert that passed, seconds
 
     def __str__(self):
         return f"{'pass' if self.passed else 'fail'} ({self.reason})"
@@ -47,3 +63,105 @@ def judge(play):
                                 f" {', '.join(unloaded)} never loaded")
     return Judgement(True, "came alive, no crash" +
                      (", every disk loaded" if play.swaps else ""))
+
+
+def keys_of(entry):
+    """``(where, i)`` of each key of ``entry``: those of its swaps, then
+    its ``keys``."""
+    return [("swaps", i) for i, s in enumerate(entry.get("swaps", ()))
+            if "key" in s] + [("keys", i) for i in range(len(entry.get("keys", ())))]
+
+
+def runs(entry):
+    """The runs that show whether ``entry`` is correct."""
+    keys = range(len(keys_of(entry)))
+    out = []
+    for seed in SEEDS if entry.get("swaps") or keys else SEEDS[:2]:
+        out.append(Run(seed))
+        if entry.get("swaps"):
+            out.append(Run(seed, late=True))
+        out += [Run(seed, without=k) for k in keys]
+    return out
+
+
+def as_played(entry, run):
+    """``entry`` as ``run`` plays it. A swap's key follows its disk."""
+    swaps = [dict(s) for s in entry.get("swaps", ())]
+    keys = list(entry.get("keys", ()))
+    if run.late:
+        for swap in swaps:
+            swap["at"] += LATE
+    if run.without is not None:
+        where, i = keys_of(entry)[run.without]
+        if where == "keys":
+            del keys[i]
+        else:
+            del swaps[i]["key"]
+            swaps[i].pop("key_delay", None)
+    return dict(entry, swaps=swaps, keys=keys)
+
+
+def _key(entry, k):
+    where, i = keys_of(entry)[k]
+    item = entry[where][i]
+    return f"{item['key']} " + (f"at {item['at']:g}" if where == "keys"
+                                else f"of disk {item['disk']}")
+
+
+def _far(play):
+    return (play.ran, sum(s.loaded for s in play.swaps), not play.crash,
+            play.far)
+
+
+def _fault(entry, plays, seed):
+    """Why ``entry`` fails on ``seed``, or None."""
+    written = plays[Run(seed)]
+    said = judge(written)
+    if not said.passed:
+        return said.reason
+    if entry.get("swaps"):
+        said = judge(plays[Run(seed, late=True)])
+        if not said.passed:
+            return f"with the disks put in {LATE:g} s later, {said.reason}"
+    for k in range(len(keys_of(entry))):
+        if _far(plays[Run(seed, without=k)]) >= _far(written):
+            return f"key not needed: {_key(entry, k)}"
+    return None
+
+
+def _until(entry, plays, seeds):
+    """Per swap of ``entry``: the latest insert whose disk loaded on every
+    seed, None when it did on none."""
+    def loaded(i, late):
+        return all(i < len(p.swaps) and p.swaps[i].loaded
+                   for p in (plays[Run(seed, late)] for seed in seeds))
+    return tuple(swap["at"] + LATE if loaded(i, True)
+                 else swap["at"] if loaded(i, False) else None
+                 for i, swap in enumerate(entry.get("swaps", ())))
+
+
+def verdict(entry, plays):
+    """Pass when ``entry`` holds on every seed, else a fail that names the
+    first seed it does not hold on. ``plays`` is the Play of each of
+    ``runs(entry)``."""
+    seeds = sorted({r.seed for r in plays})
+    until = _until(entry, plays, seeds)
+    proved = "".join(f"; disk {swap['disk']} until {u:.1f}"
+                     for swap, u in zip(entry.get("swaps", ()), until)
+                     if u is not None)
+    for seed in seeds:
+        fault = _fault(entry, plays, seed)
+        if fault:
+            return Judgement(False, f"seed {seed}: {fault}{proved}", until)
+    reason = f"{len(seeds)} seeds: " + judge(plays[Run(seeds[0])]).reason
+    if keys_of(entry):
+        reason += ", every key needed"
+    return Judgement(True, reason + proved, until)
+
+
+def check(entry, play, each=map):
+    """The gate's judgement of ``entry``. ``play(run)`` is the Play of
+    ``entry`` as ``run`` plays it (see ``as_played``); ``each`` maps it
+    over the runs, a pool's ``map`` to make them in parallel."""
+    todo = runs(entry)
+    return verdict(entry, dict(zip(todo, each(play, todo))))

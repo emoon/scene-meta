@@ -71,7 +71,7 @@ python3 -m scenemeta amiga sweep --ids 89 142    # specific productions
 python3 -m scenemeta amiga report
 python3 -m scenemeta amiga export                # scene.db -> ../data/amiga
 python3 -m scenemeta amiga replay --ids 142      # play data-file entries as written
-python3 -m scenemeta amiga gate --ids 142        # pass or fail, and why
+python3 -m scenemeta amiga gate --ids 142        # pass or fail on every seed, and why
 python3 -m scenemeta amiga migrate               # convert an older scene.db
 python3 -m unittest discover -s tests -t .
 ```
@@ -100,13 +100,26 @@ more without them, which shows whether the keys are needed. Without `--ids`
 it plays every entry that has a key on a swap. Left mouse button only so far, and
 swapped disks always go into DF0.
 
-`gate` (`../scenemeta/amiga/gate.py`) plays each entry of `--ids` once as
-written and prints `pass` or `fail` with the reason, one line per
-production. The judgement is the core's (`../scenemeta/core/gate.py`), made
-from the record every platform's player returns: an entry passes when the
-production comes alive, does not crash and loads every disk swapped in. An
-entry with no swaps or keys is watched for three minutes. A fail is a
-result and leaves the exit status 0.
+`gate` (`../scenemeta/amiga/gate.py`) prints `pass` or `fail` with the
+reason, one line per production of `--ids`. The rules are the core's
+(`../scenemeta/core/gate.py`), judged from the record every platform's
+player returns of a run. An entry is played on two seeds of the emulator's
+random state, three when it has swaps or keys, and passes when on every
+seed:
+
+- the production comes alive, does not crash and loads every disk swapped
+  in (an entry with no swaps or keys is watched for three minutes);
+- the same holds with every disk put in 30 seconds later, a swap's key
+  following its disk;
+- no key can be left out: the run without it, as long, gets less far. It
+  loads fewer disks, crashes, or last reads a disk earlier (a production
+  left at its prompt reads no further).
+
+A fail names the first seed it fails on. The line ends with the `until`
+proved of each swap, the latest insert that loaded on every seed: `at` plus
+30 seconds, or `at` when only that did. The runs of an entry are made in
+parallel, `--jobs` emulators at a time over all entries. A fail is a result
+and leaves the exit status 0.
 
 An entry that cannot be played is an error, not a result: no ROM for its
 machine, no media, a machine the player does not have, a key other than
