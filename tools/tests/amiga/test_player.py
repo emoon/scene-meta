@@ -5,7 +5,9 @@ from unittest import mock
 
 from scenemeta.amiga import machines, player
 from scenemeta.amiga.emulator import RunLog, Sample
+from scenemeta.amiga.verdict import Verdict
 from scenemeta.core.errors import BadEntry, CannotPlay
+from scenemeta.core.gate import Play, SwapTaken
 
 
 def samples(spec):
@@ -290,6 +292,32 @@ class PlayTest(unittest.TestCase):
         self.assertEqual((out.machine, out.loaded), ("a1200", [True]))
         self.assertIs(out.log, self.LOG)
         self.assertEqual(out.verdict.verdict, "no-activity")
+
+    def test_the_run_is_reported_as_the_record_of_every_platform(self):
+        out, _ = self.play(self.ENTRY)
+        self.assertEqual(out.record, Play(False, None, (SwapTaken(2, True),)))
+
+    def test_the_record_numbers_a_disk_as_the_entry_does(self):
+        entry = {**self.ENTRY, "drives": 2, "disks": ["a.adf", "b.adf", "c.adf"],
+                 "swaps": [{"disk": 3, "at": 20}]}
+        with mock.patch.object(player.media, "variants", return_value=(
+                [player.media.Variant("floppy", ["/d/a.adf", "/d/b.adf",
+                                                 "/d/c.adf"])], [])), \
+                mock.patch.object(player.emulator, "run", return_value=self.LOG):
+            out = player.play(7, entry, "a500")
+        self.assertEqual(out.record.swaps, (SwapTaken(3, True),))
+
+    def test_the_record_says_what_came_alive_and_what_crashed(self):
+        def record(verdict, crash=None):
+            with mock.patch.object(player.verdict, "classify",
+                                   return_value=Verdict(verdict, 0, crash)):
+                out, _ = self.play({"title": "x", "disks": ["a.adf", "b.adf"]})
+            return out.record
+        self.assertEqual(record("works"), Play(True))
+        self.assertEqual(record("works-short"), Play(True))
+        self.assertEqual(record("works-then-crash", "guru"), Play(True, "guru"))
+        self.assertEqual(record("crash", "halt"), Play(False, "halt"))
+        self.assertEqual(record("no-activity"), Play(False))
 
     def test_without_keys_runs_as_long_and_presses_nothing(self):
         _, run = self.play(self.ENTRY, keys=False)

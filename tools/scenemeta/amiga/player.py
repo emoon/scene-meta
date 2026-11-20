@@ -9,6 +9,7 @@ entry says, not what a sweep can find.
 import concurrent.futures as cf
 import dataclasses
 
+from ..core import gate
 from ..core.errors import BadEntry, CannotPlay
 from . import emulator, machines, media, verdict
 from .machines import FPS
@@ -22,6 +23,8 @@ PLAIN_FRAMES = 9000
 # A disk is loaded when it was read with the head past its first cylinders:
 # cylinders 0 and 1 are where a demo checks which disk is in.
 LOADED_CYL = 2
+# The verdicts of a production that came alive.
+RAN = ("works", "works-short", "works-then-crash")
 
 
 @dataclasses.dataclass(frozen=True)
@@ -31,6 +34,7 @@ class Outcome:
     verdict: verdict.Verdict
     loaded: list                # per swap that went in: was that disk loaded?
     log: emulator.RunLog
+    record: gate.Play = None    # the same, as every platform reports it
 
 
 @dataclasses.dataclass(frozen=True)
@@ -51,9 +55,14 @@ class Ready:
         log = emulator.run(self.machine, self.variant, frames, emulator.Options(
             drives=self.entry.get("drives", 1), play=tuple(acts), detect=False,
             keep=keep, seed=seed))
-        inserts = [f for f, what, _ in acts if what == "insert"]
-        return Outcome(self.machine.name, verdict.classify(log, frames // 250),
-                       loaded(log.samples, inserts), log)
+        inserts = [(f, i) for f, what, i in acts if what == "insert"]
+        v = verdict.classify(log, frames // 250)
+        took = loaded(log.samples, [f for f, _ in inserts])
+        first = self.entry.get("drives", 1) + 1
+        return Outcome(self.machine.name, v, took, log, gate.Play(
+            v.verdict in RAN, v.crash,
+            tuple(gate.SwapTaken(first + i, ok)
+                  for (_, i), ok in zip(inserts, took))))
 
 
 def ready(prod, entry, default):

@@ -28,6 +28,7 @@ found into `data/<platform>` (see `../docs/DESIGN.md`).
 | `core/config.py` | the NAS, and a platform's ROM, work, database and data paths (`SCENEMETA_NAS`, `SCENEMETA_ROMS`, `SCENEMETA_WORK`, `SCENEMETA_DB`, `SCENEMETA_DATA`) |
 | `core/catalog.py` | the productions of a platform and their download links, from the Demozoo index |
 | `core/result.py` | the records a platform reports: `Variant`, `Run`, `Swap` |
+| `core/gate.py` | the record a platform's player returns of a run (`Play`) and the gate that judges it: pass or fail, with a reason |
 | `core/store.py` | the sweep log: `production`, `variant`, `run`, `swap`, and the `best` view |
 | `core/sweep.py` | the sweep driver: worker processes, resume, storing, progress |
 | `core/export.py` | reads the chosen run of each variant and merges entries into the data files |

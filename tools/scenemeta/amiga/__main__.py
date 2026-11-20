@@ -5,6 +5,7 @@
     python3 -m scenemeta amiga report
     python3 -m scenemeta amiga export
     python3 -m scenemeta amiga replay [--ids ...] [--jobs N]
+    python3 -m scenemeta amiga gate --ids ... [--jobs N]
     python3 -m scenemeta amiga shots --out DIR [--ids ...] [--jobs N]
     python3 -m scenemeta amiga migrate [scene.db]
 """
@@ -13,8 +14,8 @@ import os
 import sys
 
 from ..core import cli
-from . import (catalog, classes, config, export, fetch, media, migrate, replay,
-               shots, store, sweep)
+from . import (catalog, classes, config, export, fetch, gate, media, migrate,
+               replay, shots, store, sweep)
 from ..core.errors import CannotPlay
 
 
@@ -30,6 +31,9 @@ def main(argv=None):
     sub.add_parser("export", help="merge the results into the data files")
     p = sub.add_parser("replay", help="play data-file entries as written")
     p.add_argument("--ids", type=int, nargs="*")
+    p.add_argument("--jobs", type=int)
+    p = sub.add_parser("gate", help="pass or fail of data-file entries")
+    p.add_argument("--ids", type=int, nargs="+", required=True)
     p.add_argument("--jobs", type=int)
     p = sub.add_parser("shots", help="screenshots of the entries Demozoo has"
                        " none of")
@@ -47,13 +51,14 @@ def main(argv=None):
 
 
 def _command(args):
-    # replay and shots read the data files, not the database; an entry
-    # that could not be played fails the command.
-    if args.cmd in ("replay", "shots"):
-        errors = replay.run(args.ids, jobs=args.jobs) \
-            if args.cmd == "replay" else \
-            shots.run(args.out, args.ids, jobs=args.jobs)
-        return min(1, errors)
+    # replay, gate and shots read the data files, not the database; an
+    # entry that could not be played fails the command.
+    if args.cmd == "replay":
+        return min(1, replay.run(args.ids, jobs=args.jobs))
+    if args.cmd == "gate":
+        return min(1, gate.run(args.ids, jobs=args.jobs))
+    if args.cmd == "shots":
+        return min(1, shots.run(args.out, args.ids, jobs=args.jobs))
     if args.cmd == "migrate":
         return cli.migrate(migrate.run, args.db or config.RESULTS_DB)
 

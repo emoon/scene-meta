@@ -71,6 +71,7 @@ python3 -m scenemeta amiga sweep --ids 89 142    # specific productions
 python3 -m scenemeta amiga report
 python3 -m scenemeta amiga export                # scene.db -> ../data/amiga
 python3 -m scenemeta amiga replay --ids 142      # play data-file entries as written
+python3 -m scenemeta amiga gate --ids 142        # pass or fail, and why
 python3 -m scenemeta amiga migrate               # convert an older scene.db
 python3 -m unittest discover -s tests -t .
 ```
@@ -99,6 +100,14 @@ more without them, which shows whether the keys are needed. Without `--ids`
 it plays every entry that has a key on a swap. Left mouse button only so far, and
 swapped disks always go into DF0.
 
+`gate` (`../scenemeta/amiga/gate.py`) plays each entry of `--ids` once as
+written and prints `pass` or `fail` with the reason, one line per
+production. The judgement is the core's (`../scenemeta/core/gate.py`), made
+from the record every platform's player returns: an entry passes when the
+production comes alive, does not crash and loads every disk swapped in. An
+entry with no swaps or keys is watched for three minutes. A fail is a
+result and leaves the exit status 0.
+
 An entry that cannot be played is an error, not a result: no ROM for its
 machine, no media, a machine the player does not have, a key other than
 `lmb`, or `boot`, `disks` and `run` that fit none of the download's variants
@@ -109,7 +118,7 @@ what is missing, nothing is run for that entry, and the command exits with
 status 1. `shots` files a `meta.json` with status `error` when the entry
 itself is the cause, so it is not tried again until that file is deleted;
 for a missing ROM or missing media it files nothing and tries again next
-time. Without the Demozoo mirror `sweep`, `replay` and `shots` stop before
+time. Without the Demozoo mirror `sweep`, `replay`, `gate` and `shots` stop before
 their first production, and a sweep whose ROM goes missing on the way stops
 there instead of storing results.
 
