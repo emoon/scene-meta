@@ -142,7 +142,7 @@ def ladder_for(aga_only, rom_dir=None, release_date=None, start=None):
     before it are not tried again."""
     early = predates_aga(release_date)
     rungs = [m for m in LADDER
-             if (not m.optional or rom_path(m, rom_dir).exists())
+             if (not m.optional or rom_path(m, rom_dir).is_file())
              and not (early and m.aga_era)]
     if aga_only:
         rungs = [m for m in rungs if m.aga] + [m for m in rungs if not m.aga]
@@ -158,9 +158,10 @@ def rom_path(machine, rom_dir=None):
 def require_rom(machine, rom_dir=None):
     """Raise unless the machine's Kickstart ROM is there: without one the
     emulator still starts, and the run reads as a production doing nothing."""
-    if not rom_path(machine, rom_dir).is_file():
+    path = rom_path(machine, rom_dir)
+    if not path.is_file():
         raise CannotPlay(f"no Kickstart ROM {machine.rom} for {machine.name}"
-                         f" in {rom_dir or config.ROM_DIR}")
+                         f" in {path.parent}")
 
 
 def require_roms(rom_dir=None):

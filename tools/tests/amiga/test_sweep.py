@@ -1,3 +1,5 @@
+import pathlib
+import tempfile
 import types
 from unittest import mock
 import unittest
@@ -452,8 +454,6 @@ class RecordTest(unittest.TestCase):
 
 class SetupTest(unittest.TestCase):
     def test_a_sweep_without_its_roms_stops_before_any_production(self):
-        import pathlib
-        import tempfile
         with tempfile.TemporaryDirectory() as empty, \
                 mock.patch.object(sweep.config, "ROM_DIR",
                                   pathlib.Path(empty)), \

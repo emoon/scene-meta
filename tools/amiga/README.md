@@ -26,7 +26,9 @@ one works.
 
 AGA-only productions start at `a1200`. Productions released before Oct 1992 skip the 030/060 rungs. ROMs go in `roms/` (`kick13.rom`,
 `kick30.rom`, and `kick12.rom`, a 256K Kickstart 1.2: without it the
-`a500_ks12` rung is skipped). Demos of the 1.2 era hard-code ROM addresses
+`a500_ks12` rung is skipped). Without `kick13.rom` or `kick30.rom` a sweep
+stops before its first production, and no run of any command starts
+without the ROM of its machine: the error names the ROM and the directory. Demos of the 1.2 era hard-code ROM addresses
 and guru under 1.3. Some intros only run when AmigaDOS loads them into chip
 RAM, i.e. on a bare 512K A500 (`a500_512k`).
 
@@ -94,6 +96,13 @@ was loaded. An entry with keys on its swaps is played once more without
 them, which shows whether the keys are needed. Without `--ids` it plays
 every entry that has a key on a swap. Left mouse button only so far, and
 swapped disks always go into DF0.
+
+An entry that cannot be played is an error, not a result: no ROM for its
+machine, no media, `disks` or a `run` that none of the download's variants
+has (never another variant in its place), a key other than `lmb`. The line
+says what is missing, nothing is run for that entry, and the command exits
+with status 1. `shots` does the same and files no `meta.json` for it, so
+the production is tried again next time.
 
 Build Amiberry, from the top of the repo. Everything built goes into
 `build/`, which is git-ignored, and the sweeper runs the binary from there:

@@ -39,8 +39,8 @@ def main(argv=None):
     p.add_argument("--jobs", type=int)
     args = ap.parse_args(argv)
 
-    # Either reads the data files, not the database; an entry that could
-    # not be played fails the command.
+    # replay and shots read the data files, not the database; an entry
+    # that could not be played fails the command.
     if args.cmd == "replay":
         return min(1, replay.run(args.ids, jobs=args.jobs))
     if args.cmd == "shots":
