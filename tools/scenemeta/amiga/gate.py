@@ -11,13 +11,20 @@ from ..core.export import default_machine
 from . import config, player, replay
 
 
-def _one(prod, entry, default):
-    """The report line of one production. Raises CannotPlay when something
-    it needs is missing, or the emulator showed nothing of the run."""
-    ran = player.play(prod, entry, default)
+def _play(ready):
+    """The record of one run of ``ready``. Raises CannotPlay when the
+    emulator showed nothing of it."""
+    ran = ready.play()
     if ran.verdict.verdict == "error":
         raise CannotPlay(f"the emulator gave nothing: {ran.verdict.crash}")
-    return f"{prod} {entry['title']}: {gate.judge(ran.record)}"
+    return ran.record
+
+
+def _one(prod, entry, default):
+    """The report line of one production. Raises CannotPlay when something
+    it needs is missing, or the emulator showed nothing of a run."""
+    ready = player.ready(prod, entry, default)
+    return f"{prod} {entry['title']}: {gate.judge(_play(ready))}"
 
 
 def run(ids, data=None, jobs=None, log=print):

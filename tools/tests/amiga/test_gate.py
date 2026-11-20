@@ -14,14 +14,15 @@ class OneTest(unittest.TestCase):
 
     def one(self, verdict, record):
         outcome = player.Outcome("a500", verdict, [], None, record)
-        with mock.patch.object(player, "play", return_value=outcome) as self.play:
+        with mock.patch.object(player, "ready") as self.ready:
+            self.ready.return_value.play.return_value = outcome
             return gate._one(7, self.ENTRY, "a500")
 
     def test_the_line_is_the_gates_judgement_of_one_run(self):
         line = self.one(Verdict("works", 9),
                         Play(True, swaps=(SwapTaken(2, False),)))
         self.assertEqual(line, "7 x: fail (disk 2 never loaded)")
-        self.play.assert_called_once_with(7, self.ENTRY, "a500")
+        self.ready.assert_called_once_with(7, self.ENTRY, "a500")
 
     def test_a_pass(self):
         line = self.one(Verdict("works", 9),
