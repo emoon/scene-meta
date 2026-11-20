@@ -11,7 +11,6 @@ A production with a ``meta.json`` is done and is not played again. One that
 could not be played (a missing ROM, no media) gets none: it is an error.
 """
 
-import concurrent.futures as cf
 import datetime
 import hashlib
 import json
@@ -24,7 +23,6 @@ import tempfile
 from ..core import catalog as demozoo
 from ..core.export import default_machine
 from . import config, player, replay, verdict
-from .errors import CannotPlay
 from .machines import FPS
 
 SCHEMA = 1
@@ -120,16 +118,13 @@ def capture(prod, entry, default, out):
 
 
 def _one(prod, entry, default, out):
-    """``(ok, report line)`` of one production: not ok when it could not
-    be played, and then nothing is filed."""
-    try:
-        result = capture(prod, entry, default, out)
-    except CannotPlay as e:
-        return False, f"{prod} {entry['title']}: error: {e}"
+    """The report line of one production, its meta filed. Raises CannotPlay
+    when it could not be played, and then nothing is filed."""
+    result = capture(prod, entry, default, out)
     dest = out / str(prod)
     dest.mkdir(exist_ok=True)
     (dest / META).write_text(json.dumps(result, indent=1) + "\n")
-    return True, f"{prod} {entry['title']}: {result['status']}" + \
+    return f"{prod} {entry['title']}: {result['status']}" + \
         (f" ({len(result['shots'])})" if result["shots"] else f" ({result['reason']})")
 
 
@@ -154,10 +149,5 @@ def run(out, ids=None, data=None, jobs=None, log=print):
     default = default_machine(data)
     prods = todo(found, ids, demozoo.ids_without_screenshots(), done)
     jobs = jobs or max(1, (os.cpu_count() or 4) // 2)
-    errors = 0
-    with cf.ThreadPoolExecutor(jobs) as pool:
-        for ok, line in pool.map(lambda p: _one(p, found[p], default, out),
-                                 prods):
-            errors += not ok
-            log(line, flush=True)
-    return errors
+    return player.play_each([(p, found[p]) for p in prods],
+                            lambda p, e: _one(p, e, default, out), jobs, log)

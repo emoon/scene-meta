@@ -7,8 +7,6 @@ A production the sweep found is ``script``; one with a hand classification
 whatever somebody edited in the data files stays.
 """
 
-import os
-
 from ..core import export
 from . import classes, config, media
 
@@ -40,6 +38,8 @@ def entry(title, groups, variants, cls, default):
     else:
         result = _RESULT.get(v.verdict, "unknown")
     runs = result in (None, "crashes-later")
+    named = media.named(v.kind, v.disks, v.note, v.detail.get("command"),
+                        variants[0].kind)
 
     e = {"title": title}
     if groups:
@@ -49,22 +49,22 @@ def entry(title, groups, variants, cls, default):
         e["machine"] = v.machine
     if runs and v.drives > 1:
         e["drives"] = v.drives
-    if v.kind != variants[0].kind:
-        e["boot"] = v.kind
+    if "boot" in named:
+        e["boot"] = named["boot"]
     if kind in _KIND:
         e["kind"] = kind
     if result:
         e["result"] = result
-    if len(v.disks) > 1:
-        e["disks"] = [os.path.basename(d) for d in v.disks]
+    if "disks" in named:
+        e["disks"] = named["disks"]
     if runs and v.swaps:
         e["swaps"] = [{"disk": s.disk, "at": round(s.at, 1),
                        **({"key": s.key} if s.key else {})}
                       for s in v.swaps]
     if runs and v.keys:
         e["keys"] = [{"at": round(k.at, 1), "key": k.key} for k in v.keys]
-    if run := media.run_file(v.note, v.detail.get("command")):
-        e["run"] = run
+    if "run" in named:
+        e["run"] = named["run"]
     if note:
         e["note"] = note
     elif runs and v.reached < len(v.disks):

@@ -379,23 +379,6 @@ def climb(variant, aga_only, release_date=None, start=None):
     return attempts, max(chosen, key=lambda a: a.rank)
 
 
-def fallbacks(v, prod):
-    """Other ways to run variant ``v`` when it did not work, in order: each
-    makes a variant, or None."""
-    if v.kind == "hd":
-        # Files a demo loads from DF0: rather than from its directory.
-        return [] if v.command is None else \
-            [lambda: media.floppy_variant(v, prod.id)]
-    # A floppy set that never got going may be a Workbench disk: run its
-    # demo directly instead. A set that still does not may be meant to be
-    # installed: run it from one directory holding every disk.
-    out = [] if media.LAUNCH_NOTE in v.note else \
-        [lambda: media.launch_variant(v.disks, prod.id)]
-    if len(v.disks) > 1:
-        out.append(lambda: media.merged_variant(v.disks, prod.id, prod.title))
-    return out
-
-
 def _record(v, attempts, best):
     """Variant ``v`` and its runs as the store keeps them."""
     return result.Variant(
@@ -416,7 +399,7 @@ def _job(prod, multi_only=False, known=None):
     for v, (_, best) in list(zip(variants, results)):
         if best.verdict.works:
             continue
-        for make in fallbacks(v, prod):
+        for make in media.fallbacks(v, prod.id, prod.title):
             fv = make()
             if fv:
                 variants.append(fv)

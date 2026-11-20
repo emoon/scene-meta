@@ -15,7 +15,7 @@ import sys
 from ..core import cli
 from . import (catalog, classes, config, export, fetch, media, migrate, replay,
                shots, store, sweep)
-from .errors import CannotPlay
+from ..core.errors import CannotPlay
 
 
 def _prods(args):
@@ -41,12 +41,13 @@ def main(argv=None):
 
     # replay and shots read the data files, not the database; an entry
     # that could not be played fails the command.
-    if args.cmd == "replay":
-        return min(1, replay.run(args.ids, jobs=args.jobs))
-    if args.cmd == "shots":
-        if not args.out:
+    if args.cmd in ("replay", "shots"):
+        if args.cmd == "shots" and not args.out:
             ap.error("shots needs --out or $SCENEMETA_SHOTS")
-        return min(1, shots.run(args.out, args.ids, jobs=args.jobs))
+        errors = replay.run(args.ids, jobs=args.jobs) \
+            if args.cmd == "replay" else \
+            shots.run(args.out, args.ids, jobs=args.jobs)
+        return min(1, errors)
     if args.cmd == "migrate":
         return cli.migrate(migrate.run, args.db or config.RESULTS_DB)
 

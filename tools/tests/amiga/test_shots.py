@@ -5,6 +5,7 @@ from unittest import mock
 
 from scenemeta.amiga import shots
 from scenemeta.amiga.emulator import Sample
+from scenemeta.core.errors import CannotPlay
 
 
 def sample(frame, pc=0x40000000, dmacon=0x39F):
@@ -104,8 +105,7 @@ class CannotPlayTest(unittest.TestCase):
                                   return_value=([], ["x"])), \
                 mock.patch.object(shots.player.emulator, "run") as run:
             out = pathlib.Path(d)
-            ok, line = shots._one(7, {"title": "x"}, "a500", out)
+            with self.assertRaisesRegex(CannotPlay, "no media: x"):
+                shots._one(7, {"title": "x"}, "a500", out)
             self.assertFalse((out / "7" / shots.META).exists())
-        self.assertFalse(ok)
-        self.assertEqual(line, "7 x: error: no media: x")
         run.assert_not_called()

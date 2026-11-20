@@ -4,6 +4,7 @@ import unittest
 from unittest import mock
 
 from scenemeta.amiga import player, replay
+from scenemeta.core.errors import CannotPlay
 from scenemeta.amiga.verdict import Verdict
 
 
@@ -30,9 +31,8 @@ class ReportTest(unittest.TestCase):
         with mock.patch.object(player.media, "variants",
                                   return_value=([self.ADF], [])), \
                 mock.patch.object(player.emulator, "run") as run:
-            ok, line = replay._one(7, self.ENTRY, "a500")
-        self.assertFalse(ok)
-        self.assertEqual(line, "7 x: error: no way to press key 'space'")
+            with self.assertRaisesRegex(CannotPlay, "'space'"):
+                replay._one(7, self.ENTRY, "a500")
         run.assert_not_called()
 
     def outcome(self, verdict, loaded):
@@ -43,8 +43,7 @@ class ReportTest(unittest.TestCase):
         with mock.patch.object(player, "play", side_effect=[
                 self.outcome("works", [True]),
                 self.outcome("works", [False])]) as play:
-            ok, line = replay._one(7, entry, "a500")
-        self.assertTrue(ok)
+            line = replay._one(7, entry, "a500")
         self.assertEqual(line, "7 x: keys needed (as written: works, disks"
                          " loaded y; without keys: works, disks loaded n)")
         self.assertEqual([c.kwargs for c in play.call_args_list],
@@ -54,7 +53,7 @@ class ReportTest(unittest.TestCase):
         entry = {"title": "x", "keys": [{"at": 10, "key": "lmb"}]}
         with mock.patch.object(player, "play", side_effect=[
                 self.outcome("works", []), self.outcome("crash", [])]):
-            _, line = replay._one(7, entry, "a500")
+            line = replay._one(7, entry, "a500")
         self.assertEqual(line, "7 x: keys needed (as written: works, disks"
                          " loaded y; without keys: crash, disks loaded n)")
 
@@ -62,7 +61,7 @@ class ReportTest(unittest.TestCase):
         entry = {"title": "x", "swaps": [{"disk": 2, "at": 10}]}
         with mock.patch.object(player, "play", return_value=self.outcome(
                 "works-then-crash", [False])) as play:
-            _, line = replay._one(7, entry, "a500")
+            line = replay._one(7, entry, "a500")
         self.assertEqual(line, "7 x: does not replay (as written:"
                          " works-then-crash, disks loaded n)")
         play.assert_called_once_with(7, entry, "a500")
@@ -80,7 +79,7 @@ class ReportTest(unittest.TestCase):
             errors = replay.run(data=pathlib.Path(d), jobs=1,
                                 log=lambda line, **kw: lines.append(line))
         self.assertEqual(errors, 1)
-        self.assertEqual(len(lines), 1)
+        self.assertEqual(lines, ["7 x: error: no way to press key 'space'"])
         run.assert_not_called()
 
 

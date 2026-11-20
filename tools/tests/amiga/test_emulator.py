@@ -4,7 +4,7 @@ import unittest
 from unittest import mock
 
 from scenemeta.amiga import emulator, machines, media, workbench
-from scenemeta.amiga.errors import CannotPlay
+from scenemeta.core.errors import CannotPlay
 
 
 class MissingRomTest(unittest.TestCase):

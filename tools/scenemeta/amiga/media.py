@@ -558,6 +558,21 @@ def run_file(note, command):
     return None
 
 
+def named(kind, disks, note, command, first_kind):
+    """What an entry says of the variant it describes, of all the download
+    offers: its ``boot`` when that is not the kind of the first variant,
+    its ``disks`` when it is a set, the file it ``run``s when the media
+    left a choice."""
+    out = {}
+    if kind != first_kind:
+        out["boot"] = kind
+    if len(disks) > 1:
+        out["disks"] = [os.path.basename(d) for d in disks]
+    if run := run_file(note, command):
+        out["run"] = run
+    return out
+
+
 def merged_variant(disks, prod_id, title):
     """A hard-drive variant holding the files of every disk of a set in one
     directory, with split archives joined and archives unpacked: what the
@@ -676,3 +691,20 @@ def floppy_variant(v, prod_id):
     except (OSError, subprocess.SubprocessError):
         return None                             # does not fit after all
     return Variant("floppy", [str(adf)], note=f"{TREE_NOTE}; {v.label}")
+
+
+def fallbacks(v, prod_id, title=""):
+    """Other ways to run variant ``v``, in the order a sweep tries them when
+    it did not work: each makes a variant, or None."""
+    if v.kind == "hd":
+        # Files a demo loads from DF0: rather than from its directory.
+        return [] if v.command is None else \
+            [lambda: floppy_variant(v, prod_id)]
+    # A floppy set that never got going may be a Workbench disk: run its
+    # demo directly instead. A set that still does not may be meant to be
+    # installed: run it from one directory holding every disk.
+    out = [] if LAUNCH_NOTE in v.note else \
+        [lambda: launch_variant(v.disks, prod_id)]
+    if len(v.disks) > 1:
+        out.append(lambda: merged_variant(v.disks, prod_id, title))
+    return out

@@ -52,7 +52,7 @@ two Repugnance archives `scenedb fetch` now downloads.
      `mathtrans`; copies are in
      `~/code/projects/tbl-newage/ToolChain/RunTime/WinUAE/BootPartition.A1200/Libs/`).
 2. **`515d78e` failed HD variant → its files on a boot floppy** (`media.floppy_variant`,
-   tried via `sweep.fallbacks`), for demos that load from `DF0:`.
+   tried via `media.fallbacks`), for demos that load from `DF0:`.
 3. **`372a606` executable pick**: the title-named executable wins in unpacked
    archives too (it only did for merged sets), and hunk files named like
    data (`.dat .data .bin .ovl`) rank last.

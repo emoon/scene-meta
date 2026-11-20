@@ -7,7 +7,7 @@ from unittest import mock
 
 from scenemeta.amiga import emulator, machines, media, sweep, verdict
 from scenemeta.amiga.emulator import RunLog, Sample
-from scenemeta.amiga.errors import CannotPlay
+from scenemeta.core.errors import CannotPlay
 
 
 def attempt(last_dmas, swaps=(), crash_frame=None):

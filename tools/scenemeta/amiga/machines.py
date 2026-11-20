@@ -4,7 +4,7 @@ machine it works on."""
 import dataclasses
 
 from . import config
-from .errors import CannotPlay
+from ..core.errors import CannotPlay
 
 _HEADLESS = """\
 use_gui=no

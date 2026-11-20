@@ -5,7 +5,6 @@ An entry with keys, on its swaps or of its own, is played a second time without
 them: a key is needed only when the production does not run without it.
 """
 
-import concurrent.futures as cf
 import os
 import tomllib
 
@@ -13,7 +12,6 @@ from .. import machines as presets
 
 from ..core.export import default_machine
 from . import config, player
-from .errors import CannotPlay
 
 
 def judge(written, plain):
@@ -50,15 +48,12 @@ def _has_keys(entry):
 
 
 def _one(prod, entry, default):
-    """``(ok, report line)`` of one production: not ok when something it
-    needs is missing, and the line says what."""
-    try:
-        runs = [("as written", player.play(prod, entry, default))]
-        if _has_keys(entry):
-            runs.append(("without keys",
-                         player.play(prod, entry, default, keys=False)))
-    except CannotPlay as e:
-        return False, f"{prod} {entry['title']}: error: {e}"
+    """The report line of one production. Raises CannotPlay when something
+    it needs is missing."""
+    runs = [("as written", player.play(prod, entry, default))]
+    if _has_keys(entry):
+        runs.append(("without keys",
+                     player.play(prod, entry, default, keys=False)))
     # With no disk to put in, the run itself is the evidence.
     got = [(name, o.verdict.verdict, o.loaded or [o.verdict.works])
            for name, o in runs]
@@ -66,7 +61,7 @@ def _one(prod, entry, default):
     detail = "; ".join(
         f"{name}: {v}, disks loaded " + "".join("y" if ok else "n" for ok in ld)
         for name, v, ld in got)
-    return True, f"{prod} {entry['title']}: {said} ({detail})"
+    return f"{prod} {entry['title']}: {said} ({detail})"
 
 
 def run(ids=None, data=None, jobs=None, log=print):
@@ -81,10 +76,5 @@ def run(ids=None, data=None, jobs=None, log=print):
         log(f"{p}: no entry with swaps or keys")
     # Two emulators per production, each about two cores.
     jobs = jobs or max(1, (os.cpu_count() or 4) // 4)
-    errors = 0
-    with cf.ThreadPoolExecutor(jobs) as pool:
-        for ok, line in pool.map(lambda pe: _one(*pe, default),
-                                 sorted(todo.items())):
-            errors += not ok
-            log(line, flush=True)
-    return errors
+    return player.play_each(sorted(todo.items()),
+                            lambda p, e: _one(p, e, default), jobs, log)

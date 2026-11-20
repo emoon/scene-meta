@@ -6,11 +6,12 @@ happened. Nothing is detected and nothing retried, so a run shows what the
 entry says, not what a sweep can find.
 """
 
+import concurrent.futures as cf
 import dataclasses
 import os
 
 from . import emulator, machines, media, verdict
-from .errors import CannotPlay
+from ..core.errors import CannotPlay
 from .machines import FPS
 
 KEY_DELAY = 5.0      # seconds from an insert to its key, when not given
@@ -50,6 +51,24 @@ def play(prod, entry, default, keys=True, keep=None):
     inserts = [f for f, what, _ in acts if what == "insert"]
     return Outcome(name, verdict.classify(log, frames // 250),
                    loaded(log.samples, inserts), log)
+
+
+def play_each(todo, one, jobs, log=print):
+    """Play every ``(prod, entry)`` of ``todo``, ``jobs`` at a time:
+    ``one(prod, entry)`` plays it and returns its report line. An entry that
+    cannot be played is reported as an error. Returns how many were."""
+    def report(prod, entry):
+        try:
+            return True, one(prod, entry)
+        except CannotPlay as e:
+            return False, f"{prod} {entry['title']}: error: {e}"
+
+    errors = 0
+    with cf.ThreadPoolExecutor(jobs) as pool:
+        for ok, line in pool.map(lambda pe: report(*pe), todo):
+            errors += not ok
+            log(line, flush=True)
+    return errors
 
 
 def actions(entry, keys=True):

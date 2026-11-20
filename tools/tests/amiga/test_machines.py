@@ -3,7 +3,7 @@ import tempfile
 import unittest
 
 from scenemeta.amiga import machines
-from scenemeta.amiga.errors import CannotPlay
+from scenemeta.core.errors import CannotPlay
 
 
 def names(ms):

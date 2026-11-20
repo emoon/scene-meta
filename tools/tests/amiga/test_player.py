@@ -4,7 +4,7 @@ from unittest import mock
 
 from scenemeta.amiga import machines, player
 from scenemeta.amiga.emulator import RunLog, Sample
-from scenemeta.amiga.errors import CannotPlay
+from scenemeta.core.errors import CannotPlay
 
 
 def samples(spec):
