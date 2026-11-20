@@ -5,14 +5,16 @@
     python3 -m scenemeta amiga report
     python3 -m scenemeta amiga export
     python3 -m scenemeta amiga replay [--ids ...] [--jobs N]
+    python3 -m scenemeta amiga shots --out DIR [--ids ...] [--jobs N]
     python3 -m scenemeta amiga migrate [scene.db]
 """
 
+import os
 import sys
 
 from ..core import cli
 from . import (catalog, classes, config, export, fetch, media, migrate, replay,
-               store, sweep)
+               shots, store, sweep)
 
 
 def _prods(args):
@@ -28,10 +30,20 @@ def main(argv=None):
     p = sub.add_parser("replay", help="play data-file entries as written")
     p.add_argument("--ids", type=int, nargs="*")
     p.add_argument("--jobs", type=int)
+    p = sub.add_parser("shots", help="screenshots of the entries Demozoo has"
+                       " none of")
+    p.add_argument("--out", default=os.environ.get("SCENEMETA_SHOTS"),
+                   help="where they go (default $SCENEMETA_SHOTS)")
+    p.add_argument("--ids", type=int, nargs="*")
+    p.add_argument("--jobs", type=int)
     args = ap.parse_args(argv)
 
     if args.cmd == "replay":    # reads the data files, not the database
         return replay.run(args.ids, jobs=args.jobs)
+    if args.cmd == "shots":
+        if not args.out:
+            ap.error("shots needs --out or $SCENEMETA_SHOTS")
+        return shots.run(args.out, args.ids, jobs=args.jobs)
     if args.cmd == "migrate":
         return cli.migrate(migrate.run, args.db or config.RESULTS_DB)
 

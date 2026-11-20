@@ -10,6 +10,7 @@
 #include <algorithm>
 #include <cstdlib>
 #include <cstring>
+#include <vector>
 #ifndef _WIN32
 #include <unistd.h>
 #endif
@@ -1710,6 +1711,51 @@ int save_thumb(const std::string& path)
 		current_screenshot = nullptr;
 	}
 	return ret;
+}
+
+/* The pixels of the last picture save_thumb_if_new kept: a frame is new when
+ * enough of its pixels differ from them. */
+static struct {
+	std::vector<uae_u8> pixels;
+	int w = 0, h = 0, bpp = 0;
+} last_kept;
+
+/* Saves the screenshot only if more than ``permille`` of every thousand pixels
+ * differ from the last one saved this way (the first one always is).
+ * ``changed`` gets the per mille that differ. Returns 1 when saved, 0 when it
+ * is the same picture, -1 when the png could not be written. */
+int save_thumb_if_new(const std::string& path, int permille, int* changed)
+{
+	SDL_Surface* s = current_screenshot;
+	*changed = 1000;
+	if (s == nullptr)
+		return -1;
+	const int bpp = SDL_BYTESPERPIXEL(s->format);
+	const size_t row = (size_t)s->w * bpp;
+	const bool same_shape = last_kept.w == s->w && last_kept.h == s->h && last_kept.bpp == bpp;
+	if (same_shape) {
+		size_t differ = 0;
+		for (int y = 0; y < s->h; y++) {
+			const auto* a = static_cast<const uae_u8*>(s->pixels) + (size_t)y * s->pitch;
+			const auto* b = last_kept.pixels.data() + (size_t)y * row;
+			for (int x = 0; x < s->w; x++)
+				differ += memcmp(a + (size_t)x * bpp, b + (size_t)x * bpp, bpp) != 0;
+		}
+		*changed = (int)(differ * 1000 / ((size_t)s->w * s->h));
+		if (*changed <= permille) {
+			SDL_DestroySurface(current_screenshot);
+			current_screenshot = nullptr;
+			return 0;
+		}
+	}
+	last_kept.pixels.resize(row * s->h);
+	for (int y = 0; y < s->h; y++)
+		memcpy(last_kept.pixels.data() + (size_t)y * row,
+			static_cast<const uae_u8*>(s->pixels) + (size_t)y * s->pitch, row);
+	last_kept.w = s->w;
+	last_kept.h = s->h;
+	last_kept.bpp = bpp;
+	return save_thumb(path) ? 1 : -1;
 }
 
 void screenshot(int monid, int mode, int doprepare)

@@ -40,6 +40,7 @@ int dbgproto_warp_until_audio = 0;
 
 extern void warpmode(int mode);          /* inputdevice.cpp */
 extern bool create_screenshot(void);     /* osdep/amiberry_gfx.cpp */
+extern int save_thumb_if_new(const std::string &path, int permille, int *changed);
 extern int save_thumb(const std::string &path);
 extern bool render_screen(int monid, int mode, bool immediate);
 
@@ -417,6 +418,23 @@ static void cmd_screenshot(int s, const std::string &cmd, const std::string &pat
 	char body[700];
 	snprintf(body, sizeof body, "{\"ok\":%s,\"path\":\"%s\"}",
 		ok ? "true" : "false", esc);
+	emit(s, cmd, body);
+}
+
+/* shot-new PERMILLE PATH: a screenshot, kept only when more than PERMILLE of
+ * every thousand pixels differ from the last one this command kept. */
+static void cmd_shot_new(int s, const std::string &cmd, int permille,
+	const std::string &path)
+{
+	render_screen(0, 1, true);
+	int changed = 0;
+	int kept = create_screenshot() ? save_thumb_if_new(path, permille, &changed) : -1;
+	char esc[600];
+	json_escape(path.c_str(), esc, sizeof esc);
+	char body[700];
+	snprintf(body, sizeof body,
+		"{\"ok\":%s,\"kept\":%s,\"changed\":%d,\"path\":\"%s\"}",
+		kept >= 0 ? "true" : "false", kept > 0 ? "true" : "false", changed, esc);
 	emit(s, cmd, body);
 }
 
@@ -933,6 +951,9 @@ static void dispatch(void)
 			cmd_status(s, cmd);
 		} else if (t[0] == "screenshot" && t.size() >= 2) {
 			cmd_screenshot(s, cmd, cmd.substr(cmd.find(' ') + 1));
+		} else if (t[0] == "shot-new" && t.size() >= 3) {
+			size_t p = cmd.find(t[1]) + t[1].size() + 1;
+			cmd_shot_new(s, cmd, (int)parse_num(t[1]), cmd.substr(p));
 		} else if (t[0] == "bp") {
 			cmd_bp(s, cmd, t);
 		} else if (t[0] == "watch") {

@@ -200,6 +200,11 @@ class Options:
     ``play`` does fixed things at exact frames and nothing else, the
     detector off: ``(frame, "insert", k)`` puts disk ``k`` of the swap list
     in, ``(frame, "click", button)`` clicks a mouse button.
+
+    ``keep`` is a directory that gets a ``NNNN.png`` of each sample (``NNNN``
+    its index) whose picture differs from the last one kept in more than
+    ``keep_permille`` of every thousand pixels: the emulator does the
+    comparing, so the run's samples still say which of them were kept.
     """
     triggers: str = ""
     drives: int = 1
@@ -213,6 +218,8 @@ class Options:
     swap_click: bool = True
     nudge_until: int = 0
     play: tuple = ()
+    keep: pathlib.Path = None
+    keep_permille: int = 20
 
     @property
     def detects(self):
@@ -281,8 +288,8 @@ def _script(frames, interval, alert_peek, shots, swaps, opts):
     for i in range(n):
         nudge = not (opts.nudge_until
                      and (i + 1) * interval >= opts.nudge_until)
-        cmds += [f"run frames={interval}"] + _sample(i, alert_peek, shots,
-                                                     opts.drives > 1)
+        cmds += [f"run frames={interval}"] + _sample(
+            i, alert_peek, shots, opts.drives > 1, opts)
         if click_next:
             # After a scheduled insert: left and right in turn (Lethal
             # Dose 2 takes its disk on the right button only).
@@ -325,14 +332,16 @@ def _play(frames, interval, alert_peek, shots, swaps, opts):
         if end > at:
             cmds.append(f"run frames={end - at}")
             at = end
-        cmds += _sample(i, alert_peek, shots, True)
+        cmds += _sample(i, alert_peek, shots, True, opts)
     return cmds
 
 
-def _sample(i, alert_peek, shots, disk_status):
+def _sample(i, alert_peek, shots, disk_status, opts):
     """The commands that record sample ``i`` of a run."""
     cmds = ["status", "peek 4 4", alert_peek,
             f"screenshot {shots / f'{i:04d}.png'}", "disk autoswap status"]
+    if opts.keep:
+        cmds.append(f"shot-new {opts.keep_permille} {opts.keep / f'{i:04d}.png'}")
     return cmds + ["disk status"] if disk_status else cmds
 
 
