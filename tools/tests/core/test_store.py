@@ -4,6 +4,7 @@ import unittest
 
 from scenemeta.core import export, store, sweep
 from scenemeta.core.catalog import Production
+from scenemeta.core.gate import Judgement
 from scenemeta.core.result import Key, Run, Swap, Variant
 
 PROD = Production(7, "Demo", "Group", ("ocs",), ("Demo",), "1991", [])
@@ -59,6 +60,44 @@ class StoreTest(unittest.TestCase):
                           for t in ("variant", "run", "swap")], [0, 0, 0])
         self.assertEqual(q("select media_problems from production").fetchall(),
                          [("no-disk-images",)])
+
+    def gate(self, prod, *seeds, sha256="aa", player="1"):
+        self.db.put_gate(prod, Judgement(all(p for _, p in seeds), "", seeds=tuple(
+            (seed, Judgement(p, f"why {seed}")) for seed, p in seeds)),
+            sha256, player)
+
+    def test_the_gate_stores_one_record_per_entry_and_seed(self):
+        self.gate(8, (1, True), (2, True))
+        self.gate(7, (1, True), (2, False), (3, True))
+        got = self.db.gated()
+        self.assertEqual(
+            [(r.prod, r.seed, r.passed, r.reason, r.sha256, r.player)
+             for r in got],
+            [(7, 1, True, "why 1", "aa", "1"), (7, 2, False, "why 2", "aa", "1"),
+             (7, 3, True, "why 3", "aa", "1"), (8, 1, True, "why 1", "aa", "1"),
+             (8, 2, True, "why 2", "aa", "1")])
+        self.assertRegex(got[0].at, r"^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d$")
+
+    def test_gating_an_entry_again_replaces_its_records_only(self):
+        self.gate(7, (1, True), (2, True), (3, True))
+        self.gate(8, (1, True), (2, True))
+        self.gate(7, (1, False), (2, True), sha256="bb", player="2")
+        self.assertEqual(
+            [(r.prod, r.seed, r.passed, r.sha256, r.player)
+             for r in self.db.gated()],
+            [(7, 1, False, "bb", "2"), (7, 2, True, "bb", "2"),
+             (8, 1, True, "aa", "1"), (8, 2, True, "aa", "1")])
+
+    def test_the_gate_log_outlives_a_new_sweep_result(self):
+        self.gate(7, (1, True), (2, True))
+        self.db.put_result(PROD, [], [variant()])
+        self.assertEqual(len(self.db.gated()), 2)
+
+    def test_the_gate_log_is_kept_between_runs(self):
+        self.gate(7, (1, True), (2, True))
+        self.db.close()
+        self.db = store.Store(self.path)
+        self.assertEqual(len(self.db.gated()), 2)
 
     def test_a_file_from_before_the_schema_is_refused(self):
         self.db.db.execute("pragma user_version = 0")

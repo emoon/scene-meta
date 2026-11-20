@@ -1,3 +1,4 @@
+import hashlib
 import os
 import pathlib
 import struct
@@ -316,6 +317,46 @@ class ArchiveSetTest(unittest.TestCase):
         root = pathlib.Path(vs[0].root)
         self.assertEqual(sorted(p.name for p in (root / "data").iterdir()),
                          ["rep-001.data", "rep-002.data"])
+
+
+class DownloadSha256Test(unittest.TestCase):
+    def setUp(self):
+        top = pathlib.Path(tempfile.mkdtemp())
+        self.addCleanup(media._rmtree, top)
+        patch = unittest.mock.patch.object(media.config, "DEMOZOO_DIR", top)
+        patch.start()
+        self.addCleanup(patch.stop)
+        self.src = media.config.prod_dir(142)
+        self.src.mkdir(parents=True)
+
+    def test_one_file_is_its_sha256(self):
+        (self.src / "demo.lha").write_bytes(b"abc")
+        self.assertEqual(media.download_sha256(142),
+                         hashlib.sha256(b"abc").hexdigest())
+
+    def test_a_file_still_being_fetched_is_no_part_of_it(self):
+        (self.src / "demo.lha").write_bytes(b"abc")
+        (self.src / "demo2.lha.part").write_bytes(b"ab")
+        self.assertEqual(media.download_sha256(142),
+                         hashlib.sha256(b"abc").hexdigest())
+
+    def test_several_files_change_it_by_content_and_by_name(self):
+        def of(files):
+            for f in self.src.iterdir():
+                f.unlink()
+            for name, data in files.items():
+                (self.src / name).write_bytes(data)
+            return media.download_sha256(142)
+        both = of({"a.adf": b"1", "b.adf": b"2"})
+        self.assertRegex(both, "^[0-9a-f]{64}$")
+        self.assertEqual(of({"b.adf": b"2", "a.adf": b"1"}), both)
+        self.assertNotEqual(of({"a.adf": b"1", "b.adf": b"3"}), both)
+        self.assertNotEqual(of({"a.adf": b"1", "c.adf": b"2"}), both)
+        self.assertNotEqual(of({"a.adf": b"1"}), both)
+
+    def test_no_download_has_none(self):
+        self.assertIsNone(media.download_sha256(142))
+        self.assertIsNone(media.download_sha256(143))
 
 
 class DmsPartsTest(unittest.TestCase):

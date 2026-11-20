@@ -6,6 +6,8 @@
     python3 -m scenemeta amiga export
     python3 -m scenemeta amiga replay [--ids ...] [--jobs N]
     python3 -m scenemeta amiga gate --ids ... [--jobs N]
+    python3 -m scenemeta amiga gate-summary
+    python3 -m scenemeta amiga gate-stale
     python3 -m scenemeta amiga shots --out DIR [--ids ...] [--jobs N]
     python3 -m scenemeta amiga migrate [scene.db]
 """
@@ -35,6 +37,10 @@ def main(argv=None):
     p = sub.add_parser("gate", help="pass or fail of data-file entries")
     p.add_argument("--ids", type=int, nargs="+", required=True)
     p.add_argument("--jobs", type=int)
+    sub.add_parser("gate-summary", help="write the counts of what the gate"
+                   " saw to the checked-in file")
+    sub.add_parser("gate-stale", help="the entries whose download or player"
+                   " changed since the gate saw them")
     p = sub.add_parser("shots", help="screenshots of the entries Demozoo has"
                        " none of")
     p.add_argument("--out", default=os.environ.get("SCENEMETA_SHOTS"),
@@ -51,12 +57,10 @@ def main(argv=None):
 
 
 def _command(args):
-    # replay, gate and shots read the data files, not the database; an
-    # entry that could not be played fails the command.
+    # replay and shots read the data files, not the database; an entry
+    # that could not be played fails the command.
     if args.cmd == "replay":
         return min(1, replay.run(args.ids, jobs=args.jobs))
-    if args.cmd == "gate":
-        return min(1, gate.run(args.ids, jobs=args.jobs))
     if args.cmd == "shots":
         return min(1, shots.run(args.out, args.ids, jobs=args.jobs))
     if args.cmd == "migrate":
@@ -73,6 +77,12 @@ def _command(args):
             report(db)
         elif args.cmd == "export":
             export.run(db)
+        elif args.cmd == "gate":
+            return min(1, gate.run(args.ids, db, jobs=args.jobs))
+        elif args.cmd == "gate-summary":
+            print(f"wrote {gate.write_summary(db)}")
+        elif args.cmd == "gate-stale":
+            gate.stale(db)
     finally:
         db.close()
 

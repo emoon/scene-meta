@@ -4,6 +4,7 @@ production  one row per Demozoo production in scope
 variant     each bootable thing found for a production
 run         one boot of one variant on one machine
 swap        the disk changes a run made
+gate        what the gate last saw of an entry, per seed (core/gatelog.py)
 
 All times are seconds of emulated time since power-on, as in the data
 files (``run.at`` is the wall clock). The ``detail`` columns hold JSON that
@@ -18,6 +19,7 @@ import json
 import sqlite3
 import time
 
+from .gatelog import Record
 from .result import Key, Swap
 
 VERSION = 1    # pragma user_version; 0 is a database from before this schema
@@ -42,6 +44,10 @@ create table if not exists swap (
     trigger text, accepted integer, waiting_since real, key text, key_at real,
     screenshot blob, primary key (run_id, seq));
 create index if not exists ix_run_variant on run(variant_id);
+create table if not exists gate (
+    prod_id integer not null, seed integer not null, passed integer not null,
+    reason text not null, sha256 text not null, player text not null,
+    at text not null, primary key (prod_id, seed));
 drop view if exists best;
 create view best as
     select p.id prod_id, p.title, p.groups, p.platforms, v.idx variant,
@@ -161,6 +167,25 @@ class Store:
         self.db.execute("delete from swap where run_id in "
                         "(select id from run where variant_id=?)", (variant_id,))
         self.db.execute("delete from run where variant_id=?", (variant_id,))
+
+    # -- the gate ------------------------------------------------------------
+    def put_gate(self, prod_id, said, sha256, player):
+        """Store the gate.Judgement ``said`` of one entry, a row per seed,
+        in place of what was stored of the entry: it was played from the
+        download ``sha256`` by version ``player`` of the player."""
+        self.db.execute("delete from gate where prod_id=?", (prod_id,))
+        self.db.executemany(
+            "insert into gate values (?,?,?,?,?,?,?)",
+            [(prod_id, seed, int(on.passed), on.reason, sha256, player, _now())
+             for seed, on in said.seeds])
+        self.db.commit()
+
+    def gated(self):
+        """The gatelog.Record of every entry and seed, in that order."""
+        return [Record(prod, seed, bool(passed), *rest)
+                for prod, seed, passed, *rest in self.db.execute(
+                    "select prod_id, seed, passed, reason, sha256, player, at"
+                    " from gate order by prod_id, seed")]
 
     # -- reading -------------------------------------------------------------
     def keys(self, run_id):

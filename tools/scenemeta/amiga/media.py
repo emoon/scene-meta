@@ -207,12 +207,16 @@ def _walk_files(top):
             yield pathlib.Path(root) / n
 
 
-def _sha1(path):
-    h = hashlib.sha1()
+def _digest(path, algorithm):
+    h = hashlib.new(algorithm)
     with open(path, "rb") as f:
         for b in iter(lambda: f.read(1 << 20), b""):
             h.update(b)
     return h.hexdigest()
+
+
+def _sha1(path):
+    return _digest(path, "sha1")
 
 
 @dataclasses.dataclass
@@ -257,12 +261,30 @@ class _Found:
                 self.take(f, depth + 1)
 
 
+def _download(src):
+    """The files of a production's download, by name."""
+    return [f for f in sorted(src.iterdir())
+            if f.is_file() and not f.name.endswith(".part")]
+
+
+def download_sha256(prod_id):
+    """The SHA-256 of the production's download: of its file, or, when it
+    has several, of the name and SHA-256 of each. None when it has none."""
+    src = config.prod_dir(prod_id)
+    files = _download(src) if src.is_dir() else []
+    if len(files) == 1:
+        return _digest(files[0], "sha256")
+    if not files:
+        return None
+    return hashlib.sha256("".join(
+        f"{_digest(f, 'sha256')}  {f.name}\n" for f in files).encode()).hexdigest()
+
+
 def _release_files(src):
     """``(file, parts)`` for each of a production's files to take. A release
     split over numbered archives (pwl-rpg1.lha .. pwl-rpg3.lha) unpacks into
     one tree: the first holds the demo, the others, its ``parts``, the data."""
-    files = [f for f in sorted(src.iterdir())
-             if f.is_file() and not f.name.endswith(".part")]
+    files = _download(src)
     parts = {}
     for group in diskset.group([f.name for f in files if sniff(f) == "archive"]):
         parts[group[0]] = [src / n for n in group[1:]]

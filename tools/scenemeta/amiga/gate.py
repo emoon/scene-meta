@@ -1,16 +1,17 @@
 """The gate over entries of the data files (``data/amiga``): the core's gate
 says which runs to make of each and whether it passes (see core.gate); the
-player makes them.
+player makes them. What it saw is kept in the sweep's log, from which come
+the summary and the entries to gate again (see core.gatelog).
 """
 
 import concurrent.futures as cf
 import dataclasses
 import os
 
-from ..core import gate
+from ..core import gate, gatelog
 from ..core.errors import CannotPlay
 from ..core.export import default_machine
-from . import config, player, replay
+from . import config, media, player, replay
 
 
 def _play(ready, run):
@@ -27,17 +28,19 @@ def _play(ready, run):
 
 
 def _one(prod, entry, default, each=map):
-    """The report line of one production, its runs made through ``each``
-    (see core.gate.check). Raises CannotPlay when something it needs is
-    missing, or the emulator showed nothing of a run."""
+    """``(judgement, sha256)`` of one production: the gate's judgement, its
+    runs made through ``each`` (see core.gate.check), and the SHA-256 of
+    the download they were played from. Raises CannotPlay when something
+    it needs is missing, or the emulator showed nothing of a run."""
     ready = player.ready(prod, entry, default)
-    said = gate.check(entry, lambda run: _play(ready, run), each)
-    return f"{prod} {entry['title']}: {said}"
+    sha256 = media.download_sha256(prod)
+    return gate.check(entry, lambda run: _play(ready, run), each), sha256
 
 
-def run(ids, data=None, jobs=None, log=print):
-    """Gate the productions ``ids``, ``jobs`` emulators at a time. Returns
-    how many could not be played."""
+def run(ids, db, data=None, jobs=None, log=print):
+    """Gate the productions ``ids``, ``jobs`` emulators at a time: a line
+    of each, and what the gate saw of it into the store ``db``. Returns how
+    many could not be played; nothing is stored of those."""
     data = data or config.DATA_DIR
     default = default_machine(data)
     found = replay.all_entries(data)
@@ -46,6 +49,32 @@ def run(ids, data=None, jobs=None, log=print):
     jobs = jobs or max(1, (os.cpu_count() or 4) // 2)
     todo = sorted((p, found[p]) for p in set(ids) & set(found))
     # The runs of every entry share one pool; an entry's thread only waits.
+    errors = 0
     with cf.ThreadPoolExecutor(jobs) as pool:
-        return player.play_each(
-            todo, lambda p, e: _one(p, e, default, pool.map), jobs, log)
+        for prod, ok, got in player.each_played(
+                todo, lambda p, e: _one(p, e, default, pool.map), jobs):
+            if ok:
+                said, sha256 = got
+                db.put_gate(prod, said, sha256, player.VERSION)
+                got = f"{prod} {found[prod]['title']}: {said}"
+            errors += not ok
+            log(got, flush=True)
+    return errors
+
+
+def write_summary(db, path=None):
+    """Write the counts of what the gate saw to the summary file."""
+    path = path or config.GATE_SUMMARY
+    path.write_text(gatelog.summary(db.gated()), "utf-8")
+    return path
+
+
+def stale(db, data=None, log=print):
+    """A line of each entry to gate again: its download, or the player, is
+    not the one the gate saw it with."""
+    media.require_mirror()
+    found = replay.all_entries(data or config.DATA_DIR)
+    again = gatelog.stale([r for r in db.gated() if r.prod in found],
+                          media.download_sha256, player.VERSION)
+    for prod, why in again:
+        log(f"{prod} {found[prod]['title']}: {why}")

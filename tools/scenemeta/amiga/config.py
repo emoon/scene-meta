@@ -7,6 +7,7 @@ from ..core.config import BUILD, NAS, home
 
 ROOT, ROM_DIR, WORK, RESULTS_DB, DATA_DIR = home("amiga")
 
+GATE_SUMMARY = ROOT / "gate-summary.txt"    # checked in
 STATE_DB = NAS / "meta" / "state.sqlite"
 DEMOZOO_DIR = NAS / "demozoo"
 

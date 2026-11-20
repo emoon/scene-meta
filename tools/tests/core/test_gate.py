@@ -143,6 +143,15 @@ class VerdictTest(unittest.TestCase):
         self.assertEqual(str(j), "fail (seed 3: crashed: halt;"
                                  " disk 2 until 130.0)")
 
+    def test_the_judgement_carries_that_of_each_seed(self):
+        j = self.said(SWAP_KEY, {Run(2): UNLOADED, Run(3, without=0): OK})
+        self.assertEqual(
+            [(seed, on.passed, on.reason) for seed, on in j.seeds],
+            [(1, True, "came alive, no crash, every disk loaded,"
+                       " every key needed"),
+             (2, False, "disk 2 never loaded"),
+             (3, False, "key not needed: lmb of disk 2")])
+
     def test_the_first_seed_that_fails_is_the_one_named(self):
         j = self.said(PLAIN, {Run(2): Play(False)}, written=Play(True))
         self.assertEqual(str(j), "fail (seed 2: never came alive)")

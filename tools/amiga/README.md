@@ -72,6 +72,8 @@ python3 -m scenemeta amiga report
 python3 -m scenemeta amiga export                # scene.db -> ../data/amiga
 python3 -m scenemeta amiga replay --ids 142      # play data-file entries as written
 python3 -m scenemeta amiga gate --ids 142        # pass or fail on every seed, and why
+python3 -m scenemeta amiga gate-summary          # scene.db -> amiga/gate-summary.txt
+python3 -m scenemeta amiga gate-stale            # entries to gate again
 python3 -m scenemeta amiga migrate               # convert an older scene.db
 python3 -m unittest discover -s tests -t .
 ```
@@ -120,6 +122,17 @@ proved of each swap, the latest insert that loaded on every seed: `at` plus
 30 seconds, or `at` when only that did. The runs of an entry are made in
 parallel, `--jobs` emulators at a time over all entries. A fail is a result
 and leaves the exit status 0.
+
+What the gate saw is kept in `scene.db`, table `gate`, and never in the
+data files: for each entry and seed whether it passed, the reason, the
+SHA-256 of the download it was played from (of a download of several files,
+that of each file's name and SHA-256), the player's version
+(`player.VERSION`) and when. Gating an entry again replaces its records; an
+entry that could not be played keeps the ones it had. `gate-summary` writes
+how many entries passed and how many failed to `gate-summary.txt` here,
+which is checked in, so a change in the numbers shows in a diff.
+`gate-stale` lists the gated entries whose download, or the player's
+version, is no longer the one of their records: those need the gate again.
 
 An entry that cannot be played is an error, not a result: no ROM for its
 machine, no media, a machine the player does not have, a key other than
