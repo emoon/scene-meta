@@ -29,6 +29,8 @@ SCHEMA = 1
 MAX_SHOTS = 12
 # A production that does not end in a set of disks plays this long.
 SINGLE_DISK_FRAMES = 9000
+ROM_END = 0x1000000  # the 24-bit address space ends here
+AUDIO_DMA = 0xF     # Paula's four channels in DMACON
 META = "meta.json"
 PNG_SIGNATURE = b"\x89PNG\r\n\x1a\n"
 
@@ -49,12 +51,29 @@ def png_size(path):
     return struct.unpack(">II", head[16:24])
 
 
+def in_rom(sample):
+    """Is the CPU in the Kickstart? (Fast RAM sits above it on the A1200s.)"""
+    return verdict.ROM_START <= sample.pc < ROM_END
+
+
+def running(samples):
+    """How many of the leading ``samples`` are the production: the trailing
+    run with the CPU in the Kickstart and no sound is the CLI after the
+    production exited. A run that never left the ROM (a demo that waits in
+    exec) has no such tail."""
+    n = len(samples)
+    while n and in_rom(samples[n - 1]) \
+            and not samples[n - 1].dmacon & AUDIO_DMA:
+        n -= 1
+    return n if not all(in_rom(s) for s in samples[:n]) else len(samples)
+
+
 def chosen(samples, alive, kept, n=MAX_SHOTS):
     """``[(sample index, frame)]`` of up to ``n`` kept pictures of the samples
     where the production was alive. ``kept`` is the set of sample indexes the
     emulator kept a picture of."""
-    pool = [(i, s.frame) for i, (s, ok) in enumerate(zip(samples, alive))
-            if ok and i in kept]
+    pool = [(i, s.frame) for i, (s, ok) in
+            enumerate(zip(samples[:running(samples)], alive)) if ok and i in kept]
     return spread(pool, n)
 
 

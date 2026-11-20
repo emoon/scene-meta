@@ -6,9 +6,12 @@ from scenemeta.amiga import shots
 from scenemeta.amiga.emulator import Sample
 
 
-def sample(frame):
-    return Sample(frame=frame, pc=0, dmacon=0, bplcon0=0, resets=0, df0="",
-                  shot="")
+def sample(frame, pc=0x40000000, dmacon=0x39F):
+    return Sample(frame=frame, pc=pc, dmacon=dmacon, bplcon0=0, resets=0,
+                  df0="", shot="")
+
+
+ROM, SHELL_DMA = 0xF813A2, 0x3F0
 
 
 class SpreadTest(unittest.TestCase):
@@ -33,6 +36,26 @@ class ChosenTest(unittest.TestCase):
     def test_nothing_alive_nothing_chosen(self):
         s = [sample(250)]
         self.assertEqual(shots.chosen(s, [False], {0}), [])
+
+
+class RunningTest(unittest.TestCase):
+    def test_a_demo_that_exits_to_the_shell_ends_there(self):
+        s = [sample(250), sample(500), sample(750, ROM, SHELL_DMA),
+             sample(1000, ROM, SHELL_DMA)]
+        self.assertEqual(shots.running(s), 2)
+
+    def test_a_demo_waiting_in_rom_with_sound_is_still_running(self):
+        s = [sample(250), sample(500, ROM, 0x39F)]
+        self.assertEqual(shots.running(s), 2)
+
+    def test_a_run_that_never_left_rom_is_all_kept(self):
+        # An OS-friendly demo waits in exec: that is not the shell.
+        s = [sample(250, ROM, SHELL_DMA), sample(500, ROM, SHELL_DMA)]
+        self.assertEqual(shots.running(s), 2)
+
+    def test_the_shell_is_not_picked_even_if_it_looks_alive(self):
+        s = [sample(250), sample(500, ROM, SHELL_DMA)]
+        self.assertEqual(shots.chosen(s, [True, True], {0, 1}), [(0, 250)])
 
 
 class FramesTest(unittest.TestCase):
