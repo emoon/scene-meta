@@ -38,12 +38,18 @@ def main(argv=None):
     p.add_argument("--ids", type=int, nargs="*")
     p.add_argument("--jobs", type=int)
     args = ap.parse_args(argv)
+    if args.cmd == "shots" and not args.out:
+        ap.error("shots needs --out or $SCENEMETA_SHOTS")
+    try:
+        return _command(args)
+    except CannotPlay as e:
+        sys.exit(f"scenemeta amiga {args.cmd}: {e}")
 
+
+def _command(args):
     # replay and shots read the data files, not the database; an entry
     # that could not be played fails the command.
     if args.cmd in ("replay", "shots"):
-        if args.cmd == "shots" and not args.out:
-            ap.error("shots needs --out or $SCENEMETA_SHOTS")
         errors = replay.run(args.ids, jobs=args.jobs) \
             if args.cmd == "replay" else \
             shots.run(args.out, args.ids, jobs=args.jobs)
@@ -62,8 +68,6 @@ def main(argv=None):
             report(db)
         elif args.cmd == "export":
             export.run(db)
-    except CannotPlay as e:
-        sys.exit(f"scenemeta amiga {args.cmd}: {e}")
     finally:
         db.close()
 

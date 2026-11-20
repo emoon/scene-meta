@@ -8,7 +8,10 @@ filed under ``<root>/<id>/``:
     <root>/<id>/meta.json    where each came from, or why there are none
 
 A production with a ``meta.json`` is done and is not played again. One that
-could not be played (a missing ROM, no media) gets none: it is an error.
+could not be played is an error. When that is the entry's doing (a machine
+or a key the player does not have, media the download does not have) the
+``meta.json`` says so, and the entry is not tried again as it is; a missing
+ROM or no media files nothing.
 """
 
 import datetime
@@ -22,6 +25,7 @@ import tempfile
 
 from ..core import catalog as demozoo
 from ..core.export import default_machine
+from ..core.errors import BadEntry
 from . import config, player, replay, verdict
 from .machines import FPS
 
@@ -119,13 +123,23 @@ def capture(prod, entry, default, out):
 
 def _one(prod, entry, default, out):
     """The report line of one production, its meta filed. Raises CannotPlay
-    when it could not be played, and then nothing is filed."""
-    result = capture(prod, entry, default, out)
-    dest = out / str(prod)
-    dest.mkdir(exist_ok=True)
-    (dest / META).write_text(json.dumps(result, indent=1) + "\n")
+    when it could not be played: a BadEntry is filed as that error, for
+    anything else nothing is."""
+    try:
+        result = capture(prod, entry, default, out)
+    except BadEntry as e:
+        _file(out, meta(prod, entry, entry.get("machine", default), [],
+                        "error", str(e)))
+        raise
+    _file(out, result)
     return f"{prod} {entry['title']}: {result['status']}" + \
         (f" ({len(result['shots'])})" if result["shots"] else f" ({result['reason']})")
+
+
+def _file(out, result):
+    dest = out / str(result["id"])
+    dest.mkdir(exist_ok=True)
+    (dest / META).write_text(json.dumps(result, indent=1) + "\n")
 
 
 def todo(found, wanted, without, done):

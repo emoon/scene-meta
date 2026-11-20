@@ -1,10 +1,11 @@
 import pathlib
+import tempfile
 import unittest
 from unittest import mock
 
 from scenemeta.amiga import machines, player
 from scenemeta.amiga.emulator import RunLog, Sample
-from scenemeta.core.errors import CannotPlay
+from scenemeta.core.errors import BadEntry, CannotPlay
 
 
 def samples(spec):
@@ -81,10 +82,23 @@ class VariantOfTest(unittest.TestCase):
     PLAIN = player.media.Variant("hd", [], root="/p", command='"only"\n')
     ADF = player.media.Variant("floppy", ["/d/a.adf"])
     SET = player.media.Variant("floppy", ["/d/a.adf", "/d/b.adf"])
+    # What a sweep makes of a variant that does not work as it is.
+    LAUNCH = player.media.Variant(
+        "floppy", ["/w/a-launch.adf"],
+        note="launched; patched disk 1 runs Vol:c/demo")
+    MERGED = player.media.Variant(
+        "hd", [], root="/m", command='"demo"\n',
+        note="set merged into one directory; runs demo")
+    ON_FLOPPY = player.media.Variant(
+        "floppy", ["/w/disk.adf"], note='files on a floppy; hd:"only"')
 
-    def pick(self, variants, entry, problems=()):
-        with mock.patch.object(player.media, "variants",
-                               return_value=(variants, list(problems))):
+    def pick(self, variants, entry, problems=(), fallbacks=()):
+        with mock.patch.object(player.media, "variants", return_value=(
+                variants, list(problems))) as found, \
+                mock.patch.object(player.media, "fallbacks", side_effect=[
+                    [lambda v=v: v for v in fallbacks]]
+                    + [[] for _ in variants]) as others:
+            self.found, self.others = found, others
             return player._variant_of(1, {"title": "x", **entry})
 
     def test_an_entry_naming_its_disks_gets_that_set(self):
@@ -94,31 +108,68 @@ class VariantOfTest(unittest.TestCase):
     def test_an_entry_naming_its_run_file_gets_the_variant_that_runs_it(self):
         # As the export writes it: the picked executable, unquoted.
         self.assertIs(self.pick([self.ADF, self.PLAIN, self.HD],
-                                {"run": "demo.exe"}), self.HD)
+                                {"boot": "hd", "run": "demo.exe"}), self.HD)
 
-    def test_an_entry_naming_nothing_gets_the_first_variant(self):
-        self.assertIs(self.pick([self.HD, self.ADF], {}), self.HD)
+    def test_the_run_file_is_what_the_media_is_asked_to_start(self):
+        # Not whatever executable is picked today.
+        self.pick([self.HD], {"run": "demo.exe"})
+        self.found.assert_called_once_with(1, "x", "demo.exe")
+
+    def test_an_entry_naming_nothing_gets_the_variant_with_nothing_to_name(self):
+        self.assertIs(self.pick([self.PLAIN, self.HD, self.SET], {}),
+                      self.PLAIN)
 
     def test_boot_names_the_kind_when_it_is_not_the_first(self):
-        self.assertIs(self.pick([self.HD, self.ADF], {"boot": "floppy"}),
+        self.assertIs(self.pick([self.PLAIN, self.ADF], {"boot": "floppy"}),
                       self.ADF)
 
+    def test_a_run_of_another_kind_is_not_the_entrys(self):
+        # The floppy that runs demo is not the hard drive that does.
+        launch = player.media.Variant(
+            "floppy", ["/w/a-launch.adf"],
+            note="disk 1 not bootable; patched disk 1 runs Vol:demo")
+        merged = self.MERGED
+        self.assertIs(self.pick([launch, merged],
+                                {"boot": "hd", "run": "demo"}), merged)
+        self.assertIs(self.pick([launch, merged], {"run": "demo"}), launch)
+
+    def test_an_entry_of_a_sweeps_fallback_gets_that_fallback(self):
+        every = [self.LAUNCH, self.MERGED, self.ON_FLOPPY]
+        self.assertIs(self.pick([self.SET, self.PLAIN], {"run": "c/demo"},
+                                fallbacks=every), self.LAUNCH)
+        self.assertIs(self.pick([self.SET, self.PLAIN],
+                                {"boot": "hd", "run": "demo"},
+                                fallbacks=every), self.MERGED)
+        self.assertIs(self.pick([self.PLAIN], {"boot": "floppy"},
+                                fallbacks=every), self.ON_FLOPPY)
+        self.others.assert_called_with(self.PLAIN, 1, "x", None)
+
+    def test_no_fallback_is_made_when_a_variant_of_the_download_fits(self):
+        self.pick([self.ADF, self.PLAIN], {}, fallbacks=[self.ON_FLOPPY])
+        self.others.assert_not_called()
+
     def test_disks_that_match_no_variant_are_an_error_not_another_variant(self):
-        with self.assertRaisesRegex(CannotPlay, "c.adf"):
+        with self.assertRaisesRegex(BadEntry, "c.adf.*fits none"):
             self.pick([self.ADF, self.SET, self.HD],
                       {"disks": ["a.adf", "c.adf"]})
 
     def test_a_run_that_matches_no_variant_is_an_error_not_another_variant(self):
-        with self.assertRaisesRegex(CannotPlay, "other.exe"):
+        with self.assertRaisesRegex(BadEntry, "other.exe.*fits none"):
             self.pick([self.HD, self.PLAIN, self.ADF], {"run": "other.exe"})
 
     def test_a_boot_kind_the_download_has_none_of_is_an_error(self):
-        with self.assertRaisesRegex(CannotPlay, "floppy"):
+        with self.assertRaisesRegex(BadEntry, "floppy"):
             self.pick([self.HD], {"boot": "floppy"})
 
+    def test_an_entry_that_fits_two_variants_is_an_error_not_the_first(self):
+        other = player.media.Variant("floppy", ["/d/b.adf"])
+        with self.assertRaisesRegex(BadEntry, "fits 2 .*a.adf, b.adf"):
+            self.pick([self.ADF, other], {})
+
     def test_no_media_is_its_own_error(self):
-        with self.assertRaisesRegex(CannotPlay, "no media: no-files-on-nas"):
+        with self.assertRaisesRegex(CannotPlay, "no media: no-files-on-nas") as e:
             self.pick([], {"disks": ["a.adf"]}, ["no-files-on-nas"])
+        self.assertNotIsInstance(e.exception, BadEntry)
 
 
 class FramesTest(unittest.TestCase):
@@ -137,6 +188,11 @@ class PlayTest(unittest.TestCase):
              "swaps": [{"disk": 2, "at": 20, "key": "lmb"}]}
     # Disk 2 goes in at frame 1000 and is read past its first cylinders.
     LOG = RunLog(samples([(750, 700, 40), (1250, 1100, 12)]), [], 0, False, "")
+
+    def setUp(self):
+        rom = mock.patch.object(player.machines, "require_rom")
+        self.require_rom = rom.start()
+        self.addCleanup(rom.stop)
 
     def play(self, entry, default="a500", **kw):
         with mock.patch.object(player.media, "variants",
@@ -176,14 +232,61 @@ class PlayTest(unittest.TestCase):
         _, run = self.play(self.ENTRY, keep=keep)
         self.assertEqual(run.call_args.args[3].keep, keep)
 
-    def test_what_cannot_be_played_is_an_error_and_nothing_runs(self):
-        entry = {**self.ENTRY, "swaps": [{"disk": 2, "at": 10, "key": "space"}]}
+    def cannot(self, entry, error, text):
+        """Playing ``entry`` raises ``error``; returns the media lookup."""
         with mock.patch.object(player.media, "variants",
-                               return_value=([self.SET], [])), \
+                               return_value=([self.SET], [])) as variants, \
+                mock.patch.object(player.media, "fallbacks", return_value=[]), \
                 mock.patch.object(player.emulator, "run") as run:
-            with self.assertRaisesRegex(CannotPlay, "'space'"):
+            with self.assertRaisesRegex(error, text):
                 player.play(7, entry, "a500")
         run.assert_not_called()
+        return variants
+
+    def test_what_cannot_be_played_is_an_error_and_nothing_runs(self):
+        self.cannot({**self.ENTRY, "disks": ["a.adf", "c.adf"]}, BadEntry,
+                    "c.adf")
+
+    def test_a_key_it_cannot_press_is_found_before_the_download_is_unpacked(self):
+        entry = {**self.ENTRY, "swaps": [{"disk": 2, "at": 10, "key": "space"}]}
+        self.cannot(entry, BadEntry, "'space'").assert_not_called()
+
+    def test_a_machine_it_does_not_have_is_an_error_naming_it(self):
+        self.cannot({**self.ENTRY, "machine": "a600"}, BadEntry,
+                    "no machine 'a600'").assert_not_called()
+        # No default in machines.toml and none in the entry.
+        with self.assertRaisesRegex(BadEntry, "no machine None"):
+            player.play(7, {"title": "x"}, None)
+
+    def test_a_missing_rom_is_found_before_the_download_is_unpacked(self):
+        self.require_rom.side_effect = CannotPlay("no Kickstart ROM kick30.rom")
+        self.cannot(self.ENTRY, CannotPlay, "kick30.rom").assert_not_called()
+        self.require_rom.assert_called_once_with(machines.BY_NAME["a1200"])
+
+
+class PlayEachTest(unittest.TestCase):
+    def test_each_line_is_logged_and_the_errors_counted(self):
+        def one(prod, entry):
+            if prod == 2:
+                raise BadEntry("no way to press key 'space'")
+            return f"{prod} fine"
+        lines = []
+        with mock.patch.object(player.media, "require_mirror"):
+            errors = player.play_each(
+                [(1, {"title": "a"}), (2, {"title": "b"})], one, 1,
+                lambda line, **kw: lines.append(line))
+        self.assertEqual(errors, 1)
+        self.assertEqual(lines, ["1 fine",
+                                 "2 b: error: no way to press key 'space'"])
+
+    def test_without_the_mirror_nothing_is_played(self):
+        one = mock.Mock()
+        with tempfile.TemporaryDirectory() as d, \
+                mock.patch.object(player.media.config, "DEMOZOO_DIR",
+                                  pathlib.Path(d) / "demozoo"):
+            with self.assertRaisesRegex(CannotPlay, "no Demozoo mirror at .*demozoo"):
+                player.play_each([(1, {"title": "a"})], one, 1)
+        one.assert_not_called()
 
 
 if __name__ == "__main__":

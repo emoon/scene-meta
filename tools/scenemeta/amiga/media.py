@@ -17,6 +17,7 @@ import struct
 import subprocess
 import zipfile
 
+from ..core.errors import CannotPlay
 from . import config, diskset, workbench
 
 HUNK_MAGIC = b"\x00\x00\x03\xf3"
@@ -274,7 +275,7 @@ def _seen_before(shas, seen):
     return shas in seen or (len(shas) == 1 and any(shas[0] in s for s in seen))
 
 
-def _disk_variants(disks, prod_id, work):
+def _disk_variants(disks, prod_id, work, run=None):
     """A floppy variant for each disk set among ``disks``."""
     # Group by name first, then drop byte-identical repeats: the same disk is
     # often mirrored under two names (Oxygene-ControlA = control1), and only
@@ -289,15 +290,25 @@ def _disk_variants(disks, prod_id, work):
         joined = _join_dms_parts(paths, work)
         if joined:
             paths = [joined]
-        out.append(flag_ffs(launch_variant(paths, prod_id, only_unbootable=True)
+        out.append(flag_ffs(launch_variant(paths, prod_id, only_unbootable=True,
+                                           run=run)
                             or Variant("floppy", paths), work))
     return out
 
 
-def variants(prod_id, title=""):
+def require_mirror():
+    """Raise unless the Demozoo mirror is there: without it every production
+    reads as one that has no files."""
+    if not config.DEMOZOO_DIR.is_dir():
+        raise CannotPlay(f"no Demozoo mirror at {config.DEMOZOO_DIR}"
+                         " (is the share mounted?)")
+
+
+def variants(prod_id, title="", run=None):
     """``(variants, problems)`` for one production. Problems are short
     reason strings for files that produced nothing. ``title`` picks the
-    executable named after the production in an unpacked archive."""
+    executable named after the production in an unpacked archive; ``run``
+    is the file an entry says to start, which goes before any pick."""
     src = config.prod_dir(prod_id)
     if not src.is_dir():
         return [], ["no-files-on-nas"]
@@ -306,21 +317,21 @@ def variants(prod_id, title=""):
     for f, parts in _release_files(src):
         found.take(f, 0, parts)
 
-    out = _disk_variants(found.disks, prod_id, work)
-    out += [v for v in (_tree_variant(t, title) for t in found.trees) if v]
+    out = _disk_variants(found.disks, prod_id, work, run)
+    out += [v for v in (_tree_variant(t, title, run) for t in found.trees) if v]
     out += [_exe_variant(exe, work) for exe in found.exes]
     if not out and not found.problems:
         found.problems.append("no-bootable-media")
     return out[:MAX_VARIANTS], found.problems
 
 
-def _tree_variant(tree, title=""):
+def _tree_variant(tree, title="", run=None):
     """A hard-drive variant for an unpacked archive, or None when it holds no
     executable of its own (disk-image-only archives)."""
     boot = next((p.parent.parent for p in _walk_files(tree)
                  if p.name.lower() == "startup-sequence"
                  and p.parent.name.lower() == "s"), None)
-    exe, note = _pick_exe(tree, title)
+    exe, note = _pick_exe(tree, title, run)
     if exe is None:
         if boot is not None:
             return Variant("hd", [], root=str(boot), command=None,
@@ -334,9 +345,11 @@ def _norm(name):
     return "".join(c for c in name.lower() if c.isalnum())
 
 
-def _pick_exe(tree, title=""):
+def _pick_exe(tree, title="", run=None):
     """The executable a user would start in an unpacked tree, plus a note
-    when there was a choice: ``(path | None, note)``."""
+    when there was a choice: ``(path | None, note)``. ``run`` is the one
+    an entry names, by its name or its path in the tree: it is the one
+    started when it is there."""
     cands = []
     for p in _walk_files(tree):
         rel = p.relative_to(tree).parts
@@ -354,7 +367,8 @@ def _pick_exe(tree, title=""):
     # an icon (what a user double-clicks), then one not named like data (an
     # overlay the loader reads: Hardcore's hc.2xy-ko.dat beside the
     # hc.1ph-pip.exe that loads it), then the biggest.
-    cands.sort(key=lambda p: (len(p.relative_to(tree).parts),
+    cands.sort(key=lambda p: (run not in (p.name, _rel(p, tree)),
+                              len(p.relative_to(tree).parts),
                               not _named_after(p.stem, title),
                               not p.with_name(p.name + ".info").exists(),
                               p.suffix.lower() in _DATA_EXTS,
@@ -362,6 +376,11 @@ def _pick_exe(tree, title=""):
     exe = cands[0]
     note = f"{len(cands)} executables, picked {exe.name}" if len(cands) > 1 else ""
     return exe, note
+
+
+def _rel(path, tree):
+    """``path`` as an Amiga path within ``tree``."""
+    return "/".join(path.relative_to(tree).parts)
 
 
 def _exe_variant(exe, work):
@@ -573,12 +592,12 @@ def named(kind, disks, note, command, first_kind):
     return out
 
 
-def merged_variant(disks, prod_id, title):
+def merged_variant(disks, prod_id, title, run=None):
     """A hard-drive variant holding the files of every disk of a set in one
     directory, with split archives joined and archives unpacked: what the
     set's installer, or its readme ("copy all files from the three disks to
     the same directory"), leaves on a hard drive. None when that holds no
-    executable."""
+    executable. ``run`` is the script or executable an entry names."""
     work = config.WORK / "media" / str(prod_id)
     root = work / "merged"
     if root.exists():
@@ -599,20 +618,20 @@ def merged_variant(disks, prod_id, title):
     # Booted from the directory of what runs, as _tree_variant does:
     # Kickstart 1.3 has no resident cd.
     script = _launch_script(root, title)
-    if script:
-        rel = "/".join(script.relative_to(root).parts)
+    if script and run in (None, _rel(script, root)):
+        rel = _rel(script, root)
         return Variant("hd", [], root=str(script.parent),
                        command=script.read_text("latin-1"),
                        note=f"{MERGED_NOTE}; runs script {rel}")
-    exe, note = _pick_exe(root, title)
+    exe, note = _pick_exe(root, title, run)
     if exe is None:
         return None
-    rel = "/".join(exe.relative_to(root).parts)
+    rel = _rel(exe, root)
     return Variant("hd", [], root=str(exe.parent), command=f'"{exe.name}"\n',
                    note=f"{MERGED_NOTE}; runs {rel}" + (f" ({note})" if note else ""))
 
 
-def launch_variant(disks, prod_id, only_unbootable=False):
+def launch_variant(disks, prod_id, only_unbootable=False, run=None):
     """A floppy variant whose disk 1 is a patched copy that boots straight
     into the demo: a bootblock plus an s/startup-sequence running the
     executable a user would start. For sets whose first disk cannot boot
@@ -620,7 +639,8 @@ def launch_variant(disks, prod_id, only_unbootable=False):
     a Workbench waiting for an icon to be opened. Booting from the disk
     keeps the demo's current directory right on every Kickstart (1.3 has no
     resident cd). None when disk 1 holds no DOS filesystem or executable,
-    or is full (or boots, with ``only_unbootable``)."""
+    or is full (or boots, with ``only_unbootable``). ``run`` is the
+    executable an entry names."""
     work = config.WORK / "media" / str(prod_id)
     adf = _as_adf(disks[0], work)
     if adf is None:
@@ -633,10 +653,10 @@ def launch_variant(disks, prod_id, only_unbootable=False):
     tree = _unpack_disk(adf, box)
     if tree is None:
         return None
-    exe, note = _pick_exe(tree)
+    exe, note = _pick_exe(tree, run=run)
     if exe is None:
         return None
-    rel = "/".join(exe.relative_to(tree).parts)
+    rel = _rel(exe, tree)
     patched = work / "launch" / f"{adf.stem}-launch.adf"
     patched.parent.mkdir(parents=True, exist_ok=True)
     shutil.copyfile(adf, patched)
@@ -693,9 +713,10 @@ def floppy_variant(v, prod_id):
     return Variant("floppy", [str(adf)], note=f"{TREE_NOTE}; {v.label}")
 
 
-def fallbacks(v, prod_id, title=""):
+def fallbacks(v, prod_id, title="", run=None):
     """Other ways to run variant ``v``, in the order a sweep tries them when
-    it did not work: each makes a variant, or None."""
+    it did not work: each makes a variant, or None. ``run`` is the file an
+    entry says to start."""
     if v.kind == "hd":
         # Files a demo loads from DF0: rather than from its directory.
         return [] if v.command is None else \
@@ -704,7 +725,7 @@ def fallbacks(v, prod_id, title=""):
     # demo directly instead. A set that still does not may be meant to be
     # installed: run it from one directory holding every disk.
     out = [] if LAUNCH_NOTE in v.note else \
-        [lambda: launch_variant(v.disks, prod_id)]
+        [lambda: launch_variant(v.disks, prod_id, run=run)]
     if len(v.disks) > 1:
-        out.append(lambda: merged_variant(v.disks, prod_id, title))
+        out.append(lambda: merged_variant(v.disks, prod_id, title, run))
     return out

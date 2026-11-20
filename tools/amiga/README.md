@@ -100,11 +100,18 @@ it plays every entry that has a key on a swap. Left mouse button only so far, an
 swapped disks always go into DF0.
 
 An entry that cannot be played is an error, not a result: no ROM for its
-machine, no media, `disks` or a `run` that none of the download's variants
-has (never another variant in its place), a key other than `lmb`. The line
-says what is missing, nothing is run for that entry, and the command exits
-with status 1. `shots` does the same and files no `meta.json` for it, so
-the production is tried again next time.
+machine, no media, a machine the player does not have, a key other than
+`lmb`, or `boot`, `disks` and `run` that fit none of the download's variants
+or more than one of them (never another variant in the entry's place). The
+variants are the ones the sweep runs, its fallbacks included, and `run`
+names the file to start whatever the sweep would pick today. The line says
+what is missing, nothing is run for that entry, and the command exits with
+status 1. `shots` files a `meta.json` with status `error` when the entry
+itself is the cause, so it is not tried again until that file is deleted;
+for a missing ROM or missing media it files nothing and tries again next
+time. Without the Demozoo mirror `sweep`, `replay` and `shots` stop before
+their first production, and a sweep whose ROM goes missing on the way stops
+there instead of storing results.
 
 Build Amiberry, from the top of the repo. Everything built goes into
 `build/`, which is git-ignored, and the sweeper runs the binary from there:

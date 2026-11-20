@@ -1,3 +1,4 @@
+import json
 import tempfile
 import unittest
 import pathlib
@@ -5,7 +6,7 @@ from unittest import mock
 
 from scenemeta.amiga import shots
 from scenemeta.amiga.emulator import Sample
-from scenemeta.core.errors import CannotPlay
+from scenemeta.core.errors import BadEntry, CannotPlay
 
 
 def sample(frame, pc=0x40000000, dmacon=0x39F):
@@ -98,14 +99,30 @@ class PngSizeTest(unittest.TestCase):
 
 
 class CannotPlayTest(unittest.TestCase):
-    def test_an_error_is_reported_and_leaves_the_production_undone(self):
-        # A meta.json would mark it done: a missing ROM is not "no shots".
+    def one(self, entry, error, text):
+        """``_one`` raises ``error``; returns the meta filed, or None."""
         with tempfile.TemporaryDirectory() as d, \
+                mock.patch.object(shots.player.machines, "require_rom"), \
                 mock.patch.object(shots.player.media, "variants",
                                   return_value=([], ["x"])), \
                 mock.patch.object(shots.player.emulator, "run") as run:
             out = pathlib.Path(d)
-            with self.assertRaisesRegex(CannotPlay, "no media: x"):
-                shots._one(7, {"title": "x"}, "a500", out)
-            self.assertFalse((out / "7" / shots.META).exists())
-        run.assert_not_called()
+            with self.assertRaisesRegex(error, text):
+                shots._one(7, {"title": "x", **entry}, "a500", out)
+            run.assert_not_called()
+            filed = out / "7" / shots.META
+            return json.loads(filed.read_text()) if filed.exists() else None
+
+    def test_an_error_is_reported_and_leaves_the_production_undone(self):
+        # A meta.json would mark it done: no media is not "no shots".
+        self.assertIsNone(self.one({}, CannotPlay, "no media: x"))
+
+    def test_an_entry_that_is_the_error_is_filed_as_one(self):
+        # It is not played again until somebody changes it.
+        entry = {"keys": [{"at": 10, "key": "space"}]}
+        filed = self.one(entry, BadEntry, "'space'")
+        self.assertEqual(
+            (filed["status"], filed["reason"], filed["machine"], filed["shots"]),
+            ("error", "no way to press key 'space'", "a500", []))
+        self.assertEqual(filed["entry"],
+                         shots.entry_digest({"title": "x", **entry}))

@@ -27,6 +27,13 @@ class ReportTest(unittest.TestCase):
     ENTRY = {"title": "x", "swaps": [{"disk": 2, "at": 10, "key": "space"}]}
     ADF = player.media.Variant("floppy", ["/d/a.adf", "/d/b.adf"])
 
+    def setUp(self):
+        for needed in ((player.machines, "require_rom"),
+                       (player.media, "require_mirror")):
+            patch = mock.patch.object(*needed)
+            patch.start()
+            self.addCleanup(patch.stop)
+
     def test_an_entry_that_cannot_be_played_is_an_error_and_nothing_runs(self):
         with mock.patch.object(player.media, "variants",
                                   return_value=([self.ADF], [])), \

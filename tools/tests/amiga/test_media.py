@@ -38,6 +38,30 @@ class PickExeTest(unittest.TestCase):
         d = self.tree({"keppi": EXE * 100, "dEEP": EXE, "tarra": EXE * 90})
         self.assertEqual(media._tree_variant(d, "Deep").command, '"dEEP"\n')
 
+    def test_the_file_an_entry_names_goes_before_any_pick(self):
+        # Sheep Dictionary: the entry runs KryptoniteII.exe, not the one
+        # named after the title.
+        d = self.tree({"Dictionary": EXE, "KryptoniteII.exe": EXE,
+                       "sub/demo": EXE * 9})
+        self.assertEqual(media._pick_exe(d, "Sheep Dictionary")[0].name,
+                         "Dictionary")
+        v = media._tree_variant(d, "Sheep Dictionary", "KryptoniteII.exe")
+        self.assertEqual(media.run_file(v.note, v.command), "KryptoniteII.exe")
+        # By its path too, as a patched disk or a merged set is named.
+        self.assertEqual(media._pick_exe(d, run="sub/demo")[0].name, "demo")
+        # A file that is not there changes nothing.
+        self.assertEqual(media._pick_exe(d, "Sheep Dictionary", "gone")[0].name,
+                         "Dictionary")
+
+    def test_what_an_entry_says_of_a_variant(self):
+        self.assertEqual(media.named("hd", [], "", '"demo"\n', "hd"), {})
+        self.assertEqual(
+            media.named("floppy", ["/n/a.adf", "/n/b.adf"], "", None, "hd"),
+            {"boot": "floppy", "disks": ["a.adf", "b.adf"]})
+        self.assertEqual(
+            media.named("hd", [], "3 executables, picked demo", '"demo"\n', "hd"),
+            {"run": "demo"})
+
     def test_skips_handlers(self):
         d = self.tree({"RAM-Handler": EXE, "C/BLISS-OUT": EXE})
         self.assertIsNone(media._pick_exe(d)[0])

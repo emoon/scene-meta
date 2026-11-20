@@ -462,6 +462,16 @@ class SetupTest(unittest.TestCase):
                 sweep.run_all([], store=None)
         run_all.assert_not_called()
 
+    def test_a_sweep_without_the_mirror_stops_before_any_production(self):
+        with tempfile.TemporaryDirectory() as d, \
+                mock.patch.object(machines, "require_roms"), \
+                mock.patch.object(media.config, "DEMOZOO_DIR",
+                                  pathlib.Path(d) / "demozoo"), \
+                mock.patch.object(sweep.driver, "run_all") as run_all:
+            with self.assertRaisesRegex(CannotPlay, "no Demozoo mirror"):
+                sweep.run_all([], store=None)
+        run_all.assert_not_called()
+
     def test_a_production_with_no_media_has_a_problem_and_no_run(self):
         prod = types.SimpleNamespace(id=7, title="x", release_date="",
                                      platforms=("Amiga OCS/ECS",))

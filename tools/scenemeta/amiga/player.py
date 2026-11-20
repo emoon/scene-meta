@@ -8,10 +8,9 @@ entry says, not what a sweep can find.
 
 import concurrent.futures as cf
 import dataclasses
-import os
 
+from ..core.errors import BadEntry, CannotPlay
 from . import emulator, machines, media, verdict
-from ..core.errors import CannotPlay
 from .machines import FPS
 
 KEY_DELAY = 5.0      # seconds from an insert to its key, when not given
@@ -41,10 +40,14 @@ def play(prod, entry, default, keys=True, keep=None):
     pictures of the run (see emulator.Options). Raises CannotPlay, before
     the emulator starts, when something the run needs is missing."""
     name = entry.get("machine", default)
+    if name not in machines.BY_NAME:
+        raise BadEntry(f"no machine {name!r}")
     machine = machines.BY_NAME[name]
-    variant = _variant_of(prod, entry)
+    # What costs nothing to find missing, before the download is unpacked.
+    machines.require_rom(machine)
     acts = actions(entry, keys)
     frames = frames_of(entry)
+    variant = _variant_of(prod, entry)
     log = emulator.run(machine, variant, frames, emulator.Options(
         drives=entry.get("drives", 1), play=tuple(acts), detect=False,
         keep=keep))
@@ -56,7 +59,10 @@ def play(prod, entry, default, keys=True, keep=None):
 def play_each(todo, one, jobs, log=print):
     """Play every ``(prod, entry)`` of ``todo``, ``jobs`` at a time:
     ``one(prod, entry)`` plays it and returns its report line. An entry that
-    cannot be played is reported as an error. Returns how many were."""
+    cannot be played is reported as an error. Returns how many were.
+    Raises CannotPlay when there is no mirror to play any of them from."""
+    media.require_mirror()
+
     def report(prod, entry):
         try:
             return True, one(prod, entry)
@@ -91,7 +97,7 @@ def actions(entry, keys=True):
 
 def _button(key):
     if key not in BUTTONS:
-        raise CannotPlay(f"no way to press key {key!r}")
+        raise BadEntry(f"no way to press key {key!r}")
     return BUTTONS[key]
 
 
@@ -115,29 +121,33 @@ def loaded(samples, inserts, unit=0):
 
 
 def _variant_of(prod, entry):
-    """The media of the entry: the first of the download's variants with
-    the disk file names and the ``run`` file it names. An entry that names
-    neither is the first variant of its ``boot`` kind (the kind of the
-    production's first variant when it does not say). Raises CannotPlay
-    when there is none: never another variant in its place."""
-    variants, problems = media.variants(prod, entry["title"])
+    """The media of the entry: the one variant of the download an export
+    describes by the ``boot``, ``disks`` and ``run`` the entry has (see
+    media.named). The download's own variants are looked at first; the
+    other ways to run them, which a sweep tries when they do not work,
+    when none of those fits. Raises CannotPlay when the download has no
+    media, BadEntry when no variant fits or more than one does: never
+    another variant in the entry's place."""
+    title, run = entry["title"], entry.get("run")
+    variants, problems = media.variants(prod, title, run)
     if not variants:
         raise CannotPlay("no media: " + "; ".join(problems))
-    named = {k: entry[k] for k in ("disks", "run") if entry.get(k)}
-    if named:
-        wanted = " and ".join(f"{k} {v!r}" for k, v in named.items())
-        fits = [v for v in variants
-                if all(_names(v)[k] == name for k, name in named.items())]
-    else:
-        kind = entry.get("boot", variants[0].kind)
-        wanted = f"a {kind} boot"
-        fits = [v for v in variants if v.kind == kind]
-    if not fits:
-        raise CannotPlay(f"{wanted} is not among the download's variants")
-    return fits[0]
+    said = {k: entry[k] for k in ("boot", "disks", "run") if entry.get(k)}
+    first = variants[0].kind
 
+    def fits(found):
+        return [v for v in found
+                if media.named(v.kind, v.disks, v.note, v.command, first) == said]
 
-def _names(variant):
-    """What an entry can name of ``variant``, as the export writes it."""
-    return {"disks": [os.path.basename(d) for d in variant.disks],
-            "run": media.run_file(variant.note, variant.command)}
+    found = fits(variants) or fits(
+        made for v in variants
+        for make in media.fallbacks(v, prod, title, run) if (made := make()))
+    if len(found) == 1:
+        return found[0]
+    wanted = " and ".join(f"{k} {v!r}" for k, v in said.items()) \
+        or "an entry with no boot, disks or run"
+    if not found:
+        raise BadEntry(f"{wanted} fits none of the download's variants")
+    raise BadEntry(f"{wanted} fits {len(found)} of the download's variants ("
+                   + ", ".join(v.label for v in found)
+                   + "): it does not say which")
