@@ -543,6 +543,21 @@ MERGED_NOTE = "set merged into one directory"
 LAUNCH_NOTE = "patched disk 1 runs"
 
 
+def run_file(note, command):
+    """The file a variant with this ``note`` and ``command`` starts, when
+    the media left a choice; else None."""
+    def after(marker):
+        return note.split(marker, 1)[1].split(" (")[0].strip()
+    if LAUNCH_NOTE in note:          # "<volume>:<path>"
+        return after(LAUNCH_NOTE).split(":", 1)[-1]
+    if MERGED_NOTE in note:
+        return after("; runs ").removeprefix("script ")
+    command = command or ""
+    if "executables, picked" in note and command.count("\n") == 1:
+        return command.strip().strip('"')
+    return None
+
+
 def merged_variant(disks, prod_id, title):
     """A hard-drive variant holding the files of every disk of a set in one
     directory, with split archives joined and archives unpacked: what the

@@ -23,6 +23,7 @@ import tempfile
 from ..core import catalog as demozoo
 from ..core.export import default_machine
 from . import config, emulator, machines, replay, verdict
+from .errors import CannotPlay
 from .machines import FPS
 
 SCHEMA = 1
@@ -110,7 +111,7 @@ def capture(prod, entry, default, out):
         machine = machines.BY_NAME[name]
         variant = replay.variant_of(prod, entry)
         acts = replay.actions(entry)
-    except replay.CannotReplay as e:
+    except CannotPlay as e:
         return meta(prod, entry, name, [], "none", f"cannot replay: {e}")
     frames = frames_of(entry)
     with tempfile.TemporaryDirectory(prefix=f"shots-{prod}-", dir=out) as t:

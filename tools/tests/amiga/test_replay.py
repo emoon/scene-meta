@@ -3,6 +3,7 @@ from unittest import mock
 
 from scenemeta.amiga import replay
 from scenemeta.amiga.emulator import Sample
+from scenemeta.amiga.errors import CannotPlay
 
 
 def samples(spec):
@@ -44,7 +45,7 @@ class ActionsTest(unittest.TestCase):
 
     def test_key_it_cannot_press(self):
         entry = {"swaps": [{"disk": 2, "at": 10, "key": "space"}]}
-        with self.assertRaises(replay.CannotReplay):
+        with self.assertRaises(CannotPlay):
             replay.actions(entry)
 
 
@@ -115,5 +116,5 @@ class VariantOfTest(unittest.TestCase):
                       self.ADF)
 
     def test_no_media_cannot_be_replayed(self):
-        with self.assertRaises(replay.CannotReplay):
+        with self.assertRaises(CannotPlay):
             self.pick([], {})

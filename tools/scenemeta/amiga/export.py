@@ -26,20 +26,6 @@ def _rank(v):
     return running, share, -v.idx
 
 
-def _run_file(v):
-    """The file the variant starts, when the media left a choice."""
-    def after(marker):
-        return v.note.split(marker, 1)[1].split(" (")[0].strip()
-    if media.LAUNCH_NOTE in v.note:          # "<volume>:<path>"
-        return after(media.LAUNCH_NOTE).split(":", 1)[-1]
-    if media.MERGED_NOTE in v.note:
-        return after("; runs ").removeprefix("script ")
-    command = v.detail.get("command") or ""
-    if "executables, picked" in v.note and command.count("\n") == 1:
-        return command.strip().strip('"')
-    return None
-
-
 def entry(title, groups, variants, cls, default):
     """The data-file entry of one production from its export.Variant list.
     ``cls``: its ``(kind, note)`` of classes.tsv, or None."""
@@ -77,7 +63,7 @@ def entry(title, groups, variants, cls, default):
                       for s in v.swaps]
     if runs and v.keys:
         e["keys"] = [{"at": round(k.at, 1), "key": k.key} for k in v.keys]
-    if run := _run_file(v):
+    if run := media.run_file(v.note, v.detail.get("command")):
         e["run"] = run
     if note:
         e["note"] = note

@@ -15,6 +15,7 @@ from .. import machines as presets
 
 from ..core.export import default_machine
 from . import config, emulator, machines, media, verdict
+from .errors import CannotPlay
 from .machines import FPS
 
 KEY_DELAY = 5.0      # seconds from an insert to its key, when not given
@@ -24,10 +25,6 @@ TAIL_FRAMES = emulator.AUTOSWAP_TAIL_FRAMES
 # A disk is loaded when it was read with the head past its first cylinders:
 # cylinders 0 and 1 are where a demo checks which disk is in.
 LOADED_CYL = 2
-
-
-class CannotReplay(Exception):
-    """The entry asks for something this cannot play yet."""
 
 
 def actions(entry, keys=True):
@@ -50,7 +47,7 @@ def actions(entry, keys=True):
 
 def _button(key):
     if key not in BUTTONS:
-        raise CannotReplay(f"key {key!r}")
+        raise CannotPlay(f"key {key!r}")
     return BUTTONS[key]
 
 
@@ -94,7 +91,7 @@ def variant_of(prod, entry):
         found = next((v for v in variants if v.kind == kind), None)
         if found:
             return found
-    raise CannotReplay("its media are not among the production's")
+    raise CannotPlay("its media are not among the production's")
 
 
 def play(machine, variant, entry, keys):
@@ -140,7 +137,7 @@ def _one(prod, entry, default):
         runs = [("as written", play(machine, variant, entry, True))]
         if _has_keys(entry):
             runs.append(("without keys", play(machine, variant, entry, False)))
-    except CannotReplay as e:
+    except CannotPlay as e:
         return f"{prod} {entry['title']}: cannot replay: {e}"
     said = judge(runs[0][1][1], runs[1][1][1] if len(runs) > 1 else None)
     detail = "; ".join(
