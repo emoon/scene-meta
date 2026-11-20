@@ -92,9 +92,11 @@ printed.
 `replay` (`../scenemeta/amiga/replay.py`) goes the other way: it plays an entry of the
 data files exactly as written (its machine, each disk in at its time, each
 key after its insert; no detector, no retries) and says whether every disk
-was loaded. An entry with keys on its swaps is played once more without
-them, which shows whether the keys are needed. Without `--ids` it plays
-every entry that has a key on a swap. Left mouse button only so far, and
+was loaded. The playing is done by the player (`../scenemeta/amiga/player.py`),
+the only code that turns an entry and its download into an emulator run;
+`shots` goes through it too. An entry with keys on its swaps is played once
+more without them, which shows whether the keys are needed. Without `--ids`
+it plays every entry that has a key on a swap. Left mouse button only so far, and
 swapped disks always go into DF0.
 
 An entry that cannot be played is an error, not a result: no ROM for its

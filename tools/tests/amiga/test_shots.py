@@ -5,7 +5,6 @@ from unittest import mock
 
 from scenemeta.amiga import shots
 from scenemeta.amiga.emulator import Sample
-from scenemeta.amiga.errors import CannotPlay
 
 
 def sample(frame, pc=0x40000000, dmacon=0x39F):
@@ -60,17 +59,6 @@ class RunningTest(unittest.TestCase):
         self.assertEqual(shots.chosen(s, [True, True], {0, 1}), [(0, 250)])
 
 
-class FramesTest(unittest.TestCase):
-    def test_a_single_disk_gets_the_fixed_time(self):
-        self.assertEqual(shots.frames_of({"title": "x"}),
-                         shots.SINGLE_DISK_FRAMES)
-
-    def test_a_set_plays_until_its_last_disk_has_loaded(self):
-        entry = {"swaps": [{"disk": 2, "at": 100}]}
-        self.assertEqual(shots.frames_of(entry),
-                         5000 + shots.replay.TAIL_FRAMES)
-
-
 class MetaTest(unittest.TestCase):
     def test_a_shot_says_where_it_came_from(self):
         m = shots.meta(7, {"title": "x"}, "a500", [("01.png", 500, (320, 256))],
@@ -112,9 +100,9 @@ class CannotPlayTest(unittest.TestCase):
     def test_an_error_is_reported_and_leaves_the_production_undone(self):
         # A meta.json would mark it done: a missing ROM is not "no shots".
         with tempfile.TemporaryDirectory() as d, \
-                mock.patch.object(shots.replay, "variant_of",
-                                  side_effect=CannotPlay("no media: x")), \
-                mock.patch.object(shots.emulator, "run") as run:
+                mock.patch.object(shots.player.media, "variants",
+                                  return_value=([], ["x"])), \
+                mock.patch.object(shots.player.emulator, "run") as run:
             out = pathlib.Path(d)
             ok, line = shots._one(7, {"title": "x"}, "a500", out)
             self.assertFalse((out / "7" / shots.META).exists())

@@ -1,5 +1,5 @@
 """Screenshots of the productions Demozoo has none of, for uploading there
-later. Each entry of the data files is played as written (see replay); the
+later. Each entry of the data files is played as written (see player); the
 emulator keeps a picture every few seconds that differs from the last one
 kept, and an even spread of the ones taken while the production was alive is
 filed under ``<root>/<id>/``:
@@ -23,14 +23,12 @@ import tempfile
 
 from ..core import catalog as demozoo
 from ..core.export import default_machine
-from . import config, emulator, machines, replay, verdict
+from . import config, player, replay, verdict
 from .errors import CannotPlay
 from .machines import FPS
 
 SCHEMA = 1
 MAX_SHOTS = 12
-# A production that does not end in a set of disks plays this long.
-SINGLE_DISK_FRAMES = 9000
 ROM_END = 0x1000000  # the 24-bit address space ends here
 AUDIO_DMA = 0xF     # Paula's four channels in DMACON
 META = "meta.json"
@@ -79,13 +77,6 @@ def chosen(samples, alive, kept, n=MAX_SHOTS):
     return spread(pool, n)
 
 
-def frames_of(entry):
-    """How long to play ``entry``: until its last disk has loaded, else the
-    time a production on one disk gets."""
-    acts = replay.actions(entry)
-    return acts[-1][0] + replay.TAIL_FRAMES if acts else SINGLE_DISK_FRAMES
-
-
 def entry_digest(entry):
     """A short name for the entry as written, to tell later which entry the
     pictures were made from."""
@@ -108,18 +99,11 @@ def capture(prod, entry, default, out):
     """Play ``entry`` and file what the emulator kept under ``out/<prod>``.
     Returns the production's meta. Raises CannotPlay when something the
     run needs is missing."""
-    name = entry.get("machine", default)
-    machine = machines.BY_NAME[name]
-    variant = replay.variant_of(prod, entry)
-    acts = replay.actions(entry)
-    frames = frames_of(entry)
     with tempfile.TemporaryDirectory(prefix=f"shots-{prod}-", dir=out) as t:
         keep = pathlib.Path(t)
-        log = emulator.run(machine, variant, frames, emulator.Options(
-            drives=entry.get("drives", 1), play=tuple(acts), detect=False,
-            keep=keep))
-        v = verdict.classify(log, frames // 250)
-        if v.verdict != "works":
+        ran = player.play(prod, entry, default, keep=keep)
+        name, log, v = ran.machine, ran.log, ran.verdict
+        if not v.works:
             return meta(prod, entry, name, [], "none", f"did not run: {v.verdict}")
         kept = {int(p.stem) for p in keep.glob("*.png")}
         picked = chosen(log.samples, verdict.alive_flags(log.samples), kept)
