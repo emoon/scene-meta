@@ -310,6 +310,15 @@ class PlayTest(unittest.TestCase):
         _, run = self.play(self.ENTRY, keep=keep)
         self.assertEqual(run.call_args.args[3].keep, keep)
 
+    def test_the_seed_is_the_callers(self):
+        _, run = self.play(self.ENTRY)
+        self.assertEqual(run.call_args.args[3].seed, player.emulator.DEFAULT_SEED)
+        with mock.patch.object(player.emulator, "run",
+                               return_value=self.LOG) as run:
+            player.Ready(self.ENTRY, machines.BY_NAME["a1200"],
+                         self.SET).play(seed=7)
+        self.assertEqual(run.call_args.args[3].seed, 7)
+
     def cannot(self, entry, error, text):
         """Playing ``entry`` raises ``error``; returns the media lookup."""
         with mock.patch.object(player.media, "variants",

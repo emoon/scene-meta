@@ -41,15 +41,16 @@ class Ready:
     machine: machines.Machine
     variant: media.Variant
 
-    def play(self, keys=True, keep=None):
+    def play(self, keys=True, keep=None, seed=emulator.DEFAULT_SEED):
         """Play the entry as written. Without ``keys`` the disks go in and
         nothing is pressed, in a run as long. ``keep`` is a directory for
-        the pictures of the run (see emulator.Options)."""
+        the pictures of the run, ``seed`` the emulator's (see
+        emulator.Options)."""
         acts = actions(self.entry, keys)
         frames = frames_of(self.entry)
         log = emulator.run(self.machine, self.variant, frames, emulator.Options(
             drives=self.entry.get("drives", 1), play=tuple(acts), detect=False,
-            keep=keep))
+            keep=keep, seed=seed))
         inserts = [f for f, what, _ in acts if what == "insert"]
         return Outcome(self.machine.name, verdict.classify(log, frames // 250),
                        loaded(log.samples, inserts), log)

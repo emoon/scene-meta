@@ -5,7 +5,7 @@ from unittest import mock
 import unittest
 from unittest import mock
 
-from scenemeta.amiga import emulator, machines, media, sweep, verdict
+from scenemeta.amiga import emulator, machines, media, player, sweep, verdict
 from scenemeta.amiga.emulator import RunLog, Sample
 from scenemeta.core.errors import CannotPlay
 
@@ -292,69 +292,75 @@ class ClickNeededTest(unittest.TestCase):
 class ClicksOnlyTest(unittest.TestCase):
     """A crashed run's swap is false when the clicks alone play."""
 
-    def run_try(self, alone, reached=1):
+    SET = media.Variant("floppy", ["a.adf", "b.adf"])
+
+    def run_try(self, alone, **crashed):
+        """try_machine with every detector run crashing after a clicked
+        swap, and the player's run ending in verdict ``alone``. Returns
+        ``(entry, seed)`` of each run the player made, and the tries."""
         calls = []
 
         def fake(m, variant, frames, **kw):
-            calls.append((frames, kw))
-            if kw.get("play"):
-                return alone
             return sweep.Attempt(
                 "a500", 9000, verdict.Verdict("works-then-crash", 20,
                                               "alert:00000004", 5065),
                 RunLog([], [], 0, False, ""), [(4055, 2, "poll+click")],
-                reached=reached)
+                **{"reached": 1, "seed": 5, **crashed})
 
-        v = media.Variant("floppy", ["a.adf", "b.adf"])
-        with mock.patch.object(sweep, "attempt", fake):
-            tries = sweep.try_machine(machines.BY_NAME["a500"], v, 72000)
+        def play(ready, keys=True, keep=None, seed=emulator.DEFAULT_SEED):
+            calls.append((ready, seed))
+            return player.Outcome("a500", alone, [],
+                                  RunLog([], [], 0, False, ""))
+
+        with mock.patch.object(sweep, "attempt", fake), \
+                mock.patch.object(player.Ready, "play", play):
+            tries = sweep.try_machine(machines.BY_NAME["a500"], self.SET, 72000)
         return calls, tries
 
-    def played(self, verdict_):
-        return sweep.Attempt("a500", 9000, verdict_,
-                             RunLog([], [], 0, False, ""), [], reached=1)
-
     def test_clicks_that_play_are_all_the_production_wants(self):
-        calls, tries = self.run_try(self.played(verdict.Verdict("works", 20)))
-        frames, kw = next(c for c in calls if c[1].get("play"))
-        self.assertEqual(kw["play"], ((4305, "click", 0),))
-        self.assertEqual(frames, 4305 + emulator.AUTOSWAP_TAIL_FRAMES)
+        calls, tries = self.run_try(verdict.Verdict("works", 20))
+        (ready, seed), = calls
+        self.assertEqual(ready.entry, {"keys": [{"at": 86.1, "key": "lmb"}]})
+        self.assertEqual((ready.machine.name, ready.variant, seed),
+                         ("a500", self.SET, 5))
         best = max(tries, key=lambda a: a.rank)
         self.assertEqual((best.swaps, best.clicks, best.reached),
                          ([], (4305,), 2))
+        self.assertEqual(best.frames, 4305 + emulator.AUTOSWAP_TAIL_FRAMES)
+        self.assertEqual((best.seed, best.log.events),
+                         (5, [{"event": "seed", "seed": 5}]))
         self.assertEqual([(k.at, k.key) for k in best.record().keys],
                          [(86.1, "lmb")])
 
+    def test_the_player_runs_the_clicks_with_the_detector_off(self):
+        log = RunLog([], [], 0, False, "")
+        with mock.patch.object(emulator, "run", return_value=log) as run:
+            a = sweep.played(machines.BY_NAME["a500"], self.SET,
+                             {"keys": [{"at": 86.1, "key": "lmb"}]}, 5)
+        m, variant, frames, opts = run.call_args.args
+        self.assertEqual((m.name, variant, frames),
+                         ("a500", self.SET, 4305 + emulator.AUTOSWAP_TAIL_FRAMES))
+        self.assertEqual((opts.play, opts.seed, opts.drives, opts.detects),
+                         (((4305, "click", 0),), 5, 1, False))
+        self.assertEqual((a.frames, a.seed, a.drives, a.swaps),
+                         (frames, 5, 1, []))
+
     def test_a_crash_that_read_the_disk_is_still_a_false_swap(self):
         # Megademo III: the loader reads the scrambled disk B before it dies.
-        _, tries = self.run_try(self.played(verdict.Verdict("works", 20)),
-                                reached=2)
+        _, tries = self.run_try(verdict.Verdict("works", 20), reached=2)
         best = max(tries, key=lambda a: a.rank)
         self.assertEqual((best.swaps, best.clicks), ([], (4305,)))
 
     def test_a_run_with_nudge_clicks_is_replayed_too(self):
         # Megademo III: the crashed run is the one that also nudged.
-        calls = []
-
-        def fake(m, variant, frames, **kw):
-            calls.append(kw)
-            if kw.get("play"):
-                return self.played(verdict.Verdict("works", 20))
-            return sweep.Attempt(
-                "a500", 9000, verdict.Verdict(
-                    "works-then-crash", 20, "alert:00000004", 5065),
-                RunLog([], [], 0, False, ""), [(4055, 2, "poll+click")],
-                reached=2, click_every=sweep.CLICK_EVERY)
-
-        v = media.Variant("floppy", ["a.adf", "b.adf"])
-        with mock.patch.object(sweep, "attempt", fake):
-            tries = sweep.try_machine(machines.BY_NAME["a500"], v, 72000)
+        _, tries = self.run_try(verdict.Verdict("works", 20), reached=2,
+                                click_every=sweep.CLICK_EVERY)
         best = max(tries, key=lambda a: a.rank)
         self.assertEqual((best.swaps, best.clicks), ([], (4305,)))
 
     def test_clicks_that_crash_too_leave_the_swap(self):
-        _, tries = self.run_try(self.played(verdict.Verdict(
-            "works-then-crash", 20, "alert:00000004", 5000)))
+        _, tries = self.run_try(verdict.Verdict(
+            "works-then-crash", 20, "alert:00000004", 5000))
         self.assertTrue(all(a.record().keys == [] for a in tries))
 
 

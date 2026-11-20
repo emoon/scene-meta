@@ -5,7 +5,7 @@ import dataclasses
 import functools
 
 from ..core import result, sweep as driver
-from . import catalog, config, emulator, machines, media, verdict
+from . import catalog, config, emulator, machines, media, player, verdict
 from .machines import FPS
 
 SINGLE_DISK_FRAMES = 9000       # 3 minutes of a demo
@@ -106,8 +106,22 @@ def attempt(m, variant, frames, **kw):
     """One run and what it showed. ``kw`` are emulator.Options fields."""
     opts = emulator.Options(**kw)
     log = emulator.run(m, variant, frames, opts)
+    return _seen(m, variant, frames, opts, log,
+                 verdict.classify(log, frames // 250))
+
+
+def played(m, variant, entry, seed):
+    """One run of ``entry`` as written, through the player, and what it
+    showed."""
+    ran = player.Ready(entry, m, variant).play(seed=seed)
+    opts = emulator.Options(drives=entry.get("drives", 1), seed=seed)
+    return _seen(m, variant, player.frames_of(entry), opts, ran.log,
+                 ran.verdict)
+
+
+def _seen(m, variant, frames, opts, log, v):
+    """The Attempt of a finished run."""
     log.events.append({"event": "seed", "seed": opts.seed})
-    v = verdict.classify(log, frames // 250)
     sw = verdict.swaps(log)
     reached = verdict.disks_reached(log, verdict.played_swaps(log, sw, v),
                                     opts.drives, len(variant.disks))
@@ -133,11 +147,12 @@ class _Tries:
     def stalled(self):
         return waits_for_click(self.tries)
 
-    def once(self, frames, **kw):
-        """One more attempt, for ``frames``: not one of the waves."""
-        got = attempt(self._run[0], self._run[1], frames, **kw)
+    def played(self, entry, seed):
+        """One more attempt, ``entry`` played as written: not one of the
+        waves."""
+        got = played(self._run[0], self._run[1], entry, seed)
         self.tries.append(got)
-        self.asked.append(kw)
+        self.asked.append(dict(seed=seed))
         return got
 
     def wave(self, *kws):
@@ -297,8 +312,9 @@ def _try_clicks_only(t):
     base = max(crashed, key=lambda a: a.rank)
     clicks = tuple(f + SWAP_CLICK_FRAMES for f, _, how in base.swaps
                    if "click" in how)
-    got = t.once(clicks[-1] + emulator.AUTOSWAP_TAIL_FRAMES, seed=base.seed,
-                 play=tuple((f, "click", 0) for f in clicks))
+    # As the entry an export would write of it, the disk in from the start.
+    got = t.played({"keys": [{"at": f / FPS, "key": "lmb"} for f in clicks]},
+                   base.seed)
     if got.verdict.works and got.verdict.crash is None:
         # The set is not short of a disk the production does not ask for.
         t.tries[-1] = dataclasses.replace(got, reached=t.n, clicks=clicks)
