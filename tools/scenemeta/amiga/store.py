@@ -3,9 +3,10 @@
 fetch       downloads of missing disks into the NAS mirror
 
 A variant's ``detail`` holds ``root`` and ``command`` (the directory and
-startup-sequence of a hard-drive boot) and ``complete`` (the disk set's
-numbers run without a gap). A run's holds the emulator's ``returncode`` and
-its ``events``.
+startup-sequence of a hard-drive boot), ``complete`` (the disk set's
+numbers run without a gap) and ``run`` and ``choice`` (the file it starts
+and whether an entry names it, see media.Variant). A run's holds the
+emulator's ``returncode`` and its ``events``.
 """
 
 from ..core import store

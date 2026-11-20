@@ -5,11 +5,16 @@ import concurrent.futures as cf
 import os
 import traceback
 
+from .errors import CannotPlay
+
 
 def _guarded(job, prod):
-    """Worker: ``job(prod)``, an exception reported per production."""
+    """Worker: ``job(prod)``, an exception reported per production. Not a
+    CannotPlay: what that run lacked, every later one lacks too."""
     try:
         return prod, job(prod), None
+    except CannotPlay:
+        raise
     except Exception:  # noqa: BLE001 - reported per production
         return prod, ([], []), traceback.format_exc()
 
@@ -30,6 +35,8 @@ def run_all(prods, store, job, jobs=None, log=print):
     process (so it must pickle): it returns ``(problems, variants)``, the
     media problems as strings and a result.Variant per bootable thing, or
     None for a production it leaves out: what the store holds of it stays.
+    A job that raises CannotPlay ends the sweep with that error: nothing
+    is stored of its production, and the ones not started are not run.
     """
     jobs = jobs or max(1, (os.cpu_count() or 2) * 3 // 4)
     done = store.done_productions()
@@ -39,7 +46,12 @@ def run_all(prods, store, job, jobs=None, log=print):
     with cf.ProcessPoolExecutor(jobs) as pool:
         futs = [pool.submit(_guarded, job, p) for p in todo]
         for n, fut in enumerate(cf.as_completed(futs), 1):
-            prod, result, err = fut.result()
+            try:
+                prod, result, err = fut.result()
+            except CannotPlay:
+                for f in futs:
+                    f.cancel()
+                raise
             if result is None:
                 log(f"[{n}/{len(todo)}] {prod.id} {prod.title} -> left out",
                     flush=True)

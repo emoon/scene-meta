@@ -7,8 +7,6 @@ A production the sweep found is ``script``; one with a hand classification
 whatever somebody edited in the data files stays.
 """
 
-import os
-
 from ..core import export
 from . import classes, config, media
 
@@ -26,16 +24,27 @@ def _rank(v):
     return running, share, -v.idx
 
 
-def _run_file(v):
-    """The file the variant starts, when the media left a choice."""
+def _media(v):
+    """What the media made of a stored variant, as far as an entry names
+    it."""
+    d = v.detail
+    if "run" in d:
+        return media.Variant(v.kind, v.disks, run=d["run"], choice=d["choice"])
+    run = _run_of_note(v.note, d.get("command"))
+    return media.Variant(v.kind, v.disks, run=run, choice=run is not None)
+
+
+def _run_of_note(note, command):
+    """The file an entry names of a variant stored before its ``detail``
+    said: read out of its note."""
     def after(marker):
-        return v.note.split(marker, 1)[1].split(" (")[0].strip()
-    if media.LAUNCH_NOTE in v.note:          # "<volume>:<path>"
+        return note.split(marker, 1)[1].split(" (")[0].strip()
+    if media.LAUNCH_NOTE in note:          # "<volume>:<path>"
         return after(media.LAUNCH_NOTE).split(":", 1)[-1]
-    if media.MERGED_NOTE in v.note:
+    if media.MERGED_NOTE in note:
         return after("; runs ").removeprefix("script ")
-    command = v.detail.get("command") or ""
-    if "executables, picked" in v.note and command.count("\n") == 1:
+    command = command or ""
+    if "executables, picked" in note and command.count("\n") == 1:
         return command.strip().strip('"')
     return None
 
@@ -54,6 +63,7 @@ def entry(title, groups, variants, cls, default):
     else:
         result = _RESULT.get(v.verdict, "unknown")
     runs = result in (None, "crashes-later")
+    named = media.named(_media(v), [_media(o) for o in variants])
 
     e = {"title": title}
     if groups:
@@ -63,22 +73,22 @@ def entry(title, groups, variants, cls, default):
         e["machine"] = v.machine
     if runs and v.drives > 1:
         e["drives"] = v.drives
-    if v.kind != variants[0].kind:
-        e["boot"] = v.kind
+    if "boot" in named:
+        e["boot"] = named["boot"]
     if kind in _KIND:
         e["kind"] = kind
     if result:
         e["result"] = result
-    if len(v.disks) > 1:
-        e["disks"] = [os.path.basename(d) for d in v.disks]
+    if "disks" in named:
+        e["disks"] = named["disks"]
     if runs and v.swaps:
         e["swaps"] = [{"disk": s.disk, "at": round(s.at, 1),
                        **({"key": s.key} if s.key else {})}
                       for s in v.swaps]
     if runs and v.keys:
         e["keys"] = [{"at": round(k.at, 1), "key": k.key} for k in v.keys]
-    if run := _run_file(v):
-        e["run"] = run
+    if "run" in named:
+        e["run"] = named["run"]
     if note:
         e["note"] = note
     elif runs and v.reached < len(v.disks):

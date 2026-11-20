@@ -1,8 +1,23 @@
 import pathlib
 import tempfile
 import unittest
+from unittest import mock
 
 from scenemeta.amiga import emulator, machines, media, workbench
+from scenemeta.core.errors import CannotPlay
+
+
+class MissingRomTest(unittest.TestCase):
+    def test_a_run_without_its_rom_never_starts_the_emulator(self):
+        with tempfile.TemporaryDirectory() as empty, \
+                mock.patch.object(emulator.config, "ROM_DIR",
+                                  pathlib.Path(empty)), \
+                mock.patch.object(emulator, "_invoke") as invoke:
+            with self.assertRaisesRegex(CannotPlay, "kick13.rom") as e:
+                emulator.run(machines.BY_NAME["a500"],
+                             media.Variant("floppy", ["a.adf"]), 250)
+        self.assertIn(empty, str(e.exception))
+        invoke.assert_not_called()
 
 
 class UaeConfigTest(unittest.TestCase):

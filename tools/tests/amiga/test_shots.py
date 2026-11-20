@@ -1,9 +1,12 @@
+import json
 import tempfile
 import unittest
 import pathlib
+from unittest import mock
 
 from scenemeta.amiga import shots
 from scenemeta.amiga.emulator import Sample
+from scenemeta.core.errors import BadEntry, CannotPlay
 
 
 def sample(frame, pc=0x40000000, dmacon=0x39F):
@@ -58,17 +61,6 @@ class RunningTest(unittest.TestCase):
         self.assertEqual(shots.chosen(s, [True, True], {0, 1}), [(0, 250)])
 
 
-class FramesTest(unittest.TestCase):
-    def test_a_single_disk_gets_the_fixed_time(self):
-        self.assertEqual(shots.frames_of({"title": "x"}),
-                         shots.SINGLE_DISK_FRAMES)
-
-    def test_a_set_plays_until_its_last_disk_has_loaded(self):
-        entry = {"swaps": [{"disk": 2, "at": 100}]}
-        self.assertEqual(shots.frames_of(entry),
-                         5000 + shots.replay.TAIL_FRAMES)
-
-
 class MetaTest(unittest.TestCase):
     def test_a_shot_says_where_it_came_from(self):
         m = shots.meta(7, {"title": "x"}, "a500", [("01.png", 500, (320, 256))],
@@ -104,3 +96,33 @@ class PngSizeTest(unittest.TestCase):
             p = pathlib.Path(d) / "a.png"
             p.write_bytes(head)
             self.assertEqual(shots.png_size(p), (704, 576))
+
+
+class CannotPlayTest(unittest.TestCase):
+    def one(self, entry, error, text):
+        """``_one`` raises ``error``; returns the meta filed, or None."""
+        with tempfile.TemporaryDirectory() as d, \
+                mock.patch.object(shots.player.machines, "require_rom"), \
+                mock.patch.object(shots.player.media, "variants",
+                                  return_value=([], ["x"])), \
+                mock.patch.object(shots.player.emulator, "run") as run:
+            out = pathlib.Path(d)
+            with self.assertRaisesRegex(error, text):
+                shots._one(7, {"title": "x", **entry}, "a500", out)
+            run.assert_not_called()
+            filed = out / "7" / shots.META
+            return json.loads(filed.read_text()) if filed.exists() else None
+
+    def test_an_error_is_reported_and_leaves_the_production_undone(self):
+        # A meta.json would mark it done: no media is not "no shots".
+        self.assertIsNone(self.one({}, CannotPlay, "no media: x"))
+
+    def test_an_entry_that_is_the_error_is_filed_as_one(self):
+        # It is not played again until somebody changes it.
+        entry = {"keys": [{"at": 10, "key": "space"}]}
+        filed = self.one(entry, BadEntry, "'space'")
+        self.assertEqual(
+            (filed["status"], filed["reason"], filed["machine"], filed["shots"]),
+            ("error", "no way to press key 'space'", "a500", []))
+        self.assertEqual(filed["entry"],
+                         shots.entry_digest({"title": "x", **entry}))

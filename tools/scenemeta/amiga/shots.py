@@ -1,5 +1,5 @@
 """Screenshots of the productions Demozoo has none of, for uploading there
-later. Each entry of the data files is played as written (see replay); the
+later. Each entry of the data files is played as written (see player); the
 emulator keeps a picture every few seconds that differs from the last one
 kept, and an even spread of the ones taken while the production was alive is
 filed under ``<root>/<id>/``:
@@ -7,10 +7,13 @@ filed under ``<root>/<id>/``:
     <root>/<id>/01.png ...   what the emulator wrote, unscaled
     <root>/<id>/meta.json    where each came from, or why there are none
 
-A production with a ``meta.json`` is done and is not played again.
+A production with a ``meta.json`` is done and is not played again. One that
+could not be played is an error. When that is the entry's doing (a machine
+or a key the player does not have, media the download does not have) the
+``meta.json`` says so, and the entry is not tried again as it is; a missing
+ROM, no media, or media that did not all unpack files nothing.
 """
 
-import concurrent.futures as cf
 import datetime
 import hashlib
 import json
@@ -22,13 +25,12 @@ import tempfile
 
 from ..core import catalog as demozoo
 from ..core.export import default_machine
-from . import config, emulator, machines, replay, verdict
+from ..core.errors import BadEntry
+from . import config, player, replay, verdict
 from .machines import FPS
 
 SCHEMA = 1
 MAX_SHOTS = 12
-# A production that does not end in a set of disks plays this long.
-SINGLE_DISK_FRAMES = 9000
 ROM_END = 0x1000000  # the 24-bit address space ends here
 AUDIO_DMA = 0xF     # Paula's four channels in DMACON
 META = "meta.json"
@@ -77,13 +79,6 @@ def chosen(samples, alive, kept, n=MAX_SHOTS):
     return spread(pool, n)
 
 
-def frames_of(entry):
-    """How long to play ``entry``: until its last disk has loaded, else the
-    time a production on one disk gets."""
-    acts = replay.actions(entry)
-    return acts[-1][0] + replay.TAIL_FRAMES if acts else SINGLE_DISK_FRAMES
-
-
 def entry_digest(entry):
     """A short name for the entry as written, to tell later which entry the
     pictures were made from."""
@@ -104,22 +99,13 @@ def meta(prod, entry, machine, shots, status, reason=""):
 
 def capture(prod, entry, default, out):
     """Play ``entry`` and file what the emulator kept under ``out/<prod>``.
-    Returns the production's meta."""
-    name = entry.get("machine", default)
-    try:
-        machine = machines.BY_NAME[name]
-        variant = replay.variant_of(prod, entry)
-        acts = replay.actions(entry)
-    except replay.CannotReplay as e:
-        return meta(prod, entry, name, [], "none", f"cannot replay: {e}")
-    frames = frames_of(entry)
+    Returns the production's meta. Raises CannotPlay when something the
+    run needs is missing."""
     with tempfile.TemporaryDirectory(prefix=f"shots-{prod}-", dir=out) as t:
         keep = pathlib.Path(t)
-        log = emulator.run(machine, variant, frames, emulator.Options(
-            drives=entry.get("drives", 1), play=tuple(acts), detect=False,
-            keep=keep))
-        v = verdict.classify(log, frames // 250)
-        if v.verdict != "works":
+        ran = player.play(prod, entry, default, keep=keep)
+        name, log, v = ran.machine, ran.log, ran.verdict
+        if not v.works:
             return meta(prod, entry, name, [], "none", f"did not run: {v.verdict}")
         kept = {int(p.stem) for p in keep.glob("*.png")}
         picked = chosen(log.samples, verdict.alive_flags(log.samples), kept)
@@ -136,12 +122,24 @@ def capture(prod, entry, default, out):
 
 
 def _one(prod, entry, default, out):
-    result = capture(prod, entry, default, out)
-    dest = out / str(prod)
-    dest.mkdir(exist_ok=True)
-    (dest / META).write_text(json.dumps(result, indent=1) + "\n")
+    """The report line of one production, its meta filed. Raises CannotPlay
+    when it could not be played: a BadEntry is filed as that error, for
+    anything else nothing is."""
+    try:
+        result = capture(prod, entry, default, out)
+    except BadEntry as e:
+        _file(out, meta(prod, entry, entry.get("machine", default), [],
+                        "error", str(e)))
+        raise
+    _file(out, result)
     return f"{prod} {entry['title']}: {result['status']}" + \
         (f" ({len(result['shots'])})" if result["shots"] else f" ({result['reason']})")
+
+
+def _file(out, result):
+    dest = out / str(result["id"])
+    dest.mkdir(exist_ok=True)
+    (dest / META).write_text(json.dumps(result, indent=1) + "\n")
 
 
 def todo(found, wanted, without, done):
@@ -152,6 +150,8 @@ def todo(found, wanted, without, done):
 
 
 def run(out, ids=None, data=None, jobs=None, log=print):
+    """File the screenshots under ``out``. Returns how many productions
+    could not be played."""
     out = pathlib.Path(out)
     if not out.is_dir():
         raise SystemExit(f"{out}: no such directory (is the share mounted?)")
@@ -163,6 +163,5 @@ def run(out, ids=None, data=None, jobs=None, log=print):
     default = default_machine(data)
     prods = todo(found, ids, demozoo.ids_without_screenshots(), done)
     jobs = jobs or max(1, (os.cpu_count() or 4) // 2)
-    with cf.ThreadPoolExecutor(jobs) as pool:
-        for line in pool.map(lambda p: _one(p, found[p], default, out), prods):
-            log(line, flush=True)
+    return player.play_each([(p, found[p]) for p in prods],
+                            lambda p, e: _one(p, e, default, out), jobs, log)

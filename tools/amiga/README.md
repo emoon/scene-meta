@@ -26,7 +26,9 @@ one works.
 
 AGA-only productions start at `a1200`. Productions released before Oct 1992 skip the 030/060 rungs. ROMs go in `roms/` (`kick13.rom`,
 `kick30.rom`, and `kick12.rom`, a 256K Kickstart 1.2: without it the
-`a500_ks12` rung is skipped). Demos of the 1.2 era hard-code ROM addresses
+`a500_ks12` rung is skipped). Without `kick13.rom` or `kick30.rom` a sweep
+stops before its first production, and no run of any command starts
+without the ROM of its machine: the error names the ROM and the directory. Demos of the 1.2 era hard-code ROM addresses
 and guru under 1.3. Some intros only run when AmigaDOS loads them into chip
 RAM, i.e. on a bare 512K A500 (`a500_512k`).
 
@@ -90,10 +92,26 @@ printed.
 `replay` (`../scenemeta/amiga/replay.py`) goes the other way: it plays an entry of the
 data files exactly as written (its machine, each disk in at its time, each
 key after its insert; no detector, no retries) and says whether every disk
-was loaded. An entry with keys on its swaps is played once more without
-them, which shows whether the keys are needed. Without `--ids` it plays
-every entry that has a key on a swap. Left mouse button only so far, and
+was loaded. The playing is done by the player (`../scenemeta/amiga/player.py`),
+the only code that turns an entry and its download into an emulator run;
+`shots` goes through it too. An entry with keys on its swaps is played once
+more without them, which shows whether the keys are needed. Without `--ids`
+it plays every entry that has a key on a swap. Left mouse button only so far, and
 swapped disks always go into DF0.
+
+An entry that cannot be played is an error, not a result: no ROM for its
+machine, no media, a machine the player does not have, a key other than
+`lmb`, or `boot`, `disks` and `run` that fit none of the download's variants
+or more than one of them (never another variant in the entry's place). The
+variants are the ones the sweep runs, its fallbacks included, and `run`
+names the file to start whatever the sweep would pick today. The line says
+what is missing, nothing is run for that entry, and the command exits with
+status 1. `shots` files a `meta.json` with status `error` when the entry
+itself is the cause, so it is not tried again until that file is deleted;
+for a missing ROM or missing media it files nothing and tries again next
+time. Without the Demozoo mirror `sweep`, `replay` and `shots` stop before
+their first production, and a sweep whose ROM goes missing on the way stops
+there instead of storing results.
 
 Build Amiberry, from the top of the repo. Everything built goes into
 `build/`, which is git-ignored, and the sweeper runs the binary from there:

@@ -4,6 +4,7 @@ machine it works on."""
 import dataclasses
 
 from . import config
+from ..core.errors import CannotPlay
 
 _HEADLESS = """\
 use_gui=no
@@ -139,15 +140,35 @@ def ladder_for(aga_only, rom_dir=None, release_date=None, start=None):
     fail everywhere they cost two runs each, and 8 variants only worked
     there. ``start`` names a machine already known to work: the rungs
     before it are not tried again."""
-    rom_dir = rom_dir or config.ROM_DIR
     early = predates_aga(release_date)
     rungs = [m for m in LADDER
-             if (not m.optional or (rom_dir / m.rom).exists())
+             if (not m.optional or rom_path(m, rom_dir).is_file())
              and not (early and m.aga_era)]
     if aga_only:
         rungs = [m for m in rungs if m.aga] + [m for m in rungs if not m.aga]
     first = next((i for i, m in enumerate(rungs) if m.name == start), 0)
     return rungs[first:]
+
+
+def rom_path(machine, rom_dir=None):
+    """Where the machine's Kickstart ROM is kept."""
+    return (rom_dir or config.ROM_DIR) / machine.rom
+
+
+def require_rom(machine, rom_dir=None):
+    """Raise unless the machine's Kickstart ROM is there: without one the
+    emulator still starts, and the run reads as a production doing nothing."""
+    path = rom_path(machine, rom_dir)
+    if not path.is_file():
+        raise CannotPlay(f"no Kickstart ROM {machine.rom} for {machine.name}"
+                         f" in {path.parent}")
+
+
+def require_roms(rom_dir=None):
+    """Raise unless every ROM the ladder cannot do without is there."""
+    for m in LADDER:
+        if not m.optional:
+            require_rom(m, rom_dir)
 
 
 def uae_text(machine):

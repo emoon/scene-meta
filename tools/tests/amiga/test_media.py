@@ -38,6 +38,70 @@ class PickExeTest(unittest.TestCase):
         d = self.tree({"keppi": EXE * 100, "dEEP": EXE, "tarra": EXE * 90})
         self.assertEqual(media._tree_variant(d, "Deep").command, '"dEEP"\n')
 
+    def test_the_file_an_entry_names_goes_before_any_pick(self):
+        # Sheep Dictionary: the entry runs KryptoniteII.exe, not the one
+        # named after the title.
+        d = self.tree({"Dictionary": EXE, "KryptoniteII.exe": EXE,
+                       "sub/demo": EXE * 9})
+        self.assertEqual(media._pick_exe(d, "Sheep Dictionary")[0].name,
+                         "Dictionary")
+        v = media._tree_variant(d, "Sheep Dictionary", "KryptoniteII.exe")
+        self.assertEqual((v.run, v.choice), ("KryptoniteII.exe", True))
+        # By its path too, as a patched disk or a merged set is named.
+        self.assertEqual(media._pick_exe(d, run="sub/demo")[0].name, "demo")
+        # A file that is not there changes nothing.
+        self.assertEqual(media._pick_exe(d, "Sheep Dictionary", "gone")[0].name,
+                         "Dictionary")
+
+    def test_what_an_entry_says_of_a_variant(self):
+        only = media.Variant("hd", [], run="demo")
+        both = media.Variant("floppy", ["/n/a.adf", "/n/b.adf"])
+        picked = media.Variant("hd", [], run="other", choice=True)
+        every = [only, both, picked]
+        self.assertEqual(media.named(only, every), {})
+        self.assertEqual(media.named(both, every),
+                         {"boot": "floppy", "disks": ["a.adf", "b.adf"]})
+        self.assertEqual(media.named(picked, every), {"run": "other"})
+
+    def test_two_variants_an_entry_would_say_the_same_of_are_told_apart(self):
+        # A disk that boots, and the archive's files on a floppy of their
+        # own: by the file started. Two disks: by their names.
+        disk = media.Variant("floppy", ["/n/demo.adf"])
+        fixed = media.Variant("floppy", ["/n/demo-fixed.adf"])
+        tree = media.Variant("hd", [], run="demo.exe")
+        on_floppy = media.Variant("floppy", ["/w/disk.adf"], run="demo.exe")
+        every = [disk, tree, on_floppy]
+        self.assertEqual(media.named(on_floppy, every), {"run": "demo.exe"})
+        self.assertEqual(media.named(disk, every), {"disks": ["demo.adf"]})
+        self.assertEqual(media.named(tree, every), {"boot": "hd"})
+        self.assertEqual(media.named(fixed, [disk, fixed]),
+                         {"disks": ["demo-fixed.adf"]})
+        for v in every:
+            said = media.named(v, every)
+            self.assertEqual([o for o in every if media.fits(o, said, "floppy")],
+                             [v])
+
+    def test_an_entry_may_say_more_than_it_has_to(self):
+        only = media.Variant("hd", [], run="demo.exe")
+        disk = media.Variant("floppy", ["/n/a.adf"])
+        self.assertTrue(media.fits(only, {"run": "demo.exe"}, "hd"))
+        self.assertTrue(media.fits(only, {"boot": "hd"}, "hd"))
+        self.assertTrue(media.fits(disk, {"disks": ["a.adf"]}, "floppy"))
+        self.assertFalse(media.fits(only, {"run": "other"}, "hd"))
+        self.assertFalse(media.fits(disk, {"run": "demo.exe"}, "floppy"))
+        self.assertFalse(media.fits(disk, {"disks": ["b.adf"]}, "floppy"))
+        # What it leaves out is as usual: no set, no file there was a
+        # choice of.
+        picked = media.Variant("hd", [], run="demo.exe", choice=True)
+        both = media.Variant("floppy", ["/n/a.adf", "/n/b.adf"])
+        self.assertFalse(media.fits(picked, {}, "hd"))
+        self.assertFalse(media.fits(both, {}, "floppy"))
+
+    def test_a_variant_says_what_it_starts(self):
+        d = self.tree({"demo (final)": EXE})
+        v = media._tree_variant(d)
+        self.assertEqual((v.run, v.choice), ("demo (final)", False))
+
     def test_skips_handlers(self):
         d = self.tree({"RAM-Handler": EXE, "C/BLISS-OUT": EXE})
         self.assertIsNone(media._pick_exe(d)[0])
@@ -183,8 +247,8 @@ class FloppyVariantTest(unittest.TestCase):
         patch.start()
         self.addCleanup(patch.stop)
 
-    def hd(self, files):
-        root = self.top / "tree"
+    def hd(self, files, root="tree"):
+        root = self.top / root
         for name, data in files.items():
             (root / name).parent.mkdir(parents=True, exist_ok=True)
             (root / name).write_bytes(data)
@@ -204,6 +268,29 @@ class FloppyVariantTest(unittest.TestCase):
     def test_too_big(self):
         v = self.hd({"hc.exe": EXE, "big": b"\0" * (media.OFS_BYTES + 1)})
         self.assertIsNone(media.floppy_variant(v, 1))
+
+    def test_the_floppy_of_one_tree_outlives_the_making_of_anothers(self):
+        # Two archives that each hold a directory of the same name.
+        one = media.floppy_variant(self.hd({"hc.exe": EXE}, "a/demo"), 1)
+        two = media.floppy_variant(self.hd({"hc.exe": EXE * 2}, "b/demo"), 1)
+        self.assertNotEqual(one.disks, two.disks)
+        self.assertNotEqual(pathlib.Path(one.disks[0]).read_bytes(),
+                            pathlib.Path(two.disks[0]).read_bytes())
+
+    def test_the_merge_of_one_set_outlives_the_making_of_anothers(self):
+        def unpacked(adf, box):
+            tree = box / "files"
+            tree.mkdir(parents=True, exist_ok=True)
+            for old in tree.iterdir():
+                old.unlink()
+            (tree / pathlib.Path(adf).stem).write_bytes(EXE)
+            return tree
+        with unittest.mock.patch.object(media, "_unpack_disk", unpacked):
+            one = media.merged_variant(["/d/one-a.adf", "/d/one-b.adf"], 1, "")
+            two = media.merged_variant(["/d/two-a.adf", "/d/two-b.adf"], 1, "")
+        self.assertNotEqual(one.root, two.root)
+        self.assertEqual(sorted(os.listdir(one.root)), ["one-a", "one-b"])
+        self.assertEqual(sorted(os.listdir(two.root)), ["two-a", "two-b"])
 
 
 class ArchiveSetTest(unittest.TestCase):
