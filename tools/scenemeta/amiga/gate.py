@@ -37,28 +37,36 @@ def _one(prod, entry, default, each=map):
     return gate.check(entry, lambda run: _play(ready, run), each), sha256
 
 
-def run(ids, db, data=None, jobs=None, log=print):
-    """Gate the productions ``ids``, ``jobs`` emulators at a time: a line
-    of each, and what the gate saw of it into the store ``db``. Returns how
-    many could not be played; nothing is stored of those."""
-    data = data or config.DATA_DIR
+def each(todo, db, data, jobs=None):
+    """Gate every ``(prod, entry)`` of ``todo``, entries of the data files
+    ``data``, ``jobs`` emulators at a time. Yields of each, in order,
+    ``(prod, True, judgement)``, what the gate saw then being in the store
+    ``db``, or ``(prod, False, line)`` with the line that reports why it
+    could not be played; nothing is stored of those."""
     default = default_machine(data)
-    found = replay.all_entries(data)
-    for p in sorted(set(ids) - set(found)):
-        log(f"{p}: no entry in the data files")
     jobs = jobs or max(1, (os.cpu_count() or 4) // 2)
-    todo = sorted((p, found[p]) for p in set(ids) & set(found))
     # The runs of every entry share one pool; an entry's thread only waits.
-    errors = 0
     with cf.ThreadPoolExecutor(jobs) as pool:
         for prod, ok, got in player.each_played(
                 todo, lambda p, e: _one(p, e, default, pool.map), jobs):
             if ok:
-                said, sha256 = got
-                db.put_gate(prod, said, sha256, player.VERSION)
-                got = f"{prod} {found[prod]['title']}: {said}"
-            errors += not ok
-            log(got, flush=True)
+                got, sha256 = got
+                db.put_gate(prod, got, sha256, player.VERSION)
+            yield prod, ok, got
+
+
+def run(ids, db, data=None, jobs=None, log=print):
+    """Gate the productions ``ids`` (see ``each``): a line of each. Returns
+    how many could not be played."""
+    data = data or config.DATA_DIR
+    found = replay.all_entries(data)
+    for p in sorted(set(ids) - set(found)):
+        log(f"{p}: no entry in the data files")
+    todo = sorted((p, found[p]) for p in set(ids) & set(found))
+    errors = 0
+    for prod, ok, got in each(todo, db, data, jobs):
+        errors += not ok
+        log(f"{prod} {found[prod]['title']}: {got}" if ok else got, flush=True)
     return errors
 
 
