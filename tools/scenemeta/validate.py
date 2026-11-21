@@ -98,7 +98,7 @@ SETTINGS = {
     "disks": _texts,
     "swaps": _swaps,
     "keys": _rows((("at", _seconds), ("key", _text))),
-    "run": _text,
+    "run": _text,   # an executable, or a script that runs the parts
     "boot_disk": _number_from(1),
     "boot_file": _text,
     "assign": _assign,

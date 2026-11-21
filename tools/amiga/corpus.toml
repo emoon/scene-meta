@@ -601,7 +601,7 @@ video = [211, 225]
 [demozoo.44911]  # Megademo $c
 expect = "plays"
 cause = "launcher"
-note = "runs MDCtrad.exe alone, one part of five in Megademo$C.bat; its NFO asks for a 68030 and 8 MB fast"
+note = "Megademo$C.bat runs its five parts; moves until 540 s, then a still end screen; its NFO asks for a 68030 and 8 MB fast"
 video = [753, 753]
 
 [demozoo.45034]  # Megademo III

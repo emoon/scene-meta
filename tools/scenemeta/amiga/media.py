@@ -2,9 +2,10 @@
 
 A variant is either a set of floppy images (booted from DF0, later disks on
 the swap list) or a directory booted as a hard drive whose startup-sequence
-runs one executable. A disk set whose first disk cannot boot (made to be
-started from Workbench) gets a patched copy of disk 1 that boots into the
-demo. Archives are unpacked under WORK; NAS files are read only.
+runs one executable, or is the download's own launcher script. A disk set
+whose first disk cannot boot (made to be started from Workbench) gets a
+patched copy of disk 1 that boots into the demo. Archives are unpacked under
+WORK; NAS files are read only.
 """
 
 import dataclasses
@@ -351,7 +352,11 @@ def variants(prod_id, title="", run=None):
 
 def _tree_variant(tree, title="", run=None):
     """A hard-drive variant for an unpacked archive, or None when it holds no
-    executable of its own (disk-image-only archives)."""
+    executable of its own (disk-image-only archives). An entry's ``run``
+    may name a script of the tree in place of an executable."""
+    script = _named_script(tree, run)
+    if script is not None:
+        return _script_variant(script, run)
     boot = next((p.parent.parent for p in _walk_files(tree)
                  if p.name.lower() == "startup-sequence"
                  and p.parent.name.lower() == "s"), None)
@@ -363,6 +368,30 @@ def _tree_variant(tree, title="", run=None):
         return None
     return Variant("hd", [], root=str(exe.parent), command=f'"{exe.name}"\n',
                    note=note, run=exe.name, choice=bool(note))
+
+
+def _is_script(path):
+    """Is ``path`` a small text file, as an AmigaDOS script is?"""
+    if path.stat().st_size > 16384:
+        return False
+    data = path.read_bytes()
+    return bool(data) and data[:4] != HUNK_MAGIC and b"\0" not in data
+
+
+def _named_script(tree, run):
+    """The script an entry names in ``tree`` by its name or its path, or
+    None."""
+    return next((p for p in sorted(_walk_files(tree))
+                 if run in (p.name, _rel(p, tree)) and _is_script(p)), None)
+
+
+def _script_variant(script, run, note=""):
+    """A hard-drive variant that executes ``script`` from its directory:
+    its text is the startup-sequence, so its ``cd`` and assigns hold for
+    the parts it runs."""
+    return Variant("hd", [], root=str(script.parent),
+                   command=f"{workbench.GO_ON}\n" + script.read_text("latin-1"),
+                   note=note, run=run, choice=True)
 
 
 def _norm(name):
@@ -566,15 +595,13 @@ def _launch_script(tree, title=""):
     for p in _walk_files(tree):
         rel = p.relative_to(tree).parts
         if any(part.lower() in _SYSTEM_DIRS | {"s"} for part in rel[:-1]) \
-                or "install" in p.name.lower() or p.suffix.lower() == ".info" \
-                or p.stat().st_size > 16384:
+                or "install" in p.name.lower() or p.suffix.lower() == ".info":
             continue
-        data = p.read_bytes()
-        if not data or data[:4] == HUNK_MAGIC or b"\0" in data:
+        if not _is_script(p):
             continue
         exes = {q.name.lower() for q in p.parent.iterdir()
                 if q.is_file() and sniff(q) == "exe"}
-        lines = data.decode("latin-1").splitlines()
+        lines = p.read_text("latin-1").splitlines()
         if any(ln.split()[0].strip('"').lower() in exes
                for ln in lines if ln.strip() and not ln.startswith(";")):
             cands.append(p)
@@ -650,13 +677,12 @@ def merged_variant(disks, prod_id, title, run=None):
                 p.unlink()
     # Booted from the directory of what runs, as _tree_variant does:
     # Kickstart 1.3 has no resident cd.
-    script = _launch_script(root, title)
-    if script and run in (None, _rel(script, root)):
+    script = _launch_script(root, title) if run is None \
+        else _named_script(root, run)
+    if script:
         rel = _rel(script, root)
-        return Variant("hd", [], root=str(script.parent),
-                       command=script.read_text("latin-1"),
-                       note=f"{MERGED_NOTE}; runs script {rel}",
-                       run=rel, choice=True)
+        return _script_variant(script, run or rel,
+                               f"{MERGED_NOTE}; runs script {rel}")
     exe, note = _pick_exe(root, title, run)
     if exe is None:
         return None

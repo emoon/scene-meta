@@ -195,3 +195,12 @@ cmake --build build/amiberry
   enabled on KS3.0, topaz 8 as the default font). Disk-based libraries
   (mathieeedoubbas, ...) come from `libs/` (`SCENEMETA_LIBS`), copied from a
   Workbench disk; without it, demos that need them fail.
+- A launcher script an entry's `run` names is the startup-sequence itself,
+  after `s/scenemeta-go-on`, which sets the fail level to 21: a command
+  that is not there fails with 10, which would end the script (and still
+  does on Kickstart 1.x). Of the commands a script may call only `Assign`
+  is supplied (ours, `name: path` only, Kickstart 2 and later) beside what
+  Kickstart has resident (`cd`, `failat`, `run` on 2 and later, nothing on
+  1.x); `copy`, `makedir`, `wait` and the like are "unknown command". A
+  sweep picks a script only for a set merged into one directory, and a
+  patched disk 1 runs an executable only.

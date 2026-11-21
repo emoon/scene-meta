@@ -84,7 +84,7 @@ appears once per platform, as a key or as a cross-reference.
 | `disks` | file names in disk order: a multi-disk production's, or the one disk meant where the download has several |
 | `swaps` | disk swaps: `disk`, `at`, and optionally `until`, `key`, `key_delay` |
 | `keys` | key presses at fixed times, other than a swap's own key: `at`, `key` |
-| `run` | the file to start, when the obvious one is wrong or ambiguous |
+| `run` | the file to start, when the obvious one is wrong or ambiguous: an executable, or the download's launcher script (see below) |
 | `boot_disk`, `boot_file` | the disk (1-based) and file to boot, when not the first |
 | `assign` | AmigaDOS assigns, e.g. `{ Killer = "SYS:" }` |
 | `note` | free text |
@@ -95,6 +95,16 @@ the number of the disk that goes in (1 when the production booted from a
 later one), `at` is an insert time known to work and `until` the last one
 known to work; `key` is pressed `key_delay` seconds after the insert. Key
 names are lowercase (`space`, `return`, `p1fire`, `p2fire`, `lmb`).
+
+Where a download ships a script that runs its parts in turn (`.bat`,
+`RunMe`, `start`, `execute_me`), `run` names the script, by its name or its
+path in the download, and not one of the parts. The script is executed as
+AmigaDOS would from its own directory, so the order of the parts, its `cd`
+and its assigns are the download's own and the entry repeats none of them. On
+Kickstart 2 and later a command the download does not ship (the author's
+own `fadeout`) is skipped and the script goes on, `cd` is built in and
+`assign name: path` works; no other Workbench command is supplied. On
+Kickstart 1.x a script can only run its parts.
 
 Settings sit on the production. A variant appears only when one specific
 download needs different settings; it is identified by file name and SHA-256

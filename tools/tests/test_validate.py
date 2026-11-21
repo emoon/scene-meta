@@ -83,6 +83,11 @@ class ValidateTest(unittest.TestCase):
     def test_same_title_orders_by_id(self):
         self.assertEqual(self.one('[demozoo.9000]\ntitle = "Dream On"\nsource = "ai"\n'), [])
 
+    def test_run_may_name_a_launcher_script(self):
+        for run in ("Megademo$C.bat", "Scum/Utmost.exe", "RunMe"):
+            self.assertEqual(self.one(
+                f'[demozoo.5]\ntitle = "Dz"\nsource = "ai"\nrun = "{run}"\n'), [])
+
     def test_missing_title_and_source(self):
         self.assertEqual(self.problems({"d.toml": "[demozoo.1]\n"}),
                          ["[demozoo.1] needs title", "[demozoo.1] needs source"])

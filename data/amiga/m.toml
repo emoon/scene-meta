@@ -2700,9 +2700,9 @@ run = "_negerkuß!!.exe"
 [demozoo.44911]
 title = "Megademo $c"
 group = "Gunnars Farvebio"
-source = "script"
+source = "ai"
 machine = "a1200_fast"
-run = "MDCtrad.exe"
+run = "Megademo$C.bat"
 
 [demozoo.37806]
 title = "Megademo $d"

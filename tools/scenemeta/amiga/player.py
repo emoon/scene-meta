@@ -16,7 +16,7 @@ from .machines import FPS
 
 # Raised with every change to what a run of an entry shows: what the gate
 # saw by another version is seen again (see core.gatelog.stale).
-VERSION = "1"
+VERSION = "2"
 KEY_DELAY = 5.0      # seconds from an insert to its key, when not given
 BUTTONS = {"lmb": 0}
 # Keep going this long after the last insert or key, to see the disk load.

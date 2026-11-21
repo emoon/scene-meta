@@ -20,6 +20,51 @@ class WorkbenchTest(unittest.TestCase):
         self.assertEqual(struct.unpack(">I", exe[24:28])[0], 0x3E9)
         self.assertEqual(exe[-4:], b"\0\0\x03\xf2")
 
+    def test_assign_exe_is_one_code_hunk(self):
+        exe = workbench.assign_exe()
+        self.assertEqual(struct.unpack(">6I", exe[:24]),
+                         (0x3F3, 0, 1, 0, 0, (len(exe) - 36) // 4))
+        self.assertEqual(exe[-4:], b"\0\0\x03\xf2")
+        self.assertIn(b"dos.library\0", exe)
+
+    def test_assign_branches_land_on_instructions(self):
+        # Every short branch of the hand-assembled code, by its offset.
+        code = workbench._ASSIGN_CODE
+        want = {0x12: 0x8e, 0x1a: 0x16, 0x26: 0x7a, 0x2c: 0x20, 0x36: 0x32,
+                0x3e: 0x54, 0x4a: 0x5c, 0x50: 0x44, 0x52: 0x5c, 0x5a: 0x56,
+                0x68: 0x7a, 0x72: 0x7e, 0x7c: 0x80}
+        got = {at: at + 2 + struct.unpack(">b", code[at + 1:at + 2])[0]
+               for at in want}
+        self.assertEqual(got, want)
+        # lea dosname(pc),a1
+        at = 0x06 + 2 + struct.unpack(">h", code[0x08:0x0a])[0]
+        self.assertEqual(code[at:], b"dos.library\0")
+
+    def test_a_script_can_be_told_to_go_on(self):
+        root = self.dir()
+        workbench.prepare(root, f"{workbench.GO_ON}\nx\n", libs_dir=root / "none")
+        exe = (root / workbench.GO_ON).read_bytes()
+        self.assertEqual(exe, workbench.go_on_exe())
+        self.assertEqual(struct.unpack(">6I", exe[:24]),
+                         (0x3F3, 0, 1, 0, 0, (len(exe) - 36) // 4))
+        # beq.s out, past the write of cli_FailLevel
+        code = workbench._GO_ON_CODE
+        self.assertEqual(0x10 + 2 + code[0x11], 0x1c)
+
+    def test_a_tree_without_assign_gets_ours(self):
+        root = self.dir()
+        workbench.prepare(root, "x\n", libs_dir=root / "none")
+        self.assertEqual((root / "c" / "Assign").read_bytes(),
+                         workbench.assign_exe())
+
+    def test_a_trees_own_assign_is_kept(self):
+        root = self.dir()
+        (root / "C").mkdir()
+        (root / "C" / "ASSIGN").write_bytes(b"own")
+        workbench.prepare(root, "x\n", libs_dir=root / "none")
+        self.assertEqual([p.name for p in (root / "C").iterdir()], ["ASSIGN"])
+        self.assertFalse((root / "c").exists())
+
     def test_setup_assigns_env_to_ram(self):
         exe = workbench.setup_exe()
         self.assertIn(b"dos.library\0RAM:ENV\0ENV\0", exe)
