@@ -74,6 +74,7 @@ python3 -m scenemeta amiga replay --ids 142      # play data-file entries as wri
 python3 -m scenemeta amiga gate --ids 142        # pass or fail on every seed, and why
 python3 -m scenemeta amiga gate-summary          # scene.db -> amiga/gate-summary.txt
 python3 -m scenemeta amiga gate-stale            # entries to gate again
+python3 -m scenemeta amiga corpus                # gate corpus.toml -> amiga/corpus-score.txt
 python3 -m scenemeta amiga migrate               # convert an older scene.db
 python3 -m unittest discover -s tests -t .
 ```
@@ -134,6 +135,28 @@ which is checked in, so a change in the numbers shows in a diff.
 `gate-stale` lists the gated entries whose download, or the player's
 version, is no longer the one of their records: those need the gate again.
 
+`corpus` (`../scenemeta/amiga/corpus.py`) runs the gate over the corpus,
+`corpus.toml` here: productions with the outcome expected of them. It is
+test data, not part of the data set. A table per production, `[demozoo.N]`:
+
+| field | meaning |
+|-------|---------|
+| `expect` | `plays`: a correct entry of it passes the gate. `broken`: it does not play on any machine, and `why` says so |
+| `cause` | a label, on the 84 productions whose detected end missed the video's length in Nov 2026: what the miss was traced to (`launcher`, `bbs-ad`, `swap`, `machine`, `detector`, ...) |
+| `note` | free text: the evidence of the cause, or what the sweep's code says of the production |
+| `video` | `[shortest, longest]`, the lengths in seconds of the captures Demozoo links; stored for the end detection, not used yet |
+
+It holds the 209 productions whose end was scored against their videos and
+the ones the sweep's code comments name. The file must validate, and every id
+in it must have an entry in the data files, or the command stops before its
+first run. It prints a line per production as `gate` does, with what was expected,
+then the total, and writes `corpus-score.txt` here, which is checked in:
+how many productions the gate saw as expected (`plays` and a pass, `broken`
+and a fail), and of each what was expected and whether it was `pass`, `fail`
+or `error` (could not be played). No reason and no time is in it, so the
+file changes only when a result does. What the gate saw goes into `scene.db`
+as for `gate`.
+
 An entry that cannot be played is an error, not a result: no ROM for its
 machine, no media, a machine the player does not have, a key other than
 `lmb`, or `boot`, `disks` and `run` that fit none of the download's variants
@@ -144,7 +167,7 @@ what is missing, nothing is run for that entry, and the command exits with
 status 1. `shots` files a `meta.json` with status `error` when the entry
 itself is the cause, so it is not tried again until that file is deleted;
 for a missing ROM or missing media it files nothing and tries again next
-time. Without the Demozoo mirror `sweep`, `replay`, `gate` and `shots` stop before
+time. Without the Demozoo mirror `sweep`, `replay`, `gate`, `corpus` and `shots` stop before
 their first production, and a sweep whose ROM goes missing on the way stops
 there instead of storing results.
 

@@ -1,0 +1,1065 @@
+# The Amiga corpus: productions with the outcome expected of them, replayed by
+# `scenemeta amiga corpus` (README.md). Test data, not part of the data set.
+#
+# expect  "plays", or "broken" with `why`
+# cause   why the end detection of Nov 2026 missed the video's length, for the
+#         84 productions where it did; `note` has the evidence
+# note    free text
+# video   the shortest and the longest capture of it Demozoo links, in seconds
+
+[demozoo.89]  # 9 Fingers
+expect = "plays"
+video = [176, 229]
+
+[demozoo.90]  # My Kingdom
+expect = "plays"
+cause = "launcher"
+note = "runs PART3.EXE alone; MyKing.bat runs part1, part2 and part3"
+video = [313, 313]
+
+[demozoo.103]  # Greenday
+expect = "plays"
+cause = "detector"
+note = "the picture ends at about 251 s; the run returns to the shell at 447 s, which was taken as the end"
+video = [257, 257]
+
+[demozoo.142]  # Desert Dream
+expect = "plays"
+note = "disk A plays nine minutes before it asks for B; a slow start once looked like the click's doing (sweep.py)"
+
+[demozoo.158]  # Alien
+expect = "plays"
+video = [267, 267]
+
+[demozoo.159]  # Alien 2 Amiga
+expect = "plays"
+cause = "launcher"
+note = "runs Part2.exe alone; Alien2.bat runs part1 to part4"
+video = [571, 584]
+
+[demozoo.181]  # Jammin
+expect = "plays"
+video = [246, 308]
+
+[demozoo.540]  # A New Intro
+expect = "plays"
+cause = "input"
+note = "'Press the left mousebutton to exit' from 12 s; the recorder booted the DMS, not the entry's Intro.exe"
+video = [258, 258]
+
+[demozoo.645]  # Hardknee Lotus
+expect = "plays"
+video = [222, 237]
+
+[demozoo.1073]  # Menace 2
+expect = "plays"
+video = [397, 397]
+
+[demozoo.1504]  # Dance Extravaganza
+expect = "plays"
+video = [179, 179]
+
+[demozoo.2020]  # Megademo
+expect = "plays"
+cause = "swap"
+note = "asks for disk 1 again 7 s after disk B loaded; the entry has the one swap"
+video = [1122, 1122]
+
+[demozoo.3574]  # Ikanim
+expect = "plays"
+video = [114, 114]
+
+[demozoo.4219]  # Speed
+expect = "plays"
+video = [180, 189]
+
+[demozoo.5079]  # Over Control
+expect = "plays"
+video = [248, 248]
+
+[demozoo.5314]  # Alpha & Omega II: Downtown
+expect = "plays"
+video = [626, 626]
+
+[demozoo.5316]  # Absolute Inebriation
+expect = "plays"
+note = "its loader races: works or stalls by the emulator's seed (emulator.py)"
+
+[demozoo.5318]  # Virtual Meltdown
+expect = "plays"
+cause = "swap-time"
+note = "disk B goes in at 508.8 s, some 6 s before the prompt, and is never seen"
+video = [1015, 1015]
+
+[demozoo.5336]  # Butterfly
+expect = "plays"
+cause = "video"
+note = "one cycle is 325 s, then it resets itself and repeats; both captures (150 s, 221 s) are cut short"
+video = [150, 221]
+
+[demozoo.5782]  # Origin
+expect = "plays"
+video = [336, 366]
+
+[demozoo.6576]  # Q.E.D. 2
+expect = "plays"
+cause = "swap-time"
+note = "asks for disk B at about 42 s and gets it at 150.5 s: over 100 s of waiting no capture has"
+video = [449, 449]
+
+[demozoo.6750]  # Hysteria
+expect = "plays"
+video = [426, 488]
+
+[demozoo.6829]  # Drool This
+expect = "plays"
+cause = "stall"
+note = "the screen is black from 3 s while the music plays to 134 s"
+video = [308, 361]
+
+[demozoo.6832]  # Maximum Overdrive II
+expect = "plays"
+video = [582, 775]
+
+[demozoo.6837]  # Creme
+expect = "plays"
+video = [236, 236]
+
+[demozoo.6949]  # Motion: Origin II
+expect = "plays"
+cause = "video"
+note = "ends at 325 s on a still picture; the video is twice that, probably the demo twice"
+video = [650, 650]
+
+[demozoo.6950]  # Soulkitchen
+expect = "plays"
+video = [278, 288]
+
+[demozoo.6951]  # Whammer Slammer
+expect = "plays"
+cause = "detector"
+note = "the last part is in by 421 s and its song loops; the end was put a pass of the song later"
+video = [388, 388]
+
+[demozoo.6962]  # Dove
+expect = "plays"
+cause = "video"
+note = "ends in an endless scroller ('Text restarts!') from about 363 s; the video is cut inside it"
+video = [357, 357]
+
+[demozoo.6998]  # Twisted
+expect = "plays"
+note = "reaches disk 4 only on the 68030 (sweep.py)"
+video = [382, 382]
+
+[demozoo.7236]  # Deep
+expect = "plays"
+cause = "video"
+note = "ends at 315 s wanting disk 1 back; some 73 s of that is loading the capture leaves out"
+video = [208, 208]
+
+[demozoo.7467]  # ZIF
+expect = "plays"
+video = [347, 362]
+
+[demozoo.7472]  # Dive (demo)
+expect = "plays"
+cause = "launcher"
+note = "runs Morph.exe alone; Demo.bat runs morph, ship, 1sttunnel and 2ndtunnel"
+video = [274, 274]
+
+[demozoo.7476]  # Thrilled
+expect = "plays"
+video = [237, 237]
+
+[demozoo.7489]  # Cinderhatch
+expect = "plays"
+cause = "replay-bug"
+note = "the recorder ran CINDER.EXE, not the entry's Mission.exe (both are in the 40k pack)"
+video = [171, 171]
+
+[demozoo.7618]  # Corona
+expect = "plays"
+video = [378, 378]
+
+[demozoo.8120]  # Klone
+expect = "plays"
+video = [215, 398]
+
+[demozoo.8122]  # Phenomenon
+expect = "plays"
+video = [595, 655]
+
+[demozoo.8125]  # Nebula
+expect = "plays"
+cause = "machine"
+note = "dead in ROM from about 118 s with the music still playing; its readme names an A1200 with a 68030 and 8 MB, the entry a 68020"
+video = [454, 454]
+
+[demozoo.8360]  # Subzero
+expect = "plays"
+cause = "bbs-ad"
+note = "runs the pack's BBS advert viewer, which ends in 'task held' at 7 s; the demo is Syndrome_SubZero/subzero_4mb.exe"
+video = [251, 251]
+
+[demozoo.8883]  # Gush
+expect = "plays"
+video = [294, 326]
+
+[demozoo.8998]  # Artifice
+expect = "plays"
+cause = "detector"
+note = "the last scene keeps reading data to the end of the run, which was taken for more to come"
+video = [503, 503]
+
+[demozoo.9285]  # Utmost Vacancy
+expect = "plays"
+cause = "bbs-ad"
+note = "runs a BBS advert viewer, which ends in 'task held' at 7 s; the demo is started by the script Scum/Utmost.exe"
+video = [400, 400]
+
+[demozoo.9290]  # HOG
+expect = "plays"
+video = [227, 227]
+
+[demozoo.9380]  # Breeze Now
+expect = "plays"
+video = [87, 87]
+
+[demozoo.9389]  # Elthiag
+expect = "plays"
+video = [229, 229]
+
+[demozoo.9561]  # Mystique
+expect = "plays"
+video = [371, 371]
+
+[demozoo.9873]  # Lethal Dose 2
+expect = "plays"
+note = "takes its disk on the right button only (emulator.py)"
+
+[demozoo.10297]  # Megademo
+expect = "plays"
+note = "waits for a click at about 81 s; disk B is needed much later"
+
+[demozoo.18184]  # Traffic
+expect = "plays"
+video = [336, 336]
+
+[demozoo.18188]  # Showstopper
+expect = "plays"
+cause = "detector"
+note = "the music is over at about 320 s; it exits to the shell only at 779 s"
+video = [326, 326]
+
+[demozoo.18447]  # Sustain
+expect = "plays"
+video = [257, 257]
+
+[demozoo.18450]  # Everywhere
+expect = "plays"
+video = [118, 118]
+
+[demozoo.18451]  # Habakuk
+expect = "plays"
+cause = "machine"
+note = "the song loops at 281 s, as the video, but the picture runs on to 481 s: it asks for fast RAM and the entry has none"
+video = [295, 295]
+
+[demozoo.18861]  # Fear Factory
+expect = "plays"
+cause = "crash"
+note = "spins in ROM from 15 s; the entry runs M.called, one of the parts G to P that '-start' runs"
+video = [258, 258]
+
+[demozoo.18863]  # Paradisio
+expect = "plays"
+video = [130, 146]
+
+[demozoo.18864]  # Smart
+expect = "plays"
+video = [240, 240]
+
+[demozoo.18872]  # Artfire
+expect = "plays"
+cause = "replay-bug"
+note = "the recorder ran fire.exe, one part, not the entry's loader"
+video = [148, 148]
+
+[demozoo.18873]  # Virtual
+expect = "plays"
+cause = "machine"
+note = "the screen stays black and it spins from 100 s; tested on a 68030 by its info, the entry has a 68020"
+video = [150, 150]
+
+[demozoo.18874]  # Diskobox
+expect = "plays"
+video = [146, 146]
+
+[demozoo.18977]  # Exit Planet Dust
+expect = "plays"
+cause = "launcher"
+note = "runs tomate alone; dust_runme runs tomate, then gurke"
+video = [434, 451]
+
+[demozoo.18980]  # Black Hair Tongue Disease
+expect = "plays"
+video = [227, 227]
+
+[demozoo.18985]  # .plong
+expect = "plays"
+cause = "detector"
+note = "ends on a white screen from 112 s by its readme (both mouse buttons exit); a burst of code at 894 s was taken as the end"
+video = [222, 222]
+
+[demozoo.19017]  # Spirit of Nonsense
+expect = "plays"
+cause = "partial-loop"
+note = "the tune loops at 215 s under a greetings scroller that does not repeat with it"
+video = [373, 373]
+
+[demozoo.19401]  # Killer
+expect = "plays"
+cause = "assign"
+note = "main.bin run without the assign of the Killer.exe script (Assign Killer: \"\"): stalls at 3 s"
+video = [319, 331]
+
+[demozoo.19413]  # The Katto Demo
+expect = "plays"
+cause = "stall"
+note = "spins on a white screen from 172 s; StartMe chains 1.party to 4.party and the entry runs 1.party alone"
+video = [448, 448]
+
+[demozoo.19443]  # Master Blaster
+expect = "plays"
+video = [149, 149]
+
+[demozoo.20355]  # Scraps of Beings
+expect = "plays"
+cause = "detector"
+note = "the show ends at about 380 s, then a credits screen whose song loops; the end was put a pass of that song later"
+video = [231, 419]
+
+[demozoo.20358]  # La Fureur
+expect = "plays"
+video = [118, 118]
+
+[demozoo.20779]  # Flushed
+expect = "plays"
+video = [91, 91]
+
+[demozoo.20824]  # Invitation [none]
+expect = "plays"
+video = [164, 164]
+
+[demozoo.20969]  # High Sport Grammar
+expect = "plays"
+video = [124, 124]
+
+[demozoo.20972]  # Popgun
+expect = "plays"
+cause = "replay-bug"
+note = "the recorder ran popgun.exe, not the entry's Damasm98.exe; which of the two is Popgun wants a look"
+video = [91, 91]
+
+[demozoo.21509]  # Wildlife
+expect = "plays"
+video = [401, 429]
+
+[demozoo.22315]  # Iso
+expect = "plays"
+cause = "swap"
+note = "disk B in at 92.7 s is never read; black, silent and spinning from 96 s"
+video = [609, 609]
+
+[demozoo.22589]  # Blues
+expect = "plays"
+video = [73, 73]
+
+[demozoo.22594]  # Sundance
+expect = "plays"
+video = [161, 161]
+
+[demozoo.22602]  # Supermonster
+expect = "plays"
+cause = "launcher"
+note = "the 424-byte launcher it runs loads the first part only; files 1 to 10 beside it are never read"
+video = [388, 399]
+
+[demozoo.22680]  # Megademo
+expect = "plays"
+video = [184, 212]
+
+[demozoo.22683]  # Push
+expect = "plays"
+video = [327, 446]
+
+[demozoo.22684]  # SparklingBlueArcticLight
+expect = "plays"
+video = [260, 284]
+
+[demozoo.22695]  # Etic
+expect = "plays"
+video = [87, 205]
+
+[demozoo.23455]  # Offbeat
+expect = "plays"
+video = [128, 150]
+
+[demozoo.23457]  # Revision
+expect = "plays"
+video = [188, 188]
+
+[demozoo.24433]  # Hypnopolis
+expect = "plays"
+video = [228, 237]
+
+[demozoo.24664]  # J
+expect = "plays"
+cause = "launcher"
+note = "runs part1 alone; execute_me assigns dev: and runs part1, then part2"
+video = [359, 359]
+
+[demozoo.24668]  # Grid 2
+expect = "plays"
+cause = "video"
+note = "exits at 484 s after a 120 s precalc; the 734 s capture is probably of a slower machine"
+video = [734, 734]
+
+[demozoo.24881]  # Zeon
+expect = "plays"
+video = [791, 791]
+
+[demozoo.25670]  # Powergod
+expect = "plays"
+video = [354, 378]
+
+[demozoo.25681]  # GlowFlow
+expect = "plays"
+video = [131, 131]
+
+[demozoo.25838]  # Lapsuus
+expect = "plays"
+video = [231, 945]
+
+[demozoo.25865]  # King of Fuck
+expect = "plays"
+video = [145, 145]
+
+[demozoo.26158]  # Tribute
+expect = "plays"
+video = [549, 592]
+
+[demozoo.26520]  # Glitch Demo
+expect = "plays"
+cause = "machine"
+note = "part 2 runs 550 s against a 287 s video on the default A500; not provable from the run"
+video = [287, 287]
+
+[demozoo.27950]  # Control
+expect = "plays"
+note = "the same disk is mirrored under two names, Oxygene-ControlA and control1 (media.py)"
+
+[demozoo.28550]  # Malta Intro
+expect = "plays"
+video = [118, 118]
+
+[demozoo.28552]  # A Pile of Shit
+expect = "plays"
+video = [97, 97]
+
+[demozoo.28707]  # P.Y.T.
+expect = "plays"
+video = [326, 341]
+
+[demozoo.28709]  # Amazed
+expect = "plays"
+cause = "stall"
+note = "both disks are read, then a grey screen and the ROM's idle loop from 72 s: waits for something"
+video = [277, 277]
+
+[demozoo.28714]  # Fire Power
+expect = "plays"
+cause = "detector"
+note = "the music ends at about 118 s, then an end screen whose song loops; the end was put a pass of that song later"
+video = [111, 111]
+
+[demozoo.29334]  # Phunky
+expect = "plays"
+video = [302, 302]
+
+[demozoo.30669]  # Scrimm
+expect = "plays"
+video = [224, 224]
+
+[demozoo.30687]  # Dark Helmets
+expect = "plays"
+video = [238, 272]
+
+[demozoo.31577]  # Boogietown
+expect = "plays"
+video = [186, 186]
+
+[demozoo.31649]  # Leap of Faith
+expect = "plays"
+video = [269, 269]
+
+[demozoo.31854]  # Memories
+expect = "plays"
+video = [155, 155]
+
+[demozoo.31914]  # Embraced
+expect = "plays"
+cause = "launcher"
+note = "runs FLP-EMBRACED.001 alone; FLP-EMBRACED.EXE chains .001 and .002"
+video = [429, 429]
+
+[demozoo.32292]  # Cyclotron
+expect = "plays"
+video = [177, 177]
+
+[demozoo.32303]  # Smells Like Lame Spirit
+expect = "plays"
+cause = "bbs-ad"
+note = "runs a BBS advert viewer, which ends in 'task held' at 7 s; the intro is 4k-compo/DinxProject/dxp4kAGA"
+video = [210, 210]
+
+[demozoo.32369]  # Darkside
+expect = "plays"
+video = [301, 301]
+
+[demozoo.32535]  # Second World
+expect = "plays"
+video = [340, 340]
+
+[demozoo.32581]  # Hardcore
+expect = "plays"
+cause = "bbs-ad"
+note = "runs a BBS advert viewer, which ends in 'task held' at 7 s; the demo is GODS-Hardcore/HardCORE.exe"
+video = [195, 195]
+
+[demozoo.32582]  # Fraction
+expect = "plays"
+video = [431, 431]
+
+[demozoo.32583]  # Mind Traveller
+expect = "plays"
+cause = "bbs-ad"
+note = "runs a BBS advert viewer, which ends in 'task held' at 7 s; the demo is LED-Mindtraveller/mindtraveller.exe"
+video = [230, 230]
+
+[demozoo.35129]  # Episode
+expect = "plays"
+cause = "bbs-ad"
+note = "runs a BBS advert viewer, which ends in 'task held' at 7 s; the demo is started by the script episode/Episode.exe"
+video = [279, 279]
+
+[demozoo.35332]  # Freedom
+expect = "plays"
+video = [85, 85]
+
+[demozoo.35337]  # Repugnance
+expect = "plays"
+video = [378, 378]
+
+[demozoo.35341]  # Wannabe
+expect = "plays"
+video = [515, 515]
+
+[demozoo.36122]  # Tel'Aran'Rhiod (Dreamworld 2)
+expect = "plays"
+cause = "video"
+note = "reaches 'THE END' at 313 s; the video is shorter than the music alone (213 s)"
+video = [180, 180]
+
+[demozoo.36590]  # Painted Eggs aka Eastern Eggs
+expect = "plays"
+cause = "detector"
+note = "the music ends at 131 s over a picture that keeps moving; a period of the picture was added"
+video = [118, 118]
+
+[demozoo.42035]  # Vertus
+expect = "plays"
+video = [496, 496]
+
+[demozoo.42164]  # 7 dni i 7 nocy
+expect = "plays"
+cause = "launcher"
+note = "runs psb-7d7n.e02 alone; psb-7d7n.bat runs .e01 to .e04"
+video = [563, 563]
+
+[demozoo.43289]  # Kill Santa Claus
+expect = "plays"
+video = [96, 96]
+
+[demozoo.43510]  # Limes Inferior
+expect = "plays"
+cause = "machine"
+note = "exits cleanly at 122 s; two captures are 211 s and 225 s, so about 90 s of it is missing"
+video = [211, 225]
+
+[demozoo.44911]  # Megademo $c
+expect = "plays"
+cause = "launcher"
+note = "runs MDCtrad.exe alone, one part of five in Megademo$C.bat; its NFO asks for a 68030 and 8 MB fast"
+video = [753, 753]
+
+[demozoo.45034]  # Megademo III
+expect = "plays"
+note = "takes its disk on a click the run without it does not need (sweep.py)"
+
+[demozoo.45603]  # 865163186pe
+expect = "plays"
+video = [429, 429]
+
+[demozoo.46968]  # November Light
+expect = "plays"
+cause = "bbs-ad"
+note = "runs a BBS advert viewer, which ends in 'task held' at 7 s; the demo is ssp_novemberlight/SSP_NovemberLight.exe"
+video = [277, 277]
+
+[demozoo.48220]  # Exodus
+expect = "plays"
+video = [414, 414]
+
+[demozoo.52177]  # Lom
+expect = "plays"
+video = [97, 97]
+
+[demozoo.59869]  # Starslug
+expect = "plays"
+video = [226, 226]
+
+[demozoo.61927]  # Humus 3
+expect = "plays"
+video = [167, 174]
+
+[demozoo.63622]  # Mime!
+expect = "plays"
+cause = "machine"
+note = "Mime!_030.exe on a 68020: its own error screen says illegal instruction at 45 s"
+video = [197, 197]
+
+[demozoo.63791]  # Wicked Sensation
+expect = "plays"
+cause = "machine"
+note = "no machine in the entry: after the swap part B freezes at 159 s on 'ILLEGAL OPCODE' on a 68000"
+video = [660, 660]
+
+[demozoo.67462]  # Humus 4
+expect = "plays"
+video = [188, 188]
+
+[demozoo.69970]  # Megademo
+expect = "plays"
+note = "reboots at its end, after reaching disk 2 (sweep.py)"
+
+[demozoo.70672]  # Noxzema
+expect = "plays"
+cause = "assign"
+note = "noxzema run without the assign of !noxzema.script (assign Noxzema: \"\"): black screen from 5 s"
+video = [463, 463]
+
+[demozoo.72054]  # Do You Believe?
+expect = "plays"
+video = [315, 315]
+
+[demozoo.79280]  # 4CK
+expect = "plays"
+video = [64, 64]
+
+[demozoo.81807]  # Norwegian Pillow
+expect = "plays"
+video = [188, 188]
+
+[demozoo.85900]  # Ghost In The Shell
+expect = "plays"
+cause = "launcher"
+note = "runs GhostInTheShell.exe alone; the script GhostInTheShell runs the .dat after it"
+video = [133, 210]
+
+[demozoo.88979]  # BetaMAX
+expect = "plays"
+video = [221, 221]
+
+[demozoo.89040]  # Wayfarer 2
+expect = "plays"
+video = [633, 633]
+
+[demozoo.89547]  # Artificial Paradise
+expect = "plays"
+cause = "stall"
+note = "black screen and a tight loop from 172 s; disk B sits in DF1 and the entry has no swap"
+video = [846, 846]
+
+[demozoo.89548]  # It Can't Be Done
+expect = "plays"
+video = [388, 388]
+
+[demozoo.89609]  # Fashion
+expect = "plays"
+video = [281, 281]
+
+[demozoo.92775]  # Overhead
+expect = "plays"
+video = [304, 304]
+
+[demozoo.95416]  # Shattered
+expect = "plays"
+video = [132, 132]
+
+[demozoo.96279]  # Demon Download
+expect = "plays"
+cause = "swap"
+note = "runs to 696 s, then Kickstart's insert-disk screen: probably wants disk A back"
+video = [1036, 1036]
+
+[demozoo.96388]  # As Time Goes By
+expect = "plays"
+video = [141, 141]
+
+[demozoo.96568]  # Batman Vuelve
+expect = "plays"
+video = [431, 431]
+
+[demozoo.103499]  # Big Time Sensuality
+expect = "plays"
+video = [856, 856]
+
+[demozoo.108960]  # Jesus Stole My Jelly Beans
+expect = "plays"
+cause = "detector"
+note = "music from the CLI window: the song loops at 193 s, as the video; stray reads moved the end to 785 s"
+video = [193, 193]
+
+[demozoo.113574]  # Materialized
+expect = "plays"
+cause = "stall"
+note = "black and silent from 18 s; the entry runs Materie.Music, a music file, on the default machine"
+video = [571, 571]
+
+[demozoo.119622]  # The Animatunes
+expect = "plays"
+cause = "input"
+note = "'Hidden Boot' asks for the left or the right button at 8.5 s and waits through the swap"
+video = [546, 546]
+
+[demozoo.124377]  # Octorubber
+expect = "plays"
+video = [79, 79]
+
+[demozoo.127527]  # Dunne Lul
+expect = "plays"
+video = [90, 90]
+
+[demozoo.130802]  # Biz-R
+expect = "plays"
+video = [108, 108]
+
+[demozoo.133265]  # Legalize It #4
+expect = "plays"
+video = [79, 79]
+
+[demozoo.139109]  # Hallucinations And Dreams
+expect = "plays"
+video = [301, 333]
+
+[demozoo.139135]  # The Terminator
+expect = "plays"
+video = [571, 571]
+
+[demozoo.140222]  # Solectron
+expect = "plays"
+cause = "detector"
+note = "the show ends at 340 s on a black screen with the song looping; the end was put a pass of the song later"
+video = [345, 345]
+
+[demozoo.140969]  # 4k Intro
+expect = "plays"
+cause = "bbs-ad"
+note = "runs a BBS advert viewer, which ends in 'task held' at 7 s, on the default machine"
+video = [61, 61]
+
+[demozoo.142850]  # Scored
+expect = "plays"
+video = [173, 173]
+
+[demozoo.145058]  # JorMasTurbo 24 The Terminus Gabber
+expect = "plays"
+video = [241, 241]
+
+[demozoo.148840]  # Instinct
+expect = "plays"
+cause = "download"
+note = "Instinct.Exe calls Anim.exe, which is in a second archive the download lacks: 'object not found' at 63 s"
+video = [347, 347]
+
+[demozoo.151386]  # Impact
+expect = "plays"
+cause = "stall"
+note = "frozen on a plasma frame from 88 s, every task waiting; its readme asks for a 68040 with FPU"
+video = [287, 287]
+
+[demozoo.151500]  # Time Zone
+expect = "plays"
+video = [601, 601]
+
+[demozoo.153486]  # Optikal
+expect = "plays"
+cause = "launcher"
+note = "runs part2 alone; start_low runs Inhale.exe, part2 and Exhale.exe"
+video = [225, 225]
+
+[demozoo.153579]  # Grade My Waterbear
+expect = "plays"
+cause = "detector"
+note = "no new code after 117 s, then it loops; the song (175 s) is longer than the production"
+video = [135, 135]
+
+[demozoo.155228]  # 120 Hours
+expect = "plays"
+cause = "start"
+note = "exits at 135.5 s after a silent 40 s load; the video starts where the demo does"
+video = [95, 95]
+
+[demozoo.163844]  # Determination
+expect = "plays"
+cause = "bbs-ad"
+note = "runs a BBS advert viewer, which ends in 'task held' at 7 s; the demo is Mystic/Determination"
+video = [296, 296]
+
+[demozoo.164759]  # Rayworld
+expect = "plays"
+video = [415, 415]
+
+[demozoo.170685]  # Unstable Traktor
+expect = "plays"
+video = [208, 208]
+
+[demozoo.170898]  # Catabasis
+expect = "plays"
+video = [233, 233]
+
+[demozoo.171972]  # Impulse 2
+expect = "plays"
+video = [622, 658]
+
+[demozoo.174753]  # Lurking Shadows
+expect = "plays"
+video = [419, 419]
+
+[demozoo.178169]  # Liars
+expect = "plays"
+cause = "swap"
+note = "'INSERT DISK ONE' at 392 s; the entry has no swap back to disk 1"
+video = [886, 886]
+
+[demozoo.178955]  # Des-Bill
+expect = "plays"
+cause = "launcher"
+note = "runs MorphY.Exe alone, the last of the chain its 'start' script runs"
+video = [426, 426]
+
+[demozoo.180128]  # The Saturne Day
+expect = "plays"
+cause = "swap"
+note = "asks for disk 2 at about 70 s; the inserts at 105 s and 180 s are never read"
+video = [477, 477]
+
+[demozoo.185607]  # The Fall
+expect = "plays"
+cause = "input"
+note = "black and still from 137 s in a two-instruction wait loop, the music looping"
+video = [491, 491]
+
+[demozoo.191784]  # Podtekst
+expect = "plays"
+note = "resets the machine at its end and plays again (verdict.py)"
+
+[demozoo.193230]  # We Saw The King
+expect = "plays"
+cause = "machine"
+note = "AGA only by its own text; on a500_1mb a requester says so and only the soundtrack plays"
+video = [70, 70]
+
+[demozoo.194634]  # The Last Sun
+expect = "plays"
+cause = "input"
+note = "boots to a menu: F1, F2, and F3 for The Last Sun; nothing is pressed"
+video = [261, 261]
+
+[demozoo.202830]  # De Profundis
+expect = "plays"
+video = [751, 751]
+
+[demozoo.202831]  # Eon
+expect = "plays"
+video = [348, 364]
+
+[demozoo.205175]  # Miami Vice Theme
+expect = "plays"
+video = [316, 326]
+
+[demozoo.210448]  # Vertex
+expect = "plays"
+video = [303, 303]
+
+[demozoo.210975]  # First Demo on Amiga
+expect = "plays"
+cause = "input"
+note = "the cracktro asks 'EXTRA MEMORY installed - turn it off? YES/NO' at 5 s"
+video = [339, 354]
+
+[demozoo.219777]  # First Demo
+expect = "plays"
+cause = "detector"
+note = "reaches its last loop, a scroller, at 266 s; silent from 19 s, and the end was taken from the music"
+video = [270, 270]
+
+[demozoo.221151]  # Freedom
+expect = "plays"
+video = [736, 736]
+
+[demozoo.221158]  # Soho
+expect = "plays"
+note = "disks 2 and 3 both go in DF1 (emulator.py)"
+
+[demozoo.221372]  # Mathik
+expect = "plays"
+cause = "swap"
+note = "'Change Disk' at about 380 s; the insert at 405 s is never noticed"
+video = [1200, 1200]
+
+[demozoo.224067]  # Guardian Snail
+expect = "plays"
+note = "of the Kickstart 1.2 era: Gurus on a machine whose CLI task is elsewhere (machines.py)"
+
+[demozoo.227338]  # First Fucking Intro
+expect = "plays"
+cause = "launcher"
+note = "runs FIRST.exe alone; RunMe runs FIRST.exe, then THEEND.exe"
+video = [405, 405]
+
+[demozoo.234183]  # Another Cool Pack intro
+expect = "plays"
+cause = "partial-loop"
+note = "the song loops at 161 s under a scroller not finished in 900 s; the video is a cut of an endless intro"
+video = [271, 271]
+
+[demozoo.242098]  # My Mama Is a Vampire
+expect = "plays"
+cause = "stall"
+note = "blank grey screen and silence from 355 s, after two parts; a third part or disk B is awaited"
+video = [851, 851]
+
+[demozoo.247703]  # 21 Years of Blomsterleif
+expect = "plays"
+video = [92, 92]
+
+[demozoo.247808]  # Remix
+expect = "plays"
+video = [179, 179]
+
+[demozoo.252212]  # The Halberd Intro
+expect = "plays"
+cause = "detector"
+note = "the song repeats every 218 s; the longer loop of the scroller was taken instead"
+video = [194, 194]
+
+[demozoo.257354]  # Megademo 2
+expect = "plays"
+note = "its credits page only moves on Return, then it wants disk 2 (sweep.py)"
+
+[demozoo.263553]  # Cubic Dream
+expect = "plays"
+note = "resets the machine itself while it boots (verdict.py)"
+
+[demozoo.272702]  # Checkerboard Madness
+expect = "plays"
+video = [222, 222]
+
+[demozoo.274566]  # 1992
+expect = "plays"
+cause = "machine"
+note = "untested below a 68060 by its readme; falls into ROM at 25 s on a 68030. The entry also runs mainpart.exe alone, runme.bat an end part after it"
+video = [383, 383]
+
+[demozoo.274772]  # Bonus Stage #75
+expect = "plays"
+video = [122, 122]
+
+[demozoo.277281]  # Boozedrome III
+expect = "plays"
+cause = "start"
+note = "exits at 57 s after a 33 s load; the video starts where the demo does"
+video = [34, 34]
+
+[demozoo.292290]  # Boozedrome IV
+expect = "plays"
+video = [105, 105]
+
+[demozoo.300933]  # Acid O'Zine
+expect = "plays"
+video = [112, 112]
+
+[demozoo.306967]  # Ramontic Getaway
+expect = "plays"
+video = [171, 171]
+
+[demozoo.307335]  # Blood
+expect = "plays"
+video = [94, 94]
+
+[demozoo.307934]  # Grogon Meets uN aMOr
+expect = "plays"
+video = [239, 239]
+
+[demozoo.310453]  # Waffles of Math Construction
+expect = "plays"
+video = [208, 212]
+
+[demozoo.311758]  # Primer
+expect = "plays"
+video = [158, 158]
+
+[demozoo.316180]  # Batman Rises
+expect = "plays"
+video = [502, 502]
+
+[demozoo.317487]  # Spinotic
+expect = "plays"
+note = "reads nothing from a writable disk and falls through to a Guru (emulator.py)"
+
+[demozoo.317579]  # mhm-hny2023
+expect = "plays"
+cause = "machine"
+note = "the screen stays black while the music plays; file_id.diz asks for an A1200 with 8 MB and a 68040 or 68060"
+video = [66, 66]
+
+[demozoo.322614]  # 1% AiDS
+expect = "plays"
+cause = "detector"
+note = "the music is over at 171 s and the last new code at 184 s; a false song loop gave 662 s"
+video = [194, 194]
+
+[demozoo.368841]  # ST#17 Intro
+expect = "plays"
+video = [84, 84]
+
+[demozoo.371365]  # Lambings
+expect = "plays"
+video = [71, 71]
+
+[demozoo.371374]  # 3D Demo 3: The Last Drop
+expect = "plays"
+video = [330, 686]
+
+[demozoo.372601]  # Cyboman 7
+expect = "plays"
+cause = "detector"
+note = "the greets loop is entered at about 438 s; a later wrap of its scroller was taken as the end"
+video = [351, 351]
+
+[demozoo.376979]  # DlukS
+expect = "plays"
+video = [163, 163]

@@ -8,6 +8,7 @@
     python3 -m scenemeta amiga gate --ids ... [--jobs N]
     python3 -m scenemeta amiga gate-summary
     python3 -m scenemeta amiga gate-stale
+    python3 -m scenemeta amiga corpus [--jobs N]
     python3 -m scenemeta amiga shots --out DIR [--ids ...] [--jobs N]
     python3 -m scenemeta amiga migrate [scene.db]
 """
@@ -16,8 +17,9 @@ import os
 import sys
 
 from ..core import cli
-from . import (catalog, classes, config, export, fetch, gate, media, migrate,
-               replay, shots, store, sweep)
+from . import (catalog, classes, config, corpus, export, fetch, gate, media,
+               migrate, replay, shots, store, sweep)
+from ..core.corpus import Invalid
 from ..core.errors import CannotPlay
 
 
@@ -41,6 +43,9 @@ def main(argv=None):
                    " saw to the checked-in file")
     sub.add_parser("gate-stale", help="the entries whose download or player"
                    " changed since the gate saw them")
+    p = sub.add_parser("corpus", help="gate the corpus and write the"
+                       " checked-in scoreboard")
+    p.add_argument("--jobs", type=int)
     p = sub.add_parser("shots", help="screenshots of the entries Demozoo has"
                        " none of")
     p.add_argument("--out", default=os.environ.get("SCENEMETA_SHOTS"),
@@ -54,6 +59,8 @@ def main(argv=None):
         return _command(args)
     except CannotPlay as e:
         sys.exit(f"scenemeta amiga {args.cmd}: {e}")
+    except Invalid as e:
+        sys.exit(f"{config.CORPUS}:\n{e}")
 
 
 def _command(args):
@@ -83,6 +90,8 @@ def _command(args):
             print(f"wrote {gate.write_summary(db)}")
         elif args.cmd == "gate-stale":
             gate.stale(db)
+        elif args.cmd == "corpus":
+            return min(1, corpus.run(db, jobs=args.jobs))
     finally:
         db.close()
 

@@ -14,4 +14,4 @@ jobs:
         with:
           python-version: "3.11"
       - run: python3 -m scenemeta.validate
-      - run: python3 -m unittest tests.test_merge tests.test_validate
+      - run: python3 -m unittest tests.test_merge tests.test_validate tests.core.test_corpus tests.amiga.test_corpus

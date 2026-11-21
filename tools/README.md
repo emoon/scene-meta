@@ -30,6 +30,7 @@ found into `data/<platform>` (see `../docs/DESIGN.md`).
 | `core/result.py` | the records a platform reports: `Variant`, `Run`, `Swap` |
 | `core/gate.py` | the record a platform's player returns of a run (`Play`) and the gate: the runs to make of an entry (several seeds, the disks late, each key left out) and pass or fail of them, with a reason |
 | `core/gatelog.py` | what the gate saw of each entry, a record per entry and seed: the summary of counts that is checked in, and the entries to gate again |
+| `core/corpus.py` | a platform's corpus, productions with the outcome expected of them, and the scoreboard of the gate over it that is checked in |
 | `core/store.py` | the sweep log: `production`, `variant`, `run`, `swap`, and the `best` view; the gate's log, `gate` |
 | `core/sweep.py` | the sweep driver: worker processes, resume, storing, progress |
 | `core/export.py` | reads the chosen run of each variant and merges entries into the data files |
