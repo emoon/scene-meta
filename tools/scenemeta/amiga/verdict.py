@@ -237,7 +237,8 @@ def swaps(log):
     """The disk changes the run performed, in order: ``[(frame, disk, how)]``
     where ``how`` is the detector trigger (poll | idle | reread), or
     "scheduled" for an insert at a fixed frame that the demo then read, plus
-    ``+click`` when a mouse click was needed to make the demo take the disk.
+    ``+click`` when the detector clicked the left mouse button for the demo
+    to take the disk, and ``+rclick`` when it then clicked the right one.
     Inserts the demo refused (rolled back) are dropped."""
     out, trigger = [], "poll"
     for e in log.events:
@@ -257,6 +258,8 @@ def swaps(log):
                 out.append([e.get("frame"), e.get("disk"), "scheduled"])
         elif ev == "autoswap-click" and out:
             out[-1][2] += "+click"
+        elif ev == "autoswap-click-right" and out:
+            out[-1][2] += "+rclick"
         elif ev == "autoswap-rollback" and out:
             # The demo refused the disk and got its old one back.
             out.pop()

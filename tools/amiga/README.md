@@ -47,13 +47,22 @@ Disk sets are formed from file names (`../scenemeta/amiga/diskset.py`: `DemoA`/`
 `-1`/`-2`, `disk1`, `d2`, ...). Disk 1 boots in DF0, the rest go on the swap
 list, and the emulator's swap-wait detector inserts the next disk when the
 demo waits for it (CIA /CHNG polling with the drive idle, or a silent prompt;
-a mouse click is pressed if the new disk is not picked up). A run chosen with
-such a click is run once more with nothing pressed from that insert on, and
-the click is only kept when that run falls short: a disk that is slow to
-load gets clicked too. Each
+the left mouse button is clicked if the new disk is not picked up, then the
+right one). Each
 insert is stored with its time in `swap`. A multi-disk run that goes quiet with disks
 left to insert is retried with the idle trigger's head-position gate off
 (`anycyl`).
+
+A run also presses keys nobody asked for: the detector's clicks (a disk
+that is slow to load gets clicked too), a click after each scheduled insert,
+and on the retries a click, or Return, Space and fire in turn, every 30 s.
+So when the chosen run of a machine pressed anything, the player
+(`../scenemeta/amiga/player.py`) plays the entry of it: first with no key,
+then with one more of the run's presses at a time, the nearest to where it
+falls short first, and a press is kept only when the run without it got
+less far (as the gate measures it). The presses kept are the swap's `key`
+and the run's `keys`; at most 12 such runs are made. A press that only
+counts with a later one is not found (Megademo 2 takes Return twice).
 
 `scenemeta fetch` downloads set members the NAS mirror is missing (it keeps one
 file per production) from files.scene.org into the production's NAS dir.
@@ -83,7 +92,8 @@ The sweep's own log is `amiga/scene.db` (sqlite, the shared schema of
 `../scenemeta/core/store.py`, times in seconds). The `best` view gives one row
 per variant: the chosen machine, its verdict, and its swaps as
 `seconds:disk:trigger` (trigger `poll`, `idle`, `reread` or `scheduled`,
-`+click` when a click was needed; the click is also the swap's `key`).
+`+click` and `+rclick` when the detector clicked; a swap's `key` is only the
+press it was shown to need).
 
 `export` (`../scenemeta/amiga/export.py`) merges that into the data files people edit,
 `data/amiga/*.toml` (format: `docs/DESIGN.md`). Each
@@ -100,8 +110,8 @@ was loaded. The playing is done by the player (`../scenemeta/amiga/player.py`),
 the only code that turns an entry and its download into an emulator run;
 `shots` goes through it too. An entry with keys on its swaps is played once
 more without them, which shows whether the keys are needed. Without `--ids`
-it plays every entry that has a key on a swap. Left mouse button only so far, and
-swapped disks always go into DF0.
+it plays every entry that has a key on a swap. The keys are `lmb`, `rmb`,
+`return`, `space`, `p1fire` and `p2fire`; swapped disks always go into DF0.
 
 `gate` (`../scenemeta/amiga/gate.py`) prints `pass` or `fail` with the
 reason, one line per production of `--ids`. The rules are the core's
@@ -158,8 +168,8 @@ file changes only when a result does. What the gate saw goes into `scene.db`
 as for `gate`.
 
 An entry that cannot be played is an error, not a result: no ROM for its
-machine, no media, a machine the player does not have, a key other than
-`lmb`, or `boot`, `disks` and `run` that fit none of the download's variants
+machine, no media, a machine the player does not have, a key it has no
+name for, or `boot`, `disks` and `run` that fit none of the download's variants
 or more than one of them (never another variant in the entry's place). The
 variants are the ones the sweep runs, its fallbacks included, and `run`
 names the file to start whatever the sweep would pick today. The line says

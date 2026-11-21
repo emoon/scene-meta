@@ -18,7 +18,6 @@ from .machines import FPS
 # saw by another version is seen again (see core.gatelog.stale).
 VERSION = "2"
 KEY_DELAY = 5.0      # seconds from an insert to its key, when not given
-BUTTONS = {"lmb": 0}
 # Keep going this long after the last insert or key, to see the disk load.
 TAIL_FRAMES = emulator.AUTOSWAP_TAIL_FRAMES
 # An entry with no swaps or keys is watched this long.
@@ -138,18 +137,19 @@ def actions(entry, keys=True):
         out.append((frame, "insert", swap["disk"] - first))
         if "key" in swap and keys:
             delay = swap.get("key_delay", KEY_DELAY)
-            out.append((frame + round(delay * FPS), "click",
-                        _button(swap["key"])))
+            out.append((frame + round(delay * FPS), "press",
+                        _key(swap["key"])))
     if keys:
-        out += [(round(k["at"] * FPS), "click", _button(k["key"]))
+        out += [(round(k["at"] * FPS), "press", _key(k["key"]))
                 for k in entry.get("keys", [])]
     return sorted(out)
 
 
-def _button(key):
-    if key not in BUTTONS:
-        raise BadEntry(f"no way to press key {key!r}")
-    return BUTTONS[key]
+def _key(key):
+    if key not in emulator.KEYS:
+        raise BadEntry(f"no way to press key {key!r}: the keys are "
+                       + ", ".join(emulator.KEYS))
+    return key
 
 
 def frames_of(entry):

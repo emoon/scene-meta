@@ -109,7 +109,9 @@ def _key(entry, k):
                                 else f"of disk {item['disk']}")
 
 
-def _far(play):
+def far(play):
+    """How far a run got, to set against another run of the same entry: a
+    key is needed when the run without it got less far."""
     return (play.ran, sum(s.loaded for s in play.swaps), not play.crash,
             play.far)
 
@@ -125,7 +127,7 @@ def _fault(entry, plays, seed):
         if not said.passed:
             return f"with the disks put in {LATE:g} s later, {said.reason}"
     for k in range(len(keys_of(entry))):
-        if _far(plays[Run(seed, without=k)]) >= _far(written):
+        if far(plays[Run(seed, without=k)]) >= far(written):
             return f"key not needed: {_key(entry, k)}"
     return None
 

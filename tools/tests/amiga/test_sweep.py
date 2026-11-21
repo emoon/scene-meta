@@ -1,3 +1,4 @@
+import dataclasses
 import pathlib
 import tempfile
 import types
@@ -7,6 +8,8 @@ from unittest import mock
 
 from scenemeta.amiga import emulator, machines, media, player, sweep, verdict
 from scenemeta.amiga.emulator import RunLog, Sample
+from scenemeta.amiga.sweep import Press
+from scenemeta.core import gate
 from scenemeta.core.errors import CannotPlay
 
 
@@ -150,7 +153,12 @@ class KeyRetryTest(unittest.TestCase):
                 RunLog(samples, [], 0, False, ""), [],
                 click_every=kw.get("click_every", 0),
                 key_every=kw.get("key_every", 0))
-        with mock.patch.object(sweep, "attempt", fake):
+        def played(m, variant, entry, seed):
+            return dataclasses.replace(fake(m, variant, 9000),
+                                       play=gate.Play(False))
+
+        with mock.patch.object(sweep, "attempt", fake), \
+                mock.patch.object(sweep, "played", played):
             tries = sweep.try_machine(machines.BY_NAME["a500"],
                                       media.Variant("floppy", ["a.adf"]), 9000)
         return seen, tries
@@ -211,82 +219,166 @@ class TryMachineTest(unittest.TestCase):
         self.assertTrue(any(kw.get("drives") == 2 for kw in calls), calls)
 
 
-class ClickNeededTest(unittest.TestCase):
-    """A swap's click is only kept when the run without it falls short."""
+class NeededPressesTest(unittest.TestCase):
+    """The best attempt is played as its entry, with only the presses the
+    run without got less far."""
 
-    def run_try(self, without_click):
-        calls = []
+    SET = media.Variant("floppy", ["a.adf", "b.adf"])
 
-        def played(swaps, reached=2):
-            return sweep.Attempt("a500", 9000, verdict.Verdict("works", 20),
-                                 RunLog([], [], 0, False, ""), swaps,
-                                 reached=reached)
+    def run_try(self, swaps, far, variant=SET, nudge=None, alive_from=250,
+                **best):
+        """try_machine with the detector's runs working, with ``swaps`` and
+        the fields ``best``, alive from frame ``alive_from``: all of them,
+        or only those with the retry ``nudge`` (click_every, key_every).
+        The player's runs get as far as ``far(entry)`` says, a gate.Play.
+        Returns the entry of each run the player made, and the tries."""
+        entries = []
+
+        def samples(alive):
+            return [Sample(frame=f, pc=0, bplcon0=0, resets=0, df0="",
+                           shot="s", dmacon=0x20F if alive and f >= alive_from
+                           else 0x200) for f in range(250, 3250, 250)]
 
         def fake(m, variant, frames, **kw):
-            calls.append(kw)
-            if kw.get("swap_click", True):
-                return played([(26845, 2, "poll+click")])
-            return without_click(played)
+            ok = bool(nudge is None or kw.get(nudge))
+            return sweep.Attempt(
+                "a500", 72000,
+                verdict.Verdict("works" if ok else "no-activity", 20 * ok),
+                RunLog(samples(ok), [], 0, False, ""),
+                list(swaps) if ok else [], reached=len(variant.disks) * ok,
+                click_every=kw.get("click_every", 0),
+                key_every=kw.get("key_every", 0), **best)
 
-        v = media.Variant("floppy", ["a.adf", "b.adf"])
-        with mock.patch.object(sweep, "attempt", fake):
-            tries = sweep.try_machine(machines.BY_NAME["a500"], v, 72000)
-        return calls, tries
+        def played(m, variant, entry, seed):
+            entries.append(entry)
+            play = far(entry)
+            return sweep.Attempt(
+                "a500", 9000,
+                verdict.Verdict("works" if play.ran else "no-activity", 20),
+                RunLog([], [], 0, False, ""), [], play=play)
+
+        with mock.patch.object(sweep, "attempt", fake), \
+                mock.patch.object(sweep, "played", played):
+            tries = sweep.try_machine(machines.BY_NAME["a500"], variant, 72000)
+        return entries, tries
+
+    @staticmethod
+    def loads(when):
+        """A run that comes alive and loads each swap ``when(swap, keys)``
+        says."""
+        return lambda entry: gate.Play(True, swaps=tuple(
+            gate.SwapTaken(s["disk"], bool(when(s, entry["keys"])))
+            for s in entry["swaps"]))
 
     def test_disk_that_loads_without_the_click(self):
         # Desert Dream reads disk 2 slowly, from its low cylinders: the
         # detector clicks 5 s after the insert, and the load that follows
         # looks like the click's doing. Without the click it loads the same.
-        calls, tries = self.run_try(lambda played: played([(26845, 2, "poll")]))
-        self.assertEqual(calls, [{}, {"swap_click": False, "nudge_until": 26845,
-                                      "seed": emulator.DEFAULT_SEED}])
-        self.assertEqual(tries[-1].swaps, [(26845, 2, "poll")])
+        entries, tries = self.run_try([(26845, 2, "poll+click")],
+                                      self.loads(lambda s, keys: True))
+        self.assertEqual(entries, [{
+            "drives": 1, "disks": ["a.adf", "b.adf"], "keys": [],
+            "swaps": [{"disk": 2, "at": 536.9}]}])
+        self.assertEqual((tries[-1].swaps, tries[-1].presses, tries[-1].reached),
+                         ([(26845, 2, "poll+click")], (), 2))
+        self.assertIsNone(tries[-1].record().swaps[0].key)
 
     def test_disk_that_waits_for_the_click(self):
         # Odyssey: "insert disk 2 and press left mouse button".
-        _, tries = self.run_try(lambda played: played([], reached=1))
-        self.assertEqual(tries[-1].swaps, [(26845, 2, "poll+click")])
-        self.assertEqual(len(tries), 2)
+        entries, tries = self.run_try([(26845, 2, "poll+click")],
+                                      self.loads(lambda s, keys: "key" in s))
+        self.assertEqual([e["swaps"] for e in entries], [
+            [{"disk": 2, "at": 536.9}],
+            [{"disk": 2, "at": 536.9, "key": "lmb", "key_delay": 5.0}]])
+        self.assertEqual(tries[-1].presses, (Press(27095, "lmb", 0),))
+        swap, = tries[-1].record().swaps
+        self.assertEqual((swap.key, swap.key_at), ("lmb", 541.9))
+        self.assertEqual(len(tries), 3)
 
-    def test_run_that_also_clicks_every_30_s(self):
-        # Megademo III only asks for disk 2 on the retry that clicks every
-        # 30 s. Its disk goes in at 4028 and the next such click falls at
-        # 4500: the run without the swap click must not make that one
-        # either, or it shows nothing.
-        calls = []
+    def test_disk_taken_on_the_right_button_only(self):
+        # Lethal Dose 2: the detector's left click does nothing, its right
+        # one, 5 s on, has the disk taken.
+        entries, tries = self.run_try(
+            [(4000, 2, "poll+click+rclick")],
+            self.loads(lambda s, keys: s.get("key") == "rmb"))
+        self.assertEqual([e["swaps"][0].get("key") for e in entries],
+                         [None, "lmb", "rmb"])
+        self.assertEqual(tries[-1].presses, (Press(4500, "rmb", 0),))
+        self.assertEqual(entries[-1]["swaps"][0]["key_delay"], 10.0)
 
-        def fake(m, variant, frames, **kw):
-            calls.append(kw)
-            got = kw.get("click_every") and kw.get("swap_click", True)
-            return sweep.Attempt(
-                "a500", 9000, verdict.Verdict("works", 20),
-                RunLog([], [], 0, False, ""),
-                [(4028, 2, "poll+click")] if got else [],
-                reached=2 if got else 1,
-                click_every=kw.get("click_every", 0))
+    def test_key_before_the_disk_is_asked_for(self):
+        # Megademo 2: its credits page only moves on Return, then it wants
+        # disk 2. Of the keys pressed in turn every 30 s the nearest to the
+        # insert are tried first.
+        entries, tries = self.run_try(
+            [(6100, 2, "poll")], nudge="key_every",
+            far=self.loads(lambda s, keys: any(
+                k["key"] == "return" and k["at"] < s["at"] for k in keys)))
+        self.assertEqual([e["keys"] for e in entries], [
+            [], [{"at": 120.0, "key": "return"}]])
+        self.assertEqual(tries[-1].presses, (Press(6000, "return"),))
+        key, = tries[-1].record().keys
+        self.assertEqual((key.at, key.key), (120.0, "return"))
 
-        v = media.Variant("floppy", ["a.adf", "b.adf"])
-        with mock.patch.object(sweep, "attempt", fake):
-            tries = sweep.try_machine(machines.BY_NAME["a500"], v, 72000)
-        again = [kw for kw in calls if not kw.get("swap_click", True)]
-        self.assertEqual(len(again), 1)
-        self.assertEqual(again[0]["click_every"], sweep.CLICK_EVERY)
-        self.assertEqual(again[0]["nudge_until"], 4028)
-        self.assertEqual(tries[-1].swaps, [(4028, 2, "poll+click")])
+    def test_a_press_that_gets_no_further_is_not_kept(self):
+        # Space at 150 s is nearer the insert than the Return that counts.
+        entries, tries = self.run_try(
+            [(7400, 2, "poll")], nudge="key_every",
+            far=self.loads(lambda s, keys: any(
+                k["key"] == "return" and k["at"] < s["at"] for k in keys)))
+        self.assertEqual([[k["key"] for k in e["keys"]] for e in entries],
+                         [[], ["space"], ["return"]])
+        self.assertEqual(tries[-1].presses, (Press(6000, "return"),))
 
-    def test_no_click_no_second_run(self):
-        calls = []
+    def test_click_that_starts_it(self):
+        # "HIT MOUSE!": alive from 35 s on the retry that clicks every 30 s.
+        entries, tries = self.run_try(
+            [], lambda entry: gate.Play(bool(entry["keys"])),
+            variant=media.Variant("floppy", ["a.adf"]),
+            nudge="click_every", alive_from=1750)
+        self.assertEqual([e["keys"] for e in entries],
+                         [[], [{"at": 30.0, "key": "lmb"}]])
+        self.assertEqual(tries[-1].presses, (Press(1500, "lmb"),))
 
-        def fake(m, variant, frames, **kw):
-            calls.append(kw)
-            return sweep.Attempt("a500", 9000, verdict.Verdict("works", 20),
-                                 RunLog([], [], 0, False, ""),
-                                 [(4000, 2, "poll")], reached=2)
+    def test_a_run_the_player_does_not_repeat_stays_with_what_was_kept(self):
+        # The click has the disk loaded, and the run then crashes.
+        def far(entry):
+            return gate.Play(True, "alert:00000004" if "key" in entry["swaps"][0]
+                             else None,
+                             (gate.SwapTaken(2, "key" in entry["swaps"][0]),))
+        entries, tries = self.run_try([(26845, 2, "poll+click")], far)
+        self.assertEqual(len(entries), 2)
+        self.assertIsNone(tries[-1].play)
+        self.assertEqual(tries[-1].presses, (Press(27095, "lmb", 0),))
 
-        v = media.Variant("floppy", ["a.adf", "b.adf"])
-        with mock.patch.object(sweep, "attempt", fake):
-            sweep.try_machine(machines.BY_NAME["a500"], v, 72000)
-        self.assertEqual(calls, [{}])
+    def test_no_more_runs_than_the_limit(self):
+        entries, tries = self.run_try(
+            [(40000, 2, "poll")], self.loads(lambda s, keys: False),
+            nudge="click_every")
+        self.assertEqual(len(entries), 1 + sweep.NEEDED_RUNS)
+        self.assertEqual(tries[-1].presses, ())
+
+    def test_no_press_no_run_of_the_player(self):
+        entries, _ = self.run_try([(4000, 2, "poll")],
+                                  self.loads(lambda s, keys: True))
+        self.assertEqual(entries, [])
+
+    def test_a_disk_in_another_drive_is_not_played(self):
+        entries, _ = self.run_try([(4000, 2, "poll+click")],
+                                  self.loads(lambda s, keys: True), unit=1)
+        self.assertEqual(entries, [])
+
+
+class PressesMadeTest(unittest.TestCase):
+    def test_a_scheduled_insert_s_clicks_follow_its_swap(self):
+        a = sweep.Attempt("a500", 4000, None, None, [(1000, 2, "scheduled")])
+        self.assertEqual(sweep.presses_made(a, {"schedule": [1000]})[:2],
+                         [Press(1250, "lmb", 0), Press(2750, "rmb", 0)])
+
+    def test_the_click_of_an_insert_that_was_not_taken_is_its_own(self):
+        a = sweep.Attempt("a500", 2000, None, None, [])
+        self.assertEqual(sweep.presses_made(a, {"schedule": [1000]}),
+                         [Press(1250, "lmb")])
 
 
 class ClicksOnlyTest(unittest.TestCase):
@@ -304,13 +396,17 @@ class ClicksOnlyTest(unittest.TestCase):
             return sweep.Attempt(
                 "a500", 9000, verdict.Verdict("works-then-crash", 20,
                                               "alert:00000004", 5065),
-                RunLog([], [], 0, False, ""), [(4055, 2, "poll+click")],
-                **{"reached": 1, "seed": 5, **crashed})
+                RunLog([], [], 0, False, ""),
+                **{"swaps": [(4055, 2, "poll+click")], "reached": 1,
+                   "seed": 5, **crashed})
 
         def play(ready, keys=True, keep=None, seed=emulator.DEFAULT_SEED):
             calls.append((ready, seed))
-            return player.Outcome("a500", alone, [],
-                                  RunLog([], [], 0, False, ""))
+            return player.Outcome(
+                "a500", alone, [], RunLog([], [], 0, False, ""),
+                gate.Play(True, alone.crash, tuple(
+                    gate.SwapTaken(s["disk"], True)
+                    for s in ready.entry["swaps"])))
 
         with mock.patch.object(sweep, "attempt", fake), \
                 mock.patch.object(player.Ready, "play", play):
@@ -320,12 +416,15 @@ class ClicksOnlyTest(unittest.TestCase):
     def test_clicks_that_play_are_all_the_production_wants(self):
         calls, tries = self.run_try(verdict.Verdict("works", 20))
         (ready, seed), = calls
-        self.assertEqual(ready.entry, {"keys": [{"at": 86.1, "key": "lmb"}]})
+        self.assertEqual(ready.entry, {
+            "drives": 1, "disks": ["a.adf", "b.adf"], "swaps": [],
+            "keys": [{"at": 86.1, "key": "lmb"}]})
         self.assertEqual((ready.machine.name, ready.variant, seed),
                          ("a500", self.SET, 5))
         best = max(tries, key=lambda a: a.rank)
-        self.assertEqual((best.swaps, best.clicks, best.reached),
-                         ([], (4305,), 2))
+        self.assertIs(best, tries[-1])
+        self.assertEqual((best.swaps, best.presses, best.reached),
+                         ([], (Press(4305, "lmb"),), 2))
         self.assertEqual(best.frames, 4305 + emulator.AUTOSWAP_TAIL_FRAMES)
         self.assertEqual((best.seed, best.log.events),
                          (5, [{"event": "seed", "seed": 5}]))
@@ -341,27 +440,36 @@ class ClicksOnlyTest(unittest.TestCase):
         self.assertEqual((m.name, variant, frames),
                          ("a500", self.SET, 4305 + emulator.AUTOSWAP_TAIL_FRAMES))
         self.assertEqual((opts.play, opts.seed, opts.drives, opts.detects),
-                         (((4305, "click", 0),), 5, 1, False))
+                         (((4305, "press", "lmb"),), 5, 1, False))
         self.assertEqual((a.frames, a.seed, a.drives, a.swaps),
                          (frames, 5, 1, []))
+        self.assertEqual(a.play, gate.Play(False, "no-samples (exit 0)",
+                                           far=-0.02))
+
+    def test_both_clicks_of_the_detector_are_replayed(self):
+        calls, _ = self.run_try(verdict.Verdict("works", 20),
+                                swaps=[(4055, 2, "poll+click+rclick")])
+        self.assertEqual(calls[0][0].entry["keys"], [
+            {"at": 86.1, "key": "lmb"}, {"at": 91.1, "key": "rmb"}])
 
     def test_a_crash_that_read_the_disk_is_still_a_false_swap(self):
         # Megademo III: the loader reads the scrambled disk B before it dies.
         _, tries = self.run_try(verdict.Verdict("works", 20), reached=2)
         best = max(tries, key=lambda a: a.rank)
-        self.assertEqual((best.swaps, best.clicks), ([], (4305,)))
+        self.assertEqual((best.swaps, best.presses), ([], (Press(4305, "lmb"),)))
 
     def test_a_run_with_nudge_clicks_is_replayed_too(self):
         # Megademo III: the crashed run is the one that also nudged.
         _, tries = self.run_try(verdict.Verdict("works", 20), reached=2,
                                 click_every=sweep.CLICK_EVERY)
         best = max(tries, key=lambda a: a.rank)
-        self.assertEqual((best.swaps, best.clicks), ([], (4305,)))
+        self.assertEqual((best.swaps, best.presses), ([], (Press(4305, "lmb"),)))
 
     def test_clicks_that_crash_too_leave_the_swap(self):
         _, tries = self.run_try(verdict.Verdict(
             "works-then-crash", 20, "alert:00000004", 5000))
         self.assertTrue(all(a.record().keys == [] for a in tries))
+        self.assertEqual(tries[-1].swaps, [(4055, 2, "poll+click")])
 
 
 class RungsTest(unittest.TestCase):
@@ -454,8 +562,19 @@ class RecordTest(unittest.TestCase):
              True, 2, 3, b"png"))
         self.assertEqual(r.detail, {"returncode": 3, "events": [{"event": "halt"}]})
         self.assertEqual([(s.disk, s.at, s.trigger, s.key, s.accepted) for s in r.swaps],
-                         [(2, 536.88, "poll+click", "lmb", True),
+                         [(2, 536.88, "poll+click", None, True),
                           (3, 800.0, "idle", None, True)])
+
+    def test_presses_go_with_their_swap_or_on_their_own(self):
+        a = sweep.Attempt("a500", 72000, verdict.Verdict("works", 9),
+                          RunLog([], [], 0, False, ""),
+                          [(26844, 2, "poll"), (40000, 3, "scheduled")],
+                          presses=(Press(6000, "return"),
+                                   Press(40500, "rmb", 1)))
+        r = a.record()
+        self.assertEqual([(s.key, s.key_at) for s in r.swaps],
+                         [(None, None), ("rmb", 810.0)])
+        self.assertEqual([(k.at, k.key) for k in r.keys], [(120.0, "return")])
 
 
 class SetupTest(unittest.TestCase):

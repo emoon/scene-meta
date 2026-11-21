@@ -1361,7 +1361,7 @@ group = "Faculty"
 source = "script"
 machine = "a1200"
 disks = ["Faculty-LethalDose2A.adf", "Faculty-LethalDose2B.adf"]
-swaps = [{ disk = 2, at = 80.0, key = "lmb" }]
+swaps = [{ disk = 2, at = 80.0, key = "rmb" }]
 
 [demozoo.5319]
 title = "Lethal Exit"

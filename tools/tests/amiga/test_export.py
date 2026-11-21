@@ -35,6 +35,16 @@ class EntryTest(unittest.TestCase):
         self.assertEqual(e["swaps"], [{"disk": 2, "at": 536.9, "key": "lmb"},
                                       {"disk": 3, "at": 800.0}])
 
+    def test_key_delay_only_when_the_key_did_not_follow_by_the_usual_5_s(self):
+        e = entry(variant(kind="floppy", disks=["a", "b", "c", "d"], swaps=[
+            Swap(2, 80.0, "poll+click+rclick", key="rmb", key_at=90.0),
+            Swap(3, 536.88, "poll+click", key="lmb", key_at=541.88),
+            Swap(4, 800.0, "scheduled", key="p2fire")]))
+        self.assertEqual(e["swaps"], [
+            {"disk": 2, "at": 80.0, "key": "rmb", "key_delay": 10.0},
+            {"disk": 3, "at": 536.9, "key": "lmb"},
+            {"disk": 4, "at": 800.0, "key": "p2fire"}])
+
     def test_keys_with_no_swap(self):
         v = variant(kind="floppy", disks=["a", "b"])
         v.keys = [Key(86.13, "lmb")]

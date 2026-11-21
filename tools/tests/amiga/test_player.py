@@ -24,7 +24,7 @@ class ActionsTest(unittest.TestCase):
     def test_as_written(self):
         # The key goes down 5 s after its insert.
         self.assertEqual(player.actions(self.ENTRY), [
-            (3305, "insert", 0), (3555, "click", 0), (6000, "insert", 1)])
+            (3305, "insert", 0), (3555, "press", "lmb"), (6000, "insert", 1)])
 
     def test_without_the_keys(self):
         self.assertEqual(player.actions(self.ENTRY, keys=False),
@@ -34,7 +34,7 @@ class ActionsTest(unittest.TestCase):
         entry = {"disks": ["a", "b"],
                  "swaps": [{"disk": 2, "at": 10, "key": "lmb", "key_delay": 1.5}]}
         self.assertEqual(player.actions(entry),
-                         [(500, "insert", 0), (575, "click", 0)])
+                         [(500, "insert", 0), (575, "press", "lmb")])
 
     def test_disks_in_the_other_drives_are_not_on_the_swap_list(self):
         # With two drives disk 3 is the first one swapped in.
@@ -61,17 +61,24 @@ class ActionsTest(unittest.TestCase):
         # No disk goes in; the entry's keys come in time order.
         entry = {"keys": [{"at": 90, "key": "lmb"}, {"at": 10, "key": "lmb"}]}
         self.assertEqual(player.actions(entry),
-                         [(500, "click", 0), (4500, "click", 0)])
+                         [(500, "press", "lmb"), (4500, "press", "lmb")])
         self.assertEqual(player.actions(entry, keys=False), [])
 
     def test_a_key_it_cannot_press_is_an_error_naming_the_key(self):
         entry = {"disks": ["a", "b"],
-                 "swaps": [{"disk": 2, "at": 10, "key": "space"}]}
-        with self.assertRaisesRegex(CannotPlay, "'space'"):
+                 "swaps": [{"disk": 2, "at": 10, "key": "f1"}]}
+        with self.assertRaisesRegex(CannotPlay, "'f1': the keys are lmb, rmb"):
             player.actions(entry)
-        entry = {"keys": [{"at": 10, "key": "return"}]}
-        with self.assertRaisesRegex(CannotPlay, "'return'"):
+        entry = {"keys": [{"at": 10, "key": "Return"}]}
+        with self.assertRaisesRegex(CannotPlay, "'Return'"):
             player.actions(entry)
+
+    def test_every_key_name_on_a_swap_and_of_its_own(self):
+        for key in ("lmb", "rmb", "space", "return", "p1fire", "p2fire"):
+            entry = {"disks": ["a", "b"], "keys": [{"at": 1, "key": key}],
+                     "swaps": [{"disk": 2, "at": 10, "key": key}]}
+            self.assertEqual(player.actions(entry), [
+                (50, "press", key), (500, "insert", 0), (750, "press", key)])
 
 
 class LoadedTest(unittest.TestCase):
@@ -287,7 +294,7 @@ class PlayTest(unittest.TestCase):
         self.assertIs(machine, machines.BY_NAME["a1200"])
         self.assertIs(variant, self.SET)
         self.assertEqual(frames, 1250 + player.TAIL_FRAMES)
-        self.assertEqual(opts.play, ((1000, "insert", 0), (1250, "click", 0)))
+        self.assertEqual(opts.play, ((1000, "insert", 0), (1250, "press", "lmb")))
         self.assertFalse(opts.detects)
         self.assertEqual((out.machine, out.loaded), ("a1200", [True]))
         self.assertIs(out.log, self.LOG)
@@ -376,8 +383,8 @@ class PlayTest(unittest.TestCase):
                     "c.adf")
 
     def test_a_key_it_cannot_press_is_found_before_the_download_is_unpacked(self):
-        entry = {**self.ENTRY, "swaps": [{"disk": 2, "at": 10, "key": "space"}]}
-        self.cannot(entry, BadEntry, "'space'").assert_not_called()
+        entry = {**self.ENTRY, "swaps": [{"disk": 2, "at": 10, "key": "f1"}]}
+        self.cannot(entry, BadEntry, "'f1'").assert_not_called()
 
     def test_a_machine_it_does_not_have_is_an_error_naming_it(self):
         self.cannot({**self.ENTRY, "machine": "a600"}, BadEntry,

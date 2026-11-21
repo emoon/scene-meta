@@ -2971,6 +2971,7 @@ group = "Scoopex"
 source = "ai"
 kind = "menu"
 disks = ["SCOOPEX-Megademo2A.DMS", "SCOOPEX-Megademo2B.DMS", "SCOOPEX-Megademo2C.DMS"]
+keys = [{ at = 30.0, key = "return" }, { at = 120.0, key = "return" }]
 note = "Scoopex Megademo II part list (preface, opening, ...)"
 
 [demozoo.265078]
@@ -4427,7 +4428,7 @@ group = "Byterapers"
 source = "ai"
 kind = "menu"
 disks = ["BRS-Meteli4A.dms", "BRS-Meteli4B.dms"]
-swaps = [{ disk = 2, at = 80.0 }]
+swaps = [{ disk = 2, at = 80.0, key = "rmb" }]
 note = "part list under the Meteli IV logo, scroller"
 
 [demozoo.236342]

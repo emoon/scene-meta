@@ -93,8 +93,11 @@ appears once per platform, as a key or as a cross-reference.
 All times are seconds of emulated time since power-on. In a swap, `disk` is
 the number of the disk that goes in (1 when the production booted from a
 later one), `at` is an insert time known to work and `until` the last one
-known to work; `key` is pressed `key_delay` seconds after the insert. Key
-names are lowercase (`space`, `return`, `p1fire`, `p2fire`, `lmb`).
+known to work; `key` is pressed `key_delay` seconds after the insert (on
+Amiga 5 when not given). Key names are lowercase (`space`, `return`,
+`p1fire`, `p2fire`, `lmb`, `rmb`: the fire button of the joystick in port 1
+or 2, the left and the right mouse button). On Amiga these six are all
+there are, and another name is an error.
 
 Where a download ships a script that runs its parts in turn (`.bat`,
 `RunMe`, `start`, `execute_me`), `run` names the script, by its name or its

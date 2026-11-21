@@ -25,7 +25,7 @@ class JudgeTest(unittest.TestCase):
 
 class ReportTest(unittest.TestCase):
     ENTRY = {"title": "x", "disks": ["a.adf", "b.adf"],
-             "swaps": [{"disk": 2, "at": 10, "key": "space"}]}
+             "swaps": [{"disk": 2, "at": 10, "key": "f1"}]}
     ADF = player.media.Variant("floppy", ["/d/a.adf", "/d/b.adf"])
 
     def setUp(self):
@@ -39,7 +39,7 @@ class ReportTest(unittest.TestCase):
         with mock.patch.object(player.media, "variants",
                                   return_value=([self.ADF], [])), \
                 mock.patch.object(player.emulator, "run") as run:
-            with self.assertRaisesRegex(CannotPlay, "'space'"):
+            with self.assertRaisesRegex(CannotPlay, "'f1'"):
                 replay._one(7, self.ENTRY, "a500")
         run.assert_not_called()
 
@@ -91,7 +91,8 @@ class ReportTest(unittest.TestCase):
             errors = replay.run(data=pathlib.Path(d), jobs=1,
                                 log=lambda line, **kw: lines.append(line))
         self.assertEqual(errors, 1)
-        self.assertEqual(lines, ["7 x: error: no way to press key 'space'"])
+        self.assertEqual(lines, ["7 x: error: no way to press key 'f1': the keys are"
+                                 " lmb, rmb, return, space, p1fire, p2fire"])
         run.assert_not_called()
 
 

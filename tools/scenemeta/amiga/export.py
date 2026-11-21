@@ -8,7 +8,7 @@ whatever somebody edited in the data files stays.
 """
 
 from ..core import export
-from . import classes, config, media
+from . import classes, config, media, player
 
 _RUNS = ("works", "works-short")
 _RESULT = {"works-then-crash": "crashes-later", "crash": "broken"}
@@ -49,6 +49,17 @@ def _run_of_note(note, command):
     return None
 
 
+def _swap(s):
+    """A result.Swap as an entry says it."""
+    row = {"disk": s.disk, "at": round(s.at, 1)}
+    if s.key:
+        row["key"] = s.key
+        if s.key_at is not None \
+                and (delay := round(s.key_at - s.at, 1)) != player.KEY_DELAY:
+            row["key_delay"] = delay
+    return row
+
+
 def entry(title, groups, variants, cls, default):
     """The data-file entry of one production from its export.Variant list.
     ``cls``: its ``(kind, note)`` of classes.tsv, or None."""
@@ -82,9 +93,7 @@ def entry(title, groups, variants, cls, default):
     if "disks" in named:
         e["disks"] = named["disks"]
     if runs and v.swaps:
-        e["swaps"] = [{"disk": s.disk, "at": round(s.at, 1),
-                       **({"key": s.key} if s.key else {})}
-                      for s in v.swaps]
+        e["swaps"] = [_swap(s) for s in v.swaps]
     if runs and v.keys:
         e["keys"] = [{"at": round(k.at, 1), "key": k.key} for k in v.keys]
     if "run" in named:

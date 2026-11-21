@@ -242,6 +242,14 @@ class ClassifyTest(unittest.TestCase):
 
 
 class SwapsTest(unittest.TestCase):
+    def test_the_right_click_that_follows_the_left_one(self):
+        ev = [{"event": "swap-poll", "frame": 4000},
+              {"event": "autoswap", "frame": 4000, "disk": 2},
+              {"event": "autoswap-click", "frame": 4260},
+              {"event": "autoswap-click-right", "frame": 4510}]
+        self.assertEqual(verdict.swaps(RunLog([], ev, 0, False, "")),
+                         [(4000, 2, "poll+click+rclick")])
+
     def test_rolled_back_insert_is_dropped(self):
         ev = [{"event": "swap-reread", "frame": 100},
               {"event": "autoswap", "frame": 100, "disk": 2},

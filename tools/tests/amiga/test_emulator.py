@@ -98,16 +98,6 @@ class ScriptTest(unittest.TestCase):
         self.assertEqual([c for c in cmds if c.startswith("input")],
                          ["input mouse click 0"] * 2)
 
-    def test_no_nudges_from_a_given_frame_on(self):
-        # The run that shows whether a swap's click was needed must not
-        # press anything once that disk is in.
-        cmds = self.script(frames=2000, click_every=500, nudge_until=1000)
-        self.assertEqual([c for c in cmds if c.startswith("input")],
-                         ["input mouse click 0"])
-        cmds = self.script(frames=2000, key_every=500, nudge_until=1000)
-        self.assertEqual([c for c in cmds if c.startswith("input")],
-                         ["input key 68 down", "input key 68 up"])
-
     def test_keys_cycle_every_period(self):
         # 257354's credits page only moves on Return; others want Space or
         # the fire button: one retry tries each in turn.
@@ -125,6 +115,41 @@ class ScriptTest(unittest.TestCase):
         self.assertEqual(cmds[i + 1], f"run frames={emulator.KEY_HOLD_FRAMES}")
         self.assertEqual(cmds[i + 2], "input key 68 up")
 
+    def test_the_frames_a_key_is_held_come_off_the_next_interval(self):
+        cmds = self.script(frames=750, key_every=500)
+        self.assertEqual([c for c in cmds if c.startswith("run")], [
+            "run frames=250", "run frames=250",
+            f"run frames={emulator.KEY_HOLD_FRAMES}",
+            f"run frames={250 - emulator.KEY_HOLD_FRAMES}"])
+
+    def test_a_scheduled_insert_is_clicked_a_sample_later(self):
+        cmds = emulator._script(1000, 250, "peek x 4", pathlib.Path("/s"),
+                                ["/d/b.adf"], emulator.Options(schedule=(500,)))
+        i = cmds.index("disk insert 0 /d/b.adf")
+        self.assertEqual(cmds[i + 1], "run frames=250")
+        self.assertEqual([c for c in cmds if c.startswith("input")],
+                         ["input mouse click 0"])
+
+
+class PressedTest(unittest.TestCase):
+    def test_nudges_at_their_frames(self):
+        self.assertEqual(
+            emulator.pressed(1000, emulator.Options(click_every=500,
+                                                    max_clicks=1)),
+            [(500, "lmb", None)])
+        self.assertEqual(
+            emulator.pressed(2000, emulator.Options(key_every=500)),
+            [(500, "return", None), (1000, "space", None),
+             (1500, "p2fire", None), (2000, "return", None)])
+
+    def test_a_pulse_s_click_names_its_disk_left_and_right_in_turn(self):
+        got = emulator.pressed(4500, emulator.Options(schedule=(500, 1000)))
+        self.assertEqual(got[:4], [(750, "lmb", 0), (1250, "rmb", 1),
+                                   (2250, "lmb", 0), (2750, "rmb", 1)])
+
+    def test_a_played_run_presses_nothing_of_itself(self):
+        self.assertEqual(emulator.pressed(1000, emulator.Options()), [])
+
 
 class PlayTest(unittest.TestCase):
     """A run that does fixed things at exact frames and nothing else."""
@@ -134,12 +159,34 @@ class PlayTest(unittest.TestCase):
                               ["/d/1-b.adf"], emulator.Options(play=actions))
 
     def test_insert_and_click_at_their_frames(self):
-        cmds = self.play([(300, "insert", 0), (550, "click", 0)])
+        cmds = self.play([(300, "insert", 0), (550, "press", "lmb")])
         moves = [c for c in cmds if c.startswith(("run", "disk insert", "input"))]
         self.assertEqual(moves, [
             "run frames=250", "run frames=50", "disk insert 0 /d/1-b.adf",
             "run frames=200", "run frames=50", "input mouse click 0",
             "run frames=200", "run frames=250"])
+
+    def test_each_key_by_its_name(self):
+        def inputs(key):
+            return [c for c in self.play([(100, "press", key)])
+                    if c.startswith("input")]
+        self.assertEqual(inputs("rmb"), ["input mouse click 1"])
+        for key, what in (("return", "key 68"), ("space", "key 64"),
+                          ("p1fire", "joy 0 fire"), ("p2fire", "joy 1 fire")):
+            self.assertEqual(inputs(key), [f"input {what} down",
+                                           f"input {what} up"])
+        self.assertEqual(set(emulator.KEYS),
+                         {"lmb", "rmb", "return", "space", "p1fire", "p2fire"})
+
+    def test_a_held_key_does_not_move_what_comes_after(self):
+        cmds = self.play([(100, "press", "return"), (101, "press", "space"),
+                          (300, "insert", 0)], frames=500)
+        moves = [c for c in cmds if c.startswith(("run", "disk insert", "input"))]
+        self.assertEqual(moves, [
+            "run frames=100", "input key 68 down", "run frames=3",
+            "input key 68 up", "input key 64 down", "run frames=3",
+            "input key 64 up", "run frames=144", "run frames=50",
+            "disk insert 0 /d/1-b.adf", "run frames=200"])
 
     def test_every_sample_reports_the_drives(self):
         cmds = self.play([])
@@ -163,11 +210,8 @@ class AutoswapTest(unittest.TestCase):
     def test_clicks_when_a_new_disk_is_not_picked_up(self):
         self.assertTrue(emulator._autoswap(emulator.Options()).startswith("disk autoswap click "))
 
-    def test_without_the_click(self):
-        # The run that shows whether a swap's click was needed.
-        cmd = emulator._autoswap(emulator.Options(
-            triggers="reread", unit=1, swap_click=False))
-        self.assertTrue(cmd.startswith("disk autoswap on "))
+    def test_triggers_and_unit(self):
+        cmd = emulator._autoswap(emulator.Options(triggers="reread", unit=1))
         self.assertTrue(cmd.endswith(" unit=1 reread"))
 
     def test_detector_off(self):
