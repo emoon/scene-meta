@@ -128,7 +128,7 @@ One level per production, lowest first:
 
 | `source` | meaning |
 |----------|---------|
-| `script` | found by a sweep, nobody looked |
+| `script` | found by a sweep and passed the gate, nobody looked |
 | `ai` | worked out with AI assistance |
 | `verified` | a person watched the production to its end, including every disk swap, on the stated machine (emulator or real hardware) |
 
@@ -138,6 +138,11 @@ is in the git history.
 A sweep export is a merge: it writes only entries marked `script` and never
 touches `ai` or `verified` ones. Where it disagrees with one of those, the
 disagreement goes into a report for a person to look at.
+
+The export writes a working entry only when that entry passed the gate
+(Amiga; the C64 has no gate yet). When the sweep's best run does not, its
+next best are tried, three in all; then the production is written as
+`result = "unknown"`.
 
 ## Initial import
 

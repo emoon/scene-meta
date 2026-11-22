@@ -7,8 +7,9 @@ from unittest import mock
 from scenemeta.amiga import gate, player
 from scenemeta.amiga.store import Store
 from scenemeta.amiga.verdict import Verdict
-from scenemeta.core.errors import CannotPlay
+from scenemeta.core.errors import BadEntry, CannotPlay
 from scenemeta.core import gate as core
+from scenemeta.core import gatelog as core_log
 from scenemeta.core.gate import Judgement, Play, Run, SwapTaken
 
 
@@ -187,6 +188,108 @@ class RunTest(StoreCase):
     def test_nothing_is_written_into_the_data_files(self):
         self.run_gate([7, 8], lambda *a: (judgement(True, False), "aa"))
         self.assertEqual(list(self.data.iterdir()), [])
+
+
+class FirstTest(StoreCase):
+    A, B, C = ({"title": "x", "machine": m} for m in ("a500", "a600", "a1200"))
+
+    def first(self, passing, entries=None, prod=7, version=player.VERSION,
+              sha256="aa"):
+        """``gate.first`` of one production whose entries on the machines
+        ``passing`` pass; ``self.played`` are the machines played."""
+        self.played = []
+
+        def one(prod, entry, default, each):
+            self.played.append(entry["machine"])
+            return judgement(True, entry["machine"] in passing), "aa"
+        with mock.patch.object(gate, "_one", side_effect=one), \
+                mock.patch.object(player, "VERSION", version), \
+                mock.patch.object(gate.media, "download_sha256",
+                                  return_value=sha256):
+            (got,) = gate.first([(prod, entries or [self.A, self.B, self.C])],
+                                self.db, self.data, jobs=1)
+        return got
+
+    def logged(self):
+        return {(r.entry, r.passed) for r in self.db.gated()}
+
+    def test_the_best_entry_that_passes_and_no_other_is_played(self):
+        prod, ok, (entry, said) = self.first({"a500", "a600"})
+        self.assertEqual((prod, ok, entry), (7, True, self.A))
+        self.assertEqual(self.played, ["a500"])
+        self.assertEqual([str(s) for s in said], ["pass (said)"])
+        self.assertTrue(core_log.passes(self.db.gated(), self.A))
+
+    def test_a_failed_entry_falls_to_the_next(self):
+        _, _, (entry, said) = self.first({"a600"})
+        self.assertEqual(entry, self.B)
+        self.assertEqual(self.played, ["a500", "a600"])
+        self.assertEqual([s.passed for s in said], [False, True])
+        # The log is of the entry that is written.
+        self.assertTrue(core_log.passes(self.db.gated(), self.B))
+
+    def test_none_passes(self):
+        _, ok, (entry, said) = self.first(set())
+        self.assertEqual((ok, entry, len(said)), (True, None, 3))
+        self.assertEqual(self.logged(), {(core_log.name(self.C), True),
+                                         (core_log.name(self.C), False)})
+
+    def test_a_pass_in_the_log_is_not_played_again(self):
+        self.first({"a500"})
+        _, _, (entry, said) = self.first(set())
+        self.assertEqual((entry, said, self.played), (self.A, [], []))
+
+    def test_a_pass_of_a_lesser_entry_stands_when_the_better_fails_again(self):
+        self.first({"a600"})
+        _, _, (entry, said) = self.first({"a600"})
+        self.assertEqual((entry, said, self.played), (self.B, [], ["a500"]))
+        self.assertTrue(core_log.passes(self.db.gated(), self.B))
+
+    def test_a_better_entry_that_now_passes_takes_the_log(self):
+        self.first({"a600"})
+        _, _, (entry, _) = self.first({"a500", "a600"})
+        self.assertEqual(entry, self.A)
+        self.assertTrue(core_log.passes(self.db.gated(), self.A))
+
+    def test_a_pass_by_another_player_or_of_another_download_is_played_again(self):
+        for change in ({"version": "next"}, {"sha256": "new"}):
+            self.first({"a500"})
+            self.first({"a500"}, **change)
+            self.assertEqual(self.played, ["a500"], change)
+
+    def test_a_pass_of_another_entry_is_not_this_ones(self):
+        self.first({"a500"}, [self.A])
+        self.first({"a600"}, [self.B])
+        self.assertEqual(self.played, ["a600"])
+
+    def test_an_entry_that_cannot_be_played_as_written_does_not_pass(self):
+        def one(prod, entry, default, each):
+            if entry is self.A:
+                raise BadEntry("fits none of the download's variants")
+            return judgement(True, True), "aa"
+        with mock.patch.object(gate, "_one", side_effect=one):
+            ((_, ok, (entry, said)),) = gate.first(
+                [(7, [self.A, self.B])], self.db, self.data, jobs=1)
+        self.assertEqual((ok, entry), (True, self.B))
+        self.assertEqual(str(said[0]), "fail (cannot be played: fits none of"
+                         " the download's variants)")
+        self.assertEqual(self.logged(), {(core_log.name(self.B), True)})
+
+    def test_what_a_run_lacks_is_the_productions_error(self):
+        self.first({"a500"})
+
+        def cannot(*a):
+            raise CannotPlay("no Kickstart ROM")
+        with mock.patch.object(gate, "_one", side_effect=cannot):
+            got = list(gate.first([(7, [self.B]), (8, [self.A])], self.db,
+                                  self.data, jobs=1))
+        self.assertEqual(got, [(7, False, "7 x: error: no Kickstart ROM"),
+                               (8, False, "8 x: error: no Kickstart ROM")])
+        self.assertTrue(core_log.passes(self.db.gated(), self.A))
+
+    def test_nothing_to_gate_needs_no_mirror(self):
+        gate.media.require_mirror.side_effect = CannotPlay("no Demozoo mirror")
+        self.assertEqual(list(gate.first([], self.db, self.data)), [])
 
 
 class SummaryTest(StoreCase):

@@ -23,12 +23,13 @@ class Report:
     disagreements: list = dataclasses.field(default_factory=list)
 
 
-def _settings(entry):
+def settings(entry):
+    """What ``entry`` sets: its fields a sweep has an opinion on."""
     return {k: v for k, v in entry.items() if k not in _NOT_COMPARED}
 
 
 def _differences(old, new):
-    old, new = _settings(old), _settings(new)
+    old, new = settings(old), settings(new)
     return [f"{k}: has {old.get(k)!r}, sweep says {new.get(k)!r}"
             for k in sorted(old.keys() | new.keys()) if old.get(k) != new.get(k)]
 

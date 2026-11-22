@@ -3,7 +3,7 @@
     python3 -m scenemeta amiga fetch [--ids ...] [--rate 1.0]
     python3 -m scenemeta amiga sweep [--ids ...] [--limit N] [--jobs N]
     python3 -m scenemeta amiga report
-    python3 -m scenemeta amiga export
+    python3 -m scenemeta amiga export [--ids ...] [--jobs N]
     python3 -m scenemeta amiga replay [--ids ...] [--jobs N]
     python3 -m scenemeta amiga gate --ids ... [--jobs N]
     python3 -m scenemeta amiga gate-summary
@@ -32,7 +32,10 @@ def main(argv=None):
     p = sub.add_parser("fetch")
     cli.selection(p)
     p.add_argument("--rate", type=float, default=1.0)
-    sub.add_parser("export", help="merge the results into the data files")
+    p = sub.add_parser("export", help="merge the results into the data"
+                       " files, the entries that pass the gate")
+    p.add_argument("--ids", type=int, nargs="*")
+    p.add_argument("--jobs", type=int)
     p = sub.add_parser("replay", help="play data-file entries as written")
     p.add_argument("--ids", type=int, nargs="*")
     p.add_argument("--jobs", type=int)
@@ -83,7 +86,8 @@ def _command(args):
         elif args.cmd == "report":
             report(db)
         elif args.cmd == "export":
-            export.run(db)
+            return min(1, export.run(db, ids=set(args.ids or ()),
+                                     jobs=args.jobs))
         elif args.cmd == "gate":
             return min(1, gate.run(args.ids, db, jobs=args.jobs))
         elif args.cmd == "gate-summary":

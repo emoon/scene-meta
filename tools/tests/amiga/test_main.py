@@ -6,7 +6,7 @@ import unittest
 from unittest import mock
 
 from scenemeta.amiga import __main__ as cli
-from scenemeta.amiga import config, corpus, gate, store
+from scenemeta.amiga import config, corpus, export, gate, store
 from scenemeta.core.corpus import Invalid
 from scenemeta.core.gate import Judgement
 
@@ -35,7 +35,7 @@ class GateCommandsTest(unittest.TestCase):
 
     def test_gate_stores_into_the_sweep_database(self):
         def run(ids, db, jobs=None):
-            db.put_gate(ids[0], Judgement(True, "", seeds=(
+            db.put_gate(ids[0], {"title": "x"}, Judgement(True, "", seeds=(
                 (1, Judgement(True, "ok")),)), "aa", "1")
             return 0
         with mock.patch.object(gate, "run", side_effect=run):
@@ -46,6 +46,19 @@ class GateCommandsTest(unittest.TestCase):
     def test_gate_fails_when_an_entry_could_not_be_played(self):
         with mock.patch.object(gate, "run", return_value=3):
             self.assertEqual(self.main("gate", "--ids", "7")[0], 1)
+
+    def test_export_gates_into_the_sweep_database(self):
+        with mock.patch.object(export, "run", return_value=0) as run:
+            self.assertFalse(self.main("export", "--ids", "7", "8",
+                                       "--jobs", "3")[0])
+        (db,), kw = run.call_args
+        self.assertIsInstance(db, store.Store)
+        self.assertEqual(kw, {"ids": {7, 8}, "jobs": 3})
+
+    def test_export_of_everything_and_a_production_that_could_not_be_played(self):
+        with mock.patch.object(export, "run", return_value=2) as run:
+            self.assertEqual(self.main("export")[0], 1)
+        self.assertEqual(run.call_args[1], {"ids": set(), "jobs": None})
 
     def test_gate_summary_writes_the_checked_in_file(self):
         code, out = self.main("gate-summary")

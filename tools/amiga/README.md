@@ -78,7 +78,8 @@ python3 -m scenemeta amiga fetch                 # missing disks -> NAS
 python3 -m scenemeta amiga sweep --jobs 96       # resumable
 python3 -m scenemeta amiga sweep --ids 89 142    # specific productions
 python3 -m scenemeta amiga report
-python3 -m scenemeta amiga export                # scene.db -> ../data/amiga
+python3 -m scenemeta amiga export                # scene.db -> ../data/amiga, through the gate
+python3 -m scenemeta amiga export --ids 142      # specific productions
 python3 -m scenemeta amiga replay --ids 142      # play data-file entries as written
 python3 -m scenemeta amiga gate --ids 142        # pass or fail on every seed, and why
 python3 -m scenemeta amiga gate-summary          # scene.db -> amiga/gate-summary.txt
@@ -97,11 +98,26 @@ press it was shown to need).
 
 `export` (`../scenemeta/amiga/export.py`) merges that into the data files people edit,
 `data/amiga/*.toml` (format: `docs/DESIGN.md`). Each
-production becomes one entry, taken from the variant that got furthest, and
+production becomes one entry, taken from the run that got furthest, and
 is marked `script`, or `ai` when it has a hand classification in
 `../scenemeta/amiga/classes.tsv`. Only `script` entries are replaced: an entry somebody
 edited stays, and where the sweep disagrees with it the difference is
 printed.
+
+A `script` entry that says the production runs is written only when it
+passed the gate. The entry of the sweep's chosen run is gated first (the
+chosen run of each variant, the one that got furthest first); when it fails,
+the entries of the next best runs the production came alive in are, three
+different entries in all. The first that passes is written. When none does,
+the production is written as `result = "unknown"` with a note of what the
+sweep saw. A line is printed of each production the gate played, and what it
+saw goes into `scene.db` as for `gate`, with a digest of the entry played:
+an entry whose pass is in the log, by today's player from today's download,
+is not played again, so an export that was stopped goes on where it was.
+Productions with a hand classification, and those whose entry in the data
+files is `ai` or `verified`, are not gated. A production that could not be
+played (a missing ROM or media) keeps the entry it has, and the command
+exits with status 1.
 
 `replay` (`../scenemeta/amiga/replay.py`) goes the other way: it plays an entry of the
 data files exactly as written (its machine, each disk in at its time, each
@@ -178,7 +194,7 @@ what is missing, nothing is run for that entry, and the command exits with
 status 1. `shots` files a `meta.json` with status `error` when the entry
 itself is the cause, so it is not tried again until that file is deleted;
 for a missing ROM or missing media it files nothing and tries again next
-time. Without the Demozoo mirror `sweep`, `replay`, `gate`, `corpus` and `shots` stop before
+time. Without the Demozoo mirror `sweep`, `export`, `replay`, `gate`, `corpus` and `shots` stop before
 their first production, and a sweep whose ROM goes missing on the way stops
 there instead of storing results.
 

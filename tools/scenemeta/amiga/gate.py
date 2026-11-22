@@ -2,6 +2,9 @@
 says which runs to make of each and whether it passes (see core.gate); the
 player makes them. What it saw is kept in the sweep's log, from which come
 the summary and the entries to gate again (see core.gatelog).
+
+``first`` is the gate of the export: of the entries a production may be
+written as, the first that passes.
 """
 
 import concurrent.futures as cf
@@ -9,7 +12,7 @@ import dataclasses
 import os
 
 from ..core import gate, gatelog
-from ..core.errors import CannotPlay
+from ..core.errors import BadEntry, CannotPlay
 from ..core.export import default_machine
 from . import config, media, player, replay
 
@@ -45,13 +48,68 @@ def each(todo, db, data, jobs=None):
     could not be played; nothing is stored of those."""
     default = default_machine(data)
     jobs = jobs or max(1, (os.cpu_count() or 4) // 2)
+    todo = list(todo)
+    entries = dict(todo)
     # The runs of every entry share one pool; an entry's thread only waits.
     with cf.ThreadPoolExecutor(jobs) as pool:
         for prod, ok, got in player.each_played(
                 todo, lambda p, e: _one(p, e, default, pool.map), jobs):
             if ok:
                 got, sha256 = got
-                db.put_gate(prod, got, sha256, player.VERSION)
+                db.put_gate(prod, entries[prod], got, sha256, player.VERSION)
+            yield prod, ok, got
+
+
+def _stands(records, entry):
+    """Do ``records``, the log of one production, hold a pass of ``entry``
+    by today's player from today's download?"""
+    return gatelog.passes(records, entry) and not gatelog.stale(
+        records, media.download_sha256, player.VERSION)
+
+
+def _first(prod, entries, default, records, each=map):
+    """``(entry, seen)``: the first of ``entries`` that passes, or None,
+    and ``(entry, judgement, sha256)`` of each one played. A pass the log
+    holds is taken with nothing seen, so the log stays of that entry; a
+    BadEntry is a fail with no SHA-256."""
+    seen = []
+    for entry in entries:
+        if _stands(records, entry):
+            return entry, []
+        try:
+            said, sha256 = _one(prod, entry, default, each)
+        except BadEntry as e:
+            said, sha256 = gate.Judgement(False, f"cannot be played: {e}"), None
+        seen.append((entry, said, sha256))
+        if said.passed:
+            return entry, seen
+    return None, seen
+
+
+def first(todo, db, data, jobs=None):
+    """Of every ``(prod, entries)`` of ``todo``, entries best first and
+    not empty: ``(prod, True, (entry, said))``, the first entry that passes
+    (or None) and the judgement of each one played, now in ``db``; or
+    ``(prod, False, line)`` when it could not be played."""
+    if not todo:
+        return
+    default = default_machine(data)
+    jobs = jobs or max(1, (os.cpu_count() or 4) // 2)
+    records = {}
+    for r in db.gated():
+        records.setdefault(r.prod, []).append(r)
+    entries = dict(todo)
+    with cf.ThreadPoolExecutor(jobs) as pool:
+        for prod, ok, got in player.each_played(
+                [(p, es[0]) for p, es in todo],
+                lambda p, _: _first(p, entries[p], default, records.get(p),
+                                    pool.map), jobs):
+            if ok:
+                entry, seen = got
+                for played, said, sha256 in seen:
+                    if sha256:
+                        db.put_gate(prod, played, said, sha256, player.VERSION)
+                got = entry, [said for _, said, _ in seen]
             yield prod, ok, got
 
 

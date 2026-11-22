@@ -19,6 +19,7 @@ import json
 import sqlite3
 import time
 
+from . import gatelog
 from .gatelog import Record
 from .result import Key, Swap
 
@@ -47,7 +48,7 @@ create index if not exists ix_run_variant on run(variant_id);
 create table if not exists gate (
     prod_id integer not null, seed integer not null, passed integer not null,
     reason text not null, sha256 text not null, player text not null,
-    at text not null, primary key (prod_id, seed));
+    at text not null, entry text, primary key (prod_id, seed));
 drop view if exists best;
 create view best as
     select p.id prod_id, p.title, p.groups, p.platforms, v.idx variant,
@@ -90,10 +91,13 @@ class Store:
             raise LegacyDatabase(path)
         self.db.execute("pragma journal_mode=wal")
         self.db.executescript(SCHEMA + extra_schema)
-        # A database from before swaps said their drive.
-        if "drive" not in [c[1] for c in self.db.execute(
-                "pragma table_info(swap)")]:
-            self.db.execute("alter table swap add column drive integer")
+        # A database from before swaps said their drive, and the gate's
+        # records their entry.
+        for table, column, kind in (("swap", "drive", "integer"),
+                                    ("gate", "entry", "text")):
+            if column not in [c[1] for c in self.db.execute(
+                    f"pragma table_info({table})")]:
+                self.db.execute(f"alter table {table} add column {column} {kind}")
         self.db.execute(f"pragma user_version = {VERSION}")
 
     def close(self):
@@ -174,22 +178,22 @@ class Store:
         self.db.execute("delete from run where variant_id=?", (variant_id,))
 
     # -- the gate ------------------------------------------------------------
-    def put_gate(self, prod_id, said, sha256, player):
-        """Store the gate.Judgement ``said`` of one entry, a row per seed,
-        in place of what was stored of the entry: it was played from the
-        download ``sha256`` by version ``player`` of the player."""
+    def put_gate(self, prod_id, entry, said, sha256, player):
+        """Store the gate.Judgement ``said`` of ``entry``, a row per seed,
+        in place of what was stored of the production: it was played from
+        the download ``sha256`` by version ``player`` of the player."""
         self.db.execute("delete from gate where prod_id=?", (prod_id,))
         self.db.executemany(
-            "insert into gate values (?,?,?,?,?,?,?)",
-            [(prod_id, seed, int(on.passed), on.reason, sha256, player, _now())
-             for seed, on in said.seeds])
+            "insert into gate values (?,?,?,?,?,?,?,?)",
+            [(prod_id, seed, int(on.passed), on.reason, sha256, player, _now(),
+              gatelog.name(entry)) for seed, on in said.seeds])
         self.db.commit()
 
     def gated(self):
         """The gatelog.Record of every entry and seed, in that order."""
         return [Record(prod, seed, bool(passed), *rest)
                 for prod, seed, passed, *rest in self.db.execute(
-                    "select prod_id, seed, passed, reason, sha256, player, at"
+                    "select prod_id, seed, passed, reason, sha256, player, at, entry"
                     " from gate order by prod_id, seed")]
 
     # -- reading -------------------------------------------------------------

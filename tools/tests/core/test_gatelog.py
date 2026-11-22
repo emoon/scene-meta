@@ -5,8 +5,35 @@ from scenemeta.core import gatelog
 from scenemeta.core.gatelog import Record
 
 
-def rec(prod, seed, passed=True, sha256="aa", player="1"):
-    return Record(prod, seed, passed, "why", sha256, player, "2026-11-20T10:00:00")
+def rec(prod, seed, passed=True, sha256="aa", player="1", entry=None):
+    return Record(prod, seed, passed, "why", sha256, player,
+                  "2026-11-20T10:00:00", entry)
+
+
+class NameTest(unittest.TestCase):
+    ENTRY = {"title": "x", "source": "script", "machine": "a1200",
+             "swaps": [{"disk": 2, "at": 800.0, "key": "lmb"}]}
+
+    def test_two_entries_that_set_the_same_have_one_name(self):
+        other = {"swaps": [{"key": "lmb", "at": 800, "disk": 2}],
+                 "machine": "a1200", "title": "y", "group": "g",
+                 "source": "ai", "note": "seen"}
+        self.assertEqual(gatelog.name(other), gatelog.name(self.ENTRY))
+
+    def test_another_setting_is_another_name(self):
+        for change in ({"machine": "a500"}, {"result": "crashes-later"},
+                       {"swaps": [{"disk": 2, "at": 800.1, "key": "lmb"}]},
+                       {"swaps": [{"disk": 2, "at": 800.0}]}):
+            self.assertNotEqual(gatelog.name({**self.ENTRY, **change}),
+                                gatelog.name(self.ENTRY), change)
+
+    def test_a_pass_is_every_record_passed_and_of_the_entry(self):
+        mine, other = gatelog.name(self.ENTRY), gatelog.name({"title": "x"})
+        self.assertTrue(gatelog.passes(
+            [rec(7, 1, entry=mine), rec(7, 2, entry=mine)], self.ENTRY))
+        for records in ([], [rec(7, 1, entry=mine), rec(7, 2, False, entry=mine)],
+                        [rec(7, 1, entry=other)], [rec(7, 1)]):
+            self.assertFalse(gatelog.passes(records, self.ENTRY), records)
 
 
 class SummaryTest(unittest.TestCase):

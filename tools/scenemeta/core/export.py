@@ -5,6 +5,10 @@ The core reads what the sweep chose for each variant and merges the
 platform's entries into the files; what an entry says is the platform's
 part. The merge replaces only ``script`` entries, so whatever somebody
 edited in the data files stays.
+
+A ``script`` entry that says the production runs is written only when it
+passed the gate (docs/DESIGN.md, Provenance): the platform puts its
+``tries`` to its gate, best first, and writes the first that passes.
 """
 
 import dataclasses
@@ -14,9 +18,12 @@ import sys
 from .. import machines, merge
 
 
+TRIES = 3    # the entries of one production put to the gate
+
+
 @dataclasses.dataclass
 class Variant:
-    """A finished variant and its chosen run."""
+    """A finished variant and one run of it."""
     idx: int
     kind: str
     disks: list
@@ -26,31 +33,50 @@ class Variant:
     verdict: str
     drives: int
     reached: int
-    swaps: list         # the result.Swap the chosen run's production used
+    swaps: list         # the result.Swap the run's production used
     keys: list = dataclasses.field(default_factory=list)  # presses with no swap
+    chosen: bool = True  # the run is the one the sweep chose of the variant
 
 
-def variants(store):
-    """``{prod_id: [Variant]}``, each list in the order the media gave."""
+def variants(store, every=False):
+    """``{prod_id: [Variant]}``, each list in the order the media gave: the
+    chosen run of each variant, or with ``every`` each of its runs, in the
+    order they were made."""
     out = {}
-    for prod, idx, kind, disks, note, detail, machine, verdict, run, drives, \
-            reached in store.db.execute(
+    runs = "r.variant_id = v.id" if every else "r.id = v.best_run_id"
+    # Of the chosen run, what the variant says it was chosen as.
+    chosen = "case when r.id is v.best_run_id then v.best_{0} else r.{0} end"
+    for prod, idx, kind, disks, note, detail, best, machine, verdict, run, \
+            drives, reached in store.db.execute(
                 "select v.prod_id, v.idx, v.kind, v.disks, v.note, v.detail,"
-                " v.best_machine, v.best_verdict, r.id, r.drives, r.disks_reached"
-                " from variant v left join run r on r.id = v.best_run_id"
-                " where v.done_at is not null order by v.prod_id, v.idx").fetchall():
+                f" v.best_run_id, {chosen.format('machine')},"
+                f" {chosen.format('verdict')}, r.id, r.drives, r.disks_reached"
+                f" from variant v left join run r on {runs}"
+                " where v.done_at is not null"
+                " order by v.prod_id, v.idx, r.id").fetchall():
         swaps = [s for s in store.swaps(run) if s.accepted] if run else []
         out.setdefault(prod, []).append(Variant(
             idx, kind, json.loads(disks or "[]"), note or "",
             json.loads(detail or "{}"), machine, verdict, drives or 1,
-            reached or 0, swaps, store.keys(run) if run else []))
+            reached or 0, swaps, store.keys(run) if run else [],
+            run == best))
     return out
 
 
-def productions(store):
+def tries(entries):
+    """The entries to put to the gate, of one production's ``entries`` best
+    first: the first TRIES that differ in what they set."""
+    out = []
+    for entry in entries:
+        if all(merge.settings(entry) != merge.settings(o) for o in out):
+            out.append(entry)
+    return out[:TRIES]
+
+
+def productions(store, every=False):
     """``(id, title, groups, [Variant])`` of every production with a
-    finished variant, by id."""
-    found = variants(store)
+    finished variant, by id (see ``variants``)."""
+    found = variants(store, every)
     for prod, title, groups in store.db.execute(
             "select id, title, groups from production order by id").fetchall():
         if prod in found:

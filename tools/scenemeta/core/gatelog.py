@@ -5,6 +5,10 @@ and the entries to gate again.
 """
 
 import dataclasses
+import hashlib
+import json
+
+from .. import merge
 
 
 @dataclasses.dataclass(frozen=True)
@@ -16,6 +20,31 @@ class Record:
     sha256: str    # of the download it was played from
     player: str    # the version of the player that played it
     at: str        # the wall clock
+    entry: str = None    # ``name`` of the entry played; None: not recorded
+
+
+def _plain(value):
+    """``value`` with every number a float: 800 in a file is 800.0."""
+    if isinstance(value, dict):
+        return {k: _plain(v) for k, v in value.items()}
+    if isinstance(value, (list, tuple)):
+        return [_plain(v) for v in value]
+    if isinstance(value, (int, float)) and not isinstance(value, bool):
+        return float(value)
+    return value
+
+
+def name(entry):
+    """What a record calls the entry it is of: a digest of what the entry
+    sets (see merge.settings), so the same for two that play the same."""
+    return hashlib.sha256(json.dumps(
+        _plain(merge.settings(entry)), sort_keys=True).encode()).hexdigest()
+
+
+def passes(records, entry):
+    """Do ``records``, those of one production, say that ``entry`` passed?"""
+    return bool(records) and all(
+        r.passed and r.entry == name(entry) for r in records)
 
 
 def outcomes(records):
