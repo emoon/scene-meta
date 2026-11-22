@@ -5,6 +5,7 @@ import tempfile
 import unittest
 
 from scenemeta.amiga import workbench
+from scenemeta.core.errors import CannotPlay
 
 
 class WorkbenchTest(unittest.TestCase):
@@ -64,6 +65,31 @@ class WorkbenchTest(unittest.TestCase):
         workbench.prepare(root, "x\n", libs_dir=root / "none")
         self.assertEqual([p.name for p in (root / "C").iterdir()], ["ASSIGN"])
         self.assertFalse((root / "c").exists())
+
+    def test_a_file_named_c_leaves_no_place_for_assign(self):
+        # The Prey (6952): its data files are 0, a, b, c, d, e.
+        for name in ("c", "C"):
+            root = self.dir()
+            (root / name).write_bytes(b"data")
+            workbench.prepare(root, "x\n", libs_dir=root / "none")
+            self.assertEqual(sorted(p.name for p in root.iterdir()),
+                             sorted([name, "s"]))
+            self.assertEqual((root / name).read_bytes(), b"data")
+
+    def test_a_file_named_libs_gets_no_libraries(self):
+        root, libs = self.dir(), self.dir()
+        (root / "LIBS").write_bytes(b"x mathtrans.library\0")
+        (libs / "mathtrans.library").write_bytes(b"wb")
+        workbench.prepare(root, "x\n", libs_dir=libs)
+        self.assertEqual((root / "LIBS").read_bytes(), b"x mathtrans.library\0")
+        self.assertFalse((root / "libs").exists())
+
+    def test_a_file_named_s_cannot_be_booted(self):
+        root = self.dir()
+        (root / "S").write_bytes(b"data")
+        with self.assertRaisesRegex(CannotPlay, "a file named S"):
+            workbench.prepare(root, "x\n", libs_dir=root / "none")
+        self.assertEqual([p.name for p in root.iterdir()], ["S"])
 
     def test_setup_assigns_env_to_ram(self):
         exe = workbench.setup_exe()

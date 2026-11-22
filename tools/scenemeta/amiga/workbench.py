@@ -29,6 +29,7 @@ import pathlib
 import shutil
 import struct
 
+from ..core.errors import CannotPlay
 from . import config
 
 SETUP = "s/scenemeta-setup"
@@ -220,10 +221,11 @@ def _exe(code):
 
 
 def _subdir(root, name):
-    """``root``/``name``, matched without case as AmigaDOS would."""
+    """``root``/``name``, matched without case as AmigaDOS would; None
+    when a file of the tree has the name, so no directory can."""
     for p in root.iterdir():
-        if p.is_dir() and p.name.lower() == name:
-            return p
+        if p.name.lower() == name:
+            return p if p.is_dir() else None
     return root / name
 
 
@@ -232,19 +234,24 @@ def prepare(root, command, libs_dir=None):
     startup-sequence text): the setup program runs first, and libraries
     from ``libs_dir`` the tree does not have go into its libs."""
     s = _subdir(root, "s")
+    if s is None:
+        raise CannotPlay("no place for the startup-sequence: the download"
+                         " has a file named S")
     s.mkdir(exist_ok=True)
     (s / SETUP.split("/")[1]).write_bytes(setup_exe())
     (s / GO_ON.split("/")[1]).write_bytes(go_on_exe())
     (s / "startup-sequence").write_text(
         f"{SETUP}\n{command}", encoding="latin-1")   # AmigaDOS charset
     c = _subdir(root, "c")
-    if not c.is_dir() or "assign" not in {p.name.lower() for p in c.iterdir()}:
+    if c is not None and (not c.is_dir()
+                          or "assign" not in {p.name.lower()
+                                              for p in c.iterdir()}):
         c.mkdir(exist_ok=True)
         (c / "Assign").write_bytes(assign_exe())
     libs_dir = config.LIBS_DIR if libs_dir is None else libs_dir
-    if not libs_dir.is_dir():
-        return
     libs = _subdir(root, "libs")
+    if not libs_dir.is_dir() or libs is None:
+        return
     have = {p.name.lower() for p in libs.iterdir()} if libs.is_dir() else set()
     for lib in _wanted_libs(root, libs_dir):
         if lib.name.lower() not in have:
