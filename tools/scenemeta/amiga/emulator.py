@@ -179,7 +179,8 @@ class Options:
 
     ``drives`` mounts that many disks of the set at boot (DF0..), for demos
     that want disk 2 in an external drive. ``unit`` is the drive the rest
-    of the set is swapped into (Soho: disks 2 and 3 both go in DF1).
+    of the set is swapped into (Soho: disks 2 and 3 both go in DF1); the
+    inserts of ``play`` name their own.
 
     ``click_every`` presses the left mouse button every that many frames,
     for "click to continue" screens (right clicks too would leave some
@@ -198,8 +199,9 @@ class Options:
     stops reading.
 
     ``play`` does fixed things at exact frames and nothing else, the
-    detector off: ``(frame, "insert", k)`` puts disk ``k`` of the swap list
-    in, ``(frame, "press", key)`` presses a key of KEYS.
+    detector off: ``(frame, "insert", (k, unit))`` puts disk ``k`` of the
+    swap list in drive ``unit``, ``(frame, "press", key)`` presses a key of
+    KEYS.
 
     ``keep`` is a directory that gets a ``NNNN.png`` of each sample (``NNNN``
     its index) whose picture differs from the last one kept in more than
@@ -339,7 +341,8 @@ def _play(frames, interval, alert_peek, shots, swaps, opts):
                 cmds.append(f"run frames={frame - at}")
                 at = frame
             if what == "insert":
-                cmds.append(f"disk insert {opts.unit} {swaps[arg]}")
+                k, unit = arg
+                cmds.append(f"disk insert {unit} {swaps[k]}")
             else:
                 press, held = _press(arg)
                 cmds += press

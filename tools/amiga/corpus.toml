@@ -922,7 +922,7 @@ video = [736, 736]
 
 [demozoo.221158]  # Soho
 expect = "plays"
-note = "disks 2 and 3 both go in DF1 (emulator.py)"
+note = "disks 2 and 3 both go in DF1: `drive = 2` on the swap"
 
 [demozoo.221372]  # Mathik
 expect = "plays"

@@ -11,9 +11,10 @@ from scenemeta.core.gate import Play, SwapTaken
 
 
 def samples(spec):
-    """spec: ``(frame, last_dma, head cylinder of DF0)`` per sample."""
+    """spec: ``(frame, last_dma, head cylinder of DF0, of DF1...)`` per
+    sample."""
     return [Sample(frame=f, pc=0, dmacon=0, bplcon0=0, resets=0, df0="",
-                   shot="", last_dma=dma, cyls=[cyl]) for f, dma, cyl in spec]
+                   shot="", last_dma=dma, cyls=cyls) for f, dma, *cyls in spec]
 
 
 class ActionsTest(unittest.TestCase):
@@ -24,23 +25,35 @@ class ActionsTest(unittest.TestCase):
     def test_as_written(self):
         # The key goes down 5 s after its insert.
         self.assertEqual(player.actions(self.ENTRY), [
-            (3305, "insert", 0), (3555, "press", "lmb"), (6000, "insert", 1)])
+            (3305, "insert", (0, 0)), (3555, "press", "lmb"), (6000, "insert", (1, 0))])
 
     def test_without_the_keys(self):
         self.assertEqual(player.actions(self.ENTRY, keys=False),
-                         [(3305, "insert", 0), (6000, "insert", 1)])
+                         [(3305, "insert", (0, 0)), (6000, "insert", (1, 0))])
 
     def test_key_delay(self):
         entry = {"disks": ["a", "b"],
                  "swaps": [{"disk": 2, "at": 10, "key": "lmb", "key_delay": 1.5}]}
         self.assertEqual(player.actions(entry),
-                         [(500, "insert", 0), (575, "press", "lmb")])
+                         [(500, "insert", (0, 0)), (575, "press", "lmb")])
 
     def test_disks_in_the_other_drives_are_not_on_the_swap_list(self):
         # With two drives disk 3 is the first one swapped in.
         entry = {"drives": 2, "disks": ["a", "b", "c"],
                  "swaps": [{"disk": 3, "at": 10}]}
-        self.assertEqual(player.actions(entry), [(500, "insert", 0)])
+        self.assertEqual(player.actions(entry), [(500, "insert", (0, 0))])
+
+    def test_a_swap_goes_into_the_drive_it_names(self):
+        # Soho: disk 2 sits in DF1 from the start, disk 3 goes in there.
+        entry = {"drives": 2, "disks": ["a", "b", "c"],
+                 "swaps": [{"disk": 3, "drive": 2, "at": 10}]}
+        self.assertEqual(player.actions(entry), [(500, "insert", (0, 1))])
+
+    def test_a_drive_the_machine_has_not_got_is_an_error(self):
+        entry = {"disks": ["a", "b"],
+                 "swaps": [{"disk": 2, "drive": 2, "at": 10}]}
+        with self.assertRaisesRegex(BadEntry, "no drive 2 .* drives = 1"):
+            player.actions(entry)
 
     def test_a_disk_that_cannot_go_in_is_an_error_not_another_disk(self):
         def swap(disk, **entry):
@@ -78,29 +91,37 @@ class ActionsTest(unittest.TestCase):
             entry = {"disks": ["a", "b"], "keys": [{"at": 1, "key": key}],
                      "swaps": [{"disk": 2, "at": 10, "key": key}]}
             self.assertEqual(player.actions(entry), [
-                (50, "press", key), (500, "insert", 0), (750, "press", key)])
+                (50, "press", key), (500, "insert", (0, 0)), (750, "press", key)])
 
 
 class LoadedTest(unittest.TestCase):
     def test_disk_read_past_its_first_cylinders(self):
         s = samples([(3251, 2834, 40), (3501, 3400, 0), (3751, 3700, 12)])
-        self.assertEqual(player.loaded(s, [3305]), [True])
+        self.assertEqual(player.loaded(s, [(3305, 0)]), [True])
 
     def test_id_check_alone_is_not_a_load(self):
         # Odyssey reads the new disk's ID at cylinder 0, then waits for the
         # mouse button.
         s = samples([(3251, 2834, 40), (3501, 3400, 0), (3751, 3400, 0)])
-        self.assertEqual(player.loaded(s, [3305]), [False])
+        self.assertEqual(player.loaded(s, [(3305, 0)]), [False])
 
     def test_disk_nobody_looked_at(self):
         # The head still sits where disk 1 left it.
         s = samples([(3251, 2834, 40), (3501, 2834, 40), (3751, 2834, 40)])
-        self.assertEqual(player.loaded(s, [3305]), [False])
+        self.assertEqual(player.loaded(s, [(3305, 0)]), [False])
 
     def test_each_disk_is_judged_until_the_next_goes_in(self):
         s = samples([(1001, 900, 30), (1251, 900, 30),      # disk 2: ignored
                      (2001, 1900, 0), (2251, 2200, 20)])    # disk 3: loaded
-        self.assertEqual(player.loaded(s, [1000, 1500]), [False, True])
+        self.assertEqual(player.loaded(s, [(1000, 0), (1500, 0)]), [False, True])
+
+    def test_a_disk_is_judged_by_the_head_of_its_own_drive(self):
+        # DF0's head stays where disk 1 left it; DF1 reads the new disk.
+        s = samples([(3251, 2834, 40, 71), (3501, 3400, 40, 0),
+                     (3751, 3700, 40, 12)])
+        self.assertEqual(player.loaded(s, [(3305, 1)]), [True])
+        s = samples([(3251, 2834, 40, 0), (3751, 3700, 40, 0)])
+        self.assertEqual(player.loaded(s, [(3305, 1)]), [False])
 
 
 class VariantOfTest(unittest.TestCase):
@@ -294,7 +315,7 @@ class PlayTest(unittest.TestCase):
         self.assertIs(machine, machines.BY_NAME["a1200"])
         self.assertIs(variant, self.SET)
         self.assertEqual(frames, 1250 + player.TAIL_FRAMES)
-        self.assertEqual(opts.play, ((1000, "insert", 0), (1250, "press", "lmb")))
+        self.assertEqual(opts.play, ((1000, "insert", (0, 0)), (1250, "press", "lmb")))
         self.assertFalse(opts.detects)
         self.assertEqual((out.machine, out.loaded), ("a1200", [True]))
         self.assertIs(out.log, self.LOG)
@@ -304,6 +325,21 @@ class PlayTest(unittest.TestCase):
         out, _ = self.play(self.ENTRY)
         self.assertEqual(out.record,
                          Play(False, None, (SwapTaken(2, True),), far=22.0))
+
+    def test_a_disk_in_another_drive_is_put_there_and_looked_for_there(self):
+        three = player.media.Variant("floppy", ["/d/a.adf", "/d/b.adf", "/d/c.adf"])
+        entry = {"title": "x", "drives": 2, "disks": ["a.adf", "b.adf", "c.adf"],
+                 "swaps": [{"disk": 3, "drive": 2, "at": 20}]}
+        # DF0 is past its first cylinders and stays; DF1 loads disk 3.
+        log = RunLog(samples([(750, 700, 40, 71), (1250, 1100, 40, 12)]),
+                     [], 0, False, "")
+        with mock.patch.object(player.media, "variants",
+                               return_value=([three], [])), \
+                mock.patch.object(player.emulator, "run",
+                                  return_value=log) as run:
+            out = player.play(7, entry, "a500")
+        self.assertEqual(run.call_args.args[3].play, ((1000, "insert", (0, 1)),))
+        self.assertEqual(out.record.swaps, (SwapTaken(3, True),))
 
     def test_how_far_is_the_last_read_of_a_disk(self):
         self.assertEqual(player.last_read(samples([(250, 240, 0), (500, 240, 0)])),
@@ -336,7 +372,7 @@ class PlayTest(unittest.TestCase):
         _, run = self.play(self.ENTRY, keys=False)
         _, _, frames, opts = run.call_args.args
         self.assertEqual(frames, 1250 + player.TAIL_FRAMES)
-        self.assertEqual(opts.play, ((1000, "insert", 0),))
+        self.assertEqual(opts.play, ((1000, "insert", (0, 0)),))
 
     def test_a_run_is_as_long_as_the_caller_says(self):
         with mock.patch.object(player.emulator, "run",

@@ -82,7 +82,7 @@ appears once per platform, as a key or as a cross-reference.
 | `boot` | `floppy` or `hd`: what to start it from, when that is not the first thing the download offers (an executable that only runs from a floppy, a disk set better run from its hard-drive archive) |
 | `kind` | `collection`, `standalone`, `separate-disks`, `menu`, `boot_fresh` |
 | `disks` | file names in disk order: a multi-disk production's, or the one disk meant where the download has several |
-| `swaps` | disk swaps: `disk`, `at`, and optionally `until`, `key`, `key_delay` |
+| `swaps` | disk swaps: `disk`, `at`, and optionally `drive`, `until`, `key`, `key_delay` |
 | `keys` | key presses at fixed times, other than a swap's own key: `at`, `key` |
 | `run` | the file to start, when the obvious one is wrong or ambiguous: an executable, or the download's launcher script (see below) |
 | `boot_disk`, `boot_file` | the disk (1-based) and file to boot, when not the first |
@@ -94,7 +94,9 @@ All times are seconds of emulated time since power-on. In a swap, `disk` is
 the number of the disk that goes in (1 when the production booted from a
 later one), `at` is an insert time known to work and `until` the last one
 known to work; `key` is pressed `key_delay` seconds after the insert (on
-Amiga 5 when not given). Key names are lowercase (`space`, `return`,
+Amiga 5 when not given). `drive` is the drive the disk goes into when that
+is not the first: 2 or more, and no more than the machine's `drives` (on
+Amiga `drive = 2` is DF1). Key names are lowercase (`space`, `return`,
 `p1fire`, `p2fire`, `lmb`, `rmb`: the fire button of the joystick in port 1
 or 2, the left and the right mouse button). On Amiga these six are all
 there are, and another name is an error.

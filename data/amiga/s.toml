@@ -4905,11 +4905,11 @@ source = "script"
 [demozoo.221158]
 title = "Soho"
 group = "Nova"
-source = "script"
+source = "ai"
 machine = "a1200_fast"
 drives = 2
 disks = ["Nova-SohoA.dms", "Nova-SohoB.dms", "Nova-SohoC.dms"]
-swaps = [{ disk = 3, at = 225.0 }]
+swaps = [{ disk = 3, drive = 2, at = 225.0 }]
 
 [demozoo.336653]
 title = "Soil"

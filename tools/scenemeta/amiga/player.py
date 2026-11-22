@@ -59,14 +59,14 @@ class Ready:
         log = emulator.run(self.machine, self.variant, frames, emulator.Options(
             drives=self.entry.get("drives", 1), play=tuple(acts), detect=False,
             keep=keep, seed=seed))
-        inserts = [(f, i) for f, what, i in acts if what == "insert"]
+        inserts = [(f, *arg) for f, what, arg in acts if what == "insert"]
         v = verdict.classify(log, frames // 250)
-        took = loaded(log.samples, [f for f, _ in inserts])
+        took = loaded(log.samples, [(f, unit) for f, _, unit in inserts])
         first = self.entry.get("drives", 1) + 1
         return Outcome(self.machine.name, v, took, log, gate.Play(
             v.verdict in RAN, v.crash,
-            tuple(gate.SwapTaken(first + i, ok)
-                  for (_, i), ok in zip(inserts, took)),
+            tuple(gate.SwapTaken(first + k, ok)
+                  for (_, k, _), ok in zip(inserts, took)),
             last_read(log.samples)))
 
 
@@ -122,9 +122,11 @@ def play_each(todo, one, jobs, log=print):
 def actions(entry, keys=True):
     """What to do when, for emulator.Options' ``play``. Without ``keys`` the
     disks go in and nothing is pressed. Raises BadEntry for a key that
-    cannot be pressed and for a swap of a disk that cannot go in."""
+    cannot be pressed and for a swap of a disk that cannot go in, or into a
+    drive the machine has not got."""
     out = []
-    first = entry.get("drives", 1) + 1      # the first disk that is swapped in
+    drives = entry.get("drives", 1)
+    first = drives + 1      # the first disk that is swapped in
     last = len(entry.get("disks", ()))
     for swap in entry.get("swaps", []):
         if not first <= swap["disk"] <= last:
@@ -133,8 +135,12 @@ def actions(entry, keys=True):
                 f"no way to put in disk {swap['disk']}: " + (
                     f"the disks to put in are {first} to {last}"
                     if first <= last else "there is none to put in"))
+        drive = swap.get("drive", 1)
+        if drive > drives:
+            raise BadEntry(f"no drive {drive} to put disk {swap['disk']} in: "
+                           f"the entry has drives = {drives}")
         frame = round(swap["at"] * FPS)
-        out.append((frame, "insert", swap["disk"] - first))
+        out.append((frame, "insert", (swap["disk"] - first, drive - 1)))
         if "key" in swap and keys:
             delay = swap.get("key_delay", KEY_DELAY)
             out.append((frame + round(delay * FPS), "press",
@@ -160,12 +166,13 @@ def frames_of(entry):
     return acts[-1][0] + TAIL_FRAMES if acts else PLAIN_FRAMES
 
 
-def loaded(samples, inserts, unit=0):
-    """For each insert frame: was that disk loaded before the next one went
-    in? Read after its insert, and the head then past LOADED_CYL."""
+def loaded(samples, inserts):
+    """For each insert, ``(frame, unit)``: was that disk loaded before the
+    next one went in? Read after its insert, and the head of its drive then
+    past LOADED_CYL."""
     out = []
-    for i, frame in enumerate(inserts):
-        until = inserts[i + 1] if i + 1 < len(inserts) else float("inf")
+    for i, (frame, unit) in enumerate(inserts):
+        until = inserts[i + 1][0] if i + 1 < len(inserts) else float("inf")
         out.append(any(frame < s.frame <= until and s.last_dma > frame
                        and s.cyls[unit] >= LOADED_CYL for s in samples))
     return out

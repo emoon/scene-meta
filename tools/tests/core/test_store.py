@@ -38,6 +38,22 @@ class StoreTest(unittest.TestCase):
         # Only the swaps the production took.
         self.assertEqual(v.swaps, [Swap(2, 536.88, "poll", key="lmb")])
 
+    def test_the_drive_of_a_swap_is_kept(self):
+        runs = [Run("m1", 180.0, "works", 60.0, drives=2, reached=3,
+                    swaps=[Swap(3, 225.0, "poll", drive=2)])]
+        self.db.put_result(PROD, [], [variant(("a", "b", "c"), runs)])
+        (_, _, _, (v,)), = export.productions(self.db)
+        self.assertEqual(v.swaps, [Swap(3, 225.0, "poll", drive=2)])
+
+    def test_a_database_from_before_swaps_had_a_drive_is_read(self):
+        self.db.put_result(PROD, [], [variant()])
+        self.db.db.execute("alter table swap drop column drive")
+        self.db.db.commit()
+        self.db.close()
+        self.db = store.Store(self.path)
+        (_, _, _, (v,)), = export.productions(self.db)
+        self.assertEqual(v.swaps, [Swap(2, 536.88, "poll", key="lmb")])
+
     def test_key_presses_with_no_swap_are_kept(self):
         runs = [Run("m1", 180.0, "works", 60.0, keys=[Key(86.1, "lmb")])]
         self.db.put_result(PROD, [], [variant(("a",), runs)])

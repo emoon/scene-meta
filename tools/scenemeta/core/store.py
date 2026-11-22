@@ -42,7 +42,7 @@ create table if not exists run (
 create table if not exists swap (
     run_id integer not null, seq integer not null, disk integer, at real,
     trigger text, accepted integer, waiting_since real, key text, key_at real,
-    screenshot blob, primary key (run_id, seq));
+    screenshot blob, drive integer, primary key (run_id, seq));
 create index if not exists ix_run_variant on run(variant_id);
 create table if not exists gate (
     prod_id integer not null, seed integer not null, passed integer not null,
@@ -90,6 +90,10 @@ class Store:
             raise LegacyDatabase(path)
         self.db.execute("pragma journal_mode=wal")
         self.db.executescript(SCHEMA + extra_schema)
+        # A database from before swaps said their drive.
+        if "drive" not in [c[1] for c in self.db.execute(
+                "pragma table_info(swap)")]:
+            self.db.execute("alter table swap add column drive integer")
         self.db.execute(f"pragma user_version = {VERSION}")
 
     def close(self):
@@ -150,9 +154,10 @@ class Store:
         rid = cur.lastrowid
         self.db.executemany(
             "insert into swap (run_id, seq, disk, at, trigger, accepted,"
-            " waiting_since, key, key_at, screenshot) values (?,?,?,?,?,?,?,?,?,?)",
+            " waiting_since, key, key_at, screenshot, drive)"
+            " values (?,?,?,?,?,?,?,?,?,?,?)",
             [(rid, i, s.disk, s.at, s.trigger, int(s.accepted),
-              s.waiting_since, s.key, s.key_at, s.screenshot or None)
+              s.waiting_since, s.key, s.key_at, s.screenshot or None, s.drive)
              for i, s in enumerate(r.swaps)])
         self.db.commit()
         return rid
@@ -196,8 +201,10 @@ class Store:
 
     def swaps(self, run_id):
         """The result.Swap rows of one run, in order (screenshots left out)."""
-        return [Swap(disk, at, trigger, bool(accepted), since, key, key_at)
-                for disk, at, trigger, accepted, since, key, key_at
+        return [Swap(disk, at, trigger, bool(accepted), since, key, key_at,
+                     drive=drive or 1)
+                for disk, at, trigger, accepted, since, key, key_at, drive
                 in self.db.execute(
                     "select disk, at, trigger, accepted, waiting_since, key,"
-                    " key_at from swap where run_id=? order by seq", (run_id,))]
+                    " key_at, drive from swap where run_id=? order by seq",
+                    (run_id,))]

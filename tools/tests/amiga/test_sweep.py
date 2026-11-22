@@ -363,10 +363,17 @@ class NeededPressesTest(unittest.TestCase):
                                   self.loads(lambda s, keys: True))
         self.assertEqual(entries, [])
 
-    def test_a_disk_in_another_drive_is_not_played(self):
-        entries, _ = self.run_try([(4000, 2, "poll+click")],
-                                  self.loads(lambda s, keys: True), unit=1)
-        self.assertEqual(entries, [])
+    def test_a_disk_in_another_drive_is_played_there(self):
+        # Soho: disk 2 sits in DF1, disk 3 goes in there too.
+        entries, tries = self.run_try(
+            [(4000, 3, "poll+click")], self.loads(lambda s, keys: True),
+            variant=media.Variant("floppy", ["a.adf", "b.adf", "c.adf"]),
+            drives=2, unit=1)
+        self.assertEqual(entries, [{
+            "drives": 2, "disks": ["a.adf", "b.adf", "c.adf"], "keys": [],
+            "swaps": [{"disk": 3, "at": 80.0, "drive": 2}]}])
+        self.assertEqual((tries[-1].unit, tries[-1].presses), (1, ()))
+        self.assertEqual(tries[-1].record().swaps[0].drive, 2)
 
 
 class PressesMadeTest(unittest.TestCase):

@@ -117,6 +117,14 @@ class ValidateTest(unittest.TestCase):
         got = self.one('[demozoo.5]\ntitle = "Dz"\nsource = "ai"\nswaps = [{ disk = 2 }]\n')
         self.assertEqual(got, ["[demozoo.5] swaps needs at"])
 
+    def test_swap_drive_is_a_later_drive(self):
+        def one(drive):
+            return self.one('[demozoo.5]\ntitle = "Dz"\nsource = "ai"\n'
+                            f'swaps = [{{ disk = 3, drive = {drive}, at = 9.0 }}]\n')
+        self.assertEqual(one(2), [])
+        self.assertEqual(one(1), ["[demozoo.5] swaps drive must be a whole"
+                                  " number, 2 or more"])
+
     def test_swap_window_backwards(self):
         got = self.one('[demozoo.5]\ntitle = "Dz"\nsource = "ai"\n'
                        'swaps = [{ disk = 2, at = 9.0, until = 3.0 }]\n')

@@ -20,6 +20,7 @@ class Swap:
     key: str = None              # pressed after the insert to have it taken
     key_at: float = None
     screenshot: bytes = b""      # the screen when the swap was decided
+    drive: int = 1               # 1-based number of the drive it went into
 
 
 @dataclasses.dataclass

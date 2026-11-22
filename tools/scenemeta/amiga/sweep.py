@@ -77,7 +77,8 @@ class Attempt:
             seconds(v.ended_frame), v.wants_disk, self.drives, self.reached,
             [result.Swap(disk, seconds(frame), how,
                          key=keyed[i].key if i in keyed else None,
-                         key_at=seconds(keyed[i].frame) if i in keyed else None)
+                         key_at=seconds(keyed[i].frame) if i in keyed else None,
+                         drive=self.unit + 1)
              for i, (frame, disk, how) in enumerate(self.swaps)],
             {"returncode": log.returncode, "events": log.events}, log.last_shot,
             [result.Key(seconds(p.frame), p.key) for p in self.presses
@@ -139,6 +140,8 @@ def _entry(variant, a, presses):
     swaps = []
     for i, (frame, disk, _) in enumerate(a.swaps):
         swaps.append({"disk": disk, "at": frame / FPS})
+        if a.unit:
+            swaps[-1]["drive"] = a.unit + 1
         if i in keyed:
             swaps[-1].update(key=keyed[i].key,
                              key_delay=(keyed[i].frame - frame) / FPS)
@@ -179,7 +182,9 @@ class _Tries:
         """One more attempt, not one of the waves: the entry of attempt
         ``a`` with ``presses``, played as written."""
         m, variant, _ = self._run
-        got = played(m, variant, _entry(variant, a, presses), a.seed)
+        got = dataclasses.replace(
+            played(m, variant, _entry(variant, a, presses), a.seed),
+            unit=a.unit)
         self.tries.append(got)
         self.asked.append(dict(seed=a.seed))
         return got
@@ -343,8 +348,7 @@ def _best(t):
     i = max(range(len(t.tries)), key=lambda i: t.tries[i].rank)
     best = t.tries[i]
     left = presses_made(best, t.asked[i])
-    # A disk in another drive is nothing an entry says.
-    if not left or not best.ran or best.unit:
+    if not left or not best.ran:
         return best
     kept, got = [], t.played(best, [])
     for _ in range(NEEDED_RUNS):

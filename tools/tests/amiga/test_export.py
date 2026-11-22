@@ -56,6 +56,11 @@ class EntryTest(unittest.TestCase):
         e = entry(variant(kind="floppy", disks=["a", "b", "c"], reached=1))
         self.assertEqual(e["note"], "the sweep only reached disk 1 of 3")
 
+    def test_a_swap_into_another_drive_says_which(self):
+        e = entry(variant(kind="floppy", disks=["a", "b", "c"], drives=2,
+                          swaps=[Swap(3, 225.0, "poll", drive=2)]))
+        self.assertEqual(e["swaps"], [{"disk": 3, "drive": 2, "at": 225.0}])
+
     def test_second_drive(self):
         e = entry(variant(kind="floppy", disks=["a", "b"], drives=2))
         self.assertEqual(e["drives"], 2)

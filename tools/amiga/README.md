@@ -111,7 +111,8 @@ the only code that turns an entry and its download into an emulator run;
 `shots` goes through it too. An entry with keys on its swaps is played once
 more without them, which shows whether the keys are needed. Without `--ids`
 it plays every entry that has a key on a swap. The keys are `lmb`, `rmb`,
-`return`, `space`, `p1fire` and `p2fire`; swapped disks always go into DF0.
+`return`, `space`, `p1fire` and `p2fire`; a swapped disk goes into DF0, or
+into the drive its swap names (`drive = 2` is DF1).
 
 `gate` (`../scenemeta/amiga/gate.py`) prints `pass` or `fail` with the
 reason, one line per production of `--ids`. The rules are the core's

@@ -88,7 +88,8 @@ def _swaps(v):
 
 # A production booted from a later disk can ask for disk 1.
 _SWAP_ROWS = _rows((("disk", _number_from(1)), ("at", _seconds)),
-                   (("until", _seconds), ("key", _text), ("key_delay", _seconds)))
+                   (("drive", _number_from(2)), ("until", _seconds),
+                    ("key", _text), ("key_delay", _seconds)))
 
 # What a production needs to run. A variant may restate any of them.
 SETTINGS = {

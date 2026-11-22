@@ -159,12 +159,16 @@ class PlayTest(unittest.TestCase):
                               ["/d/1-b.adf"], emulator.Options(play=actions))
 
     def test_insert_and_click_at_their_frames(self):
-        cmds = self.play([(300, "insert", 0), (550, "press", "lmb")])
+        cmds = self.play([(300, "insert", (0, 0)), (550, "press", "lmb")])
         moves = [c for c in cmds if c.startswith(("run", "disk insert", "input"))]
         self.assertEqual(moves, [
             "run frames=250", "run frames=50", "disk insert 0 /d/1-b.adf",
             "run frames=200", "run frames=50", "input mouse click 0",
             "run frames=200", "run frames=250"])
+
+    def test_an_insert_goes_into_the_drive_it_names(self):
+        cmds = self.play([(300, "insert", (0, 1))])
+        self.assertIn("disk insert 1 /d/1-b.adf", cmds)
 
     def test_each_key_by_its_name(self):
         def inputs(key):
@@ -180,7 +184,7 @@ class PlayTest(unittest.TestCase):
 
     def test_a_held_key_does_not_move_what_comes_after(self):
         cmds = self.play([(100, "press", "return"), (101, "press", "space"),
-                          (300, "insert", 0)], frames=500)
+                          (300, "insert", (0, 0))], frames=500)
         moves = [c for c in cmds if c.startswith(("run", "disk insert", "input"))]
         self.assertEqual(moves, [
             "run frames=100", "input key 68 down", "run frames=3",

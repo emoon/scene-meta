@@ -51,7 +51,10 @@ def _run_of_note(note, command):
 
 def _swap(s):
     """A result.Swap as an entry says it."""
-    row = {"disk": s.disk, "at": round(s.at, 1)}
+    row = {"disk": s.disk}
+    if s.drive > 1:
+        row["drive"] = s.drive
+    row["at"] = round(s.at, 1)
     if s.key:
         row["key"] = s.key
         if s.key_at is not None \
