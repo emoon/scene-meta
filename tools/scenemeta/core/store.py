@@ -5,6 +5,7 @@ variant     each bootable thing found for a production
 run         one boot of one variant on one machine
 swap        the disk changes a run made
 gate        what the gate last saw of an entry, per seed (core/gatelog.py)
+gate_error  why the gate could not play an entry, when last it could not
 
 All times are seconds of emulated time since power-on, as in the data
 files (``run.at`` is the wall clock). The ``detail`` columns hold JSON that
@@ -20,7 +21,7 @@ import sqlite3
 import time
 
 from . import gatelog
-from .gatelog import Record
+from .gatelog import Error, Record
 from .result import Key, Swap
 
 VERSION = 1    # pragma user_version; 0 is a database from before this schema
@@ -49,6 +50,9 @@ create table if not exists gate (
     prod_id integer not null, seed integer not null, passed integer not null,
     reason text not null, sha256 text not null, player text not null,
     at text not null, entry text, primary key (prod_id, seed));
+create table if not exists gate_error (
+    prod_id integer primary key, reason text not null, at text not null,
+    entry text not null);
 drop view if exists best;
 create view best as
     select p.id prod_id, p.title, p.groups, p.platforms, v.idx variant,
@@ -183,11 +187,26 @@ class Store:
         in place of what was stored of the production: it was played from
         the download ``sha256`` by version ``player`` of the player."""
         self.db.execute("delete from gate where prod_id=?", (prod_id,))
+        self.db.execute("delete from gate_error where prod_id=?", (prod_id,))
         self.db.executemany(
             "insert into gate values (?,?,?,?,?,?,?,?)",
             [(prod_id, seed, int(on.passed), on.reason, sha256, player, _now(),
               gatelog.name(entry)) for seed, on in said.seeds])
         self.db.commit()
+
+    def put_gate_error(self, prod_id, entry, reason):
+        """Store that ``entry`` could not be played, and why. What the gate
+        saw of the production before stays."""
+        self.db.execute("insert or replace into gate_error values (?,?,?,?)",
+                        (prod_id, reason, _now(), gatelog.name(entry)))
+        self.db.commit()
+
+    def gate_errors(self):
+        """The gatelog.Error of every entry that could not be played, by
+        id."""
+        return [Error(*row) for row in self.db.execute(
+            "select prod_id, reason, at, entry from gate_error"
+            " order by prod_id")]
 
     def gated(self):
         """The gatelog.Record of every entry and seed, in that order."""

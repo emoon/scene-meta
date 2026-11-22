@@ -5,7 +5,8 @@
     python3 -m scenemeta amiga report
     python3 -m scenemeta amiga export [--ids ...] [--jobs N]
     python3 -m scenemeta amiga replay [--ids ...] [--jobs N]
-    python3 -m scenemeta amiga gate --ids ... [--jobs N]
+    python3 -m scenemeta amiga gate [--ids ...] [--jobs N]
+    python3 -m scenemeta amiga gate-demote [--write]
     python3 -m scenemeta amiga gate-summary
     python3 -m scenemeta amiga gate-stale
     python3 -m scenemeta amiga corpus [--jobs N]
@@ -39,9 +40,14 @@ def main(argv=None):
     p = sub.add_parser("replay", help="play data-file entries as written")
     p.add_argument("--ids", type=int, nargs="*")
     p.add_argument("--jobs", type=int)
-    p = sub.add_parser("gate", help="pass or fail of data-file entries")
-    p.add_argument("--ids", type=int, nargs="+", required=True)
+    p = sub.add_parser("gate", help="pass or fail of data-file entries;"
+                       " without --ids, of every one not gated yet")
+    p.add_argument("--ids", type=int, nargs="*")
     p.add_argument("--jobs", type=int)
+    p = sub.add_parser("gate-demote", help="the entries the gate failed:"
+                       " which it demotes to unknown, which are kept")
+    p.add_argument("--write", action="store_true",
+                   help="write the demotions into the data files")
     sub.add_parser("gate-summary", help="write the counts of what the gate"
                    " saw to the checked-in file")
     sub.add_parser("gate-stale", help="the entries whose download or player"
@@ -90,6 +96,8 @@ def _command(args):
                                      jobs=args.jobs))
         elif args.cmd == "gate":
             return min(1, gate.run(args.ids, db, jobs=args.jobs))
+        elif args.cmd == "gate-demote":
+            gate.demote(db, write=args.write)
         elif args.cmd == "gate-summary":
             print(f"wrote {gate.write_summary(db)}")
         elif args.cmd == "gate-stale":

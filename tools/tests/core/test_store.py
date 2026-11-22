@@ -138,6 +138,25 @@ class StoreTest(unittest.TestCase):
         self.gate(8, (1, True))
         self.assertEqual(self.db.gated()[1].entry, gatelog.name({"title": "x"}))
 
+    def test_why_an_entry_could_not_be_played_is_stored_beside_its_records(self):
+        entry = {"title": "x", "machine": "a1200"}
+        self.gate(7, (1, True))
+        self.db.put_gate_error(7, entry, "no ROM")
+        self.db.put_gate_error(7, entry, "no media")
+        self.db.put_gate_error(5, entry, "no ROM")
+        self.assertEqual(
+            [(e.prod, e.reason, e.entry) for e in self.db.gate_errors()],
+            [(5, "no ROM", gatelog.name(entry)),
+             (7, "no media", gatelog.name(entry))])
+        self.assertRegex(self.db.gate_errors()[0].at, r"^\d{4}-\d\d-\d\dT")
+        self.assertEqual(len(self.db.gated()), 1)
+
+    def test_a_judgement_takes_the_place_of_the_entrys_error(self):
+        self.db.put_gate_error(7, {"title": "x"}, "no ROM")
+        self.db.put_gate_error(8, {"title": "x"}, "no ROM")
+        self.gate(7, (1, False))
+        self.assertEqual([e.prod for e in self.db.gate_errors()], [8])
+
     def test_the_gate_log_outlives_a_new_sweep_result(self):
         self.gate(7, (1, True), (2, True))
         self.db.put_result(PROD, [], [variant()])

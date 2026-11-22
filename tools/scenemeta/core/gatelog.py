@@ -23,6 +23,15 @@ class Record:
     entry: str = None    # ``name`` of the entry played; None: not recorded
 
 
+@dataclasses.dataclass(frozen=True)
+class Error:
+    """An entry the gate could not play: nothing is known of it."""
+    prod: int
+    reason: str
+    at: str
+    entry: str    # ``name`` of the entry
+
+
 def _plain(value):
     """``value`` with every number a float: 800 in a file is 800.0."""
     if isinstance(value, dict):
@@ -41,10 +50,21 @@ def name(entry):
         _plain(merge.settings(entry)), sort_keys=True).encode()).hexdigest()
 
 
+def held(records, entry):
+    """Are ``records``, those of one production, of ``entry``?"""
+    return bool(records) and all(r.entry == name(entry) for r in records)
+
+
 def passes(records, entry):
     """Do ``records``, those of one production, say that ``entry`` passed?"""
-    return bool(records) and all(
-        r.passed and r.entry == name(entry) for r in records)
+    return held(records, entry) and all(r.passed for r in records)
+
+
+def fault(records):
+    """Why the entry of ``records`` failed, on the first seed it did; None
+    when it passed."""
+    return next((f"seed {r.seed}: {r.reason}" for r in records
+                 if not r.passed), None)
 
 
 def outcomes(records):
@@ -55,11 +75,15 @@ def outcomes(records):
     return out
 
 
-def summary(records):
-    """The text of the summary file: how many entries of each outcome."""
-    passed = list(outcomes(records).values())
+def summary(records, errors=()):
+    """The text of the summary file: how many entries of each outcome. One
+    of ``errors``, which could not be played, is neither pass nor fail."""
+    unplayed = {e.prod for e in errors}
+    passed = [ok for prod, ok in outcomes(records).items()
+              if prod not in unplayed]
     return ("Entries by what the gate last saw of them.\n\n"
-            f"pass {sum(passed):6}\nfail {len(passed) - sum(passed):6}\n")
+            f"pass {sum(passed):6}\nfail {len(passed) - sum(passed):6}\n"
+            f"error{len(unplayed):6}\n")
 
 
 def stale(records, sha256_of, player):

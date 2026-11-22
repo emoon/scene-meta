@@ -2,7 +2,7 @@ import dataclasses
 import unittest
 
 from scenemeta.core import gatelog
-from scenemeta.core.gatelog import Record
+from scenemeta.core.gatelog import Error, Record
 
 
 def rec(prod, seed, passed=True, sha256="aa", player="1", entry=None):
@@ -35,6 +35,23 @@ class NameTest(unittest.TestCase):
                         [rec(7, 1, entry=other)], [rec(7, 1)]):
             self.assertFalse(gatelog.passes(records, self.ENTRY), records)
 
+    def test_records_are_held_of_the_entry_they_name_pass_or_fail(self):
+        mine, other = gatelog.name(self.ENTRY), gatelog.name({"title": "x"})
+        self.assertTrue(gatelog.held(
+            [rec(7, 1, entry=mine), rec(7, 2, False, entry=mine)], self.ENTRY))
+        for records in (None, [], [rec(7, 1, entry=other)], [rec(7, 1)],
+                        [rec(7, 1, entry=mine), rec(7, 2, entry=other)]):
+            self.assertFalse(gatelog.held(records, self.ENTRY), records)
+
+
+class FaultTest(unittest.TestCase):
+    def test_the_first_seed_that_failed_and_its_reason(self):
+        self.assertEqual(gatelog.fault(
+            [rec(7, 1), rec(7, 2, False), rec(7, 3, False)]), "seed 2: why")
+
+    def test_a_pass_has_none(self):
+        self.assertIsNone(gatelog.fault([rec(7, 1), rec(7, 2)]))
+
 
 class SummaryTest(unittest.TestCase):
     def test_an_entry_passes_when_every_seed_of_it_did(self):
@@ -48,11 +65,18 @@ class SummaryTest(unittest.TestCase):
                    rec(9, 1)]
         self.assertEqual(gatelog.summary(records),
                          "Entries by what the gate last saw of them.\n\n"
-                         "pass      2\nfail      1\n")
+                         "pass      2\nfail      1\nerror     0\n")
+
+    def test_an_entry_that_could_not_be_played_is_neither_pass_nor_fail(self):
+        records = [rec(7, 1), rec(8, 1, False), rec(9, 1)]
+        errors = [Error(7, "no ROM", "t", "e"), Error(8, "no ROM", "t", "e"),
+                  Error(10, "no media", "t", "e")]
+        self.assertTrue(gatelog.summary(records, errors).endswith(
+            "pass      1\nfail      0\nerror     3\n"))
 
     def test_an_empty_log_counts_nothing(self):
         self.assertTrue(gatelog.summary([]).endswith(
-            "pass      0\nfail      0\n"))
+            "pass      0\nfail      0\nerror     0\n"))
 
     def test_when_an_entry_was_gated_is_not_in_the_summary(self):
         later = dataclasses.replace(rec(7, 1), at="2027-01-01T00:00:00")

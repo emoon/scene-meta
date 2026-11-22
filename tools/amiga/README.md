@@ -82,6 +82,8 @@ python3 -m scenemeta amiga export                # scene.db -> ../data/amiga, th
 python3 -m scenemeta amiga export --ids 142      # specific productions
 python3 -m scenemeta amiga replay --ids 142      # play data-file entries as written
 python3 -m scenemeta amiga gate --ids 142        # pass or fail on every seed, and why
+python3 -m scenemeta amiga gate                  # every entry not gated yet, resumable
+python3 -m scenemeta amiga gate-demote           # the failures: what --write demotes
 python3 -m scenemeta amiga gate-summary          # scene.db -> amiga/gate-summary.txt
 python3 -m scenemeta amiga gate-stale            # entries to gate again
 python3 -m scenemeta amiga corpus                # gate corpus.toml -> amiga/corpus-score.txt
@@ -131,7 +133,11 @@ it plays every entry that has a key on a swap. The keys are `lmb`, `rmb`,
 into the drive its swap names (`drive = 2` is DF1).
 
 `gate` (`../scenemeta/amiga/gate.py`) prints `pass` or `fail` with the
-reason, one line per production of `--ids`. The rules are the core's
+reason, one line per production of `--ids`. Without `--ids` it is the pass
+over every entry of the data files: one the log already holds a judgement
+of, pass or fail, of the entry as it is now, by today's player from today's
+download, is not played again, so a pass that was stopped goes on where it
+was. The rules are the core's
 (`../scenemeta/core/gate.py`), judged from the record every platform's
 player returns of a run. An entry is played on two seeds of the emulator's
 random state, three when it has swaps or keys, and passes when on every
@@ -156,9 +162,21 @@ data files: for each entry and seed whether it passed, the reason, the
 SHA-256 of the download it was played from (of a download of several files,
 that of each file's name and SHA-256), the player's version
 (`player.VERSION`) and when. Gating an entry again replaces its records; an
-entry that could not be played keeps the ones it had. `gate-summary` writes
-how many entries passed and how many failed to `gate-summary.txt` here,
-which is checked in, so a change in the numbers shows in a diff.
+entry that could not be played keeps the ones it had, and why it could not
+is kept beside them (table `gate_error`) until it is judged. `gate-summary`
+writes how many entries passed, how many failed and how many could not be
+played to `gate-summary.txt` here, which is checked in, so a change in the
+numbers shows in a diff.
+
+`gate-demote` reads the log against the data files and writes nothing: the
+counts, then four lists. The `script` entries that say the production runs
+and failed, each with the first seed it failed on and why; the failing
+entries that are `ai` or `verified`; the entries that could not be played,
+with what was missing; and the entries with no record of them as they are
+now, by today's player from today's download (`gate-stale`). With `--write` the first list is demoted: each becomes
+`result = "unknown"` with the reason as its note, without its machine,
+swaps and keys. The other lists are for a person. A later `export` puts
+the next best runs of a demoted production to the gate.
 `gate-stale` lists the gated entries whose download, or the player's
 version, is no longer the one of their records: those need the gate again.
 

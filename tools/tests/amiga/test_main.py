@@ -43,6 +43,20 @@ class GateCommandsTest(unittest.TestCase):
         self.assertEqual(code, 0)
         self.assertEqual([(r.prod, r.seed) for r in self.gated()], [(7, 1)])
 
+    def test_gate_without_ids_is_of_every_entry(self):
+        with mock.patch.object(gate, "run", return_value=0) as run:
+            self.assertEqual(self.main("gate", "--jobs", "3")[0], 0)
+        self.assertIsNone(run.call_args.args[0])
+        self.assertEqual(run.call_args.kwargs, {"jobs": 3})
+
+    def test_gate_demote_writes_only_when_asked(self):
+        with mock.patch.object(gate, "demote") as demote:
+            self.main("gate-demote")
+            self.main("gate-demote", "--write")
+        self.assertEqual([c.kwargs for c in demote.call_args_list],
+                         [{"write": False}, {"write": True}])
+        self.assertIsInstance(demote.call_args.args[0], store.Store)
+
     def test_gate_fails_when_an_entry_could_not_be_played(self):
         with mock.patch.object(gate, "run", return_value=3):
             self.assertEqual(self.main("gate", "--ids", "7")[0], 1)
@@ -64,8 +78,8 @@ class GateCommandsTest(unittest.TestCase):
         code, out = self.main("gate-summary")
         self.assertFalse(code)
         self.assertEqual(out, f"wrote {config.GATE_SUMMARY}\n")
-        self.assertEqual(config.GATE_SUMMARY.read_text().splitlines()[-2:],
-                         ["pass      0", "fail      0"])
+        self.assertEqual(config.GATE_SUMMARY.read_text().splitlines()[-3:],
+                         ["pass      0", "fail      0", "error     0"])
 
     def test_gate_stale_lists_from_the_sweep_database(self):
         with mock.patch.object(gate, "stale") as stale:
