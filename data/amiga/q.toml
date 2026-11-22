@@ -18,10 +18,10 @@ source = "script"
 [demozoo.6576]
 title = "Q.E.D. 2"
 group = "Talent"
-source = "script"
+source = "ai"
 machine = "a1200"
 disks = ["Talent-QED2-A.dms", "Talent-QED2-B.dms"]
-swaps = [{ disk = 2, at = 150.5, key = "lmb" }]
+swaps = [{ disk = 2, at = 50.0, key = "lmb" }]
 
 [demozoo.21517]
 title = "QAPMOC"

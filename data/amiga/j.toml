@@ -1,9 +1,9 @@
 [demozoo.24664]
 title = "J"
 group = "Ephidrena"
-source = "script"
+source = "ai"
 machine = "a1200_fast"
-run = "part1"
+run = "execute_me"
 
 [demozoo.27648]
 title = "J.A.M."

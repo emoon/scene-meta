@@ -879,9 +879,9 @@ source = "script"
 [demozoo.31914]
 title = "Embraced"
 group = "Floppy"
-source = "script"
+source = "ai"
 machine = "a1200_fast"
-run = "FLP-EMBRACED.001"
+run = "FLP-EMBRACED.EXE"
 
 [demozoo.135107]
 title = "Embrolic Coding"
@@ -1307,9 +1307,11 @@ machine = "a1200_fast"
 [demozoo.35129]
 title = "Episode"
 group = "Nah-Kolor"
-source = "script"
+source = "ai"
+machine = "a1200"
 result = "unknown"
-run = "_negerkuß!!.exe"
+run = "episode/Episode.exe"
+note = "the script Episode.exe assigns Episode: and starts the demo; the music plays and the screen stays black on a 68EC020, a 68020 with 8M and a 68030"
 
 [demozoo.219658]
 title = "Epson Scanner"
@@ -2148,9 +2150,9 @@ machine = "a1200_fast"
 [demozoo.18977]
 title = "Exit Planet Dust"
 group = "Artwork"
-source = "script"
-machine = "a1200_fast"
-run = "tomate"
+source = "ai"
+machine = "a1200_030"
+run = "dust_runme"
 
 [demozoo.48220]
 title = "Exodus"

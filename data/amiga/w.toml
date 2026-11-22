@@ -971,8 +971,8 @@ source = "script"
 [demozoo.193230]
 title = "We Saw The King"
 group = "Abnormeda"
-source = "script"
-machine = "a500_1mb"
+source = "ai"
+machine = "a1200"
 run = "Abnormeda"
 
 [demozoo.46290]
@@ -1734,9 +1734,11 @@ source = "script"
 [demozoo.63791]
 title = "Wicked Sensation"
 group = "Masque"
-source = "script"
+source = "ai"
+result = "crashes-later"
 disks = ["TRSI-WickedSensationA.DMS", "TRSI-WickedSensationB.DMS"]
 swaps = [{ disk = 2, at = 131.7 }]
+note = "after the swap part B stops on its own error screen: 'ILLEGAL OPCODE' at 159 s on an A500, 'CHK EXCEPTION' at 180 s on an A1200"
 
 [demozoo.240056]
 title = "Wickeds Intro"

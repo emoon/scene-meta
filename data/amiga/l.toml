@@ -1447,10 +1447,12 @@ machine = "a1200"
 [demozoo.178169]
 title = "Liars"
 group = "Nerve Axis"
-source = "script"
+source = "ai"
 machine = "a1200"
+result = "unknown"
 disks = ["NERVE_AXIS-LiarsA.dms", "NERVE_AXIS-LiarsB.dms"]
 swaps = [{ disk = 2, at = 65.0 }]
+note = "'INSERT DISK ONE' at 392 s, which no swap can say: the player puts in disks 2 and up only"
 
 [demozoo.213833]
 title = "Libero - Almost Microintro 3"

@@ -663,9 +663,9 @@ source = "script"
 [demozoo.19401]
 title = "Killer"
 group = "CNCD"
-source = "script"
+source = "ai"
 machine = "a1200_fast"
-run = "main.bin"
+run = "Killer.exe"
 
 [demozoo.191776]
 title = "Killer"

@@ -851,9 +851,9 @@ result = "unknown"
 [demozoo.85900]
 title = "Ghost In The Shell"
 group = "Honoo"
-source = "script"
+source = "ai"
 machine = "a1200_fast"
-run = "GhostInTheShell.exe"
+run = "GhostInTheShell"
 
 [demozoo.252055]
 title = "Ghost Logo"

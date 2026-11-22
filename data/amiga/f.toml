@@ -956,9 +956,9 @@ machine = "a1200"
 [demozoo.18861]
 title = "Fear Factory"
 group = "Arsenic"
-source = "script"
+source = "ai"
 machine = "a1200_fast"
-run = "M.called"
+run = "-start"
 
 [demozoo.295200]
 title = "Fearless or more"
@@ -2566,9 +2566,9 @@ source = "script"
 [demozoo.227338]
 title = "First Fucking Intro"
 group = "Moskyti Team"
-source = "script"
+source = "ai"
 machine = "a1200"
-run = "FIRST.exe"
+run = "RunMe"
 
 [demozoo.216816]
 title = "First Homemade Intro"

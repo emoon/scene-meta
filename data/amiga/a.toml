@@ -2528,9 +2528,9 @@ source = "script"
 [demozoo.159]
 title = "Alien 2 Amiga"
 group = "Scoopex"
-source = "script"
+source = "ai"
 machine = "a1200_030"
-run = "Part2.exe"
+run = "Alien2.bat"
 
 [demozoo.155673]
 title = "Alien 4 Demo"
@@ -2933,11 +2933,9 @@ machine = "a1200"
 [demozoo.28709]
 title = "Amazed"
 group = "Vanity"
-source = "script"
+source = "ai"
 machine = "a1200_fast"
-disks = ["ss2_vty1-launch.adf", "ss2_vty2.dms", "ss2_vty3.dms"]
-swaps = [{ disk = 2, at = 52.8 }, { disk = 3, at = 67.7 }]
-run = "amazed.exe"
+boot = "hd"
 
 [demozoo.305785]
 title = "Amazing Amiga Tunes 07 - intro"
@@ -6472,10 +6470,12 @@ swaps = [{ disk = 2, at = 250.0 }]
 [demozoo.89547]
 title = "Artificial Paradise"
 group = "New Generation Crew"
-source = "script"
+source = "ai"
 machine = "a1200"
 drives = 2
+result = "crashes-later"
 disks = ["NGC-ArtificialParadiseA.adf", "NGC-ArtificialParadiseB.adf"]
+note = "black screen and a tight loop from 172 s with disk B in DF1; with one drive the screen is noise from 35 s"
 
 [demozoo.250430]
 title = "Artificial Slaw"

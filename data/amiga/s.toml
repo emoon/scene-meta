@@ -4467,9 +4467,9 @@ machine = "a1200"
 [demozoo.32303]
 title = "Smells Like Lame Spirit"
 group = "Dinx Project"
-source = "script"
-result = "unknown"
-run = "LE-window6.12"
+source = "ai"
+machine = "a1200"
+run = "dxp4kAGA"
 
 [demozoo.252283]
 title = "Smells Like Peanuts"
@@ -8407,9 +8407,9 @@ source = "script"
 [demozoo.8360]
 title = "Subzero"
 group = "Syndrome"
-source = "script"
-result = "unknown"
-run = "Relyscully.exe.bak"
+source = "ai"
+machine = "a1200_fast"
+run = "subzero_4mb.exe"
 
 [demozoo.219453]
 title = "Suck"
@@ -9091,8 +9091,8 @@ machine = "a1200_fast"
 [demozoo.22602]
 title = "Supermonster"
 group = "Spaceballs"
-source = "script"
-machine = "a1200"
+source = "ai"
+machine = "a1200_030"
 run = "Spb-SuperMonster.exe"
 
 [demozoo.256714]

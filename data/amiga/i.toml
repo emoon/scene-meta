@@ -517,9 +517,11 @@ source = "script"
 [demozoo.151386]
 title = "Impact"
 group = "Moons"
-source = "script"
-machine = "a1200_030"
+source = "ai"
+machine = "a1200_060"
+result = "crashes-later"
 run = "impact_nc.exe"
+note = "its readme asks for a 68040 with FPU; frozen on a plasma frame from 88 s on a 68030 and a 68060, a left click changes nothing"
 
 [demozoo.239910]
 title = "Impact"
@@ -1626,9 +1628,11 @@ source = "script"
 [demozoo.148840]
 title = "Instinct"
 group = "C-Lous"
-source = "script"
+source = "ai"
 machine = "a1200"
+result = "crashes-later"
 run = "Instinct.Exe"
+note = "Instinct.Exe calls Anim.exe, which is in a second archive the download lacks: 'object not found' at 63 s"
 
 [demozoo.291465]
 title = "Instinct"
@@ -3387,10 +3391,10 @@ source = "script"
 [demozoo.22315]
 title = "Iso"
 group = "Scoopex"
-source = "script"
+source = "ai"
 machine = "a1200"
 disks = ["SCOOPEX-Iso_A.dms", "SCOOPEX-Iso_B.dms"]
-swaps = [{ disk = 2, at = 92.7 }]
+swaps = [{ disk = 2, at = 60.0 }]
 
 [demozoo.295540]
 title = "IsoMessages"

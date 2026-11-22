@@ -303,9 +303,11 @@ source = "script"
 [demozoo.8125]
 title = "Nebula"
 group = "Dual Crew Shining"
-source = "script"
-machine = "a1200_fast"
+source = "ai"
+machine = "a1200_030"
+result = "broken"
 run = "dcs-Neb.exe"
+note = "its readme names an A1200 with a 68030 and 8 MB; the CPU halts at 110 s on a 68030 and a 68060, and on a 68020 it is dead in ROM from 118 s"
 
 [demozoo.186765]
 title = "Nebula"
@@ -5184,9 +5186,9 @@ machine = "a1200"
 [demozoo.46968]
 title = "November Light"
 group = "Sunshine Productions"
-source = "script"
-result = "unknown"
-run = "LE-window6.12"
+source = "ai"
+machine = "a1200_fast"
+run = "SSP_NovemberLight.exe"
 
 [demozoo.473]
 title = "November Rain"
@@ -5224,9 +5226,9 @@ run = "Noxie_uae"
 [demozoo.70672]
 title = "Noxzema"
 group = "Damage"
-source = "script"
-machine = "a1200"
-run = "noxzema"
+source = "ai"
+machine = "a1200_fast"
+run = "!noxzema.script"
 
 [demozoo.234845]
 title = "NTSC Intro"

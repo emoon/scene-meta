@@ -1109,9 +1109,9 @@ machine = "a1200_fast"
 [demozoo.153486]
 title = "Optikal"
 group = "K!nky"
-source = "script"
+source = "ai"
 machine = "a1200"
-run = "part2"
+run = "start_low"
 
 [demozoo.276972]
 title = "Optimal Workflow"

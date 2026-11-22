@@ -1352,9 +1352,11 @@ source = "script"
 [demozoo.18873]
 title = "Virtual"
 group = "Skahn-X"
-source = "script"
-machine = "a1200_fast"
+source = "ai"
+machine = "a1200_030"
+result = "unknown"
 run = "virtual.exe"
+note = "tested on a 68030 by its info; the music plays and the screen stays black on a 68020, a 68030 and a 68060, and it exits at about 190 s"
 
 [demozoo.250792]
 title = "Virtual Conspiracy 95 Party Invitation"
@@ -1398,10 +1400,10 @@ source = "script"
 [demozoo.5318]
 title = "Virtual Meltdown"
 group = "Paradise"
-source = "script"
+source = "ai"
 machine = "a1200_030"
 disks = ["Paradise-VirtualMeltdownA.dms", "Paradise-VirtualMeltdownB.dms"]
-swaps = [{ disk = 2, at = 508.8, key = "lmb" }]
+swaps = [{ disk = 2, at = 520.0 }]
 
 [demozoo.318803]
 title = "Virtual Pain"

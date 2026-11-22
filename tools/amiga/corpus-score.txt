@@ -1,6 +1,6 @@
 The corpus by what the gate last saw of it: per production what is expected, then what was seen.
 
-as expected 199 of 222
+as expected 214 of 222
 
      89 plays  pass
      90 plays  pass
@@ -13,13 +13,13 @@ as expected 199 of 222
     645 plays  pass
    1073 plays  pass
    1504 plays  pass
-   2020 plays  fail
+   2020 broken fail
    3574 plays  pass
    4219 plays  pass
    5079 plays  pass
    5314 plays  pass
    5316 plays  fail
-   5318 plays  fail
+   5318 plays  pass
    5336 plays  pass
    5782 plays  pass
    6576 plays  pass
@@ -40,11 +40,11 @@ as expected 199 of 222
    7618 plays  pass
    8120 plays  pass
    8122 plays  pass
-   8125 plays  pass
-   8360 plays  fail
+   8125 broken fail
+   8360 plays  pass
    8883 plays  pass
    8998 plays  pass
-   9285 plays  fail
+   9285 plays  pass
    9290 plays  pass
    9380 plays  pass
    9389 plays  pass
@@ -67,7 +67,7 @@ as expected 199 of 222
   18985 plays  pass
   19017 plays  pass
   19401 plays  pass
-  19413 plays  pass
+  19413 broken fail
   19443 plays  pass
   20355 plays  pass
   20358 plays  pass
@@ -110,13 +110,13 @@ as expected 199 of 222
   31854 plays  pass
   31914 plays  pass
   32292 plays  pass
-  32303 plays  fail
+  32303 plays  pass
   32369 plays  pass
   32535 plays  pass
-  32581 plays  fail
+  32581 plays  pass
   32582 plays  pass
-  32583 plays  fail
-  35129 plays  fail
+  32583 plays  pass
+  35129 plays  pass
   35332 plays  pass
   35337 plays  pass
   35341 plays  pass
@@ -129,12 +129,12 @@ as expected 199 of 222
   44911 plays  pass
   45034 plays  pass
   45603 plays  pass
-  46968 plays  fail
+  46968 plays  pass
   48220 plays  pass
   52177 plays  pass
   59869 plays  pass
   61927 plays  pass
-  63622 plays  pass
+  63622 broken fail
   63791 plays  pass
   67462 plays  pass
   69970 plays  fail
@@ -156,7 +156,7 @@ as expected 199 of 222
  103499 plays  pass
  108960 plays  pass
  113574 plays  pass
- 119622 plays  fail
+ 119622 plays  pass
  124377 plays  pass
  127527 plays  pass
  130802 plays  pass
@@ -164,7 +164,7 @@ as expected 199 of 222
  139109 plays  pass
  139135 plays  pass
  140222 plays  pass
- 140969 plays  fail
+ 140969 plays  pass
  142850 plays  pass
  145058 plays  pass
  148840 plays  pass
@@ -173,16 +173,16 @@ as expected 199 of 222
  153486 plays  pass
  153579 plays  pass
  155228 plays  pass
- 163844 plays  fail
+ 163844 plays  pass
  164759 plays  fail
  170685 plays  pass
  170898 plays  pass
  171972 plays  pass
  174753 plays  pass
  178169 plays  pass
- 178955 plays  pass
- 180128 plays  fail
- 185607 plays  fail
+ 178955 broken fail
+ 180128 plays  pass
+ 185607 plays  pass
  191784 plays  pass
  193230 plays  pass
  194634 plays  pass
@@ -194,7 +194,7 @@ as expected 199 of 222
  219777 plays  pass
  221151 plays  pass
  221158 plays  pass
- 221372 plays  fail
+ 221372 plays  pass
  224067 plays  pass
  227338 plays  pass
  234183 plays  pass

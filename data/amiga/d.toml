@@ -2472,9 +2472,11 @@ machine = "a1200_fast"
 [demozoo.96279]
 title = "Demon Download"
 group = "The Silents"
-source = "script"
+source = "ai"
+result = "unknown"
 disks = ["SILENTS-DemonDownload-A.dms", "SILENTS-DemonDownload-B.dms"]
 swaps = [{ disk = 2, at = 82.2 }]
+note = "plays to 696 s, then Kickstart's insert-disk screen: it wants disk 1 back, which no swap can say"
 
 [demozoo.279966]
 title = "Demon Utils"
@@ -2884,9 +2886,11 @@ source = "script"
 [demozoo.178955]
 title = "Des-Bill"
 group = "Kiki Productions"
-source = "script"
+source = "ai"
 machine = "a1200_fast"
-run = "MorphY.Exe"
+result = "broken"
+run = "start"
+note = "its start script shows the demo and the slides with Echo, Wait, SetPatch and its own viewers; played, the shell window stays empty. MorphY.Exe alone is the last of the chain"
 
 [demozoo.227296]
 title = "Deser Drims"
@@ -3067,9 +3071,9 @@ machine = "a1200"
 [demozoo.163844]
 title = "Determination"
 group = "Mystic"
-source = "script"
-result = "unknown"
-run = "LE-window6.12"
+source = "ai"
+machine = "a1200"
+run = "Determination"
 
 [demozoo.218963]
 title = "DeTrax"
@@ -3865,9 +3869,9 @@ machine = "a1200"
 [demozoo.7472]
 title = "Dive (demo)"
 group = "Complex"
-source = "script"
+source = "ai"
 machine = "a1200_fast"
-run = "Morph.exe"
+run = "Demo.bat"
 
 [demozoo.23459]
 title = "Dive Final Version"
@@ -4981,9 +4985,9 @@ source = "script"
 [demozoo.6829]
 title = "Drool This"
 group = "Parallax"
-source = "script"
+source = "ai"
 machine = "a1200_fast"
-run = "Animi"
+run = "DroolThis"
 
 [demozoo.246810]
 title = "Drool Zone BBS Intro"

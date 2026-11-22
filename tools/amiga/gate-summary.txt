@@ -1,4 +1,4 @@
 Entries by what the gate last saw of them.
 
-pass    227
-fail     65
+pass    237
+fail     55

@@ -355,9 +355,9 @@ source = "script"
 [demozoo.274566]
 title = "1992"
 group = "Focus Design"
-source = "script"
-machine = "a1200_030"
-run = "mainpart.exe"
+source = "ai"
+machine = "a1200_060"
+run = "runme.bat"
 
 [demozoo.265538]
 title = "1992 Delirium"
@@ -1750,9 +1750,8 @@ result = "unknown"
 [demozoo.140969]
 title = "4k Intro"
 group = "Dinx Project"
-source = "script"
-result = "unknown"
-run = "WHEREFUNROLEZ.EXE"
+source = "ai"
+run = "6-dxp4kb.exe"
 
 [demozoo.163660]
 title = "4k Intro"
@@ -2186,9 +2185,9 @@ result = "unknown"
 [demozoo.42164]
 title = "7 dni i 7 nocy"
 group = "Przyjaciele Stefana B."
-source = "script"
+source = "ai"
 machine = "a1200_fast"
-run = "psb-7d7n.e02"
+run = "psb-7d7n.bat"
 
 [demozoo.182983]
 title = "702 Years for Switzerland"

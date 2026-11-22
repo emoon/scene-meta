@@ -961,9 +961,9 @@ source = "script"
 [demozoo.9285]
 title = "Utmost Vacancy"
 group = "Scum"
-source = "script"
-result = "unknown"
-run = "LE-window6.12"
+source = "ai"
+machine = "a1200_fast"
+run = "Scum/Utmost.exe"
 
 [demozoo.9056]
 title = "Utopia"

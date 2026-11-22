@@ -19,8 +19,8 @@ machine = "a1200"
 [demozoo.18451]
 title = "Habakuk"
 group = "Dreamline Entertainment"
-source = "script"
-machine = "a1200"
+source = "ai"
+machine = "a1200_fast"
 run = "Habakuk"
 
 [demozoo.38732]
@@ -857,9 +857,9 @@ boot = "floppy"
 [demozoo.32581]
 title = "Hardcore"
 group = "Syndrome"
-source = "script"
-result = "unknown"
-run = "WHEREFUNROLEZ.EXE"
+source = "ai"
+machine = "a1200_fast"
+run = "HardCORE.exe"
 
 [demozoo.178671]
 title = "Hardcore"

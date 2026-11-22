@@ -4721,8 +4721,7 @@ source = "script"
 [demozoo.277281]
 title = "Boozedrome III"
 group = "Dekadence"
-source = "script"
-result = "unknown"
+source = "ai"
 run = "dkd-boozedrome3.exe"
 
 [demozoo.292290]

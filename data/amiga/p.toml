@@ -3644,9 +3644,9 @@ source = "script"
 [demozoo.20972]
 title = "Popgun"
 group = "Paragon"
-source = "script"
+source = "ai"
 machine = "a1200_fast"
-run = "Damasm98.exe"
+run = "popgun.exe"
 
 [demozoo.44749]
 title = "Popjunkie"

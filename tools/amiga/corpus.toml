@@ -60,9 +60,9 @@ expect = "plays"
 video = [179, 179]
 
 [demozoo.2020]  # Megademo
-expect = "plays"
+expect = "broken"
+why = "asks for disk 1 again 7 s after disk B loaded; the player puts in disks 2 and up only, so no entry of it passes"
 cause = "swap"
-note = "asks for disk 1 again 7 s after disk B loaded; the entry has the one swap"
 video = [1122, 1122]
 
 [demozoo.3574]  # Ikanim
@@ -88,7 +88,7 @@ note = "its loader races: works or stalls by the emulator's seed (emulator.py)"
 [demozoo.5318]  # Virtual Meltdown
 expect = "plays"
 cause = "swap-time"
-note = "disk B goes in at 508.8 s, some 6 s before the prompt, and is never seen"
+note = "disk B went in at 508.8 s, some 6 s before the prompt, and was never seen; at 520 s it loads, with no click"
 video = [1015, 1015]
 
 [demozoo.5336]  # Butterfly
@@ -113,8 +113,8 @@ video = [426, 488]
 
 [demozoo.6829]  # Drool This
 expect = "plays"
-cause = "stall"
-note = "the screen is black from 3 s while the music plays to 134 s"
+cause = "launcher"
+note = "ran Animi alone: black from 3 s while the music plays; the script DroolThis runs Loadi, which shows the parts"
 video = [308, 361]
 
 [demozoo.6832]  # Maximum Overdrive II
@@ -191,9 +191,9 @@ expect = "plays"
 video = [595, 655]
 
 [demozoo.8125]  # Nebula
-expect = "plays"
+expect = "broken"
+why = "the CPU halts at 110 s on a 68030 and a 68060; on a 68020 it is dead in ROM from 118 s with the music still playing"
 cause = "machine"
-note = "dead in ROM from about 118 s with the music still playing; its readme names an A1200 with a 68030 and 8 MB, the entry a 68020"
 video = [454, 454]
 
 [demozoo.8360]  # Subzero
@@ -325,9 +325,9 @@ note = "main.bin run without the assign of the Killer.exe script (Assign Killer:
 video = [319, 331]
 
 [demozoo.19413]  # The Katto Demo
-expect = "plays"
+expect = "broken"
+why = "StartMe chains 1.party to 4.party behind a RequestChoice, which the player has not; 1.party alone spins on a white screen from 172 s"
 cause = "stall"
-note = "spins on a white screen from 172 s; StartMe chains 1.party to 4.party and the entry runs 1.party alone"
 video = [448, 448]
 
 [demozoo.19443]  # Master Blaster
@@ -359,7 +359,7 @@ video = [124, 124]
 [demozoo.20972]  # Popgun
 expect = "plays"
 cause = "replay-bug"
-note = "the recorder ran popgun.exe, not the entry's Damasm98.exe; which of the two is Popgun wants a look"
+note = "the entry ran Damasm98.exe, another intro of the 64k pack; popgun.exe is Popgun"
 video = [91, 91]
 
 [demozoo.21509]  # Wildlife
@@ -369,7 +369,7 @@ video = [401, 429]
 [demozoo.22315]  # Iso
 expect = "plays"
 cause = "swap"
-note = "disk B in at 92.7 s is never read; black, silent and spinning from 96 s"
+note = "disk B is asked for from about 60 s; put in then it plays on, at 92.7 s it is read and the screen goes black"
 video = [609, 609]
 
 [demozoo.22589]  # Blues
@@ -382,8 +382,8 @@ video = [161, 161]
 
 [demozoo.22602]  # Supermonster
 expect = "plays"
-cause = "launcher"
-note = "the 424-byte launcher it runs loads the first part only; files 1 to 10 beside it are never read"
+cause = "machine"
+note = "the 424-byte launcher loads parts 1 to 10 only with the memory of a1200_030, where it plays to 390 s; on a1200 it ends after the first part at 80 s"
 video = [388, 399]
 
 [demozoo.22680]  # Megademo
@@ -475,7 +475,7 @@ video = [326, 341]
 [demozoo.28709]  # Amazed
 expect = "plays"
 cause = "stall"
-note = "both disks are read, then a grey screen and the ROM's idle loop from 72 s: waits for something"
+note = "the floppy set stops on a grey screen at 72 s after both disks are read; the hard-drive archive of the download plays to 280 s"
 video = [277, 277]
 
 [demozoo.28714]  # Fire Power
@@ -635,9 +635,9 @@ expect = "plays"
 video = [167, 174]
 
 [demozoo.63622]  # Mime!
-expect = "plays"
+expect = "broken"
+why = "the CPU halts at 35 s on a 68030 and a 68060 with either executable; on a 68020 its own error screen says illegal instruction at 45 s"
 cause = "machine"
-note = "Mime!_030.exe on a 68020: its own error screen says illegal instruction at 45 s"
 video = [197, 197]
 
 [demozoo.63791]  # Wicked Sensation
@@ -855,21 +855,21 @@ note = "'INSERT DISK ONE' at 392 s; the entry has no swap back to disk 1"
 video = [886, 886]
 
 [demozoo.178955]  # Des-Bill
-expect = "plays"
+expect = "broken"
+why = "its start script runs the chain with Echo, Wait, SetPatch and its own viewers, and played the shell window stays empty; MorphY.Exe alone is the last of the chain"
 cause = "launcher"
-note = "runs MorphY.Exe alone, the last of the chain its 'start' script runs"
 video = [426, 426]
 
 [demozoo.180128]  # The Saturne Day
 expect = "plays"
 cause = "swap"
-note = "asks for disk 2 at about 70 s; the inserts at 105 s and 180 s are never read"
+note = "asks for disk 2 at about 70 s; disk 3 has to be in before its prompt at 285 s, with the click after it"
 video = [477, 477]
 
 [demozoo.185607]  # The Fall
 expect = "plays"
-cause = "input"
-note = "black and still from 137 s in a two-instruction wait loop, the music looping"
+cause = "swap"
+note = "the swap was false: it plays to 465 s from disk 1 alone, and disk 2 put in at 121.6 s leaves it black from 137 s"
 video = [491, 491]
 
 [demozoo.191784]  # Podtekst
@@ -879,7 +879,7 @@ note = "resets the machine at its end and plays again (verdict.py)"
 [demozoo.193230]  # We Saw The King
 expect = "plays"
 cause = "machine"
-note = "AGA only by its own text; on a500_1mb a requester says so and only the soundtrack plays"
+note = "AGA only by its own text; on a1200 it ends at 65 s on a joke trainer menu, as the video does"
 video = [70, 70]
 
 [demozoo.194634]  # The Last Sun
