@@ -151,12 +151,10 @@ def _task_held(rows):
     """True when the requester's text is on screen. The box's background is
     the commonest colour in the crop; ink is whatever differs from it."""
     x0, y0, x1, y1 = HELD_BOX
-    if len(rows) < y1:
+    if len(rows) < y1 or len(rows[0]) < 3 * x1:
         return False
     crop = [[tuple(row[3 * x:3 * x + 3]) for x in range(x0, x1)]
             for row in rows[y0:y1]]
-    if len(crop[0][0]) < 3:
-        return False
     background = _lum(collections.Counter(
         itertools.chain.from_iterable(crop)).most_common(1)[0][0])
     both = ink = 0
