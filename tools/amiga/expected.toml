@@ -1,5 +1,5 @@
-# The Amiga corpus: productions with the outcome expected of them, replayed by
-# `scenemeta amiga corpus` (README.md). Test data, not part of the data set.
+# What is expected on the Amiga: productions with the outcome expected of them, replayed by
+# `scenemeta amiga expected` (README.md). Test data, not part of the data set.
 #
 # expect  "plays", or "broken" with `why`
 # cause   why the end detection of Nov 2026 missed the video's length, for the

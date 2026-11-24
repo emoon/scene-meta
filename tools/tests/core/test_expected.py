@@ -1,7 +1,7 @@
 import unittest
 
-from scenemeta.core import corpus
-from scenemeta.core.corpus import Case
+from scenemeta.core import expected
+from scenemeta.core.expected import Case
 from scenemeta.core.gate import Judgement
 
 KNOWN = {7: {}, 8: {}}
@@ -9,15 +9,15 @@ KNOWN = {7: {}, 8: {}}
 
 def problems(text, known=KNOWN):
     try:
-        corpus.parse(text, known)
-    except corpus.Invalid as e:
+        expected.parse(text, known)
+    except expected.Invalid as e:
         return str(e).split("\n")
     return []
 
 
 class ParseTest(unittest.TestCase):
     def test_a_case_of_each_production(self):
-        got = corpus.parse('[demozoo.7]  # X\nexpect = "plays"\n'
+        got = expected.parse('[demozoo.7]  # X\nexpect = "plays"\n'
                            'cause = "swap-time"\nnote = "n"\nvideo = [90, 120]\n'
                            '[demozoo.8]\nexpect = "broken"\nwhy = "bad disk"\n',
                            KNOWN)
@@ -26,7 +26,7 @@ class ParseTest(unittest.TestCase):
             8: Case("broken", why="bad disk")})
 
     def test_an_empty_file_has_no_cases(self):
-        self.assertEqual(corpus.parse("", KNOWN), {})
+        self.assertEqual(expected.parse("", KNOWN), {})
 
     def test_an_id_that_is_not_in_the_data_files(self):
         self.assertEqual(problems('[demozoo.9]\nexpect = "plays"\n'),
@@ -82,18 +82,18 @@ class ScoreboardTest(unittest.TestCase):
              30: Case("plays", video=(90, 120))}
 
     def test_the_gates_word_of_a_judgement(self):
-        self.assertEqual(corpus.seen(Judgement(True, "x")), "pass")
-        self.assertEqual(corpus.seen(Judgement(False, "x")), "fail")
+        self.assertEqual(expected.seen(Judgement(True, "x")), "pass")
+        self.assertEqual(expected.seen(Judgement(False, "x")), "fail")
 
     def test_plays_is_a_pass_and_broken_a_fail(self):
         for saw, hits in (({7: "pass", 8: "fail", 30: "pass"}, 3),
                           ({7: "fail", 8: "pass", 30: "pass"}, 1),
                           ({7: "error", 8: "error", 30: "error"}, 0)):
-            self.assertEqual(corpus.total(self.CASES, saw),
+            self.assertEqual(expected.total(self.CASES, saw),
                              f"as expected {hits} of 3")
 
     def test_the_total_then_a_line_per_production_by_id(self):
-        text = corpus.scoreboard(self.CASES,
+        text = expected.scoreboard(self.CASES,
                                  {30: "error", 7: "pass", 8: "pass"})
         self.assertEqual(text.split("\n\n")[1:], [
             "as expected 1 of 3",
@@ -101,19 +101,19 @@ class ScoreboardTest(unittest.TestCase):
 
     def test_it_changes_with_a_result(self):
         saw = {7: "pass", 8: "fail", 30: "pass"}
-        self.assertNotEqual(corpus.scoreboard(self.CASES, saw),
-                            corpus.scoreboard(self.CASES, {**saw, 30: "fail"}))
+        self.assertNotEqual(expected.scoreboard(self.CASES, saw),
+                            expected.scoreboard(self.CASES, {**saw, 30: "fail"}))
 
     def test_two_results_changing_places_change_it(self):
         self.assertNotEqual(
-            corpus.scoreboard(self.CASES, {7: "pass", 8: "fail", 30: "fail"}),
-            corpus.scoreboard(self.CASES, {7: "fail", 8: "fail", 30: "pass"}))
+            expected.scoreboard(self.CASES, {7: "pass", 8: "fail", 30: "fail"}),
+            expected.scoreboard(self.CASES, {7: "fail", 8: "fail", 30: "pass"}))
 
     def test_the_video_is_not_in_it(self):
         saw = {7: "pass", 8: "fail", 30: "pass"}
         other = {**self.CASES, 30: Case("plays", video=(1, 2))}
-        self.assertEqual(corpus.scoreboard(self.CASES, saw),
-                         corpus.scoreboard(other, saw))
+        self.assertEqual(expected.scoreboard(self.CASES, saw),
+                         expected.scoreboard(other, saw))
 
 
 if __name__ == "__main__":

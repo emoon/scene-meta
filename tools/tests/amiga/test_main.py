@@ -6,8 +6,8 @@ import unittest
 from unittest import mock
 
 from scenemeta.amiga import __main__ as cli
-from scenemeta.amiga import config, corpus, export, gate, store
-from scenemeta.core.corpus import Invalid
+from scenemeta.amiga import config, expected, export, gate, store
+from scenemeta.core.expected import Invalid
 from scenemeta.core.gate import Judgement
 
 
@@ -88,22 +88,22 @@ class GateCommandsTest(unittest.TestCase):
         (db,), _ = stale.call_args
         self.assertIsInstance(db, store.Store)
 
-    def test_corpus_gates_into_the_sweep_database(self):
-        with mock.patch.object(corpus, "run", return_value=0) as run:
-            self.assertEqual(self.main("corpus", "--jobs", "3")[0], 0)
+    def test_expected_gates_into_the_sweep_database(self):
+        with mock.patch.object(expected, "run", return_value=0) as run:
+            self.assertEqual(self.main("expected", "--jobs", "3")[0], 0)
         (db,), kw = run.call_args
         self.assertIsInstance(db, store.Store)
         self.assertEqual(kw, {"jobs": 3})
 
-    def test_corpus_fails_when_a_production_could_not_be_played(self):
-        with mock.patch.object(corpus, "run", return_value=2):
-            self.assertEqual(self.main("corpus")[0], 1)
+    def test_expected_fails_when_a_production_could_not_be_played(self):
+        with mock.patch.object(expected, "run", return_value=2):
+            self.assertEqual(self.main("expected")[0], 1)
 
-    def test_a_corpus_that_does_not_hold_stops_the_command(self):
-        with mock.patch.object(corpus, "run", side_effect=Invalid("bad")), \
+    def test_an_expected_file_that_does_not_hold_stops_the_command(self):
+        with mock.patch.object(expected, "run", side_effect=Invalid("bad")), \
                 self.assertRaises(SystemExit) as stop:
-            self.main("corpus")
-        self.assertEqual(stop.exception.code, f"{config.CORPUS}:\nbad")
+            self.main("expected")
+        self.assertEqual(stop.exception.code, f"{config.EXPECTED}:\nbad")
 
 
 if __name__ == "__main__":

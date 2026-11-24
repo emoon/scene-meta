@@ -86,7 +86,7 @@ python3 -m scenemeta amiga gate                  # every entry not gated yet, re
 python3 -m scenemeta amiga gate-demote           # the failures: what --write demotes
 python3 -m scenemeta amiga gate-summary          # scene.db -> amiga/gate-summary.txt
 python3 -m scenemeta amiga gate-stale            # entries to gate again
-python3 -m scenemeta amiga corpus                # gate corpus.toml -> amiga/corpus-score.txt
+python3 -m scenemeta amiga expected                # gate expected.toml -> amiga/expected-score.txt
 python3 -m scenemeta amiga migrate               # convert an older scene.db
 python3 -m unittest discover -s tests -t .
 ```
@@ -180,8 +180,8 @@ the next best runs of a demoted production to the gate.
 `gate-stale` lists the gated entries whose download, or the player's
 version, is no longer the one of their records: those need the gate again.
 
-`corpus` (`../scenemeta/amiga/corpus.py`) runs the gate over the corpus,
-`corpus.toml` here: productions with the outcome expected of them. It is
+`expected` (`../scenemeta/amiga/expected.py`) runs the gate over
+`expected.toml` here: productions with the outcome expected of them. It is
 test data, not part of the data set. A table per production, `[demozoo.N]`:
 
 | field | meaning |
@@ -195,7 +195,7 @@ It holds the 209 productions whose end was scored against their videos and
 the ones the sweep's code comments name. The file must validate, and every id
 in it must have an entry in the data files, or the command stops before its
 first run. It prints a line per production as `gate` does, with what was expected,
-then the total, and writes `corpus-score.txt` here, which is checked in:
+then the total, and writes `expected-score.txt` here, which is checked in:
 how many productions the gate saw as expected (`plays` and a pass, `broken`
 and a fail), and of each what was expected and whether it was `pass`, `fail`
 or `error` (could not be played). No reason and no time is in it, so the
@@ -212,7 +212,7 @@ what is missing, nothing is run for that entry, and the command exits with
 status 1. `shots` files a `meta.json` with status `error` when the entry
 itself is the cause, so it is not tried again until that file is deleted;
 for a missing ROM or missing media it files nothing and tries again next
-time. Without the Demozoo mirror `sweep`, `export`, `replay`, `gate`, `corpus` and `shots` stop before
+time. Without the Demozoo mirror `sweep`, `export`, `replay`, `gate`, `expected` and `shots` stop before
 their first production, and a sweep whose ROM goes missing on the way stops
 there instead of storing results.
 

@@ -1,4 +1,4 @@
-The corpus by what the gate last saw of it: per production what is expected, then what was seen.
+The expected productions by what the gate last saw of them: per production what is expected, then what was seen.
 
 as expected 214 of 222
 

@@ -1,5 +1,5 @@
-"""A platform's corpus (docs/DESIGN.md, Replay): productions with the outcome
-expected of them, kept beside its tools as TOML, a ``[demozoo.N]`` table of
+"""A platform's expected outcomes (docs/DESIGN.md, Replay): productions with
+the outcome expected of them, kept beside its tools as TOML, a ``[demozoo.N]`` table of
 each. The gate is run over them and the scoreboard, which is checked in,
 says how many it saw as expected.
 """
@@ -16,7 +16,7 @@ _CAUSE = re.compile(r"[a-z0-9]+(-[a-z0-9]+)*")
 
 
 class Invalid(Exception):
-    """The corpus file does not hold: a line per problem."""
+    """The expected file does not hold: a line per problem."""
 
 
 @dataclasses.dataclass(frozen=True)
@@ -64,7 +64,7 @@ def _case(table):
 
 
 def parse(text, known):
-    """``{prod: Case}`` of the corpus file ``text``. Raises Invalid when it
+    """``{prod: Case}`` of the expected file ``text``. Raises Invalid when it
     does not hold, or names a production that is not in ``known``, the ids
     of the data files."""
     try:
@@ -107,8 +107,8 @@ def scoreboard(cases, saw):
     of ``cases`` what was expected and what the gate saw, ``saw[prod]``:
     ``seen`` of its judgement, or ERROR. Nothing else of a run is in it, so
     it changes only when a result does."""
-    return ("The corpus by what the gate last saw of it: per production what"
-            " is expected, then what was seen.\n\n"
+    return ("The expected productions by what the gate last saw of them: per"
+            " production what is expected, then what was seen.\n\n"
             f"{total(cases, saw)}\n\n" +
             "".join(f"{p:>7} {c.expect:6} {saw[p]}\n"
                     for p, c in sorted(cases.items())))

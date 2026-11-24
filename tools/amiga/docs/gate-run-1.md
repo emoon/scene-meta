@@ -1,17 +1,17 @@
 # The first gate run: failures by cause
 
-21 Nov 2026, commit `d390cc7`, player version 1. `scenemeta amiga corpus`,
+21 Nov 2026, commit `d390cc7`, player version 1. `scenemeta amiga expected`,
 then `scenemeta amiga gate` over the entries with swaps or keys that are not
-in the corpus: 293 productions (222 of the corpus, 120 with swaps or keys,
-49 of them in both).
+in the expected file: 293 productions (222 of the expected file, 120 with
+swaps or keys, 49 of them in both).
 
 | | gated | pass | fail | error |
 |---|---|---|---|---|
-| corpus | 222 | 197 | 25 | 0 |
+| expected | 222 | 197 | 25 | 0 |
 | other entries with swaps or keys | 71 | 27 | 43 | 1 |
 | all | 293 | 224 | 68 | 1 |
 
-`corpus-score.txt` did not change: the same 25 fail as in the run of #7.
+`expected-score.txt` did not change: the same 25 fail as in the run of #7.
 `gate-summary.txt` has the counts.
 
 ## How a cause was found
@@ -35,7 +35,7 @@ pass. No entry was changed.
 
 ## Counts by cause
 
-| cause | corpus | other | all | can the schema say it |
+| cause | expected | other | all | can the schema say it |
 |---|---|---|---|---|
 | a press the entry lacks, left button | 5 | 9 | 14 | yes |
 | a press the schema cannot say, right button | 1 | 1 | 2 | no |
@@ -151,14 +151,14 @@ The entry plays as written on at least one seed.
 ## Wrong file run (9)
 
 All nine entries are `result = "unknown"` and run a BBS advert viewer: a
-"task held" requester at 10 s, on both seeds. The corpus names the demo of
+"task held" requester at 10 s, on both seeds. The expected file names the demo of
 each.
 
 8360 Subzero, 9285 Utmost Vacancy, 32303 Smells Like Lame Spirit,
 32581 Hardcore, 32583 Mind Traveller, 35129 Episode, 46968 November Light,
 140969 4k Intro, 163844 Determination.
 
-For 9285 and 35129 the corpus says a script starts the demo.
+For 9285 and 35129 the expected file says a script starts the demo.
 
 ## Crashes whatever the key (6)
 

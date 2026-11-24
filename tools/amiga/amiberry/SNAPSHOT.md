@@ -349,7 +349,7 @@ and ~100 MB RSS under warp, so keep the job count at or below the core count
 ## Known accuracy note
 
 Unlike the Lite snapshot, v8.2.2's default cycle-exact chipset is WinUAE-synced
-and renders the demos in this corpus (including the Rink a Dink Redux plasma)
+and renders the demos of this data set (including the Rink a Dink Redux plasma)
 without the lower-right dropout Lite showed. If a future divergence from real
 hardware turns up, check whether it also reproduces in stock upstream Amiberry
 before assuming it is a local-patch regression.
