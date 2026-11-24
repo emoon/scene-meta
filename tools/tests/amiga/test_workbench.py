@@ -76,6 +76,18 @@ class WorkbenchTest(unittest.TestCase):
                              sorted([name, "s"]))
             self.assertEqual((root / name).read_bytes(), b"data")
 
+    def test_a_run_needs_the_math_libraries(self):
+        libs = self.dir()
+        with self.assertRaisesRegex(CannotPlay, "no mathieeedoubbas.library"):
+            workbench.require_libs(libs / "none")
+        for name in workbench.ALWAYS_LIBS - {"mathtrans.library"}:
+            (libs / name).write_bytes(b"wb")
+        with self.assertRaisesRegex(CannotPlay,
+                                    f"no mathtrans.library in {libs}"):
+            workbench.require_libs(libs)
+        (libs / "MathTrans.library").write_bytes(b"wb")
+        workbench.require_libs(libs)
+
     def test_a_file_named_libs_gets_no_libraries(self):
         root, libs = self.dir(), self.dir()
         (root / "LIBS").write_bytes(b"x mathtrans.library\0")

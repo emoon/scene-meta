@@ -301,6 +301,9 @@ class PlayTest(unittest.TestCase):
         rom = mock.patch.object(player.machines, "require_rom")
         self.require_rom = rom.start()
         self.addCleanup(rom.stop)
+        libs = mock.patch.object(player.workbench, "require_libs")
+        self.require_libs = libs.start()
+        self.addCleanup(libs.stop)
 
     def play(self, entry, default="a500", **kw):
         with mock.patch.object(player.media, "variants",

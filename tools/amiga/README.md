@@ -239,7 +239,9 @@ cmake --build build/amiberry
   what SetPatch and Workbench's preferences did on a user's machine (AGA
   enabled on KS3.0, topaz 8 as the default font). Disk-based libraries
   (mathieeedoubbas, ...) come from `libs/` (`SCENEMETA_LIBS`), copied from a
-  Workbench disk; without it, demos that need them fail.
+  Workbench disk; without the math libraries there nothing is played
+  (`workbench.require_libs`): a demo that opens one would end at the
+  prompt and read as doing nothing.
 - A launcher script an entry's `run` names is the startup-sequence itself,
   after `s/scenemeta-go-on`, which sets the fail level to 21: a command
   that is not there fails with 10, which would end the script (and still

@@ -13,8 +13,8 @@ that a demo can depend on to a boot directory:
   topaz 8 everybody had. Count Duckula's trainer renders its scroller with
   Text() into an 8 line bitmap placed right before its own code, and a 9th
   line overwrites the next instruction.
-- Disk-based libraries (LIBS_DIR, optional: they come from a Workbench
-  disk): Motion Blur gurus when mathieeedoubbas.library does not open. A
+- Disk-based libraries (LIBS_DIR: they come from a Workbench disk, and
+  ``require_libs`` stops a run without them): Motion Blur gurus when mathieeedoubbas.library does not open. A
   library goes in only when a file of the tree names it (a floppy fallback
   has no room for them all), apart from the math libraries.
 - C:Assign, when the tree has none: a launcher script assigns a name its
@@ -227,6 +227,17 @@ def _subdir(root, name):
         if p.name.lower() == name:
             return p if p.is_dir() else None
     return root / name
+
+
+def require_libs(libs_dir=None):
+    """Raise unless the libraries no run does without are there: without
+    them a demo that opens one ends at the prompt, and the run reads as a
+    production doing nothing."""
+    libs_dir = config.LIBS_DIR if libs_dir is None else libs_dir
+    have = ({p.name.lower() for p in libs_dir.iterdir()}
+            if libs_dir.is_dir() else set())
+    if missing := sorted(ALWAYS_LIBS - have):
+        raise CannotPlay(f"no {', '.join(missing)} in {libs_dir}")
 
 
 def prepare(root, command, libs_dir=None):

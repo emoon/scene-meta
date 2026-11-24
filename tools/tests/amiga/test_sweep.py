@@ -597,6 +597,7 @@ class SetupTest(unittest.TestCase):
     def test_a_sweep_without_the_mirror_stops_before_any_production(self):
         with tempfile.TemporaryDirectory() as d, \
                 mock.patch.object(machines, "require_roms"), \
+                mock.patch.object(sweep.workbench, "require_libs"), \
                 mock.patch.object(media.config, "DEMOZOO_DIR",
                                   pathlib.Path(d) / "demozoo"), \
                 mock.patch.object(sweep.driver, "run_all") as run_all:

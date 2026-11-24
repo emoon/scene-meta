@@ -30,6 +30,7 @@ class ReportTest(unittest.TestCase):
 
     def setUp(self):
         for needed in ((player.machines, "require_rom"),
+                       (player.workbench, "require_libs"),
                        (player.media, "require_mirror")):
             patch = mock.patch.object(*needed)
             patch.start()

@@ -11,7 +11,7 @@ import dataclasses
 
 from ..core import gate
 from ..core.errors import BadEntry, CannotPlay
-from . import emulator, machines, media, verdict
+from . import emulator, machines, media, verdict, workbench
 from .machines import FPS
 
 # Raised with every change to what a run of an entry shows: what the gate
@@ -82,6 +82,7 @@ def ready(prod, entry, default):
         raise BadEntry(f"no machine with {entry['drives']} drives")
     # What costs nothing to find missing, before the download is unpacked.
     machines.require_rom(machine)
+    workbench.require_libs()
     actions(entry)
     return Ready(entry, machine, _variant_of(prod, entry))
 

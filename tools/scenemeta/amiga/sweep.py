@@ -5,7 +5,8 @@ import dataclasses
 import functools
 
 from ..core import gate, result, sweep as driver
-from . import catalog, config, emulator, machines, media, player, verdict
+from . import (catalog, config, emulator, machines, media, player, verdict,
+               workbench)
 from .machines import FPS
 
 SINGLE_DISK_FRAMES = 9000       # 3 minutes of a demo
@@ -516,10 +517,11 @@ def _job(prod, multi_only=False, known=None):
 
 
 def run_all(prods, store, jobs=None, multi_only=False, log=print):
-    # Before any production: a run without its ROM would be stored as one
-    # where nothing happened, a production without the mirror as one with
+    # Before any production: a run without its ROM or the libraries would
+    # be stored as one where nothing happened, a production without the mirror as one with
     # no files.
     machines.require_roms()
+    workbench.require_libs()
     media.require_mirror()
     known = catalog.known_machines(config.DATA_DIR)
     driver.run_all(prods, store, functools.partial(

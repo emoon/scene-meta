@@ -103,6 +103,7 @@ class CannotPlayTest(unittest.TestCase):
         """``_one`` raises ``error``; returns the meta filed, or None."""
         with tempfile.TemporaryDirectory() as d, \
                 mock.patch.object(shots.player.machines, "require_rom"), \
+                mock.patch.object(shots.player.workbench, "require_libs"), \
                 mock.patch.object(shots.player.media, "variants",
                                   return_value=([], ["x"])), \
                 mock.patch.object(shots.player.emulator, "run") as run:
