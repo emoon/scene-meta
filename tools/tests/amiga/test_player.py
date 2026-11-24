@@ -1,5 +1,6 @@
 import pathlib
 import tempfile
+import threading
 import unittest
 from unittest import mock
 
@@ -452,6 +453,23 @@ class PlayEachTest(unittest.TestCase):
         self.assertEqual(errors, 1)
         self.assertEqual(lines, ["1 fine",
                                  "2 b: error: no way to press key 'space'"])
+
+    def test_a_slow_production_does_not_hold_back_the_lines_of_the_others(self):
+        ended = threading.Event()
+
+        def one(prod, entry):
+            if prod == 1:   # ends only once the line of 2 is logged
+                self.assertTrue(ended.wait(10))
+            return f"{prod} fine"
+        lines = []
+
+        def log(line, **kw):
+            lines.append(line)
+            ended.set()
+        with mock.patch.object(player.media, "require_mirror"):
+            player.play_each([(1, {"title": "a"}), (2, {"title": "b"})], one,
+                             2, log)
+        self.assertEqual(lines, ["2 fine", "1 fine"])
 
     def test_without_the_mirror_nothing_is_played(self):
         one = mock.Mock()

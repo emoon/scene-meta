@@ -95,7 +95,7 @@ def play(prod, entry, default, keys=True, keep=None):
 
 def each_played(todo, one, jobs):
     """Play every ``(prod, entry)`` of ``todo``, ``jobs`` at a time. Yields
-    of each, in order, ``(prod, True, one(prod, entry))``, or ``(prod,
+    of each, as it ends, ``(prod, True, one(prod, entry))``, or ``(prod,
     False, line)`` with the line that reports why it cannot be played.
     Raises CannotPlay when there is no mirror to play any of them from."""
     media.require_mirror()
@@ -107,7 +107,8 @@ def each_played(todo, one, jobs):
             return prod, False, f"{prod} {entry['title']}: error: {e}"
 
     with cf.ThreadPoolExecutor(jobs) as pool:
-        yield from pool.map(lambda pe: report(*pe), todo)
+        for fut in cf.as_completed([pool.submit(report, *pe) for pe in todo]):
+            yield fut.result()
 
 
 def play_each(todo, one, jobs, log=print):

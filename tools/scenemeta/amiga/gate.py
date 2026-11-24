@@ -50,7 +50,7 @@ def _by_prod(records):
 
 def each(todo, db, data, jobs=None, again=True):
     """Gate every ``(prod, entry)`` of ``todo``, entries of the data files
-    ``data``, ``jobs`` emulators at a time. Yields of each, in order,
+    ``data``, ``jobs`` emulators at a time. Yields of each, as it ends,
     ``(prod, True, judgement)``, what the gate saw then being in the store
     ``db``, or ``(prod, False, line)`` with the line that reports why it
     could not be played, which is stored as its error. Without ``again``
