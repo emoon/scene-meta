@@ -21,6 +21,7 @@ class Swap:
     key_at: float = None
     screenshot: bytes = b""      # the screen when the swap was decided
     drive: int = 1               # 1-based number of the drive it went into
+    until: float = None          # the latest time it was seen to go in
 
 
 @dataclasses.dataclass

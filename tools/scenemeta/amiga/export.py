@@ -75,6 +75,8 @@ def _events(swaps, keys):
         out.append({"at": at, "disk": s.disk})
         if s.drive > 1:
             out[-1]["drive"] = s.drive
+        if s.until is not None:
+            out[-1]["until"] = round(s.until, 1)
         if s.key:
             delay = (KEY_DELAY if s.key_at is None
                      else round(s.key_at - s.at, 1))

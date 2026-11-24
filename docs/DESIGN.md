@@ -65,7 +65,7 @@ title  = "Desert Dream"
 group  = "Kefrens"
 source = "script"
 disks  = ["DesertDream-A.adf", "DesertDream-B.adf"]
-events = [{ at = 536.9, disk = 2 }, { at = 541.9, key = "lmb" }]
+events = [{ at = 536.9, until = 566.9, disk = 2 }, { at = 541.9, key = "lmb" }]
 ```
 
 The key is `[demozoo.N]`, or `[csdb.N]` when Demozoo has no entry. The other
@@ -82,7 +82,7 @@ appears once per platform, as a key or as a cross-reference.
 | `boot` | `floppy` or `hd`: what to start it from, when that is not the first thing the download offers (an executable that only runs from a floppy, a disk set better run from its hard-drive archive) |
 | `kind` | `collection`, `standalone`, `separate-disks`, `menu`, `boot_fresh` |
 | `disks` | file names in disk order: a multi-disk production's, or the one disk meant where the download has several |
-| `events` | what is done while it plays, in the order it happens: each has `at` and is a disk that goes in (`disk`, and optionally `drive`, `until`) or a key pressed (`key`) |
+| `events` | what is done while it plays, in the order it happens: each has `at`, optionally `until`, and is a disk that goes in (`disk`, and optionally `drive`) or a key pressed (`key`) |
 | `run` | the file to start, when the obvious one is wrong or ambiguous: an executable, or the download's launcher script (see below) |
 | `boot_disk`, `boot_file` | the disk (1-based) and file to boot, when not the first |
 | `assign` | AmigaDOS assigns, e.g. `{ Killer = "SYS:" }` |
@@ -93,15 +93,30 @@ All times are seconds of emulated time since power-on. An event is one
 thing done at its `at`, and says which by the field it has: `disk` or
 `key`, one of them. Another kind of event will be another field. `disk` is
 the number of the disk that goes in (1 when the production booted from a
-later one), `at` then an insert time known to work and `until` the last one
-known to work. `drive` is the drive the disk goes into when that
+later one). `drive` is the drive the disk goes into when that
 is not the first: 2 or more, and no more than the machine's `drives` (on
 Amiga `drive = 2` is DF1). A key that has a disk taken is an event of its
-own, after the disk's. When a disk goes in later than its `at`, every event
-from then on is that much later. Key names are lowercase (`space`, `return`,
-`p1fire`, `p2fire`, `lmb`, `rmb`: the fire button of the joystick in port 1
-or 2, the left and the right mouse button). On Amiga these six are all
-there are, and another name is an error.
+own, after the disk's.
+
+An event of either kind has a window. `at` is the earliest time it is known
+to work, `until` the latest; with no `until` only `at` is known.
+`until = inf` says the event may wait for ever (a disk prompt with no
+timeout), which a time, the latest anybody tried, does not. Events are in
+the order of their `at`, whatever their `until`.
+
+Which end of a window is taken is the player's setting and not the entry's.
+An eager player does every event at its `at`. A patient one does it at its
+`until` and lets the production show what it shows while it waits (a part
+that an early disk skips). Every later event is then done as much later as
+this one waited, since the production stood still that long, and the waits
+add up; an event that may wait for ever waits as long as the player
+chooses. A production that does not stand still while it waits (a part on
+a timer whatever is pressed) cannot be said yet.
+
+Key names are lowercase (`space`, `return`, `p1fire`, `p2fire`, `lmb`,
+`rmb`: the fire button of the joystick in port 1 or 2, the left and the
+right mouse button). On Amiga these six are all there are, and another name
+is an error.
 
 Where a download ships a script that runs its parts in turn (`.bat`,
 `RunMe`, `start`, `execute_me`), `run` names the script, by its name or its

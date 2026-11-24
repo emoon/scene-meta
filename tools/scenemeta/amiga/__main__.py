@@ -4,7 +4,7 @@
     python3 -m scenemeta amiga sweep [--ids ...] [--limit N] [--jobs N]
     python3 -m scenemeta amiga report
     python3 -m scenemeta amiga export [--ids ...] [--jobs N]
-    python3 -m scenemeta amiga replay [--ids ...] [--jobs N]
+    python3 -m scenemeta amiga replay [--ids ...] [--jobs N] [--patient]
     python3 -m scenemeta amiga gate [--ids ...] [--jobs N]
     python3 -m scenemeta amiga gate-demote [--write]
     python3 -m scenemeta amiga gate-summary
@@ -40,6 +40,8 @@ def main(argv=None):
     p = sub.add_parser("replay", help="play data-file entries as written")
     p.add_argument("--ids", type=int, nargs="*")
     p.add_argument("--jobs", type=int)
+    p.add_argument("--patient", action="store_true",
+                   help="every event at its until, not its at")
     p = sub.add_parser("gate", help="pass or fail of data-file entries;"
                        " without --ids, of every one not gated yet")
     p.add_argument("--ids", type=int, nargs="*")
@@ -76,7 +78,8 @@ def _command(args):
     # replay and shots read the data files, not the database; an entry
     # that could not be played fails the command.
     if args.cmd == "replay":
-        return min(1, replay.run(args.ids, jobs=args.jobs))
+        return min(1, replay.run(args.ids, jobs=args.jobs,
+                                 patient=args.patient))
     if args.cmd == "shots":
         return min(1, shots.run(args.out, args.ids, jobs=args.jobs))
     if args.cmd == "migrate":

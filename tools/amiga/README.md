@@ -53,6 +53,14 @@ insert is stored with its time in `swap`. A multi-disk run that goes quiet with 
 left to insert is retried with the idle trigger's head-position gate off
 (`anycyl`).
 
+The insert time is the one time the detector chose. For the run a variant
+is stored as, the sweep measures a later one: it plays that run once more
+through the player with every disk 30 seconds late, the events after a disk
+as much later. A disk that loads then has that time as its `until`; from
+the first disk that does not, or when that run crashes or never comes
+alive, no `until` is stored. The export writes it into the entry, and the
+gate holds the entry to it.
+
 A run also presses keys nobody asked for: the detector's clicks (a disk
 that is slow to load gets clicked too), a click after each scheduled insert,
 and on the retries a click, or Return, Space and fire in turn, every 30 s.
@@ -128,7 +136,9 @@ was loaded. The playing is done by the player (`../scenemeta/amiga/player.py`),
 the only code that turns an entry and its download into an emulator run;
 `shots` goes through it too. An entry with keys is played once
 more without them, which shows whether the keys are needed. Without `--ids`
-it plays every entry that has a key. The keys are `lmb`, `rmb`,
+it plays every entry that has a key. It plays eager, every event at its
+`at`; with `--patient`, at its `until` (see `docs/DESIGN.md`), an event that
+may wait for ever 30 seconds after its turn comes. The keys are `lmb`, `rmb`,
 `return`, `space`, `p1fire` and `p2fire`; a swapped disk goes into DF0, or
 into the drive its event names (`drive = 2` is DF1).
 
@@ -145,15 +155,14 @@ seed:
 
 - the production comes alive, does not crash and loads every disk swapped
   in (an entry with no events is watched for three minutes);
-- the same holds with the first disk, and every event after it, 30 seconds
-  later;
+- the same holds played patient, every event at its `until`, when an event
+  of the entry has one later than its `at`;
 - no key can be left out: the run without it, as long, gets less far. It
   loads fewer disks, crashes, or last reads a disk earlier (a production
   left at its prompt reads no further).
 
-A fail names the first seed it fails on. The line ends with the `until`
-proved of each swap, the latest insert that loaded on every seed: `at` plus
-30 seconds, or `at` when only that did. The runs of an entry are made in
+A fail names the first seed it fails on. An entry with no `until` is held
+to its `at` alone. The runs of an entry are made in
 parallel, `--jobs` emulators at a time over all entries. A fail is a result
 and leaves the exit status 0.
 

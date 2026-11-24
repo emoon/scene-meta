@@ -3,6 +3,7 @@
 import concurrent.futures as cf
 import dataclasses
 import functools
+import itertools
 
 from .. import events
 from ..core import gate, result, sweep as driver
@@ -45,6 +46,7 @@ class Attempt:
     key_every: int = 0
     seed: int = emulator.DEFAULT_SEED
     presses: tuple = ()   # the Press an entry of it needs
+    untils: tuple = ()    # per swap: the latest frame it was seen to go in
     play: gate.Play = None  # of a run through the player
 
     @property
@@ -80,7 +82,8 @@ class Attempt:
             [result.Swap(disk, seconds(frame), how,
                          key=keyed[i].key if i in keyed else None,
                          key_at=seconds(keyed[i].frame) if i in keyed else None,
-                         drive=self.unit + 1)
+                         drive=self.unit + 1,
+                         until=seconds(dict(enumerate(self.untils)).get(i)))
              for i, (frame, disk, how) in enumerate(self.swaps)],
             {"returncode": log.returncode, "events": log.events}, log.last_shot,
             [result.Key(seconds(p.frame), p.key) for p in self.presses
@@ -125,14 +128,37 @@ def attempt(m, variant, frames, **kw):
                  verdict.classify(log, frames // 250))
 
 
-def played(m, variant, entry, seed):
+def played(m, variant, entry, seed, patient=False):
     """One run of ``entry`` as written, through the player, and what it
     showed."""
-    ran = player.Ready(entry, m, variant).play(seed=seed)
+    ran = player.Ready(entry, m, variant).play(seed=seed, patient=patient)
     opts = emulator.Options(drives=entry.get("drives", 1), seed=seed)
     return dataclasses.replace(
-        _seen(m, variant, player.frames_of(entry), opts, ran.log, ran.verdict),
+        _seen(m, variant, player.frames_of(entry, patient), opts, ran.log,
+              ran.verdict),
         play=ran.record)
+
+
+# A disk is tried as much later as a patient player waits at most.
+WINDOW_FRAMES = round(player.PATIENCE * FPS)
+
+
+def windows(m, variant, a):
+    """The latest frame each disk of attempt ``a`` is seen to go in, from
+    one patient run of its entry with every disk WINDOW_FRAMES late: of the
+    swaps up to the first whose disk did not load, of none when that run
+    crashed or never came alive."""
+    if not a.swaps or not a.ran:
+        return ()
+    entry = _entry(variant, a, a.presses)
+    for event in entry["events"]:
+        if "disk" in event:
+            event["until"] = event["at"] + WINDOW_FRAMES / FPS
+    play = played(m, variant, entry, a.seed, patient=True).play
+    if play.crash or not play.ran:
+        return ()
+    loaded = itertools.takewhile(lambda s: s.loaded, play.swaps)
+    return tuple(swap[0] + WINDOW_FRAMES for swap, _ in zip(a.swaps, loaded))
 
 
 def _entry(variant, a, presses):
@@ -456,8 +482,16 @@ def climb(variant, aga_only, release_date=None, start=None):
     """Run ``variant`` up the ladder until a machine works (and, for a disk
     set, reaches every disk).
 
-    Returns ``(attempts, best)``: every Attempt made, and the chosen one.
+    Returns ``(attempts, best)``: every Attempt made, and the chosen one,
+    which says until when each of its disks can go in (see ``windows``).
     """
+    attempts, best = _climb(variant, aga_only, release_date, start)
+    known = dataclasses.replace(best, untils=windows(
+        machines.BY_NAME[best.machine], variant, best))
+    return [known if a is best else a for a in attempts], known
+
+
+def _climb(variant, aga_only, release_date, start):
     frames = budget(variant)
     attempts, chosen = [], []
     n = len(variant.disks)

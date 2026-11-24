@@ -33,6 +33,13 @@ class GateCommandsTest(unittest.TestCase):
         self.addCleanup(db.close)
         return db.gated()
 
+    def test_replay_is_eager_unless_asked_to_be_patient(self):
+        with mock.patch.object(cli.replay, "run", return_value=0) as run:
+            self.main("replay", "--ids", "7")
+            self.main("replay", "--ids", "7", "--patient")
+        self.assertEqual([c.kwargs["patient"] for c in run.call_args_list],
+                         [False, True])
+
     def test_gate_stores_into_the_sweep_database(self):
         def run(ids, db, jobs=None):
             db.put_gate(ids[0], {"title": "x"}, Judgement(True, "", seeds=(

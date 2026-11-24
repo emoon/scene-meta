@@ -413,7 +413,8 @@ class ClicksOnlyTest(unittest.TestCase):
                 **{"swaps": [(4055, 2, "poll+click")], "reached": 1,
                    "seed": 5, **crashed})
 
-        def play(ready, keys=True, keep=None, seed=emulator.DEFAULT_SEED):
+        def play(ready, keys=True, keep=None, seed=emulator.DEFAULT_SEED,
+                 patient=False):
             calls.append((ready, seed))
             return player.Outcome(
                 "a500", alone, [], RunLog([], [], 0, False, ""),
@@ -459,6 +460,18 @@ class ClicksOnlyTest(unittest.TestCase):
         self.assertEqual(a.play, gate.Play(False, "no-samples (exit 0)",
                                            far=-0.02))
 
+    def test_the_player_runs_it_patient_and_as_long_as_that_takes(self):
+        log = RunLog([], [], 0, False, "")
+        entry = {"disks": ["a.adf", "b.adf"],
+                 "events": [{"at": 100.0, "until": 130.0, "disk": 2}]}
+        with mock.patch.object(emulator, "run", return_value=log) as run:
+            a = sweep.played(machines.BY_NAME["a500"], self.SET, entry, 5,
+                             patient=True)
+        _, _, frames, opts = run.call_args.args
+        self.assertEqual(opts.play, ((6500, "insert", (0, 0)),))
+        self.assertEqual(frames, 6500 + emulator.AUTOSWAP_TAIL_FRAMES)
+        self.assertEqual(a.frames, frames)
+
     def test_both_clicks_of_the_detector_are_replayed(self):
         calls, _ = self.run_try(verdict.Verdict("works", 20),
                                 swaps=[(4055, 2, "poll+click+rclick")])
@@ -483,6 +496,68 @@ class ClicksOnlyTest(unittest.TestCase):
             "works-then-crash", 20, "alert:00000004", 5000))
         self.assertTrue(all(a.record().keys == [] for a in tries))
         self.assertEqual(tries[-1].swaps, [(4055, 2, "poll+click")])
+
+
+class WindowsTest(unittest.TestCase):
+    """The until of each swap of an attempt: its entry played patient,
+    every disk 30 s late."""
+    SET = media.Variant("floppy", ["a.adf", "b.adf", "c.adf"])
+    A500 = machines.BY_NAME["a500"]
+
+    def windows(self, play, verdict_=verdict.Verdict("works", 20), **fields):
+        a = sweep.Attempt(
+            "a500", 72000, verdict_, RunLog([], [], 0, False, ""),
+            **{"swaps": [(5000, 2, "poll+click"), (20000, 3, "poll")],
+               "presses": (Press(5250, "lmb", 0),), "seed": 5, **fields})
+        ran = dataclasses.replace(a, play=play)
+        with mock.patch.object(sweep, "played", return_value=ran) as self.played:
+            return sweep.windows(self.A500, self.SET, a)
+
+    def test_each_disk_that_loaded_30_s_late_can_go_in_until_then(self):
+        both = gate.Play(True, swaps=(gate.SwapTaken(2, True),
+                                      gate.SwapTaken(3, True)))
+        self.assertEqual(self.windows(both), (6500, 21500))
+        m, variant, entry, seed = self.played.call_args.args
+        self.assertEqual((m, variant, seed), (self.A500, self.SET, 5))
+        self.assertEqual(self.played.call_args.kwargs, {"patient": True})
+        self.assertEqual(entry["events"], [
+            {"at": 100.0, "disk": 2, "until": 130.0},
+            {"at": 105.0, "key": "lmb"},
+            {"at": 400.0, "disk": 3, "until": 430.0}])
+
+    def test_none_from_the_first_disk_that_did_not_load(self):
+        second = gate.Play(True, swaps=(gate.SwapTaken(2, True),
+                                        gate.SwapTaken(3, False)))
+        self.assertEqual(self.windows(second), (6500,))
+        first = gate.Play(True, swaps=(gate.SwapTaken(2, False),
+                                       gate.SwapTaken(3, True)))
+        self.assertEqual(self.windows(first), ())
+
+    def test_none_of_a_late_run_that_crashed_or_never_came_alive(self):
+        loaded = (gate.SwapTaken(2, True), gate.SwapTaken(3, True))
+        self.assertEqual(self.windows(gate.Play(True, "guru", loaded)), ())
+        self.assertEqual(self.windows(gate.Play(False, swaps=loaded)), ())
+
+    def test_no_run_for_an_attempt_with_no_swap_or_that_did_not_run(self):
+        self.assertEqual(self.windows(None, swaps=[]), ())
+        self.assertEqual(
+            self.windows(None, verdict.Verdict("no-activity", 0)), ())
+        self.played.assert_not_called()
+
+    def test_the_chosen_attempt_of_a_climb_says_its_untils(self):
+        best = sweep.Attempt("a500", 72000, verdict.Verdict("works", 20),
+                             RunLog([], [], 0, False, ""),
+                             [(5000, 2, "poll")], reached=3)
+        other = dataclasses.replace(best, reached=1)
+        with mock.patch.object(sweep, "try_machine",
+                               return_value=[other, best]), \
+                mock.patch.object(sweep, "windows",
+                                  return_value=(6500,)) as windows:
+            attempts, chosen = sweep.climb(self.SET, False)
+        windows.assert_called_once_with(self.A500, self.SET, best)
+        self.assertEqual(chosen.untils, (6500,))
+        self.assertIs(attempts[0], other)
+        self.assertIs(attempts[1], chosen)
 
 
 class RungsTest(unittest.TestCase):
@@ -577,6 +652,13 @@ class RecordTest(unittest.TestCase):
         self.assertEqual([(s.disk, s.at, s.trigger, s.key, s.accepted) for s in r.swaps],
                          [(2, 536.88, "poll+click", None, True),
                           (3, 800.0, "idle", None, True)])
+
+    def test_the_until_of_a_swap_that_has_one(self):
+        a = sweep.Attempt("a500", 72000, verdict.Verdict("works", 9),
+                          RunLog([], [], 0, False, ""),
+                          [(26844, 2, "poll"), (40000, 3, "idle")],
+                          untils=(28344,))
+        self.assertEqual([s.until for s in a.record().swaps], [566.88, None])
 
     def test_presses_go_with_their_swap_or_on_their_own(self):
         a = sweep.Attempt("a500", 72000, verdict.Verdict("works", 9),

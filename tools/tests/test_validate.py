@@ -126,11 +126,20 @@ class ValidateTest(unittest.TestCase):
         self.assertEqual(self.event("{ at = 9.0 }"), said)
         self.assertEqual(self.event('{ at = 9.0, disk = 2, key = "lmb" }'), said)
 
-    def test_only_a_disk_has_a_drive_and_a_window(self):
-        said = ["[demozoo.5] events drive and until are of a disk"]
-        self.assertEqual(self.event('{ at = 9.0, key = "lmb", drive = 2 }'), said)
-        self.assertEqual(self.event('{ at = 9.0, key = "lmb", until = 12.0 }'),
-                         said)
+    def test_only_a_disk_has_a_drive(self):
+        self.assertEqual(self.event('{ at = 9.0, key = "lmb", drive = 2 }'),
+                         ["[demozoo.5] events drive is of a disk"])
+
+    def test_a_key_has_a_window_as_a_disk_has(self):
+        self.assertEqual(self.event('{ at = 9.0, until = 12.0, key = "lmb" }'),
+                         [])
+        self.assertEqual(self.event('{ at = 9.0, until = 3.0, key = "lmb" }'),
+                         ["[demozoo.5] events until is before at"])
+
+    def test_an_event_may_wait_for_ever(self):
+        self.assertEqual(self.event("{ at = 9.0, until = inf, disk = 2 }"), [])
+        self.assertEqual(self.event("{ at = 9.0, until = nan, disk = 2 }"),
+                         ["[demozoo.5] events until must be a time in seconds"])
 
     def test_events_are_in_the_order_they_happen(self):
         self.assertEqual(

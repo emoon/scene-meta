@@ -8,6 +8,7 @@ entry says, not what a sweep can find.
 import concurrent.futures as cf
 import dataclasses
 
+from .. import events
 from ..core import gate
 from ..core.errors import BadEntry, CannotPlay
 from . import emulator, machines, media, verdict, workbench
@@ -23,6 +24,8 @@ PLAIN_FRAMES = 9000
 # A disk is loaded when it was read with the head past its first cylinders:
 # cylinders 0 and 1 are where a demo checks which disk is in.
 LOADED_CYL = 2
+# What a patient run gives an event that may wait for ever, in seconds.
+PATIENCE = 30.0
 # The verdicts of a production that came alive.
 RAN = ("works", "works-short", "works-then-crash")
 
@@ -46,14 +49,15 @@ class Ready:
     variant: media.Variant
 
     def play(self, keys=True, keep=None, seed=emulator.DEFAULT_SEED,
-             frames=None):
-        """Play the entry as written. Without ``keys`` the disks go in and
-        nothing is pressed, in a run as long. ``keep`` is a directory for
-        the pictures of the run, ``seed`` the emulator's (see
+             frames=None, patient=False):
+        """Play the entry as written, eager or ``patient`` (see
+        events.patient). Without ``keys`` the disks go in and nothing is
+        pressed, in a run as long. ``keep`` is a directory
+        for the pictures of the run, ``seed`` the emulator's (see
         emulator.Options), ``frames`` how long when not the entry's own
         time (see ``frames_of``)."""
-        acts = actions(self.entry, keys)
-        frames = frames or frames_of(self.entry)
+        acts = actions(self.entry, keys, patient)
+        frames = frames or frames_of(self.entry, patient)
         log = emulator.run(self.machine, self.variant, frames, emulator.Options(
             drives=self.entry.get("drives", 1), play=tuple(acts), detect=False,
             keep=keep, seed=seed))
@@ -85,10 +89,10 @@ def ready(prod, entry, default):
     return Ready(entry, machine, _variant_of(prod, entry))
 
 
-def play(prod, entry, default, keys=True, keep=None):
+def play(prod, entry, default, keys=True, keep=None, patient=False):
     """Play ``entry`` of production ``prod`` once: see ``ready`` and
     ``Ready.play``."""
-    return ready(prod, entry, default).play(keys, keep)
+    return ready(prod, entry, default).play(keys, keep, patient=patient)
 
 
 def each_played(todo, one, jobs):
@@ -119,16 +123,17 @@ def play_each(todo, one, jobs, log=print):
     return errors
 
 
-def actions(entry, keys=True):
+def actions(entry, keys=True, patient=False):
     """What to do when, for emulator.Options' ``play``. Without ``keys`` the
-    disks go in and nothing is pressed. Raises BadEntry for a key that
-    cannot be pressed and for a swap of a disk that cannot go in, or into a
-    drive the machine has not got."""
+    disks go in and nothing is pressed. ``patient``: see events.patient.
+    Raises BadEntry for a key that cannot be pressed and for a swap of a
+    disk that cannot go in, or into a drive the machine has not got."""
     out = []
     drives = entry.get("drives", 1)
     first = drives + 1      # the first disk that is swapped in
     last = len(entry.get("disks", ()))
-    for event in entry.get("events", []):
+    does = entry.get("events", [])
+    for event in events.patient(does, PATIENCE) if patient else does:
         frame = round(event["at"] * FPS)
         if "key" in event:
             if keys:
@@ -159,11 +164,11 @@ def _key(key):
     return key
 
 
-def frames_of(entry):
+def frames_of(entry, patient=False):
     """How long ``entry`` is played: until the last disk of the entry as
     written, keys and all, has had time to load; else the time an entry
     with nothing to do gets."""
-    acts = actions(entry)
+    acts = actions(entry, patient=patient)
     return acts[-1][0] + TAIL_FRAMES if acts else PLAIN_FRAMES
 
 

@@ -44,13 +44,14 @@ def _has_keys(entry):
     return any("key" in e for e in entry.get("events", []))
 
 
-def _one(prod, entry, default):
+def _one(prod, entry, default, patient=False):
     """The report line of one production. Raises CannotPlay when something
     it needs is missing."""
     ready = player.ready(prod, entry, default)
-    runs = [("as written", ready.play())]
+    runs = [("patient" if patient else "as written",
+             ready.play(patient=patient))]
     if _has_keys(entry):
-        runs.append(("without keys", ready.play(keys=False)))
+        runs.append(("without keys", ready.play(keys=False, patient=patient)))
     # With no disk to put in, the run itself is the evidence.
     got = [(name, o.verdict.verdict, o.loaded or [o.verdict.works])
            for name, o in runs]
@@ -61,9 +62,10 @@ def _one(prod, entry, default):
     return f"{prod} {entry['title']}: {said} ({detail})"
 
 
-def run(ids=None, data=None, jobs=None, log=print):
+def run(ids=None, data=None, jobs=None, log=print, patient=False):
     """Replay the productions ``ids``; without ids, every entry that has a
-    key. Returns how many could not be played."""
+    key. ``patient``: see events.patient. Returns how many could not be
+    played."""
     data = data or config.DATA_DIR
     default = default_machine(data)
     found = entries(data)
@@ -74,4 +76,5 @@ def run(ids=None, data=None, jobs=None, log=print):
     # Two emulators per production, each about two cores.
     jobs = jobs or max(1, (os.cpu_count() or 4) // 4)
     return player.play_each(sorted(todo.items()),
-                            lambda p, e: _one(p, e, default), jobs, log)
+                            lambda p, e: _one(p, e, default, patient),
+                            jobs, log)

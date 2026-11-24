@@ -61,7 +61,8 @@ class ReportTest(unittest.TestCase):
         self.assertEqual(line, "7 x: keys needed (as written: works, disks"
                          " loaded y; without keys: works, disks loaded n)")
         self.assertEqual([c.kwargs for c in self.play.call_args_list],
-                         [{}, {"keys": False}])
+                         [{"patient": False},
+                          {"keys": False, "patient": False}])
         # Both from the media found once.
         self.ready.assert_called_once_with(7, entry, "a500")
 
@@ -77,7 +78,19 @@ class ReportTest(unittest.TestCase):
         line = self.one(entry, self.outcome("works-then-crash", [False]))
         self.assertEqual(line, "7 x: does not replay (as written:"
                          " works-then-crash, disks loaded n)")
-        self.play.assert_called_once_with()
+        self.play.assert_called_once_with(patient=False)
+
+    def test_patient_both_runs_are(self):
+        entry = {"title": "x", "events": [{"at": 10, "until": 40, "disk": 2},
+                                          {"at": 15, "key": "lmb"}]}
+        with mock.patch.object(player, "ready") as ready:
+            ready.return_value.play.side_effect = (
+                self.outcome("works", [True]), self.outcome("works", [False]))
+            line = replay._one(7, entry, "a500", patient=True)
+        self.assertEqual(line, "7 x: keys needed (patient: works, disks"
+                         " loaded y; without keys: works, disks loaded n)")
+        self.assertEqual([c.kwargs for c in ready.return_value.play.call_args_list],
+                         [{"patient": True}, {"keys": False, "patient": True}])
 
     def test_the_run_counts_its_errors(self):
         lines = []

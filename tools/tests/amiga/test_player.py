@@ -31,6 +31,22 @@ class ActionsTest(unittest.TestCase):
         self.assertEqual(player.actions(self.ENTRY, keys=False),
                          [(3305, "insert", (0, 0)), (6000, "insert", (1, 0))])
 
+    WINDOWS = {"disks": ["a.adf", "b.adf"],
+               "events": [{"at": 66.1, "until": 96.1, "disk": 2},
+                          {"at": 71.1, "until": float("inf"), "key": "lmb"},
+                          {"at": 120.0, "key": "space"}]}
+
+    def test_eager_every_event_is_at_its_at(self):
+        self.assertEqual(player.actions(self.WINDOWS), [
+            (3305, "insert", (0, 0)), (3555, "press", "lmb"),
+            (6000, "press", "space")])
+
+    def test_patient_at_its_until_and_the_later_ones_as_much_later(self):
+        wait = round(player.PATIENCE * 50)
+        self.assertEqual(player.actions(self.WINDOWS, patient=True), [
+            (4805, "insert", (0, 0)), (5055 + wait, "press", "lmb"),
+            (7500 + wait, "press", "space")])
+
     def test_a_disk_goes_in_before_a_key_of_the_same_moment(self):
         entry = {"disks": ["a", "b"],
                  "events": [{"at": 10, "disk": 2}, {"at": 10, "key": "lmb"}]}
@@ -293,6 +309,13 @@ class FramesTest(unittest.TestCase):
         entry = {"disks": ["a", "b"], "events": [{"at": 100, "disk": 2}]}
         self.assertEqual(player.frames_of(entry), 5000 + player.TAIL_FRAMES)
 
+    def test_patient_it_plays_as_much_longer_as_its_events_wait(self):
+        entry = {"disks": ["a", "b"],
+                 "events": [{"at": 100, "until": 160, "disk": 2}]}
+        self.assertEqual(player.frames_of(entry), 5000 + player.TAIL_FRAMES)
+        self.assertEqual(player.frames_of(entry, patient=True),
+                         8000 + player.TAIL_FRAMES)
+
 
 class PlayTest(unittest.TestCase):
     SET = player.media.Variant("floppy", ["/d/a.adf", "/d/b.adf"])
@@ -328,6 +351,18 @@ class PlayTest(unittest.TestCase):
         self.assertEqual((out.machine, out.loaded), ("a1200", [True]))
         self.assertIs(out.log, self.LOG)
         self.assertEqual(out.verdict.verdict, "no-activity")
+
+    def test_patient_the_disk_goes_in_at_its_until_and_is_looked_for_then(self):
+        entry = dict(self.ENTRY, events=[{"at": 15, "until": 20, "disk": 2},
+                                         {"at": 20, "key": "lmb"}])
+        out, run = self.play(entry, patient=True)
+        _, _, frames, opts = run.call_args.args
+        self.assertEqual(frames, 1250 + player.TAIL_FRAMES)
+        self.assertEqual(opts.play, ((1000, "insert", (0, 0)), (1250, "press", "lmb")))
+        self.assertEqual(out.loaded, [True])
+        out, run = self.play(entry)
+        self.assertEqual(run.call_args.args[3].play,
+                         ((750, "insert", (0, 0)), (1000, "press", "lmb")))
 
     def test_the_run_is_reported_as_the_record_of_every_platform(self):
         out, _ = self.play(self.ENTRY)

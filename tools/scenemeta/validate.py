@@ -22,7 +22,7 @@ def _text(v):
 
 
 def _seconds(v):
-    if isinstance(v, bool) or not isinstance(v, (int, float)) or v < 0:
+    if isinstance(v, bool) or not isinstance(v, (int, float)) or not v >= 0:
         return "must be a time in seconds"
 
 
@@ -82,8 +82,8 @@ def _events(v):
     for event in v:
         if ("disk" in event) == ("key" in event):
             return "an event is a disk or a key, one of them"
-        if "disk" not in event and event.keys() & {"drive", "until"}:
-            return "drive and until are of a disk"
+        if "drive" in event and "disk" not in event:
+            return "drive is of a disk"
         if "until" in event and event["until"] < event["at"]:
             return "until is before at"
     if v != events.ordered(v):

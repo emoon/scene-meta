@@ -30,14 +30,17 @@ class PlayTest(unittest.TestCase):
         (played,), kw = self.played.call_args
         return played.entry, kw
 
-    def test_a_run_is_the_entry_as_the_gate_changed_it_on_the_runs_seed(self):
-        entry, kw = self.play(Run(3, late=True))
-        self.assertEqual(entry["events"], [{"at": 40, "disk": 2},
-                                           {"at": 45, "key": "lmb"}])
-        self.assertEqual(kw["seed"], 3)
+    def test_a_run_is_the_entry_on_the_runs_seed_eager(self):
+        entry, kw = self.play(Run(3))
+        self.assertEqual(entry, self.ENTRY)
+        self.assertEqual((kw["seed"], kw["patient"]), (3, False))
 
-    def test_late_runs_as_long_as_its_later_disk_needs(self):
-        _, kw = self.play(Run(1, late=True))
+    def test_a_patient_run_is_the_players_and_as_long_as_that_needs(self):
+        self.ENTRY = dict(self.ENTRY, events=[
+            {"at": 10, "until": 40, "disk": 2}, {"at": 15, "key": "lmb"}])
+        entry, kw = self.play(Run(1, patient=True))
+        self.assertEqual(entry, self.ENTRY)
+        self.assertTrue(kw["patient"])
         self.assertEqual(kw["frames"], (40 + 5) * 50 + player.TAIL_FRAMES)
 
     def test_without_a_key_runs_as_long_as_the_entry_as_written(self):
@@ -74,7 +77,7 @@ class OneTest(unittest.TestCase):
         said, _ = self.one(
             lambda ready, run: Play(True, swaps=(SwapTaken(2, True),)))
         self.assertEqual(str(said), "pass (3 seeds: came alive, no crash, every"
-                         " disk loaded; disk 2 until 40.0)")
+                         " disk loaded)")
 
     def test_the_sha256_is_of_the_productions_download(self):
         _, sha256 = self.one(lambda ready, run: Play(True))

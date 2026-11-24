@@ -84,6 +84,14 @@ class EntryTest(unittest.TestCase):
                           swaps=[Swap(3, 225.0, "poll", drive=2)]))
         self.assertEqual(e["events"], [{"at": 225.0, "disk": 3, "drive": 2}])
 
+    def test_a_swap_with_a_window_says_its_until(self):
+        e = entry(variant(kind="floppy", disks=["a", "b", "c"], swaps=[
+            Swap(2, 536.88, "poll", key="lmb", key_at=541.88, until=566.88),
+            Swap(3, 800.0, "poll")]))
+        self.assertEqual(e["events"], [
+            {"at": 536.9, "disk": 2, "until": 566.9},
+            {"at": 541.9, "key": "lmb"}, {"at": 800.0, "disk": 3}])
+
     def test_second_drive(self):
         e = entry(variant(kind="floppy", disks=["a", "b"], drives=2))
         self.assertEqual(e["drives"], 2)

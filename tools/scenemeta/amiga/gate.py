@@ -23,9 +23,10 @@ def _play(ready, run):
     longer of the entry and what is played of it. Raises CannotPlay when
     the emulator showed nothing."""
     changed = gate.as_played(ready.entry, run)
-    frames = max(player.frames_of(e) for e in (ready.entry, changed))
-    ran = dataclasses.replace(ready, entry=changed).play(seed=run.seed,
-                                                         frames=frames)
+    frames = max(player.frames_of(e, run.patient)
+                 for e in (ready.entry, changed))
+    ran = dataclasses.replace(ready, entry=changed).play(
+        seed=run.seed, frames=frames, patient=run.patient)
     if ran.verdict.verdict == "error":
         raise CannotPlay(f"the emulator gave nothing: {ran.verdict.crash}")
     return ran.record
