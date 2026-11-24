@@ -590,9 +590,9 @@ source = "script"
 title = "Genesis"
 group = "Lloret Free Byte"
 source = "script"
+machine = "a1200_030"
 disks = ["LLFB-Genesis1.DMS", "LLFB-Genesis2.DMS", "LLFB-Genesis3.DMS", "LLFB-Genesis4.DMS"]
-events = [{ at = 63.8, disk = 2 }, { at = 386.0, disk = 3 }]
-note = "the sweep only reached disk 3 of 4"
+events = [{ at = 54.5, disk = 2, until = 84.5 }, { at = 342.9, disk = 3, until = 372.9 }, { at = 458.7, disk = 4, until = 488.7 }]
 
 [demozoo.196139]
 title = "Genesis"
