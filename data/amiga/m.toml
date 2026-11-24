@@ -398,7 +398,7 @@ source = "script"
 title = "Magical Box"
 group = "Grasshopper Developments"
 source = "script"
-result = "unknown"
+machine = "a500_2mb_chip"
 
 [demozoo.224738]
 title = "Magical Moments"
@@ -642,7 +642,7 @@ source = "script"
 title = "Malestar General"
 group = "Balance"
 source = "script"
-result = "unknown"
+boot = "floppy"
 
 [demozoo.207485]
 title = "Malfunction"
@@ -730,7 +730,6 @@ source = "script"
 title = "Mandaelbro"
 group = "Goblins"
 source = "script"
-result = "unknown"
 
 [demozoo.326647]
 title = "Mandel bootblock"
@@ -757,7 +756,6 @@ result = "unknown"
 title = "Manhattan Dealers"
 group = "Goonies 2041"
 source = "script"
-result = "unknown"
 
 [demozoo.250464]
 title = "Manhatten Dealers"
@@ -768,7 +766,6 @@ source = "script"
 title = "Manhunter"
 group = "Tristar"
 source = "script"
-result = "unknown"
 
 [demozoo.215676]
 title = "Mania"
@@ -865,7 +862,6 @@ result = "unknown"
 title = "Mapper Demo"
 group = "Voids"
 source = "script"
-result = "unknown"
 
 [demozoo.206960]
 title = "Marantz BBS Intro"
@@ -1252,7 +1248,7 @@ machine = "a1200"
 title = "Matrix Joined"
 group = "Phantasy"
 source = "script"
-result = "unknown"
+boot = "floppy"
 
 [demozoo.193531]
 title = "Matrix's First Intro"
@@ -1423,7 +1419,6 @@ source = "script"
 title = "Mc Disk 5 - spread intro"
 group = "Tristar and Red Sector Inc."
 source = "script"
-result = "unknown"
 
 [demozoo.223971]
 title = "MC1310P"
@@ -1483,8 +1478,7 @@ machine = "a1200"
 title = "Meadows"
 group = "Rift"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+machine = "a500_1mb"
 
 [demozoo.294042]
 title = "Meaningless"
@@ -2453,7 +2447,6 @@ source = "script"
 title = "Megademo"
 group = "Punk Croc Crew"
 source = "script"
-result = "unknown"
 
 [demozoo.217769]
 title = "Megademo"
@@ -2491,8 +2484,7 @@ source = "script"
 title = "Megademo"
 group = "The Dark Ram Service"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.221840]
 title = "Megademo"
@@ -2628,7 +2620,6 @@ source = "script"
 title = "Megademo"
 group = "Pure Metal Coders"
 source = "script"
-result = "unknown"
 
 [demozoo.257713]
 title = "Megademo"
@@ -3271,6 +3262,7 @@ title = "Megademo II"
 group = "Cybornetics"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500_2mb_chip; no entry of it passed the gate"
 
 [demozoo.167365]
 title = "Megademo II - Back to the Roots"
@@ -3325,7 +3317,6 @@ machine = "a500_ks12"
 title = "Megademo Loader"
 group = "Intuition"
 source = "script"
-result = "unknown"
 
 [demozoo.278232]
 title = "Megademo number 1"
@@ -3549,7 +3540,7 @@ source = "script"
 title = "Megastrobo 1.8"
 group = "Degens"
 source = "script"
-result = "unknown"
+machine = "a500_512k"
 run = "MEGA-STROBO"
 
 [demozoo.232915]
@@ -3587,7 +3578,6 @@ source = "script"
 title = "Mekka"
 group = "Columbus"
 source = "script"
-result = "unknown"
 
 [demozoo.19433]
 title = "Mekka & Symposium 98 Invitation"
@@ -3598,9 +3588,8 @@ source = "script"
 title = "Mekkademo"
 group = "Cyborx"
 source = "script"
-result = "unknown"
 disks = ["CYBORX-MekkaDemo_A.dms", "CYBORX-MekkaDemo_B.dms"]
-note = "the sweep saw works on a500; no entry of it passed the gate"
+note = "the sweep only reached disk 1 of 2"
 
 [demozoo.9559]
 title = "Melba"
@@ -3762,7 +3751,6 @@ source = "script"
 title = "Members Wanted"
 group = "Zeus"
 source = "script"
-result = "unknown"
 
 [demozoo.222418]
 title = "Members Wanted"
@@ -4010,7 +3998,6 @@ machine = "a500_ks12"
 title = "Mental Disaster"
 group = "Cyan"
 source = "script"
-result = "unknown"
 
 [demozoo.253806]
 title = "Mental Distortion"
@@ -4219,8 +4206,6 @@ machine = "a1200_fast"
 title = "Mesmerized"
 group = "Pure Metal Coders"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.261870]
 title = "Message"
@@ -4324,7 +4309,6 @@ source = "script"
 title = "Mestro"
 group = "Phoenix"
 source = "script"
-result = "unknown"
 
 [demozoo.191218]
 title = "Meta Brain"
@@ -4466,6 +4450,7 @@ title = "Meteli 5"
 group = "Byterapers"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.236343]
 title = "Meteli 6"
@@ -4737,6 +4722,7 @@ title = "Midnight Caller BBS Intro"
 group = "Digital Access"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.294225]
 title = "Midnight Madness"
@@ -4762,7 +4748,6 @@ source = "script"
 title = "Midnite Mess 2 Intro"
 group = "The Dark Demon"
 source = "script"
-result = "unknown"
 
 [demozoo.261802]
 title = "Midnite Mess 3 Advertising"
@@ -4791,7 +4776,6 @@ result = "unknown"
 title = "Miggybyte Christmas Intro"
 group = "Mr. Tickle"
 source = "script"
-result = "unknown"
 
 [demozoo.243790]
 title = "Mighty Bob Party Vol 1"
@@ -5172,7 +5156,6 @@ source = "script"
 title = "Mini Intro"
 group = "Spetsnatz"
 source = "script"
-result = "unknown"
 
 [demozoo.187533]
 title = "Mini Intro"
@@ -5248,7 +5231,6 @@ source = "script"
 title = "Mini Intro"
 group = "Eremation"
 source = "script"
-result = "unknown"
 
 [demozoo.243825]
 title = "Mini Intro"
@@ -5305,7 +5287,6 @@ source = "script"
 title = "Mini Logo Intro"
 group = "The Silents"
 source = "script"
-result = "unknown"
 
 [demozoo.167569]
 title = "Mini Mega Demo"
@@ -5316,8 +5297,7 @@ source = "script"
 title = "Mini Mega Demo"
 group = "Express"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.251625]
 title = "Mini Mega Intro"
@@ -5339,7 +5319,6 @@ source = "script"
 title = "Mini Micro Intro"
 group = "Supreme"
 source = "script"
-result = "unknown"
 
 [demozoo.223684]
 title = "Mini Partintro"
@@ -5375,7 +5354,7 @@ source = "script"
 title = "Mini-Intro"
 group = "Hotdog Productions"
 source = "script"
-result = "unknown"
+machine = "a500_2mb_chip"
 
 [demozoo.249171]
 title = "Mini-Intro"
@@ -5507,7 +5486,6 @@ source = "script"
 title = "Mintro"
 group = "Coroner"
 source = "script"
-result = "unknown"
 
 [demozoo.224760]
 title = "Mintro"
@@ -5604,7 +5582,7 @@ result = "unknown"
 title = "Mirrors 2"
 group = "Maq"
 source = "script"
-result = "unknown"
+machine = "a500_1mb"
 
 [demozoo.7478]
 title = "Misery"
@@ -5716,7 +5694,7 @@ machine = "a1200_fast"
 title = "Mitt Liv Som Pixel"
 group = "Craze"
 source = "script"
-result = "unknown"
+machine = "a500_2mb_chip"
 
 [demozoo.29098]
 title = "Mitä Hirmu sanoo?"
@@ -5741,6 +5719,7 @@ title = "Mixin Mach II"
 group = "Flash Production"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.268123]
 title = "Mixture 12 Menu"
@@ -5879,7 +5858,6 @@ machine = "a1200_fast"
 title = "Modular Abyss BBS"
 group = "Emax / Snozz"
 source = "script"
-result = "unknown"
 
 [demozoo.262326]
 title = "Moduleplayer V3.0 & 3.1 Intro"
@@ -6051,7 +6029,6 @@ machine = "a1200_fast"
 title = "Mono"
 group = "Tomtemaffia"
 source = "script"
-result = "unknown"
 
 [demozoo.315769]
 title = "Monochrome"
@@ -6382,7 +6359,6 @@ machine = "a1200_fast"
 title = "Morph"
 group = "Darkage"
 source = "script"
-result = "unknown"
 run = "Morph.exe"
 
 [demozoo.166144]
@@ -6409,7 +6385,6 @@ source = "script"
 title = "Morphy Brown"
 group = "Status OK"
 source = "script"
-result = "unknown"
 
 [demozoo.211711]
 title = "Mortal Sin 001"
@@ -6640,8 +6615,7 @@ source = "script"
 title = "Mr. Monkey"
 group = "Rebels"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
+machine = "a500_ks12"
 
 [demozoo.248105]
 title = "Mr. Munk In Fluidland"
@@ -6673,7 +6647,7 @@ machine = "a1200_fast"
 title = "Mr. T vs. Britney Spears"
 group = "Przyjaciele Stefana B."
 source = "script"
-result = "unknown"
+machine = "a500_512k"
 run = "ScalaMM"
 
 [demozoo.238415]
@@ -6799,7 +6773,6 @@ source = "script"
 title = "Multi Scroll"
 group = "Phaze101"
 source = "script"
-result = "unknown"
 
 [demozoo.247031]
 title = "Multi Scroll"
@@ -7294,7 +7267,7 @@ source = "script"
 title = "Mutually Excluded"
 group = "Crusaders"
 source = "script"
-result = "unknown"
+boot = "floppy"
 
 [demozoo.337617]
 title = "Muuntuja"
@@ -7342,7 +7315,6 @@ run = "S_MDIB_starter"
 title = "My Dog Ben"
 group = "Dual Format"
 source = "script"
-result = "unknown"
 
 [demozoo.267721]
 title = "My Fair Lady Nomad"
@@ -7456,7 +7428,7 @@ machine = "a1200"
 title = "Myst"
 group = "Universe"
 source = "script"
-result = "unknown"
+machine = "a500_1mb"
 
 [demozoo.151441]
 title = "Myster & Tremor The Demor"
@@ -7595,7 +7567,6 @@ machine = "a1200_030"
 title = "Mømb A1200 Remix"
 group = "Gunnars Farvebio"
 source = "script"
-result = "unknown"
 
 [demozoo.258797]
 title = "Müsli Demo"

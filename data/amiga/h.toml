@@ -47,7 +47,6 @@ source = "script"
 title = "Hack-Mag 5 Intro"
 group = "D-Tect"
 source = "script"
-result = "unknown"
 
 [demozoo.46728]
 title = "Hack-Mag 6 Intro"
@@ -225,7 +224,6 @@ source = "script"
 title = "Halloween Party Demo"
 group = "Barsk"
 source = "script"
-result = "unknown"
 
 [demozoo.352383]
 title = "Halloween Party Demo"
@@ -312,7 +310,7 @@ source = "script"
 title = "HAM Magic"
 group = "Deathstar"
 source = "script"
-result = "unknown"
+machine = "a500_512k"
 
 [demozoo.151970]
 title = "HAM Scroll"
@@ -383,7 +381,7 @@ title = "Handshake Slideshow v1.0 Intro"
 group = "Goonies 2041"
 source = "script"
 result = "unknown"
-note = "the sweep saw works on a500_1mb; no entry of it passed the gate"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.225981]
 title = "Hang Em High"
@@ -962,7 +960,7 @@ source = "script"
 title = "Harlequin Demo"
 group = "TecSoft"
 source = "script"
-result = "unknown"
+machine = "a500_512k"
 
 [demozoo.213874]
 title = "Harley Davidson"
@@ -1103,7 +1101,6 @@ source = "script"
 title = "Have A Nice Day"
 group = "Obsession"
 source = "script"
-result = "unknown"
 
 [demozoo.257053]
 title = "Have You A Dog?"
@@ -1410,7 +1407,7 @@ machine = "a1200_030"
 title = "Heartcore"
 group = "Delon Dezign"
 source = "script"
-result = "unknown"
+machine = "a500_512k"
 
 [demozoo.219449]
 title = "Heartro"
@@ -1484,7 +1481,7 @@ title = "Hedgehog"
 group = "Racoon"
 source = "script"
 result = "unknown"
-note = "the sweep saw works on a1200_030; no entry of it passed the gate"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.265275]
 title = "Hein Design Party Gfx"
@@ -1675,7 +1672,6 @@ machine = "a1200"
 title = "Help Croatia"
 group = "Unreal"
 source = "script"
-result = "unknown"
 
 [demozoo.232309]
 title = "Help Us"
@@ -1767,7 +1763,7 @@ source = "script"
 title = "Heroes"
 group = "Candle"
 source = "script"
-result = "unknown"
+machine = "a500_1mb"
 
 [demozoo.263728]
 title = "Heroes Of The Lance Hint Disk"
@@ -1866,7 +1862,6 @@ note = "the sweep only reached disk 1 of 2"
 title = "Hexagone 2 Intro"
 group = "Intense"
 source = "script"
-result = "unknown"
 
 [demozoo.185606]
 title = "Hexel"
@@ -2431,7 +2426,7 @@ machine = "a500_1mb"
 title = "Hobbits Second Demo"
 group = "Sky Voyagers"
 source = "script"
-result = "unknown"
+machine = "a500_512k"
 
 [demozoo.131921]
 title = "Hodor"
@@ -2471,7 +2466,7 @@ machine = "a1200"
 title = "Hoi Saga Demo 2 - Mindwarp"
 group = "Team Hoi"
 source = "script"
-result = "unknown"
+machine = "a500_2mb_chip"
 
 [demozoo.47936]
 title = "Hoi Saga Demo 3 - The Final Chapter"
@@ -2490,7 +2485,6 @@ source = "script"
 title = "Hola De Nuevo"
 group = "Destroyers"
 source = "script"
-result = "unknown"
 
 [demozoo.259096]
 title = "Hold On"
@@ -2695,6 +2689,7 @@ title = "Hoppy Demo"
 group = "Ipec Elite"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.227994]
 title = "Hoppydemo -Totaly Waste of Chip Mem and or Brainpain-"
@@ -2775,7 +2770,6 @@ source = "script"
 title = "Horse-Shit"
 group = "Birra Bros"
 source = "script"
-result = "unknown"
 
 [demozoo.174693]
 title = "Horten Moss Ferry"
@@ -2922,7 +2916,6 @@ source = "script"
 title = "Hot New Stuff"
 group = "Australian Crackers United"
 source = "script"
-result = "unknown"
 
 [demozoo.234934]
 title = "Hot New Stuff"
@@ -3186,7 +3179,7 @@ source = "script"
 title = "Hovel"
 group = "Vacuum"
 source = "script"
-result = "unknown"
+machine = "a500_2mb_chip"
 
 [demozoo.29793]
 title = "Hovsa"
@@ -3696,7 +3689,6 @@ machine = "a1200"
 title = "Hypnosis"
 group = "Compact Digital Audio"
 source = "script"
-result = "unknown"
 
 [demozoo.232660]
 title = "Hypnotic Circles"
@@ -3734,9 +3726,8 @@ source = "script"
 title = "Hysteria"
 group = "Analogy"
 source = "script"
-result = "unknown"
 disks = ["Analogy-HysteriaA.dms", "Analogy-HysteriaB.dms"]
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 184.7, disk = 2 }]
 
 [demozoo.165258]
 title = "Hysteria"

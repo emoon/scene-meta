@@ -2,6 +2,7 @@
 
     python3 -m scenemeta amiga fetch [--ids ...] [--rate 1.0]
     python3 -m scenemeta amiga sweep [--ids ...] [--limit N] [--jobs N]
+                                     [--machine NAME]
     python3 -m scenemeta amiga report
     python3 -m scenemeta amiga export [--ids ...] [--jobs N]
     python3 -m scenemeta amiga replay [--ids ...] [--jobs N] [--patient]
@@ -18,8 +19,8 @@ import os
 import sys
 
 from ..core import cli
-from . import (catalog, classes, config, expected, export, fetch, gate, media,
-               migrate, replay, shots, store, sweep)
+from . import (catalog, classes, config, expected, export, fetch, gate,
+               machines, media, migrate, replay, shots, store, sweep)
 from ..core.expected import Invalid
 from ..core.errors import CannotPlay
 
@@ -29,7 +30,10 @@ def _prods(args):
 
 
 def main(argv=None):
-    ap, sub, _ = cli.parser("amiga")
+    ap, sub, p = cli.parser("amiga")
+    p.add_argument("--machine", choices=list(machines.BY_NAME),
+                   help="only the productions that work on this machine,"
+                   " swept before or not")
     p = sub.add_parser("fetch")
     cli.selection(p)
     p.add_argument("--rate", type=float, default=1.0)
@@ -91,7 +95,7 @@ def _command(args):
             fetch.fetch_all(_prods(args), db, rate=args.rate)
         elif args.cmd == "sweep":
             sweep.run_all(_prods(args), db, jobs=args.jobs,
-                          multi_only=args.multi)
+                          multi_only=args.multi, machine=args.machine)
         elif args.cmd == "report":
             report(db)
         elif args.cmd == "export":

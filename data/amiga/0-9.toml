@@ -138,6 +138,7 @@ title = "1024 Bobs"
 group = "Avoid"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.250376]
 title = "10k"
@@ -247,7 +248,6 @@ source = "script"
 title = "165 Bobs"
 group = "Scoopex"
 source = "script"
-result = "unknown"
 
 [demozoo.234283]
 title = "16:12:01:19:20 09:17:21:05"
@@ -791,7 +791,6 @@ source = "script"
 title = "262"
 group = "Limbo"
 source = "script"
-result = "unknown"
 
 [demozoo.99035]
 title = "27+1"
@@ -846,7 +845,6 @@ machine = "a500_1mb"
 title = "2K Intro"
 group = "Iris"
 source = "script"
-result = "unknown"
 
 [demozoo.151405]
 title = "2k Is Too Much"
@@ -1249,7 +1247,6 @@ source = "script"
 title = "3D Wave Demo"
 group = "Vision One / Alpha Flight"
 source = "script"
-result = "unknown"
 
 [demozoo.55862]
 title = "3D-Boing"
@@ -1674,6 +1671,7 @@ title = "4840"
 group = "Gunnars Farvebio"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.244729]
 title = "4am Finish"
@@ -1697,7 +1695,6 @@ machine = "a1200"
 title = "4D Sports Driving"
 group = "Liberty"
 source = "script"
-result = "unknown"
 
 [demozoo.358703]
 title = "4FX"
@@ -1746,7 +1743,7 @@ run = "LE-window6.12"
 title = "4K Intro"
 group = "Floppy"
 source = "script"
-result = "unknown"
+machine = "a500_1mb_chip"
 
 [demozoo.140969]
 title = "4k Intro"
@@ -1763,13 +1760,11 @@ source = "script"
 title = "4k Intro"
 group = "Scalaris"
 source = "script"
-result = "unknown"
 
 [demozoo.163664]
 title = "4k Intro"
 group = "Corky Inc."
 source = "script"
-result = "unknown"
 
 [demozoo.163666]
 title = "4k Intro"
@@ -1810,7 +1805,6 @@ source = "script"
 title = "4k Intro"
 group = "Genesis Project"
 source = "script"
-result = "unknown"
 
 [demozoo.250138]
 title = "4k Intro"
@@ -1827,7 +1821,6 @@ source = "script"
 title = "4k Intro"
 group = "Tronix"
 source = "script"
-result = "unknown"
 
 [demozoo.163662]
 title = "4k Maze"
@@ -1878,7 +1871,9 @@ machine = "a1200"
 title = "4kb"
 group = "Whelpz"
 source = "script"
+boot = "floppy"
 result = "unknown"
+note = "the sweep saw works on a500_2mb_chip; no entry of it passed the gate"
 
 [demozoo.165997]
 title = "4kb Imperium"
@@ -2181,7 +2176,7 @@ source = "script"
 title = "7 days"
 group = "D.T.A. Software Studio"
 source = "script"
-result = "unknown"
+machine = "a500_1mb_chip"
 
 [demozoo.42164]
 title = "7 dni i 7 nocy"
@@ -2281,7 +2276,6 @@ source = "script"
 title = "8891 Oldschool"
 group = "Melon"
 source = "script"
-result = "unknown"
 run = "01.8891_oLDsCHOOL.exe"
 
 [demozoo.236716]

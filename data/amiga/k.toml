@@ -58,7 +58,6 @@ machine = "a1200"
 title = "Kaczy 4k"
 group = "Przyjaciele Stefana B."
 source = "script"
-result = "unknown"
 
 [demozoo.314265]
 title = "Kadesh"
@@ -330,7 +329,7 @@ machine = "a500_512k"
 title = "Keep Cool"
 group = "German Spreading Crew"
 source = "script"
-result = "unknown"
+machine = "a500_512k"
 
 [demozoo.238966]
 title = "Keep Cool"
@@ -620,7 +619,7 @@ group = "Talent"
 source = "script"
 boot = "floppy"
 result = "unknown"
-note = "the sweep saw works on a500_ks12; no entry of it passed the gate"
+note = "the sweep saw works on a500_2mb_chip; no entry of it passed the gate"
 
 [demozoo.19436]
 title = "Kikize-tro"
@@ -986,7 +985,7 @@ source = "script"
 title = "Knack"
 group = "Spreadpoint"
 source = "script"
-result = "unknown"
+boot = "floppy"
 
 [demozoo.245297]
 title = "Knark"
@@ -1019,7 +1018,7 @@ source = "script"
 title = "Knight Rider Demo 1"
 group = "Knightrider"
 source = "script"
-result = "unknown"
+machine = "a500_512k"
 
 [demozoo.230492]
 title = "Knin Peaks"
@@ -1378,7 +1377,7 @@ machine = "a1200"
 title = "Kugalskap"
 group = "Ephidrena"
 source = "script"
-result = "unknown"
+machine = "a500_2mb_chip"
 
 [demozoo.226989]
 title = "Kuihtunut Kossupullo"
@@ -1474,4 +1473,6 @@ run = "JRM-soir.exe"
 title = "Kühlschränke"
 group = "Bluebox Cinematique Gmbh"
 source = "script"
+boot = "floppy"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"

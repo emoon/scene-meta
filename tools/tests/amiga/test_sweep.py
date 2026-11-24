@@ -572,6 +572,70 @@ class RungsTest(unittest.TestCase):
         v = media.Variant("floppy", ["x.adf"])
         self.assertEqual(sweep.rungs(v, False), machines.ladder_for(False))
 
+    def test_one_machine_asked_for_is_the_only_rung(self):
+        from scenemeta.amiga import media
+        v = media.Variant("floppy", ["x.adf"])
+        self.assertEqual(sweep.rungs(v, True, start="a1200", only="a500_512k"),
+                         [machines.BY_NAME["a500_512k"]])
+
+
+class OneMachineTest(unittest.TestCase):
+    """_job with ``only``: every variant on that machine alone."""
+    PROD = types.SimpleNamespace(id=7, title="x", release_date="",
+                                 platforms=("Amiga OCS/ECS",))
+
+    def job(self, works):
+        """The result, and the machines run, when a run on each machine
+        named in ``works`` works and on no other."""
+        ran = []
+
+        def try_machine(m, variant, frames):
+            ran.append(m.name)
+            name = "works" if m.name in works else "no-activity"
+            return [sweep.Attempt(m.name, frames, verdict.Verdict(name, 8),
+                                  RunLog([], [], 0, False, ""), [])]
+
+        with mock.patch.object(media, "variants", return_value=(
+                [media.Variant("floppy", ["a.adf"])], [])), \
+                mock.patch.object(media, "fallbacks", return_value=[]), \
+                mock.patch.object(sweep, "try_machine", try_machine):
+            return sweep._job(self.PROD, only="a500_512k"), ran
+
+    def chosen(self, got):
+        _, (variant,) = got
+        return variant.chosen.machine, variant.chosen.verdict
+
+    def test_a_production_that_works_only_there_is_filed_under_it(self):
+        got, ran = self.job(["a500_512k"])
+        self.assertEqual(self.chosen(got), ("a500_512k", "works"))
+        self.assertEqual(ran[0], "a500_512k")
+        self.assertEqual(ran[1], "a500")     # then the ladder, from its start
+
+    def test_one_that_also_works_on_an_earlier_machine_is_filed_there(self):
+        got, ran = self.job(["a500_1mb", "a500_512k"])
+        self.assertEqual(self.chosen(got), ("a500_1mb", "works"))
+        self.assertEqual(ran, ["a500_512k", "a500", "a500_1mb"])
+
+    def test_a_production_that_does_not_work_there_is_left_out(self):
+        got, ran = self.job(["a500"])
+        self.assertIsNone(got)
+        self.assertEqual(ran, ["a500_512k"])
+
+    def test_the_sweep_of_one_machine_takes_the_productions_already_held(self):
+        with mock.patch.object(machines, "require_roms"), \
+                mock.patch.object(machines, "require_rom") as require_rom, \
+                mock.patch.object(sweep.workbench, "require_libs"), \
+                mock.patch.object(media, "require_mirror"), \
+                mock.patch.object(sweep.catalog, "known_machines",
+                                  return_value={}), \
+                mock.patch.object(sweep.driver, "run_all") as run_all:
+            sweep.run_all([], store=None)
+            sweep.run_all([], store=None, machine="a500_ks12")
+        self.assertEqual([c.kwargs["again"] for c in run_all.call_args_list],
+                         [False, True])
+        self.assertEqual(run_all.call_args.args[2].keywords["only"], "a500_ks12")
+        require_rom.assert_called_once_with(machines.BY_NAME["a500_ks12"])
+
 
 class SeedTest(unittest.TestCase):
     """Runs are reproducible (a pinned RNG seed), so the retries of a demo

@@ -137,7 +137,7 @@ source = "script"
 title = "Da Lame"
 group = "Stonehead"
 source = "script"
-result = "unknown"
+machine = "a500_2mb_chip"
 
 [demozoo.362153]
 title = "Da Lame 2"
@@ -182,7 +182,6 @@ machine = "a1200"
 title = "Dagens Dask"
 group = "Rage"
 source = "script"
-result = "unknown"
 
 [demozoo.196280]
 title = "DAI Still Exists"
@@ -198,7 +197,7 @@ source = "script"
 title = "Dala Horse"
 group = "Razor 1911"
 source = "script"
-result = "unknown"
+machine = "a500_1mb_chip"
 
 [demozoo.112774]
 title = "Damage"
@@ -258,7 +257,6 @@ source = "script"
 title = "Dance"
 group = "Fucking United Network"
 source = "script"
-result = "unknown"
 
 [demozoo.1504]
 title = "Dance Extravaganza"
@@ -556,7 +554,6 @@ machine = "a1200"
 title = "Das Pack - Preview"
 group = "Abyss"
 source = "script"
-result = "unknown"
 
 [demozoo.185989]
 title = "Das Scharlachrote Kampfhuhn"
@@ -992,8 +989,7 @@ machine = "a1200"
 title = "Debut"
 group = "Elanthia"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+machine = "a500_ks12"
 
 [demozoo.240045]
 title = "Debut"
@@ -1517,13 +1513,13 @@ source = "script"
 title = "Dementro"
 group = "Beta Team"
 source = "script"
-result = "unknown"
 
 [demozoo.79142]
 title = "Demo"
 group = "Corpse"
 source = "script"
-result = "unknown"
+machine = "a500_2mb_chip"
+boot = "floppy"
 
 [demozoo.137723]
 title = "Demo"
@@ -1534,7 +1530,6 @@ source = "script"
 title = "Demo"
 group = "The Techno Force / The Incredible Trio"
 source = "script"
-result = "unknown"
 
 [demozoo.179732]
 title = "Demo"
@@ -1807,7 +1802,6 @@ source = "script"
 title = "Demo"
 group = "Warriors"
 source = "script"
-result = "unknown"
 
 [demozoo.363934]
 title = "Demo #1"
@@ -2035,6 +2029,7 @@ title = "Demo Compil"
 group = "Joker"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.217537]
 title = "Demo Compilation 2 Intro"
@@ -2167,8 +2162,7 @@ source = "script"
 title = "Demo La Plus Fele"
 group = "Demons"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.240534]
 title = "Demo La Plus Fele II"
@@ -2580,13 +2574,11 @@ source = "script"
 title = "Demos of the World 41 - menu"
 group = "Dazzle"
 source = "script"
-result = "unknown"
 
 [demozoo.239959]
 title = "Demos of the World 42 - menu"
 group = "Dazzle"
 source = "script"
-result = "unknown"
 
 [demozoo.278374]
 title = "Demos'n Intros 2 Intro"
@@ -3322,7 +3314,6 @@ source = "script"
 title = "Digi Revenge Pack 1 Intro"
 group = "Scope"
 source = "script"
-result = "unknown"
 
 [demozoo.227092]
 title = "Digi-Pack 04 Intro"
@@ -3376,7 +3367,6 @@ machine = "a1200"
 title = "Digital Candy BBS Add"
 group = "Inferno D-Light"
 source = "script"
-result = "unknown"
 
 [demozoo.139099]
 title = "Digital Complexity"
@@ -3464,7 +3454,6 @@ source = "script"
 title = "Digital Message Box Intro"
 group = "Razor 1911"
 source = "script"
-result = "unknown"
 
 [demozoo.308891]
 title = "Digital Mindfield"
@@ -3554,7 +3543,6 @@ machine = "a1200_030"
 title = "Digitech Party Pack 5 Intro"
 group = "Razor 1911"
 source = "script"
-result = "unknown"
 
 [demozoo.224915]
 title = "Diji"
@@ -3859,7 +3847,7 @@ source = "script"
 title = "Distro"
 group = "End of Century 1999"
 source = "script"
-result = "unknown"
+boot = "floppy"
 
 [demozoo.187204]
 title = "Divalicious"
@@ -3932,7 +3920,7 @@ source = "script"
 title = "DJFF greets Edison"
 group = "DJ Fistfuck"
 source = "script"
-result = "unknown"
+machine = "a500_512k"
 
 [demozoo.234208]
 title = "Djungle BBS is Back"
@@ -4124,7 +4112,6 @@ source = "script"
 title = "DocDisk 5 Intro"
 group = "LSD"
 source = "script"
-result = "unknown"
 
 [demozoo.212994]
 title = "Docdisk 50 Intro"
@@ -4198,7 +4185,6 @@ source = "script"
 title = "Doctor Legal Loves Music Collections Part Two Intro"
 group = "The Silents / Royal Amiga Force"
 source = "script"
-result = "unknown"
 
 [demozoo.218449]
 title = "Doctor Who 30 Years Birthday"
@@ -4431,7 +4417,6 @@ source = "script"
 title = "Dos Intro"
 group = "Kefrens / The Supply Team / Tartan Army"
 source = "script"
-result = "unknown"
 
 [demozoo.260909]
 title = "Dos Lab 1"
@@ -5206,7 +5191,6 @@ source = "script"
 title = "Dulla"
 group = "Inu-Soft"
 source = "script"
-result = "unknown"
 
 [demozoo.197642]
 title = "Dunkle Gedanken"
@@ -5275,8 +5259,6 @@ machine = "a1200"
 title = "Dusted"
 group = "Void"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.40690]
 title = "Dustflow"
@@ -5320,7 +5302,6 @@ source = "script"
 title = "Dynamic Illusions Preview"
 group = "Quartz"
 source = "script"
-result = "unknown"
 
 [demozoo.177135]
 title = "Dynamicstars"
@@ -5380,7 +5361,6 @@ source = "script"
 title = "Dyziotox Swap Intro"
 group = "Whelpz"
 source = "script"
-result = "unknown"
 
 [demozoo.249326]
 title = "Dzhun"

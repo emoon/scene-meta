@@ -750,7 +750,6 @@ source = "script"
 title = "Latest Incredible Release"
 group = "Nightmare Boyz"
 source = "script"
-result = "unknown"
 
 [demozoo.193426]
 title = "Latest Intro"
@@ -982,7 +981,6 @@ result = "unknown"
 title = "Leaflet of Gedan 3"
 group = "Obsession"
 source = "script"
-result = "unknown"
 
 [demozoo.276694]
 title = "Leaflet of Gedan 4"
@@ -1021,7 +1019,6 @@ run = "mds-lof_hi.exe"
 title = "Leather Dream"
 group = "Parallax"
 source = "script"
-result = "unknown"
 
 [demozoo.226557]
 title = "Leatherneck"
@@ -1253,8 +1250,8 @@ machine = "a1200"
 title = "Les Rois Du Gag"
 group = "Profecy"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500_1mb; no entry of it passed the gate"
+machine = "a500_1mb"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.145463]
 title = "Lesbian Tartar"
@@ -1738,7 +1735,6 @@ source = "script"
 title = "Lintro"
 group = "Admirals"
 source = "script"
-result = "unknown"
 
 [demozoo.243274]
 title = "Lintro"
@@ -1933,7 +1929,6 @@ source = "script"
 title = "Little Charlie Plays Guitar"
 group = "Cyberdreams"
 source = "script"
-result = "unknown"
 
 [demozoo.226619]
 title = "Little Competition Demo"
@@ -2332,6 +2327,7 @@ title = "Little Thing"
 group = "Goonies 2041"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.247315]
 title = "Little Toons Story"
@@ -2459,7 +2455,6 @@ source = "script"
 title = "Loading & Dekruszion"
 group = "Lamers"
 source = "script"
-result = "unknown"
 
 [demozoo.111879]
 title = "Loading..."
@@ -2532,7 +2527,7 @@ machine = "a1200_fast"
 title = "Logo"
 group = "Kefrens"
 source = "script"
-result = "unknown"
+boot = "floppy"
 
 [demozoo.140965]
 title = "Logo 4K"
@@ -2555,7 +2550,6 @@ source = "script"
 title = "Logo-Ego"
 group = "Cave"
 source = "script"
-result = "unknown"
 
 [demozoo.241030]
 title = "Logomania II Intro"
@@ -2606,7 +2600,6 @@ result = "unknown"
 title = "Lonkero"
 group = "Piru"
 source = "script"
-result = "unknown"
 
 [demozoo.365498]
 title = "Looking For A Group"
@@ -2925,8 +2918,7 @@ source = "script"
 title = "Lovecraft"
 group = "Iris"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.247317]
 title = "Lovecraft Endpart"
@@ -3058,7 +3050,7 @@ source = "script"
 title = "LSI 4K"
 group = "Lightstorm Inc."
 source = "script"
-result = "unknown"
+machine = "a500_2mb_chip"
 run = "LSi-TP7F.exe"
 
 [demozoo.241031]

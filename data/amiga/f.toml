@@ -209,7 +209,6 @@ machine = "a1200_fast"
 title = "Fade"
 group = "Crime Devils"
 source = "script"
-result = "unknown"
 
 [demozoo.32538]
 title = "Fade Deeper Inside"
@@ -472,7 +471,6 @@ source = "script"
 title = "Fantastic Four Demo Disk - Ooh! Its Obscene!"
 group = "Radish"
 source = "script"
-result = "unknown"
 
 [demozoo.40686]
 title = "Fantastic Four Go Shopping"
@@ -635,7 +633,7 @@ machine = "a1200_fast"
 title = "Fast"
 group = "Jim"
 source = "script"
-result = "unknown"
+machine = "a500_512k"
 
 [demozoo.235069]
 title = "Fast"
@@ -698,7 +696,7 @@ source = "script"
 title = "Fast Intro"
 group = "Sardonyx"
 source = "script"
-result = "unknown"
+machine = "a500_1mb"
 
 [demozoo.260187]
 title = "Fast Intro"
@@ -741,7 +739,6 @@ source = "script"
 title = "Fast Software"
 group = "SCUP"
 source = "script"
-result = "unknown"
 
 [demozoo.246812]
 title = "Fast Track"
@@ -769,7 +766,7 @@ source = "script"
 title = "Fast0xb"
 group = "Unity FR"
 source = "script"
-result = "unknown"
+machine = "a500_512k"
 
 [demozoo.143741]
 title = "Faster Than Hell"
@@ -1612,7 +1609,7 @@ source = "script"
 title = "Fireworks!"
 group = "Losso"
 source = "script"
-result = "unknown"
+boot = "hd"
 
 [demozoo.2189]
 title = "First"
@@ -1949,8 +1946,7 @@ source = "script"
 title = "First Demo"
 group = "Model"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a1200; no entry of it passed the gate"
+machine = "a500_1mb_chip"
 
 [demozoo.22198]
 title = "First Demo"
@@ -2307,7 +2303,6 @@ source = "script"
 title = "First Demo"
 group = "Mexx"
 source = "script"
-result = "unknown"
 
 [demozoo.254627]
 title = "First Demo"
@@ -2425,7 +2420,6 @@ source = "script"
 title = "First Demo"
 group = "Perry"
 source = "script"
-result = "unknown"
 
 [demozoo.321957]
 title = "First Demo"
@@ -3265,7 +3259,7 @@ source = "script"
 title = "First Orgasm"
 group = "Dachau Dezign"
 source = "script"
-result = "unknown"
+boot = "floppy"
 
 [demozoo.248744]
 title = "First Own Production"
@@ -3603,7 +3597,6 @@ source = "script"
 title = "Fishing Trip 94 Trailer"
 group = "Movement / Crystal / Rednex"
 source = "script"
-result = "unknown"
 
 [demozoo.215611]
 title = "Fishmania 3 -The Revenge"
@@ -3650,7 +3643,6 @@ source = "script"
 title = "Fizzleboot"
 group = "Void"
 source = "script"
-result = "unknown"
 
 [demozoo.227099]
 title = "Fjase Fjase"
@@ -3753,7 +3745,6 @@ machine = "a500_1mb"
 title = "Flashback"
 group = "Suicidals"
 source = "script"
-result = "unknown"
 
 [demozoo.196613]
 title = "flashbacks"
@@ -3929,8 +3920,6 @@ source = "script"
 title = "Flippo 40k"
 group = "Desire / Axis"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.262952]
 title = "FlipTrOo"
@@ -3980,6 +3969,7 @@ title = "Floedeskum"
 group = "Atomic Intelligence"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.134951]
 title = "Floodland"
@@ -4483,7 +4473,6 @@ machine = "a1200"
 title = "Foufoune Menu"
 group = "Tristar and Red Sector Inc. / Delight"
 source = "script"
-result = "unknown"
 
 [demozoo.337462]
 title = "Found in Legoland"
@@ -4665,7 +4654,6 @@ source = "script"
 title = "Fractals Phuking Fractals"
 group = "Inu-Soft"
 source = "script"
-result = "unknown"
 run = "inus-abd.exe"
 
 [demozoo.32582]
@@ -4746,7 +4734,7 @@ source = "script"
 title = "Franz Fonts Disk"
 group = "Digitech / The Knight Hawks / Italian Bad Boys"
 source = "script"
-result = "unknown"
+machine = "a500_512k"
 
 [demozoo.215024]
 title = "Fraud 3 Intro"
@@ -4804,7 +4792,6 @@ source = "script"
 title = "Fred the Baker & Rose the Florist Demo"
 group = "Central Coast Software"
 source = "script"
-result = "unknown"
 
 [demozoo.116195]
 title = "Freddy Is Back"
@@ -5131,13 +5118,11 @@ source = "script"
 title = "Friendship"
 group = "Instinct"
 source = "script"
-result = "unknown"
 
 [demozoo.34514]
 title = "Friendship 2"
 group = "Instinct"
 source = "script"
-result = "unknown"
 
 [demozoo.195368]
 title = "Friendship Demo"
@@ -5419,13 +5404,13 @@ source = "script"
 title = "Fuck Lame 1"
 group = "Federacja Zwalczania Lamerstwa"
 source = "script"
-result = "unknown"
+machine = "a500_512k"
 
 [demozoo.217045]
 title = "Fuck Lame 2"
 group = "Federacja Zwalczania Lamerstwa"
 source = "script"
-result = "unknown"
+machine = "a500_512k"
 
 [demozoo.195555]
 title = "Fuck Nop(Ball)"
@@ -5603,9 +5588,9 @@ machine = "a1200"
 title = "Fugazi"
 group = "Old Bulls"
 source = "script"
-result = "unknown"
+machine = "a500_1mb"
 disks = ["OLD_BULLS-Fugazi-A.DMS", "OLD_BULLS-Fugazi-B.DMS"]
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 331.7, disk = 2, until = 361.7 }]
 
 [demozoo.352684]
 title = "FujiBoink!"
@@ -5726,7 +5711,7 @@ machine = "a1200_030"
 title = "Funkier Than Wax"
 group = "Anathema"
 source = "script"
-result = "unknown"
+machine = "a500_1mb"
 
 [demozoo.222968]
 title = "Funkkistechnointro Preview"
@@ -5915,8 +5900,7 @@ source = "script"
 title = "Future"
 group = "Gods"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a1200; no entry of it passed the gate"
+machine = "a500_512k"
 
 [demozoo.179520]
 title = "Future Balls"

@@ -219,7 +219,6 @@ source = "script"
 title = "Jasiu Zabijaka"
 group = "Radiator"
 source = "script"
-result = "unknown"
 
 [demozoo.212297]
 title = "Jason's Pack Intro"
@@ -230,7 +229,6 @@ source = "script"
 title = "JD Mallander Antidemo"
 group = "4-Mat"
 source = "script"
-result = "unknown"
 
 [demozoo.177986]
 title = "JD-00: HACK-IN-BOX"
@@ -310,7 +308,6 @@ source = "script"
 title = "Jesienny deszcz"
 group = "Random22"
 source = "script"
-result = "unknown"
 
 [demozoo.250552]
 title = "Jessica"
@@ -509,7 +506,6 @@ source = "script"
 title = "Joinswap"
 group = "Energy"
 source = "script"
-result = "unknown"
 
 [demozoo.246602]
 title = "Joint Ihr Schweine"
@@ -817,7 +813,7 @@ source = "script"
 title = "Journey to VIP"
 group = "Unity"
 source = "script"
-result = "unknown"
+machine = "a500_512k"
 
 [demozoo.45800]
 title = "Joy"
@@ -1295,7 +1291,6 @@ source = "script"
 title = "Just Another Record"
 group = "Skandal"
 source = "script"
-result = "unknown"
 
 [demozoo.144734]
 title = "Just Another Show"
@@ -1385,7 +1380,6 @@ note = "Zenith/Brain Wave musicdisk, tune scroller"
 title = "Just Kidding"
 group = "Lamers"
 source = "script"
-result = "unknown"
 
 [demozoo.224984]
 title = "Just Out Walking"

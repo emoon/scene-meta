@@ -376,7 +376,6 @@ machine = "a1200"
 title = "Watch It Pal"
 group = "Teladon"
 source = "script"
-result = "unknown"
 
 [demozoo.370109]
 title = "Watch Out !"
@@ -554,7 +553,6 @@ source = "script"
 title = "Wave Intro 1"
 group = "No Limits"
 source = "script"
-result = "unknown"
 
 [demozoo.231812]
 title = "Wave Intro 2"
@@ -728,7 +726,7 @@ source = "script"
 title = "We Are Mungoz"
 group = "Apathy"
 source = "script"
-result = "unknown"
+machine = "a500_512k"
 
 [demozoo.244466]
 title = "We Are Not Dead"
@@ -1386,7 +1384,6 @@ source = "script"
 title = "Werner Flaschbier Boot Intro"
 group = "Level 4 / Alpha Flight"
 source = "script"
-result = "unknown"
 
 [demozoo.249160]
 title = "Werner Flaschbier Demo"
@@ -1457,7 +1454,6 @@ source = "script"
 title = "What We Like of Women"
 group = "Figa Production"
 source = "script"
-result = "unknown"
 
 [demozoo.77304]
 title = "What You Say?"
@@ -1528,7 +1524,6 @@ machine = "a1200_030"
 title = "When you Argue with The System"
 group = "Iris / Depth"
 source = "script"
-result = "unknown"
 
 [demozoo.176809]
 title = "Where Are We Going"
@@ -1838,7 +1833,6 @@ result = "unknown"
 title = "Wild Palms Reopening"
 group = "Effect"
 source = "script"
-result = "unknown"
 
 [demozoo.455]
 title = "Wild Thing"
@@ -1911,7 +1905,7 @@ result = "unknown"
 title = "Win95"
 group = "Ramses"
 source = "script"
-result = "unknown"
+machine = "a500_1mb"
 
 [demozoo.32801]
 title = "Wind!"
@@ -2008,7 +2002,6 @@ machine = "a1200_fast"
 title = "Winter Olympiad 88"
 group = "Hotline"
 source = "script"
-result = "unknown"
 
 [demozoo.255821]
 title = "Wintermute BBS Intro"
@@ -2239,13 +2232,11 @@ source = "script"
 title = "Wolfpack"
 group = "Maksoft"
 source = "script"
-result = "unknown"
 
 [demozoo.250992]
 title = "Wolfpack - Import"
 group = "Motion"
 source = "script"
-result = "unknown"
 
 [demozoo.182771]
 title = "Wolfpack Playable Preview"
@@ -2256,8 +2247,7 @@ source = "script"
 title = "Wonder Gal"
 group = "Dalthon"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a1200_030; no entry of it passed the gate"
+machine = "a500_2mb_chip"
 
 [demozoo.265093]
 title = "Wonderboy's First"
@@ -2284,8 +2274,7 @@ source = "script"
 title = "Woo"
 group = "Dual Format"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.195572]
 title = "Woo 2"
@@ -2380,7 +2369,6 @@ source = "script"
 title = "Workbench Dla Opornych"
 group = "Funzine"
 source = "script"
-result = "unknown"
 
 [demozoo.215619]
 title = "Workbench Madness"
@@ -2497,7 +2485,6 @@ source = "script"
 title = "Worldness X Intro"
 group = "Action"
 source = "script"
-result = "unknown"
 
 [demozoo.32536]
 title = "Worlds"
@@ -2526,7 +2513,6 @@ result = "unknown"
 title = "Wormhole"
 group = "Complex"
 source = "script"
-result = "unknown"
 run = "3_Birra-Bros"
 
 [demozoo.24880]

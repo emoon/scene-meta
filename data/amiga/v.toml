@@ -480,7 +480,6 @@ source = "script"
 title = "Vector Intro"
 group = "DutchCrack"
 source = "script"
-result = "unknown"
 
 [demozoo.223454]
 title = "Vector Intro"
@@ -851,7 +850,6 @@ source = "script"
 title = "Vegemite - Beyond Taste"
 group = "Frontier"
 source = "script"
-result = "unknown"
 
 [demozoo.209772]
 title = "Veil of Sorrow 2"
@@ -902,7 +900,6 @@ source = "script"
 title = "Veloci-Vendors"
 group = "Parallax"
 source = "script"
-result = "unknown"
 
 [demozoo.144833]
 title = "Velociraptore"
@@ -1249,7 +1246,6 @@ machine = "a1200"
 title = "VidGen v1.0"
 group = "Vision"
 source = "script"
-result = "unknown"
 
 [demozoo.242936]
 title = "Vidi Mice 1.0"
@@ -1377,7 +1373,7 @@ machine = "a1200_fast"
 title = "Virtual Illusion"
 group = "Illusion"
 source = "script"
-result = "unknown"
+machine = "a500_1mb_chip"
 
 [demozoo.1939]
 title = "Virtual Intelligence"
@@ -1464,7 +1460,6 @@ source = "script"
 title = "Viruskiller V1.0 Intro"
 group = "Tristar"
 source = "script"
-result = "unknown"
 
 [demozoo.220483]
 title = "Visibility"
@@ -1563,8 +1558,7 @@ result = "unknown"
 title = "Vital"
 group = "Mystic"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500_1mb; no entry of it passed the gate"
+machine = "a500_2mb_chip"
 
 [demozoo.22196]
 title = "Vitsippe Hater"
@@ -1772,7 +1766,7 @@ result = "unknown"
 title = "Vote Now"
 group = "Apathy"
 source = "script"
-result = "unknown"
+machine = "a500_512k"
 
 [demozoo.346437]
 title = "Votebastards"
@@ -1835,7 +1829,6 @@ source = "script"
 title = "Voyager's Demo"
 group = "Doom"
 source = "script"
-result = "unknown"
 
 [demozoo.220412]
 title = "Vranov '94"

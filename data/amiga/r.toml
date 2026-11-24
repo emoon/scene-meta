@@ -29,7 +29,6 @@ source = "script"
 title = "R-Type Demo"
 group = "Starlight"
 source = "script"
-result = "unknown"
 
 [demozoo.238582]
 title = "R-Type II Prerelease"
@@ -483,7 +482,6 @@ machine = "a1200"
 title = "ranuL - seluR"
 group = "Thefect"
 source = "script"
-result = "unknown"
 
 [demozoo.45795]
 title = "Raos"
@@ -604,7 +602,6 @@ source = "script"
 title = "Rastermania"
 group = "Overkill"
 source = "script"
-result = "unknown"
 
 [demozoo.252578]
 title = "Rastorbars"
@@ -1144,8 +1141,7 @@ machine = "a1200"
 title = "Realtime Margherita"
 group = "Arise"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.248465]
 title = "Realtime Ugabuh-Zumbalai"
@@ -1717,7 +1713,7 @@ source = "script"
 title = "Remarkable Intro"
 group = "The Outrunners"
 source = "script"
-result = "unknown"
+machine = "a500_512k"
 
 [demozoo.223668]
 title = "Remedy"
@@ -1971,7 +1967,7 @@ run = "retro"
 title = "Retro"
 group = "LSD"
 source = "script"
-result = "unknown"
+machine = "a500_512k"
 
 [demozoo.40852]
 title = "Retro 64k"
@@ -2410,7 +2406,6 @@ source = "script"
 title = "Rewired"
 group = "Instinct"
 source = "script"
-result = "unknown"
 
 [demozoo.31934]
 title = "Rex"
@@ -2563,7 +2558,6 @@ source = "script"
 title = "Ringing a Doorbell"
 group = "Movement"
 source = "script"
-result = "unknown"
 
 [demozoo.163]
 title = "Rink A Dink"
@@ -2728,6 +2722,7 @@ title = "Roadrunner"
 group = "Copperteam"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.209736]
 title = "Roadzanity"
@@ -2898,6 +2893,7 @@ title = "Roller"
 group = "End of Century 1999"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.81514]
 title = "Rollin' Dice"
@@ -2910,7 +2906,7 @@ run = "lax-roll.exe"
 title = "ROM 3 Announce Intro"
 group = "Sonik"
 source = "script"
-result = "unknown"
+machine = "a500_1mb"
 
 [demozoo.150543]
 title = "ROM 4 Intro"
@@ -2994,7 +2990,6 @@ source = "script"
 title = "Rosa Bananer"
 group = "Tronix"
 source = "script"
-result = "unknown"
 run = "rosa_banan.exe"
 
 [demozoo.223552]
@@ -3079,7 +3074,7 @@ source = "script"
 title = "Rotating Logo"
 group = "Sinners"
 source = "script"
-result = "unknown"
+machine = "a500_512k"
 
 [demozoo.210388]
 title = "Rotating Sine"
@@ -3265,8 +3260,9 @@ source = "script"
 title = "Rubber Boys First"
 group = "Phoenix"
 source = "script"
+boot = "floppy"
 result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+note = "the sweep saw works on a500_2mb_chip; no entry of it passed the gate"
 
 [demozoo.229221]
 title = "Rubber Goonies"

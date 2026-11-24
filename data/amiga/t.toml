@@ -222,7 +222,6 @@ source = "script"
 title = "Tankstellenbande!"
 group = "Birdhouse Projects"
 source = "script"
-result = "unknown"
 
 [demozoo.393579]
 title = "Tanz Debil 1"
@@ -375,7 +374,6 @@ source = "script"
 title = "TEC's First"
 group = "Dual Crew / X-Men"
 source = "script"
-result = "unknown"
 
 [demozoo.229686]
 title = "Tech Dreams"
@@ -953,8 +951,7 @@ machine = "a500_1mb"
 title = "Testing It"
 group = "Eremation"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.296831]
 title = "Testing Testing"
@@ -987,7 +984,7 @@ source = "script"
 title = "Tetris Expansion"
 group = "Unity"
 source = "script"
-result = "unknown"
+machine = "a500_512k"
 
 [demozoo.188122]
 title = "Tetris Pro Intro"
@@ -1027,7 +1024,6 @@ machine = "a1200_030"
 title = "Teu Teu"
 group = "Syndrome"
 source = "script"
-result = "unknown"
 
 [demozoo.98094]
 title = "Tex-tro"
@@ -1219,7 +1215,6 @@ source = "script"
 title = "The 4ko Intro"
 group = "Psykotrope"
 source = "script"
-result = "unknown"
 
 [demozoo.220584]
 title = "The 4th"
@@ -1462,7 +1457,6 @@ source = "script"
 title = "The Beginning"
 group = "Unreal"
 source = "script"
-result = "unknown"
 
 [demozoo.221432]
 title = "The Benderlyser"
@@ -1484,6 +1478,7 @@ title = "The Best Demos From the Cryptoburners Party"
 group = "Razor 1911 / Cryptoburners"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.222326]
 title = "The Best of Stryxx"
@@ -1532,8 +1527,7 @@ source = "script"
 title = "The Black"
 group = "Erotic Design"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a1200; no entry of it passed the gate"
+machine = "a500_2mb_chip"
 
 [demozoo.359965]
 title = "The Blaster"
@@ -1681,7 +1675,6 @@ source = "script"
 title = "The Charts 6 Intro"
 group = "Ram Jam"
 source = "script"
-result = "unknown"
 
 [demozoo.255463]
 title = "The Charts 9 Intro - Little Pinocchio"
@@ -2468,7 +2461,7 @@ run = "3_Hoaxers"
 title = "The Gathering 1995 4k Intro"
 group = "Maak"
 source = "script"
-result = "unknown"
+machine = "a500_2mb_chip"
 
 [demozoo.217293]
 title = "The Gathering 1997 Invitation"
@@ -2838,7 +2831,6 @@ source = "script"
 title = "The Juggler"
 group = "Eric Graham"
 source = "script"
-result = "unknown"
 
 [demozoo.321842]
 title = "The Jungle 9 Intro"
@@ -2850,7 +2842,6 @@ machine = "a1200"
 title = "The Kaleidoscope Demo"
 group = "Fugazi"
 source = "script"
-result = "unknown"
 
 [demozoo.27955]
 title = "The Karakatoes Demo"
@@ -2964,8 +2955,7 @@ source = "script"
 title = "The Last Lemming"
 group = "Intryx"
 source = "script"
-result = "unknown"
-run = "last"
+boot = "floppy"
 
 [demozoo.194928]
 title = "The Last One"
@@ -3203,7 +3193,7 @@ source = "script"
 title = "The Mask"
 group = "Mystic"
 source = "script"
-result = "unknown"
+machine = "a500_1mb"
 
 [demozoo.248122]
 title = "The Matchpin Intro"
@@ -3282,7 +3272,6 @@ source = "script"
 title = "The Midnight-Intro"
 group = "Fraxion"
 source = "script"
-result = "unknown"
 
 [demozoo.215154]
 title = "The Mighty Zoom"
@@ -3856,7 +3845,8 @@ source = "script"
 title = "The Red Roses"
 group = "Rats"
 source = "script"
-result = "unknown"
+machine = "a500_2mb_chip"
+boot = "floppy"
 
 [demozoo.228738]
 title = "The Reformation Intro"
@@ -4392,7 +4382,7 @@ source = "script"
 title = "The Tetris Expansion"
 group = "Unity FR"
 source = "script"
-result = "unknown"
+machine = "a500_512k"
 
 [demozoo.5334]
 title = "The Tetris Intro (Legalize It 3)"
@@ -4454,7 +4444,7 @@ title = "The Tower BBS"
 group = "Skid Row"
 source = "script"
 result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+note = "the sweep saw works on a500_512k; no entry of it passed the gate"
 
 [demozoo.261851]
 title = "The Trader 2 Intro"
@@ -4650,7 +4640,6 @@ result = "unknown"
 title = "The Virus Exterminator Disk V3.0"
 group = "Rebels"
 source = "script"
-result = "unknown"
 
 [demozoo.262768]
 title = "The Vision of a Great Group"
@@ -4699,7 +4688,7 @@ machine = "a500_ks12"
 title = "The Walrus"
 group = "Hotdog Productions"
 source = "script"
-result = "unknown"
+machine = "a500_2mb_chip"
 
 [demozoo.246110]
 title = "The Walrus 2"
@@ -4872,7 +4861,6 @@ source = "script"
 title = "The X-mas Release"
 group = "Birdhouse Projects"
 source = "script"
-result = "unknown"
 
 [demozoo.265237]
 title = "The XMas Rat Demo"
@@ -4890,6 +4878,7 @@ title = "The Yard BBS Intro"
 group = "Up Rough"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.210398]
 title = "The-Star-With-The-Hole-Intro"
@@ -4902,6 +4891,7 @@ group = "Apathy"
 source = "script"
 result = "unknown"
 run = "TheByoot.exe"
+note = "the sweep saw works on a500_512k; no entry of it passed the gate"
 
 [demozoo.258714]
 title = "Their 2nd Rebirth"
@@ -5129,7 +5119,7 @@ source = "script"
 title = "Third Part"
 group = "Sekhmet"
 source = "script"
-result = "unknown"
+machine = "a500_512k"
 
 [demozoo.249127]
 title = "Thirty Balls"
@@ -5641,7 +5631,6 @@ source = "script"
 title = "Timezone BBS Ad 3"
 group = "Tronix"
 source = "script"
-result = "unknown"
 
 [demozoo.264414]
 title = "Timezone BBS Ad 4"
@@ -5688,8 +5677,6 @@ note = "TBL-Tint.LHA; the 6 floppies are installer disks (disk 1 does not boot)"
 title = "Tintin Inside"
 group = "Candle"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.23614]
 title = "Tintology Vogue"
@@ -5887,7 +5874,7 @@ source = "script"
 title = "Together"
 group = "Phase Truce"
 source = "script"
-result = "unknown"
+machine = "a500_1mb_chip"
 run = "Together.exe"
 
 [demozoo.40179]
@@ -5900,7 +5887,7 @@ result = "unknown"
 title = "Together Remix"
 group = "Phase Truce"
 source = "script"
-result = "unknown"
+machine = "a500_2mb_chip"
 
 [demozoo.27322]
 title = "Toilet Human Excrement"
@@ -6139,7 +6126,6 @@ machine = "a1200"
 title = "Top Secret 6 Intro"
 group = "Majic 12"
 source = "script"
-result = "unknown"
 
 [demozoo.240989]
 title = "Top Swap & Onsala Sector"
@@ -6285,7 +6271,7 @@ source = "script"
 title = "Total Extasy Preview"
 group = "Cryptoburners"
 source = "script"
-result = "unknown"
+boot = "floppy"
 
 [demozoo.207380]
 title = "Total Lameness"
@@ -6682,7 +6668,6 @@ run = "TrailWay.exe"
 title = "Trainer Menu Example 2"
 group = "Energy"
 source = "script"
-result = "unknown"
 
 [demozoo.212362]
 title = "Trainer Menu Example 3"
@@ -7248,8 +7233,7 @@ run = "Part2"
 title = "Trip Trough Your 64 II"
 group = "The Feigling Crew"
 source = "script"
-result = "unknown"
-run = "Part4"
+boot = "floppy"
 
 [demozoo.297182]
 title = "Tripaloski"
@@ -7464,7 +7448,6 @@ source = "script"
 title = "True Stress"
 group = "Shining"
 source = "script"
-result = "unknown"
 
 [demozoo.6111]
 title = "True Stress II"
@@ -7726,7 +7709,7 @@ source = "script"
 title = "Turn Around"
 group = "Underflow"
 source = "script"
-result = "unknown"
+machine = "a500_1mb_chip"
 run = "!tURN-aRoUND!"
 
 [demozoo.182931]

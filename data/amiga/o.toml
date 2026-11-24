@@ -216,6 +216,7 @@ title = "Ode to ATCW"
 group = "Ghost / Dimension X"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.221213]
 title = "Ode to Sonic"
@@ -237,7 +238,7 @@ title = "Odelsgutt 2"
 group = "Paramount Productions"
 source = "script"
 result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.202306]
 title = "Odelsgutt 3"
@@ -421,7 +422,6 @@ result = "unknown"
 title = "Oklagija"
 group = "Avnoj"
 source = "script"
-result = "unknown"
 
 [demozoo.227310]
 title = "Oko Do Bazy"
@@ -1634,7 +1634,6 @@ run = "outlander.exe"
 title = "Outlaw Advertisment"
 group = "Eremation"
 source = "script"
-result = "unknown"
 
 [demozoo.43846]
 title = "Outside"

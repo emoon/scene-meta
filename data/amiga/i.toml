@@ -404,8 +404,7 @@ machine = "a1200"
 title = "Ill Flower"
 group = "Scum Of The Earth"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a1200; no entry of it passed the gate"
+machine = "a500_ks12"
 
 [demozoo.214453]
 title = "Illegal Nonsense"
@@ -435,7 +434,7 @@ result = "unknown"
 title = "Illusion Pictures"
 group = "Terminators / Fluid Design"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.250459]
 title = "Illusion's Intro"
@@ -532,7 +531,7 @@ note = "its readme asks for a 68040 with FPU; frozen on a plasma frame from 88 s
 title = "Impact"
 group = "DC.Clark"
 source = "script"
-result = "unknown"
+machine = "a500_512k"
 run = "impact020.exe"
 
 [demozoo.139426]
@@ -867,7 +866,7 @@ source = "script"
 title = "In Memorium Of ZX"
 group = "KYO Corp"
 source = "script"
-result = "unknown"
+machine = "a500_512k"
 run = "IMoZX.eXe"
 
 [demozoo.314014]
@@ -1421,7 +1420,6 @@ machine = "a1200_fast"
 title = "Innocence of Mind"
 group = "Cybornetics"
 source = "script"
-result = "unknown"
 
 [demozoo.212816]
 title = "Innovation - Preversion"
@@ -1479,7 +1477,6 @@ machine = "a1200_fast"
 title = "Insects In Space Soundeffects"
 group = "Maniacs of Noise"
 source = "script"
-result = "unknown"
 
 [demozoo.7740]
 title = "Inside"
@@ -1868,7 +1865,6 @@ source = "script"
 title = "International Soccer Challenge"
 group = "Exage"
 source = "script"
-result = "unknown"
 
 [demozoo.179439]
 title = "International Super-Best"
@@ -1966,7 +1962,6 @@ source = "script"
 title = "Intoxication"
 group = "Abyss"
 source = "script"
-result = "unknown"
 
 [demozoo.102221]
 title = "Intrigue"
@@ -2048,7 +2043,6 @@ source = "script"
 title = "Intro"
 group = "Delicious Designs"
 source = "script"
-result = "unknown"
 
 [demozoo.188201]
 title = "Intro"
@@ -2084,7 +2078,6 @@ source = "script"
 title = "Intro"
 group = "Agima"
 source = "script"
-result = "unknown"
 
 [demozoo.209625]
 title = "Intro"
@@ -2302,7 +2295,6 @@ source = "script"
 title = "Intro"
 group = "Star Bilgisayar"
 source = "script"
-result = "unknown"
 
 [demozoo.228012]
 title = "Intro"
@@ -2404,13 +2396,11 @@ source = "script"
 title = "Intro"
 group = "Interactive"
 source = "script"
-result = "unknown"
 
 [demozoo.248455]
 title = "Intro"
 group = "Kreator"
 source = "script"
-result = "unknown"
 
 [demozoo.252056]
 title = "Intro"
@@ -2495,13 +2485,11 @@ source = "script"
 title = "Intro"
 group = "Crack Band Crew"
 source = "script"
-result = "unknown"
 
 [demozoo.312838]
 title = "Intro"
 group = "IRQ"
 source = "script"
-result = "unknown"
 
 [demozoo.312898]
 title = "Intro"
@@ -2686,7 +2674,6 @@ source = "script"
 title = "Intro 4K Musica"
 group = "Drareg"
 source = "script"
-result = "unknown"
 
 [demozoo.221471]
 title = "Intro 5"
@@ -2718,7 +2705,6 @@ result = "unknown"
 title = "Intro A2"
 group = "Smooth Soft"
 source = "script"
-result = "unknown"
 
 [demozoo.247168]
 title = "Intro by Big Muff"
@@ -2965,7 +2951,6 @@ machine = "a1200"
 title = "Intro to Salvation"
 group = "Creators"
 source = "script"
-result = "unknown"
 
 [demozoo.113903]
 title = "Intro To Trinity"
@@ -3100,7 +3085,6 @@ source = "script"
 title = "Introette"
 group = "Slipstream"
 source = "script"
-result = "unknown"
 
 [demozoo.258653]
 title = "Introette '92"
@@ -3287,7 +3271,6 @@ source = "script"
 title = "IQ 0,03"
 group = "Candle"
 source = "script"
-result = "unknown"
 
 [demozoo.246996]
 title = "IQ2000 Goes Str8"
@@ -3358,8 +3341,6 @@ source = "script"
 title = "Iron Maiden"
 group = "Defeat"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.217542]
 title = "Irongods-Talk"
@@ -3505,7 +3486,6 @@ source = "script"
 title = "It's All Gonna Blow"
 group = "Amaze"
 source = "script"
-result = "unknown"
 
 [demozoo.84238]
 title = "It's been a while tro"
@@ -3575,7 +3555,6 @@ source = "script"
 title = "It's So Cool"
 group = "Cave"
 source = "script"
-result = "unknown"
 
 [demozoo.122156]
 title = "It's Tricky"
@@ -3591,7 +3570,6 @@ source = "script"
 title = "It's You"
 group = "Smellon"
 source = "script"
-result = "unknown"
 
 [demozoo.9383]
 title = "Italian Disco"

@@ -2,7 +2,6 @@
 title = "E"
 group = "Diagnosis"
 source = "script"
-result = "unknown"
 
 [demozoo.182275]
 title = "E 163"
@@ -48,7 +47,6 @@ machine = "a1200_fast"
 title = "Eagleplayer v1.0 Informer Intro"
 group = "Defect"
 source = "script"
-result = "unknown"
 
 [demozoo.240170]
 title = "Eagleplayer v1.01 Informer Intro"
@@ -59,7 +57,6 @@ source = "script"
 title = "Eagleplayer v1.11 Informer Intro"
 group = "Defect"
 source = "script"
-result = "unknown"
 
 [demozoo.368824]
 title = "Ear Bros Promo"
@@ -327,8 +324,7 @@ machine = "a1200"
 title = "Educational Sex Lesson"
 group = "Limbo"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a1200; no entry of it passed the gate"
+boot = "floppy"
 
 [demozoo.95399]
 title = "Educational Sex Lesson 2013"
@@ -389,8 +385,8 @@ source = "script"
 title = "Efter Plugget"
 group = "Draco"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+machine = "a500_512k"
+boot = "floppy"
 
 [demozoo.195570]
 title = "Egg'n'Spam 1"
@@ -488,7 +484,6 @@ source = "script"
 title = "Ejaculation"
 group = "Illusion"
 source = "script"
-result = "unknown"
 
 [demozoo.248229]
 title = "Ekademo"
@@ -755,7 +750,7 @@ source = "script"
 title = "Eleven Seconds Film"
 group = "Delon"
 source = "script"
-result = "unknown"
+machine = "a500_1mb"
 
 [demozoo.313255]
 title = "Elfairy (For Real)"
@@ -1250,7 +1245,7 @@ source = "script"
 title = "Entitys First"
 group = "The Brothers"
 source = "script"
-result = "unknown"
+machine = "a500_512k"
 
 [demozoo.215185]
 title = "Entropy"
@@ -1373,6 +1368,7 @@ title = "Equations"
 group = "Cyberstate"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.352330]
 title = "Equilibrium"
@@ -1404,8 +1400,8 @@ source = "script"
 title = "Equipose"
 group = "Complex"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500_1mb; no entry of it passed the gate"
+machine = "a500_1mb"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.198528]
 title = "Equivoque"
@@ -1635,7 +1631,6 @@ source = "script"
 title = "Euro Trade Center BBS Ad"
 group = "Outlaws"
 source = "script"
-result = "unknown"
 
 [demozoo.90008]
 title = "EuroChart 25 Trailer Intro"
@@ -1823,7 +1818,7 @@ title = "Every Joke Is Deadly"
 group = "Abandon"
 source = "script"
 result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+note = "the sweep saw works on a500_1mb; no entry of it passed the gate"
 
 [demozoo.115697]
 title = "Everybody Dance"
@@ -1925,8 +1920,7 @@ source = "script"
 title = "Evokaetion"
 group = "The Electronic Knights"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+machine = "a500_1mb"
 
 [demozoo.213017]
 title = "Evolutif Pack IV Intro"
@@ -2049,13 +2043,11 @@ run = "bb-evyl"
 title = "EX v2.0 Intro"
 group = "Scoopex / Surprise! Productions"
 source = "script"
-result = "unknown"
 
 [demozoo.78298]
 title = "Ex-Flies"
 group = "Limbo"
 source = "script"
-result = "unknown"
 
 [demozoo.223707]
 title = "Examination"
@@ -2108,7 +2100,6 @@ source = "script"
 title = "Excusetro"
 group = "Iris"
 source = "script"
-result = "unknown"
 
 [demozoo.243362]
 title = "Exec is Born"
@@ -2184,14 +2175,13 @@ source = "script"
 title = "Exodus"
 group = "RetroActive"
 source = "script"
-result = "unknown"
+machine = "a500_2mb_chip"
 run = "4k_Exodus.decrunch"
 
 [demozoo.207386]
 title = "Exodus - Megademo Part (preview)"
 group = "Agency"
 source = "script"
-result = "unknown"
 
 [demozoo.209567]
 title = "Exodus Demo"
@@ -2537,7 +2527,6 @@ source = "script"
 title = "Extremely Short and Simple Demo"
 group = "Supplex"
 source = "script"
-result = "unknown"
 
 [demozoo.303910]
 title = "Exuding Sararr (executable)"
@@ -2569,8 +2558,7 @@ source = "script"
 title = "Eyes"
 group = "Style & Blacky"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+machine = "a500_1mb_chip"
 
 [demozoo.358750]
 title = "Eyetarget"

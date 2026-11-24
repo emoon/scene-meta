@@ -54,6 +54,14 @@ class RunAll(unittest.TestCase):
         sweep.run_all([prod(2)], self.db, job, jobs=1, log=lambda *a, **k: None)
         self.assertEqual(self.stored(), [(2, None, "works")])
 
+    def test_again_runs_the_productions_held_finished_too(self):
+        quiet = dict(jobs=1, log=lambda *a, **k: None)
+        self.db.put_result(prod(1), ["old"], job(prod(1))[1])
+        sweep.run_all([prod(1)], self.db, job, **quiet)
+        self.assertEqual(self.stored(), [(1, "old", "works")])
+        sweep.run_all([prod(1)], self.db, job, again=True, **quiet)
+        self.assertEqual(self.stored(), [(1, None, "works")])
+
 
 if __name__ == "__main__":
     unittest.main()

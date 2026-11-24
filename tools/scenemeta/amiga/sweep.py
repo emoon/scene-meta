@@ -471,31 +471,34 @@ def swap_frames(a):
     return [f for f in out if crash is None or f < crash]
 
 
-def rungs(variant, aga_only, release_date=None, start=None):
-    """The machines to try ``variant`` on. A disk that boots from the Fast
-    File System cannot be mounted by Kickstart 1.x: only the KS3 rungs."""
+def rungs(variant, aga_only, release_date=None, start=None, only=None):
+    """The machines to try ``variant`` on: the one named ``only``, else the
+    ladder. A disk that boots from the Fast File System cannot be mounted
+    by Kickstart 1.x: only the KS3 rungs."""
+    if only:
+        return [machines.BY_NAME[only]]
     ladder = machines.ladder_for(aga_only, release_date=release_date, start=start)
     return [m for m in ladder if m.aga] if variant.ffs else ladder
 
 
-def climb(variant, aga_only, release_date=None, start=None):
+def climb(variant, aga_only, release_date=None, start=None, only=None):
     """Run ``variant`` up the ladder until a machine works (and, for a disk
     set, reaches every disk).
 
     Returns ``(attempts, best)``: every Attempt made, and the chosen one,
     which says until when each of its disks can go in (see ``windows``).
     """
-    attempts, best = _climb(variant, aga_only, release_date, start)
+    attempts, best = _climb(variant, aga_only, release_date, start, only)
     known = dataclasses.replace(best, untils=windows(
         machines.BY_NAME[best.machine], variant, best))
     return [known if a is best else a for a in attempts], known
 
 
-def _climb(variant, aga_only, release_date, start):
+def _climb(variant, aga_only, release_date, start, only=None):
     frames = budget(variant)
     attempts, chosen = [], []
     n = len(variant.disks)
-    for m in rungs(variant, aga_only, release_date, start):
+    for m in rungs(variant, aga_only, release_date, start, only):
         tries = try_machine(m, variant, frames)
         attempts += tries
         chosen.append(tries[-1])
@@ -525,14 +528,13 @@ def _record(v, attempts, best):
         next(i for i, a in enumerate(attempts) if a is best))
 
 
-def _job(prod, multi_only=False, known=None):
-    """Worker: build the production's variants and climb each one."""
-    variants, problems = media.variants(prod.id, prod.title)
-    if multi_only:
-        variants = [v for v in variants if len(v.disks) > 1]
+def _climbed(prod, variants, start=None, only=None):
+    """``(variants, results)``: each of ``variants`` climbed, and after one
+    that does not work its fallbacks, as far as one that does."""
     aga_only = catalog.is_aga(prod)
-    start = (known or {}).get(prod.id)
-    results = [climb(v, aga_only, prod.release_date, start) for v in variants]
+    variants = list(variants)
+    results = [climb(v, aga_only, prod.release_date, start, only)
+               for v in variants]
     for v, (_, best) in list(zip(variants, results)):
         if best.verdict.works:
             continue
@@ -540,19 +542,43 @@ def _job(prod, multi_only=False, known=None):
             fv = make()
             if fv:
                 variants.append(fv)
-                results.append(climb(fv, aga_only, prod.release_date, start))
+                results.append(climb(fv, aga_only, prod.release_date, start,
+                                     only))
                 if results[-1][1].verdict.works:
                     break
+    return variants, results
+
+
+def _job(prod, multi_only=False, known=None, only=None):
+    """Worker: build the production's variants and climb each one. With
+    ``only``, a machine's name, the production is left out unless a variant
+    works on that machine; one that does is climbed like any other, so it
+    is filed under the first machine it works on (and is run on the named
+    machine a second time)."""
+    variants, problems = media.variants(prod.id, prod.title)
+    if multi_only:
+        variants = [v for v in variants if len(v.disks) > 1]
+    if only and not any(best.verdict.works for _, best in
+                        _climbed(prod, variants, only=only)[1]):
+        return None
+    variants, results = _climbed(prod, variants, (known or {}).get(prod.id))
     return problems, [_record(v, *r) for v, r in zip(variants, results)]
 
 
-def run_all(prods, store, jobs=None, multi_only=False, log=print):
+def run_all(prods, store, jobs=None, multi_only=False, log=print,
+            machine=None):
+    """Sweep ``prods`` the store does not hold yet up the ladder; or, with
+    ``machine``, those of them that work on that machine, held or not, in
+    place of what was held."""
     # Before any production: a run without its ROM or the libraries would
     # be stored as one where nothing happened, a production without the mirror as one with
     # no files.
     machines.require_roms()
+    if machine:
+        machines.require_rom(machines.BY_NAME[machine])
     workbench.require_libs()
     media.require_mirror()
     known = catalog.known_machines(config.DATA_DIR)
     driver.run_all(prods, store, functools.partial(
-        _job, multi_only=multi_only, known=known), jobs, log)
+        _job, multi_only=multi_only, known=known, only=machine), jobs, log,
+        again=bool(machine))

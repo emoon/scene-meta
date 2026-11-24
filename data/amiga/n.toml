@@ -63,7 +63,6 @@ run = "FLP-Nadia.exe"
 title = "Naffnaff"
 group = "End of Century 1999"
 source = "script"
-result = "unknown"
 
 [demozoo.449]
 title = "Nagual"
@@ -523,7 +522,7 @@ source = "script"
 title = "Neon Memories"
 group = "Stonehead"
 source = "script"
-result = "unknown"
+machine = "a500_512k"
 
 [demozoo.242803]
 title = "Neon Skates Demo"
@@ -1440,6 +1439,7 @@ title = "New Generation Part 1"
 group = "XXX International"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.218965]
 title = "New Generations of Hot Stuff"
@@ -1515,7 +1515,6 @@ source = "script"
 title = "New Hot Stuff"
 group = "Italian Cracking Group"
 source = "script"
-result = "unknown"
 
 [demozoo.352489]
 title = "New Hot Stuff"
@@ -1557,7 +1556,6 @@ source = "script"
 title = "New Import"
 group = "Addicts"
 source = "script"
-result = "unknown"
 
 [demozoo.237906]
 title = "New Import"
@@ -1938,7 +1936,6 @@ source = "script"
 title = "New Intro"
 group = "Relax"
 source = "script"
-result = "unknown"
 
 [demozoo.305755]
 title = "New Intro"
@@ -2722,7 +2719,6 @@ machine = "a1200"
 title = "New Stuff"
 group = "Magnificent Force / Continental Pirate Union / Joy"
 source = "script"
-result = "unknown"
 
 [demozoo.215923]
 title = "New Stuff"
@@ -2746,7 +2742,6 @@ source = "script"
 title = "New Stuff"
 group = "EAS Spreadings"
 source = "script"
-result = "unknown"
 
 [demozoo.219967]
 title = "New Stuff"
@@ -2767,7 +2762,6 @@ source = "script"
 title = "New Stuff"
 group = "Ydex"
 source = "script"
-result = "unknown"
 
 [demozoo.221492]
 title = "New Stuff"
@@ -2904,7 +2898,6 @@ source = "script"
 title = "New Stuff"
 group = "AHU"
 source = "script"
-result = "unknown"
 
 [demozoo.227736]
 title = "New Stuff"
@@ -2992,7 +2985,6 @@ source = "script"
 title = "New Stuff"
 group = "Australian Crackers United"
 source = "script"
-result = "unknown"
 
 [demozoo.234943]
 title = "New Stuff"
@@ -3217,7 +3209,7 @@ source = "script"
 title = "New Stuff"
 group = "Fast Team"
 source = "script"
-result = "unknown"
+boot = "floppy"
 
 [demozoo.317488]
 title = "New Stuff"
@@ -3273,14 +3265,12 @@ source = "script"
 title = "New Stuff"
 group = "Cracker Force Nijmegen"
 source = "script"
-result = "unknown"
 
 [demozoo.383152]
 title = "New Stuff"
 group = "Hotline"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.386478]
 title = "New Stuff"
@@ -3337,7 +3327,6 @@ source = "script"
 title = "New Stuff - no Music"
 group = "Quicksilver"
 source = "script"
-result = "unknown"
 
 [demozoo.233691]
 title = "New Stuff / Captain Blood"
@@ -3348,7 +3337,6 @@ source = "script"
 title = "New Stuff 1988"
 group = "Ninja Force"
 source = "script"
-result = "unknown"
 
 [demozoo.213753]
 title = "New Stuff 1989"
@@ -3374,7 +3362,6 @@ source = "script"
 title = "New Stuff 2"
 group = "Zanza Club"
 source = "script"
-result = "unknown"
 
 [demozoo.246089]
 title = "New Stuff 88 - Listen The 3 Soundtracks"
@@ -3410,7 +3397,6 @@ source = "script"
 title = "New Stuff for your Amiga"
 group = "Piranhas"
 source = "script"
-result = "unknown"
 
 [demozoo.247174]
 title = "New Stuff From ESG"
@@ -4106,8 +4092,7 @@ source = "script"
 title = "Night in Motion"
 group = "Mador"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+machine = "a500_1mb"
 
 [demozoo.134632]
 title = "Night Ocean"
@@ -4236,8 +4221,6 @@ machine = "a1200"
 title = "Nippon Taste"
 group = "Coppersky"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.19455]
 title = "Nitro 97"
@@ -4324,7 +4307,7 @@ source = "script"
 title = "No"
 group = "Digimed"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 
 [demozoo.391489]
 title = "No AGA Intro"
@@ -4341,9 +4324,9 @@ machine = "a1200_fast"
 title = "No Brain - No Pain!"
 group = "Flash Production"
 source = "script"
-result = "unknown"
+drives = 2
 disks = ["FP-NoBrainNoPain-A.dms", "FP-NoBrainNoPain-B.dms"]
-note = "the sweep saw works on a500_1mb; no entry of it passed the gate"
+note = "the sweep only reached disk 1 of 2"
 
 [demozoo.246608]
 title = "No Code 1"
@@ -4481,7 +4464,7 @@ source = "script"
 title = "No Name"
 group = "Stop"
 source = "script"
-result = "unknown"
+machine = "a500_512k"
 run = "wildplayer"
 
 [demozoo.177795]
@@ -4508,7 +4491,6 @@ source = "script"
 title = "No One Mine 7 Intro"
 group = "No One Inc"
 source = "script"
-result = "unknown"
 
 [demozoo.4224]
 title = "No Pain No Gain"
@@ -4772,6 +4754,7 @@ title = "Noisy Dreams"
 group = "The Twainstein Team"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.238420]
 title = "Nokian Nuoriso Ohjaaja Demu Part II"
@@ -4925,6 +4908,7 @@ title = "Noreia"
 group = "Lightstorm Inc."
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500_1mb_chip; no entry of it passed the gate"
 
 [demozoo.29831]
 title = "Nork"
@@ -5049,7 +5033,7 @@ machine = "a500_1mb"
 title = "Nostalgica"
 group = "Nukleus"
 source = "script"
-result = "unknown"
+machine = "a500_1mb"
 
 [demozoo.224829]
 title = "Not a Joke!"
@@ -5149,7 +5133,7 @@ source = "script"
 title = "Nothing Interesting"
 group = "Intryx"
 source = "script"
-result = "unknown"
+boot = "floppy"
 
 [demozoo.7716]
 title = "Nothing Special"
@@ -5248,7 +5232,6 @@ source = "script"
 title = "Nu"
 group = "Tristar"
 source = "script"
-result = "unknown"
 
 [demozoo.242906]
 title = "Nuclear Destroyer BBS Online"
@@ -5373,7 +5356,6 @@ source = "script"
 title = "Nuts"
 group = "Eremation"
 source = "script"
-result = "unknown"
 
 [demozoo.225253]
 title = "Nuts-Demo"

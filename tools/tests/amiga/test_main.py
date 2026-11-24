@@ -40,6 +40,19 @@ class GateCommandsTest(unittest.TestCase):
         self.assertEqual([c.kwargs["patient"] for c in run.call_args_list],
                          [False, True])
 
+    def test_sweep_of_one_machine(self):
+        with mock.patch.object(cli.catalog, "productions", return_value=[]), \
+                mock.patch.object(cli.sweep, "run_all") as run_all:
+            self.main("sweep", "--ids", "7")
+            self.main("sweep", "--ids", "7", "--machine", "a500_512k")
+        self.assertEqual([c.kwargs["machine"] for c in run_all.call_args_list],
+                         [None, "a500_512k"])
+
+    def test_sweep_of_a_machine_that_is_not_one(self):
+        with contextlib.redirect_stderr(io.StringIO()), \
+                self.assertRaises(SystemExit):
+            self.main("sweep", "--machine", "a4000")
+
     def test_gate_stores_into_the_sweep_database(self):
         def run(ids, db, jobs=None):
             db.put_gate(ids[0], {"title": "x"}, Judgement(True, "", seeds=(

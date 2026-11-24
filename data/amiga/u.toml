@@ -378,7 +378,6 @@ source = "script"
 title = "Underground BBS"
 group = "Industry"
 source = "script"
-result = "unknown"
 
 [demozoo.151510]
 title = "Underground Tape"
@@ -653,7 +652,7 @@ title = "Unsorted Ideas"
 group = "Illusion"
 source = "script"
 result = "unknown"
-note = "the sweep saw works on a1200; no entry of it passed the gate"
+note = "the sweep saw works on a500_1mb; no entry of it passed the gate"
 
 [demozoo.170685]
 title = "Unstable Traktor"
@@ -867,7 +866,6 @@ result = "unknown"
 title = "Utilities 1 - intro"
 group = "Liberty"
 source = "script"
-result = "unknown"
 
 [demozoo.222374]
 title = "Utilities 3 - Intro"
@@ -986,7 +984,6 @@ source = "script"
 title = "Uulima"
 group = "CNCD"
 source = "script"
-result = "unknown"
 
 [demozoo.8260]
 title = "Uusi"

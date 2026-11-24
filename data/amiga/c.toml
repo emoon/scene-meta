@@ -39,7 +39,6 @@ source = "script"
 title = "C64 Demo"
 group = "Rebels"
 source = "script"
-result = "unknown"
 
 [demozoo.264423]
 title = "C64 Demo"
@@ -76,7 +75,6 @@ machine = "a1200"
 title = "Cabbie Resigns"
 group = "Cabbie"
 source = "script"
-result = "unknown"
 
 [demozoo.257739]
 title = "Cadavar BBS"
@@ -264,7 +262,6 @@ source = "script"
 title = "Can You Fill It?"
 group = "The Fillers"
 source = "script"
-result = "unknown"
 
 [demozoo.283192]
 title = "Can You Read This?"
@@ -692,7 +689,6 @@ source = "script"
 title = "Cebit Demo"
 group = "Acrid"
 source = "script"
-result = "unknown"
 
 [demozoo.228658]
 title = "Cebit Multipart Demo"
@@ -757,7 +753,7 @@ source = "script"
 title = "Celtic"
 group = "Genetic"
 source = "script"
-result = "unknown"
+machine = "a500_512k"
 
 [demozoo.241610]
 title = "Celtic is Born - Demo Part 1"
@@ -858,7 +854,6 @@ source = "script"
 title = "Challenge Golf"
 group = "The Company"
 source = "script"
-result = "unknown"
 
 [demozoo.241016]
 title = "Chameleon -Vectorworld-"
@@ -874,7 +869,6 @@ source = "script"
 title = "Champion Of The Raj"
 group = "Steel"
 source = "script"
-result = "unknown"
 
 [demozoo.261725]
 title = "Champions of Europe"
@@ -1254,7 +1248,7 @@ source = "script"
 title = "Chip Tuner"
 group = "Unity"
 source = "script"
-result = "unknown"
+machine = "a500_1mb_chip"
 
 [demozoo.254147]
 title = "Chip's 18th Birthday"
@@ -1359,7 +1353,6 @@ machine = "a500_1mb"
 title = "Choc' Intro"
 group = "Intense"
 source = "script"
-result = "unknown"
 
 [demozoo.210465]
 title = "Choice Preview Intro"
@@ -1798,7 +1791,7 @@ result = "unknown"
 title = "Clear"
 group = "Sector 5"
 source = "script"
-result = "unknown"
+machine = "a500_1mb"
 
 [demozoo.248064]
 title = "Clever and Smart's Intro"
@@ -1842,7 +1835,6 @@ source = "script"
 title = "Close To The Edge"
 group = "Pink Pig"
 source = "script"
-result = "unknown"
 
 [demozoo.6583]
 title = "Closed Apart II"
@@ -1938,7 +1930,6 @@ result = "unknown"
 title = "Coca-Cola Commercial"
 group = "Coke Inc."
 source = "script"
-result = "unknown"
 
 [demozoo.223978]
 title = "Cock Tail"
@@ -2210,13 +2201,11 @@ machine = "a1200"
 title = "Collaps"
 group = "Lazy Bones"
 source = "script"
-result = "unknown"
 
 [demozoo.322890]
 title = "Collaps!"
 group = "Unreal / UHR0"
 source = "script"
-result = "unknown"
 
 [demozoo.279472]
 title = "Collection 105 Intro"
@@ -2350,7 +2339,7 @@ source = "script"
 title = "Colour Me AGA"
 group = "NightWarriors"
 source = "script"
-result = "unknown"
+machine = "a500_512k"
 
 [demozoo.238772]
 title = "Colour Scroll"
@@ -3058,7 +3047,6 @@ source = "script"
 title = "Contact Avantage"
 group = "Majic 12"
 source = "script"
-result = "unknown"
 
 [demozoo.250380]
 title = "Contact Celtic 3"
@@ -3074,8 +3062,7 @@ source = "script"
 title = "Contact Demo"
 group = "Newings"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+machine = "a500_1mb"
 
 [demozoo.226706]
 title = "Contact Demo"
@@ -3177,7 +3164,6 @@ source = "script"
 title = "Contact Us"
 group = "Kefrens"
 source = "script"
-result = "unknown"
 
 [demozoo.261373]
 title = "Contact Us"
@@ -3388,9 +3374,9 @@ machine = "a1200_fast"
 title = "Control"
 group = "Oxygene"
 source = "script"
-result = "unknown"
+machine = "a500_512k"
 disks = ["control1.dms", "control2.dms"]
-note = "the sweep saw works on a1200; no entry of it passed the gate"
+events = [{ at = 40.0, disk = 2, until = 70.0 }, { at = 45.0, key = "lmb" }]
 
 [demozoo.252053]
 title = "Controllable Sine Logo"
@@ -3659,7 +3645,6 @@ source = "script"
 title = "Cool Stuff Bootintro"
 group = "Bloodsuckers"
 source = "script"
-result = "unknown"
 
 [demozoo.229122]
 title = "Cool Techno Demo"
@@ -4088,8 +4073,7 @@ source = "script"
 title = "Copperophilia"
 group = "Spaceballs"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a1200; no entry of it passed the gate"
+machine = "a500_512k"
 
 [demozoo.236600]
 title = "Copperorgasm"
@@ -4143,7 +4127,6 @@ source = "script"
 title = "Copperthing 2"
 group = "Freebooters"
 source = "script"
-result = "unknown"
 
 [demozoo.265544]
 title = "Coppertrix"
@@ -4309,14 +4292,13 @@ machine = "a1200"
 title = "Corpse's Party Report"
 group = "Corpse"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.79143]
 title = "Corpsetro"
 group = "Corpse"
 source = "script"
-result = "unknown"
+machine = "a500_1mb"
 
 [demozoo.207850]
 title = "Corrections"
@@ -5007,7 +4989,6 @@ machine = "a1200"
 title = "Crazy Shot - Import"
 group = "The Fire Starters"
 source = "script"
-result = "unknown"
 
 [demozoo.229713]
 title = "Crazy Stars"
@@ -5480,7 +5461,6 @@ source = "script"
 title = "Cubulus"
 group = "Technosoft"
 source = "script"
-result = "unknown"
 
 [demozoo.310585]
 title = "Cult Pack Intro"
@@ -5669,7 +5649,6 @@ machine = "a1200_030"
 title = "Cyberwolf preview"
 group = "Dekadence"
 source = "script"
-result = "unknown"
 
 [demozoo.29092]
 title = "Cybogirl 2"
