@@ -63,7 +63,7 @@ def _one(prod, entry, default):
 
 def run(ids=None, data=None, jobs=None, log=print):
     """Replay the productions ``ids``; without ids, every entry that has a
-    key, on a swap or of its own. Returns how many could not be played."""
+    key. Returns how many could not be played."""
     data = data or config.DATA_DIR
     default = default_machine(data)
     found = entries(data)

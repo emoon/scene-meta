@@ -10,7 +10,7 @@ whatever somebody edited in the data files stays.
 import dataclasses
 import os
 
-from .. import machines
+from .. import events, machines
 from ..core import export
 from . import config, sid
 
@@ -66,6 +66,11 @@ def seen(store, prod_id, v):
                 store.schedule(prod_id, v.idx))
 
 
+# Seconds from an insert to its key where a window gives no delay. Nobody
+# measured it: the delays that were measured are 10 s and more.
+KEY_DELAY = 5.0
+
+
 def _events(windows):
     """The windows as an entry says them, in time order: each disk that
     goes in, the key pressed after it, and the keys to press before."""
@@ -79,9 +84,9 @@ def _events(windows):
         if w.until is not None:
             out[-1]["until"] = round(w.until, 1)
         if w.key:
-            delay = export.KEY_DELAY if w.key_delay is None else round(w.key_delay, 1)
+            delay = KEY_DELAY if w.key_delay is None else round(w.key_delay, 1)
             out.append({"at": round(at + delay, 1), "key": w.key.lower()})
-    return sorted(out, key=lambda e: (e["at"], "key" in e))
+    return events.ordered(out)
 
 
 def _note(seen):
@@ -117,8 +122,8 @@ def entry(title, groups, v, seen, model, presets):
     if len(v.disks) > 1:
         e["disks"] = [os.path.basename(d) for d in v.disks]
     if chain:
-        if events := _events(seen.windows):
-            e["events"] = events
+        if does := _events(seen.windows):
+            e["events"] = does
     if seen.boot_disk:
         e["boot_disk"] = seen.boot_disk + 1
     if seen.boot_file:

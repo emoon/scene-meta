@@ -90,13 +90,14 @@ def runs(entry):
 
 def as_played(entry, run):
     """``entry`` as ``run`` plays it. Late, the first disk and everything
-    after it happen LATE seconds later: a key pressed for a disk follows
-    it."""
+    from its time on happen LATE seconds later: a key pressed for a disk
+    follows it."""
     events = [dict(e) for e in entry.get("events", ())]
     if run.late:
-        first = next(i for i, e in enumerate(events) if "disk" in e)
-        for event in events[first:]:
-            event["at"] += LATE
+        first = min((e["at"] for e in swaps_of(entry)), default=float("inf"))
+        for event in events:
+            if event["at"] >= first:
+                event["at"] += LATE
     if run.without is not None:
         del events[keys_of(entry)[run.without]]
     return dict(entry, events=events)

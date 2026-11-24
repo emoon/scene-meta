@@ -95,6 +95,18 @@ class AsPlayedTest(unittest.TestCase):
                          [5.0, 40.0, 42.0, 80.0, 100.0])
         self.assertEqual(events[3], {"at": 80.0, "disk": 3, "drive": 2})
 
+    def test_late_goes_by_time_not_by_place_in_the_list(self):
+        # A file nobody validated: the key of the disk's moment before it,
+        # and a key that is earlier after it.
+        entry = {"events": [{"at": 10.0, "key": "lmb"}, {"at": 10.0, "disk": 2},
+                            {"at": 5.0, "key": "space"}]}
+        self.assertEqual(
+            [e["at"] for e in gate.as_played(entry, Run(1, late=True))["events"]],
+            [40.0, 40.0, 5.0])
+
+    def test_late_with_no_disk_moves_nothing(self):
+        self.assertEqual(gate.as_played(KEY, Run(1, late=True)), KEY)
+
     def test_without_a_key_everything_else_still_happens(self):
         written = self.ENTRY["events"]
         self.assertEqual(self.events(Run(1, without=0)), written[1:])

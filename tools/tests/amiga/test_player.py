@@ -71,11 +71,15 @@ class ActionsTest(unittest.TestCase):
             player.actions({"events": [{"at": 10, "disk": 2}]})
 
     def test_keys_of_their_own(self):
-        # No disk goes in.
-        entry = {"events": [{"at": 10, "key": "lmb"}, {"at": 90, "key": "lmb"}]}
+        # No disk goes in; the keys come in time order whatever the file's.
+        entry = {"events": [{"at": 90, "key": "lmb"}, {"at": 10, "key": "lmb"}]}
         self.assertEqual(player.actions(entry),
                          [(500, "press", "lmb"), (4500, "press", "lmb")])
         self.assertEqual(player.actions(entry, keys=False), [])
+
+    def test_an_event_that_is_neither_is_an_error(self):
+        with self.assertRaisesRegex(BadEntry, "at 12 that is neither"):
+            player.actions({"events": [{"at": 12.0, "frob": 1}]})
 
     def test_a_key_it_cannot_press_is_an_error_naming_the_key(self):
         entry = {"disks": ["a", "b"],

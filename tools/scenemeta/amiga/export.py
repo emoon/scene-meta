@@ -11,6 +11,7 @@ When it fails, the entries of the next best runs are, core.export.TRIES in
 all; when none passes the production is written as ``unknown``.
 """
 
+from .. import events
 from ..core import export
 from . import classes, config, gate, media, replay
 
@@ -19,6 +20,9 @@ _ALIVE = _RUNS + ("works-then-crash",)
 _RESULT = {"works-then-crash": "crashes-later", "crash": "broken"}
 _KIND = ("menu", "separate-disks")
 _BROKEN = ("install-only", "crash", "broken-media")
+# Seconds from an insert to its key where the sweep did not keep when: the
+# detector clicks that long after it puts a disk in.
+KEY_DELAY = 5.0
 
 
 def _rank(v):
@@ -72,10 +76,10 @@ def _events(swaps, keys):
         if s.drive > 1:
             out[-1]["drive"] = s.drive
         if s.key:
-            delay = (export.KEY_DELAY if s.key_at is None
+            delay = (KEY_DELAY if s.key_at is None
                      else round(s.key_at - s.at, 1))
             out.append({"at": round(at + delay, 1), "key": s.key})
-    return sorted(out, key=lambda e: (e["at"], "key" in e))
+    return events.ordered(out)
 
 
 def entry(title, groups, variants, cls, default):
@@ -130,8 +134,8 @@ def _entry(title, groups, v, variants, cls, default, failed=False):
         e["result"] = result
     if "disks" in named:
         e["disks"] = named["disks"]
-    if runs and (events := _events(v.swaps, v.keys)):
-        e["events"] = events
+    if runs and (does := _events(v.swaps, v.keys)):
+        e["events"] = does
     if "run" in named:
         e["run"] = named["run"]
     if note:

@@ -97,7 +97,8 @@ later one), `at` then an insert time known to work and `until` the last one
 known to work. `drive` is the drive the disk goes into when that
 is not the first: 2 or more, and no more than the machine's `drives` (on
 Amiga `drive = 2` is DF1). A key that has a disk taken is an event of its
-own, after the disk's. Key names are lowercase (`space`, `return`,
+own, after the disk's. When a disk goes in later than its `at`, every event
+from then on is that much later. Key names are lowercase (`space`, `return`,
 `p1fire`, `p2fire`, `lmb`, `rmb`: the fire button of the joystick in port 1
 or 2, the left and the right mouse button). On Amiga these six are all
 there are, and another name is an error.

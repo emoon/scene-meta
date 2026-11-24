@@ -134,6 +134,9 @@ def actions(entry, keys=True):
             if keys:
                 out.append((frame, "press", _key(event["key"])))
             continue
+        if "disk" not in event:
+            raise BadEntry(f"an event at {event['at']:g} that is neither a"
+                           " disk nor a key")
         swap = event
         if not first <= swap["disk"] <= last:
             # A disk that sits in a drive from the start is not swapped in.

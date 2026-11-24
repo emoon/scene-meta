@@ -120,7 +120,8 @@ makes a contact sheet of screenshots.
   hand-made schedule counts as running whatever the sweep saw.
 - `events` from the `schedule` view: a disk event per window (`at` the
   insert, `until` the window's end), a key event `key_delay` after it where
-  the window has a `key` (5 s when it gives no delay), and one for each of
+  the window has a `key` (5 s when it gives no delay, which nobody
+  measured), and one for each of
   the windows' `pre_keys`. A set classed `standalone`, `collection` or
   `boot_fresh` gets its `kind` and no events.
 - `boot_disk` and `boot_file` from `manual.json`, else the sweep's.

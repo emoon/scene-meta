@@ -135,9 +135,18 @@ class ValidateTest(unittest.TestCase):
     def test_events_are_in_the_order_they_happen(self):
         self.assertEqual(
             self.event('{ at = 9.0, disk = 2 }, { at = 9.0, key = "lmb" }'), [])
+        said = ["[demozoo.5] events must be in the order they happen, a disk"
+                " before a key of the same moment"]
         self.assertEqual(
             self.event('{ at = 9.0, key = "lmb" }, { at = 8.9, disk = 2 }'),
-            ["[demozoo.5] events must be in the order they happen"])
+            said)
+        self.assertEqual(
+            self.event('{ at = 9.0, key = "lmb" }, { at = 9.0, disk = 2 }'),
+            said)
+
+    def test_a_key_has_no_delay(self):
+        self.assertEqual(self.event('{ at = 9.0, key = "lmb", key_delay = 2 }'),
+                         ["[demozoo.5] events unknown field key_delay"])
 
     def test_swaps_and_keys_are_not_fields(self):
         got = self.one('[demozoo.5]\ntitle = "Dz"\nsource = "ai"\n'

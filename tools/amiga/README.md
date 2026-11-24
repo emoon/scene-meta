@@ -128,7 +128,7 @@ was loaded. The playing is done by the player (`../scenemeta/amiga/player.py`),
 the only code that turns an entry and its download into an emulator run;
 `shots` goes through it too. An entry with keys is played once
 more without them, which shows whether the keys are needed. Without `--ids`
-it plays every entry that has events. The keys are `lmb`, `rmb`,
+it plays every entry that has a key. The keys are `lmb`, `rmb`,
 `return`, `space`, `p1fire` and `p2fire`; a swapped disk goes into DF0, or
 into the drive its event names (`drive = 2` is DF1).
 
@@ -175,7 +175,7 @@ entries that are `ai` or `verified`; the entries that could not be played,
 with what was missing; and the entries with no record of them as they are
 now, by today's player from today's download (`gate-stale`). With `--write` the first list is demoted: each becomes
 `result = "unknown"` with the reason as its note, without its machine,
-events. The other lists are for a person. A later `export` puts
+drives and events. The other lists are for a person. A later `export` puts
 the next best runs of a demoted production to the gate.
 `gate-stale` lists the gated entries whose download, or the player's
 version, is no longer the one of their records: those need the gate again.

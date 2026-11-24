@@ -290,7 +290,8 @@ class NeededPressesTest(unittest.TestCase):
     def test_disk_that_waits_for_the_click(self):
         # Odyssey: "insert disk 2 and press left mouse button".
         entries, tries = self.run_try([(26845, 2, "poll+click")],
-                                      self.loads(lambda s, keys: keys))
+                                      self.loads(lambda s, keys: [
+                                          k for k in keys if k["at"] > s["at"]]))
         self.assertEqual([e["events"] for e in entries], [
             [{"at": 536.9, "disk": 2}],
             [{"at": 536.9, "disk": 2}, {"at": 541.9, "key": "lmb"}]])

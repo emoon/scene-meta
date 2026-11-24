@@ -4,6 +4,7 @@ import concurrent.futures as cf
 import dataclasses
 import functools
 
+from .. import events
 from ..core import gate, result, sweep as driver
 from . import (catalog, config, emulator, machines, media, player, verdict,
                workbench)
@@ -137,14 +138,13 @@ def played(m, variant, entry, seed):
 def _entry(variant, a, presses):
     """The entry of attempt ``a`` with ``presses``, as far as the player
     reads one."""
-    events = [{"at": p.frame / FPS, "key": p.key} for p in presses]
+    does = [{"at": p.frame / FPS, "key": p.key} for p in presses]
     for frame, disk, _ in a.swaps:
-        events.append({"at": frame / FPS, "disk": disk})
+        does.append({"at": frame / FPS, "disk": disk})
         if a.unit:
-            events[-1]["drive"] = a.unit + 1
-    # A disk before a key of the same moment, as the player does them.
-    events.sort(key=lambda e: (e["at"], "key" in e))
-    return {"drives": a.drives, "disks": variant.disks, "events": events}
+            does[-1]["drive"] = a.unit + 1
+    return {"drives": a.drives, "disks": variant.disks,
+            "events": events.ordered(does)}
 
 
 def _seen(m, variant, frames, opts, log, v):

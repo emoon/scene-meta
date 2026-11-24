@@ -8,7 +8,7 @@ import re
 import sys
 import tomllib
 
-from . import machines, schema
+from . import events, machines, schema
 
 DATA = pathlib.Path(__file__).resolve().parents[2] / "data"
 MACHINES = machines.FILE
@@ -86,8 +86,9 @@ def _events(v):
             return "drive and until are of a disk"
         if "until" in event and event["until"] < event["at"]:
             return "until is before at"
-    if any(b["at"] < a["at"] for a, b in zip(v, v[1:])):
-        return "must be in the order they happen"
+    if v != events.ordered(v):
+        return ("must be in the order they happen, a disk before a key of"
+                " the same moment")
 
 
 # A production booted from a later disk can ask for disk 1.
