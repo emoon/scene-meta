@@ -143,7 +143,8 @@ result = "unknown"
 title = "Da Lame 2"
 group = "Stonehead"
 source = "script"
-machine = "a1200_030"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.234201]
 title = "Da Madman's Return 28 - Menu"
@@ -160,6 +161,8 @@ source = "script"
 title = "Da Sucktro 962"
 group = "Chaos D-Sign"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.159446]
 title = "Da WinkTro"
@@ -302,6 +305,8 @@ source = "script"
 title = "Dangerous Territory"
 group = "Syntex"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.112900]
 title = "Dangtro"
@@ -459,7 +464,8 @@ source = "script"
 title = "Dark Rain"
 group = "Loonies"
 source = "script"
-machine = "a1200_030"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.25672]
 title = "Darker"
@@ -797,6 +803,8 @@ source = "script"
 title = "Dead Meat"
 group = "Silicon Limited"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.258250]
 title = "Dead Of"
@@ -990,6 +998,8 @@ machine = "a1200"
 title = "Debut"
 group = "Elanthia"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.240045]
 title = "Debut"
@@ -1053,6 +1063,8 @@ source = "script"
 title = "Decrunch 2020 Compo Killer"
 group = "DrapTeam"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.158200]
 title = "Decrunch Compo Filler"
@@ -1427,6 +1439,8 @@ source = "script"
 title = "Delirium"
 group = "Fraxion"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.143750]
 title = "Delirium"
@@ -2161,6 +2175,8 @@ source = "script"
 title = "Demo La Plus Fele"
 group = "Demons"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.240534]
 title = "Demo La Plus Fele II"
@@ -2299,8 +2315,9 @@ source = "script"
 title = "Demo Stop"
 group = "Loonies"
 source = "script"
-machine = "a1200"
+result = "unknown"
 run = "DemoStop.exe"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.228977]
 title = "Demo Tape #1 - Bonus Disk"
@@ -2707,8 +2724,9 @@ source = "script"
 title = "Denmine 11"
 group = "De Bond"
 source = "script"
-machine = "a500_512k"
 boot = "floppy"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.223320]
 title = "Denmine 3"
@@ -2896,13 +2914,15 @@ note = "its start script shows the demo and the slides with Echo, Wait, SetPatch
 title = "Deser Drims"
 group = "Keprens"
 source = "script"
-machine = "a500_1mb"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.286822]
 title = "Desert Cream"
 group = "Innocence"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.142]
 title = "Desert Dream"
@@ -3115,6 +3135,8 @@ source = "script"
 title = "Devil's Inn BBS"
 group = "Unlimited"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.223714]
 title = "Devils Chapel BBS Intro 1"
@@ -3342,7 +3364,8 @@ source = "script"
 title = "Digital"
 group = "iq2000"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.82036]
 title = "Digital Acid"
@@ -3489,6 +3512,8 @@ source = "script"
 title = "Digital Orgasm"
 group = "Cubic"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.286333]
 title = "Digital Orgasm 2"
@@ -3563,7 +3588,8 @@ machine = "a1200"
 title = "Dim"
 group = "Mellow Chips"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.233031]
 title = "DIM '88 Invitation"
@@ -3607,7 +3633,8 @@ source = "script"
 title = "Dinosaurs Inside"
 group = "Degeneration"
 source = "script"
-machine = "a1200_030"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.216761]
 title = "Dintro"
@@ -3766,7 +3793,8 @@ source = "script"
 title = "Disk Space"
 group = "LazerBase"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.260277]
 title = "Disk Util"
@@ -3959,7 +3987,8 @@ source = "script"
 title = "DMA Design"
 group = "Rednex"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.29584]
 title = "Dml2contrib."
@@ -4012,6 +4041,8 @@ swaps = [{ disk = 2, at = 30.9 }]
 title = "Do You Like Triangles Pre-Release"
 group = "Italian Bad Boys"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.210468]
 title = "Do! Run Run"
@@ -4587,7 +4618,8 @@ source = "script"
 title = "Down to the molecular hexagons and cube chains"
 group = "Nah-Kolor"
 source = "script"
-machine = "a1200_030"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.237629]
 title = "Down With the Blue"
@@ -4662,7 +4694,8 @@ run = "!yøUnEEEdth¡S!.eXE"
 title = "Dr. Sound is Round"
 group = "Lamathron"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.207476]
 title = "Dr. Wacko Joined"
@@ -4849,6 +4882,8 @@ source = "script"
 title = "Dreamfucker"
 group = "Soviet Hogs"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.143755]
 title = "Dreamin'"
@@ -5156,7 +5191,8 @@ source = "script"
 title = "Duck"
 group = "Traktor"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.380082]
 title = "DuckStAR"
@@ -5257,7 +5293,8 @@ machine = "a1200"
 title = "Dusted"
 group = "Void"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.40690]
 title = "Dustflow"
@@ -5367,7 +5404,8 @@ result = "unknown"
 title = "Dzhun"
 group = "Lloret Free Byte"
 source = "script"
-machine = "a1200_030"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.194474]
 title = "Dziady Part 3"
@@ -5389,4 +5427,5 @@ source = "script"
 title = "Dølle Døck"
 group = "Apathy"
 source = "script"
-machine = "a500_1mb"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"

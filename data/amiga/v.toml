@@ -12,6 +12,8 @@ source = "script"
 title = "Vaaleansininen huivi"
 group = "Carillon"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.342445]
 title = "VAAU"
@@ -40,8 +42,9 @@ machine = "a1200_fast"
 title = "Vach"
 group = "Deathless"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
 run = "vach.exe"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.156633]
 title = "Vactro 2"
@@ -99,8 +102,9 @@ source = "script"
 title = "Valhalla"
 group = "Loonies"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
 run = "Valhalla.nofpu"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.233662]
 title = "Valis"
@@ -1177,9 +1181,9 @@ source = "script"
 title = "Vibes"
 group = "Oops!"
 source = "script"
-machine = "a1200"
 boot = "floppy"
-result = "crashes-later"
+result = "unknown"
+note = "failed the gate: seed 1: crashed: halt"
 
 [demozoo.214163]
 title = "Vibrating Arrow"
@@ -1421,6 +1425,8 @@ result = "unknown"
 title = "Virtual World"
 group = "TomSoft"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.197374]
 title = "Virus Boot"
@@ -1447,6 +1453,8 @@ source = "script"
 title = "Virus Terminator 2.0"
 group = "Bamiga Sector One"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.262736]
 title = "Viruskiller Update Intro"
@@ -1556,7 +1564,8 @@ result = "unknown"
 title = "Vital"
 group = "Mystic"
 source = "script"
-machine = "a500_1mb"
+result = "unknown"
+note = "failed the gate: seed 1: crashed: alert:00000003"
 
 [demozoo.22196]
 title = "Vitsippe Hater"
@@ -1572,7 +1581,8 @@ source = "script"
 title = "Vittuliukaste -Vittu, pakko kai tää on julkasta ku tuli tehtyä-"
 group = "Poro"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: crashed: alert:80000005"
 
 [demozoo.247637]
 title = "Vitun Munkit"
@@ -1847,7 +1857,8 @@ source = "script"
 title = "Vrroemm?!"
 group = "Desire"
 source = "script"
-machine = "a500_1mb"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.2155]
 title = "Vuku"
@@ -1868,7 +1879,8 @@ source = "script"
 title = "Vänner Från Förr"
 group = "Laxative Effects"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.105983]
 title = "Växthus 7"

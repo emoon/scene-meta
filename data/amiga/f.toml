@@ -60,6 +60,8 @@ machine = "a500_1mb"
 title = "F/A-18 Interceptor - import"
 group = "Trilogy / 7up Crew"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 2: never came alive"
 
 [demozoo.229566]
 title = "F16 Intro"
@@ -125,6 +127,8 @@ source = "script"
 title = "Face of The Lord"
 group = "Protestor / Miwe"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.20356]
 title = "Face Off (2)"
@@ -147,8 +151,9 @@ source = "script"
 title = "Face the Reality"
 group = "Scream"
 source = "script"
+result = "unknown"
 disks = ["Scream-FaceTheRealityA.adf", "Scream-FaceTheRealityB.adf"]
-swaps = [{ disk = 2, at = 120.0 }]
+note = "failed the gate: seed 1: disk 2 never loaded"
 
 [demozoo.21850]
 title = "Face to Face"
@@ -228,7 +233,8 @@ source = "script"
 title = "FAG & ISO Megademo 2014"
 group = "Finnish Amiga Group / ISO"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.21347]
 title = "Faggot"
@@ -594,7 +600,8 @@ source = "script"
 title = "Fase Cromenagüer"
 group = "Nexus Team"
 source = "script"
-machine = "a500_1mb"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.89609]
 title = "Fashion"
@@ -657,6 +664,8 @@ source = "script"
 title = "Fast Forward"
 group = "Chrome"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.102084]
 title = "Fast Import Intro"
@@ -697,6 +706,8 @@ result = "unknown"
 [demozoo.260187]
 title = "Fast Intro"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.6112]
 title = "Fast Intro 1993"
@@ -772,7 +783,9 @@ source = "script"
 title = "FastIntro"
 group = "Puzzle / Depth"
 source = "script"
+result = "unknown"
 run = "PUZDEPTH"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.151378]
 title = "Fastintro"
@@ -1067,7 +1080,8 @@ source = "script"
 title = "Fem"
 group = "Laxative Effects"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.219768]
 title = "Female Part 1"
@@ -1664,6 +1678,8 @@ source = "script"
 title = "First"
 group = "Institute Of Technical Dreams"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 2: never came alive"
 
 [demozoo.223407]
 title = "First"
@@ -1941,7 +1957,8 @@ source = "script"
 title = "First Demo"
 group = "Model"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: crashed: alert:8000000b"
 
 [demozoo.22198]
 title = "First Demo"
@@ -3005,7 +3022,8 @@ source = "script"
 title = "First Intro"
 group = "Cosmic Pirates"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.237890]
 title = "First Intro"
@@ -3073,6 +3091,8 @@ source = "script"
 title = "First Intro"
 group = "Savior"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.261765]
 title = "First Intro"
@@ -3394,7 +3414,8 @@ source = "script"
 title = "First Realisation"
 group = "Nihondreamers"
 source = "script"
-machine = "a500_1mb"
+result = "unknown"
+note = "failed the gate: seed 1: crashed: alert:00000003"
 
 [demozoo.60334]
 title = "First Release"
@@ -3677,7 +3698,8 @@ source = "script"
 title = "Flames"
 group = "Giga Productions"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.20862]
 title = "FlaminDC"
@@ -3918,12 +3940,15 @@ source = "script"
 title = "Flippo 40k"
 group = "Desire / Axis"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.262952]
 title = "FlipTrOo"
 group = "Therapy"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.252067]
 title = "Floating"
@@ -3995,8 +4020,9 @@ source = "script"
 title = "Flop"
 group = "Dual Crew Shining"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
 run = "dCS-fLop.exe"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.36028]
 title = "Flop hidden part"
@@ -4636,6 +4662,8 @@ source = "script"
 title = "Fractalia"
 group = "Avenger"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.258406]
 title = "Fractals"
@@ -4923,6 +4951,8 @@ machine = "a1200"
 title = "Freedom Arms"
 group = "Void"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.227504]
 title = "Freedom BBS"
@@ -4987,6 +5017,8 @@ source = "script"
 title = "French Axel"
 group = "Axel Retro-Software"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.2017]
 title = "French Section Is Now Dead"
@@ -5210,6 +5242,8 @@ source = "script"
 title = "Front Pack Preview"
 group = "Exalis"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.216449]
 title = "Front-Demo"
@@ -5300,7 +5334,8 @@ source = "script"
 title = "Fruktbomb"
 group = "Inu-Soft"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.105995]
 title = "Frums (Mit Kindern)"
@@ -5585,8 +5620,9 @@ machine = "a1200"
 title = "Fugazi"
 group = "Old Bulls"
 source = "script"
+result = "unknown"
 disks = ["OLD_BULLS-Fugazi-A.DMS", "OLD_BULLS-Fugazi-B.DMS"]
-swaps = [{ disk = 2, at = 75.0 }]
+note = "failed the gate: seed 1: crashed: alert:00000004"
 
 [demozoo.352684]
 title = "FujiBoink!"
@@ -5644,13 +5680,15 @@ source = "script"
 title = "Fulligrin"
 group = "Traktor"
 source = "script"
-machine = "a500_1mb"
+result = "unknown"
+note = "failed the gate: seed 1: crashed: alert:00000004"
 
 [demozoo.9382]
 title = "Fun"
 group = "Whelpz"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.221581]
 title = "Fun"
@@ -5701,7 +5739,8 @@ source = "script"
 title = "Funk Def"
 group = "Traktor"
 source = "script"
-machine = "a1200_030"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.234137]
 title = "Funkier Than Wax"
@@ -5896,7 +5935,8 @@ source = "script"
 title = "Future"
 group = "Gods"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: crashed: alert:80000004"
 
 [demozoo.179520]
 title = "Future Balls"
@@ -5963,6 +6003,8 @@ source = "script"
 title = "Future Shock"
 group = "Top Swap"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.233218]
 title = "Future Show Music Disc Intro"
@@ -5973,7 +6015,8 @@ source = "script"
 title = "Future=Reality"
 group = "Supraphone"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.5797]
 title = "Futuristic Mind"
@@ -5990,7 +6033,8 @@ source = "script"
 title = "Förortsluder"
 group = "G'Force"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.235471]
 title = "Fødselsdagstro"

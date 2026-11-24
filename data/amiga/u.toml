@@ -120,7 +120,8 @@ source = "script"
 title = "uloste"
 group = "Rave Network Overscan / Fit"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.22604]
 title = "Ulsteri"
@@ -283,13 +284,15 @@ source = "script"
 title = "Una Intro de Mierda"
 group = "Teleteria"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.29829]
 title = "Unamuno Solo Tenia."
 group = "Phornee"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.31929]
 title = "Unanimiter"
@@ -338,8 +341,9 @@ machine = "a1200_fast"
 title = "Under The Hammer"
 group = "Zaborra"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
 run = "UnderTheHammer"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.245030]
 title = "Under The Surface"
@@ -487,7 +491,8 @@ source = "script"
 title = "Unite Ur Dreams"
 group = "Orchid"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.41777]
 title = "United"
@@ -624,8 +629,9 @@ source = "script"
 title = "Unreal"
 group = "Supreme"
 source = "script"
-machine = "a1200"
+result = "unknown"
 run = "main"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.385175]
 title = "UnreaL intro"
@@ -652,7 +658,8 @@ machine = "a1200"
 title = "Unsorted Ideas"
 group = "Illusion"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.170685]
 title = "Unstable Traktor"
@@ -664,9 +671,9 @@ run = "AceMan - Unstable Traktor (68000).exe"
 title = "Unswerving"
 group = "Gods"
 source = "script"
-machine = "a1200_030"
 boot = "floppy"
-result = "crashes-later"
+result = "unknown"
+note = "failed the gate: seed 1: crashed: halt"
 
 [demozoo.35437]
 title = "Untitled"

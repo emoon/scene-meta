@@ -17,6 +17,8 @@ source = "script"
 title = "T.I.L.T."
 group = "Fun Factory"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: crashed: guru"
 
 [demozoo.224462]
 title = "T.P.B. Video Slate BBS"
@@ -27,7 +29,8 @@ source = "script"
 title = "T.S.I.A."
 group = "Lamon"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.55074]
 title = "T3"
@@ -231,6 +234,8 @@ source = "script"
 title = "Tanzen"
 group = "Frost"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.205954]
 title = "Targoor's Demo"
@@ -586,6 +591,8 @@ machine = "a500_1mb"
 title = "Teenage Magnetic Fields Ninja Turtles Big Intro"
 group = "Magnetic Fields"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.218734]
 title = "Teenage Mutant Ninja Turtle Demo"
@@ -681,7 +688,8 @@ source = "script"
 title = "Teleintroteria"
 group = "Ice Van / Lord Raptor"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.198531]
 title = "Telephonic"
@@ -750,7 +758,8 @@ machine = "a1200_060"
 title = "Ten Years Of Fun"
 group = "Equinox"
 source = "script"
-machine = "a1200_030"
+result = "unknown"
+note = "failed the gate: seed 1: crashed: alert:80000006"
 
 [demozoo.28545]
 title = "Tenebra"
@@ -864,7 +873,8 @@ source = "script"
 title = "Terror"
 group = "Hardcore Lamerz"
 source = "script"
-machine = "a500_1mb"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.236584]
 title = "Terror"
@@ -876,7 +886,8 @@ machine = "a1200_fast"
 title = "Terror"
 group = "hARDKORE lAMERz"
 source = "script"
-machine = "a500_1mb"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.246616]
 title = "Terror Pack Mag Preview"
@@ -909,7 +920,8 @@ source = "script"
 title = "Tesla"
 group = "Zeleny"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.214346]
 title = "Test"
@@ -946,6 +958,8 @@ machine = "a500_1mb"
 title = "Testing It"
 group = "Eremation"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.296831]
 title = "Testing Testing"
@@ -1348,7 +1362,8 @@ source = "script"
 title = "The Art of Fractals"
 group = "Axel Retro-Software"
 source = "script"
-machine = "a500_1mb"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.229976]
 title = "The Assassin"
@@ -1374,7 +1389,8 @@ source = "script"
 title = "The B.I.G. Demo (Amiga Port)"
 group = "The Exceptions / Mr Styckx"
 source = "script"
-machine = "a500_1mb"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.176240]
 title = "The Bad Tongue #3 Announcement"
@@ -1523,7 +1539,8 @@ source = "script"
 title = "The Black"
 group = "Erotic Design"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: crashed: alert:80000004"
 
 [demozoo.359965]
 title = "The Blaster"
@@ -1698,6 +1715,8 @@ source = "script"
 title = "The Clairvoyant-Iron Maiden 4"
 group = "Commando Frontier"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.241356]
 title = "The Clinic BBS Intro"
@@ -1932,7 +1951,8 @@ source = "script"
 title = "The Deep Dentro"
 group = "After Eights"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.342447]
 title = "The Deep Meet"
@@ -2048,6 +2068,8 @@ source = "script"
 title = "The Dwarves Hole BBS"
 group = "Kougar"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.229399]
 title = "The Eagle's First"
@@ -2432,7 +2454,8 @@ source = "script"
 title = "The Gate"
 group = "Artwork"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
+note = "failed the gate: seed 1: crashed: alert:8000000e"
 
 [demozoo.219754]
 title = "The Gate Keeper Demo"
@@ -2674,7 +2697,8 @@ source = "script"
 title = "The Huib Demo"
 group = "Mellow"
 source = "script"
-machine = "a500_1mb"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.3778]
 title = "The Human Body Is A Curious Contraption"
@@ -2686,6 +2710,8 @@ machine = "a1200_fast"
 title = "The Hunt For 7th October"
 group = "Cryptoburners"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: crashed: guru"
 
 [demozoo.228599]
 title = "The Hunt For Bussemennene"
@@ -2777,8 +2803,9 @@ source = "script"
 title = "The Intruder"
 group = "Syntex"
 source = "script"
+result = "unknown"
 disks = ["Syntex-TheIntruderA.dms", "Syntex-TheIntruderB.dms"]
-swaps = [{ disk = 2, at = 170.0 }]
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.245242]
 title = "The Jam"
@@ -3318,8 +3345,9 @@ source = "script"
 title = "The Morning Trip"
 group = "Loonies"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
 run = "LNS-TMT.nofpu"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.223999]
 title = "The Most Little Group But Not The Least"
@@ -3350,6 +3378,8 @@ source = "script"
 title = "The Museum BBS Intro"
 group = "Delight"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.220091]
 title = "The Music From Fantasy World Dizzy"
@@ -4433,6 +4463,8 @@ source = "script"
 title = "The Tower BBS"
 group = "Skid Row"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.261851]
 title = "The Trader 2 Intro"
@@ -5138,6 +5170,8 @@ source = "script"
 title = "This File Passed Rising Hope BBS"
 group = "Warriors of Art"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: crashed: guru"
 
 [demozoo.223461]
 title = "This Import"
@@ -5310,7 +5344,8 @@ source = "script"
 title = "Thrice"
 group = "Dekadence"
 source = "script"
-machine = "a1200_030"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.7476]
 title = "Thrilled"
@@ -5349,8 +5384,9 @@ result = "unknown"
 title = "Thud Remix"
 group = "Madwizards"
 source = "script"
-machine = "a1200"
+result = "unknown"
 run = "MWI-Thud_remix.decrunched"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.18862]
 title = "Thug Life"
@@ -5471,7 +5507,8 @@ source = "script"
 title = "Time Chaos"
 group = "PURe"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.223771]
 title = "Time For Chaos"
@@ -5547,9 +5584,9 @@ machine = "a1200"
 title = "Time Zone"
 group = "Tristar and Red Sector Inc."
 source = "script"
-machine = "a500_1mb"
+result = "unknown"
 disks = ["TRSI-TimezoneA.DMS", "TRSI-TimezoneB.DMS"]
-swaps = [{ disk = 2, at = 690.0 }]
+note = "failed the gate: seed 1: disk 2 never loaded"
 
 [demozoo.251130]
 title = "Time's The Remedy"
@@ -5665,7 +5702,8 @@ note = "TBL-Tint.LHA; the 6 floppies are installer disks (disk 1 does not boot)"
 title = "Tintin Inside"
 group = "Candle"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.23614]
 title = "Tintology Vogue"
@@ -5719,8 +5757,9 @@ result = "unknown"
 title = "Tiny Triangles"
 group = "gigabates"
 source = "script"
-machine = "a500_512k"
 boot = "hd"
+result = "unknown"
+note = "failed the gate: seed 1: crashed: halt"
 
 [demozoo.195136]
 title = "Tiny Tunes 2"
@@ -5742,6 +5781,8 @@ machine = "a1200"
 title = "Tiny Tunes 9"
 group = "Effect"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.286728]
 title = "Tippy Tappy"
@@ -5791,7 +5832,8 @@ source = "script"
 title = "TLU-4K"
 group = "Tulou"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.142975]
 title = "TMC is jarig"
@@ -5900,7 +5942,8 @@ source = "script"
 title = "Tokyo"
 group = "Lamers"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.102219]
 title = "Tolerance"
@@ -6363,6 +6406,8 @@ source = "script"
 title = "Tour de GREP"
 group = "Laxative Effects"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.4020]
 title = "Tour de Scene"
@@ -6380,13 +6425,15 @@ machine = "a1200_fast"
 title = "Tourbus 31"
 group = "Dual Crew Shining"
 source = "script"
-machine = "a1200_030"
+result = "unknown"
+note = "failed the gate: seed 1: crashed: halt"
 
 [demozoo.60174]
 title = "Tourism New Zeland"
 group = "Murska"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.204897]
 title = "Tourists"
@@ -6409,7 +6456,8 @@ machine = "a500_1mb"
 title = "Tower"
 group = "Appendix"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.222227]
 title = "Tower Critical"
@@ -6788,7 +6836,8 @@ source = "script"
 title = "Transmute"
 group = "Duskwave"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.287288]
 title = "Transparency"
@@ -6879,7 +6928,8 @@ run = "Cave2"
 title = "Trash"
 group = "Whelpz"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.36157]
 title = "Trash"
@@ -6949,7 +6999,8 @@ source = "script"
 title = "Trauma"
 group = "Unique"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.229112]
 title = "Traumatics First"
@@ -6960,8 +7011,9 @@ source = "script"
 title = "Travellers"
 group = "Loonies"
 source = "script"
-machine = "a1200"
+result = "unknown"
 run = "travellers.exe"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.235121]
 title = "Travellog 2 Intro"
@@ -7361,7 +7413,8 @@ run = "TroyPreView"
 title = "TRS 2 Invitation"
 group = "Faque"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.233980]
 title = "TRS Utilities 12 Intro"
@@ -7382,7 +7435,8 @@ source = "script"
 title = "TRSAC 01 Invitro"
 group = "Loonies"
 source = "script"
-machine = "a1200_030"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.261152]
 title = "TRSI & Zenith Cracktro Preview"
@@ -7469,7 +7523,8 @@ machine = "a1200_fast"
 title = "Trypophobia"
 group = "Harvester"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.262694]
 title = "TSK Crew is Dead"
@@ -7667,6 +7722,8 @@ source = "script"
 title = "Turboprop"
 group = "X-Factor"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.263333]
 title = "Turkish Delight"

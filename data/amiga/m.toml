@@ -224,8 +224,9 @@ source = "script"
 title = "Madness Week"
 group = "Syntex"
 source = "script"
+result = "unknown"
 disks = ["Syntex-MadnessWeek1.adf", "Syntex-MadnessWeek2.adf"]
-swaps = [{ disk = 2, at = 35.0 }]
+note = "failed the gate: seed 1: disk 2 never loaded"
 
 [demozoo.227089]
 title = "Madonna Demo"
@@ -784,6 +785,8 @@ source = "script"
 title = "Maniac demo down"
 group = "Crazy Maniacs of Hades"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.263721]
 title = "Maniac Mansion"
@@ -1043,7 +1046,8 @@ source = "script"
 title = "Massive"
 group = "Skarla"
 source = "script"
-machine = "a1200_030"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.123600]
 title = "Massive"
@@ -1325,8 +1329,9 @@ swaps = [{ disk = 2, at = 47.3 }]
 title = "Maximum Overdrive"
 group = "The Special Brothers"
 source = "script"
+result = "unknown"
 disks = ["TSB-MaximumOverdriveA.adf", "TSB-MaximumOverdriveB.adf"]
-swaps = [{ disk = 2, at = 531.6 }]
+note = "failed the gate: seed 2: disk 2 never loaded"
 
 [demozoo.255324]
 title = "Maximum Overdrive 2 Intro"
@@ -1481,6 +1486,8 @@ machine = "a1200"
 title = "Meadows"
 group = "Rift"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.294042]
 title = "Meaningless"
@@ -1804,6 +1811,8 @@ source = "script"
 title = "Meetro"
 group = "Reflectors"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.194040]
 title = "Meetro"
@@ -1879,8 +1888,9 @@ source = "script"
 title = "Mega Demo"
 group = "Deathstar"
 source = "script"
+result = "unknown"
 disks = ["Deathstar-MegademoA.dms", "Deathstar-MegademoB.dms"]
-swaps = [{ disk = 2, at = 25.7 }]
+note = "failed the gate: seed 1: crashed: alert:0000000b"
 
 [demozoo.153783]
 title = "Mega Demo"
@@ -1906,6 +1916,8 @@ source = "script"
 title = "Mega Demo 1"
 group = "Robots"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.230493]
 title = "Mega Dycpers"
@@ -2037,12 +2049,15 @@ source = "script"
 title = "Mega Syf 1"
 group = "Sordan / Elektro"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.299152]
 title = "Mega Syf 4"
 group = "Undiagnosed Asperger's Bastards"
 source = "script"
-machine = "a500_1mb"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.219745]
 title = "Mega-Demo"
@@ -2053,8 +2068,9 @@ source = "script"
 title = "Mega-Demo"
 group = "Treacl"
 source = "script"
+result = "unknown"
 disks = ["Treacl-MegademoA.dms", "Treacl-MegademoB.dms", "Treacl-MegademoC.dms"]
-swaps = [{ disk = 2, at = 160.0 }, { disk = 3, at = 230.0 }]
+note = "failed the gate: seed 1: disks 2, 3 never loaded"
 
 [demozoo.19014]
 title = "Mega-Demo Preview"
@@ -2081,12 +2097,15 @@ source = "script"
 title = "Mega-lo-Mania"
 group = "The Power Connection"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.233249]
 title = "Mega-Lomania Demo"
 group = "The Sunriders"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: crashed: emulator-exit:-6"
 
 [demozoo.216843]
 title = "Mega-mini-mega-demo - 1st part"
@@ -2142,6 +2161,8 @@ source = "script"
 title = "Megacrash"
 group = "Avalanche"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: crashed: guru"
 
 [demozoo.287286]
 title = "Megadef Downsmashing Intro"
@@ -2221,8 +2242,9 @@ source = "script"
 title = "Megademo"
 group = "Royal Amiga Force"
 source = "script"
+result = "unknown"
 disks = ["RAF-Megademo-A.DMS", "RAF-Megademo-B.DMS"]
-swaps = [{ disk = 2, at = 270.7, key = "lmb" }]
+note = "failed the gate: seed 1: crashed: alert:00000003"
 
 [demozoo.70419]
 title = "Megademo"
@@ -2256,8 +2278,9 @@ source = "script"
 title = "Megademo"
 group = "United Forces"
 source = "script"
+result = "unknown"
 disks = ["UFO-MegademoA.adf", "UFO-MegademoB.dms"]
-swaps = [{ disk = 2, at = 79.0, key = "lmb" }]
+note = "failed the gate: seed 1: crashed: alert:00000003"
 
 [demozoo.154550]
 title = "Megademo"
@@ -2288,9 +2311,9 @@ source = "script"
 title = "Megademo"
 group = "Powerslaves"
 source = "script"
-machine = "a500_1mb"
+result = "unknown"
 disks = ["Powerslaves-MegademoA.dms", "Powerslaves-MegademoB.dms"]
-swaps = [{ disk = 2, at = 145.0, key = "lmb" }]
+note = "failed the gate: seed 1: crashed: alert:0000000a"
 
 [demozoo.158893]
 title = "Megademo"
@@ -2306,6 +2329,8 @@ source = "script"
 title = "Megademo"
 group = "Legion 7"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: crashed: guru"
 
 [demozoo.167262]
 title = "Megademo"
@@ -2356,7 +2381,8 @@ source = "script"
 title = "Megademo"
 group = "Eltech"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.179733]
 title = "Megademo"
@@ -2476,14 +2502,16 @@ source = "script"
 title = "Megademo"
 group = "The Dark Ram Service"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.221840]
 title = "Megademo"
 group = "Predators"
 source = "script"
-machine = "a500_512k"
+result = "unknown"
 disks = ["Predators-MegademoI-A.dms", "Predators-MegademoI-B.dms"]
-swaps = [{ disk = 2, at = 20.0 }]
+note = "failed the gate: seed 1: crashed: alert:0000000b"
 
 [demozoo.222080]
 title = "Megademo"
@@ -2499,14 +2527,16 @@ source = "script"
 title = "Megademo"
 group = "Death Handlers"
 source = "script"
-machine = "a1200"
+result = "unknown"
 disks = ["DH-MegademoA.adf", "DH-MegademoB.adf"]
-swaps = [{ disk = 2, at = 135.8 }]
+note = "failed the gate: seed 1: disk 2 never loaded"
 
 [demozoo.225442]
 title = "Megademo"
 group = "Design House"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: crashed: halt"
 
 [demozoo.227083]
 title = "Megademo"
@@ -2642,9 +2672,9 @@ source = "script"
 title = "Megademo"
 group = "Trilogy"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
 disks = ["TRILOGY-MegademoA.DMS", "TRILOGY-MegademoB.DMS"]
-swaps = [{ disk = 2, at = 23.9, key = "lmb" }]
+note = "failed the gate: seed 1: crashed: alert:8000000b"
 
 [demozoo.269713]
 title = "Megademo"
@@ -2744,8 +2774,9 @@ source = "script"
 title = "Megademo - Masters At Work"
 group = "Flash Production"
 source = "script"
+result = "unknown"
 disks = ["FP-MastersAtWorkA.adf", "FP-MastersAtWorkB.adf"]
-swaps = [{ disk = 2, at = 81.6, key = "lmb" }]
+note = "failed the gate: seed 1: crashed: alert:00000004"
 
 [demozoo.356965]
 title = "Megademo - Part 4"
@@ -2836,9 +2867,9 @@ run = "a1"
 title = "Megademo 1"
 group = "Business After Dark"
 source = "script"
-result = "crashes-later"
+result = "unknown"
 disks = ["BAD-CopperAtWorkMD1a.adf", "BAD-CopperAtWorkMD1b.adf"]
-swaps = [{ disk = 2, at = 145.0 }]
+note = "failed the gate: seed 1: disk 2 never loaded"
 
 [demozoo.224423]
 title = "Megademo 1"
@@ -3013,7 +3044,8 @@ machine = "a1200_030"
 title = "Megademo 2003"
 group = "Finnish Amiga Group"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.150135]
 title = "Megademo 2015"
@@ -3087,8 +3119,9 @@ source = "script"
 title = "Megademo 4"
 group = "Fanatix"
 source = "script"
-drives = 2
+result = "unknown"
 disks = ["Fanatix-Megademo4A.adf", "Fanatix-Megademo4B.adf"]
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.5322]
 title = "Megademo 4 - Bogøfærgerne II"
@@ -3155,14 +3188,16 @@ machine = "a1200"
 title = "Megademo 7"
 group = "Fanatix"
 source = "script"
-drives = 2
+result = "unknown"
 disks = ["Fanatix-Megademo7_D1.adf", "Fanatix-Megademo7_D2.adf", "Fanatix-Megademo7_D3.adf"]
-swaps = [{ disk = 3, at = 30.0 }]
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.71940]
 title = "Megademo 8"
 group = "Laxative Effects"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.245167]
 title = "Megademo 8"
@@ -3264,6 +3299,8 @@ source = "script"
 title = "Megademo II: Think Over The Star"
 group = "Dreamdealers"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: crashed: alert:00000004"
 
 [demozoo.45034]
 title = "Megademo III"
@@ -3293,8 +3330,9 @@ result = "unknown"
 title = "Megademo IV: Devil's Key"
 group = "Alcatraz"
 source = "script"
+result = "unknown"
 disks = ["Alcatraz-Megademo4a.dms", "Alcatraz-Megademo4b.dms", "Alcatraz-Megademo4c.dms"]
-swaps = [{ disk = 2, at = 292.4, key = "lmb" }, { disk = 3, at = 809.4, key = "lmb" }]
+note = "failed the gate: seed 1: disk 2 never loaded"
 
 [demozoo.228143]
 title = "Megademo Last Part"
@@ -3579,8 +3617,9 @@ source = "script"
 title = "Mekkademo"
 group = "Cyborx"
 source = "script"
+result = "unknown"
 disks = ["CYBORX-MekkaDemo_A.dms", "CYBORX-MekkaDemo_B.dms"]
-swaps = [{ disk = 2, at = 26.8, key = "lmb" }]
+note = "failed the gate: seed 1: crashed: alert:00000004"
 
 [demozoo.9559]
 title = "Melba"
@@ -3758,6 +3797,8 @@ source = "script"
 title = "Members Wanted"
 group = "Gate"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.256012]
 title = "Members Wanted"
@@ -3934,7 +3975,8 @@ machine = "a1200_030"
 title = "Mental Brain Disorder"
 group = "Loonies"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.330362]
 title = "Mental Collection 17 Intro"
@@ -4099,6 +4141,8 @@ source = "script"
 title = "Merry Christmas"
 group = "Goonies 2041"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.224581]
 title = "Merry Christmas"
@@ -4195,6 +4239,8 @@ machine = "a1200_fast"
 title = "Mesmerized"
 group = "Pure Metal Coders"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: crashed: alert:00000004"
 
 [demozoo.261870]
 title = "Message"
@@ -4405,9 +4451,9 @@ source = "script"
 title = "Metatag Lock K-231277"
 group = "Madwizards"
 source = "script"
-machine = "a1200_030"
-result = "crashes-later"
+result = "unknown"
 run = "mwi-mtag.030"
+note = "failed the gate: seed 1: crashed: alert:80000004"
 
 [demozoo.236338]
 title = "Meteli 1"
@@ -4521,6 +4567,8 @@ source = "script"
 title = "MFD"
 group = "CMD / 8BitError"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.261898]
 title = "MGF - JOY Megaintrodisk Trainer Intro"
@@ -5288,6 +5336,8 @@ source = "script"
 title = "Mini Mega Demo"
 group = "Express"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.251625]
 title = "Mini Mega Intro"
@@ -5427,7 +5477,8 @@ source = "script"
 title = "Ministry of funny afros"
 group = "Ananasmurska"
 source = "script"
-machine = "a500_1mb"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.207370]
 title = "Minor Defects"
@@ -5653,6 +5704,8 @@ source = "script"
 title = "Mission Nostromo"
 group = "Focus Design"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 2: never came alive"
 
 [demozoo.178224]
 title = "Mission Nostromo II"
@@ -5742,7 +5795,8 @@ machine = "a1200_fast"
 title = "Mnemonics"
 group = "Haujobb"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.52038]
 title = "Mo'Saik"
@@ -5825,7 +5879,8 @@ source = "script"
 title = "Modernation"
 group = "Duskwave"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.221353]
 title = "Modesty's Intro"
@@ -6455,8 +6510,9 @@ run = "teo_-_moonlight.exe"
 title = "Motion Blur"
 group = "Horizontal Lamerz"
 source = "script"
-machine = "a1200"
+result = "unknown"
 run = "hla-motionblur_uncrunched.exe"
+note = "failed the gate: seed 1: crashed: alert:80000003"
 
 [demozoo.6949]
 title = "Motion: Origin II"
@@ -6608,7 +6664,8 @@ source = "script"
 title = "Mr. Monkey"
 group = "Rebels"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
+note = "failed the gate: seed 1: crashed: alert:80000004"
 
 [demozoo.248105]
 title = "Mr. Munk In Fluidland"
@@ -7239,8 +7296,9 @@ result = "unknown"
 title = "Mute 13"
 group = "Lamers"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
 run = "!MUTE13!.exe"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.251715]
 title = "Mute One'o'One"
@@ -7550,7 +7608,8 @@ source = "script"
 title = "Mölndal"
 group = "Elcrew"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.2861]
 title = "Møkkademo 2001"

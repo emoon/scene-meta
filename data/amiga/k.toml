@@ -117,6 +117,8 @@ run = "11-Joker.Focus"
 title = "Kakaowce"
 group = "The Maniacs"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.8129]
 title = "Kala"
@@ -128,13 +130,15 @@ machine = "a1200"
 title = "Kaleidoscopycus"
 group = "Axel Retro-Software"
 source = "script"
-machine = "a500_1mb"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.234807]
 title = "Kaleidoscopycus 2"
 group = "Axel Retro-Software"
 source = "script"
-machine = "a500_1mb"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.196792]
 title = "Kaljua Ja Gaagnista"
@@ -539,8 +543,9 @@ source = "script"
 title = "Kicker"
 group = "Nature"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
 run = "Kicker"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.229720]
 title = "Kicki'n Ass Party Raport"
@@ -617,8 +622,9 @@ machine = "a1200_fast"
 title = "Kikback BBS Intro"
 group = "Talent"
 source = "script"
-machine = "a500_ks12"
 boot = "floppy"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.19436]
 title = "Kikize-tro"
@@ -687,10 +693,9 @@ source = "script"
 title = "Killing Time"
 group = "Oxyron"
 source = "script"
-machine = "a1200"
-drives = 2
+result = "unknown"
 disks = ["OXYRON-KillingTime-a.DMS", "OXYRON-KillingTime-b.DMS", "OXYRON-KillingTime-c.DMS", "OXYRON-KillingTime-d.DMS"]
-swaps = [{ disk = 3, at = 187.9 }, { disk = 4, at = 334.3 }]
+note = "failed the gate: seed 1: crashed: alert:80000020"
 
 [demozoo.24666]
 title = "Killtec"
@@ -1023,6 +1028,8 @@ result = "unknown"
 title = "Knin Peaks"
 group = "Reality"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.5120]
 title = "Knitfellas"
@@ -1104,7 +1111,8 @@ machine = "a1200_fast"
 title = "Kompisar Från Förr"
 group = "Laxative Effects"
 source = "script"
-machine = "a500_1mb"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.215547]
 title = "Kompress"
@@ -1273,7 +1281,8 @@ source = "script"
 title = "Kreijsi"
 group = "Candle"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.122160]
 title = "Krieepss Again"
@@ -1338,13 +1347,15 @@ machine = "a1200"
 title = "Kto Ukradl Babci Lakry"
 group = "Water Closet Design"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.227309]
 title = "Kto Ukradl Babci Lakry"
 group = "Water Closet Design"
 source = "script"
-machine = "a500_1mb"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.254254]
 title = "Kubacki"

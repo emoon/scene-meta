@@ -146,7 +146,8 @@ source = "script"
 title = "JamJam"
 group = "Incal"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
+note = "failed the gate: seed 1: crashed: alert:81000005"
 
 [demozoo.181]
 title = "Jammin"
@@ -291,12 +292,15 @@ result = "unknown"
 title = "Jenny Thinks"
 group = "Fit / Bandwagon"
 source = "script"
-machine = "a1200_030"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.224778]
 title = "Jergen Puckel"
 group = "CP-Dezajn"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: crashed: task-held"
 
 [demozoo.214320]
 title = "Jerry the Jolly Giraffe"
@@ -331,9 +335,9 @@ machine = "a1200_030"
 title = "Jesus on E's"
 group = "LSD"
 source = "script"
-machine = "a1200"
+result = "unknown"
 disks = ["lsd-jesusoneas-a.dms", "lsd-jesusoneas-b.dms"]
-swaps = [{ disk = 2, at = 23.9, key = "lmb" }]
+note = "failed the gate: seed 1: disk 2 never loaded"
 
 [demozoo.108960]
 title = "Jesus Stole My Jelly Beans"
@@ -820,7 +824,8 @@ result = "unknown"
 title = "Joy"
 group = "Whelpz"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.239899]
 title = "Joy'n'Ride"
@@ -993,7 +998,8 @@ source = "script"
 title = "Julemandens Sidste Ferie"
 group = "Loonies"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.247313]
 title = "Juletro"

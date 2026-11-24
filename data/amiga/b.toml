@@ -83,7 +83,8 @@ machine = "a1200"
 title = "Baahl"
 group = "Traktor"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.182769]
 title = "Bab Micro Center Xmas"
@@ -338,7 +339,8 @@ machine = "a1200_fast"
 title = "Back To The 80's"
 group = "JosSs / Fireboy / BalrogSoft"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.176355]
 title = "Back To The Future"
@@ -623,6 +625,8 @@ source = "script"
 title = "Balltorp"
 group = "Elcrew"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.227460]
 title = "BALSAM Invitation"
@@ -715,6 +719,8 @@ result = "unknown"
 title = "Banana Jones"
 group = "Void"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.229872]
 title = "Banana Party '90"
@@ -869,8 +875,9 @@ source = "script"
 title = "Basic Instinct BBS"
 group = "Suspiria / Scoopex"
 source = "script"
-machine = "a1200"
 boot = "floppy"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.195697]
 title = "Basic Intro"
@@ -1056,7 +1063,8 @@ machine = "a1200"
 title = "BayPack"
 group = "Dekadence"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.214313]
 title = "Baz Is Back"
@@ -1123,6 +1131,8 @@ source = "script"
 title = "BBS Dentro"
 group = "Dual Crew"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.233922]
 title = "BBS Dentro"
@@ -1566,6 +1576,8 @@ machine = "a1200_fast"
 title = "Be Sheep (Do Crime)"
 group = "Mrs Beanbag / Ash"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.251711]
 title = "Beach Boys"
@@ -1826,7 +1838,8 @@ machine = "a1200"
 title = "Behind the Flute"
 group = "Traktor"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.131349]
 title = "Behind The Window"
@@ -1837,6 +1850,8 @@ source = "script"
 title = "Beige"
 group = "F.I.N.E."
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.237803]
 title = "Belgian Scene Event 1998 Invitation - Final"
@@ -1870,7 +1885,8 @@ machine = "a1200_fast"
 title = "Ben Empire"
 group = "Traktor"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.385538]
 title = "Bend the Blitter"
@@ -1887,6 +1903,8 @@ source = "script"
 title = "Beneath A Steel Sky Explanation"
 group = "Mellow"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.150058]
 title = "Bengt"
@@ -2588,7 +2606,8 @@ result = "unknown"
 title = "Birthday"
 group = "Capsule"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.243317]
 title = "Birthday"
@@ -2954,8 +2973,9 @@ source = "script"
 title = "Black Scarlett"
 group = "Dalthon"
 source = "script"
-machine = "a1200_030"
 boot = "floppy"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.133771]
 title = "Black-up"
@@ -3035,6 +3055,8 @@ source = "script"
 title = "Blahhdi"
 group = "Apathy"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.303436]
 title = "Blandsaft"
@@ -3055,6 +3077,8 @@ source = "script"
 title = "Blasphemy"
 group = "Anexius"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: crashed: alert:00000003"
 
 [demozoo.170897]
 title = "Blast From The Past"
@@ -3132,6 +3156,8 @@ source = "script"
 title = "Blerkenwiegel"
 group = "Scoopex"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.250190]
 title = "Bleu de Prusse"
@@ -3160,8 +3186,9 @@ run = "44"
 title = "Bliss Out"
 group = "Ukonx"
 source = "script"
+result = "unknown"
 disks = ["Ukonx-BlissOut1.DMS", "Ukonx-BlissOut2.DMS"]
-swaps = [{ disk = 2, at = 564.4 }]
+note = "failed the gate: seed 2: disk 2 never loaded"
 
 [demozoo.189783]
 title = "Blit it"
@@ -3299,7 +3326,8 @@ source = "script"
 title = "block rockin' tits"
 group = "Rave Network Overscan"
 source = "script"
-machine = "a1200_030"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.100503]
 title = "Blockboot"
@@ -3546,6 +3574,8 @@ source = "script"
 title = "Blue House 2"
 group = "Blue House Productions / Sonic Projects / Rebels"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.203704]
 title = "Blue II"
@@ -3960,8 +3990,9 @@ source = "script"
 title = "Bobs Are The Spice of Life"
 group = "Switch"
 source = "script"
-machine = "a1200"
 boot = "floppy"
+result = "unknown"
+note = "failed the gate: seed 1: crashed: guru"
 
 [demozoo.182660]
 title = "Bobs Controller"
@@ -4278,6 +4309,8 @@ source = "script"
 title = "Boocore"
 group = "LSD"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.261724]
 title = "Boogeyman's Demo"
@@ -4635,6 +4668,8 @@ source = "script"
 title = "Bootfail"
 group = "Void"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: crashed: guru"
 
 [demozoo.240169]
 title = "Bootintro"
@@ -4706,7 +4741,8 @@ source = "script"
 title = "Booze Till You Die In Y2k"
 group = "Resistance"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.1327]
 title = "Booze-Demo"
@@ -5624,7 +5660,8 @@ machine = "a1200_030"
 title = "Bravo"
 group = "Laxative Effects"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.277030]
 title = "Breadbox"
@@ -5775,6 +5812,8 @@ source = "script"
 title = "Bromskurwa"
 group = "CCC"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.163883]
 title = "BRONISŁAW"
@@ -5811,7 +5850,8 @@ source = "script"
 title = "Brown Elephant"
 group = "uN aMoR"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.314263]
 title = "Brown Elephant Never Again"
@@ -5851,6 +5891,8 @@ run = "teo_-_moonlight.exe"
 title = "Brume"
 group = "New Generation Crew"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.183588]
 title = "Bruno Carette Tribute"
@@ -5925,11 +5967,15 @@ source = "script"
 title = "Bubble 2"
 group = "Specter"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.4324]
 title = "Bubble 3"
 group = "Void"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.223047]
 title = "Bubble Intro"
@@ -6204,8 +6250,9 @@ source = "script"
 title = "Bustro"
 group = "Carnage"
 source = "script"
-machine = "a1200_030"
 boot = "floppy"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.182545]
 title = "Butcher's Newst and Coolest"
@@ -6348,4 +6395,5 @@ source = "script"
 title = "Bøfftro"
 group = "Apathy"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"

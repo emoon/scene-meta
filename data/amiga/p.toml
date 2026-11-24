@@ -8,7 +8,8 @@ machine = "a1200"
 title = "P-Six-4-Too (preview version)"
 group = "uN aMoR"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.28707]
 title = "P.Y.T."
@@ -168,6 +169,8 @@ source = "script"
 title = "Pack Preview"
 group = "Psycho"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: crashed: alert:00000004"
 
 [demozoo.230927]
 title = "Pack Preview"
@@ -353,7 +356,8 @@ run = "_negerkuß!!.exe"
 title = "Palmusunnuntai"
 group = "Fit"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.242715]
 title = "Paloo"
@@ -720,6 +724,8 @@ boot = "floppy"
 title = "Partro"
 group = "Appendix"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.231277]
 title = "Partro"
@@ -906,6 +912,8 @@ source = "script"
 title = "Party Demo"
 group = "Ascension"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.222390]
 title = "Party Demo"
@@ -1746,7 +1754,8 @@ source = "script"
 title = "Pasaia"
 group = "Nexus Team"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.238322]
 title = "Pasi - The Maniac From Burning Hell"
@@ -1757,6 +1766,8 @@ source = "script"
 title = "Paskahor"
 group = "Joga"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.217286]
 title = "Paskalla"
@@ -2120,6 +2131,8 @@ machine = "a1200"
 title = "Perplexer Dime"
 group = "Sangriael"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.8652]
 title = "Persil"
@@ -2132,9 +2145,9 @@ run = "MWI-Persil_020+.exe"
 title = "Persistence Megademo"
 group = "Brainstorm"
 source = "script"
-machine = "a500_1mb"
+result = "unknown"
 disks = ["BRS-MegademoA.dms", "BRS-MegademoB.dms"]
-swaps = [{ disk = 2, at = 129.2, key = "lmb" }]
+note = "failed the gate: seed 3: crashed: halt"
 
 [demozoo.223710]
 title = "Perspective"
@@ -2696,7 +2709,8 @@ machine = "a1200"
 title = "Pingviini Mix"
 group = "Mellow Chips"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.195560]
 title = "Pinion Pack Preview"
@@ -2719,9 +2733,9 @@ machine = "a1200"
 title = "Pink Floyd - The Wall"
 group = "Split Dimension"
 source = "script"
-drives = 2
+result = "unknown"
 disks = ["SD-TheWallA.dms", "SD-TheWallB.dms", "SD-TheWallC.dms", "SD-TheWallD.dms", "SD-TheWallE.dms", "SD-TheWallF.dms"]
-swaps = [{ disk = 3, at = 39.1, key = "lmb" }, { disk = 4, at = 314.3, key = "lmb" }, { disk = 5, at = 346.6, key = "lmb" }, { disk = 6, at = 379.0, key = "lmb" }]
+note = "failed the gate: seed 1: key not needed: lmb of disk 4"
 
 [demozoo.193570]
 title = "Pink In Mono"
@@ -2996,7 +3010,8 @@ machine = "a1200_fast"
 title = "Planete Musclés"
 group = "Syndrome"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.86972]
 title = "Plasma"
@@ -3186,6 +3201,8 @@ machine = "a500_1mb"
 title = "Plastick Ukko"
 group = "Rozware"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.2192]
 title = "Plate Demo"
@@ -3477,7 +3494,8 @@ result = "unknown"
 title = "Polish Autumn 1993 Invitation Demo"
 group = "Mad Elks"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.194475]
 title = "Polish Autumn Party Intro"
@@ -3673,13 +3691,15 @@ source = "script"
 title = "Popular Activity"
 group = "Elcrew"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.216362]
 title = "Porakone"
 group = "Piippo oy"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.47748]
 title = "Pork:Pie"
@@ -3810,8 +3830,9 @@ source = "script"
 title = "Possessed Megademo"
 group = "Possessed"
 source = "script"
+result = "unknown"
 disks = ["Possessed-MegademoA.adf", "Possessed-MegademoB.adf"]
-swaps = [{ disk = 2, at = 271.7, key = "lmb" }]
+note = "failed the gate: seed 1: disk 2 never loaded"
 
 [demozoo.9562]
 title = "Possible"
@@ -3839,7 +3860,8 @@ source = "script"
 title = "Post-Craptro"
 group = "Luc3k"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.254512]
 title = "Poszly Konie Po Betonie"
@@ -3956,6 +3978,8 @@ source = "script"
 title = "Power Cycler"
 group = "Istari"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: crashed: guru"
 
 [demozoo.205945]
 title = "Power Demo"
@@ -4255,7 +4279,8 @@ source = "script"
 title = "Present"
 group = "Lamers"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.263960]
 title = "Present Intro"
@@ -4362,6 +4387,8 @@ source = "script"
 title = "Prevail Pack Preview 4"
 group = "Effect"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.242613]
 title = "Prevail Pack Trainer"
@@ -4547,6 +4574,8 @@ result = "unknown"
 title = "Prism Vectors"
 group = "Surprise! Productions"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.329265]
 title = "Private Meeting Intro"
@@ -4689,7 +4718,8 @@ result = "unknown"
 title = "Project Edis"
 group = "Edis"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.118467]
 title = "Project Manager"
@@ -4718,9 +4748,9 @@ machine = "a1200"
 title = "Project W"
 group = "The Planet of Leather Moomins"
 source = "script"
-machine = "a1200_030"
 boot = "floppy"
-result = "crashes-later"
+result = "unknown"
+note = "failed the gate: seed 1: crashed: alert:81000005"
 
 [demozoo.45604]
 title = "Project42"
@@ -4744,6 +4774,8 @@ machine = "a1200"
 title = "Prolog"
 group = "Experience"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.254530]
 title = "Promax Demo 2"
@@ -4764,7 +4796,8 @@ source = "script"
 title = "Promax Intro 1"
 group = "Atomic Team"
 source = "script"
-machine = "a500_512k"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.61932]
 title = "Promille"
@@ -4860,8 +4893,9 @@ machine = "a500_ks12"
 title = "Prot"
 group = "Nevermind"
 source = "script"
-machine = "a1200"
+result = "unknown"
 run = "Prot.exe"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.53957]
 title = "Proton"
@@ -5071,7 +5105,8 @@ source = "script"
 title = "PsychoBass"
 group = "Deathless"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.232054]
 title = "Psychomania"
@@ -5229,6 +5264,8 @@ source = "script"
 title = "Pulling The Trigger"
 group = "Palace"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.18877]
 title = "Pulp"
@@ -5389,9 +5426,9 @@ source = "script"
 title = "Purgatory"
 group = "The Black Lotus"
 source = "script"
-machine = "a500_1mb"
+result = "unknown"
 disks = ["TBL-PurgatoryA.adf", "TBL-PurgatoryB.adf"]
-swaps = [{ disk = 2, at = 300.9 }]
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.167894]
 title = "Purple"
@@ -5402,8 +5439,9 @@ source = "script"
 title = "Purple"
 group = "Deathless"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
 run = "MainPart.exe"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.371515]
 title = "Purple"

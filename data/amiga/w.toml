@@ -119,8 +119,8 @@ source = "script"
 title = "Walec"
 group = "Odbyt Design"
 source = "script"
-machine = "a1200_fast"
-result = "crashes-later"
+result = "unknown"
+note = "failed the gate: seed 1: crashed: alert:81000005"
 
 [demozoo.163834]
 title = "Waleczne Maciory w Akcji II"
@@ -537,7 +537,8 @@ result = "unknown"
 title = "Wave 50%"
 group = "Artwork / Bizarre Arts"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.367752]
 title = "Wave Coupling"
@@ -869,6 +870,8 @@ title = "We Hate You 2"
 group = "Black Jack"
 source = "script"
 boot = "floppy"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.165999]
 title = "We Have"
@@ -892,6 +895,8 @@ machine = "a1200_030"
 title = "We Love C"
 group = "Void"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.381615]
 title = "We Love Cracktros!"
@@ -935,7 +940,8 @@ source = "script"
 title = "We Need Members"
 group = "Black Jack"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.214150]
 title = "We Need More"
@@ -1059,7 +1065,8 @@ machine = "a1200_030"
 title = "Webtro"
 group = "Sector 5"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.160564]
 title = "Wedding Wishes Optic"
@@ -1515,7 +1522,8 @@ source = "script"
 title = "When Three People Thinking About Title"
 group = "Venture / Lamers"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.21834]
 title = "When We Ride On Our Enemies"
@@ -1533,7 +1541,8 @@ result = "unknown"
 title = "Where Are We Going"
 group = "Zenon"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.263685]
 title = "Where in Europe is Carmen in San Diego"
@@ -1749,7 +1758,8 @@ source = "script"
 title = "Wielblad"
 group = "Lamers"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.32739]
 title = "Wierd"
@@ -1922,6 +1932,8 @@ machine = "a1200_fast"
 title = "Windows '95 Demo"
 group = "Allman"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.46923]
 title = "Windowz 4k"
@@ -2082,6 +2094,8 @@ machine = "a1200_fast"
 title = "Wish You A Merry X-Mas"
 group = "Amaze"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.218763]
 title = "Wishes You a Merry X-Mas"
@@ -2097,7 +2111,8 @@ source = "script"
 title = "Wit Porter"
 group = "Przyjaciele Stefana B."
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: crashed: alert:81000005"
 
 [demozoo.70673]
 title = "Wit Premium"
@@ -2132,6 +2147,8 @@ source = "script"
 title = "WiX Copy 4.0 Gold"
 group = "Triad"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.221554]
 title = "Wiz Demo"
@@ -2248,7 +2265,8 @@ source = "script"
 title = "Wonder Gal"
 group = "Dalthon"
 source = "script"
-machine = "a1200_030"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.265093]
 title = "Wonderboy's First"
@@ -2275,6 +2293,8 @@ source = "script"
 title = "Woo"
 group = "Dual Format"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.195572]
 title = "Woo 2"
@@ -2522,8 +2542,9 @@ run = "3_Birra-Bros"
 title = "Wormhole"
 group = "Apathy"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
 run = "wormhole.exe"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.9400]
 title = "Worms From My Head"

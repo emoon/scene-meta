@@ -201,7 +201,8 @@ source = "script"
 title = "X-Mas Demo"
 group = "Axel Retro-Software"
 source = "script"
-machine = "a500_1mb"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.258805]
 title = "X-Mas Demo"
@@ -405,6 +406,8 @@ machine = "a1200_030"
 title = "Xenium 2021"
 group = "CrapTeam"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.228320]
 title = "Xenomorphosis IV"
@@ -520,7 +523,8 @@ source = "script"
 title = "Xmas Lights"
 group = "Void"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: crashed: guru"
 
 [demozoo.379688]
 title = "XMas Quick Intro"

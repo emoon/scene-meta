@@ -15,7 +15,8 @@ run = "OTLUE2Z61.exe"
 title = "o2"
 group = "Nexus Team"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.182370]
 title = "Oach Da"
@@ -134,6 +135,8 @@ source = "script"
 title = "Obvious Disaster - Final"
 group = "Phenomena"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.251803]
 title = "Obviousness"
@@ -234,6 +237,8 @@ source = "script"
 title = "Odelsgutt 2"
 group = "Paramount Productions"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.202306]
 title = "Odelsgutt 3"
@@ -480,7 +485,8 @@ source = "script"
 title = "Old Prod"
 group = "Intense"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.6592]
 title = "Old School"
@@ -513,13 +519,15 @@ result = "unknown"
 title = "Old.Skool"
 group = "Apathy"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.39720]
 title = "old10mhz"
 group = "Tresore"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.32600]
 title = "Oldies But Goodies"
@@ -569,7 +577,8 @@ source = "script"
 title = "Olstorp Tidan"
 group = "Laxative Effects"
 source = "script"
-machine = "a500_1mb"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.6963]
 title = "Olympe"
@@ -901,6 +910,8 @@ source = "script"
 title = "Onkel Vanja"
 group = "neXus"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.257746]
 title = "Online Box BBS intro"
@@ -1002,9 +1013,9 @@ source = "script"
 title = "Ooh! It's Obscene V"
 group = "Anarchy"
 source = "script"
-machine = "a1200_030"
+result = "unknown"
 disks = ["Anarchy-Obscene05A.adf", "Anarchy-Obscene05B.adf"]
-swaps = [{ disk = 2, at = 77.8 }]
+note = "failed the gate: seed 1: disk 2 never loaded"
 
 [demozoo.210713]
 title = "Oops 1"
@@ -1067,8 +1078,9 @@ source = "script"
 title = "Open your mind let us inside"
 group = "Void"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
 run = "final.exe"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.249175]
 title = "Ophir Chasma"
@@ -1603,6 +1615,8 @@ machine = "a1200_fast"
 title = "Outland"
 group = "Rebels"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.177745]
 title = "Outland"

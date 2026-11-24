@@ -18,9 +18,9 @@ source = "script"
 title = "N-Tro"
 group = "Prime Design"
 source = "script"
-machine = "a500_1mb"
+result = "unknown"
 disks = ["PrimeDesign-NtroA.dms", "PrimeDesign-NtroB.dms"]
-swaps = [{ disk = 2, at = 91.0, key = "lmb" }]
+note = "failed the gate: seed 1: disk 2 never loaded"
 
 [demozoo.18084]
 title = "N.G.M.M.H."
@@ -159,7 +159,8 @@ source = "script"
 title = "Nanodum"
 group = "Goblins"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.249173]
 title = "Nanotech Mysteries"
@@ -214,7 +215,8 @@ run = "Karate"
 title = "Narkotyki"
 group = "Sector 5"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.240142]
 title = "Nassau Intro"
@@ -225,6 +227,8 @@ source = "script"
 title = "Nasty springtime Intro"
 group = "Axel Retro-Software"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.177753]
 title = "Nasze demo"
@@ -529,6 +533,8 @@ result = "unknown"
 title = "Neon Skates Demo"
 group = "End of Century 1999"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: crashed: task-held"
 
 [demozoo.160499]
 title = "Neonsky"
@@ -1027,6 +1033,8 @@ machine = "a500_ks12"
 title = "New Demo"
 group = "Axxis"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.214288]
 title = "New Demo"
@@ -1931,6 +1939,8 @@ source = "script"
 title = "New Intro"
 group = "Shock"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: crashed: alert:0000000b"
 
 [demozoo.304382]
 title = "New Intro"
@@ -2726,8 +2736,9 @@ result = "unknown"
 title = "New Stuff"
 group = "Goonies 2041"
 source = "script"
-machine = "a1200_060"
 boot = "floppy"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.216561]
 title = "New Stuff"
@@ -3276,6 +3287,8 @@ result = "unknown"
 title = "New Stuff"
 group = "Hotline"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.386478]
 title = "New Stuff"
@@ -3655,6 +3668,8 @@ source = "script"
 title = "New Year Smashed"
 group = "Dapacmen"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.255443]
 title = "New Year's Day"
@@ -3824,7 +3839,8 @@ source = "script"
 title = "Newschool?"
 group = "Rave Network Overscan"
 source = "script"
-machine = "a1200_030"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.209580]
 title = "Newsdisk 2 Intro"
@@ -4054,6 +4070,8 @@ source = "script"
 title = "Nicotine"
 group = "Cannabis"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.70696]
 title = "Nie Gintro"
@@ -4100,6 +4118,8 @@ source = "script"
 title = "Night in Motion"
 group = "Mador"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: crashed: alert:00000004"
 
 [demozoo.134632]
 title = "Night Ocean"
@@ -4178,7 +4198,8 @@ machine = "a1200_fast"
 title = "Nikko-kick"
 group = "Candle"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.6861]
 title = "Nil"
@@ -4228,7 +4249,8 @@ machine = "a1200"
 title = "Nippon Taste"
 group = "Coppersky"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 2: crashed: halt"
 
 [demozoo.19455]
 title = "Nitro 97"
@@ -4326,15 +4348,16 @@ source = "script"
 title = "No Bonus"
 group = "Funktion"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
+note = "failed the gate: seed 1: crashed: alert:10101010"
 
 [demozoo.10374]
 title = "No Brain - No Pain!"
 group = "Flash Production"
 source = "script"
-machine = "a500_1mb"
+result = "unknown"
 disks = ["FP-NoBrainNoPain-A.dms", "FP-NoBrainNoPain-B.dms"]
-swaps = [{ disk = 2, at = 221.5, key = "lmb" }]
+note = "failed the gate: seed 1: disk 2 never loaded"
 
 [demozoo.246608]
 title = "No Code 1"
@@ -5010,7 +5033,8 @@ machine = "a1200"
 title = "Nostalgia Dentro"
 group = "Axel Retro-Software"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.253728]
 title = "Nostalgia Part 1"
@@ -5113,7 +5137,8 @@ source = "script"
 title = "Nothing"
 group = "Redline"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.228846]
 title = "Nothing"

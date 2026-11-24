@@ -2,7 +2,8 @@
 title = "R"
 group = "Specter"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.223615]
 title = "R-9 First Intro"
@@ -198,12 +199,15 @@ source = "script"
 title = "Radio Gargaj"
 group = "Scoopex"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.8669]
 title = "Radio In Your Eyes"
 group = "Madwizards"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.377584]
 title = "Radioactive"
@@ -384,7 +388,8 @@ source = "script"
 title = "Ram Pam Pam"
 group = "WojT / Magnetic-Fox"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.216424]
 title = "Rambo 3 - The Megademo"
@@ -447,7 +452,8 @@ source = "script"
 title = "Randomized.sheep"
 group = "Loonies"
 source = "script"
-machine = "a1200_030"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.164025]
 title = "Randy Recliner"
@@ -492,6 +498,8 @@ machine = "a1200_fast"
 title = "Rap Around The Clock"
 group = "Extend"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.232567]
 title = "Rap Total"
@@ -616,6 +624,8 @@ result = "unknown"
 title = "Rational Prodigy"
 group = "Analogy"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.233936]
 title = "Ratman's Revenge"
@@ -869,9 +879,9 @@ machine = "a1200"
 title = "Rayworld"
 group = "Investation / Deform"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
 disks = ["Deform&Investation-RayworldA.dms", "Deform&Investation-RayworldB.dms", "Deform&Investation-RayworldC.dms"]
-swaps = [{ disk = 2, at = 54.8 }, { disk = 3, at = 347.0 }]
+note = "failed the gate: seed 1: with the disks put in 30 s later, crashed: halt"
 
 [demozoo.222917]
 title = "Razor 1911 and Illusion Summer Party Invitation"
@@ -1063,6 +1073,8 @@ source = "script"
 title = "Real Time is Fucked up Preview"
 group = "Divina"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.228633]
 title = "Real Time Raytracing Demo"
@@ -1129,12 +1141,15 @@ source = "script"
 title = "RealTime Ascii aka Normalan Intro"
 group = "Zaïebanï"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.148571]
 title = "Realtime Margherita"
 group = "Arise"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.248465]
 title = "Realtime Ugabuh-Zumbalai"
@@ -1224,8 +1239,9 @@ machine = "a500_1mb"
 title = "Reborn"
 group = "D.T.A. Software Studio"
 source = "script"
-machine = "a1200_030"
+result = "unknown"
 run = "DTA-Reborn.exe"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.136145]
 title = "Reborn"
@@ -1300,6 +1316,8 @@ machine = "a500_1mb"
 title = "Recruitment"
 group = "Axel Retro-Software"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.242818]
 title = "Recruitment Intro V1"
@@ -1336,6 +1354,8 @@ source = "script"
 title = "Red And Black"
 group = "Afc"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.215031]
 title = "Red and Blue"
@@ -1462,7 +1482,8 @@ machine = "a1200_fast"
 title = "Reductio Ad Absurdum"
 group = "Noice"
 source = "script"
-machine = "a500_1mb"
+result = "unknown"
+note = "failed the gate: seed 1: crashed: alert:00000004"
 
 [demozoo.228020]
 title = "Redundancy Intro"
@@ -1965,7 +1986,8 @@ result = "unknown"
 title = "Retro 64k"
 group = "Instinct"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.155672]
 title = "Retro Dentro (Revenge of 1990)"
@@ -2125,8 +2147,9 @@ source = "script"
 title = "Revenge"
 group = "Etilik"
 source = "script"
+result = "unknown"
 disks = ["Etilik-RevengeA.dms", "Etilik-RevengeB.dms"]
-swaps = [{ disk = 2, at = 260.0 }]
+note = "failed the gate: seed 1: disk 2 never loaded"
 
 [demozoo.224444]
 title = "Revenge"
@@ -2192,7 +2215,8 @@ source = "script"
 title = "Revenge!"
 group = "Abort / Insanity"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.210885]
 title = "Reverse"
@@ -2332,7 +2356,8 @@ source = "script"
 title = "Revolution 909"
 group = "Madwizards"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.297066]
 title = "Revolution Demo"
@@ -2475,7 +2500,8 @@ machine = "a1200_030"
 title = "Ribba Ut"
 group = "Traktor"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.359510]
 title = "Ribbons"
@@ -2891,8 +2917,9 @@ result = "unknown"
 title = "Rollin' Dice"
 group = "Laxative Effects"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
 run = "lax-roll.exe"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.181427]
 title = "ROM 3 Announce Intro"
@@ -3026,7 +3053,8 @@ source = "script"
 title = "Rosta Mina Russin, Han Har Mulat"
 group = "Esau"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.62859]
 title = "Roswell"
@@ -3055,6 +3083,8 @@ result = "unknown"
 title = "Rotating Cheque Board"
 group = "Anarchy"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.260114]
 title = "Rotating Delirium"
@@ -3251,6 +3281,8 @@ source = "script"
 title = "Rubber Boys First"
 group = "Phoenix"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: crashed: guru"
 
 [demozoo.229221]
 title = "Rubber Goonies"
@@ -3344,8 +3376,9 @@ run = "11-Joker.Focus"
 title = "Runaway"
 group = "Logic System / 2000 A.D."
 source = "script"
+result = "unknown"
 disks = ["2KAD&LS-RunawayA.dms", "2KAD&LS-RunawayB.dms"]
-swaps = [{ disk = 2, at = 53.5 }]
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.6582]
 title = "Runaway Brain"

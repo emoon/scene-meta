@@ -50,6 +50,8 @@ source = "script"
 title = "C64 Is Not Dead"
 group = "Black Jack"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.237668]
 title = "C64 Memories 1 Intro"
@@ -114,12 +116,15 @@ source = "script"
 title = "Cake"
 group = "World Fantasies"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.224693]
 title = "Calamity"
 group = "Jp-staff"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.287606]
 title = "Calcpreculation"
@@ -308,7 +313,8 @@ source = "script"
 title = "Candle 2008"
 group = "Candle"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.232746]
 title = "Candle Light"
@@ -400,7 +406,8 @@ machine = "a1200_fast"
 title = "Carbon Based"
 group = "Dekadence"
 source = "script"
-machine = "a1200_030"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.167268]
 title = "Cardamom"
@@ -568,7 +575,8 @@ machine = "a1200_fast"
 title = "Cathode"
 group = "Unique"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.251451]
 title = "Catro"
@@ -959,7 +967,8 @@ machine = "a1200_030"
 title = "Chapter7"
 group = "Skarla"
 source = "script"
-machine = "a1200_060"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.224978]
 title = "Char Sine Scroller"
@@ -1094,7 +1103,8 @@ machine = "a1200"
 title = "Chemical Chasm"
 group = "Whelpz"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.229933]
 title = "Cherry Pie"
@@ -1353,7 +1363,8 @@ machine = "a1200_fast"
 title = "Chlorella"
 group = "Duskwave"
 source = "script"
-machine = "a500_1mb"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.246801]
 title = "Choc' Intro"
@@ -1503,13 +1514,15 @@ machine = "a500_1mb"
 title = "Chrysler"
 group = "Fit / Bandwagon"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.24673]
 title = "Chrzęszczące Chrząszcze"
 group = "Spy"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.269737]
 title = "Chtulhus First"
@@ -1580,6 +1593,8 @@ result = "crashes-later"
 title = "Chutchpah"
 group = "Cave"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.170687]
 title = "Chypnotize"
@@ -1671,7 +1686,8 @@ source = "script"
 title = "Circle Undercover"
 group = "Void"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.317908]
 title = "Circles"
@@ -2521,7 +2537,8 @@ source = "script"
 title = "Commodore"
 group = "Cosmos"
 source = "script"
-machine = "a500_1mb"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.261634]
 title = "Commodore"
@@ -2725,6 +2742,8 @@ source = "script"
 title = "Complic8"
 group = "Shades of 619"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.243539]
 title = "Complications"
@@ -3070,6 +3089,8 @@ source = "script"
 title = "Contact Demo"
 group = "Newings"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 2: crashed: alert:00000003"
 
 [demozoo.226706]
 title = "Contact Demo"
@@ -3233,6 +3254,8 @@ source = "script"
 title = "Contacto - Anam"
 group = "Investation"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.5922]
 title = "Contactro"
@@ -3380,9 +3403,9 @@ machine = "a1200_fast"
 title = "Control"
 group = "Oxygene"
 source = "script"
-machine = "a1200"
+result = "unknown"
 disks = ["control1.dms", "control2.dms"]
-swaps = [{ disk = 2, at = 65.4 }]
+note = "failed the gate: seed 1: crashed: alert:8000000a"
 
 [demozoo.252053]
 title = "Controllable Sine Logo"
@@ -3420,7 +3443,8 @@ source = "script"
 title = "Convulsion"
 group = "Whelpz"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.295201]
 title = "Conway's Game of Breakout"
@@ -3689,7 +3713,8 @@ source = "script"
 title = "Coolaunch"
 group = "Los Angeles Lamers"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.262556]
 title = "Cooler Than Icecream"
@@ -4055,6 +4080,8 @@ source = "script"
 title = "CopperFagia"
 group = "Nexus Team"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.223492]
 title = "Coppermania"
@@ -4080,7 +4107,8 @@ source = "script"
 title = "Copperophilia"
 group = "Spaceballs"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: crashed: alert:8000000a"
 
 [demozoo.236600]
 title = "Copperorgasm"
@@ -4240,6 +4268,8 @@ run = "17"
 title = "Coral Demo"
 group = "Flash Cracking Group"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.35759]
 title = "Corbier 2 - Qui Tombe"
@@ -4298,6 +4328,8 @@ machine = "a1200"
 title = "Corpse's Party Report"
 group = "Corpse"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.79143]
 title = "Corpsetro"
@@ -4716,7 +4748,8 @@ source = "script"
 title = "Crap z dupy 1"
 group = "Undiagnosed Asperger's Bastards"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.6864]
 title = "Crap!!"
@@ -4790,7 +4823,8 @@ source = "script"
 title = "CrApTrO"
 group = "DRRM"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.172798]
 title = "Craptro 2 - Amosowe G."
@@ -4807,7 +4841,8 @@ machine = "a1200"
 title = "CrapTro 3 - Lecimy w kulki"
 group = "DRRM"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.179533]
 title = "CrapTro 4 - Don't let craptro win the compo"
@@ -4846,6 +4881,8 @@ source = "script"
 title = "Crash!"
 group = "Black Jack"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.277032]
 title = "Crashing Bitplanes"
@@ -5214,6 +5251,8 @@ result = "unknown"
 title = "Cruel Summer 2015"
 group = "Axel Retro-Software"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.234802]
 title = "Cruel Summer 2016"
@@ -5225,17 +5264,22 @@ result = "unknown"
 title = "Cruel Summer 2017"
 group = "Axel Retro-Software"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.234804]
 title = "Cruel Summer 2018"
 group = "Axel Retro-Software"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.234805]
 title = "Cruel Summers Collection Box 2009-2012"
 group = "Axel Retro-Software"
 source = "script"
-machine = "a500_1mb"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.21521]
 title = "Cruisin II - Cruise In"
@@ -5253,6 +5297,8 @@ machine = "a1200_fast"
 title = "Cruitro"
 group = "Eclipse"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.223574]
 title = "Crunch MCs First Demo"
@@ -5575,7 +5621,8 @@ source = "script"
 title = "Cybercinematastic"
 group = "Loonies"
 source = "script"
-machine = "a1200_030"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.420]
 title = "Cyberdick"

@@ -69,6 +69,8 @@ machine = "a1200"
 title = "Yes SIR!"
 group = "Laxative Effects"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.8193]
 title = "Yes!"
@@ -288,6 +290,8 @@ machine = "a500_1mb"
 title = "Yo!"
 group = "Damage"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: crashed: alert:00000004"
 
 [demozoo.100792]
 title = "Yo! Elephant"
@@ -406,7 +410,8 @@ machine = "a1200_fast"
 title = "Your Astral Pilot"
 group = "Johan Alpmar / Martin Kalms"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.262307]
 title = "Yowzatic Sensations"

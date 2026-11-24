@@ -24,6 +24,8 @@ machine = "a1200"
 title = "A 64kb Intro"
 group = "Psycho Killers"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.141364]
 title = "A 64kb Introshow"
@@ -604,6 +606,8 @@ source = "script"
 title = "A New Dentro"
 group = "Pleasure"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.261198]
 title = "A New Dentro"
@@ -1261,6 +1265,8 @@ source = "script"
 title = "A Quality Product"
 group = "Laxative Effects"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.212943]
 title = "A Quick Intro -Spheretro-"
@@ -1420,7 +1426,8 @@ machine = "a500_1mb"
 title = "A-Ha Remix"
 group = "Strife"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.233544]
 title = "A-Play v1.0 Intro"
@@ -1459,7 +1466,8 @@ source = "script"
 title = "A.W.O.L. BBS Intro"
 group = "Pyrodex"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.212904]
 title = "A320 Airbus Spreading"
@@ -1640,9 +1648,9 @@ source = "script"
 title = "Absolute Inebriation"
 group = "Virtual Dreams"
 source = "script"
-result = "crashes-later"
+result = "unknown"
 disks = ["VD-AbsoluteInebriation-A.DMS", "VD-AbsoluteInebriation-B.DMS"]
-note = "the sweep only reached disk 1 of 2"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.212656]
 title = "Absolutly First Demo"
@@ -1756,13 +1764,15 @@ source = "script"
 title = "Achlon Bux"
 group = "Syndrome"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.167988]
 title = "Achtung!"
 group = "Los Angeles Lamers"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.3045]
 title = "Acid"
@@ -1795,7 +1805,8 @@ source = "script"
 title = "Acid Demo"
 group = "Piranhas"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.229213]
 title = "Acid Demo"
@@ -2028,6 +2039,8 @@ source = "script"
 title = "Addtro"
 group = "ISCH Crew"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.246767]
 title = "Addtro"
@@ -2170,7 +2183,8 @@ source = "script"
 title = "After Dark"
 group = "Cyberdreams"
 source = "script"
-machine = "a500_1mb"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.222843]
 title = "After Easter Demo"
@@ -2381,7 +2395,8 @@ machine = "a1200_030"
 title = "Aika"
 group = "Rave Network Overscan"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.24028]
 title = "Aimless"
@@ -2431,6 +2446,8 @@ result = "unknown"
 title = "Akira"
 group = "Balance"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: crashed: guru"
 
 [demozoo.212064]
 title = "Alarm"
@@ -2793,7 +2810,8 @@ machine = "a1200"
 title = "Almost Nothing"
 group = "Resistance"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.1933]
 title = "Almost Traditional Christmas Production"
@@ -2820,6 +2838,8 @@ source = "script"
 title = "Along Came A Knight"
 group = "Elcrew"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.233688]
 title = "Alpa's World Spin Day"
@@ -3308,7 +3328,8 @@ source = "script"
 title = "Amiga Smile"
 group = "Bohema"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.254588]
 title = "Amiga Summit 91 Party Slideshow"
@@ -3483,13 +3504,15 @@ source = "script"
 title = "AMOS Lurez"
 group = "Soldiers And Flowers"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.357768]
 title = "AMOS Lurez 2"
 group = "Soldiers And Flowers"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.218539]
 title = "Amos Megademo 2"
@@ -3500,6 +3523,8 @@ source = "script"
 title = "Amos Tribute"
 group = "Universe"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.167515]
 title = "Amos-Mega-Demo"
@@ -3552,6 +3577,8 @@ machine = "a1200"
 title = "Amusing IV"
 group = "Razor 1911"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.229065]
 title = "Amy Putt"
@@ -3659,7 +3686,8 @@ source = "script"
 title = "Analfateba"
 group = "Venture"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.28179]
 title = "Analnation2"
@@ -3742,7 +3770,8 @@ source = "script"
 title = "And Then?"
 group = "Laxative Effects"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.228976]
 title = "Andante 1 in C Major"
@@ -3758,8 +3787,9 @@ source = "script"
 title = "Andis Demo"
 group = "Classic"
 source = "script"
+result = "unknown"
 disks = ["CLASSIC-Andis1.adf", "CLASSIC-Andis2.adf"]
-swaps = [{ disk = 2, at = 780.4 }]
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.261875]
 title = "Andromeda"
@@ -3862,6 +3892,8 @@ source = "script"
 title = "Ankara Section Contact Intro"
 group = "Bronx"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.261346]
 title = "Ankeborg BBS Intro"
@@ -3918,7 +3950,8 @@ source = "script"
 title = "Anniversary Intro  - 1 year"
 group = "Oops!"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.229367]
 title = "Anno Domini 1990"
@@ -4344,7 +4377,8 @@ source = "script"
 title = "Another Crack Intro"
 group = "Genesis Project"
 source = "script"
-machine = "a500_ks12"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.294085]
 title = "Another Creamy Load"
@@ -5096,7 +5130,8 @@ source = "script"
 title = "Another Intro For Phun"
 group = "Crude"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.113595]
 title = "Another Intro From Metal and Mr. Coke"
@@ -5541,6 +5576,8 @@ source = "script"
 title = "Another Rutku"
 group = "Black Jack"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.257657]
 title = "Another Septro"
@@ -5770,6 +5807,8 @@ source = "script"
 title = "Anti Fascism"
 group = "Turnips"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.217308]
 title = "Anti Force 1 Demo"
@@ -5979,7 +6018,8 @@ machine = "a500_1mb"
 title = "Antidemo"
 group = "Rajd Over / Ora Design"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.247144]
 title = "Antidrugs"
@@ -6314,7 +6354,8 @@ machine = "a1200_fast"
 title = "Arla"
 group = "Loonies"
 source = "script"
-machine = "a1200_030"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.240136]
 title = "Armadillo"
@@ -6594,7 +6635,8 @@ run = "LE-window6.12"
 title = "Ascii Sector"
 group = "Sector 5"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.251955]
 title = "Ascii Unlimited"
@@ -6729,6 +6771,8 @@ source = "script"
 title = "Assembly 92 Partyinfo Intro"
 group = "Rebels"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.7486]
 title = "Assembly 95 40k Intro"
@@ -6762,7 +6806,8 @@ source = "script"
 title = "Assfart"
 group = "Apathy"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.9338]
 title = "Ast"
@@ -6846,7 +6891,8 @@ machine = "a1200"
 title = "At The Movies"
 group = "Loonies"
 source = "script"
-machine = "a1200_030"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.7166]
 title = "At the Party"
@@ -6976,7 +7022,8 @@ machine = "a1200"
 title = "Atom Demo 1 -The Very First Atom Demo-"
 group = "North Star"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.252327]
 title = "Atom Demo 2"
@@ -7004,8 +7051,9 @@ run = "BestRequest.EXE"
 title = "Atomic Pixels"
 group = "Extrait"
 source = "script"
-machine = "a1200"
+result = "unknown"
 run = "Atomic_Pixels"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.332056]
 title = "Atomic Team Demo 2"
@@ -7052,6 +7100,8 @@ source = "script"
 title = "Audio Power 2 Intro"
 group = "Zigag / Destiny"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.212814]
 title = "Audio Visual Paradise"
@@ -7308,12 +7358,15 @@ source = "script"
 title = "Axel's 20th Demo"
 group = "Axel Retro-Software"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.234798]
 title = "Axel's 25th Demo"
 group = "Axel Retro-Software"
 source = "script"
-machine = "a500_1mb"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.221907]
 title = "Axend Party Highlights"

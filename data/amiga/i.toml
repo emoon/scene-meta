@@ -32,6 +32,8 @@ machine = "a1200"
 title = "I Got Busted"
 group = "Mrs. King"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.4322]
 title = "I Has A Demomaker"
@@ -44,6 +46,8 @@ run = "karate"
 title = "I Have A Dog!"
 group = "Enemy"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.145669]
 title = "I Like Traffic Lights"
@@ -345,8 +349,8 @@ source = "script"
 title = "Ihana Elamae"
 group = "Snus"
 source = "script"
-machine = "a1200_030"
-result = "crashes-later"
+result = "unknown"
+note = "failed the gate: seed 1: crashed: alert:81000005"
 
 [demozoo.115246]
 title = "IKA I Rutan"
@@ -400,7 +404,8 @@ machine = "a1200"
 title = "Ill Flower"
 group = "Scum Of The Earth"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: crashed: guru"
 
 [demozoo.214453]
 title = "Illegal Nonsense"
@@ -556,7 +561,8 @@ run = "11-Joker.Focus"
 title = "Imples"
 group = "Lamers"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.221695]
 title = "Implosion"
@@ -789,7 +795,8 @@ swaps = [{ disk = 2, at = 72.5 }]
 title = "Impulse 3.09"
 group = "Tilt"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: crashed: alert:8000000a"
 
 [demozoo.177757]
 title = "Impulse Preview"
@@ -800,9 +807,9 @@ source = "script"
 title = "Imuzination"
 group = "Ram Jam"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
 disks = ["RAMJAM-MuziNation-A.DMS", "RAMJAM-MuziNation-B.DMS"]
-swaps = [{ disk = 2, at = 410.0 }]
+note = "failed the gate: seed 1: disk 2 never loaded"
 
 [demozoo.227096]
 title = "IMX 1990 Demo"
@@ -887,7 +894,8 @@ machine = "a1200_030"
 title = "In My Dreams"
 group = "Embassy"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.172777]
 title = "In My Pond"
@@ -924,7 +932,8 @@ source = "script"
 title = "In The Air 1"
 group = "Embassy"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.217540]
 title = "In The Army Now"
@@ -956,6 +965,8 @@ source = "script"
 title = "In The Year of Zen"
 group = "Therapy"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.24198]
 title = "In Your Face"
@@ -1110,7 +1121,8 @@ result = "unknown"
 title = "Ines"
 group = "Faque"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.220770]
 title = "Inf-Tro"
@@ -1150,6 +1162,8 @@ source = "script"
 title = "Inferno"
 group = "Ozone"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.243613]
 title = "Inferno"
@@ -1198,7 +1212,8 @@ machine = "a1200_fast"
 title = "Inflamed"
 group = "X-Factor"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.28190]
 title = "Infliction"
@@ -1339,7 +1354,8 @@ source = "script"
 title = "Infotro"
 group = "Vanity"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.262604]
 title = "Infotron"
@@ -1421,6 +1437,8 @@ result = "unknown"
 title = "Innovation - Preversion"
 group = "Axxis"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.154112]
 title = "Innovation Part Two"
@@ -1431,6 +1449,8 @@ source = "script"
 title = "Innuendo"
 group = "Rednex"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.18187]
 title = "Insane"
@@ -1506,12 +1526,15 @@ source = "script"
 title = "Inside Anarchy"
 group = "23 Celsius Crew"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.151400]
 title = "Inside Deluxe"
 group = "Degeneration"
 source = "script"
-machine = "a1200_030"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.260399]
 title = "Inside Out BBS"
@@ -1527,7 +1550,8 @@ source = "script"
 title = "Insipid Injection"
 group = "Anathema"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.35145]
 title = "Insomnia"
@@ -1624,6 +1648,8 @@ machine = "a500_1mb"
 title = "Instant Thing"
 group = "Visdom"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 2: never came alive"
 
 [demozoo.148840]
 title = "Instinct"
@@ -1693,6 +1719,8 @@ result = "unknown"
 title = "Intel Outside 2"
 group = "Psycho Killers"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.264036]
 title = "Intel Outside Party 2 Invitation"
@@ -1710,7 +1738,8 @@ machine = "a1200"
 title = "Intel Toilet 2"
 group = "T.C.W"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.212098]
 title = "Intel Toilet 2"
@@ -1759,7 +1788,8 @@ machine = "a1200"
 title = "Interface 37"
 group = "Stonehead"
 source = "script"
-machine = "a1200_030"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.207368]
 title = "Interfax 2 Menu"
@@ -1837,6 +1867,8 @@ source = "script"
 title = "Internal Party"
 group = "Cabe"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 2: crashed: alert:00000003"
 
 [demozoo.208595]
 title = "International"
@@ -1984,6 +2016,8 @@ machine = "a1200_fast"
 title = "Intro"
 group = "Laxative Effects"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.80313]
 title = "Intro"
@@ -2975,6 +3009,8 @@ source = "script"
 title = "Intro, Luego Existo"
 group = "Odrusba"
 source = "script"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.316104]
 title = "Intro-Maker V1.0 example"
@@ -3288,7 +3324,8 @@ source = "script"
 title = "IRepoMeiita"
 group = "Harvester"
 source = "script"
-machine = "a1200_030"
+result = "unknown"
+note = "failed the gate: seed 1: crashed: alert:81000005"
 
 [demozoo.237017]
 title = "Iris"
@@ -3341,7 +3378,8 @@ source = "script"
 title = "Iron Maiden"
 group = "Defeat"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.217542]
 title = "Irongods-Talk"
