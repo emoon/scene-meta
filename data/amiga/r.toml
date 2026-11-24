@@ -2,8 +2,7 @@
 title = "R"
 group = "Specter"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.223615]
 title = "R-9 First Intro"
@@ -200,14 +199,13 @@ title = "Radio Gargaj"
 group = "Scoopex"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.8669]
 title = "Radio In Your Eyes"
 group = "Madwizards"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200_fast"
 
 [demozoo.377584]
 title = "Radioactive"
@@ -388,8 +386,7 @@ source = "script"
 title = "Ram Pam Pam"
 group = "WojT / Magnetic-Fox"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.216424]
 title = "Rambo 3 - The Megademo"
@@ -499,7 +496,7 @@ title = "Rap Around The Clock"
 group = "Extend"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.232567]
 title = "Rap Total"
@@ -625,7 +622,7 @@ title = "Rational Prodigy"
 group = "Analogy"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.233936]
 title = "Ratman's Revenge"
@@ -881,7 +878,7 @@ group = "Investation / Deform"
 source = "script"
 result = "unknown"
 disks = ["Deform&Investation-RayworldA.dms", "Deform&Investation-RayworldB.dms", "Deform&Investation-RayworldC.dms"]
-note = "failed the gate: seed 1: with the disks put in 30 s later, crashed: halt"
+note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
 
 [demozoo.222917]
 title = "Razor 1911 and Illusion Summer Party Invitation"
@@ -1074,7 +1071,7 @@ title = "Real Time is Fucked up Preview"
 group = "Divina"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.228633]
 title = "Real Time Raytracing Demo"
@@ -1141,15 +1138,14 @@ source = "script"
 title = "RealTime Ascii aka Normalan Intro"
 group = "Zaïebanï"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.148571]
 title = "Realtime Margherita"
 group = "Arise"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.248465]
 title = "Realtime Ugabuh-Zumbalai"
@@ -1239,9 +1235,8 @@ machine = "a500_1mb"
 title = "Reborn"
 group = "D.T.A. Software Studio"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 run = "DTA-Reborn.exe"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.136145]
 title = "Reborn"
@@ -1316,8 +1311,6 @@ machine = "a500_1mb"
 title = "Recruitment"
 group = "Axel Retro-Software"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.242818]
 title = "Recruitment Intro V1"
@@ -1354,8 +1347,6 @@ source = "script"
 title = "Red And Black"
 group = "Afc"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.215031]
 title = "Red and Blue"
@@ -1483,7 +1474,7 @@ title = "Reductio Ad Absurdum"
 group = "Noice"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: crashed: alert:00000004"
+note = "the sweep saw works on a500_1mb; no entry of it passed the gate"
 
 [demozoo.228020]
 title = "Redundancy Intro"
@@ -1986,8 +1977,7 @@ result = "unknown"
 title = "Retro 64k"
 group = "Instinct"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200_fast"
 
 [demozoo.155672]
 title = "Retro Dentro (Revenge of 1990)"
@@ -2147,9 +2137,8 @@ source = "script"
 title = "Revenge"
 group = "Etilik"
 source = "script"
-result = "unknown"
 disks = ["Etilik-RevengeA.dms", "Etilik-RevengeB.dms"]
-note = "failed the gate: seed 1: disk 2 never loaded"
+note = "the sweep only reached disk 1 of 2"
 
 [demozoo.224444]
 title = "Revenge"
@@ -2215,8 +2204,7 @@ source = "script"
 title = "Revenge!"
 group = "Abort / Insanity"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200_fast"
 
 [demozoo.210885]
 title = "Reverse"
@@ -2356,8 +2344,7 @@ source = "script"
 title = "Revolution 909"
 group = "Madwizards"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.297066]
 title = "Revolution Demo"
@@ -2500,8 +2487,7 @@ machine = "a1200_030"
 title = "Ribba Ut"
 group = "Traktor"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200_fast"
 
 [demozoo.359510]
 title = "Ribbons"
@@ -2917,9 +2903,8 @@ result = "unknown"
 title = "Rollin' Dice"
 group = "Laxative Effects"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 run = "lax-roll.exe"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.181427]
 title = "ROM 3 Announce Intro"
@@ -3053,8 +3038,7 @@ source = "script"
 title = "Rosta Mina Russin, Han Har Mulat"
 group = "Esau"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.62859]
 title = "Roswell"
@@ -3084,7 +3068,7 @@ title = "Rotating Cheque Board"
 group = "Anarchy"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.260114]
 title = "Rotating Delirium"
@@ -3282,7 +3266,7 @@ title = "Rubber Boys First"
 group = "Phoenix"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: crashed: guru"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.229221]
 title = "Rubber Goonies"
@@ -3378,7 +3362,7 @@ group = "Logic System / 2000 A.D."
 source = "script"
 result = "unknown"
 disks = ["2KAD&LS-RunawayA.dms", "2KAD&LS-RunawayB.dms"]
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.6582]
 title = "Runaway Brain"

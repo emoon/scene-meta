@@ -8,8 +8,7 @@ machine = "a1200"
 title = "P-Six-4-Too (preview version)"
 group = "uN aMoR"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200_fast"
 
 [demozoo.28707]
 title = "P.Y.T."
@@ -170,7 +169,7 @@ title = "Pack Preview"
 group = "Psycho"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: crashed: alert:00000004"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.230927]
 title = "Pack Preview"
@@ -356,8 +355,7 @@ run = "_negerkuß!!.exe"
 title = "Palmusunnuntai"
 group = "Fit"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.242715]
 title = "Paloo"
@@ -725,7 +723,7 @@ title = "Partro"
 group = "Appendix"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.231277]
 title = "Partro"
@@ -913,7 +911,7 @@ title = "Party Demo"
 group = "Ascension"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.222390]
 title = "Party Demo"
@@ -1754,8 +1752,7 @@ source = "script"
 title = "Pasaia"
 group = "Nexus Team"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.238322]
 title = "Pasi - The Maniac From Burning Hell"
@@ -1767,7 +1764,7 @@ title = "Paskahor"
 group = "Joga"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.217286]
 title = "Paskalla"
@@ -2131,8 +2128,6 @@ machine = "a1200"
 title = "Perplexer Dime"
 group = "Sangriael"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.8652]
 title = "Persil"
@@ -2147,7 +2142,7 @@ group = "Brainstorm"
 source = "script"
 result = "unknown"
 disks = ["BRS-MegademoA.dms", "BRS-MegademoB.dms"]
-note = "failed the gate: seed 3: crashed: halt"
+note = "the sweep saw works on a500_1mb; no entry of it passed the gate"
 
 [demozoo.223710]
 title = "Perspective"
@@ -2709,8 +2704,7 @@ machine = "a1200"
 title = "Pingviini Mix"
 group = "Mellow Chips"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.195560]
 title = "Pinion Pack Preview"
@@ -2733,9 +2727,8 @@ machine = "a1200"
 title = "Pink Floyd - The Wall"
 group = "Split Dimension"
 source = "script"
-result = "unknown"
 disks = ["SD-TheWallA.dms", "SD-TheWallB.dms", "SD-TheWallC.dms", "SD-TheWallD.dms", "SD-TheWallE.dms", "SD-TheWallF.dms"]
-note = "failed the gate: seed 1: key not needed: lmb of disk 4"
+note = "the sweep only reached disk 1 of 6"
 
 [demozoo.193570]
 title = "Pink In Mono"
@@ -3010,8 +3003,7 @@ machine = "a1200_fast"
 title = "Planete Musclés"
 group = "Syndrome"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.86972]
 title = "Plasma"
@@ -3201,8 +3193,6 @@ machine = "a500_1mb"
 title = "Plastick Ukko"
 group = "Rozware"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.2192]
 title = "Plate Demo"
@@ -3495,7 +3485,7 @@ title = "Polish Autumn 1993 Invitation Demo"
 group = "Mad Elks"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.194475]
 title = "Polish Autumn Party Intro"
@@ -3691,15 +3681,13 @@ source = "script"
 title = "Popular Activity"
 group = "Elcrew"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.216362]
 title = "Porakone"
 group = "Piippo oy"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.47748]
 title = "Pork:Pie"
@@ -3832,7 +3820,7 @@ group = "Possessed"
 source = "script"
 result = "unknown"
 disks = ["Possessed-MegademoA.adf", "Possessed-MegademoB.adf"]
-note = "failed the gate: seed 1: disk 2 never loaded"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.9562]
 title = "Possible"
@@ -3860,8 +3848,7 @@ source = "script"
 title = "Post-Craptro"
 group = "Luc3k"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.254512]
 title = "Poszly Konie Po Betonie"
@@ -3978,8 +3965,7 @@ source = "script"
 title = "Power Cycler"
 group = "Istari"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: crashed: guru"
+boot = "hd"
 
 [demozoo.205945]
 title = "Power Demo"
@@ -4279,8 +4265,7 @@ source = "script"
 title = "Present"
 group = "Lamers"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.263960]
 title = "Present Intro"
@@ -4388,7 +4373,7 @@ title = "Prevail Pack Preview 4"
 group = "Effect"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.242613]
 title = "Prevail Pack Trainer"
@@ -4575,7 +4560,7 @@ title = "Prism Vectors"
 group = "Surprise! Productions"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.329265]
 title = "Private Meeting Intro"
@@ -4718,8 +4703,7 @@ result = "unknown"
 title = "Project Edis"
 group = "Edis"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.118467]
 title = "Project Manager"
@@ -4750,7 +4734,7 @@ group = "The Planet of Leather Moomins"
 source = "script"
 boot = "floppy"
 result = "unknown"
-note = "failed the gate: seed 1: crashed: alert:81000005"
+note = "the sweep saw works-then-crash on a1200_030; no entry of it passed the gate"
 
 [demozoo.45604]
 title = "Project42"
@@ -4775,7 +4759,7 @@ title = "Prolog"
 group = "Experience"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.254530]
 title = "Promax Demo 2"
@@ -4797,7 +4781,7 @@ title = "Promax Intro 1"
 group = "Atomic Team"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500_512k; no entry of it passed the gate"
 
 [demozoo.61932]
 title = "Promille"
@@ -4895,7 +4879,7 @@ group = "Nevermind"
 source = "script"
 result = "unknown"
 run = "Prot.exe"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.53957]
 title = "Proton"
@@ -5106,7 +5090,7 @@ title = "PsychoBass"
 group = "Deathless"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
 
 [demozoo.232054]
 title = "Psychomania"
@@ -5265,7 +5249,7 @@ title = "Pulling The Trigger"
 group = "Palace"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.18877]
 title = "Pulp"
@@ -5428,7 +5412,7 @@ group = "The Black Lotus"
 source = "script"
 result = "unknown"
 disks = ["TBL-PurgatoryA.adf", "TBL-PurgatoryB.adf"]
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500_1mb; no entry of it passed the gate"
 
 [demozoo.167894]
 title = "Purple"
@@ -5441,7 +5425,7 @@ group = "Deathless"
 source = "script"
 result = "unknown"
 run = "MainPart.exe"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
 
 [demozoo.371515]
 title = "Purple"

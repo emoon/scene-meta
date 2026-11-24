@@ -15,8 +15,7 @@ run = "OTLUE2Z61.exe"
 title = "o2"
 group = "Nexus Team"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.182370]
 title = "Oach Da"
@@ -136,7 +135,7 @@ title = "Obvious Disaster - Final"
 group = "Phenomena"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.251803]
 title = "Obviousness"
@@ -238,7 +237,7 @@ title = "Odelsgutt 2"
 group = "Paramount Productions"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.202306]
 title = "Odelsgutt 3"
@@ -486,7 +485,7 @@ title = "Old Prod"
 group = "Intense"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.6592]
 title = "Old School"
@@ -519,15 +518,13 @@ result = "unknown"
 title = "Old.Skool"
 group = "Apathy"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.39720]
 title = "old10mhz"
 group = "Tresore"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.32600]
 title = "Oldies But Goodies"
@@ -577,8 +574,7 @@ source = "script"
 title = "Olstorp Tidan"
 group = "Laxative Effects"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a500_1mb"
 
 [demozoo.6963]
 title = "Olympe"
@@ -911,7 +907,7 @@ title = "Onkel Vanja"
 group = "neXus"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.257746]
 title = "Online Box BBS intro"
@@ -1013,9 +1009,8 @@ source = "script"
 title = "Ooh! It's Obscene V"
 group = "Anarchy"
 source = "script"
-result = "unknown"
 disks = ["Anarchy-Obscene05A.adf", "Anarchy-Obscene05B.adf"]
-note = "failed the gate: seed 1: disk 2 never loaded"
+note = "the sweep only reached disk 1 of 2"
 
 [demozoo.210713]
 title = "Oops 1"
@@ -1078,9 +1073,8 @@ source = "script"
 title = "Open your mind let us inside"
 group = "Void"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 run = "final.exe"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.249175]
 title = "Ophir Chasma"
@@ -1616,7 +1610,7 @@ title = "Outland"
 group = "Rebels"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.177745]
 title = "Outland"

@@ -18,9 +18,9 @@ source = "script"
 title = "N-Tro"
 group = "Prime Design"
 source = "script"
-result = "unknown"
+machine = "a500_1mb"
 disks = ["PrimeDesign-NtroA.dms", "PrimeDesign-NtroB.dms"]
-note = "failed the gate: seed 1: disk 2 never loaded"
+note = "the sweep only reached disk 1 of 2"
 
 [demozoo.18084]
 title = "N.G.M.M.H."
@@ -159,8 +159,7 @@ source = "script"
 title = "Nanodum"
 group = "Goblins"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.249173]
 title = "Nanotech Mysteries"
@@ -215,8 +214,7 @@ run = "Karate"
 title = "Narkotyki"
 group = "Sector 5"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.240142]
 title = "Nassau Intro"
@@ -227,8 +225,6 @@ source = "script"
 title = "Nasty springtime Intro"
 group = "Axel Retro-Software"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.177753]
 title = "Nasze demo"
@@ -533,8 +529,6 @@ result = "unknown"
 title = "Neon Skates Demo"
 group = "End of Century 1999"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: crashed: task-held"
 
 [demozoo.160499]
 title = "Neonsky"
@@ -1034,7 +1028,7 @@ title = "New Demo"
 group = "Axxis"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.214288]
 title = "New Demo"
@@ -1939,8 +1933,6 @@ source = "script"
 title = "New Intro"
 group = "Shock"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: crashed: alert:0000000b"
 
 [demozoo.304382]
 title = "New Intro"
@@ -2738,7 +2730,7 @@ group = "Goonies 2041"
 source = "script"
 boot = "floppy"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a1200_060; no entry of it passed the gate"
 
 [demozoo.216561]
 title = "New Stuff"
@@ -3288,7 +3280,7 @@ title = "New Stuff"
 group = "Hotline"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.386478]
 title = "New Stuff"
@@ -3668,8 +3660,6 @@ source = "script"
 title = "New Year Smashed"
 group = "Dapacmen"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.255443]
 title = "New Year's Day"
@@ -3839,8 +3829,7 @@ source = "script"
 title = "Newschool?"
 group = "Rave Network Overscan"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200_030"
 
 [demozoo.209580]
 title = "Newsdisk 2 Intro"
@@ -3895,6 +3884,7 @@ title = "NewTek Demo Reel 3"
 group = "NewTek"
 source = "script"
 result = "unknown"
+disks = ["Demo Reel 3 (1989)(Newtek)(Disk 1 of 2).adf"]
 
 [demozoo.243407]
 title = "Next Generation"
@@ -4070,8 +4060,6 @@ source = "script"
 title = "Nicotine"
 group = "Cannabis"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.70696]
 title = "Nie Gintro"
@@ -4119,7 +4107,7 @@ title = "Night in Motion"
 group = "Mador"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: crashed: alert:00000004"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.134632]
 title = "Night Ocean"
@@ -4198,8 +4186,7 @@ machine = "a1200_fast"
 title = "Nikko-kick"
 group = "Candle"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.6861]
 title = "Nil"
@@ -4250,7 +4237,7 @@ title = "Nippon Taste"
 group = "Coppersky"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 2: crashed: halt"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.19455]
 title = "Nitro 97"
@@ -4348,8 +4335,7 @@ source = "script"
 title = "No Bonus"
 group = "Funktion"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: crashed: alert:10101010"
+machine = "a1200_fast"
 
 [demozoo.10374]
 title = "No Brain - No Pain!"
@@ -4357,7 +4343,7 @@ group = "Flash Production"
 source = "script"
 result = "unknown"
 disks = ["FP-NoBrainNoPain-A.dms", "FP-NoBrainNoPain-B.dms"]
-note = "failed the gate: seed 1: disk 2 never loaded"
+note = "the sweep saw works on a500_1mb; no entry of it passed the gate"
 
 [demozoo.246608]
 title = "No Code 1"
@@ -5033,8 +5019,7 @@ machine = "a1200"
 title = "Nostalgia Dentro"
 group = "Axel Retro-Software"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.253728]
 title = "Nostalgia Part 1"
@@ -5137,8 +5122,7 @@ source = "script"
 title = "Nothing"
 group = "Redline"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.228846]
 title = "Nothing"

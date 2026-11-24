@@ -120,7 +120,7 @@ title = "Walec"
 group = "Odbyt Design"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: crashed: alert:81000005"
+note = "the sweep saw works-then-crash on a1200_fast; no entry of it passed the gate"
 
 [demozoo.163834]
 title = "Waleczne Maciory w Akcji II"
@@ -538,7 +538,7 @@ title = "Wave 50%"
 group = "Artwork / Bizarre Arts"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.367752]
 title = "Wave Coupling"
@@ -870,8 +870,6 @@ title = "We Hate You 2"
 group = "Black Jack"
 source = "script"
 boot = "floppy"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.165999]
 title = "We Have"
@@ -895,8 +893,6 @@ machine = "a1200_030"
 title = "We Love C"
 group = "Void"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.381615]
 title = "We Love Cracktros!"
@@ -940,8 +936,7 @@ source = "script"
 title = "We Need Members"
 group = "Black Jack"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.214150]
 title = "We Need More"
@@ -1065,8 +1060,7 @@ machine = "a1200_030"
 title = "Webtro"
 group = "Sector 5"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.160564]
 title = "Wedding Wishes Optic"
@@ -1522,8 +1516,7 @@ source = "script"
 title = "When Three People Thinking About Title"
 group = "Venture / Lamers"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.21834]
 title = "When We Ride On Our Enemies"
@@ -1541,8 +1534,7 @@ result = "unknown"
 title = "Where Are We Going"
 group = "Zenon"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.263685]
 title = "Where in Europe is Carmen in San Diego"
@@ -1758,8 +1750,7 @@ source = "script"
 title = "Wielblad"
 group = "Lamers"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200_fast"
 
 [demozoo.32739]
 title = "Wierd"
@@ -1933,7 +1924,7 @@ title = "Windows '95 Demo"
 group = "Allman"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.46923]
 title = "Windowz 4k"
@@ -2095,7 +2086,7 @@ title = "Wish You A Merry X-Mas"
 group = "Amaze"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.218763]
 title = "Wishes You a Merry X-Mas"
@@ -2112,7 +2103,7 @@ title = "Wit Porter"
 group = "Przyjaciele Stefana B."
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: crashed: alert:81000005"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.70673]
 title = "Wit Premium"
@@ -2148,7 +2139,7 @@ title = "WiX Copy 4.0 Gold"
 group = "Triad"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.221554]
 title = "Wiz Demo"
@@ -2266,7 +2257,7 @@ title = "Wonder Gal"
 group = "Dalthon"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a1200_030; no entry of it passed the gate"
 
 [demozoo.265093]
 title = "Wonderboy's First"
@@ -2294,7 +2285,7 @@ title = "Woo"
 group = "Dual Format"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.195572]
 title = "Woo 2"
@@ -2542,9 +2533,8 @@ run = "3_Birra-Bros"
 title = "Wormhole"
 group = "Apathy"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 run = "wormhole.exe"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.9400]
 title = "Worms From My Head"

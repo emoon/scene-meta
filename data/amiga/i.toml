@@ -33,7 +33,7 @@ title = "I Got Busted"
 group = "Mrs. King"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.4322]
 title = "I Has A Demomaker"
@@ -47,7 +47,7 @@ title = "I Have A Dog!"
 group = "Enemy"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.145669]
 title = "I Like Traffic Lights"
@@ -350,7 +350,7 @@ title = "Ihana Elamae"
 group = "Snus"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: crashed: alert:81000005"
+note = "the sweep saw works-then-crash on a1200_030; no entry of it passed the gate"
 
 [demozoo.115246]
 title = "IKA I Rutan"
@@ -405,7 +405,7 @@ title = "Ill Flower"
 group = "Scum Of The Earth"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: crashed: guru"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.214453]
 title = "Illegal Nonsense"
@@ -561,8 +561,7 @@ run = "11-Joker.Focus"
 title = "Imples"
 group = "Lamers"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.221695]
 title = "Implosion"
@@ -796,7 +795,7 @@ title = "Impulse 3.09"
 group = "Tilt"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: crashed: alert:8000000a"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.177757]
 title = "Impulse Preview"
@@ -807,9 +806,8 @@ source = "script"
 title = "Imuzination"
 group = "Ram Jam"
 source = "script"
-result = "unknown"
 disks = ["RAMJAM-MuziNation-A.DMS", "RAMJAM-MuziNation-B.DMS"]
-note = "failed the gate: seed 1: disk 2 never loaded"
+note = "the sweep only reached disk 1 of 2"
 
 [demozoo.227096]
 title = "IMX 1990 Demo"
@@ -894,8 +892,7 @@ machine = "a1200_030"
 title = "In My Dreams"
 group = "Embassy"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200_fast"
 
 [demozoo.172777]
 title = "In My Pond"
@@ -932,8 +929,7 @@ source = "script"
 title = "In The Air 1"
 group = "Embassy"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200_fast"
 
 [demozoo.217540]
 title = "In The Army Now"
@@ -965,8 +961,6 @@ source = "script"
 title = "In The Year of Zen"
 group = "Therapy"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.24198]
 title = "In Your Face"
@@ -1122,7 +1116,7 @@ title = "Ines"
 group = "Faque"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.220770]
 title = "Inf-Tro"
@@ -1162,8 +1156,6 @@ source = "script"
 title = "Inferno"
 group = "Ozone"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.243613]
 title = "Inferno"
@@ -1212,8 +1204,7 @@ machine = "a1200_fast"
 title = "Inflamed"
 group = "X-Factor"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200_fast"
 
 [demozoo.28190]
 title = "Infliction"
@@ -1354,8 +1345,7 @@ source = "script"
 title = "Infotro"
 group = "Vanity"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.262604]
 title = "Infotron"
@@ -1438,7 +1428,7 @@ title = "Innovation - Preversion"
 group = "Axxis"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.154112]
 title = "Innovation Part Two"
@@ -1450,7 +1440,7 @@ title = "Innuendo"
 group = "Rednex"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.18187]
 title = "Insane"
@@ -1527,14 +1517,13 @@ title = "Inside Anarchy"
 group = "23 Celsius Crew"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.151400]
 title = "Inside Deluxe"
 group = "Degeneration"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200_030"
 
 [demozoo.260399]
 title = "Inside Out BBS"
@@ -1551,7 +1540,7 @@ title = "Insipid Injection"
 group = "Anathema"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.35145]
 title = "Insomnia"
@@ -1649,7 +1638,7 @@ title = "Instant Thing"
 group = "Visdom"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 2: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.148840]
 title = "Instinct"
@@ -1719,8 +1708,6 @@ result = "unknown"
 title = "Intel Outside 2"
 group = "Psycho Killers"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.264036]
 title = "Intel Outside Party 2 Invitation"
@@ -1739,7 +1726,7 @@ title = "Intel Toilet 2"
 group = "T.C.W"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.212098]
 title = "Intel Toilet 2"
@@ -1788,8 +1775,7 @@ machine = "a1200"
 title = "Interface 37"
 group = "Stonehead"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200_030"
 
 [demozoo.207368]
 title = "Interfax 2 Menu"
@@ -1867,8 +1853,6 @@ source = "script"
 title = "Internal Party"
 group = "Cabe"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 2: crashed: alert:00000003"
 
 [demozoo.208595]
 title = "International"
@@ -2016,8 +2000,6 @@ machine = "a1200_fast"
 title = "Intro"
 group = "Laxative Effects"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.80313]
 title = "Intro"
@@ -3009,8 +2991,6 @@ source = "script"
 title = "Intro, Luego Existo"
 group = "Odrusba"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.316104]
 title = "Intro-Maker V1.0 example"
@@ -3325,7 +3305,7 @@ title = "IRepoMeiita"
 group = "Harvester"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: crashed: alert:81000005"
+note = "the sweep saw works on a1200_030; no entry of it passed the gate"
 
 [demozoo.237017]
 title = "Iris"
@@ -3379,7 +3359,7 @@ title = "Iron Maiden"
 group = "Defeat"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.217542]
 title = "Irongods-Talk"

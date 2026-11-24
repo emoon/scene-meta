@@ -85,15 +85,13 @@ source = "script"
 title = "La Teinte"
 group = "Syndrome"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.133772]
 title = "La Teinte Remix"
 group = "Syndrome"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200_fast"
 
 [demozoo.236720]
 title = "La Weird"
@@ -311,7 +309,7 @@ title = "Lamebomb"
 group = "Lamers"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.215555]
 title = "Lamedemo"
@@ -360,8 +358,6 @@ source = "script"
 title = "Lamer Creation"
 group = "UNIBITS"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.218274]
 title = "Lamer Exterminator"
@@ -514,8 +510,7 @@ source = "script"
 title = "Last Demo Ever"
 group = "Laxative Effects"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.224390]
 title = "Last Demo for Disasters"
@@ -905,7 +900,7 @@ title = "Laufertro"
 group = "Apex"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: crashed: task-held"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.27146]
 title = "Laurent & Anna"
@@ -921,15 +916,12 @@ source = "script"
 title = "Lax-Intro"
 group = "Laxative Effects"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.1635]
 title = "Laxxer"
 group = "Laxative Effects"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200_fast"
 
 [demozoo.318907]
 title = "Lazarus"
@@ -1262,7 +1254,7 @@ title = "Les Rois Du Gag"
 group = "Profecy"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500_1mb; no entry of it passed the gate"
 
 [demozoo.145463]
 title = "Lesbian Tartar"
@@ -1300,8 +1292,6 @@ result = "unknown"
 title = "Let the Base Kick"
 group = "Anakir"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.254748]
 title = "Let The Beat Control Your Body"
@@ -1402,8 +1392,7 @@ source = "script"
 title = "Lethal Precision"
 group = "Laxative Effects"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200_fast"
 
 [demozoo.7535]
 title = "Letmælk II"
@@ -1553,8 +1542,7 @@ machine = "a1200_fast"
 title = "Lift Me"
 group = "Contraz"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200_fast"
 
 [demozoo.24875]
 title = "Light"
@@ -1715,8 +1703,7 @@ source = "script"
 title = "Linedancer"
 group = "LazerBase"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.137862]
 title = "Lines & Sinus"
@@ -2404,8 +2391,7 @@ machine = "a1200_fast"
 title = "Live kebab"
 group = "Team Karbis"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.258656]
 title = "Live Long, Create And Prosper"
@@ -2736,8 +2722,6 @@ boot = "floppy"
 title = "Los Caballos Feos"
 group = "MuMu21"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.190851]
 title = "Los Endos BBS"
@@ -2877,8 +2861,7 @@ machine = "a1200"
 title = "Love"
 group = "Malmis"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.119665]
 title = "Love"
@@ -2943,7 +2926,7 @@ title = "Lovecraft"
 group = "Iris"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.247317]
 title = "Lovecraft Endpart"
@@ -3126,15 +3109,11 @@ run = "WHEREFUNROLEZ.EXE"
 title = "Lunar"
 group = "Contraz"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.47815]
 title = "Lunar Storm"
 group = "Laxative Effects"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.249263]
 title = "Lunatic Sounds"
@@ -3197,8 +3176,7 @@ source = "script"
 title = "lux aeterna luceat eis"
 group = "Ephidrena"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200_030"
 
 [demozoo.3766]
 title = "Lvis"

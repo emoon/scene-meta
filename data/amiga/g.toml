@@ -51,7 +51,7 @@ title = "G4"
 group = "Rock"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: crashed: alert:81000005"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.189849]
 title = "Gabbetuss har Boozdag"
@@ -157,7 +157,7 @@ title = "Galaxy Love"
 group = "Enigma"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.234522]
 title = "Gale 1"
@@ -335,8 +335,7 @@ result = "unknown"
 title = "Gamia"
 group = "Kuake"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200_fast"
 
 [demozoo.389405]
 title = "Gamma Quadrant BBS (2)"
@@ -357,7 +356,7 @@ title = "Gammelheter 2"
 group = "Senex"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.221304]
 title = "Gang-Maker"
@@ -398,7 +397,7 @@ title = "Garbage Faktory"
 group = "Contraz"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: crashed: alert:8000000b"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.217183]
 title = "Garden Party Intro"
@@ -425,8 +424,7 @@ source = "script"
 title = "Gas Gas Hej Krokodil"
 group = "Traktor"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a500_1mb"
 
 [demozoo.210629]
 title = "Gas Guzzler"
@@ -523,22 +521,20 @@ source = "script"
 title = "Gelehallon"
 group = "Laxative Effects"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a500_1mb"
 
 [demozoo.86081]
 title = "Geléhallon 2"
 group = "Laxative Effects"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200_fast"
 
 [demozoo.137679]
 title = "Gen4 Demo"
 group = "Dragons"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
 
 [demozoo.137680]
 title = "Gen4 Demo"
@@ -598,7 +594,7 @@ group = "Lloret Free Byte"
 source = "script"
 result = "unknown"
 disks = ["LLFB-Genesis1.DMS", "LLFB-Genesis2.DMS", "LLFB-Genesis3.DMS", "LLFB-Genesis4.DMS"]
-note = "failed the gate: seed 1: crashed: alert:80000006"
+note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
 
 [demozoo.196139]
 title = "Genesis"
@@ -807,21 +803,19 @@ title = "Getno 1"
 group = "ISCH Crew"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.212075]
 title = "Getno 2"
 group = "ISCH Crew"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.230486]
 title = "Getting In Deep"
 source = "script"
-result = "unknown"
-disks = ["Reality-GettingInDeep_disk1.adf", "Reality-GettingInDeep_disk2.adf"]
-note = "failed the gate: seed 1: disk 2 never loaded"
+boot = "hd"
 
 [demozoo.119666]
 title = "Gevalia"
@@ -845,8 +839,6 @@ run = "gOds-ghandy_is_married.exe"
 title = "Ghetto Bob"
 group = "Laxative Effects"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.40269]
 title = "Ghetto Nightmare"
@@ -1008,7 +1000,7 @@ title = "Gintro"
 group = "Hellrazor"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.323002]
 title = "Giralda - Batman Vuelve Advert Intro"
@@ -1150,8 +1142,6 @@ source = "script"
 title = "Glideascope Vol. 4 Intro"
 group = "Cryptic"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: crashed: alert:0000ffff"
 
 [demozoo.336634]
 title = "Glitch 3.0"
@@ -1231,8 +1221,7 @@ result = "unknown"
 title = "Glory To AMOS Pro"
 group = "Jupp3"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.31859]
 title = "Glow"
@@ -1343,9 +1332,8 @@ machine = "a1200"
 title = "Goatraince"
 group = "Loonies"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 run = "LNS-GT.exe"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.252122]
 title = "Goatro"
@@ -1381,7 +1369,7 @@ title = "Gods"
 group = "Psykotrope"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.234352]
 title = "Gods - Preview"
@@ -1405,8 +1393,7 @@ run = "Karate"
 title = "Goes Lahti - The RNO+DCS Meeting Slideshow"
 group = "po-RNO"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200_fast"
 
 [demozoo.215326]
 title = "Goes Paradise"
@@ -1617,7 +1604,7 @@ title = "Goonie Meditation"
 group = "Goonies 2041"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: crashed: halt"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.30526]
 title = "Gorau"
@@ -2380,14 +2367,14 @@ title = "Grzbiety Rulez Kurwa"
 group = "Vodka People"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: crashed: alert:81000005"
+note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
 
 [demozoo.92780]
 title = "Grzbiety rulez Kurwa!"
 group = "Vodka Projects"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: crashed: alert:81000005"
+note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
 
 [demozoo.227825]
 title = "Grzes Nie Doczekal"
@@ -2426,8 +2413,7 @@ source = "script"
 title = "Guagelord v1.0"
 group = "Ihana"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.8132]
 title = "Guarana"
@@ -2450,7 +2436,7 @@ title = "Guardian Dragon II"
 group = "Kefrens"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.224067]
 title = "Guardian Snail"
@@ -2534,7 +2520,7 @@ title = "Gulf War"
 group = "Dominators"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: crashed: alert:0000000b"
+note = "the sweep saw works-then-crash on a500; no entry of it passed the gate"
 
 [demozoo.213042]
 title = "Gulf War"
@@ -2551,7 +2537,7 @@ title = "Gummy Bear: The Demo"
 group = "Void"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: crashed: alert:81000005"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.28195]
 title = "Gun"
@@ -2609,7 +2595,7 @@ title = "Guru"
 group = "Majic 12"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: crashed: guru"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.249893]
 title = "Guru"
@@ -2638,7 +2624,7 @@ group = "Melon Dezign"
 source = "script"
 boot = "floppy"
 result = "unknown"
-note = "failed the gate: seed 1: crashed: alert:00000004"
+note = "the sweep saw works-then-crash on a500_1mb; no entry of it passed the gate"
 
 [demozoo.324376]
 title = "Guru Panic"

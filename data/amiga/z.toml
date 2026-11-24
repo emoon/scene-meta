@@ -135,8 +135,6 @@ source = "script"
 title = "Zaïebanï"
 group = "Zaïebanï"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.191793]
 title = "Zbocz"
@@ -256,8 +254,7 @@ machine = "a1200"
 title = "Zero Gravity"
 group = "Venus Art / Appendix"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200_fast"
 
 [demozoo.18510]
 title = "Zero-G 2"
@@ -517,7 +514,7 @@ title = "Zoom Parallax Demo"
 group = "Balance"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.28443]
 title = "Zoombi"

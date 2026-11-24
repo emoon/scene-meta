@@ -224,9 +224,8 @@ source = "script"
 title = "Madness Week"
 group = "Syntex"
 source = "script"
-result = "unknown"
 disks = ["Syntex-MadnessWeek1.adf", "Syntex-MadnessWeek2.adf"]
-note = "failed the gate: seed 1: disk 2 never loaded"
+note = "the sweep only reached disk 1 of 2"
 
 [demozoo.227089]
 title = "Madonna Demo"
@@ -786,7 +785,7 @@ title = "Maniac demo down"
 group = "Crazy Maniacs of Hades"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.263721]
 title = "Maniac Mansion"
@@ -1046,8 +1045,7 @@ source = "script"
 title = "Massive"
 group = "Skarla"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200_030"
 
 [demozoo.123600]
 title = "Massive"
@@ -1329,9 +1327,8 @@ swaps = [{ disk = 2, at = 47.3 }]
 title = "Maximum Overdrive"
 group = "The Special Brothers"
 source = "script"
-result = "unknown"
 disks = ["TSB-MaximumOverdriveA.adf", "TSB-MaximumOverdriveB.adf"]
-note = "failed the gate: seed 2: disk 2 never loaded"
+note = "the sweep only reached disk 1 of 2"
 
 [demozoo.255324]
 title = "Maximum Overdrive 2 Intro"
@@ -1487,7 +1484,7 @@ title = "Meadows"
 group = "Rift"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.294042]
 title = "Meaningless"
@@ -1812,7 +1809,7 @@ title = "Meetro"
 group = "Reflectors"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.194040]
 title = "Meetro"
@@ -1890,7 +1887,7 @@ group = "Deathstar"
 source = "script"
 result = "unknown"
 disks = ["Deathstar-MegademoA.dms", "Deathstar-MegademoB.dms"]
-note = "failed the gate: seed 1: crashed: alert:0000000b"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.153783]
 title = "Mega Demo"
@@ -1917,7 +1914,7 @@ title = "Mega Demo 1"
 group = "Robots"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.230493]
 title = "Mega Dycpers"
@@ -2049,15 +2046,12 @@ source = "script"
 title = "Mega Syf 1"
 group = "Sordan / Elektro"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.299152]
 title = "Mega Syf 4"
 group = "Undiagnosed Asperger's Bastards"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a500_1mb"
 
 [demozoo.219745]
 title = "Mega-Demo"
@@ -2070,7 +2064,7 @@ group = "Treacl"
 source = "script"
 result = "unknown"
 disks = ["Treacl-MegademoA.dms", "Treacl-MegademoB.dms", "Treacl-MegademoC.dms"]
-note = "failed the gate: seed 1: disks 2, 3 never loaded"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.19014]
 title = "Mega-Demo Preview"
@@ -2098,14 +2092,12 @@ title = "Mega-lo-Mania"
 group = "The Power Connection"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.233249]
 title = "Mega-Lomania Demo"
 group = "The Sunriders"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: crashed: emulator-exit:-6"
 
 [demozoo.216843]
 title = "Mega-mini-mega-demo - 1st part"
@@ -2162,7 +2154,7 @@ title = "Megacrash"
 group = "Avalanche"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: crashed: guru"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.287286]
 title = "Megadef Downsmashing Intro"
@@ -2242,9 +2234,8 @@ source = "script"
 title = "Megademo"
 group = "Royal Amiga Force"
 source = "script"
-result = "unknown"
 disks = ["RAF-Megademo-A.DMS", "RAF-Megademo-B.DMS"]
-note = "failed the gate: seed 1: crashed: alert:00000003"
+note = "the sweep only reached disk 1 of 2"
 
 [demozoo.70419]
 title = "Megademo"
@@ -2278,9 +2269,8 @@ source = "script"
 title = "Megademo"
 group = "United Forces"
 source = "script"
-result = "unknown"
 disks = ["UFO-MegademoA.adf", "UFO-MegademoB.dms"]
-note = "failed the gate: seed 1: crashed: alert:00000003"
+note = "the sweep only reached disk 1 of 2"
 
 [demozoo.154550]
 title = "Megademo"
@@ -2311,9 +2301,9 @@ source = "script"
 title = "Megademo"
 group = "Powerslaves"
 source = "script"
-result = "unknown"
+machine = "a500_1mb"
 disks = ["Powerslaves-MegademoA.dms", "Powerslaves-MegademoB.dms"]
-note = "failed the gate: seed 1: crashed: alert:0000000a"
+note = "the sweep only reached disk 1 of 2"
 
 [demozoo.158893]
 title = "Megademo"
@@ -2330,7 +2320,7 @@ title = "Megademo"
 group = "Legion 7"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: crashed: guru"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.167262]
 title = "Megademo"
@@ -2381,8 +2371,7 @@ source = "script"
 title = "Megademo"
 group = "Eltech"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.179733]
 title = "Megademo"
@@ -2503,15 +2492,14 @@ title = "Megademo"
 group = "The Dark Ram Service"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.221840]
 title = "Megademo"
 group = "Predators"
 source = "script"
-result = "unknown"
 disks = ["Predators-MegademoI-A.dms", "Predators-MegademoI-B.dms"]
-note = "failed the gate: seed 1: crashed: alert:0000000b"
+note = "the sweep only reached disk 1 of 2"
 
 [demozoo.222080]
 title = "Megademo"
@@ -2527,16 +2515,16 @@ source = "script"
 title = "Megademo"
 group = "Death Handlers"
 source = "script"
-result = "unknown"
+machine = "a1200"
 disks = ["DH-MegademoA.adf", "DH-MegademoB.adf"]
-note = "failed the gate: seed 1: disk 2 never loaded"
+swaps = [{ disk = 2, at = 106.0, key = "lmb" }]
 
 [demozoo.225442]
 title = "Megademo"
 group = "Design House"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: crashed: halt"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.227083]
 title = "Megademo"
@@ -2672,9 +2660,7 @@ source = "script"
 title = "Megademo"
 group = "Trilogy"
 source = "script"
-result = "unknown"
-disks = ["TRILOGY-MegademoA.DMS", "TRILOGY-MegademoB.DMS"]
-note = "failed the gate: seed 1: crashed: alert:8000000b"
+boot = "hd"
 
 [demozoo.269713]
 title = "Megademo"
@@ -2776,7 +2762,7 @@ group = "Flash Production"
 source = "script"
 result = "unknown"
 disks = ["FP-MastersAtWorkA.adf", "FP-MastersAtWorkB.adf"]
-note = "failed the gate: seed 1: crashed: alert:00000004"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.356965]
 title = "Megademo - Part 4"
@@ -2867,9 +2853,8 @@ run = "a1"
 title = "Megademo 1"
 group = "Business After Dark"
 source = "script"
-result = "unknown"
 disks = ["BAD-CopperAtWorkMD1a.adf", "BAD-CopperAtWorkMD1b.adf"]
-note = "failed the gate: seed 1: disk 2 never loaded"
+note = "the sweep only reached disk 1 of 2"
 
 [demozoo.224423]
 title = "Megademo 1"
@@ -3044,8 +3029,7 @@ machine = "a1200_030"
 title = "Megademo 2003"
 group = "Finnish Amiga Group"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200_fast"
 
 [demozoo.150135]
 title = "Megademo 2015"
@@ -3121,7 +3105,7 @@ group = "Fanatix"
 source = "script"
 result = "unknown"
 disks = ["Fanatix-Megademo4A.adf", "Fanatix-Megademo4B.adf"]
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.5322]
 title = "Megademo 4 - Bogøfærgerne II"
@@ -3190,14 +3174,12 @@ group = "Fanatix"
 source = "script"
 result = "unknown"
 disks = ["Fanatix-Megademo7_D1.adf", "Fanatix-Megademo7_D2.adf", "Fanatix-Megademo7_D3.adf"]
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.71940]
 title = "Megademo 8"
 group = "Laxative Effects"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.245167]
 title = "Megademo 8"
@@ -3300,7 +3282,7 @@ title = "Megademo II: Think Over The Star"
 group = "Dreamdealers"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: crashed: alert:00000004"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.45034]
 title = "Megademo III"
@@ -3330,9 +3312,8 @@ result = "unknown"
 title = "Megademo IV: Devil's Key"
 group = "Alcatraz"
 source = "script"
-result = "unknown"
 disks = ["Alcatraz-Megademo4a.dms", "Alcatraz-Megademo4b.dms", "Alcatraz-Megademo4c.dms"]
-note = "failed the gate: seed 1: disk 2 never loaded"
+note = "the sweep only reached disk 1 of 3"
 
 [demozoo.228143]
 title = "Megademo Last Part"
@@ -3619,7 +3600,7 @@ group = "Cyborx"
 source = "script"
 result = "unknown"
 disks = ["CYBORX-MekkaDemo_A.dms", "CYBORX-MekkaDemo_B.dms"]
-note = "failed the gate: seed 1: crashed: alert:00000004"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.9559]
 title = "Melba"
@@ -3798,7 +3779,7 @@ title = "Members Wanted"
 group = "Gate"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.256012]
 title = "Members Wanted"
@@ -3975,8 +3956,7 @@ machine = "a1200_030"
 title = "Mental Brain Disorder"
 group = "Loonies"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200_fast"
 
 [demozoo.330362]
 title = "Mental Collection 17 Intro"
@@ -4142,7 +4122,7 @@ title = "Merry Christmas"
 group = "Goonies 2041"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.224581]
 title = "Merry Christmas"
@@ -4240,7 +4220,7 @@ title = "Mesmerized"
 group = "Pure Metal Coders"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: crashed: alert:00000004"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.261870]
 title = "Message"
@@ -4453,7 +4433,7 @@ group = "Madwizards"
 source = "script"
 result = "unknown"
 run = "mwi-mtag.030"
-note = "failed the gate: seed 1: crashed: alert:80000004"
+note = "the sweep saw works-then-crash on a1200_030; no entry of it passed the gate"
 
 [demozoo.236338]
 title = "Meteli 1"
@@ -4568,7 +4548,7 @@ title = "MFD"
 group = "CMD / 8BitError"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.261898]
 title = "MGF - JOY Megaintrodisk Trainer Intro"
@@ -5337,7 +5317,7 @@ title = "Mini Mega Demo"
 group = "Express"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.251625]
 title = "Mini Mega Intro"
@@ -5477,8 +5457,7 @@ source = "script"
 title = "Ministry of funny afros"
 group = "Ananasmurska"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a500_1mb"
 
 [demozoo.207370]
 title = "Minor Defects"
@@ -5705,7 +5684,7 @@ title = "Mission Nostromo"
 group = "Focus Design"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 2: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.178224]
 title = "Mission Nostromo II"
@@ -5795,8 +5774,7 @@ machine = "a1200_fast"
 title = "Mnemonics"
 group = "Haujobb"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.52038]
 title = "Mo'Saik"
@@ -5879,8 +5857,7 @@ source = "script"
 title = "Modernation"
 group = "Duskwave"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200_fast"
 
 [demozoo.221353]
 title = "Modesty's Intro"
@@ -6510,9 +6487,8 @@ run = "teo_-_moonlight.exe"
 title = "Motion Blur"
 group = "Horizontal Lamerz"
 source = "script"
-result = "unknown"
+machine = "a1200"
 run = "hla-motionblur_uncrunched.exe"
-note = "failed the gate: seed 1: crashed: alert:80000003"
 
 [demozoo.6949]
 title = "Motion: Origin II"
@@ -6665,7 +6641,7 @@ title = "Mr. Monkey"
 group = "Rebels"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: crashed: alert:80000004"
+note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
 
 [demozoo.248105]
 title = "Mr. Munk In Fluidland"
@@ -7296,9 +7272,8 @@ result = "unknown"
 title = "Mute 13"
 group = "Lamers"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 run = "!MUTE13!.exe"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.251715]
 title = "Mute One'o'One"
@@ -7608,8 +7583,7 @@ source = "script"
 title = "Mölndal"
 group = "Elcrew"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.2861]
 title = "Møkkademo 2001"

@@ -13,7 +13,7 @@ title = "Vaaleansininen huivi"
 group = "Carillon"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.342445]
 title = "VAAU"
@@ -44,7 +44,7 @@ group = "Deathless"
 source = "script"
 result = "unknown"
 run = "vach.exe"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
 
 [demozoo.156633]
 title = "Vactro 2"
@@ -102,9 +102,8 @@ source = "script"
 title = "Valhalla"
 group = "Loonies"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 run = "Valhalla.nofpu"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.233662]
 title = "Valis"
@@ -1183,7 +1182,7 @@ group = "Oops!"
 source = "script"
 boot = "floppy"
 result = "unknown"
-note = "failed the gate: seed 1: crashed: halt"
+note = "the sweep saw works-then-crash on a1200; no entry of it passed the gate"
 
 [demozoo.214163]
 title = "Vibrating Arrow"
@@ -1426,7 +1425,7 @@ title = "Virtual World"
 group = "TomSoft"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.197374]
 title = "Virus Boot"
@@ -1454,7 +1453,7 @@ title = "Virus Terminator 2.0"
 group = "Bamiga Sector One"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.262736]
 title = "Viruskiller Update Intro"
@@ -1565,7 +1564,7 @@ title = "Vital"
 group = "Mystic"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: crashed: alert:00000003"
+note = "the sweep saw works on a500_1mb; no entry of it passed the gate"
 
 [demozoo.22196]
 title = "Vitsippe Hater"
@@ -1582,7 +1581,7 @@ title = "Vittuliukaste -Vittu, pakko kai tää on julkasta ku tuli tehtyä-"
 group = "Poro"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: crashed: alert:80000005"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.247637]
 title = "Vitun Munkit"
@@ -1858,7 +1857,7 @@ title = "Vrroemm?!"
 group = "Desire"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500_1mb; no entry of it passed the gate"
 
 [demozoo.2155]
 title = "Vuku"
@@ -1879,8 +1878,7 @@ source = "script"
 title = "Vänner Från Förr"
 group = "Laxative Effects"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.105983]
 title = "Växthus 7"

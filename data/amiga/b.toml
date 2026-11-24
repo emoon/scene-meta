@@ -83,8 +83,7 @@ machine = "a1200"
 title = "Baahl"
 group = "Traktor"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.182769]
 title = "Bab Micro Center Xmas"
@@ -339,8 +338,7 @@ machine = "a1200_fast"
 title = "Back To The 80's"
 group = "JosSs / Fireboy / BalrogSoft"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.176355]
 title = "Back To The Future"
@@ -625,8 +623,6 @@ source = "script"
 title = "Balltorp"
 group = "Elcrew"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.227460]
 title = "BALSAM Invitation"
@@ -719,8 +715,6 @@ result = "unknown"
 title = "Banana Jones"
 group = "Void"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.229872]
 title = "Banana Party '90"
@@ -877,7 +871,7 @@ group = "Suspiria / Scoopex"
 source = "script"
 boot = "floppy"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.195697]
 title = "Basic Intro"
@@ -1063,8 +1057,7 @@ machine = "a1200"
 title = "BayPack"
 group = "Dekadence"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200_fast"
 
 [demozoo.214313]
 title = "Baz Is Back"
@@ -1132,7 +1125,7 @@ title = "BBS Dentro"
 group = "Dual Crew"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.233922]
 title = "BBS Dentro"
@@ -1576,8 +1569,6 @@ machine = "a1200_fast"
 title = "Be Sheep (Do Crime)"
 group = "Mrs Beanbag / Ash"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.251711]
 title = "Beach Boys"
@@ -1838,8 +1829,7 @@ machine = "a1200"
 title = "Behind the Flute"
 group = "Traktor"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200_fast"
 
 [demozoo.131349]
 title = "Behind The Window"
@@ -1850,8 +1840,6 @@ source = "script"
 title = "Beige"
 group = "F.I.N.E."
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.237803]
 title = "Belgian Scene Event 1998 Invitation - Final"
@@ -1885,8 +1873,7 @@ machine = "a1200_fast"
 title = "Ben Empire"
 group = "Traktor"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.385538]
 title = "Bend the Blitter"
@@ -1904,7 +1891,7 @@ title = "Beneath A Steel Sky Explanation"
 group = "Mellow"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.150058]
 title = "Bengt"
@@ -2606,8 +2593,7 @@ result = "unknown"
 title = "Birthday"
 group = "Capsule"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.243317]
 title = "Birthday"
@@ -2975,7 +2961,7 @@ group = "Dalthon"
 source = "script"
 boot = "floppy"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a1200_030; no entry of it passed the gate"
 
 [demozoo.133771]
 title = "Black-up"
@@ -3055,8 +3041,6 @@ source = "script"
 title = "Blahhdi"
 group = "Apathy"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.303436]
 title = "Blandsaft"
@@ -3078,7 +3062,7 @@ title = "Blasphemy"
 group = "Anexius"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: crashed: alert:00000003"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.170897]
 title = "Blast From The Past"
@@ -3157,7 +3141,7 @@ title = "Blerkenwiegel"
 group = "Scoopex"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.250190]
 title = "Bleu de Prusse"
@@ -3188,7 +3172,7 @@ group = "Ukonx"
 source = "script"
 result = "unknown"
 disks = ["Ukonx-BlissOut1.DMS", "Ukonx-BlissOut2.DMS"]
-note = "failed the gate: seed 2: disk 2 never loaded"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.189783]
 title = "Blit it"
@@ -3327,7 +3311,7 @@ title = "block rockin' tits"
 group = "Rave Network Overscan"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a1200_030; no entry of it passed the gate"
 
 [demozoo.100503]
 title = "Blockboot"
@@ -3575,7 +3559,7 @@ title = "Blue House 2"
 group = "Blue House Productions / Sonic Projects / Rebels"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.203704]
 title = "Blue II"
@@ -3992,7 +3976,7 @@ group = "Switch"
 source = "script"
 boot = "floppy"
 result = "unknown"
-note = "failed the gate: seed 1: crashed: guru"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.182660]
 title = "Bobs Controller"
@@ -4309,8 +4293,6 @@ source = "script"
 title = "Boocore"
 group = "LSD"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.261724]
 title = "Boogeyman's Demo"
@@ -4669,7 +4651,7 @@ title = "Bootfail"
 group = "Void"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: crashed: guru"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.240169]
 title = "Bootintro"
@@ -4741,8 +4723,7 @@ source = "script"
 title = "Booze Till You Die In Y2k"
 group = "Resistance"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200_fast"
 
 [demozoo.1327]
 title = "Booze-Demo"
@@ -5660,8 +5641,7 @@ machine = "a1200_030"
 title = "Bravo"
 group = "Laxative Effects"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.277030]
 title = "Breadbox"
@@ -5812,8 +5792,6 @@ source = "script"
 title = "Bromskurwa"
 group = "CCC"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.163883]
 title = "BRONISŁAW"
@@ -5850,8 +5828,7 @@ source = "script"
 title = "Brown Elephant"
 group = "uN aMoR"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.314263]
 title = "Brown Elephant Never Again"
@@ -5892,7 +5869,7 @@ title = "Brume"
 group = "New Generation Crew"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.183588]
 title = "Bruno Carette Tribute"
@@ -5967,15 +5944,11 @@ source = "script"
 title = "Bubble 2"
 group = "Specter"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.4324]
 title = "Bubble 3"
 group = "Void"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.223047]
 title = "Bubble Intro"
@@ -6252,7 +6225,7 @@ group = "Carnage"
 source = "script"
 boot = "floppy"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a1200_030; no entry of it passed the gate"
 
 [demozoo.182545]
 title = "Butcher's Newst and Coolest"
@@ -6395,5 +6368,4 @@ source = "script"
 title = "Bøfftro"
 group = "Apathy"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"

@@ -109,8 +109,7 @@ source = "script"
 title = "EarthQuake"
 group = "Genesis"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.202337]
 title = "Eastari"
@@ -329,7 +328,7 @@ title = "Educational Sex Lesson"
 group = "Limbo"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: crashed: alert:81000005"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.95399]
 title = "Educational Sex Lesson 2013"
@@ -391,7 +390,7 @@ title = "Efter Plugget"
 group = "Draco"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: crashed: guru"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.195570]
 title = "Egg'n'Spam 1"
@@ -439,8 +438,7 @@ source = "script"
 title = "Eh-Mah-cess"
 group = "Dekadence"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200_fast"
 
 [demozoo.6855]
 title = "Ei Saa Peittää"
@@ -479,8 +477,7 @@ source = "script"
 title = "Eine Kleine Nacht Musik"
 group = "Surprise! Productions"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200_fast"
 
 [demozoo.375338]
 title = "Eire"
@@ -607,8 +604,7 @@ source = "script"
 title = "Electric Ocean"
 group = "Rave Network Overscan / Brainstorm"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200_030"
 
 [demozoo.207479]
 title = "Electric Shock"
@@ -854,8 +850,7 @@ source = "script"
 title = "Elvis The Elvisp"
 group = "Candle"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.353268]
 title = "Elwood's Demo (Triple Sinus)"
@@ -1222,8 +1217,7 @@ source = "script"
 title = "Enter"
 group = "Laxative Effects"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.223321]
 title = "Enter The Bond Cave - Bondmine 2"
@@ -1311,8 +1305,7 @@ source = "script"
 title = "Epileptic"
 group = "Apathy"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200_fast"
 
 [demozoo.35129]
 title = "Episode"
@@ -1412,7 +1405,7 @@ title = "Equipose"
 group = "Complex"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500_1mb; no entry of it passed the gate"
 
 [demozoo.198528]
 title = "Equivoque"
@@ -1440,7 +1433,7 @@ title = "Ergens in Het Klompenland"
 group = "Conquest"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.31952]
 title = "Error - The Intro"
@@ -1794,14 +1787,14 @@ title = "Euskal Party 5 Invitation"
 group = "Network"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
 
 [demozoo.173805]
 title = "evar_rof"
 group = "iNSANE"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.264760]
 title = "Eve-L I"
@@ -1830,7 +1823,7 @@ title = "Every Joke Is Deadly"
 group = "Abandon"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.115697]
 title = "Everybody Dance"
@@ -1887,8 +1880,7 @@ source = "script"
 title = "Evil Impulse"
 group = "Venus Art"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200_fast"
 
 [demozoo.223185]
 title = "Evil Meditation Intro"
@@ -1934,7 +1926,7 @@ title = "Evokaetion"
 group = "The Electronic Knights"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.213017]
 title = "Evolutif Pack IV Intro"
@@ -2144,7 +2136,7 @@ title = "Existenz"
 group = "Existenz"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.139100]
 title = "Existro"
@@ -2384,8 +2376,7 @@ source = "script"
 title = "Explosion"
 group = "Warped Space"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.92618]
 title = "Expres"
@@ -2519,8 +2510,7 @@ machine = "a1200"
 title = "Extreme Boost"
 group = "Laxative Effects"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.233758]
 title = "Extreme Confusion"
@@ -2580,7 +2570,7 @@ title = "Eyes"
 group = "Style & Blacky"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: crashed: alert:00000003"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.358750]
 title = "Eyetarget"

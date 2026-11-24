@@ -188,8 +188,7 @@ machine = "a1200_030"
 title = "Hallo, ik ben een schaap en dit is mijn avontuur"
 group = "Limp Ninja"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.219771]
 title = "Hallonsaft"
@@ -276,7 +275,7 @@ title = "HAM"
 group = "Securitate"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.326645]
 title = "Ham bootblock"
@@ -384,7 +383,7 @@ title = "Handshake Slideshow v1.0 Intro"
 group = "Goonies 2041"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500_1mb; no entry of it passed the gate"
 
 [demozoo.225981]
 title = "Hang Em High"
@@ -686,15 +685,13 @@ result = "unknown"
 title = "Happy New Year 2025"
 group = "Stonehead"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200_030"
 
 [demozoo.384180]
 title = "Happy New Year 2026"
 group = "Stonehead"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200_030"
 
 [demozoo.249083]
 title = "Happy New Year Intro 1997/98"
@@ -853,8 +850,6 @@ source = "script"
 title = "Hard Vajero"
 group = "Lamon"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.2019]
 title = "Hardcore"
@@ -874,7 +869,7 @@ title = "Hardcore"
 group = "Deathless"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
 
 [demozoo.258876]
 title = "Hardcore"
@@ -885,8 +880,6 @@ source = "script"
 title = "Hardcore Cafe 1995"
 group = "Innocence"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.258646]
 title = "Hardcore Demo"
@@ -1020,8 +1013,7 @@ source = "script"
 title = "Hash Ultra"
 group = "Puzzle"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.241159]
 title = "Hashtro 1"
@@ -1072,7 +1064,7 @@ group = "Fanatic"
 source = "script"
 result = "unknown"
 run = "pv.exe"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.7483]
 title = "Hauki"
@@ -1307,15 +1299,12 @@ source = "script"
 title = "hc-dc001"
 group = "Spedes"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.377525]
 title = "HC-DC011"
 group = "Spedes"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.22687]
 title = "HC-DC10"
@@ -1467,7 +1456,7 @@ title = "Heavy Ball"
 group = "Brainstorm"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.154542]
 title = "Heavy Ball"
@@ -1495,7 +1484,7 @@ title = "Hedgehog"
 group = "Racoon"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a1200_030; no entry of it passed the gate"
 
 [demozoo.265275]
 title = "Hein Design Party Gfx"
@@ -1538,7 +1527,7 @@ title = "Heliopolis"
 group = "EMT Design"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.177737]
 title = "Helis - 2nd Demo"
@@ -1741,8 +1730,7 @@ source = "script"
 title = "Here I am"
 group = "Sector 5"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200_fast"
 
 [demozoo.125708]
 title = "Here We Are"
@@ -1818,9 +1806,8 @@ machine = "a1200"
 title = "Hertz Overload"
 group = "Retream"
 source = "script"
-result = "unknown"
+machine = "a1200"
 run = "Hertz Overload"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.24040]
 title = "Hest"
@@ -1839,7 +1826,7 @@ title = "Hetero Sapiens"
 group = "Traktor"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a1200_030; no entry of it passed the gate"
 
 [demozoo.21840]
 title = "Heureka"
@@ -1856,8 +1843,6 @@ source = "script"
 title = "Hevomatic"
 group = "Hevosenliha"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.307601]
 title = "Hex Junkie"
@@ -1874,9 +1859,8 @@ machine = "a1200_030"
 title = "Hexadecimal Perfection"
 group = "Action Direct"
 source = "script"
-result = "unknown"
 disks = ["ACTION_DIRECT-hexPerf-A.dms", "ACTION_DIRECT-hexPerf-B.dms"]
-note = "failed the gate: seed 1: disk 2 never loaded"
+note = "the sweep only reached disk 1 of 2"
 
 [demozoo.246821]
 title = "Hexagone 2 Intro"
@@ -2022,7 +2006,7 @@ title = "Hidden Rats"
 group = "Abandon"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.214003]
 title = "Hidden Vectors"
@@ -2283,7 +2267,7 @@ title = "Hipnosis"
 group = "Dream's Day"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: crashed: alert:80000004"
+note = "the sweep saw works on a1200_030; no entry of it passed the gate"
 
 [demozoo.232428]
 title = "Hipp-Leif"
@@ -2370,9 +2354,8 @@ machine = "a1200_fast"
 title = "Hit The Road"
 group = "Flash Production"
 source = "script"
-result = "unknown"
 disks = ["FP-HitTheRoad_A.dms", "FP-HitTheRoad_B.dms"]
-note = "failed the gate: seed 1: disk 2 never loaded"
+note = "the sweep only reached disk 1 of 2"
 
 [demozoo.143752]
 title = "Hit The Sky"
@@ -2494,9 +2477,9 @@ result = "unknown"
 title = "Hoi Saga Demo 3 - The Final Chapter"
 group = "The Flame Arrows / Team Hoi"
 source = "script"
-result = "unknown"
+machine = "a1200"
 disks = ["TeamHoi-HoiSaga3A.dms", "TeamHoi-HoiSaga3B.dms", "TeamHoi-HoiSaga3C.dms"]
-note = "failed the gate: seed 2: with the disks put in 30 s later, disk 3 never loaded"
+note = "the sweep only reached disk 1 of 3"
 
 [demozoo.199833]
 title = "Hokus Pokus Trailer"
@@ -2613,7 +2596,7 @@ title = "Holy Thing"
 group = "Road Riders"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.171248]
 title = "Home"
@@ -3176,7 +3159,7 @@ title = "Hotdog Hits & Rock'nRoll"
 group = "Tulou"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: crashed: task-held"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.263608]
 title = "Hotline BBS Intro"
@@ -3551,7 +3534,7 @@ title = "Huunous"
 group = "TBB Productions"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.252354]
 title = "Hvor Er Min Bikini?"
@@ -3589,8 +3572,7 @@ machine = "a1200"
 title = "Hydrozagadka"
 group = "Decree"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a500_1mb"
 
 [demozoo.237897]
 title = "Hyena"
@@ -3754,7 +3736,7 @@ group = "Analogy"
 source = "script"
 result = "unknown"
 disks = ["Analogy-HysteriaA.dms", "Analogy-HysteriaB.dms"]
-note = "failed the gate: seed 2: with the disks put in 30 s later, crashed: alert:00000004"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.165258]
 title = "Hysteria"

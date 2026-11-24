@@ -147,7 +147,7 @@ title = "JamJam"
 group = "Incal"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: crashed: alert:81000005"
+note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
 
 [demozoo.181]
 title = "Jammin"
@@ -292,15 +292,14 @@ result = "unknown"
 title = "Jenny Thinks"
 group = "Fit / Bandwagon"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200_030"
 
 [demozoo.224778]
 title = "Jergen Puckel"
 group = "CP-Dezajn"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: crashed: task-held"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.214320]
 title = "Jerry the Jolly Giraffe"
@@ -335,9 +334,9 @@ machine = "a1200_030"
 title = "Jesus on E's"
 group = "LSD"
 source = "script"
-result = "unknown"
+machine = "a1200"
 disks = ["lsd-jesusoneas-a.dms", "lsd-jesusoneas-b.dms"]
-note = "failed the gate: seed 1: disk 2 never loaded"
+note = "the sweep only reached disk 1 of 2"
 
 [demozoo.108960]
 title = "Jesus Stole My Jelly Beans"
@@ -824,8 +823,7 @@ result = "unknown"
 title = "Joy"
 group = "Whelpz"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.239899]
 title = "Joy'n'Ride"
@@ -998,8 +996,7 @@ source = "script"
 title = "Julemandens Sidste Ferie"
 group = "Loonies"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200_fast"
 
 [demozoo.247313]
 title = "Juletro"

@@ -421,8 +421,6 @@ result = "unknown"
 title = "1St"
 group = "Threat"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.235151]
 title = "1st"
@@ -690,8 +688,6 @@ source = "script"
 title = "2021 XMas Intro"
 group = "Axel Retro-Software"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.336637]
 title = "2024"
@@ -734,8 +730,6 @@ source = "script"
 title = "220 Volt"
 group = "Elcrew"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.207423]
 title = "237 Bobs"
@@ -1049,8 +1043,7 @@ source = "script"
 title = "30th Anniversary Demo"
 group = "Axel Retro-Software"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a500_1mb"
 
 [demozoo.151294]
 title = "31kb Intro"
@@ -1079,9 +1072,8 @@ source = "script"
 title = "35518"
 group = "Spedes"
 source = "script"
-result = "unknown"
+machine = "a1200"
 run = "SPDS_35518.exe"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.266352]
 title = "36 15 Gen4"
@@ -1201,8 +1193,7 @@ source = "script"
 title = "3D Mania"
 group = "Futurize"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.218452]
 title = "3D Plot"
@@ -1582,7 +1573,7 @@ title = "40k Too Little?"
 group = "After Eights"
 source = "script"
 result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.221570]
 title = "40k With Built-In Musicdisk"
@@ -1917,9 +1908,8 @@ machine = "a1200"
 title = "4th"
 group = "Phase Truce"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 run = "4th.exe.notcrunched"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.234848]
 title = "4th and Inches"
@@ -2267,8 +2257,6 @@ source = "script"
 title = "80th Deliverance"
 group = "Laxative Effects"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.40177]
 title = "84 t"
@@ -2328,8 +2316,7 @@ source = "script"
 title = "90 Degrees"
 group = "Candle"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.227989]
 title = "900 Animated Bobs"
@@ -2340,8 +2327,7 @@ source = "script"
 title = "90½"
 group = "Candle"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200"
 
 [demozoo.19193]
 title = "911"

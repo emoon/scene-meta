@@ -87,9 +87,8 @@ source = "script"
 title = "Quagmire"
 group = "Venus Art"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 run = "Quagmire.notcrunched"
-note = "failed the gate: seed 1: never came alive"
 
 [demozoo.253704]
 title = "Quagmire II Remix"
@@ -268,15 +267,13 @@ source = "script"
 title = "Quicktro"
 group = "Capsule"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200_fast"
 
 [demozoo.236571]
 title = "Quicktro Final"
 group = "Capsule"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200_fast"
 
 [demozoo.253694]
 title = "Quicktro Menu Intro"
@@ -346,8 +343,7 @@ source = "script"
 title = "Quotation Marks"
 group = "Dekadence"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200_fast"
 
 [demozoo.29521]
 title = "Qurea"
