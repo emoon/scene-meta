@@ -86,7 +86,8 @@ From `tools/` (the layout and what the platforms share: `../README.md`):
 python3 -m scenemeta amiga fetch                 # missing disks -> NAS
 python3 -m scenemeta amiga sweep --jobs 96       # resumable
 python3 -m scenemeta amiga sweep --ids 89 142    # specific productions
-python3 -m scenemeta amiga sweep --machine a500_2mb_chip --ids 89   # swept again, up the whole ladder, when it works on that machine
+python3 -m scenemeta amiga sweep --again --ids 89 142   # swept again, up the whole ladder
+python3 -m scenemeta amiga sweep --machine a500_2mb_chip --ids 89   # swept again when it works on that machine
 python3 -m scenemeta amiga report
 python3 -m scenemeta amiga export                # scene.db -> ../data/amiga, through the gate
 python3 -m scenemeta amiga export --ids 142      # specific productions

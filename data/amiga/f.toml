@@ -3920,6 +3920,7 @@ source = "script"
 title = "Flippo 40k"
 group = "Desire / Axis"
 source = "script"
+machine = "a1200_fast"
 
 [demozoo.262952]
 title = "FlipTrOo"
@@ -4654,6 +4655,7 @@ source = "script"
 title = "Fractals Phuking Fractals"
 group = "Inu-Soft"
 source = "script"
+machine = "a1200"
 run = "inus-abd.exe"
 
 [demozoo.32582]
@@ -5123,6 +5125,7 @@ source = "script"
 title = "Friendship 2"
 group = "Instinct"
 source = "script"
+machine = "a1200"
 
 [demozoo.195368]
 title = "Friendship Demo"
@@ -5404,13 +5407,13 @@ source = "script"
 title = "Fuck Lame 1"
 group = "Federacja Zwalczania Lamerstwa"
 source = "script"
-machine = "a500_512k"
+machine = "a1200"
 
 [demozoo.217045]
 title = "Fuck Lame 2"
 group = "Federacja Zwalczania Lamerstwa"
 source = "script"
-machine = "a500_512k"
+machine = "a1200"
 
 [demozoo.195555]
 title = "Fuck Nop(Ball)"

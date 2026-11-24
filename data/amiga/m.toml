@@ -5354,7 +5354,7 @@ source = "script"
 title = "Mini-Intro"
 group = "Hotdog Productions"
 source = "script"
-machine = "a500_2mb_chip"
+machine = "a1200_fast"
 
 [demozoo.249171]
 title = "Mini-Intro"
@@ -5582,7 +5582,7 @@ result = "unknown"
 title = "Mirrors 2"
 group = "Maq"
 source = "script"
-machine = "a500_1mb"
+machine = "a1200"
 
 [demozoo.7478]
 title = "Misery"
@@ -6359,6 +6359,7 @@ machine = "a1200_fast"
 title = "Morph"
 group = "Darkage"
 source = "script"
+machine = "a1200"
 run = "Morph.exe"
 
 [demozoo.166144]
@@ -6615,7 +6616,7 @@ source = "script"
 title = "Mr. Monkey"
 group = "Rebels"
 source = "script"
-machine = "a500_ks12"
+machine = "a1200"
 
 [demozoo.248105]
 title = "Mr. Munk In Fluidland"
@@ -7428,7 +7429,7 @@ machine = "a1200"
 title = "Myst"
 group = "Universe"
 source = "script"
-machine = "a500_1mb"
+machine = "a1200"
 
 [demozoo.151441]
 title = "Myster & Tremor The Demor"

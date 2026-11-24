@@ -137,7 +137,7 @@ source = "script"
 title = "Da Lame"
 group = "Stonehead"
 source = "script"
-machine = "a500_2mb_chip"
+machine = "a1200_fast"
 
 [demozoo.362153]
 title = "Da Lame 2"
@@ -5191,6 +5191,7 @@ source = "script"
 title = "Dulla"
 group = "Inu-Soft"
 source = "script"
+machine = "a1200"
 
 [demozoo.197642]
 title = "Dunkle Gedanken"

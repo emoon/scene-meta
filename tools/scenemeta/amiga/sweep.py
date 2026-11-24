@@ -566,10 +566,12 @@ def _job(prod, multi_only=False, known=None, only=None):
 
 
 def run_all(prods, store, jobs=None, multi_only=False, log=print,
-            machine=None):
-    """Sweep ``prods`` the store does not hold yet up the ladder; or, with
-    ``machine``, those of them that work on that machine, held or not, in
-    place of what was held."""
+            machine=None, again=False):
+    """Sweep ``prods`` the store does not hold yet up the ladder, each from
+    the machine the data files file it under; or, with ``again``, every one
+    of them, and with ``machine`` those that work on that machine, held or
+    not, in place of what was held. A production swept again climbs the
+    whole ladder: the machine it is filed under may be what is wrong."""
     # Before any production: a run without its ROM or the libraries would
     # be stored as one where nothing happened, a production without the mirror as one with
     # no files.
@@ -578,7 +580,8 @@ def run_all(prods, store, jobs=None, multi_only=False, log=print,
         machines.require_rom(machines.BY_NAME[machine])
     workbench.require_libs()
     media.require_mirror()
-    known = catalog.known_machines(config.DATA_DIR)
+    again = again or bool(machine)
+    known = {} if again else catalog.known_machines(config.DATA_DIR)
     driver.run_all(prods, store, functools.partial(
         _job, multi_only=multi_only, known=known, only=machine), jobs, log,
-        again=bool(machine))
+        again=again)

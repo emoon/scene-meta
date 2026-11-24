@@ -2,7 +2,7 @@
 
     python3 -m scenemeta amiga fetch [--ids ...] [--rate 1.0]
     python3 -m scenemeta amiga sweep [--ids ...] [--limit N] [--jobs N]
-                                     [--machine NAME]
+                                     [--machine NAME] [--again]
     python3 -m scenemeta amiga report
     python3 -m scenemeta amiga export [--ids ...] [--jobs N]
     python3 -m scenemeta amiga replay [--ids ...] [--jobs N] [--patient]
@@ -34,6 +34,9 @@ def main(argv=None):
     p.add_argument("--machine", choices=list(machines.BY_NAME),
                    help="only the productions that work on this machine,"
                    " swept before or not")
+    p.add_argument("--again", action="store_true",
+                   help="the productions swept before too, each up the whole"
+                   " ladder")
     p = sub.add_parser("fetch")
     cli.selection(p)
     p.add_argument("--rate", type=float, default=1.0)
@@ -95,7 +98,8 @@ def _command(args):
             fetch.fetch_all(_prods(args), db, rate=args.rate)
         elif args.cmd == "sweep":
             sweep.run_all(_prods(args), db, jobs=args.jobs,
-                          multi_only=args.multi, machine=args.machine)
+                          multi_only=args.multi, machine=args.machine,
+                          again=args.again)
         elif args.cmd == "report":
             report(db)
         elif args.cmd == "export":

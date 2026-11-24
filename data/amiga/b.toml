@@ -3451,7 +3451,7 @@ source = "script"
 title = "Blub!"
 group = "Abyss"
 source = "script"
-machine = "a500_512k"
+machine = "a1200"
 
 [demozoo.132843]
 title = "Blub! Blub!"
@@ -3717,7 +3717,7 @@ machine = "a1200"
 title = "Blur"
 group = "Pumba / Bore"
 source = "script"
-machine = "a500_512k"
+machine = "a1200"
 run = "Blur.exe"
 
 [demozoo.39854]
@@ -4199,7 +4199,7 @@ machine = "a1200_fast"
 title = "Bong"
 group = "I486"
 source = "script"
-machine = "a500_2mb_chip"
+machine = "a1200"
 
 [demozoo.136528]
 title = "Bongonight"
@@ -5068,7 +5068,7 @@ group = "Unity"
 source = "script"
 result = "unknown"
 run = "Unity_BornTro"
-note = "the sweep saw works on a500_512k; no entry of it passed the gate"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.176291]
 title = "Borntro"
@@ -5744,6 +5744,7 @@ machine = "a500_1mb"
 title = "Broken Connection"
 group = "Anaheim"
 source = "script"
+machine = "a1200"
 
 [demozoo.85080]
 title = "Broken Eyes"
@@ -5934,6 +5935,7 @@ source = "script"
 title = "Bubble Intro"
 group = "Anaheim"
 source = "script"
+machine = "a1200"
 
 [demozoo.235479]
 title = "Bubble-Stars"

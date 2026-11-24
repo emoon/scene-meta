@@ -1852,6 +1852,7 @@ source = "script"
 title = "Acid Trip"
 group = "Melon Dezign"
 source = "script"
+machine = "a1200"
 
 [demozoo.223160]
 title = "Acidflash 1"
@@ -2421,7 +2422,7 @@ source = "script"
 title = "Ajwaj"
 group = "Q-Crew-Klan"
 source = "script"
-machine = "a500_1mb_chip"
+machine = "a1200"
 
 [demozoo.221692]
 title = "Akira"
@@ -7044,7 +7045,7 @@ title = "Attention"
 group = "Apathy"
 source = "script"
 result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.282731]
 title = "AUD"
@@ -7159,6 +7160,7 @@ source = "script"
 title = "Australian Style 2 Preview"
 group = "Trip"
 source = "script"
+machine = "a1200"
 
 [demozoo.87648]
 title = "Authentic World of Commodore Colors"

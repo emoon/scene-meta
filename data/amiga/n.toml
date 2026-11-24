@@ -4221,6 +4221,8 @@ machine = "a1200"
 title = "Nippon Taste"
 group = "Coppersky"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.19455]
 title = "Nitro 97"
@@ -4907,8 +4909,7 @@ source = "script"
 title = "Noreia"
 group = "Lightstorm Inc."
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500_1mb_chip; no entry of it passed the gate"
+machine = "a500_1mb_chip"
 
 [demozoo.29831]
 title = "Nork"

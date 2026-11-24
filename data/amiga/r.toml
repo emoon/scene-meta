@@ -482,6 +482,7 @@ machine = "a1200"
 title = "ranuL - seluR"
 group = "Thefect"
 source = "script"
+machine = "a1200"
 
 [demozoo.45795]
 title = "Raos"
@@ -2990,6 +2991,7 @@ source = "script"
 title = "Rosa Bananer"
 group = "Tronix"
 source = "script"
+machine = "a1200"
 run = "rosa_banan.exe"
 
 [demozoo.223552]

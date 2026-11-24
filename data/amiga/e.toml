@@ -324,7 +324,7 @@ machine = "a1200"
 title = "Educational Sex Lesson"
 group = "Limbo"
 source = "script"
-boot = "floppy"
+machine = "a1200_fast"
 
 [demozoo.95399]
 title = "Educational Sex Lesson 2013"
@@ -484,6 +484,7 @@ source = "script"
 title = "Ejaculation"
 group = "Illusion"
 source = "script"
+machine = "a1200"
 
 [demozoo.248229]
 title = "Ekademo"
@@ -750,7 +751,7 @@ source = "script"
 title = "Eleven Seconds Film"
 group = "Delon"
 source = "script"
-machine = "a500_1mb"
+machine = "a1200"
 
 [demozoo.313255]
 title = "Elfairy (For Real)"
@@ -2175,7 +2176,7 @@ source = "script"
 title = "Exodus"
 group = "RetroActive"
 source = "script"
-machine = "a500_2mb_chip"
+machine = "a1200"
 run = "4k_Exodus.decrunch"
 
 [demozoo.207386]

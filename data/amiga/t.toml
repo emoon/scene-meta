@@ -1527,7 +1527,7 @@ source = "script"
 title = "The Black"
 group = "Erotic Design"
 source = "script"
-machine = "a500_2mb_chip"
+machine = "a1200_fast"
 
 [demozoo.359965]
 title = "The Blaster"
@@ -2461,7 +2461,7 @@ run = "3_Hoaxers"
 title = "The Gathering 1995 4k Intro"
 group = "Maak"
 source = "script"
-machine = "a500_2mb_chip"
+machine = "a1200"
 
 [demozoo.217293]
 title = "The Gathering 1997 Invitation"
@@ -3193,7 +3193,7 @@ source = "script"
 title = "The Mask"
 group = "Mystic"
 source = "script"
-machine = "a500_1mb"
+machine = "a1200"
 
 [demozoo.248122]
 title = "The Matchpin Intro"
@@ -4688,7 +4688,7 @@ machine = "a500_ks12"
 title = "The Walrus"
 group = "Hotdog Productions"
 source = "script"
-machine = "a500_2mb_chip"
+machine = "a1200_fast"
 
 [demozoo.246110]
 title = "The Walrus 2"
@@ -4878,7 +4878,7 @@ title = "The Yard BBS Intro"
 group = "Up Rough"
 source = "script"
 result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.210398]
 title = "The-Star-With-The-Hole-Intro"
@@ -5677,6 +5677,7 @@ note = "TBL-Tint.LHA; the 6 floppies are installer disks (disk 1 does not boot)"
 title = "Tintin Inside"
 group = "Candle"
 source = "script"
+machine = "a1200_fast"
 
 [demozoo.23614]
 title = "Tintology Vogue"
@@ -7709,7 +7710,7 @@ source = "script"
 title = "Turn Around"
 group = "Underflow"
 source = "script"
-machine = "a500_1mb_chip"
+machine = "a1200"
 run = "!tURN-aRoUND!"
 
 [demozoo.182931]

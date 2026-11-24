@@ -3050,7 +3050,7 @@ source = "script"
 title = "LSI 4K"
 group = "Lightstorm Inc."
 source = "script"
-machine = "a500_2mb_chip"
+machine = "a1200_030"
 run = "LSi-TP7F.exe"
 
 [demozoo.241031]

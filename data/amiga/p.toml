@@ -268,6 +268,7 @@ source = "script"
 title = "Paha Maku"
 group = "Teemu Ja Tuomas"
 source = "script"
+machine = "a1200"
 
 [demozoo.189156]
 title = "Pahamies"
@@ -2609,7 +2610,6 @@ title = "Pill"
 group = "Genetic"
 source = "script"
 result = "unknown"
-note = "the sweep saw works on a500_1mb_chip; no entry of it passed the gate"
 
 [demozoo.191216]
 title = "Pill"
@@ -4539,7 +4539,7 @@ result = "unknown"
 title = "Prism Part 2"
 group = "Absurd"
 source = "script"
-machine = "a500_2mb_chip"
+machine = "a1200"
 
 [demozoo.95283]
 title = "Prism Vectors"
@@ -4772,7 +4772,7 @@ note = "the sweep saw works on a500_512k; no entry of it passed the gate"
 title = "Promille"
 group = "Rock"
 source = "script"
-machine = "a500_2mb_chip"
+machine = "a1200"
 run = "promille_release.exe"
 
 [demozoo.237177]
@@ -5124,6 +5124,7 @@ run = "fankijam.exe"
 title = "Psykospasme 2"
 group = "Ukonx"
 source = "script"
+machine = "a1200"
 
 [demozoo.18514]
 title = "PsyLOVEcicle"

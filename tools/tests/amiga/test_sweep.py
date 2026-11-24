@@ -636,6 +636,23 @@ class OneMachineTest(unittest.TestCase):
         self.assertEqual(run_all.call_args.args[2].keywords["only"], "a500_ks12")
         require_rom.assert_called_once_with(machines.BY_NAME["a500_ks12"])
 
+    def test_a_production_swept_again_climbs_the_whole_ladder(self):
+        # Filed under a500 by mistake, an AGA-only production began there,
+        # past every A1200 (30467, The Black).
+        with mock.patch.object(machines, "require_roms"), \
+                mock.patch.object(machines, "require_rom"), \
+                mock.patch.object(sweep.workbench, "require_libs"), \
+                mock.patch.object(media, "require_mirror"), \
+                mock.patch.object(sweep.catalog, "known_machines",
+                                  return_value={7: "a500"}), \
+                mock.patch.object(sweep.driver, "run_all") as run_all:
+            sweep.run_all([], store=None)
+            sweep.run_all([], store=None, again=True)
+            sweep.run_all([], store=None, machine="a500_ks12")
+        self.assertEqual([(c.kwargs["again"], c.args[2].keywords["known"])
+                          for c in run_all.call_args_list],
+                         [(False, {7: "a500"}), (True, {}), (True, {})])
+
 
 class SeedTest(unittest.TestCase):
     """Runs are reproducible (a pinned RNG seed), so the retries of a demo

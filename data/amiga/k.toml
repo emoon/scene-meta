@@ -58,6 +58,7 @@ machine = "a1200"
 title = "Kaczy 4k"
 group = "Przyjaciele Stefana B."
 source = "script"
+machine = "a1200"
 
 [demozoo.314265]
 title = "Kadesh"
@@ -1474,5 +1475,3 @@ title = "Kühlschränke"
 group = "Bluebox Cinematique Gmbh"
 source = "script"
 boot = "floppy"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"

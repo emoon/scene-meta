@@ -651,8 +651,8 @@ machine = "a1200"
 title = "Unsorted Ideas"
 group = "Illusion"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500_1mb; no entry of it passed the gate"
+machine = "a1200"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.170685]
 title = "Unstable Traktor"

@@ -422,6 +422,7 @@ result = "unknown"
 title = "Oklagija"
 group = "Avnoj"
 source = "script"
+machine = "a1200_fast"
 
 [demozoo.227310]
 title = "Oko Do Bazy"

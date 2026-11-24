@@ -753,7 +753,7 @@ source = "script"
 title = "Celtic"
 group = "Genetic"
 source = "script"
-machine = "a500_512k"
+machine = "a1200"
 
 [demozoo.241610]
 title = "Celtic is Born - Demo Part 1"
@@ -1791,7 +1791,7 @@ result = "unknown"
 title = "Clear"
 group = "Sector 5"
 source = "script"
-machine = "a500_1mb"
+machine = "a1200"
 
 [demozoo.248064]
 title = "Clever and Smart's Intro"
@@ -3374,9 +3374,9 @@ machine = "a1200_fast"
 title = "Control"
 group = "Oxygene"
 source = "script"
-machine = "a500_512k"
+machine = "a1200_030"
 disks = ["control1.dms", "control2.dms"]
-events = [{ at = 40.0, disk = 2, until = 70.0 }, { at = 45.0, key = "lmb" }]
+events = [{ at = 53.5, disk = 2, until = 83.5 }]
 
 [demozoo.252053]
 title = "Controllable Sine Logo"

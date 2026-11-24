@@ -1101,6 +1101,7 @@ source = "script"
 title = "Have A Nice Day"
 group = "Obsession"
 source = "script"
+machine = "a1200"
 
 [demozoo.257053]
 title = "Have You A Dog?"
@@ -1407,7 +1408,7 @@ machine = "a1200_030"
 title = "Heartcore"
 group = "Delon Dezign"
 source = "script"
-machine = "a500_512k"
+machine = "a1200"
 
 [demozoo.219449]
 title = "Heartro"
@@ -2466,7 +2467,7 @@ machine = "a1200"
 title = "Hoi Saga Demo 2 - Mindwarp"
 group = "Team Hoi"
 source = "script"
-machine = "a500_2mb_chip"
+machine = "a1200"
 
 [demozoo.47936]
 title = "Hoi Saga Demo 3 - The Final Chapter"
@@ -2770,6 +2771,7 @@ source = "script"
 title = "Horse-Shit"
 group = "Birra Bros"
 source = "script"
+machine = "a1200"
 
 [demozoo.174693]
 title = "Horten Moss Ferry"

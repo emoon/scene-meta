@@ -50,7 +50,7 @@ source = "script"
 title = "G4"
 group = "Rock"
 source = "script"
-machine = "a500_2mb_chip"
+machine = "a1200_fast"
 
 [demozoo.189849]
 title = "Gabbetuss har Boozdag"
@@ -1868,6 +1868,7 @@ source = "script"
 title = "Gravity"
 group = "Appendix"
 source = "script"
+machine = "a1200"
 
 [demozoo.248542]
 title = "Gravtro"

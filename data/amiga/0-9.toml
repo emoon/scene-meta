@@ -845,6 +845,7 @@ machine = "a500_1mb"
 title = "2K Intro"
 group = "Iris"
 source = "script"
+machine = "a1200"
 
 [demozoo.151405]
 title = "2k Is Too Much"
@@ -1743,7 +1744,7 @@ run = "LE-window6.12"
 title = "4K Intro"
 group = "Floppy"
 source = "script"
-machine = "a500_1mb_chip"
+machine = "a1200"
 
 [demozoo.140969]
 title = "4k Intro"
@@ -1871,9 +1872,7 @@ machine = "a1200"
 title = "4kb"
 group = "Whelpz"
 source = "script"
-boot = "floppy"
-result = "unknown"
-note = "the sweep saw works on a500_2mb_chip; no entry of it passed the gate"
+machine = "a1200_030"
 
 [demozoo.165997]
 title = "4kb Imperium"

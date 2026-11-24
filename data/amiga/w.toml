@@ -1524,6 +1524,7 @@ machine = "a1200_030"
 title = "When you Argue with The System"
 group = "Iris / Depth"
 source = "script"
+machine = "a1200"
 
 [demozoo.176809]
 title = "Where Are We Going"

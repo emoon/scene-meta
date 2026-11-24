@@ -48,6 +48,14 @@ class GateCommandsTest(unittest.TestCase):
         self.assertEqual([c.kwargs["machine"] for c in run_all.call_args_list],
                          [None, "a500_512k"])
 
+    def test_sweep_again(self):
+        with mock.patch.object(cli.catalog, "productions", return_value=[]), \
+                mock.patch.object(cli.sweep, "run_all") as run_all:
+            self.main("sweep", "--ids", "7")
+            self.main("sweep", "--ids", "7", "--again")
+        self.assertEqual([c.kwargs["again"] for c in run_all.call_args_list],
+                         [False, True])
+
     def test_sweep_of_a_machine_that_is_not_one(self):
         with contextlib.redirect_stderr(io.StringIO()), \
                 self.assertRaises(SystemExit):

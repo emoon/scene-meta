@@ -219,6 +219,7 @@ source = "script"
 title = "Jasiu Zabijaka"
 group = "Radiator"
 source = "script"
+machine = "a1200"
 
 [demozoo.212297]
 title = "Jason's Pack Intro"

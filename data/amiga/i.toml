@@ -404,7 +404,7 @@ machine = "a1200"
 title = "Ill Flower"
 group = "Scum Of The Earth"
 source = "script"
-machine = "a500_ks12"
+machine = "a1200_fast"
 
 [demozoo.214453]
 title = "Illegal Nonsense"
@@ -2674,6 +2674,7 @@ source = "script"
 title = "Intro 4K Musica"
 group = "Drareg"
 source = "script"
+machine = "a1200"
 
 [demozoo.221471]
 title = "Intro 5"
@@ -3271,6 +3272,7 @@ source = "script"
 title = "IQ 0,03"
 group = "Candle"
 source = "script"
+machine = "a1200"
 
 [demozoo.246996]
 title = "IQ2000 Goes Str8"

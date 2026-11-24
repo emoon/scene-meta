@@ -699,6 +699,7 @@ source = "script"
 title = "Sayko"
 group = "Lamers"
 source = "script"
+machine = "a1200"
 events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.248632]
@@ -2274,6 +2275,7 @@ source = "script"
 title = "Shit Happens"
 group = "Kameli"
 source = "script"
+machine = "a1200"
 
 [demozoo.236733]
 title = "Shit Intro"
@@ -3658,6 +3660,7 @@ source = "script"
 title = "Skenery 98 Invitation"
 group = "Jakkar"
 source = "script"
+machine = "a1200"
 
 [demozoo.50309]
 title = "Skenery Invitation"
@@ -4418,7 +4421,7 @@ source = "script"
 title = "Smart"
 group = "Elven 11"
 source = "script"
-machine = "a500_1mb"
+machine = "a1200"
 run = "smart.exe"
 
 [demozoo.27967]
@@ -7160,6 +7163,7 @@ source = "script"
 title = "Stad i Ljus"
 group = "Deathbringers"
 source = "script"
+machine = "a1200"
 
 [demozoo.134613]
 title = "Stag - The Next Generation"
@@ -7188,7 +7192,7 @@ source = "script"
 title = "Stalk"
 group = "Drinkers Inc."
 source = "script"
-machine = "a500_1mb"
+machine = "a1200"
 
 [demozoo.263587]
 title = "Stamp Collection 2 - Menu"
