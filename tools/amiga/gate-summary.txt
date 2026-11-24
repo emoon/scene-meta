@@ -1,5 +1,5 @@
 Entries by what the gate last saw of them.
 
-pass  17495
-fail   1436
-error    39
+pass  17501
+fail   1434
+error    35
