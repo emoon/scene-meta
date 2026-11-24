@@ -781,14 +781,14 @@ title = "Impulse"
 group = "Tilt"
 source = "script"
 disks = ["TILT-ImpulseA.DMS", "TILT-ImpulseB.DMS"]
-swaps = [{ disk = 2, at = 72.5 }]
+events = [{ at = 72.5, disk = 2 }]
 
 [demozoo.171972]
 title = "Impulse 2"
 group = "Old Bulls / Tilt"
 source = "script"
 disks = ["Tilt-Impulse2-a.dms", "Tilt-Impulse2-b.dms"]
-swaps = [{ disk = 2, at = 72.5 }]
+events = [{ at = 72.5, disk = 2 }]
 
 [demozoo.70683]
 title = "Impulse 3.09"
@@ -1129,7 +1129,7 @@ group = "Three Times No"
 source = "script"
 machine = "a1200_fast"
 disks = ["io2-ttn1.dms", "io2-ttn2.dms"]
-swaps = [{ disk = 2, at = 48.2 }]
+events = [{ at = 48.2, disk = 2 }]
 
 [demozoo.357316]
 title = "Infamia 0 Intro"
@@ -3412,7 +3412,7 @@ group = "Scoopex"
 source = "ai"
 machine = "a1200"
 disks = ["SCOOPEX-Iso_A.dms", "SCOOPEX-Iso_B.dms"]
-swaps = [{ disk = 2, at = 60.0 }]
+events = [{ at = 60.0, disk = 2 }]
 
 [demozoo.295540]
 title = "IsoMessages"
@@ -3445,7 +3445,7 @@ group = "Ram Jam"
 source = "script"
 machine = "a1200"
 disks = ["RamJam-ItCantBeDoneA.dms", "!RamJam-ItCantBeDoneB.dms"]
-swaps = [{ disk = 2, at = 90.6 }]
+events = [{ at = 90.6, disk = 2 }]
 
 [demozoo.145578]
 title = "It is New, It Is Great"

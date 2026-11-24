@@ -1740,7 +1740,7 @@ group = "Access"
 source = "script"
 machine = "a1200_fast"
 disks = ["Access_AGA1.DMS", "Access_AGA2.DMS"]
-swaps = [{ disk = 2, at = 63.5 }]
+events = [{ at = 63.5, disk = 2 }]
 
 [demozoo.219767]
 title = "First Ages of Darkness"
@@ -1890,7 +1890,7 @@ title = "First Comming"
 group = "Blasphemy"
 source = "script"
 disks = ["Blasphemy-FirstCommingA.adf", "Blasphemy-FirstCommingB.adf"]
-swaps = [{ disk = 2, at = 192.2 }]
+events = [{ at = 192.2, disk = 2 }]
 
 [demozoo.230112]
 title = "First Contact"
@@ -4920,7 +4920,7 @@ title = "Freedom"
 group = "Nova"
 source = "script"
 disks = ["FREEDOM_1.DMS", "FREEDOM_2.DMS"]
-swaps = [{ disk = 2, at = 242.9, key = "lmb" }]
+events = [{ at = 242.9, disk = 2 }, { at = 247.9, key = "lmb" }]
 
 [demozoo.241283]
 title = "Freedom"
@@ -5091,7 +5091,7 @@ title = "Friday 13th Part II - Jason lives"
 group = "The Wanderers"
 source = "script"
 disks = ["TheWanderers-JasonLivesA.adf", "TheWanderers-JasonLivesB.adf"]
-swaps = [{ disk = 2, at = 23.9 }]
+events = [{ at = 23.9, disk = 2 }]
 
 [demozoo.6575]
 title = "Friday at Eight"

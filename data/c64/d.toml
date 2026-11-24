@@ -10,7 +10,7 @@ group = "Tropyx"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["Symphony 2005 Warez.d64", "You Can't Stop Us!.d64"]
-swaps = [{ disk = 2, at = 75.7, key = "space", key_delay = 16.7 }]
+events = [{ at = 75.7, disk = 2 }, { at = 92.4, key = "space" }]
 
 [demozoo.349963]
 title = "D.O.P Intro"
@@ -54,7 +54,7 @@ title = "Daimon"
 group = "Sunrise"
 source = "script"
 disks = ["daimon-sunrise.d64", "Daimon.Sunrise-fixed.d64"]
-swaps = [{ disk = 2, at = 152.9, key = "space", key_delay = 17.8 }]
+events = [{ at = 152.9, disk = 2 }, { at = 170.7, key = "space" }]
 
 [demozoo.197032]
 title = "Damage"
@@ -205,7 +205,7 @@ title = "Darkness Zone"
 group = "Nipson"
 source = "script"
 disks = ["Darkness_Zone_a.d64", "Darkness_Zone_b.d64"]
-swaps = [{ disk = 2, at = 178.7, key = "space", key_delay = 17.3 }]
+events = [{ at = 178.7, disk = 2 }, { at = 196.0, key = "space" }]
 
 [demozoo.181422]
 title = "Darkroom"
@@ -412,7 +412,7 @@ title = "Death or Glory"
 group = "Covenant"
 source = "script"
 disks = ["DOG SIDE A.D64", "DOG SIDE B.D64"]
-swaps = [{ disk = 2, at = 523.6, key = "p1fire" }]
+events = [{ at = 523.6, disk = 2 }, { at = 528.6, key = "p1fire" }]
 
 [demozoo.390443]
 title = "Debut"
@@ -462,8 +462,7 @@ group = "Pride"
 source = "ai"
 machine = "ntsc_1541"
 disks = ["Deep [side A].d64", "Deep [side B].d64"]
-swaps = [{ disk = 2, at = 1075.6, until = 1368.9, key = "space" }]
-keys = [{ at = 29.3, key = "n" }, { at = 44.0, key = "space" }, { at = 146.7, key = "space" }, { at = 244.4, key = "space" }, { at = 342.2, key = "space" }, { at = 508.4, key = "space" }, { at = 625.8, key = "space" }, { at = 723.6, key = "space" }, { at = 821.3, key = "space" }, { at = 919.1, key = "space" }]
+events = [{ at = 29.3, key = "n" }, { at = 44.0, key = "space" }, { at = 146.7, key = "space" }, { at = 244.4, key = "space" }, { at = 342.2, key = "space" }, { at = 508.4, key = "space" }, { at = 625.8, key = "space" }, { at = 723.6, key = "space" }, { at = 821.3, key = "space" }, { at = 919.1, key = "space" }, { at = 1075.6, disk = 2, until = 1368.9 }, { at = 1080.6, key = "space" }]
 note = "Deep (Pride): trainer menu needs n then space; each part needs a space (spaces ~every 100M); FLIP DISK OVER text from ~1000M; insert side B then one space ~19M later; disk 2: verified with insert at 1154M + space 19M later; ~1100M is inferred from the text first seen ~1015M in an earlier run (spaces timing shifts it)"
 
 [demozoo.94108]
@@ -557,7 +556,7 @@ title = "Delame 93"
 group = "Lethargy"
 source = "script"
 disks = ["DELAME_1.D64", "DELAME_2.D64"]
-swaps = [{ disk = 2, at = 230.6, key = "space", key_delay = 18.0 }]
+events = [{ at = 230.6, disk = 2 }, { at = 248.6, key = "space" }]
 
 [demozoo.367874]
 title = "Delicious"
@@ -940,7 +939,7 @@ title = "Demo of the Year '88"
 group = "Bones / Triangle / Abnormal / Dream Systems / Shining 8 / Drive / Magic / Frame / Sphinx / Upfront / Elite 1997 / Starion / Dexion / X-Ray / Horizon / Micro / The Dolphin Crew / Cosmos"
 source = "script"
 disks = ["Demos_of_the_Year_1988_S1.d64", "Demos_of_the_Year_1988_S2.d64"]
-swaps = [{ disk = 2, at = 44.5, key = "space", key_delay = 15.8 }]
+events = [{ at = 44.5, disk = 2 }, { at = 60.3, key = "space" }]
 
 [demozoo.189281]
 title = "Demo Pack"
@@ -963,7 +962,7 @@ title = "Demo Talent"
 group = "Talent"
 source = "script"
 disks = ["Talent_Demo_Side1.D64", "Talent_Demo_Side2.D64"]
-swaps = [{ disk = 2, at = 328.8, key = "space", key_delay = 18.3 }]
+events = [{ at = 328.8, disk = 2 }, { at = 347.1, key = "space" }]
 
 [demozoo.347363]
 title = "Demo Time"
@@ -1090,7 +1089,7 @@ group = "Onslaught"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["Onslaught-Demolicious_S1.d64", "Onslaught-Demolicious_S2.d64"]
-swaps = [{ disk = 2, at = 535.6 }]
+events = [{ at = 535.6, disk = 2 }]
 
 [demozoo.337169]
 title = "Demolition"
@@ -1118,7 +1117,7 @@ title = "Demonstration 1"
 group = "Welle:Erdball"
 source = "script"
 disks = ["WE-DEMO1a.d64", "WE-DEMO1b.d64"]
-swaps = [{ disk = 2, at = 505.3, key = "p2fire" }]
+events = [{ at = 505.3, disk = 2 }, { at = 510.3, key = "p2fire" }]
 
 [demozoo.159884]
 title = "Demonstrationsprogram för VIC=64"
@@ -1224,7 +1223,7 @@ title = "Desert Dots 2"
 group = "Smash Designs"
 source = "script"
 disks = ["Desert_Dots_2.S1.D64", "Desert_Dots_2.S2.D64"]
-swaps = [{ disk = 2, at = 131.7, key = "space", key_delay = 16.2 }]
+events = [{ at = 131.7, disk = 2 }, { at = 147.9, key = "space" }]
 
 [demozoo.4311]
 title = "Desert Dream"
@@ -1232,7 +1231,7 @@ group = "Resource / Chorus"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["0-intro.d64", "1-parti.d64", "2-partii.d64"]
-swaps = [{ disk = 2, at = 446.5 }, { disk = 3, at = 894.8, key = "space" }]
+events = [{ at = 446.5, disk = 2 }, { at = 894.8, disk = 3 }, { at = 899.8, key = "space" }]
 
 [demozoo.363510]
 title = "Desirable"
@@ -1294,7 +1293,7 @@ group = "Oxyron / Crest"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["deus-s1.d64", "deus-s2.d64"]
-swaps = [{ disk = 2, at = 555.1 }]
+events = [{ at = 555.1, disk = 2 }]
 
 [demozoo.358159]
 title = "Deuter Megademo"
@@ -1349,7 +1348,7 @@ title = "Die Hard"
 group = "Rage For Order"
 source = "script"
 disks = ["diehard - wanderer.d64", "dieharddemo.d64"]
-swaps = [{ disk = 2, at = 466.8, key = "p1fire", key_delay = 35.5 }]
+events = [{ at = 466.8, disk = 2 }, { at = 502.3, key = "p1fire" }]
 
 [demozoo.327152]
 title = "Die Latex Zwillingen"
@@ -1484,7 +1483,7 @@ title = "Digital Magic"
 group = "Crest"
 source = "script"
 disks = ["DIGITAL1.D64", "DIGITAL2.D64"]
-swaps = [{ disk = 2, at = 165.2, key = "space", key_delay = 16.8 }]
+events = [{ at = 165.2, disk = 2 }, { at = 182.0, key = "space" }]
 
 [demozoo.302968]
 title = "Digital Music"
@@ -1872,7 +1871,7 @@ title = "Dolce far niente"
 group = "Charged"
 source = "script"
 disks = ["Dolce_Far_Niente_S1.d64", "Dolce_Far_Niente_S2.d64"]
-swaps = [{ disk = 2, at = 78.9, key = "space", key_delay = 13.8 }]
+events = [{ at = 78.9, disk = 2 }, { at = 92.7, key = "space" }]
 
 [demozoo.352424]
 title = "Dolphin Demo"
@@ -2058,7 +2057,7 @@ title = "DoubleSin Plasma"
 group = "Draken"
 source = "script"
 disks = ["WIRED.001.d64", "WIRED.002.d64"]
-swaps = [{ disk = 2, at = 141.7, key = "space", key_delay = 14.8 }]
+events = [{ at = 141.7, disk = 2 }, { at = 156.5, key = "space" }]
 
 [demozoo.80824]
 title = "Down Town"
@@ -2263,7 +2262,7 @@ group = "Vulture Design"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["Symphony 2005 Warez.d64", "You Can't Stop Us!.d64"]
-swaps = [{ disk = 2, at = 75.4, key = "space", key_delay = 17.5 }]
+events = [{ at = 75.4, disk = 2 }, { at = 92.9, key = "space" }]
 
 [demozoo.18267]
 title = "Drug Sixtyfour"
@@ -2303,7 +2302,7 @@ title = "Dryfall"
 group = "Mayday!"
 source = "script"
 disks = ["dryfall_side1_rc5.d64", "dryfall_side2_rc5.d64"]
-swaps = [{ disk = 2, at = 470.4 }]
+events = [{ at = 470.4, disk = 2 }]
 
 [demozoo.321043]
 title = "DS Intro"

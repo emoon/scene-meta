@@ -118,9 +118,11 @@ makes a contact sheet of screenshots.
 - `result`: `crashes-later` and `broken` from the verdict, `unknown` for a run
   with nothing moving on screen; a hand class `broken` is `broken`, and a
   hand-made schedule counts as running whatever the sweep saw.
-- `swaps` from the `schedule` view (`at` the insert, `until` the window's end,
-  `key` and `key_delay`), `keys` from the windows' `pre_keys`. A set classed
-  `standalone`, `collection` or `boot_fresh` gets its `kind` and no swaps.
+- `events` from the `schedule` view: a disk event per window (`at` the
+  insert, `until` the window's end), a key event `key_delay` after it where
+  the window has a `key` (5 s when it gives no delay), and one for each of
+  the windows' `pre_keys`. A set classed `standalone`, `collection` or
+  `boot_fresh` gets its `kind` and no events.
 - `boot_disk` and `boot_file` from `manual.json`, else the sweep's.
 - The SID model, where Demozoo's tags give one: `machine = "pal_1541_8580"`,
   or `sid = "8580"` on a machine that has no such preset. A 6581 is the

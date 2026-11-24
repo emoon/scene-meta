@@ -74,7 +74,7 @@ title = "A Fayre Glow"
 group = "Fairlight"
 source = "script"
 disks = ["a-fayre-glow-a.d64", "a-fayre-glow-b.d64"]
-swaps = [{ disk = 2, at = 378.7 }]
+events = [{ at = 378.7, disk = 2 }]
 
 [demozoo.361300]
 title = "A Fish Called"
@@ -107,7 +107,7 @@ title = "A három nyúl"
 group = "Lethargy"
 source = "script"
 disks = ["A Harom Nyul Side A [Lethargy].d64", "A Harom Nyul Side B [Lethargy].d64"]
-swaps = [{ disk = 2, at = 298.6 }]
+events = [{ at = 298.6, disk = 2 }]
 
 [demozoo.294820]
 title = "A Kind of Magic"
@@ -502,7 +502,7 @@ title = "Abstracto"
 group = "Blazon"
 source = "script"
 disks = ["Abstracto_Side1_FINAL.d64", "Abstracto_Side2_FINAL.d64"]
-swaps = [{ disk = 2, at = 441.8 }]
+events = [{ at = 441.8, disk = 2 }]
 
 [demozoo.336057]
 title = "Accept"
@@ -802,7 +802,7 @@ title = "Afterlife"
 group = "The Survivors"
 source = "script"
 disks = ["afterlife-survivors.d64", "afterlife_by_survivors.d64"]
-swaps = [{ disk = 2, at = 473.1, key = "p1fire", key_delay = 36.9 }]
+events = [{ at = 473.1, disk = 2 }, { at = 510.0, key = "p1fire" }]
 
 [demozoo.351094]
 title = "Aftershock"
@@ -861,8 +861,7 @@ title = "Aggressiv & Marked for Death"
 group = "Impulse"
 source = "ai"
 disks = ["Agressd2.D64", "Agressiv.D64"]
-swaps = [{ disk = 2, at = 558.2, key = "space", key_delay = 17.3 }]
-keys = [{ at = 60.9, key = "space" }, { at = 253.7, key = "p2fire" }, { at = 466.9, key = "space" }]
+events = [{ at = 60.9, key = "space" }, { at = 253.7, key = "p2fire" }, { at = 466.9, key = "space" }, { at = 558.2, disk = 2 }, { at = 575.5, key = "space" }]
 boot_file = "aggresiv & mfd/i"
 note = "Aggressiv & MFD: boot 'aggresiv & mfd/i' from Agressiv.D64 (disk order 2,1); space, p2fire to the Aggresiv picture; insert Agressd2 then space ~17M later loads a new part; not fully reproducible; disk 2: disk order must put Agressiv.D64 first"
 
@@ -957,7 +956,7 @@ title = "Album of the Year"
 group = "Onslaught"
 source = "script"
 disks = ["onslaught_album_of_the_year-A.D64", "onslaught_album_of_the_year-B.D64"]
-swaps = [{ disk = 2, at = 205.0, key = "space", key_delay = 18.1 }]
+events = [{ at = 205.0, disk = 2 }, { at = 223.1, key = "space" }]
 
 [demozoo.368198]
 title = "Alcoholic Holidays"
@@ -1038,7 +1037,7 @@ title = "Alfred J Kwak Demo"
 group = "New Dimension Crew"
 source = "script"
 disks = ["alfred.d64", "Alfred J Kwak [New Dimension Crew].d64", "alfred_j_kwak_demo-the_silence_ndc.d64"]
-swaps = [{ disk = 2, at = 88.4, key = "space", key_delay = 17.9 }, { disk = 3, at = 151.6, key = "p1fire", key_delay = 34.6 }]
+events = [{ at = 88.4, disk = 2 }, { at = 106.3, key = "space" }, { at = 151.6, disk = 3 }, { at = 186.2, key = "p1fire" }]
 
 [demozoo.51962]
 title = "Algae"
@@ -1050,7 +1049,7 @@ title = "Algo Dreams"
 group = "Algotech"
 source = "ai"
 disks = ["disk1side1.d64", "disk1side2.d64", "disk2side1.d64", "disk2side2.d64"]
-swaps = [{ disk = 2, at = 299.4 }, { disk = 3, at = 501.4 }]
+events = [{ at = 299.4, disk = 2 }, { at = 501.4, disk = 3 }]
 note = "Four sides. Prints 'Turn Disk' picture card, no key needed: insert 80M cycles after the card appears. Disk 2 (d1s2) at 295M, disk 3 (d2s1) after second Turn Disk card ~431M, insert ~494M. Disk 4 (d2s2) not confirmed: stuck on garbled bitmap in VICE after disk 3.; disk 2: Turn Disk card, no key; new Algotech pictures follow; disk 3: second Turn Disk card; new picture parts appear; x64sc died once in my run with insert at 495M"
 
 [demozoo.274840]
@@ -1113,7 +1112,7 @@ group = "Censor Design"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["AliensInWonderland_s1.d64", "AliensInWonderland_s2.d64"]
-swaps = [{ disk = 2, at = 413.8 }]
+events = [{ at = 413.8, disk = 2 }]
 
 [demozoo.167392]
 title = "ALIH's 28374648392929292 byte demo"
@@ -1132,7 +1131,7 @@ group = "Pretzel Logic / Offence / Bonzai / Atlantis / Genesis Project / Wrath D
 source = "script"
 machine = "pal_1541_8580"
 disks = ["ThePumpkins-Disk1.d64", "ThePumpkins-Disk2.d64", "ThePumpkins-Disk3.d64", "ThePumpkins-Disk4.d64"]
-swaps = [{ disk = 2, at = 496.5 }, { disk = 3, at = 1018.4 }, { disk = 4, at = 1473.9, key = "p2fire" }]
+events = [{ at = 496.5, disk = 2 }, { at = 1018.4, disk = 3 }, { at = 1473.9, disk = 4 }, { at = 1478.9, key = "p2fire" }]
 
 [demozoo.359155]
 title = "All Hell Breaks Loose"
@@ -1191,7 +1190,7 @@ title = "Aloft"
 group = "Genesis Project"
 source = "script"
 disks = ["Aloft-Side1.d64", "Aloft-Side2.d64", "Aloft-Side3.d64"]
-swaps = [{ disk = 2, at = 431.5 }, { disk = 3, at = 778.3 }]
+events = [{ at = 431.5, disk = 2 }, { at = 778.3, disk = 3 }]
 
 [demozoo.357489]
 title = "Alpha Rays"
@@ -1254,7 +1253,7 @@ group = "Samar Productions"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["Amanita_by_Samar_Disk_A.d64", "Amanita_by_Samar_Disk_B.d64"]
-swaps = [{ disk = 2, at = 326.8 }]
+events = [{ at = 326.8, disk = 2 }]
 
 [demozoo.356112]
 title = "Amazing"
@@ -1479,7 +1478,7 @@ title = "Angus' Rips #2"
 group = "Sharon"
 source = "script"
 disks = ["Angus Rips 2.d64", "Angus_rips2_23aug-Sharon.d64"]
-swaps = [{ disk = 2, at = 141.7, key = "space", key_delay = 17.8 }]
+events = [{ at = 141.7, disk = 2 }, { at = 159.5, key = "space" }]
 
 [demozoo.272496]
 title = "Angwy"
@@ -1501,7 +1500,7 @@ title = "Animated Artistry"
 group = "The Force"
 source = "script"
 disks = ["ANIMATED ART.D64", "Animated_Artistry.d64"]
-swaps = [{ disk = 2, at = 114.1, key = "p1fire", key_delay = 35.6 }]
+events = [{ at = 114.1, disk = 2 }, { at = 149.7, key = "p1fire" }]
 
 [demozoo.312410]
 title = "Animated Jeff"
@@ -1568,7 +1567,7 @@ title = "Another Beginning"
 group = "Prosonix / Offence"
 source = "script"
 disks = ["offence-anotherbeginning-disk1.d64", "offence-anotherbeginning-disk2.d64"]
-swaps = [{ disk = 2, at = 443.7, key = "space" }]
+events = [{ at = 443.7, disk = 2 }, { at = 448.7, key = "space" }]
 
 [demozoo.349801]
 title = "Another Concert"
@@ -1754,7 +1753,7 @@ group = "Lepsi / Miracles"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["appf1.d64", "appf2.d64"]
-swaps = [{ disk = 2, at = 548.0 }]
+events = [{ at = 548.0, disk = 2 }]
 
 [demozoo.130129]
 title = "Applause 2"
@@ -1799,7 +1798,7 @@ source = "script"
 machine = "ntsc_1541"
 sid = "8580"
 disks = ["arcanuma.d64", "arcanumb.d64"]
-swaps = [{ disk = 2, at = 289.8, key = "p2fire" }]
+events = [{ at = 289.8, disk = 2 }, { at = 294.8, key = "p2fire" }]
 
 [demozoo.338405]
 title = "Arcanum"
@@ -1850,7 +1849,7 @@ group = "Prosonix / Offence"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["area64-side1.d64", "area64-side2.d64"]
-swaps = [{ disk = 2, at = 502.7 }]
+events = [{ at = 502.7, disk = 2 }]
 
 [demozoo.300853]
 title = "Arena XIII"
@@ -1938,7 +1937,7 @@ title = "Aroused"
 group = "Proxima"
 source = "script"
 disks = ["Proxima_Aroused_Side_1.d64", "Proxima_Aroused_Side_2.d64"]
-swaps = [{ disk = 2, at = 348.7, key = "space", key_delay = 17.0 }]
+events = [{ at = 348.7, disk = 2 }, { at = 365.7, key = "space" }]
 
 [demozoo.175563]
 title = "Arpeggio"
@@ -2004,7 +2003,7 @@ title = "Artificial Intelligence"
 group = "Finnish Gold"
 source = "script"
 disks = ["ai_fig_1.d64", "ai_fig_2.d64"]
-swaps = [{ disk = 2, at = 466.7 }]
+events = [{ at = 466.7, disk = 2 }]
 
 [demozoo.161]
 title = "Artillery 100%"
@@ -2023,7 +2022,7 @@ title = "Artphosis"
 group = "Hitmen"
 source = "script"
 disks = ["artphosis-hitmen-s1.d64", "artphosis-hitmen-s2.d64"]
-swaps = [{ disk = 2, at = 1151.6 }]
+events = [{ at = 1151.6, disk = 2 }]
 
 [demozoo.378594]
 title = "Arttu 40"
@@ -2158,7 +2157,7 @@ title = "Ati Music Collection"
 group = "Trias"
 source = "script"
 disks = ["AMC.D64", "Magic Design A - Trias.d64", "Magic Design B - Trias.d64"]
-swaps = [{ disk = 2, at = 155.5, key = "p2fire", key_delay = 54.0 }, { disk = 3, at = 320.2, key = "p2fire", key_delay = 52.5 }]
+events = [{ at = 155.5, disk = 2 }, { at = 209.5, key = "p2fire" }, { at = 320.2, disk = 3 }, { at = 372.7, key = "p2fire" }]
 
 [demozoo.184773]
 title = "Atlantis"

@@ -1229,7 +1229,7 @@ group = "Mathic Entertainment"
 source = "ai"
 machine = "a500_1mb"
 disks = ["MATHIC-MegademoA.DMS", "MATHIC-MegademoB.DMS"]
-swaps = [{ disk = 2, at = 385.0, key = "lmb" }]
+events = [{ at = 385.0, disk = 2 }, { at = 390.0, key = "lmb" }]
 
 [demozoo.188221]
 title = "Maths Essay"
@@ -1321,7 +1321,7 @@ group = "Rage"
 source = "script"
 machine = "a1200"
 disks = ["RGE-MAX1.DMS", "RGE-MAX2.DMS"]
-swaps = [{ disk = 2, at = 47.3 }]
+events = [{ at = 47.3, disk = 2 }]
 
 [demozoo.262819]
 title = "Maximum Overdrive"
@@ -1342,7 +1342,7 @@ group = "Rage"
 source = "script"
 machine = "a1200"
 disks = ["rage1.dms", "rage2.dms", "rage3.dms"]
-swaps = [{ disk = 2, at = 132.4 }, { disk = 3, at = 191.4 }]
+events = [{ at = 132.4, disk = 2 }, { at = 191.4, disk = 3 }]
 
 [demozoo.169004]
 title = "Maximum Pleasure Party Intro"
@@ -2183,7 +2183,7 @@ group = "Budbrain"
 source = "ai"
 result = "broken"
 disks = ["BUDBRAIN-Megademo1a.dms", "BUDBRAIN-Megademo1b.dms"]
-swaps = [{ disk = 2, at = 317.8, key = "lmb" }]
+events = [{ at = 317.8, disk = 2 }, { at = 322.8, key = "lmb" }]
 note = "asks for disk 1 again 7 s after disk 2 loaded, which no swap can say: the player puts in disks 2 and up only"
 
 [demozoo.2183]
@@ -2201,7 +2201,7 @@ title = "Megademo"
 group = "Red Sector Inc."
 source = "script"
 disks = ["RSI-MegademoA.dms", "RSI-MegademoB.dms"]
-keys = [{ at = 86.1, key = "lmb" }]
+events = [{ at = 86.1, key = "lmb" }]
 
 [demozoo.22680]
 title = "Megademo"
@@ -2480,7 +2480,7 @@ title = "Megademo"
 group = "Ringard Production"
 source = "script"
 disks = ["Ringard-MegademoA.dms", "Ringard-MegademoB.dms"]
-swaps = [{ disk = 2, at = 26.5, key = "lmb" }]
+events = [{ at = 26.5, disk = 2 }, { at = 31.5, key = "lmb" }]
 
 [demozoo.221515]
 title = "Megademo"
@@ -2517,7 +2517,7 @@ group = "Death Handlers"
 source = "script"
 machine = "a1200"
 disks = ["DH-MegademoA.adf", "DH-MegademoB.adf"]
-swaps = [{ disk = 2, at = 106.0, key = "lmb" }]
+events = [{ at = 106.0, disk = 2 }, { at = 111.0, key = "lmb" }]
 
 [demozoo.225442]
 title = "Megademo"
@@ -2688,7 +2688,7 @@ title = "Megademo"
 group = "Shadow"
 source = "script"
 disks = ["Shadow-MegademoA.adf", "Shadow-MegademoB.adf"]
-swaps = [{ disk = 2, at = 177.1 }]
+events = [{ at = 177.1, disk = 2 }]
 
 [demozoo.321243]
 title = "Megademo"
@@ -2991,7 +2991,7 @@ group = "Scoopex"
 source = "ai"
 kind = "menu"
 disks = ["SCOOPEX-Megademo2A.DMS", "SCOOPEX-Megademo2B.DMS", "SCOOPEX-Megademo2C.DMS"]
-keys = [{ at = 30.0, key = "return" }, { at = 120.0, key = "return" }]
+events = [{ at = 30.0, key = "return" }, { at = 120.0, key = "return" }]
 note = "Scoopex Megademo II part list (preface, opening, ...)"
 
 [demozoo.265078]
@@ -3289,7 +3289,7 @@ title = "Megademo III"
 group = "Fairlight / North Star"
 source = "script"
 disks = ["NST_FLT-Megademo3A.dms", "NST_FLT-Megademo3B.dms"]
-keys = [{ at = 85.6, key = "lmb" }]
+events = [{ at = 85.6, key = "lmb" }]
 
 [demozoo.224508]
 title = "Megademo III"
@@ -4458,7 +4458,7 @@ group = "Byterapers"
 source = "ai"
 kind = "menu"
 disks = ["BRS-Meteli4A.dms", "BRS-Meteli4B.dms"]
-swaps = [{ disk = 2, at = 80.0, key = "rmb" }]
+events = [{ at = 80.0, disk = 2 }, { at = 85.0, key = "rmb" }]
 note = "part list under the Meteli IV logo, scroller"
 
 [demozoo.236342]
@@ -4587,7 +4587,7 @@ title = "Miami Vice Theme"
 group = "Swiss Cracking Association"
 source = "script"
 disks = ["SCA-MiamiViceA.adf", "SCA-MiamiViceB.adf", "SCA-MiamiViceC.adf", "SCA-MiamiViceD.adf"]
-swaps = [{ disk = 2, at = 100.2 }, { disk = 3, at = 196.2 }, { disk = 4, at = 292.2 }]
+events = [{ at = 100.2, disk = 2 }, { at = 196.2, disk = 3 }, { at = 292.2, disk = 4 }]
 
 [demozoo.52048]
 title = "MiBootie"
@@ -6496,7 +6496,7 @@ group = "Bomb"
 source = "script"
 machine = "a1200"
 disks = ["motion1.dms", "motion2.dms"]
-swaps = [{ disk = 2, at = 77.7 }]
+events = [{ at = 77.7, disk = 2 }]
 
 [demozoo.151402]
 title = "Motions"

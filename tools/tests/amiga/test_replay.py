@@ -25,7 +25,7 @@ class JudgeTest(unittest.TestCase):
 
 class ReportTest(unittest.TestCase):
     ENTRY = {"title": "x", "disks": ["a.adf", "b.adf"],
-             "swaps": [{"disk": 2, "at": 10, "key": "f1"}]}
+             "events": [{"at": 10, "disk": 2}, {"at": 15, "key": "f1"}]}
     ADF = player.media.Variant("floppy", ["/d/a.adf", "/d/b.adf"])
 
     def setUp(self):
@@ -55,7 +55,7 @@ class ReportTest(unittest.TestCase):
             return replay._one(7, entry, "a500")
 
     def test_an_entry_with_keys_is_played_again_without_them(self):
-        entry = {"title": "x", "swaps": [{"disk": 2, "at": 10, "key": "lmb"}]}
+        entry = {"title": "x", "events": [{"at": 10, "disk": 2}, {"at": 15, "key": "lmb"}]}
         line = self.one(entry, self.outcome("works", [True]),
                         self.outcome("works", [False]))
         self.assertEqual(line, "7 x: keys needed (as written: works, disks"
@@ -66,14 +66,14 @@ class ReportTest(unittest.TestCase):
         self.ready.assert_called_once_with(7, entry, "a500")
 
     def test_with_no_disk_to_put_in_the_run_itself_is_the_evidence(self):
-        entry = {"title": "x", "keys": [{"at": 10, "key": "lmb"}]}
+        entry = {"title": "x", "events": [{"at": 10, "key": "lmb"}]}
         line = self.one(entry, self.outcome("works", []),
                         self.outcome("crash", []))
         self.assertEqual(line, "7 x: keys needed (as written: works, disks"
                          " loaded y; without keys: crash, disks loaded n)")
 
     def test_an_entry_without_keys_is_played_once(self):
-        entry = {"title": "x", "swaps": [{"disk": 2, "at": 10}]}
+        entry = {"title": "x", "events": [{"at": 10, "disk": 2}]}
         line = self.one(entry, self.outcome("works-then-crash", [False]))
         self.assertEqual(line, "7 x: does not replay (as written:"
                          " works-then-crash, disks loaded n)")

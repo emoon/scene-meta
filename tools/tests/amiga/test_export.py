@@ -42,30 +42,38 @@ class EntryTest(unittest.TestCase):
     def test_other_machine(self):
         self.assertEqual(entry(variant(machine="a1200_fast"))["machine"], "a1200_fast")
 
-    def test_swaps_to_a_tenth_of_a_second_and_key_only_when_pressed(self):
+    def test_events_to_a_tenth_of_a_second_and_a_key_only_when_pressed(self):
         e = entry(variant(kind="floppy", disks=["/nas/DD-A.adf", "/nas/DD-B.dms", "/nas/DD-C.dms"],
                           swaps=[Swap(2, 536.88, "poll+click", key="lmb"),
                                  Swap(3, 800.0, "poll")]))
         self.assertEqual(e["disks"], ["DD-A.adf", "DD-B.dms", "DD-C.dms"])
-        self.assertEqual(e["swaps"], [{"disk": 2, "at": 536.9, "key": "lmb"},
-                                      {"disk": 3, "at": 800.0}])
+        self.assertEqual(e["events"], [{"at": 536.9, "disk": 2},
+                                       {"at": 541.9, "key": "lmb"},
+                                       {"at": 800.0, "disk": 3}])
 
-    def test_key_delay_only_when_the_key_did_not_follow_by_the_usual_5_s(self):
+    def test_a_swaps_key_is_an_event_when_it_was_pressed_else_5_s_on(self):
         e = entry(variant(kind="floppy", disks=["a", "b", "c", "d"], swaps=[
             Swap(2, 80.0, "poll+click+rclick", key="rmb", key_at=90.0),
             Swap(3, 536.88, "poll+click", key="lmb", key_at=541.88),
             Swap(4, 800.0, "scheduled", key="p2fire")]))
-        self.assertEqual(e["swaps"], [
-            {"disk": 2, "at": 80.0, "key": "rmb", "key_delay": 10.0},
-            {"disk": 3, "at": 536.9, "key": "lmb"},
-            {"disk": 4, "at": 800.0, "key": "p2fire"}])
+        self.assertEqual(e["events"], [
+            {"at": 80.0, "disk": 2}, {"at": 90.0, "key": "rmb"},
+            {"at": 536.9, "disk": 3}, {"at": 541.9, "key": "lmb"},
+            {"at": 800.0, "disk": 4}, {"at": 805.0, "key": "p2fire"}])
+
+    def test_events_are_in_the_order_they_happen(self):
+        v = variant(kind="floppy", disks=["a", "b"],
+                    swaps=[Swap(2, 80.0, "poll", key="lmb", key_at=80.0)])
+        v.keys = [Key(120.0, "space"), Key(30.0, "lmb")]
+        self.assertEqual(entry(v)["events"], [
+            {"at": 30.0, "key": "lmb"}, {"at": 80.0, "disk": 2},
+            {"at": 80.0, "key": "lmb"}, {"at": 120.0, "key": "space"}])
 
     def test_keys_with_no_swap(self):
         v = variant(kind="floppy", disks=["a", "b"])
         v.keys = [Key(86.13, "lmb")]
         e = entry(v)
-        self.assertEqual(e["keys"], [{"at": 86.1, "key": "lmb"}])
-        self.assertNotIn("swaps", e)
+        self.assertEqual(e["events"], [{"at": 86.1, "key": "lmb"}])
 
     def test_short_of_the_last_disk_says_so(self):
         e = entry(variant(kind="floppy", disks=["a", "b", "c"], reached=1))
@@ -74,7 +82,7 @@ class EntryTest(unittest.TestCase):
     def test_a_swap_into_another_drive_says_which(self):
         e = entry(variant(kind="floppy", disks=["a", "b", "c"], drives=2,
                           swaps=[Swap(3, 225.0, "poll", drive=2)]))
-        self.assertEqual(e["swaps"], [{"disk": 3, "drive": 2, "at": 225.0}])
+        self.assertEqual(e["events"], [{"at": 225.0, "disk": 3, "drive": 2}])
 
     def test_second_drive(self):
         e = entry(variant(kind="floppy", disks=["a", "b"], drives=2))
@@ -140,7 +148,7 @@ class EntryTest(unittest.TestCase):
         self.assertEqual((e["source"], e["kind"], e["note"]), ("ai", "menu", "part list"))
         e = entry(variant(kind="floppy", disks=["a", "b"]), cls=("broken-media", "truncated"))
         self.assertEqual(e["result"], "broken")
-        self.assertNotIn("swaps", e)
+        self.assertNotIn("events", e)
 
     def test_use_hd_takes_the_hd_variant(self):
         e = entry(variant(0, kind="floppy", disks=["a", "b"]),

@@ -1156,7 +1156,7 @@ title = "3D Demo 3: The Last Drop"
 group = "Lemon."
 source = "script"
 disks = ["Lemon_3DDemo3_TheLastDrop1.adf", "Lemon_3DDemo3_TheLastDrop2.adf", "Lemon_3DDemo3_TheLastDrop3.adf"]
-swaps = [{ disk = 2, at = 41.1 }, { disk = 3, at = 287.6 }]
+events = [{ at = 41.1, disk = 2 }, { at = 287.6, disk = 3 }]
 
 [demozoo.5312]
 title = "3D Demo II"
@@ -2305,7 +2305,7 @@ title = "9 Fingers"
 group = "Spaceballs"
 source = "script"
 disks = ["Spaceballs-9Fingers-A.dms", "Spaceballs-9Fingers-B.dms"]
-swaps = [{ disk = 2, at = 94.5 }]
+events = [{ at = 94.5, disk = 2 }]
 
 [demozoo.7253]
 title = "9 Lives"

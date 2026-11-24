@@ -49,7 +49,7 @@ title = "Kamishibai"
 group = "Atlantis"
 source = "script"
 disks = ["kamishibai_by_atlantis_1.d64", "kamishibai_by_atlantis_2.d64", "kamishibai_by_atlantis_3.d64"]
-swaps = [{ disk = 2, at = 261.9 }, { disk = 3, at = 527.3 }]
+events = [{ at = 261.9, disk = 2 }, { at = 527.3, disk = 3 }]
 
 [demozoo.349114]
 title = "Kangaroos"
@@ -62,7 +62,7 @@ group = "Noice"
 source = "script"
 machine = "ntsc_1541"
 disks = ["Kanon-korven [Side 1].d64", "Kanon-korven [Side 2].d64"]
-swaps = [{ disk = 2, at = 167.6, key = "space", key_delay = 17.4 }]
+events = [{ at = 167.6, disk = 2 }, { at = 185.0, key = "space" }]
 boot_file = "  kanon-korven  "
 
 [demozoo.343295]
@@ -130,7 +130,7 @@ group = "Afrika"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["afrika-kebab_pjuck_ii-side_a.d64", "afrika-kebab_pjuck_ii-side_b.d64"]
-swaps = [{ disk = 2, at = 344.4 }]
+events = [{ at = 344.4, disk = 2 }]
 
 [demozoo.290683]
 title = "Kebul!"
@@ -579,7 +579,7 @@ title = "Krestology"
 group = "Crest"
 source = "ai"
 disks = ["Krestology.s1.d64", "Krestology.s2.d64", "tools.d64"]
-swaps = [{ disk = 2, at = 261.9, key = "space", key_delay = 14.2 }]
+events = [{ at = 261.9, disk = 2 }, { at = 276.1, key = "space" }]
 note = "Krestology: side 1 -> side 2 is the chain (sweep accepted); disk 3 is a standalone tools disk; disk 2: from sweep flip 0 (accepted); upper limit not tested"
 
 [demozoo.340670]

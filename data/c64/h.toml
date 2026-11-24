@@ -437,7 +437,7 @@ group = "Klax"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["Stary_piernik_4a.d64", "Stary_piernik_4b.d64"]
-swaps = [{ disk = 2, at = 52.5, key = "p2fire", key_delay = 49.5 }]
+events = [{ at = 52.5, disk = 2 }, { at = 102.0, key = "p2fire" }]
 
 [demozoo.126491]
 title = "Hare Krishna"
@@ -632,7 +632,7 @@ title = "Heineken"
 group = "Death Sector"
 source = "script"
 disks = ["death sector - heineken.d64", "Heineken_1.d64"]
-swaps = [{ disk = 2, at = 97.3, key = "p1fire", key_delay = 34.9 }]
+events = [{ at = 97.3, disk = 2 }, { at = 132.2, key = "p1fire" }]
 
 [demozoo.334084]
 title = "Hel on Earth"
@@ -709,7 +709,7 @@ title = "Hellraiser"
 group = "New Dimension Crew"
 source = "script"
 disks = ["hellraiser_side_1-ndc.d64", "hellraiser_side_2-ndc.d64"]
-swaps = [{ disk = 2, at = 160.5, key = "space", key_delay = 18.8 }]
+events = [{ at = 160.5, disk = 2 }, { at = 179.3, key = "space" }]
 boot_file = " ndc_hellraiser "
 
 [demozoo.338418]
@@ -745,7 +745,7 @@ title = "Hental Mangover"
 group = "The Stock / Faces"
 source = "script"
 disks = ["hental.d64", "Hental_Mangover.d64"]
-swaps = [{ disk = 2, at = 71.6, key = "space", key_delay = 18.0 }]
+events = [{ at = 71.6, disk = 2 }, { at = 89.6, key = "space" }]
 
 [demozoo.179207]
 title = "Here"
@@ -789,14 +789,14 @@ title = "Hexagone"
 group = "Babygang / Sidchip Scratchers"
 source = "script"
 disks = ["Babygang - Hexagone-s1.d64", "Babygang - Hexagone-s2.d64"]
-swaps = [{ disk = 2, at = 150.6, key = "space", key_delay = 16.0 }]
+events = [{ at = 150.6, disk = 2 }, { at = 166.6, key = "space" }]
 
 [demozoo.392449]
 title = "Hexed"
 group = "Element54"
 source = "script"
 disks = ["hexed1.d64", "hexed2.d64"]
-swaps = [{ disk = 2, at = 271.7 }]
+events = [{ at = 271.7, disk = 2 }]
 
 [demozoo.351104]
 title = "Hexxwyrld"
@@ -831,7 +831,7 @@ group = "Siesta"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["HIFIVE-SIESTA-D1.d64", "HIFIVE-SIESTA-D2.d64"]
-swaps = [{ disk = 2, at = 258.9 }]
+events = [{ at = 258.9, disk = 2 }]
 
 [demozoo.184443]
 title = "Hi Tek"
@@ -939,7 +939,7 @@ title = "Hiraeth"
 group = "Xenon"
 source = "script"
 disks = ["hiraeth-disk1.d64", "hiraeth-disk2.d64"]
-swaps = [{ disk = 2, at = 419.8 }]
+events = [{ at = 419.8, disk = 2 }]
 
 [demozoo.10231]
 title = "Hires"
@@ -1150,7 +1150,7 @@ title = "Hollywood Strip Poker Professional"
 group = "NATO"
 source = "script"
 disks = ["HOLLYWOOD STRIP POKER DISK 1.D64", "hollywood strip poker disk 2.d64"]
-swaps = [{ disk = 2, at = 139.5, key = "space", key_delay = 19.3 }]
+events = [{ at = 139.5, disk = 2 }, { at = 158.8, key = "space" }]
 
 [demozoo.86581]
 title = "Holmes Family - Digitally Remastered"
@@ -1173,7 +1173,7 @@ title = "Holy Refuge"
 group = "No Name"
 source = "script"
 disks = ["Holy_Refuge_S1.D64", "Holy_Refuge_S2.D64"]
-swaps = [{ disk = 2, at = 292.3, key = "space", key_delay = 16.1 }]
+events = [{ at = 292.3, disk = 2 }, { at = 308.4, key = "space" }]
 
 [demozoo.361366]
 title = "Holy Shit"
@@ -1545,7 +1545,7 @@ group = "The Imperium Arts"
 source = "script"
 machine = "ntsc_1541"
 disks = ["Hypertronic_Side1.D64", "Hypertronic_Side2.D64"]
-swaps = [{ disk = 2, at = 349.9, key = "space", key_delay = 17.7 }]
+events = [{ at = 349.9, disk = 2 }, { at = 367.6, key = "space" }]
 boot_file = "hypertronic /tia"
 
 [demozoo.186145]

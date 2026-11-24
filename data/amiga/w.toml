@@ -156,7 +156,7 @@ group = "Imaginetics"
 source = "script"
 machine = "a1200"
 disks = ["walk2_1.dms", "walk2_2.dms"]
-swaps = [{ disk = 2, at = 102.3 }]
+events = [{ at = 102.3, disk = 2 }]
 
 [demozoo.257508]
 title = "Walker Demo 2 Trailer Intro"
@@ -1410,7 +1410,7 @@ group = "Rebels"
 source = "script"
 machine = "a1200"
 disks = ["rbs-ws1.dms", "rbs-ws2.dms", "rbs-ws3.dms"]
-swaps = [{ disk = 2, at = 142.2 }, { disk = 3, at = 365.1 }]
+events = [{ at = 142.2, disk = 2 }, { at = 365.1, disk = 3 }]
 
 [demozoo.228015]
 title = "What a Lame Demo"
@@ -1738,7 +1738,7 @@ group = "Masque"
 source = "ai"
 result = "crashes-later"
 disks = ["TRSI-WickedSensationA.DMS", "TRSI-WickedSensationB.DMS"]
-swaps = [{ disk = 2, at = 131.7 }]
+events = [{ at = 131.7, disk = 2 }]
 note = "after the swap part B stops on its own error screen: 'ILLEGAL OPCODE' at 159 s on an A500, 'CHK EXCEPTION' at 180 s on an A1200"
 
 [demozoo.240056]

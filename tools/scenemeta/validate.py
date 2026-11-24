@@ -76,20 +76,24 @@ def _sha256(v):
         return "must be 64 lowercase hex digits"
 
 
-def _swaps(v):
-    if problem := _SWAP_ROWS(v):
+def _events(v):
+    if problem := _EVENT_ROWS(v):
         return problem
-    for swap in v:
-        if "until" in swap and swap["until"] < swap["at"]:
+    for event in v:
+        if ("disk" in event) == ("key" in event):
+            return "an event is a disk or a key, one of them"
+        if "disk" not in event and event.keys() & {"drive", "until"}:
+            return "drive and until are of a disk"
+        if "until" in event and event["until"] < event["at"]:
             return "until is before at"
-        if "key_delay" in swap and "key" not in swap:
-            return "key_delay without key"
+    if any(b["at"] < a["at"] for a, b in zip(v, v[1:])):
+        return "must be in the order they happen"
 
 
 # A production booted from a later disk can ask for disk 1.
-_SWAP_ROWS = _rows((("disk", _number_from(1)), ("at", _seconds)),
-                   (("drive", _number_from(2)), ("until", _seconds),
-                    ("key", _text), ("key_delay", _seconds)))
+_EVENT_ROWS = _rows((("at", _seconds),),
+                    (("disk", _number_from(1)), ("drive", _number_from(2)),
+                     ("until", _seconds), ("key", _text)))
 
 # What a production needs to run. A variant may restate any of them.
 SETTINGS = {
@@ -97,8 +101,7 @@ SETTINGS = {
     "result": _one_of(schema.RESULTS),
     "kind": _one_of(schema.KINDS),
     "disks": _texts,
-    "swaps": _swaps,
-    "keys": _rows((("at", _seconds), ("key", _text))),
+    "events": _events,
     "run": _text,   # an executable, or a script that runs the parts
     "boot_disk": _number_from(1),
     "boot_file": _text,

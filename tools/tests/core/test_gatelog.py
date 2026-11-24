@@ -12,18 +12,19 @@ def rec(prod, seed, passed=True, sha256="aa", player="1", entry=None):
 
 class NameTest(unittest.TestCase):
     ENTRY = {"title": "x", "source": "script", "machine": "a1200",
-             "swaps": [{"disk": 2, "at": 800.0, "key": "lmb"}]}
+             "events": [{"at": 800.0, "disk": 2}, {"at": 805.0, "key": "lmb"}]}
 
     def test_two_entries_that_set_the_same_have_one_name(self):
-        other = {"swaps": [{"key": "lmb", "at": 800, "disk": 2}],
+        other = {"events": [{"disk": 2, "at": 800}, {"key": "lmb", "at": 805}],
                  "machine": "a1200", "title": "y", "group": "g",
                  "source": "ai", "note": "seen"}
         self.assertEqual(gatelog.name(other), gatelog.name(self.ENTRY))
 
     def test_another_setting_is_another_name(self):
         for change in ({"machine": "a500"}, {"result": "crashes-later"},
-                       {"swaps": [{"disk": 2, "at": 800.1, "key": "lmb"}]},
-                       {"swaps": [{"disk": 2, "at": 800.0}]}):
+                       {"events": [{"at": 800.1, "disk": 2},
+                                   {"at": 805.0, "key": "lmb"}]},
+                       {"events": [{"at": 800.0, "disk": 2}]}):
             self.assertNotEqual(gatelog.name({**self.ENTRY, **change}),
                                 gatelog.name(self.ENTRY), change)
 

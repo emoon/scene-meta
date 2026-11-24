@@ -1371,7 +1371,7 @@ title = "A Trip to Deep Bass"
 group = "Data X"
 source = "script"
 disks = ["DataX-TripToDeepBassA.dms", "DataX-TripToDeepBassB.dms"]
-swaps = [{ disk = 2, at = 75.0 }]
+events = [{ at = 75.0, disk = 2 }]
 
 [demozoo.137684]
 title = "A Trip To Mars"
@@ -2849,7 +2849,7 @@ title = "Alpha & Omega II: Downtown"
 group = "Pure Metal Coders"
 source = "script"
 disks = ["AlphaOmegaII-1.adf", "AlphaOmegaII-2.adf", "AlphaOmegaII-3.adf"]
-swaps = [{ disk = 2, at = 57.4 }, { disk = 3, at = 294.3 }]
+events = [{ at = 57.4, disk = 2 }, { at = 294.3, disk = 3 }]
 
 [demozoo.141979]
 title = "Alpha Complex Meeting Demo"
@@ -3514,7 +3514,7 @@ title = "Amos-Mega-Demo"
 group = "Dynamic Guys"
 source = "script"
 disks = ["DynamicGuys-MegademoD1.DMS", "DynamicGuys-MegademoD2.DMS"]
-swaps = [{ disk = 2, at = 39.2 }]
+events = [{ at = 39.2, disk = 2 }]
 
 [demozoo.300065]
 title = "Amotrax Demo 1"
@@ -3769,7 +3769,7 @@ title = "Andis Demo"
 group = "Classic"
 source = "script"
 disks = ["CLASSIC-Andis1.adf", "CLASSIC-Andis2.adf"]
-swaps = [{ disk = 2, at = 74.5, key = "lmb" }]
+events = [{ at = 74.5, disk = 2 }, { at = 79.5, key = "lmb" }]
 
 [demozoo.261875]
 title = "Andromeda"
@@ -6480,7 +6480,7 @@ group = "Tristar and Red Sector Inc."
 source = "script"
 machine = "a1200"
 disks = ["TRSI-ArtificeA.adf", "TRSI-ArtificeB.adf"]
-swaps = [{ disk = 2, at = 250.0 }]
+events = [{ at = 250.0, disk = 2 }]
 
 [demozoo.89547]
 title = "Artificial Paradise"

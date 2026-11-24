@@ -2531,7 +2531,7 @@ group = "Axis"
 source = "script"
 machine = "a1200_fast"
 disks = ["axs-pbk1.dms", "axs-pbk2.dms", "axs-pbk3.dms", "axs-pbk4.dms"]
-swaps = [{ disk = 2, at = 98.2 }, { disk = 3, at = 225.8 }, { disk = 4, at = 309.5 }]
+events = [{ at = 98.2, disk = 2 }, { at = 225.8, disk = 3 }, { at = 309.5, disk = 4 }]
 
 [demozoo.212319]
 title = "Picture Move"

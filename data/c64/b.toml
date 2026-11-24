@@ -270,7 +270,7 @@ title = "Bamse og Kyllingen"
 group = "Digital Dreams"
 source = "script"
 disks = ["bamseogkyllingen-digitaldreams.d64", "dig_-_bamse_og_kyllingen.d64"]
-swaps = [{ disk = 2, at = 157.0, key = "space", key_delay = 18.4 }]
+events = [{ at = 157.0, disk = 2 }, { at = 175.4, key = "space" }]
 
 [demozoo.344183]
 title = "Banana Intro 4"
@@ -434,7 +434,7 @@ title = "Bastard"
 group = "Breeze"
 source = "script"
 disks = ["SIDE1.D64", "SIDE2.D64"]
-swaps = [{ disk = 2, at = 140.4, key = "space", key_delay = 17.7 }]
+events = [{ at = 140.4, disk = 2 }, { at = 158.1, key = "space" }]
 
 [demozoo.332088]
 title = "Bat-Dance"
@@ -463,7 +463,7 @@ title = "Battle Stations"
 group = "Hokuto Force"
 source = "script"
 disks = ["Battle_Stations_Side1.d64", "Battle_Stations_Side2.d64"]
-swaps = [{ disk = 2, at = 204.0 }]
+events = [{ at = 204.0, disk = 2 }]
 
 [demozoo.186147]
 title = "Battling Seizure Robots"
@@ -553,7 +553,7 @@ title = "Bedlam"
 group = "Cross"
 source = "script"
 disks = ["Bedlam.d64", "Cross - Bedlam.d64"]
-swaps = [{ disk = 2, at = 132.5, key = "space", key_delay = 18.1 }]
+events = [{ at = 132.5, disk = 2 }, { at = 150.6, key = "space" }]
 
 [demozoo.124828]
 title = "Bee Together"
@@ -648,7 +648,7 @@ title = "Before You Go"
 group = "Internal Affairs / Paradize"
 source = "script"
 disks = ["Before_You_Go_V1.d64", "Before_You_Go_V2.d64"]
-swaps = [{ disk = 2, at = 200.3, key = "p1fire", key_delay = 27.1 }]
+events = [{ at = 200.3, disk = 2 }, { at = 227.4, key = "p1fire" }]
 
 [demozoo.375032]
 title = "Behind the Screen"
@@ -739,7 +739,7 @@ title = "Best on CRT"
 group = "Breeze"
 source = "script"
 disks = ["bestoncrt-s1.d64", "bestoncrt-s2.d64"]
-swaps = [{ disk = 2, at = 462.7 }]
+events = [{ at = 462.7, disk = 2 }]
 
 [demozoo.366009]
 title = "Best Then Demo"
@@ -757,7 +757,7 @@ title = "Better"
 group = "Onslaught"
 source = "script"
 disks = ["Better by Onslaught - Side 1.d64", "Better by Onslaught - Side 2.d64"]
-swaps = [{ disk = 2, at = 538.6 }]
+events = [{ at = 538.6, disk = 2 }]
 
 [demozoo.271040]
 title = "Better Dead Than Lamer"
@@ -828,7 +828,7 @@ title = "Beyond The Stars"
 group = "Skylight Designs"
 source = "script"
 disks = ["Beyond_The_Stars_S1.D64", "Beyond_The_Stars_S2.D64"]
-swaps = [{ disk = 2, at = 176.8, key = "space", key_delay = 15.3 }]
+events = [{ at = 176.8, disk = 2 }, { at = 192.1, key = "space" }]
 
 [demozoo.198437]
 title = "Beyond the Stars"
@@ -840,7 +840,7 @@ title = "Biba 2"
 group = "Arise"
 source = "ai"
 disks = ["biba2_a.d64", "biba2_b.d64"]
-swaps = [{ disk = 2, at = 203.0 }]
+events = [{ at = 203.0, disk = 2 }]
 note = "Biba 2: boot file must be the 43k 'B...demo' prg (2nd dir entry, autostart image:'B*'); it prints FLIP DISK on BASIC screen, after disk 2 the Biba 2 demo runs; disk 2: verified: insert at 200M, no key; demo logo + 'from planet Arise' appear ~35M later (boot_file B*)"
 
 [demozoo.44557]
@@ -849,7 +849,7 @@ group = "Arise"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["BIBA 3 SIDE A.D64", "BIBA 3 SIDE B.D64"]
-swaps = [{ disk = 2, at = 464.4 }]
+events = [{ at = 464.4, disk = 2 }]
 
 [demozoo.343883]
 title = "Biene Maja"
@@ -912,7 +912,7 @@ group = "Level 64"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["bike64A.D64", "bike64B.d64"]
-swaps = [{ disk = 2, at = 266.2, key = "p2fire" }]
+events = [{ at = 266.2, disk = 2 }, { at = 271.2, key = "p2fire" }]
 
 [demozoo.201999]
 title = "Bild-Dia-Show"
@@ -980,7 +980,7 @@ title = "Birthday Demo"
 group = "DMAgic"
 source = "script"
 disks = ["CORE01-demo.d64", "CORE01-SID-gfx-final.d64"]
-swaps = [{ disk = 2, at = 99.9, key = "p1fire", key_delay = 33.1 }]
+events = [{ at = 99.9, disk = 2 }, { at = 133.0, key = "p1fire" }]
 
 [demozoo.126196]
 title = "Birthday Demo"
@@ -1112,7 +1112,7 @@ title = "Black Magic 2"
 group = "International Commodore System"
 source = "script"
 disks = ["Black_magic_2_by_TG_JSL.d64", "notetomy5thdemo[tg-jsl].d64"]
-swaps = [{ disk = 2, at = 152.2, key = "p1fire", key_delay = 36.9 }]
+events = [{ at = 152.2, disk = 2 }, { at = 189.1, key = "p1fire" }]
 
 [demozoo.326306]
 title = "Black on Black"
@@ -1170,8 +1170,7 @@ title = "Blasphemy #2"
 group = "Hitmen"
 source = "ai"
 disks = ["Blas2a.d64", "Blas2b.d64"]
-swaps = [{ disk = 2, at = 304.5, key = "space", key_delay = 15.2 }]
-keys = [{ at = 60.9, key = "space" }, { at = 73.1, key = "down" }, { at = 83.2, key = "down" }, { at = 93.4, key = "down" }, { at = 103.5, key = "down" }, { at = 113.7, key = "down" }, { at = 123.8, key = "down" }, { at = 134.0, key = "down" }, { at = 144.1, key = "down" }, { at = 154.3, key = "down" }, { at = 164.4, key = "down" }, { at = 174.6, key = "down" }, { at = 184.7, key = "down" }, { at = 203.8, key = "return" }]
+events = [{ at = 60.9, key = "space" }, { at = 73.1, key = "down" }, { at = 83.2, key = "down" }, { at = 93.4, key = "down" }, { at = 103.5, key = "down" }, { at = 113.7, key = "down" }, { at = 123.8, key = "down" }, { at = 134.0, key = "down" }, { at = 144.1, key = "down" }, { at = 154.3, key = "down" }, { at = 164.4, key = "down" }, { at = 174.6, key = "down" }, { at = 184.7, key = "down" }, { at = 203.8, key = "return" }, { at = 304.5, disk = 2 }, { at = 319.7, key = "space" }]
 note = "Blasphemy #2: space on intro, 12x Down moves to a side-two tune, Return shows 'Turn side two'; insert, then space ~15M later; disk 2: key names down/Return are X keysyms Down/Return; no upper limit seen"
 
 [demozoo.200700]
@@ -1179,7 +1178,7 @@ title = "Blasphemy #3"
 group = "Hitmen"
 source = "script"
 disks = ["BLP3A.D64", "BLP3B.D64"]
-swaps = [{ disk = 2, at = 148.3, key = "space", key_delay = 13.2 }]
+events = [{ at = 148.3, disk = 2 }, { at = 161.5, key = "space" }]
 
 [demozoo.340421]
 title = "BlasterMania 4.1"
@@ -1266,7 +1265,7 @@ title = "Blood and Guts"
 group = "Swedish Cracking Association"
 source = "script"
 disks = ["Blood n Guts [Swedish Cracking Association] (side 1).d64", "Blood n Guts [Swedish Cracking Association] (side 2).d64"]
-swaps = [{ disk = 2, at = 135.7, key = "space", key_delay = 19.2 }]
+events = [{ at = 135.7, disk = 2 }, { at = 154.9, key = "space" }]
 
 [demozoo.368855]
 title = "Blood Drinkers"
@@ -1453,14 +1452,14 @@ title = "Bone Hard"
 group = "Impulse"
 source = "script"
 disks = ["Bone Harder [Side 1].d64", "Bone Harder [Side 2].d64"]
-swaps = [{ disk = 2, at = 151.9, key = "space", key_delay = 13.8 }]
+events = [{ at = 151.9, disk = 2 }, { at = 165.7, key = "space" }]
 
 [demozoo.6040]
 title = "Bone Harder"
 group = "Impulse"
 source = "script"
 disks = ["Bone Harder [Side 1].d64", "Bone Harder [Side 2].d64"]
-swaps = [{ disk = 2, at = 151.8, key = "space", key_delay = 17.1 }]
+events = [{ at = 151.8, disk = 2 }, { at = 168.9, key = "space" }]
 
 [demozoo.126539]
 title = "Bone Harder 2"
@@ -1807,7 +1806,7 @@ title = "Breitbandkatze 66%"
 group = "Reflex"
 source = "ai"
 disks = ["Breibandkatze_SideA.D64", "Breibandkatze_SideB.D64"]
-swaps = [{ disk = 1, at = 86.3, key = "space", key_delay = 20.3 }]
+events = [{ at = 86.3, disk = 1 }, { at = 106.6, key = "space" }]
 boot_disk = 2
 note = "Breitbandkatze 66%: boot SIDE B (disk 2, boot_disk=1) first; it asks for side A; disk 1: boot with disk 2 (SideB) in the drive; after TURN DISK & PRESS SPACE insert disk 1 (SideA), space +20M; prompt waits (no upper limit seen, up to 300M)"
 
@@ -1870,7 +1869,7 @@ group = "Bonzai"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["Bromance side 1.D64", "Bromance side 2.D64"]
-swaps = [{ disk = 2, at = 412.1 }]
+events = [{ at = 412.1, disk = 2 }]
 
 [demozoo.327320]
 title = "Bronx Part aka Wish You Were Here"
@@ -1893,7 +1892,7 @@ title = "Brunost"
 group = "Cocktail"
 source = "script"
 disks = ["Brunost_S1.d64", "Brunost_S2.d64"]
-swaps = [{ disk = 2, at = 137.9, key = "p1fire", key_delay = 35.9 }]
+events = [{ at = 137.9, disk = 2 }, { at = 173.8, key = "p1fire" }]
 
 [demozoo.369027]
 title = "Brush your PETSCII [99%]"
@@ -2076,7 +2075,7 @@ title = "Bumpmania / Pijak Potrafi"
 group = "Arise"
 source = "script"
 disks = ["arise_bumpmania-A.d64", "arise_bumpmania-B.d64"]
-swaps = [{ disk = 2, at = 101.9 }]
+events = [{ at = 101.9, disk = 2 }]
 
 [demozoo.370028]
 title = "Bumtsich"
@@ -2098,14 +2097,14 @@ title = "Bunt"
 group = "Vernunftmensch"
 source = "script"
 disks = ["bunker17.d64", "bunt.d64"]
-swaps = [{ disk = 2, at = 67.3, key = "p1fire", key_delay = 34.2 }]
+events = [{ at = 67.3, disk = 2 }, { at = 101.5, key = "p1fire" }]
 
 [demozoo.126832]
 title = "Burglary"
 group = "Nipson"
 source = "script"
 disks = ["Burglary_Side1.D64", "Burglary_Side2.D64"]
-swaps = [{ disk = 2, at = 411.4, key = "p2fire", key_delay = 43.0 }]
+events = [{ at = 411.4, disk = 2 }, { at = 454.4, key = "p2fire" }]
 
 [demozoo.346472]
 title = "Burkah Intro V2"
@@ -2127,7 +2126,7 @@ title = "Burning Chrome"
 group = "Chromance"
 source = "script"
 disks = ["BurningChrome.d64", "Chromance - Burning Chrome.d64"]
-swaps = [{ disk = 2, at = 91.0, key = "p2fire", key_delay = 48.0 }]
+events = [{ at = 91.0, disk = 2 }, { at = 139.0, key = "p2fire" }]
 
 [demozoo.293970]
 title = "Burp"

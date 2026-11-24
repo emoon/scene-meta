@@ -15,7 +15,7 @@ def script(title, **more):
 class DocumentTest(unittest.TestCase):
     def test_render_reads_back(self):
         entry = {"note": 'say "hi"\\ there\n', "title": "Désert", "source": "ai",
-                 "swaps": [{"disk": 2, "at": 536.9, "key": "lmb"}], "fast": "4M",
+                 "events": [{"at": 536.9, "disk": 2}, {"at": 541.9, "key": "lmb"}], "fast": "4M",
                  "machine": "a1200", "assign": {"Killer": "SYS:", "my dir": "x"},
                  "disks": ["a.adf", "b.adf"], "drives": 2,
                  "variant": [{"sha256": "ab" * 32, "file": "x.lha", "machine": "a500"}]}

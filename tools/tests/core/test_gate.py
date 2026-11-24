@@ -45,11 +45,12 @@ class JudgeTest(unittest.TestCase):
 
 
 PLAIN = {"title": "x"}
-SWAP = {"title": "x", "swaps": [{"disk": 2, "at": 100.0}]}
-# 169514 Persistence Megademo: a key on its swap. 10297 Megademo: a key alone.
-SWAP_KEY = {"title": "x", "swaps": [{"disk": 2, "at": 129.2, "key": "lmb",
-                                     "key_delay": 2}]}
-KEY = {"title": "x", "keys": [{"at": 86.1, "key": "lmb"}]}
+SWAP = {"title": "x", "events": [{"at": 100.0, "disk": 2}]}
+# 169514 Persistence Megademo: a key after its swap. 10297 Megademo: a key
+# alone.
+SWAP_KEY = {"title": "x", "events": [{"at": 129.2, "disk": 2},
+                                      {"at": 131.2, "key": "lmb"}]}
+KEY = {"title": "x", "events": [{"at": 86.1, "key": "lmb"}]}
 
 OK = Play(True, swaps=(SwapTaken(2, True),))
 UNLOADED = Play(True, swaps=(SwapTaken(2, False),))
@@ -65,48 +66,41 @@ class RunsTest(unittest.TestCase):
                                            Run(3), Run(3, late=True)])
 
     def test_keys_make_it_three_each_with_a_run_without_each_key(self):
-        entry = dict(KEY, keys=KEY["keys"] * 2)
+        entry = dict(KEY, events=KEY["events"] * 2)
         self.assertEqual(gate.runs(entry),
                          [Run(seed, without=k) if k is not None else Run(seed)
                           for seed in (1, 2, 3) for k in (None, 0, 1)])
 
-    def test_a_swaps_key_is_a_key(self):
+    def test_a_key_after_a_swap_is_a_key(self):
         self.assertEqual(gate.runs(SWAP_KEY)[:3],
                          [Run(1), Run(1, late=True), Run(1, without=0)])
 
 
 class AsPlayedTest(unittest.TestCase):
     ENTRY = {"title": "x",
-             "swaps": [{"disk": 2, "at": 10.0, "key": "lmb", "key_delay": 2},
-                       {"disk": 3, "at": 50.0, "key": "lmb"}],
-             "keys": [{"at": 70.0, "key": "lmb"}]}
+             "events": [{"at": 5.0, "key": "space"},
+                        {"at": 10.0, "disk": 2}, {"at": 12.0, "key": "lmb"},
+                        {"at": 50.0, "disk": 3, "drive": 2},
+                        {"at": 70.0, "key": "lmb"}]}
 
-    def swaps_and_keys(self, run):
-        played = gate.as_played(self.ENTRY, run)
-        return played["swaps"], played["keys"]
+    def events(self, run):
+        return gate.as_played(self.ENTRY, run)["events"]
 
     def test_as_written(self):
-        self.assertEqual(self.swaps_and_keys(Run(1)),
-                         (self.ENTRY["swaps"], self.ENTRY["keys"]))
+        self.assertEqual(self.events(Run(1)), self.ENTRY["events"])
 
-    def test_late_puts_every_disk_in_30_s_later_and_no_key(self):
-        swaps, keys = self.swaps_and_keys(Run(1, late=True))
-        self.assertEqual([s["at"] for s in swaps], [40.0, 80.0])
-        self.assertEqual(swaps[0]["key_delay"], 2)
-        self.assertEqual(keys, self.ENTRY["keys"])
+    def test_late_the_first_disk_and_all_after_it_are_30_s_later(self):
+        events = self.events(Run(1, late=True))
+        self.assertEqual([e["at"] for e in events],
+                         [5.0, 40.0, 42.0, 80.0, 100.0])
+        self.assertEqual(events[3], {"at": 80.0, "disk": 3, "drive": 2})
 
-    def test_without_a_swaps_key_its_disk_still_goes_in(self):
-        swaps, keys = self.swaps_and_keys(Run(1, without=1))
-        self.assertEqual(swaps, [self.ENTRY["swaps"][0], {"disk": 3, "at": 50.0}])
-        self.assertEqual(keys, self.ENTRY["keys"])
-
-    def test_a_key_delay_goes_with_its_key(self):
-        swaps, _ = self.swaps_and_keys(Run(1, without=0))
-        self.assertEqual(swaps[0], {"disk": 2, "at": 10.0})
-
-    def test_without_a_key_of_its_own(self):
-        swaps, keys = self.swaps_and_keys(Run(1, without=2))
-        self.assertEqual((swaps, keys), (self.ENTRY["swaps"], []))
+    def test_without_a_key_everything_else_still_happens(self):
+        written = self.ENTRY["events"]
+        self.assertEqual(self.events(Run(1, without=0)), written[1:])
+        self.assertEqual(self.events(Run(1, without=1)),
+                         written[:2] + written[3:])
+        self.assertEqual(self.events(Run(1, without=2)), written[:4])
 
     def test_the_entry_is_left_as_it_was(self):
         before = repr(self.ENTRY)
@@ -116,8 +110,7 @@ class AsPlayedTest(unittest.TestCase):
 
     def test_what_else_the_entry_says_is_played_too(self):
         self.assertEqual(gate.as_played(dict(PLAIN, machine="a1200"), Run(1)),
-                         {"title": "x", "machine": "a1200", "swaps": [],
-                          "keys": []})
+                         {"title": "x", "machine": "a1200", "events": []})
 
 
 class VerdictTest(unittest.TestCase):
@@ -150,15 +143,15 @@ class VerdictTest(unittest.TestCase):
             [(1, True, "came alive, no crash, every disk loaded,"
                        " every key needed"),
              (2, False, "disk 2 never loaded"),
-             (3, False, "key not needed: lmb of disk 2")])
+             (3, False, "key not needed: lmb at 131.2")])
 
     def test_the_first_seed_that_fails_is_the_one_named(self):
         j = self.said(PLAIN, {Run(2): Play(False)}, written=Play(True))
         self.assertEqual(str(j), "fail (seed 2: never came alive)")
 
     def test_a_pass_says_the_until_it_proved_of_each_swap(self):
-        entry = {"title": "x", "swaps": [{"disk": 2, "at": 100.0},
-                                         {"disk": 3, "at": 536.9}]}
+        entry = {"title": "x", "events": [{"at": 100.0, "disk": 2},
+                                          {"at": 536.9, "disk": 3}]}
         both = Play(True, swaps=(SwapTaken(2, True), SwapTaken(3, True)))
         j = self.said(entry, written=both, late=both)
         self.assertEqual(str(j), "pass (3 seeds: came alive, no crash, every"
@@ -180,8 +173,8 @@ class VerdictTest(unittest.TestCase):
                                  " later, crashed: guru; disk 2 until 130.0)")
 
     def test_until_is_of_each_swap_on_its_own(self):
-        entry = {"title": "x", "swaps": [{"disk": 2, "at": 100.0},
-                                         {"disk": 3, "at": 200.0}]}
+        entry = {"title": "x", "events": [{"at": 100.0, "disk": 2},
+                                          {"at": 200.0, "disk": 3}]}
         both = Play(True, swaps=(SwapTaken(2, True), SwapTaken(3, True)))
         late = Play(True, swaps=(SwapTaken(2, True), SwapTaken(3, False)))
         j = self.said(entry, {Run(3, late=True): late}, written=both, late=both)
@@ -201,12 +194,12 @@ class VerdictTest(unittest.TestCase):
     def test_a_key_that_makes_no_difference_fails_as_not_needed(self):
         j = self.said(SWAP_KEY, without=OK)
         self.assertFalse(j.passed)
-        self.assertEqual(str(j), "fail (seed 1: key not needed: lmb of disk 2;"
+        self.assertEqual(str(j), "fail (seed 1: key not needed: lmb at 131.2;"
                                  " disk 2 until 159.2)")
 
     def test_a_key_not_needed_on_one_seed_fails_on_that_seed(self):
         j = self.said(SWAP_KEY, {Run(2, without=0): OK})
-        self.assertEqual(str(j), "fail (seed 2: key not needed: lmb of disk 2;"
+        self.assertEqual(str(j), "fail (seed 2: key not needed: lmb at 131.2;"
                                  " disk 2 until 159.2)")
 
     def test_a_key_alone_is_needed_when_the_run_without_gets_less_far(self):
@@ -223,7 +216,7 @@ class VerdictTest(unittest.TestCase):
         self.assertEqual(str(j), "fail (seed 1: key not needed: lmb at 86.1)")
 
     def test_each_key_is_judged_on_its_own(self):
-        entry = dict(KEY, keys=KEY["keys"] + [{"at": 200, "key": "lmb"}])
+        entry = dict(KEY, events=KEY["events"] + [{"at": 200, "key": "lmb"}])
         far, short = Play(True, far=250.0), Play(True, far=90.0)
         j = self.said(entry, {Run(1, without=1): far}, written=far,
                       without=short)

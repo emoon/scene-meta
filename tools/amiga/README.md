@@ -60,8 +60,8 @@ So when the chosen run of a machine pressed anything, the player
 (`../scenemeta/amiga/player.py`) plays the entry of it: first with no key,
 then with one more of the run's presses at a time, the nearest to where it
 falls short first, and a press is kept only when the run without it got
-less far (as the gate measures it). The presses kept are the swap's `key`
-and the run's `keys`; at most 12 such runs are made. A press that only
+less far (as the gate measures it). The presses kept are the entry's key
+events; at most 12 such runs are made. A press that only
 counts with a later one is not found (Megademo 2 takes Return twice).
 
 `scenemeta fetch` downloads set members the NAS mirror is missing (it keeps one
@@ -122,15 +122,15 @@ played (a missing ROM or media) keeps the entry it has, and the command
 exits with status 1.
 
 `replay` (`../scenemeta/amiga/replay.py`) goes the other way: it plays an entry of the
-data files exactly as written (its machine, each disk in at its time, each
-key after its insert; no detector, no retries) and says whether every disk
+data files exactly as written (its machine, each disk in and each key
+pressed at the time of its event; no detector, no retries) and says whether every disk
 was loaded. The playing is done by the player (`../scenemeta/amiga/player.py`),
 the only code that turns an entry and its download into an emulator run;
-`shots` goes through it too. An entry with keys on its swaps is played once
+`shots` goes through it too. An entry with keys is played once
 more without them, which shows whether the keys are needed. Without `--ids`
-it plays every entry that has a key on a swap. The keys are `lmb`, `rmb`,
+it plays every entry that has events. The keys are `lmb`, `rmb`,
 `return`, `space`, `p1fire` and `p2fire`; a swapped disk goes into DF0, or
-into the drive its swap names (`drive = 2` is DF1).
+into the drive its event names (`drive = 2` is DF1).
 
 `gate` (`../scenemeta/amiga/gate.py`) prints `pass` or `fail` with the
 reason, one line per production of `--ids`. Without `--ids` it is the pass
@@ -140,13 +140,13 @@ download, is not played again, so a pass that was stopped goes on where it
 was. The rules are the core's
 (`../scenemeta/core/gate.py`), judged from the record every platform's
 player returns of a run. An entry is played on two seeds of the emulator's
-random state, three when it has swaps or keys, and passes when on every
+random state, three when it has events, and passes when on every
 seed:
 
 - the production comes alive, does not crash and loads every disk swapped
-  in (an entry with no swaps or keys is watched for three minutes);
-- the same holds with every disk put in 30 seconds later, a swap's key
-  following its disk;
+  in (an entry with no events is watched for three minutes);
+- the same holds with the first disk, and every event after it, 30 seconds
+  later;
 - no key can be left out: the run without it, as long, gets less far. It
   loads fewer disks, crashes, or last reads a disk earlier (a production
   left at its prompt reads no further).
@@ -175,7 +175,7 @@ entries that are `ai` or `verified`; the entries that could not be played,
 with what was missing; and the entries with no record of them as they are
 now, by today's player from today's download (`gate-stale`). With `--write` the first list is demoted: each becomes
 `result = "unknown"` with the reason as its note, without its machine,
-swaps and keys. The other lists are for a person. A later `export` puts
+events. The other lists are for a person. A later `export` puts
 the next best runs of a demoted production to the gate.
 `gate-stale` lists the gated entries whose download, or the player's
 version, is no longer the one of their records: those need the gate again.

@@ -1329,8 +1329,7 @@ group = "New Generation Crew"
 source = "ai"
 machine = "a1200"
 disks = ["NGC-TheAnimatunesA.DMS", "NGC-TheAnimatunesB.DMS"]
-swaps = [{ disk = 2, at = 40.0 }]
-keys = [{ at = 10.0, key = "lmb" }]
+events = [{ at = 10.0, key = "lmb" }, { at = 40.0, disk = 2 }]
 
 [demozoo.224989]
 title = "The Anime Slideshow 2 Intro"
@@ -1883,7 +1882,7 @@ title = "The Dark Ages"
 group = "Syntex"
 source = "script"
 disks = ["Syntex-DarkAges1.adf", "Syntex-DarkAges2.adf"]
-swaps = [{ disk = 2, at = 840.0 }]
+events = [{ at = 840.0, disk = 2 }]
 
 [demozoo.334345]
 title = "The Dark Ages"
@@ -3885,7 +3884,7 @@ title = "The Return"
 group = "Joker"
 source = "script"
 disks = ["Joker-ReturnA.adf", "Joker-ReturnB.adf"]
-swaps = [{ disk = 2, at = 117.8 }]
+events = [{ at = 117.8, disk = 2 }]
 
 [demozoo.190935]
 title = "The Return"
@@ -4013,7 +4012,7 @@ group = "Apex"
 source = "ai"
 machine = "a1200"
 disks = ["Apex-TheSaturneDayA.adf", "Apex-TheSaturneDayB.adf", "Apex-TheSaturneDayC.adf"]
-swaps = [{ disk = 2, at = 75.0, key = "lmb" }, { disk = 3, at = 250.0, key = "lmb", key_delay = 45.0 }]
+events = [{ at = 75.0, disk = 2 }, { at = 80.0, key = "lmb" }, { at = 250.0, disk = 3 }, { at = 295.0, key = "lmb" }]
 note = "disk 3 has to be in before 'INSERT DISK3 INTO DF0' shows at 285 s, and the click comes after it"
 
 [demozoo.158238]
@@ -4382,7 +4381,7 @@ group = "Status OK"
 source = "script"
 machine = "a1200"
 disks = ["disk1.DMS", "disk2.DMS"]
-swaps = [{ disk = 2, at = 42.1, key = "lmb" }]
+events = [{ at = 42.1, disk = 2 }, { at = 47.1, key = "lmb" }]
 
 [demozoo.253520]
 title = "The Terry and Johnny Show"
@@ -7948,7 +7947,7 @@ group = "Polka Brothers"
 source = "script"
 machine = "a1200_030"
 disks = ["PB-Twisted-A.DMS", "PB-Twisted-B.DMS", "PB-Twisted-C.DMS", "PB-Twisted-D.DMS"]
-swaps = [{ disk = 2, at = 54.1 }, { disk = 3, at = 240.8 }, { disk = 4, at = 344.2 }]
+events = [{ at = 54.1, disk = 2 }, { at = 240.8, disk = 3 }, { at = 344.2, disk = 4 }]
 
 [demozoo.241767]
 title = "Twisted"

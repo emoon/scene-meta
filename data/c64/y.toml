@@ -13,7 +13,7 @@ title = "Y2K (Duck & Cover)"
 group = "No Name"
 source = "ai"
 disks = ["DISK1.D64", "DISK2.D64", "STARTU~1.D64"]
-swaps = [{ disk = 1, at = 156.3, key = "space", key_delay = 18.3 }]
+events = [{ at = 156.3, disk = 1 }, { at = 174.6, key = "space" }]
 boot_disk = 3
 note = "Y2K: demo is on disk 3 (STARTU~1, boot_disk=2); DISK1/DISK2 are data disk sides; asks INSERT DATA-DISK SIDE 1 at ~100M; side 2 request not seen (x64sc died at ~250-350M twice); disk 1: boot with disk 3 in the drive; insert DISK1.D64 then space; prompt waits (no upper limit seen, 800M)"
 
@@ -140,7 +140,7 @@ group = "Tropyx"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["Symphony 2005 Warez.d64", "You Can't Stop Us!.d64"]
-swaps = [{ disk = 2, at = 74.1, key = "space", key_delay = 17.3 }]
+events = [{ at = 74.1, disk = 2 }, { at = 91.4, key = "space" }]
 
 [demozoo.3601]
 title = "You Know the Routine 2"

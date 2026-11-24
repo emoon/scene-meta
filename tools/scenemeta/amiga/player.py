@@ -1,8 +1,7 @@
 """The Amiga player: the only way from an entry of the data files
 (``data/amiga``, see docs/DESIGN.md) to an emulator run. ``play`` resolves the
-entry's machine and media, puts each disk in at its time, presses each key
-after its insert and each key of ``keys`` at its time, and returns what
-happened. Nothing is detected and nothing retried, so a run shows what the
+entry's machine and media, puts each disk in and presses each key at the time
+of its event, and returns what happened. Nothing is detected and nothing retried, so a run shows what the
 entry says, not what a sweep can find.
 """
 
@@ -17,10 +16,9 @@ from .machines import FPS
 # Raised with every change to what a run of an entry shows: what the gate
 # saw by another version is seen again (see core.gatelog.stale).
 VERSION = "2"
-KEY_DELAY = 5.0      # seconds from an insert to its key, when not given
 # Keep going this long after the last insert or key, to see the disk load.
 TAIL_FRAMES = emulator.AUTOSWAP_TAIL_FRAMES
-# An entry with no swaps or keys is watched this long.
+# An entry with no events is watched this long.
 PLAIN_FRAMES = 9000
 # A disk is loaded when it was read with the head past its first cylinders:
 # cylinders 0 and 1 are where a demo checks which disk is in.
@@ -130,7 +128,13 @@ def actions(entry, keys=True):
     drives = entry.get("drives", 1)
     first = drives + 1      # the first disk that is swapped in
     last = len(entry.get("disks", ()))
-    for swap in entry.get("swaps", []):
+    for event in entry.get("events", []):
+        frame = round(event["at"] * FPS)
+        if "key" in event:
+            if keys:
+                out.append((frame, "press", _key(event["key"])))
+            continue
+        swap = event
         if not first <= swap["disk"] <= last:
             # A disk that sits in a drive from the start is not swapped in.
             raise BadEntry(
@@ -141,15 +145,7 @@ def actions(entry, keys=True):
         if drive > drives:
             raise BadEntry(f"no drive {drive} to put disk {swap['disk']} in: "
                            f"the entry has drives = {drives}")
-        frame = round(swap["at"] * FPS)
         out.append((frame, "insert", (swap["disk"] - first, drive - 1)))
-        if "key" in swap and keys:
-            delay = swap.get("key_delay", KEY_DELAY)
-            out.append((frame + round(delay * FPS), "press",
-                        _key(swap["key"])))
-    if keys:
-        out += [(round(k["at"] * FPS), "press", _key(k["key"]))
-                for k in entry.get("keys", [])]
     return sorted(out)
 
 

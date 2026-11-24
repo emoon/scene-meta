@@ -281,7 +281,7 @@ title = "Odyssey"
 group = "Alcatraz"
 source = "script"
 disks = ["atz-ody1.dms", "atz-ody2.dms", "atz-ody3.dms", "atz-ody4.dms", "atz-ody5.dms"]
-swaps = [{ disk = 2, at = 519.8, key = "lmb" }, { disk = 3, at = 905.4, key = "lmb" }, { disk = 4, at = 1653.2, key = "lmb" }, { disk = 5, at = 2174.0, key = "lmb" }]
+events = [{ at = 519.8, disk = 2 }, { at = 524.8, key = "lmb" }, { at = 905.4, disk = 3 }, { at = 910.4, key = "lmb" }, { at = 1653.2, disk = 4 }, { at = 1658.2, key = "lmb" }, { at = 2174.0, disk = 5 }, { at = 2179.0, key = "lmb" }]
 
 [demozoo.233071]
 title = "Odyssey Preview"
@@ -1246,7 +1246,7 @@ group = "Complex"
 source = "script"
 machine = "a1200"
 disks = ["complex.origin-1.dms", "complex.origin-2.dms"]
-swaps = [{ disk = 2, at = 51.5, key = "lmb" }]
+events = [{ at = 51.5, disk = 2 }, { at = 56.5, key = "lmb" }]
 
 [demozoo.212626]
 title = "Original Rips 6"

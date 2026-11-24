@@ -137,18 +137,14 @@ def played(m, variant, entry, seed):
 def _entry(variant, a, presses):
     """The entry of attempt ``a`` with ``presses``, as far as the player
     reads one."""
-    keyed = {p.swap: p for p in presses}
-    swaps = []
-    for i, (frame, disk, _) in enumerate(a.swaps):
-        swaps.append({"disk": disk, "at": frame / FPS})
+    events = [{"at": p.frame / FPS, "key": p.key} for p in presses]
+    for frame, disk, _ in a.swaps:
+        events.append({"at": frame / FPS, "disk": disk})
         if a.unit:
-            swaps[-1]["drive"] = a.unit + 1
-        if i in keyed:
-            swaps[-1].update(key=keyed[i].key,
-                             key_delay=(keyed[i].frame - frame) / FPS)
-    return {"drives": a.drives, "disks": variant.disks, "swaps": swaps,
-            "keys": [{"at": p.frame / FPS, "key": p.key} for p in presses
-                     if p.swap is None]}
+            events[-1]["drive"] = a.unit + 1
+    # A disk before a key of the same moment, as the player does them.
+    events.sort(key=lambda e: (e["at"], "key" in e))
+    return {"drives": a.drives, "disks": variant.disks, "events": events}
 
 
 def _seen(m, variant, frames, opts, log, v):

@@ -727,7 +727,7 @@ title = "Nevermind"
 group = "Dominators"
 source = "script"
 disks = ["Dominators-NevermindA.dms", "Dominators-NevermindB.dms"]
-swaps = [{ disk = 2, at = 309.3 }]
+events = [{ at = 309.3, disk = 2 }]
 
 [demozoo.306102]
 title = "Nevermind 2 menu"

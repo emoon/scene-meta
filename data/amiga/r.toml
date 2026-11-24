@@ -967,7 +967,7 @@ title = "Real Empathy"
 group = "Virtual"
 source = "script"
 disks = ["Virtual-RealEmpathyA.dms", "Virtual-RealEmpathyB.dms"]
-swaps = [{ disk = 2, at = 385.7 }]
+events = [{ at = 385.7, disk = 2 }]
 
 [demozoo.18446]
 title = "Real FD"
@@ -2972,7 +2972,7 @@ group = "DTS"
 source = "script"
 machine = "a1200_fast"
 disks = ["rootro-disk_1.dms", "rootro-disk_2.dms"]
-swaps = [{ disk = 2, at = 264.7 }]
+events = [{ at = 264.7, disk = 2 }]
 
 [demozoo.6954]
 title = "Roots"

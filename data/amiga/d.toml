@@ -769,7 +769,7 @@ title = "De Profundis"
 group = "The Deadliners / Lemon. / Oxygene"
 source = "script"
 disks = ["DeProfundis_d1.adf", "DeProfundis_d2.adf"]
-swaps = [{ disk = 2, at = 247.0 }]
+events = [{ at = 247.0, disk = 2 }]
 
 [demozoo.372606]
 title = "Dead Ahead"
@@ -1126,7 +1126,7 @@ group = "CNCD / Parallax"
 source = "script"
 machine = "a1200_fast"
 disks = ["g95_pcd1.dms", "g95_pcd2.dms"]
-swaps = [{ disk = 2, at = 62.6 }]
+events = [{ at = 62.6, disk = 2 }]
 
 [demozoo.112566]
 title = "Deep"
@@ -2483,7 +2483,7 @@ group = "The Silents"
 source = "ai"
 result = "unknown"
 disks = ["SILENTS-DemonDownload-A.dms", "SILENTS-DemonDownload-B.dms"]
-swaps = [{ disk = 2, at = 82.2 }]
+events = [{ at = 82.2, disk = 2 }]
 note = "plays to 696 s, then Kickstart's insert-disk screen: it wants disk 1 back, which no swap can say"
 
 [demozoo.279966]
@@ -2918,7 +2918,7 @@ title = "Desert Dream"
 group = "Kefrens"
 source = "script"
 disks = ["Kefrens-DesertDreamA.adf", "Kefrens-DesertDreamB.dms"]
-swaps = [{ disk = 2, at = 536.9 }]
+events = [{ at = 536.9, disk = 2 }]
 
 [demozoo.355437]
 title = "Desert Warfare"
@@ -4019,7 +4019,7 @@ group = "Infect"
 source = "script"
 machine = "a1200"
 disks = ["iftdisk1.dms", "iftdisk2.dms"]
-swaps = [{ disk = 2, at = 30.9 }]
+events = [{ at = 30.9, disk = 2 }]
 
 [demozoo.247161]
 title = "Do You Like Triangles Pre-Release"
@@ -4591,7 +4591,7 @@ group = "Abyss"
 source = "script"
 machine = "a1200"
 disks = ["Abyss-DoveDisk1.adf", "Abyss-DoveDisk2.adf"]
-swaps = [{ disk = 2, at = 65.2 }]
+events = [{ at = 65.2, disk = 2 }]
 
 [demozoo.182364]
 title = "Down To Earth BBS Intro"

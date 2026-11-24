@@ -1366,7 +1366,7 @@ group = "Faculty"
 source = "script"
 machine = "a1200"
 disks = ["Faculty-LethalDose2A.adf", "Faculty-LethalDose2B.adf"]
-swaps = [{ disk = 2, at = 80.0, key = "rmb" }]
+events = [{ at = 80.0, disk = 2 }, { at = 85.0, key = "rmb" }]
 
 [demozoo.5319]
 title = "Lethal Exit"
@@ -1456,7 +1456,7 @@ source = "ai"
 machine = "a1200"
 result = "unknown"
 disks = ["NERVE_AXIS-LiarsA.dms", "NERVE_AXIS-LiarsB.dms"]
-swaps = [{ disk = 2, at = 65.0 }]
+events = [{ at = 65.0, disk = 2 }]
 note = "'INSERT DISK ONE' at 392 s, which no swap can say: the player puts in disks 2 and up only"
 
 [demozoo.213833]
@@ -2428,7 +2428,7 @@ title = "Living Legend"
 group = "Men Of Science"
 source = "script"
 disks = ["MOS-LivingLegend1.adf", "MOS-LivingLegend2.adf"]
-swaps = [{ disk = 2, at = 630.1, key = "lmb" }]
+events = [{ at = 630.1, disk = 2 }, { at = 635.1, key = "lmb" }]
 
 [demozoo.231789]
 title = "Lixard's First Demo"
@@ -3149,7 +3149,7 @@ group = "Suburban Base"
 source = "script"
 machine = "a1200"
 disks = ["Suburban-LurkingShadowsA.dms", "Suburban-LurkingShadowsB.dms"]
-swaps = [{ disk = 2, at = 61.6 }]
+events = [{ at = 61.6, disk = 2 }]
 
 [demozoo.235081]
 title = "Lustful Offer"

@@ -3718,7 +3718,7 @@ title = "Skizzo Demo 2"
 group = "Gnu Design"
 source = "script"
 disks = ["Skizzo_Demo_2-Disk1.DMS", "Skizzo_Demo_2-Disk2.DMS", "Skizzo_Demo_2-Disk3.DMS", "Skizzo_Demo_2-Disk4.DMS"]
-swaps = [{ disk = 2, at = 224.2 }, { disk = 3, at = 442.3 }, { disk = 4, at = 735.5 }]
+events = [{ at = 224.2, disk = 2 }, { at = 442.3, disk = 3 }, { at = 735.5, disk = 4 }]
 
 [demozoo.40854]
 title = "Skizzy"
@@ -4924,7 +4924,7 @@ source = "ai"
 machine = "a1200_fast"
 drives = 2
 disks = ["Nova-SohoA.dms", "Nova-SohoB.dms", "Nova-SohoC.dms"]
-swaps = [{ disk = 3, drive = 2, at = 225.0 }]
+events = [{ at = 225.0, disk = 3, drive = 2 }]
 
 [demozoo.336653]
 title = "Soil"
@@ -5623,7 +5623,7 @@ group = "The Silents"
 source = "script"
 machine = "a1200"
 disks = ["SILENTS-SoulKitchen-A.DMS", "SILENTS-SoulKitchen-B.DMS"]
-swaps = [{ disk = 2, at = 76.0, key = "lmb" }]
+events = [{ at = 76.0, disk = 2 }, { at = 81.0, key = "lmb" }]
 
 [demozoo.254203]
 title = "Soulless"
@@ -6406,7 +6406,7 @@ title = "Speed"
 group = "Sim Productions"
 source = "script"
 disks = ["Sim-SpeedA.adf", "Sim-SpeedB.adf", "Sim-SpeedC.adf", "Sim-SpeedD.adf"]
-swaps = [{ disk = 2, at = 54.0 }, { disk = 3, at = 107.4 }, { disk = 4, at = 137.3 }]
+events = [{ at = 54.0, disk = 2 }, { at = 107.4, disk = 3 }, { at = 137.3, disk = 4 }]
 
 [demozoo.7250]
 title = "Speed"
@@ -9775,7 +9775,7 @@ group = "Rebels"
 source = "script"
 machine = "a1200"
 disks = ["dd-rbs1.dms", "dd-rbs2.dms"]
-swaps = [{ disk = 2, at = 280.2 }]
+events = [{ at = 280.2, disk = 2 }]
 
 [demozoo.231736]
 title = "Switchblade's Balls"

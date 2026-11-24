@@ -969,7 +969,7 @@ group = "Batman Group"
 source = "script"
 machine = "a500_1mb"
 disks = ["Batman_Rises_disk1.adf", "Batman_Rises_disk2.adf"]
-swaps = [{ disk = 2, at = 281.6 }]
+events = [{ at = 281.6, disk = 2 }]
 
 [demozoo.231961]
 title = "Batman Style"
@@ -981,7 +981,7 @@ title = "Batman Vuelve"
 group = "Batman Group"
 source = "script"
 disks = ["BG-BatmanVuelveA.dms", "BG-BatmanVuelveB.dms"]
-swaps = [{ disk = 2, at = 66.1, key = "lmb" }]
+events = [{ at = 66.1, disk = 2 }, { at = 71.1, key = "lmb" }]
 
 [demozoo.331089]
 title = "Batman!"
@@ -1919,7 +1919,7 @@ group = "Ramses"
 source = "script"
 machine = "a1200_030"
 disks = ["Ramses-BenoitA.dms", "Ramses-BenoitB.dms"]
-swaps = [{ disk = 2, at = 68.5 }]
+events = [{ at = 68.5, disk = 2 }]
 
 [demozoo.136457]
 title = "Benoît"
@@ -2053,7 +2053,7 @@ title = "Beton"
 group = "Defensywa"
 source = "script"
 disks = ["Defensywa-BetonA.adf", "Defensywa-BetonB.adf"]
-swaps = [{ disk = 2, at = 59.0, key = "lmb" }]
+events = [{ at = 59.0, disk = 2 }, { at = 64.0, key = "lmb" }]
 
 [demozoo.225247]
 title = "Betoniporsas"
@@ -2356,7 +2356,7 @@ group = "Axis"
 source = "script"
 machine = "a1200_fast"
 disks = ["Axis-BigTimeSensuality-A.adf", "Axis-BigTimeSensuality-B.dms"]
-swaps = [{ disk = 2, at = 71.5 }]
+events = [{ at = 71.5, disk = 2 }]
 
 [demozoo.37013]
 title = "Big!"

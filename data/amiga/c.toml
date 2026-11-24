@@ -3284,7 +3284,7 @@ group = "Appendix"
 source = "script"
 machine = "a500_1mb"
 disks = ["APPENDIX-ContagionA.dms", "APPENDIX-ContagionB.dms"]
-swaps = [{ disk = 2, at = 357.7 }]
+events = [{ at = 357.7, disk = 2 }]
 
 [demozoo.214452]
 title = "Contaxtro 1"

@@ -20,11 +20,10 @@ def samples(spec):
 
 class ActionsTest(unittest.TestCase):
     ENTRY = {"disks": ["a.adf", "b.adf", "c.adf"],
-             "swaps": [{"disk": 2, "at": 66.1, "key": "lmb"},
-                       {"disk": 3, "at": 120.0}]}
+             "events": [{"at": 66.1, "disk": 2}, {"at": 71.1, "key": "lmb"},
+                        {"at": 120.0, "disk": 3}]}
 
     def test_as_written(self):
-        # The key goes down 5 s after its insert.
         self.assertEqual(player.actions(self.ENTRY), [
             (3305, "insert", (0, 0)), (3555, "press", "lmb"), (6000, "insert", (1, 0))])
 
@@ -32,34 +31,34 @@ class ActionsTest(unittest.TestCase):
         self.assertEqual(player.actions(self.ENTRY, keys=False),
                          [(3305, "insert", (0, 0)), (6000, "insert", (1, 0))])
 
-    def test_key_delay(self):
+    def test_a_disk_goes_in_before_a_key_of_the_same_moment(self):
         entry = {"disks": ["a", "b"],
-                 "swaps": [{"disk": 2, "at": 10, "key": "lmb", "key_delay": 1.5}]}
+                 "events": [{"at": 10, "disk": 2}, {"at": 10, "key": "lmb"}]}
         self.assertEqual(player.actions(entry),
-                         [(500, "insert", (0, 0)), (575, "press", "lmb")])
+                         [(500, "insert", (0, 0)), (500, "press", "lmb")])
 
     def test_disks_in_the_other_drives_are_not_on_the_swap_list(self):
         # With two drives disk 3 is the first one swapped in.
         entry = {"drives": 2, "disks": ["a", "b", "c"],
-                 "swaps": [{"disk": 3, "at": 10}]}
+                 "events": [{"at": 10, "disk": 3}]}
         self.assertEqual(player.actions(entry), [(500, "insert", (0, 0))])
 
     def test_a_swap_goes_into_the_drive_it_names(self):
         # Soho: disk 2 sits in DF1 from the start, disk 3 goes in there.
         entry = {"drives": 2, "disks": ["a", "b", "c"],
-                 "swaps": [{"disk": 3, "drive": 2, "at": 10}]}
+                 "events": [{"at": 10, "disk": 3, "drive": 2}]}
         self.assertEqual(player.actions(entry), [(500, "insert", (0, 1))])
 
     def test_a_drive_the_machine_has_not_got_is_an_error(self):
         entry = {"disks": ["a", "b"],
-                 "swaps": [{"disk": 2, "drive": 2, "at": 10}]}
+                 "events": [{"at": 10, "disk": 2, "drive": 2}]}
         with self.assertRaisesRegex(BadEntry, "no drive 2 .* drives = 1"):
             player.actions(entry)
 
     def test_a_disk_that_cannot_go_in_is_an_error_not_another_disk(self):
         def swap(disk, **entry):
             return {"disks": ["a", "b", "c"], **entry,
-                    "swaps": [{"disk": disk, "at": 10}]}
+                    "events": [{"at": 10, "disk": disk}]}
         # Disk 1 sits in the drive, and with two drives so does disk 2.
         with self.assertRaisesRegex(BadEntry, "disk 1: .* are 2 to 3"):
             player.actions(swap(1))
@@ -69,28 +68,29 @@ class ActionsTest(unittest.TestCase):
             player.actions(swap(4))
         # One disk, or a hard drive: nothing to swap.
         with self.assertRaisesRegex(BadEntry, "disk 2: there is none"):
-            player.actions({"swaps": [{"disk": 2, "at": 10}]})
+            player.actions({"events": [{"at": 10, "disk": 2}]})
 
     def test_keys_of_their_own(self):
-        # No disk goes in; the entry's keys come in time order.
-        entry = {"keys": [{"at": 90, "key": "lmb"}, {"at": 10, "key": "lmb"}]}
+        # No disk goes in.
+        entry = {"events": [{"at": 10, "key": "lmb"}, {"at": 90, "key": "lmb"}]}
         self.assertEqual(player.actions(entry),
                          [(500, "press", "lmb"), (4500, "press", "lmb")])
         self.assertEqual(player.actions(entry, keys=False), [])
 
     def test_a_key_it_cannot_press_is_an_error_naming_the_key(self):
         entry = {"disks": ["a", "b"],
-                 "swaps": [{"disk": 2, "at": 10, "key": "f1"}]}
+                 "events": [{"at": 10, "disk": 2}, {"at": 15, "key": "f1"}]}
         with self.assertRaisesRegex(CannotPlay, "'f1': the keys are lmb, rmb"):
             player.actions(entry)
-        entry = {"keys": [{"at": 10, "key": "Return"}]}
+        entry = {"events": [{"at": 10, "key": "Return"}]}
         with self.assertRaisesRegex(CannotPlay, "'Return'"):
             player.actions(entry)
 
-    def test_every_key_name_on_a_swap_and_of_its_own(self):
+    def test_every_key_name_before_a_swap_and_after_it(self):
         for key in ("lmb", "rmb", "space", "return", "p1fire", "p2fire"):
-            entry = {"disks": ["a", "b"], "keys": [{"at": 1, "key": key}],
-                     "swaps": [{"disk": 2, "at": 10, "key": key}]}
+            entry = {"disks": ["a", "b"],
+                     "events": [{"at": 1, "key": key}, {"at": 10, "disk": 2},
+                                {"at": 15, "key": key}]}
             self.assertEqual(player.actions(entry), [
                 (50, "press", key), (500, "insert", (0, 0)), (750, "press", key)])
 
@@ -286,7 +286,7 @@ class FramesTest(unittest.TestCase):
         self.assertEqual(player.frames_of({"title": "x"}), player.PLAIN_FRAMES)
 
     def test_a_set_plays_until_its_last_disk_has_loaded(self):
-        entry = {"disks": ["a", "b"], "swaps": [{"disk": 2, "at": 100}]}
+        entry = {"disks": ["a", "b"], "events": [{"at": 100, "disk": 2}]}
         self.assertEqual(player.frames_of(entry), 5000 + player.TAIL_FRAMES)
 
 
@@ -294,7 +294,7 @@ class PlayTest(unittest.TestCase):
     SET = player.media.Variant("floppy", ["/d/a.adf", "/d/b.adf"])
     ENTRY = {"title": "x", "machine": "a1200", "drives": 1,
              "disks": ["a.adf", "b.adf"],
-             "swaps": [{"disk": 2, "at": 20, "key": "lmb"}]}
+             "events": [{"at": 20, "disk": 2}, {"at": 25, "key": "lmb"}]}
     # Disk 2 goes in at frame 1000 and is read past its first cylinders.
     LOG = RunLog(samples([(750, 700, 40), (1250, 1100, 12)]), [], 0, False, "")
 
@@ -333,7 +333,7 @@ class PlayTest(unittest.TestCase):
     def test_a_disk_in_another_drive_is_put_there_and_looked_for_there(self):
         three = player.media.Variant("floppy", ["/d/a.adf", "/d/b.adf", "/d/c.adf"])
         entry = {"title": "x", "drives": 2, "disks": ["a.adf", "b.adf", "c.adf"],
-                 "swaps": [{"disk": 3, "drive": 2, "at": 20}]}
+                 "events": [{"at": 20, "disk": 3, "drive": 2}]}
         # DF0 is past its first cylinders and stays; DF1 loads disk 3.
         log = RunLog(samples([(750, 700, 40, 71), (1250, 1100, 40, 12)]),
                      [], 0, False, "")
@@ -352,7 +352,7 @@ class PlayTest(unittest.TestCase):
 
     def test_the_record_numbers_a_disk_as_the_entry_does(self):
         entry = {**self.ENTRY, "drives": 2, "disks": ["a.adf", "b.adf", "c.adf"],
-                 "swaps": [{"disk": 3, "at": 20}]}
+                 "events": [{"at": 20, "disk": 3}]}
         with mock.patch.object(player.media, "variants", return_value=(
                 [player.media.Variant("floppy", ["/d/a.adf", "/d/b.adf",
                                                  "/d/c.adf"])], [])), \
@@ -423,7 +423,7 @@ class PlayTest(unittest.TestCase):
                     "c.adf")
 
     def test_a_key_it_cannot_press_is_found_before_the_download_is_unpacked(self):
-        entry = {**self.ENTRY, "swaps": [{"disk": 2, "at": 10, "key": "f1"}]}
+        entry = {**self.ENTRY, "events": [{"at": 10, "disk": 2}, {"at": 15, "key": "f1"}]}
         self.cannot(entry, BadEntry, "'f1'").assert_not_called()
 
     def test_a_machine_it_does_not_have_is_an_error_naming_it(self):

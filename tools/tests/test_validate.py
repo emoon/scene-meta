@@ -25,7 +25,7 @@ title = "Desert Dream"
 group = "Kefrens"
 source = "script"
 disks = ["DesertDream-A.adf", "DesertDream-B.adf"]
-swaps = [{ disk = 2, at = 536.9, key = "lmb" }]
+events = [{ at = 536.9, disk = 2 }, { at = 541.9, key = "lmb" }]
 
 [demozoo.4321]
 title = "Dream On"
@@ -34,7 +34,7 @@ csdb = 77
 machine = "a1200"
 fast = "4M"
 assign = { Killer = "SYS:" }
-keys = [{ at = 60.9, key = "space" }]
+events = [{ at = 60.9, key = "space" }]
 result = "crashes-later"
 note = "guru after the end part"
 
@@ -113,22 +113,49 @@ class ValidateTest(unittest.TestCase):
         got = self.one('[csdb.77]\ntitle = "Dz"\nsource = "ai"\n')
         self.assertEqual(got, ["[csdb.77] csdb.77 is already in d.toml [demozoo.4321]"])
 
-    def test_swap_needs_time(self):
-        got = self.one('[demozoo.5]\ntitle = "Dz"\nsource = "ai"\nswaps = [{ disk = 2 }]\n')
-        self.assertEqual(got, ["[demozoo.5] swaps needs at"])
+    def event(self, events):
+        return self.one('[demozoo.5]\ntitle = "Dz"\nsource = "ai"\n'
+                        f'events = [{events}]\n')
+
+    def test_event_needs_time(self):
+        self.assertEqual(self.event("{ disk = 2 }"),
+                         ["[demozoo.5] events needs at"])
+
+    def test_event_is_a_disk_or_a_key(self):
+        said = ["[demozoo.5] events an event is a disk or a key, one of them"]
+        self.assertEqual(self.event("{ at = 9.0 }"), said)
+        self.assertEqual(self.event('{ at = 9.0, disk = 2, key = "lmb" }'), said)
+
+    def test_only_a_disk_has_a_drive_and_a_window(self):
+        said = ["[demozoo.5] events drive and until are of a disk"]
+        self.assertEqual(self.event('{ at = 9.0, key = "lmb", drive = 2 }'), said)
+        self.assertEqual(self.event('{ at = 9.0, key = "lmb", until = 12.0 }'),
+                         said)
+
+    def test_events_are_in_the_order_they_happen(self):
+        self.assertEqual(
+            self.event('{ at = 9.0, disk = 2 }, { at = 9.0, key = "lmb" }'), [])
+        self.assertEqual(
+            self.event('{ at = 9.0, key = "lmb" }, { at = 8.9, disk = 2 }'),
+            ["[demozoo.5] events must be in the order they happen"])
+
+    def test_swaps_and_keys_are_not_fields(self):
+        got = self.one('[demozoo.5]\ntitle = "Dz"\nsource = "ai"\n'
+                       'swaps = [{ disk = 2, at = 9.0 }]\n'
+                       'keys = [{ at = 3.0, key = "lmb" }]\n')
+        self.assertEqual(sorted(got), ["[demozoo.5] unknown field keys",
+                                       "[demozoo.5] unknown field swaps"])
 
     def test_swap_drive_is_a_later_drive(self):
         def one(drive):
-            return self.one('[demozoo.5]\ntitle = "Dz"\nsource = "ai"\n'
-                            f'swaps = [{{ disk = 3, drive = {drive}, at = 9.0 }}]\n')
+            return self.event(f"{{ at = 9.0, disk = 3, drive = {drive} }}")
         self.assertEqual(one(2), [])
-        self.assertEqual(one(1), ["[demozoo.5] swaps drive must be a whole"
+        self.assertEqual(one(1), ["[demozoo.5] events drive must be a whole"
                                   " number, 2 or more"])
 
     def test_swap_window_backwards(self):
-        got = self.one('[demozoo.5]\ntitle = "Dz"\nsource = "ai"\n'
-                       'swaps = [{ disk = 2, at = 9.0, until = 3.0 }]\n')
-        self.assertEqual(got, ["[demozoo.5] swaps until is before at"])
+        got = self.event("{ at = 9.0, disk = 2, until = 3.0 }")
+        self.assertEqual(got, ["[demozoo.5] events until is before at"])
 
     def test_variant_needs_hash(self):
         got = self.one('[demozoo.5]\ntitle = "Dz"\nsource = "ai"\n'

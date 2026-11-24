@@ -43,7 +43,7 @@ title = "Jail Trellis"
 group = "Blaze"
 source = "script"
 disks = ["jail trellis - blaze.d64", "jail_trellis.d64"]
-swaps = [{ disk = 2, at = 90.2, key = "space", key_delay = 18.6 }]
+events = [{ at = 90.2, disk = 2 }, { at = 108.8, key = "space" }]
 
 [demozoo.351737]
 title = "Jailbird's Nightmare"
@@ -605,7 +605,7 @@ title = "JustinBlue"
 group = "Graffity"
 source = "script"
 disks = ["justinblue_a.g64", "justinblue_b.g64"]
-swaps = [{ disk = 2, at = 479.7, key = "space" }]
+events = [{ at = 479.7, disk = 2 }, { at = 484.7, key = "space" }]
 
 [demozoo.308159]
 title = "Justine 4 All"

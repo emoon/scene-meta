@@ -65,7 +65,7 @@ title  = "Desert Dream"
 group  = "Kefrens"
 source = "script"
 disks  = ["DesertDream-A.adf", "DesertDream-B.adf"]
-swaps  = [{ disk = 2, at = 536.9, key = "lmb" }]
+events = [{ at = 536.9, disk = 2 }, { at = 541.9, key = "lmb" }]
 ```
 
 The key is `[demozoo.N]`, or `[csdb.N]` when Demozoo has no entry. The other
@@ -82,21 +82,22 @@ appears once per platform, as a key or as a cross-reference.
 | `boot` | `floppy` or `hd`: what to start it from, when that is not the first thing the download offers (an executable that only runs from a floppy, a disk set better run from its hard-drive archive) |
 | `kind` | `collection`, `standalone`, `separate-disks`, `menu`, `boot_fresh` |
 | `disks` | file names in disk order: a multi-disk production's, or the one disk meant where the download has several |
-| `swaps` | disk swaps: `disk`, `at`, and optionally `drive`, `until`, `key`, `key_delay` |
-| `keys` | key presses at fixed times, other than a swap's own key: `at`, `key` |
+| `events` | what is done while it plays, in the order it happens: each has `at` and is a disk that goes in (`disk`, and optionally `drive`, `until`) or a key pressed (`key`) |
 | `run` | the file to start, when the obvious one is wrong or ambiguous: an executable, or the download's launcher script (see below) |
 | `boot_disk`, `boot_file` | the disk (1-based) and file to boot, when not the first |
 | `assign` | AmigaDOS assigns, e.g. `{ Killer = "SYS:" }` |
 | `note` | free text |
 | `variant` | see below |
 
-All times are seconds of emulated time since power-on. In a swap, `disk` is
+All times are seconds of emulated time since power-on. An event is one
+thing done at its `at`, and says which by the field it has: `disk` or
+`key`, one of them. Another kind of event will be another field. `disk` is
 the number of the disk that goes in (1 when the production booted from a
-later one), `at` is an insert time known to work and `until` the last one
-known to work; `key` is pressed `key_delay` seconds after the insert (on
-Amiga 5 when not given). `drive` is the drive the disk goes into when that
+later one), `at` then an insert time known to work and `until` the last one
+known to work. `drive` is the drive the disk goes into when that
 is not the first: 2 or more, and no more than the machine's `drives` (on
-Amiga `drive = 2` is DF1). Key names are lowercase (`space`, `return`,
+Amiga `drive = 2` is DF1). A key that has a disk taken is an event of its
+own, after the disk's. Key names are lowercase (`space`, `return`,
 `p1fire`, `p2fire`, `lmb`, `rmb`: the fire button of the joystick in port 1
 or 2, the left and the right mouse button). On Amiga these six are all
 there are, and another name is an error.

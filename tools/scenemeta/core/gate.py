@@ -9,7 +9,7 @@ seed does.
 
 import dataclasses
 
-SEEDS = (1, 2, 3)    # the last one only for an entry with swaps or keys
+SEEDS = (1, 2, 3)    # the last one only for an entry with events
 LATE = 30.0          # seconds: a consumer's emulator has not the sweeper's timing
 
 
@@ -66,47 +66,45 @@ def judge(play):
                      (", every disk loaded" if play.swaps else ""))
 
 
+def swaps_of(entry):
+    """The events of ``entry`` that put a disk in."""
+    return [e for e in entry.get("events", ()) if "disk" in e]
+
+
 def keys_of(entry):
-    """``(where, i)`` of each key of ``entry``: those of its swaps, then
-    its ``keys``."""
-    return [("swaps", i) for i, s in enumerate(entry.get("swaps", ()))
-            if "key" in s] + [("keys", i) for i in range(len(entry.get("keys", ())))]
+    """The index in its ``events`` of each key of ``entry``."""
+    return [i for i, e in enumerate(entry.get("events", ())) if "key" in e]
 
 
 def runs(entry):
     """The runs that show whether ``entry`` is correct."""
     keys = range(len(keys_of(entry)))
     out = []
-    for seed in SEEDS if entry.get("swaps") or keys else SEEDS[:2]:
+    for seed in SEEDS if entry.get("events") else SEEDS[:2]:
         out.append(Run(seed))
-        if entry.get("swaps"):
+        if swaps_of(entry):
             out.append(Run(seed, late=True))
         out += [Run(seed, without=k) for k in keys]
     return out
 
 
 def as_played(entry, run):
-    """``entry`` as ``run`` plays it. A swap's key follows its disk."""
-    swaps = [dict(s) for s in entry.get("swaps", ())]
-    keys = list(entry.get("keys", ()))
+    """``entry`` as ``run`` plays it. Late, the first disk and everything
+    after it happen LATE seconds later: a key pressed for a disk follows
+    it."""
+    events = [dict(e) for e in entry.get("events", ())]
     if run.late:
-        for swap in swaps:
-            swap["at"] += LATE
+        first = next(i for i, e in enumerate(events) if "disk" in e)
+        for event in events[first:]:
+            event["at"] += LATE
     if run.without is not None:
-        where, i = keys_of(entry)[run.without]
-        if where == "keys":
-            del keys[i]
-        else:
-            del swaps[i]["key"]
-            swaps[i].pop("key_delay", None)
-    return dict(entry, swaps=swaps, keys=keys)
+        del events[keys_of(entry)[run.without]]
+    return dict(entry, events=events)
 
 
 def _key(entry, k):
-    where, i = keys_of(entry)[k]
-    item = entry[where][i]
-    return f"{item['key']} " + (f"at {item['at']:g}" if where == "keys"
-                                else f"of disk {item['disk']}")
+    event = entry["events"][keys_of(entry)[k]]
+    return f"{event['key']} at {event['at']:g}"
 
 
 def far(play):
@@ -122,7 +120,7 @@ def _fault(entry, plays, seed):
     said = judge(written)
     if not said.passed:
         return said.reason
-    if entry.get("swaps"):
+    if swaps_of(entry):
         said = judge(plays[Run(seed, late=True)])
         if not said.passed:
             return f"with the disks put in {LATE:g} s later, {said.reason}"
@@ -140,7 +138,7 @@ def _until(entry, plays, seeds):
                    for p in (plays[Run(seed, late)] for seed in seeds))
     return tuple(swap["at"] + LATE if loaded(i, True)
                  else swap["at"] if loaded(i, False) else None
-                 for i, swap in enumerate(entry.get("swaps", ())))
+                 for i, swap in enumerate(swaps_of(entry)))
 
 
 def _on_seed(entry, plays, seed):
@@ -160,7 +158,7 @@ def verdict(entry, plays):
                   for seed in sorted({r.seed for r in plays}))
     until = _until(entry, plays, [seed for seed, _ in seeds])
     proved = "".join(f"; disk {swap['disk']} until {u:.1f}"
-                     for swap, u in zip(entry.get("swaps", ()), until)
+                     for swap, u in zip(swaps_of(entry), until)
                      if u is not None)
     for seed, said in seeds:
         if not said.passed:

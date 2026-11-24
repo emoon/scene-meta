@@ -10,7 +10,7 @@ from . import gatelog
 
 _SAYS_IT_RUNS = (None, "crashes-later")
 # What an entry says of a run: not kept by one that does not say it runs.
-_OF_A_RUN = ("machine", "drives", "swaps", "keys")
+_OF_A_RUN = ("machine", "drives", "events")
 
 
 @dataclasses.dataclass

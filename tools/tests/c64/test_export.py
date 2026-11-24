@@ -70,14 +70,19 @@ class EntryTest(unittest.TestCase):
         e = entry(variant(machine="ntsc_1541", verdict="works-then-crash"))
         self.assertEqual((e["machine"], e["result"]), ("ntsc_1541", "crashes-later"))
 
-    def test_swaps_to_a_tenth_of_a_second(self):
+    def test_events_to_a_tenth_of_a_second(self):
         e = entry(variant(TWO + ("/nas/eod-c.d64",)), Seen(windows=[
             window(2, 92.04, key="Return", key_delay=20.06),
             window(3, 666.0, until=700.44)]))
         self.assertEqual(e["disks"], ["eod-a.d64", "eod-b.d64", "eod-c.d64"])
-        self.assertEqual(e["swaps"], [
-            {"disk": 2, "at": 92.0, "key": "return", "key_delay": 20.1},
-            {"disk": 3, "at": 666.0, "until": 700.4}])
+        self.assertEqual(e["events"], [
+            {"at": 92.0, "disk": 2}, {"at": 112.1, "key": "return"},
+            {"at": 666.0, "disk": 3, "until": 700.4}])
+
+    def test_a_key_with_no_delay_follows_its_disk_by_5_s(self):
+        e = entry(variant(TWO), Seen(windows=[window(2, 92.04, key="space")]))
+        self.assertEqual(e["events"], [{"at": 92.0, "disk": 2},
+                                       {"at": 97.0, "key": "space"}])
 
     def test_short_of_the_last_disk_says_so(self):
         e = entry(variant(TWO + ("c",), reached=2), Seen(windows=[window(2, 92)]))
@@ -86,28 +91,30 @@ class EntryTest(unittest.TestCase):
     def test_window_without_a_known_insert_is_no_swap(self):
         e = entry(variant(TWO, reached=1), Seen("boot_fresh", True, "side B boots alone", windows=[
             window(2, None, note="reset and reload")]))
-        self.assertNotIn("swaps", e)
+        self.assertNotIn("events", e)
         self.assertEqual((e["kind"], e["source"]), ("boot_fresh", "ai"))
         self.assertEqual(e["note"], "side B boots alone; disk 2: reset and reload")
 
-    def test_keys_before_the_inserts_in_time_order(self):
+    def test_keys_before_the_inserts_are_events_in_time_order(self):
         e = entry(variant(TWO + ("c",)), Seen("flips", True, "menu", windows=[
             window(2, 200, pre_keys=[[60.92, "space"]]),
             window(3, 900, pre_keys=[[500, "space"], [30, "F1"]])]))
-        self.assertEqual(e["keys"], [{"at": 30, "key": "f1"}, {"at": 60.9, "key": "space"},
-                                     {"at": 500, "key": "space"}])
+        self.assertEqual(e["events"], [
+            {"at": 30, "key": "f1"}, {"at": 60.9, "key": "space"},
+            {"at": 200, "disk": 2}, {"at": 500, "key": "space"},
+            {"at": 900, "disk": 3}])
 
     def test_hand_made_schedule_runs_whatever_the_sweep_saw(self):
         e = entry(variant(TWO, verdict="no-activity", reached=1),
                   Seen("flips", True, "needs Return", windows=[window(2, 300)]))
         self.assertNotIn("result", e)
-        self.assertEqual(e["swaps"], [{"disk": 2, "at": 300}])
+        self.assertEqual(e["events"], [{"at": 300, "disk": 2}])
 
-    def test_disks_that_do_not_follow_each_other_have_no_swaps(self):
+    def test_disks_that_do_not_follow_each_other_have_no_events(self):
         for cls in ("standalone", "collection"):
             e = entry(variant(TWO), Seen(cls, windows=[window(2, 300)]))
             self.assertEqual(e["kind"], cls)
-            self.assertNotIn("swaps", e)
+            self.assertNotIn("events", e)
             self.assertNotIn("note", e)
 
     def test_broken_by_hand(self):
@@ -116,7 +123,7 @@ class EntryTest(unittest.TestCase):
         self.assertEqual((e["result"], e["source"], e["note"]),
                          ("broken", "ai", "protection trap"))
         self.assertNotIn("kind", e)
-        self.assertNotIn("swaps", e)
+        self.assertNotIn("events", e)
         self.assertNotIn("machine", e)
 
     def test_boot_disk_counts_from_one(self):

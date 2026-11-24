@@ -263,12 +263,16 @@ class NeededPressesTest(unittest.TestCase):
         return entries, tries
 
     @staticmethod
-    def loads(when):
+    def keys(entry):
+        return [e for e in entry["events"] if "key" in e]
+
+    @classmethod
+    def loads(cls, when):
         """A run that comes alive and loads each swap ``when(swap, keys)``
         says."""
         return lambda entry: gate.Play(True, swaps=tuple(
-            gate.SwapTaken(s["disk"], bool(when(s, entry["keys"])))
-            for s in entry["swaps"]))
+            gate.SwapTaken(s["disk"], bool(when(s, cls.keys(entry))))
+            for s in entry["events"] if "disk" in s))
 
     def test_disk_that_loads_without_the_click(self):
         # Desert Dream reads disk 2 slowly, from its low cylinders: the
@@ -277,8 +281,8 @@ class NeededPressesTest(unittest.TestCase):
         entries, tries = self.run_try([(26845, 2, "poll+click")],
                                       self.loads(lambda s, keys: True))
         self.assertEqual(entries, [{
-            "drives": 1, "disks": ["a.adf", "b.adf"], "keys": [],
-            "swaps": [{"disk": 2, "at": 536.9}]}])
+            "drives": 1, "disks": ["a.adf", "b.adf"],
+            "events": [{"at": 536.9, "disk": 2}]}])
         self.assertEqual((tries[-1].swaps, tries[-1].presses, tries[-1].reached),
                          ([(26845, 2, "poll+click")], (), 2))
         self.assertIsNone(tries[-1].record().swaps[0].key)
@@ -286,10 +290,10 @@ class NeededPressesTest(unittest.TestCase):
     def test_disk_that_waits_for_the_click(self):
         # Odyssey: "insert disk 2 and press left mouse button".
         entries, tries = self.run_try([(26845, 2, "poll+click")],
-                                      self.loads(lambda s, keys: "key" in s))
-        self.assertEqual([e["swaps"] for e in entries], [
-            [{"disk": 2, "at": 536.9}],
-            [{"disk": 2, "at": 536.9, "key": "lmb", "key_delay": 5.0}]])
+                                      self.loads(lambda s, keys: keys))
+        self.assertEqual([e["events"] for e in entries], [
+            [{"at": 536.9, "disk": 2}],
+            [{"at": 536.9, "disk": 2}, {"at": 541.9, "key": "lmb"}]])
         self.assertEqual(tries[-1].presses, (Press(27095, "lmb", 0),))
         swap, = tries[-1].record().swaps
         self.assertEqual((swap.key, swap.key_at), ("lmb", 541.9))
@@ -300,11 +304,12 @@ class NeededPressesTest(unittest.TestCase):
         # one, 5 s on, has the disk taken.
         entries, tries = self.run_try(
             [(4000, 2, "poll+click+rclick")],
-            self.loads(lambda s, keys: s.get("key") == "rmb"))
-        self.assertEqual([e["swaps"][0].get("key") for e in entries],
-                         [None, "lmb", "rmb"])
+            self.loads(lambda s, keys: [k for k in keys if k["key"] == "rmb"]))
+        self.assertEqual([[k["key"] for k in self.keys(e)] for e in entries],
+                         [[], ["lmb"], ["rmb"]])
         self.assertEqual(tries[-1].presses, (Press(4500, "rmb", 0),))
-        self.assertEqual(entries[-1]["swaps"][0]["key_delay"], 10.0)
+        self.assertEqual(entries[-1]["events"], [{"at": 80.0, "disk": 2},
+                                                 {"at": 90.0, "key": "rmb"}])
 
     def test_key_before_the_disk_is_asked_for(self):
         # Megademo 2: its credits page only moves on Return, then it wants
@@ -314,7 +319,7 @@ class NeededPressesTest(unittest.TestCase):
             [(6100, 2, "poll")], nudge="key_every",
             far=self.loads(lambda s, keys: any(
                 k["key"] == "return" and k["at"] < s["at"] for k in keys)))
-        self.assertEqual([e["keys"] for e in entries], [
+        self.assertEqual([self.keys(e) for e in entries], [
             [], [{"at": 120.0, "key": "return"}]])
         self.assertEqual(tries[-1].presses, (Press(6000, "return"),))
         key, = tries[-1].record().keys
@@ -326,26 +331,26 @@ class NeededPressesTest(unittest.TestCase):
             [(7400, 2, "poll")], nudge="key_every",
             far=self.loads(lambda s, keys: any(
                 k["key"] == "return" and k["at"] < s["at"] for k in keys)))
-        self.assertEqual([[k["key"] for k in e["keys"]] for e in entries],
+        self.assertEqual([[k["key"] for k in self.keys(e)] for e in entries],
                          [[], ["space"], ["return"]])
         self.assertEqual(tries[-1].presses, (Press(6000, "return"),))
 
     def test_click_that_starts_it(self):
         # "HIT MOUSE!": alive from 35 s on the retry that clicks every 30 s.
         entries, tries = self.run_try(
-            [], lambda entry: gate.Play(bool(entry["keys"])),
+            [], lambda entry: gate.Play(bool(entry["events"])),
             variant=media.Variant("floppy", ["a.adf"]),
             nudge="click_every", alive_from=1750)
-        self.assertEqual([e["keys"] for e in entries],
+        self.assertEqual([e["events"] for e in entries],
                          [[], [{"at": 30.0, "key": "lmb"}]])
         self.assertEqual(tries[-1].presses, (Press(1500, "lmb"),))
 
     def test_a_run_the_player_does_not_repeat_stays_with_what_was_kept(self):
         # The click has the disk loaded, and the run then crashes.
         def far(entry):
-            return gate.Play(True, "alert:00000004" if "key" in entry["swaps"][0]
-                             else None,
-                             (gate.SwapTaken(2, "key" in entry["swaps"][0]),))
+            clicked = bool(self.keys(entry))
+            return gate.Play(True, "alert:00000004" if clicked else None,
+                             (gate.SwapTaken(2, clicked),))
         entries, tries = self.run_try([(26845, 2, "poll+click")], far)
         self.assertEqual(len(entries), 2)
         self.assertIsNone(tries[-1].play)
@@ -370,8 +375,8 @@ class NeededPressesTest(unittest.TestCase):
             variant=media.Variant("floppy", ["a.adf", "b.adf", "c.adf"]),
             drives=2, unit=1)
         self.assertEqual(entries, [{
-            "drives": 2, "disks": ["a.adf", "b.adf", "c.adf"], "keys": [],
-            "swaps": [{"disk": 3, "at": 80.0, "drive": 2}]}])
+            "drives": 2, "disks": ["a.adf", "b.adf", "c.adf"],
+            "events": [{"at": 80.0, "disk": 3, "drive": 2}]}])
         self.assertEqual((tries[-1].unit, tries[-1].presses), (1, ()))
         self.assertEqual(tries[-1].record().swaps[0].drive, 2)
 
@@ -413,7 +418,7 @@ class ClicksOnlyTest(unittest.TestCase):
                 "a500", alone, [], RunLog([], [], 0, False, ""),
                 gate.Play(True, alone.crash, tuple(
                     gate.SwapTaken(s["disk"], True)
-                    for s in ready.entry["swaps"])))
+                    for s in ready.entry["events"] if "disk" in s)))
 
         with mock.patch.object(sweep, "attempt", fake), \
                 mock.patch.object(player.Ready, "play", play):
@@ -424,8 +429,8 @@ class ClicksOnlyTest(unittest.TestCase):
         calls, tries = self.run_try(verdict.Verdict("works", 20))
         (ready, seed), = calls
         self.assertEqual(ready.entry, {
-            "drives": 1, "disks": ["a.adf", "b.adf"], "swaps": [],
-            "keys": [{"at": 86.1, "key": "lmb"}]})
+            "drives": 1, "disks": ["a.adf", "b.adf"],
+            "events": [{"at": 86.1, "key": "lmb"}]})
         self.assertEqual((ready.machine.name, ready.variant, seed),
                          ("a500", self.SET, 5))
         best = max(tries, key=lambda a: a.rank)
@@ -442,7 +447,7 @@ class ClicksOnlyTest(unittest.TestCase):
         log = RunLog([], [], 0, False, "")
         with mock.patch.object(emulator, "run", return_value=log) as run:
             a = sweep.played(machines.BY_NAME["a500"], self.SET,
-                             {"keys": [{"at": 86.1, "key": "lmb"}]}, 5)
+                             {"events": [{"at": 86.1, "key": "lmb"}]}, 5)
         m, variant, frames, opts = run.call_args.args
         self.assertEqual((m.name, variant, frames),
                          ("a500", self.SET, 4305 + emulator.AUTOSWAP_TAIL_FRAMES))
@@ -456,7 +461,7 @@ class ClicksOnlyTest(unittest.TestCase):
     def test_both_clicks_of_the_detector_are_replayed(self):
         calls, _ = self.run_try(verdict.Verdict("works", 20),
                                 swaps=[(4055, 2, "poll+click+rclick")])
-        self.assertEqual(calls[0][0].entry["keys"], [
+        self.assertEqual(calls[0][0].entry["events"], [
             {"at": 86.1, "key": "lmb"}, {"at": 91.1, "key": "rmb"}])
 
     def test_a_crash_that_read_the_disk_is_still_a_false_swap(self):

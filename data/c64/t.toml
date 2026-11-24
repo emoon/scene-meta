@@ -74,7 +74,7 @@ title = "Taking a Break"
 group = "Triad / Hardcore"
 source = "script"
 disks = ["takingabreak-hardcore2btriad.d64", "takingabreak-hc-116817-demonger5.d64"]
-swaps = [{ disk = 2, at = 200.9, key = "p1fire", key_delay = 36.1 }]
+events = [{ at = 200.9, disk = 2 }, { at = 237.0, key = "p1fire" }]
 
 [demozoo.530]
 title = "Tales of Boon Pic"
@@ -157,7 +157,7 @@ title = "Tbed Demo"
 group = "Xlcus Software and Design"
 source = "script"
 disks = ["TBed_Demo_S1.D64", "Tbed_Demo_S2.D64"]
-swaps = [{ disk = 2, at = 172.2, key = "space", key_delay = 18.1 }]
+events = [{ at = 172.2, disk = 2 }, { at = 190.3, key = "space" }]
 
 [demozoo.292017]
 title = "TBF Demo"
@@ -283,7 +283,7 @@ title = "Technobeat"
 group = "Acid"
 source = "script"
 disks = ["Technobeat.d64", "technobeat-acid.d64"]
-swaps = [{ disk = 2, at = 337.1, key = "p1fire", key_delay = 35.8 }]
+events = [{ at = 337.1, disk = 2 }, { at = 372.9, key = "p1fire" }]
 
 [demozoo.294598]
 title = "Technodreams"
@@ -911,7 +911,7 @@ group = "Performers"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["image1.d64", "image2.d64", "image3.d64"]
-swaps = [{ disk = 2, at = 482.4 }, { disk = 3, at = 726.1 }]
+events = [{ at = 482.4, disk = 2 }, { at = 726.1, disk = 3 }]
 
 [demozoo.363943]
 title = "The Contact Demo"
@@ -994,8 +994,7 @@ title = "The Digital Brain 2"
 group = "TERA / UBC"
 source = "ai"
 disks = ["TDB2_S1.d64", "TDB2_S2.d64"]
-swaps = [{ disk = 2, at = 248.7, until = 913.5, key = "space" }]
-keys = [{ at = 144.1, key = "space" }, { at = 205.0, key = "f3" }]
+events = [{ at = 144.1, key = "space" }, { at = 205.0, key = "f3" }, { at = 248.7, disk = 2, until = 913.5 }, { at = 253.7, key = "space" }]
 note = "VERIFIED (fl39): menu; space ~142M, F3 ~202M -> 'FLIP DISK + PRESS SPACE !' (~241M); insert disk 2 ~245M, space +17M -> menu returns. F5 (THE DEATH TROUSERS) at ~300M then loads a new part 'Mr Freeze's Digibrain Part 2' from disk 2 (not on disk 1: F5 on disk 1 alone does nothing). F3 path shows nothing new after disk 2; F1 runs from disk 1.; disk 2: insert after FLIP DISK prompt; space +17M; then F5 at ~300M (not replayable by the window schema) shows disk 2 content"
 
 [demozoo.205501]
@@ -1247,7 +1246,7 @@ title = "The Ghost"
 group = "Fairlight / Genesis Project"
 source = "script"
 disks = ["the-ghost-a.d64", "the-ghost-b.d64"]
-swaps = [{ disk = 2, at = 143.6 }]
+events = [{ at = 143.6, disk = 2 }]
 
 [demozoo.98945]
 title = "The Goar Special Edition"
@@ -1297,7 +1296,7 @@ title = "The Hat"
 group = "Fairlight / Genesis Project"
 source = "script"
 disks = ["the-hat-7a825b1-a.d64", "the-hat-7a825b1-b.d64"]
-swaps = [{ disk = 2, at = 570.6 }]
+events = [{ at = 570.6, disk = 2 }]
 
 [demozoo.345663]
 title = "The Head Intro"
@@ -1406,7 +1405,7 @@ group = "Elysium"
 source = "ai"
 machine = "pal_1541_8580"
 disks = ["extras.d64", "side1.d64", "side2.d64", "side3.d64"]
-swaps = [{ disk = 3, at = 410.0 }, { disk = 4, at = 917.5 }]
+events = [{ at = 410.0, disk = 3 }, { at = 917.5, disk = 4 }]
 boot_disk = 2
 note = "The Lab: boot side1 (disk 2, boot_disk=1); TURN DISK ~350M -> side2 (disk 3); INSERT SIDE THREE ~640M -> side3 (disk 4); extras.d64 (disk 1, side 4) is bonus, never asked; no keys"
 
@@ -1490,7 +1489,7 @@ title = "The Last Truckstop 3"
 group = "Fairlight"
 source = "script"
 disks = ["fairlight-tlts-a.d64", "fairlight-tlts-b.d64"]
-swaps = [{ disk = 2, at = 340.7 }]
+events = [{ at = 340.7, disk = 2 }]
 
 [demozoo.346806]
 title = "The Late Add...."
@@ -1617,7 +1616,7 @@ title = "The Mega Cooperation Demo"
 group = "The Critters"
 source = "script"
 disks = ["Straight_to_Hell_SA.D64", "Straight_to_Hell_SB.D64"]
-swaps = [{ disk = 2, at = 204.5, key = "p2fire", key_delay = 53.8 }]
+events = [{ at = 204.5, disk = 2 }, { at = 258.3, key = "p2fire" }]
 
 [demozoo.278348]
 title = "The Megademo"
@@ -1918,7 +1917,7 @@ title = "The Phoenix Code"
 group = "Bonzai"
 source = "script"
 disks = ["ThePhoenixCode-Disk1-BZ.D64", "ThePhoenixCode-Disk2-BZ.D64"]
-swaps = [{ disk = 2, at = 528.0 }]
+events = [{ at = 528.0, disk = 2 }]
 
 [demozoo.175522]
 title = "The Phoenix Code The Soundtrack"
@@ -1935,7 +1934,7 @@ title = "The Pioneers Demo"
 group = "Pioneers"
 source = "script"
 disks = ["Pioneers_S1.D64", "Pioneers_S2.D64"]
-swaps = [{ disk = 2, at = 51.5, key = "space", key_delay = 17.6 }]
+events = [{ at = 51.5, disk = 2 }, { at = 69.1, key = "space" }]
 
 [demozoo.333443]
 title = "The Pit"
@@ -2101,7 +2100,7 @@ title = "The Serpent"
 group = "Censor Design"
 source = "script"
 disks = ["censor_design-the_serpent-side_a.d64", "censor_design-the_serpent-side_b.d64"]
-swaps = [{ disk = 2, at = 517.2 }]
+events = [{ at = 517.2, disk = 2 }]
 
 [demozoo.168128]
 title = "The Shores of Reflection"
@@ -2109,7 +2108,7 @@ group = "SHAPE"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["Shape-The_Shores_of_Reflection_side1.d64", "Shape-The_Shores_of_Reflection_side2.d64", "sidplay64.d64"]
-swaps = [{ disk = 2, at = 349.3 }]
+events = [{ at = 349.3, disk = 2 }]
 note = "the sweep only reached disk 2 of 3"
 
 [demozoo.194606]
@@ -2220,7 +2219,7 @@ group = "Censor Design"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["starwars_s1.d64", "starwars_s2.d64"]
-swaps = [{ disk = 2, at = 469.6 }]
+events = [{ at = 469.6, disk = 2 }]
 
 [demozoo.347354]
 title = "The Star-Cutter"
@@ -2328,7 +2327,7 @@ title = "The Trip"
 group = "Fairlight"
 source = "script"
 disks = ["the-trip-bdaeeec0-a.d64", "the-trip-bdaeeec0-b.d64"]
-swaps = [{ disk = 2, at = 439.6 }]
+events = [{ at = 439.6, disk = 2 }]
 
 [demozoo.339089]
 title = "The Trip I"
@@ -2448,7 +2447,7 @@ title = "The Violators"
 group = "Censor Design"
 source = "script"
 disks = ["the_violators-cd_s1.d64", "the_violators-cd_s2.d64"]
-swaps = [{ disk = 2, at = 263.0 }]
+events = [{ at = 263.0, disk = 2 }]
 
 [demozoo.183632]
 title = "The Virgin"
@@ -2542,7 +2541,7 @@ group = "Bonzai"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["TWINE1.D64", "TWINE2.D64"]
-swaps = [{ disk = 2, at = 513.0 }]
+events = [{ at = 513.0, disk = 2 }]
 
 [demozoo.193380]
 title = "The World War Demo"
@@ -2651,7 +2650,7 @@ title = "Thir(s)ty"
 group = "Atlantis"
 source = "script"
 disks = ["thirsty_side1_atlantis.d64", "thirsty_side2_atlantis.d64"]
-swaps = [{ disk = 2, at = 393.6 }]
+events = [{ at = 393.6, disk = 2 }]
 
 [demozoo.194771]
 title = "Third Intro"
@@ -2814,7 +2813,7 @@ group = "Booze Design"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["Booze_Design-Time_Machine_S1.d64", "Booze_Design-Time_Machine_S2.d64"]
-swaps = [{ disk = 2, at = 271.7 }]
+events = [{ at = 271.7, disk = 2 }]
 
 [demozoo.341900]
 title = "Time Operator"
@@ -2826,7 +2825,7 @@ title = "Time Paradox 90%"
 group = "Level 64"
 source = "ai"
 disks = ["time_paradox_s0.d64", "time_paradox_s1.d64", "time_paradox_s2.d64", "time_paradox_s3.d64"]
-swaps = [{ disk = 2, at = 66.0 }, { disk = 3, at = 406.0 }, { disk = 4, at = 832.3 }]
+events = [{ at = 66.0, disk = 2 }, { at = 406.0, disk = 3 }, { at = 832.3, disk = 4 }]
 note = "Time Paradox: s0 boots; insert s1 on 'PLEASE INSERT DEMO DISK NO.1' (~25M, tried 65M), s2 on floppy icon (~300M, tried 400M), s3 on floppy-in-hand screen (~700M, tried 820M); no keys, prompts wait"
 
 [demozoo.102460]
@@ -3104,7 +3103,7 @@ title = "Too Old to ROR and ROL"
 group = "Fairlight / Prosonix / Offence"
 source = "script"
 disks = ["FLT-OFF-PRSX-Too_Old_S1.d64", "FLT-OFF-PRSX-Too_Old_S2.d64"]
-swaps = [{ disk = 2, at = 725.6 }]
+events = [{ at = 725.6, disk = 2 }]
 
 [demozoo.357066]
 title = "Top 20 Ranks"
@@ -3242,7 +3241,7 @@ title = "Totally Stoned 2"
 group = "Booze Design"
 source = "script"
 disks = ["Totally Stoned 2-1.d64", "Totally Stoned 2-2.d64"]
-swaps = [{ disk = 2, at = 192.3, key = "space", key_delay = 16.8 }]
+events = [{ at = 192.3, disk = 2 }, { at = 209.1, key = "space" }]
 
 [demozoo.232173]
 title = "Totally Useless Scroll Equalizer"
@@ -3287,7 +3286,7 @@ title = "Tower Power 100%"
 group = "Camelot"
 source = "script"
 disks = ["towerpower_s1.d64", "towerpower_s2.d64"]
-swaps = [{ disk = 2, at = 68.2, key = "space", key_delay = 18.6 }]
+events = [{ at = 68.2, disk = 2 }, { at = 86.8, key = "space" }]
 
 [demozoo.6294]
 title = "Tower Power 92%"
@@ -3451,8 +3450,7 @@ title = "Triage"
 group = "Smash Designs"
 source = "ai"
 disks = ["Triage_S1.D64", "Triage_S2.D64"]
-swaps = [{ disk = 2, at = 568.4 }]
-keys = [{ at = 126.9, key = "1" }]
+events = [{ at = 126.9, key = "1" }, { at = 568.4, disk = 2 }]
 note = "Triage: menu key 1, 'Turn Disk' logo at ~517M, insert only (no key); disk 2: Smash-driver menu up ~105M, key 1 at 125M; Turn Disk stays up (no upper limit seen); no key after the insert"
 
 [demozoo.37130]
@@ -3460,7 +3458,7 @@ title = "Triage 2"
 group = "Smash Designs"
 source = "script"
 disks = ["Triage_II_S1.D64", "Triage_II_S2.D64"]
-swaps = [{ disk = 2, at = 465.7 }]
+events = [{ at = 465.7, disk = 2 }]
 
 [demozoo.23758]
 title = "Triage 4"
@@ -3468,7 +3466,7 @@ group = "Smash Designs"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["triage41.d64", "triage42.d64"]
-swaps = [{ disk = 2, at = 541.9 }]
+events = [{ at = 541.9, disk = 2 }]
 
 [demozoo.24886]
 title = "Triage 5"
@@ -3477,7 +3475,7 @@ source = "script"
 machine = "pal_1541_8580"
 result = "crashes-later"
 disks = ["triag000.d64", "triagev_.d64"]
-swaps = [{ disk = 2, at = 102.3, key = "space", key_delay = 12.1 }]
+events = [{ at = 102.3, disk = 2 }, { at = 114.4, key = "space" }]
 
 [demozoo.21530]
 title = "Triage III"
@@ -3508,7 +3506,7 @@ title = "Tribute II"
 group = "Browbeat"
 source = "script"
 disks = ["Tribute2.d64", "Tribute_2.d64"]
-swaps = [{ disk = 2, at = 143.0, key = "p2fire", key_delay = 54.5 }]
+events = [{ at = 143.0, disk = 2 }, { at = 197.5, key = "p2fire" }]
 
 [demozoo.362012]
 title = "Tribute to Dokk"
@@ -3537,7 +3535,7 @@ group = "Fairlight / Prosonix / Offence"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["Trick and Treat (A).d64", "Trick and Treat (B).d64", "Trick and Treat (C).d64", "Trick and Treat (D).d64"]
-swaps = [{ disk = 2, at = 594.8 }, { disk = 3, at = 1248.1 }, { disk = 4, at = 1879.8 }]
+events = [{ at = 594.8, disk = 2 }, { at = 1248.1, disk = 3 }, { at = 1879.8, disk = 4 }]
 
 [demozoo.183982]
 title = "Tricky..."
@@ -4035,7 +4033,7 @@ title = "Two Sided"
 group = "Atlantis"
 source = "script"
 disks = ["two-sided-1.d64", "two-sided-2.d64"]
-swaps = [{ disk = 2, at = 438.2 }]
+events = [{ at = 438.2, disk = 2 }]
 
 [demozoo.338214]
 title = "Two Years Crypt"

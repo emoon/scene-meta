@@ -111,7 +111,7 @@ title = "Fake"
 group = "M.O.N"
 source = "script"
 disks = ["CH2K-SI1.D64", "CH2K-SI2.D64"]
-swaps = [{ disk = 2, at = 906.0, key = "p2fire" }]
+events = [{ at = 906.0, disk = 2 }, { at = 911.0, key = "p2fire" }]
 
 [demozoo.164706]
 title = "Fallen Stars"
@@ -161,7 +161,7 @@ title = "Fantasia 2"
 group = "Oxyron"
 source = "script"
 disks = ["Fantasia 2.d64", "Oxyron - (1992-xx-xx) - Fantasia 2.d64"]
-swaps = [{ disk = 2, at = 143.0, key = "space", key_delay = 18.5 }]
+events = [{ at = 143.0, disk = 2 }, { at = 161.5, key = "space" }]
 
 [demozoo.139996]
 title = "Fantasmolytic"
@@ -169,7 +169,7 @@ group = "Censor Design / Oxyron"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["image1.d64", "image2.d64"]
-swaps = [{ disk = 2, at = 405.5 }]
+events = [{ at = 405.5, disk = 2 }]
 
 [demozoo.345731]
 title = "Fantastic Colors"
@@ -181,7 +181,7 @@ title = "Fantastic Demoz Volume No.1"
 group = "Point In Darkness"
 source = "script"
 disks = ["Fantastic Demoz Volume_a.d64", "Fantastic Demoz Volume_b.d64"]
-swaps = [{ disk = 2, at = 139.9, key = "space", key_delay = 19.0 }]
+events = [{ at = 139.9, disk = 2 }, { at = 158.9, key = "space" }]
 
 [demozoo.361336]
 title = "Fantastic!"
@@ -317,7 +317,7 @@ title = "Fastcompo"
 group = "JSL"
 source = "script"
 disks = ["AP29A.D64", "AP29B.D64"]
-swaps = [{ disk = 2, at = 126.8, key = "p2fire", key_delay = 50.2 }]
+events = [{ at = 126.8, disk = 2 }, { at = 177.0, key = "p2fire" }]
 
 [demozoo.357082]
 title = "Fastdemo"
@@ -487,7 +487,7 @@ group = "Resource"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["RESOURC1.D64", "RESOURC2.D64"]
-swaps = [{ disk = 2, at = 412.5, key = "space" }]
+events = [{ at = 412.5, disk = 2 }, { at = 417.5, key = "space" }]
 
 [demozoo.181789]
 title = "Feliz Navidad"
@@ -584,8 +584,7 @@ title = "Fight Against Racism"
 group = "Smash Designs"
 source = "ai"
 disks = ["far1.d64", "far2.d64", "far3.d64"]
-swaps = [{ disk = 2, at = 568.4, key = "space", key_delay = 16.2 }, { disk = 3, at = 1116.5, key = "space", key_delay = 14.2 }]
-keys = [{ at = 152.2, key = "1" }, { at = 152.2, key = "1" }]
+events = [{ at = 152.2, key = "1" }, { at = 152.2, key = "1" }, { at = 568.4, disk = 2 }, { at = 584.6, key = "space" }, { at = 1116.5, disk = 3 }, { at = 1130.7, key = "space" }]
 note = "Fight Against Racism: menu key 1 (whole demo); prompts 'insert disk side 2 / space' and 'insert side 3 and press space'; insert then space ~16M later; disk 2: prompt up by ~520M; verified; disk 3: prompt up by ~1000M after disk 2 chain; verified"
 
 [demozoo.293243]
@@ -634,7 +633,7 @@ title = "Final Frontier Co-op [NTSC]"
 group = "Venom / Lords / Shade / Havok / X-Factor / The Force"
 source = "script"
 disks = ["final_frontier.d64", "final_frontier_missing_parts.d64"]
-swaps = [{ disk = 2, at = 133.6, key = "space", key_delay = 18.2 }]
+events = [{ at = 133.6, disk = 2 }, { at = 151.8, key = "space" }]
 
 [demozoo.363532]
 title = "Final Odyssey"
@@ -752,7 +751,7 @@ title = "First Aid"
 group = "Padua"
 source = "script"
 disks = ["AP29A.D64", "AP29B.D64"]
-swaps = [{ disk = 2, at = 126.0, key = "p2fire", key_delay = 48.9 }]
+events = [{ at = 126.0, disk = 2 }, { at = 174.9, key = "p2fire" }]
 
 [demozoo.336292]
 title = "First Album"
@@ -867,7 +866,7 @@ title = "Fishbomb"
 group = "Extend"
 source = "script"
 disks = ["fishbomb_sidea.d64", "fishbomb_sideb.d64"]
-swaps = [{ disk = 2, at = 179.3 }]
+events = [{ at = 179.3, disk = 2 }]
 
 [demozoo.170118]
 title = "Fishing Furiously"
@@ -1128,7 +1127,7 @@ machine = "ntsc_1541"
 sid = "8580"
 result = "crashes-later"
 disks = ["flat1.d64", "flat2.d64"]
-swaps = [{ disk = 2, at = 170.1, key = "p1fire", key_delay = 33.6 }]
+events = [{ at = 170.1, disk = 2 }, { at = 203.7, key = "p1fire" }]
 
 [demozoo.19766]
 title = "Flatwild"
@@ -1243,7 +1242,7 @@ title = "Flut"
 group = "K2"
 source = "script"
 disks = ["FLUTS1.D64", "FLUTS2.D64"]
-swaps = [{ disk = 2, at = 479.7, key = "space" }]
+events = [{ at = 479.7, disk = 2 }, { at = 484.7, key = "space" }]
 
 [demozoo.347801]
 title = "Flux Collection"
@@ -1319,7 +1318,7 @@ title = "For Pete's Sake"
 group = "Scenior's Haven"
 source = "script"
 disks = ["for-petes-sake-demo.d64", "for-petes-sake-notes.d64"]
-swaps = [{ disk = 2, at = 589.7, key = "space" }]
+events = [{ at = 589.7, disk = 2 }, { at = 594.7, key = "space" }]
 
 [demozoo.349968]
 title = "For Ravange"
@@ -1468,7 +1467,7 @@ title = "Fourth Dimension"
 group = "Time"
 source = "script"
 disks = ["fourth-dimension-with-note-time.d64", "fourth_dimension.d64"]
-swaps = [{ disk = 2, at = 134.4, key = "space", key_delay = 18.4 }]
+events = [{ at = 134.4, disk = 2 }, { at = 152.8, key = "space" }]
 
 [demozoo.357656]
 title = "Fox Demo"
@@ -1513,7 +1512,7 @@ group = "Hoaxers"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["frantic3a.d64", "frantic3b.d64"]
-swaps = [{ disk = 2, at = 460.7 }]
+events = [{ at = 460.7, disk = 2 }]
 
 [demozoo.183489]
 title = "Frantic Ranx"
@@ -1696,7 +1695,7 @@ title = "From Beyond"
 group = "Asphyxia"
 source = "script"
 disks = ["From_Beyond_S1.D64", "From_Beyond_S2.D64"]
-swaps = [{ disk = 2, at = 370.0 }]
+events = [{ at = 370.0, disk = 2 }]
 
 [demozoo.368858]
 title = "From Hell To The Unknown"
@@ -1832,7 +1831,7 @@ group = "Warriors of the Wasteland"
 source = "script"
 machine = "ntsc_1541"
 disks = ["fuckside1.d64", "fuckside2.d64"]
-swaps = [{ disk = 2, at = 603.3, key = "p2fire" }]
+events = [{ at = 603.3, disk = 2 }, { at = 608.3, key = "p2fire" }]
 
 [demozoo.339795]
 title = "Fuck Thomas"
@@ -1891,7 +1890,7 @@ title = "Fuenf Ka"
 group = "Centric"
 source = "script"
 disks = ["CH2K-SI1.D64", "CH2K-SI2.D64"]
-swaps = [{ disk = 2, at = 182.1, key = "p2fire" }]
+events = [{ at = 182.1, disk = 2 }, { at = 187.1, key = "p2fire" }]
 
 [demozoo.318101]
 title = "Fufuufuuu"

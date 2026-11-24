@@ -12,7 +12,7 @@ all; when none passes the production is written as ``unknown``.
 """
 
 from ..core import export
-from . import classes, config, gate, media, player, replay
+from . import classes, config, gate, media, replay
 
 _RUNS = ("works", "works-short")
 _ALIVE = _RUNS + ("works-then-crash",)
@@ -62,18 +62,20 @@ def _run_of_note(note, command):
     return None
 
 
-def _swap(s):
-    """A result.Swap as an entry says it."""
-    row = {"disk": s.disk}
-    if s.drive > 1:
-        row["drive"] = s.drive
-    row["at"] = round(s.at, 1)
-    if s.key:
-        row["key"] = s.key
-        if s.key_at is not None \
-                and (delay := round(s.key_at - s.at, 1)) != player.KEY_DELAY:
-            row["key_delay"] = delay
-    return row
+def _events(swaps, keys):
+    """The result.Swap and result.Key of a run as an entry says them: a
+    swap's key is an event of its own, after its disk."""
+    out = [{"at": round(k.at, 1), "key": k.key} for k in keys]
+    for s in swaps:
+        at = round(s.at, 1)
+        out.append({"at": at, "disk": s.disk})
+        if s.drive > 1:
+            out[-1]["drive"] = s.drive
+        if s.key:
+            delay = (export.KEY_DELAY if s.key_at is None
+                     else round(s.key_at - s.at, 1))
+            out.append({"at": round(at + delay, 1), "key": s.key})
+    return sorted(out, key=lambda e: (e["at"], "key" in e))
 
 
 def entry(title, groups, variants, cls, default):
@@ -128,10 +130,8 @@ def _entry(title, groups, v, variants, cls, default, failed=False):
         e["result"] = result
     if "disks" in named:
         e["disks"] = named["disks"]
-    if runs and v.swaps:
-        e["swaps"] = [_swap(s) for s in v.swaps]
-    if runs and v.keys:
-        e["keys"] = [{"at": round(k.at, 1), "key": k.key} for k in v.keys]
+    if runs and (events := _events(v.swaps, v.keys)):
+        e["events"] = events
     if "run" in named:
         e["run"] = named["run"]
     if note:

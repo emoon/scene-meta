@@ -9,7 +9,7 @@ group = "Lethargy"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["I adore my 64= Side A [Lethargy].d64", "I adore my 64= Side B [Lethargy].d64"]
-swaps = [{ disk = 2, at = 431.2 }]
+events = [{ at = 431.2, disk = 2 }]
 
 [demozoo.350855]
 title = "I Am Back"
@@ -626,7 +626,7 @@ group = "Smash Designs / The Starforce"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["IndustrialRevolution1.d64", "IndustrialRevolution2.d64"]
-swaps = [{ disk = 2, at = 553.3 }]
+events = [{ at = 553.3, disk = 2 }]
 
 [demozoo.116803]
 title = "Industrial Terror"
@@ -660,7 +660,7 @@ group = "V0yager"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["Symphony 2005 Warez.d64", "You Can't Stop Us!.d64"]
-swaps = [{ disk = 2, at = 74.9, key = "space", key_delay = 17.9 }]
+events = [{ at = 74.9, disk = 2 }, { at = 92.8, key = "space" }]
 
 [demozoo.349770]
 title = "Infinityve Weapon"
@@ -801,8 +801,7 @@ title = "Insomnia V1.1"
 group = "64ever"
 source = "ai"
 disks = ["Insomnia-v1_1-side1.d64", "Insomnia-v1_1-side2.d64"]
-swaps = [{ disk = 2, at = 487.2 }]
-keys = [{ at = 152.2, key = "return" }]
+events = [{ at = 152.2, key = "return" }, { at = 487.2, disk = 2 }]
 note = "Insomnia V1.1: 64EVER setup menu needs Return; side 1 ends on a floppy-disk graphic (no text) and waits; disk 2: Return on the setup menu (START THE JOURNEY); no key before ~100M or the autostart RUN breaks; no key after the insert; the disk graphic was still waiting at 1095M"
 
 [demozoo.308500]
@@ -902,7 +901,7 @@ title = "Intro"
 group = "Samar"
 source = "script"
 disks = ["Symphony 2005 Warez.d64", "You Can't Stop Us!.d64"]
-swaps = [{ disk = 2, at = 74.2, key = "space", key_delay = 17.6 }]
+events = [{ at = 74.2, disk = 2 }, { at = 91.8, key = "space" }]
 
 [demozoo.317811]
 title = "Intro"
@@ -1234,7 +1233,7 @@ title = "Intromania"
 group = "The Remembers"
 source = "script"
 disks = ["Intromania [Side 1].d64", "Intromania [Side 2].d64"]
-swaps = [{ disk = 2, at = 129.7, key = "space", key_delay = 18.7 }]
+events = [{ at = 129.7, disk = 2 }, { at = 148.4, key = "space" }]
 
 [demozoo.340000]
 title = "Intropreview V9.0"
@@ -1322,7 +1321,7 @@ title = "Iron Maiden"
 group = "Commando Frontier"
 source = "script"
 disks = ["Batmania + iron maiden.D64", "Iron_Maiden.D64"]
-swaps = [{ disk = 2, at = 150.4, key = "p1fire", key_delay = 37.7 }]
+events = [{ at = 150.4, disk = 2 }, { at = 188.1, key = "p1fire" }]
 
 [demozoo.357927]
 title = "Iron Maiden Demo"
@@ -1349,7 +1348,7 @@ title = "Iron Splits 2"
 group = "Drive"
 source = "script"
 disks = ["Iron Splits 2.d64", "Iron Splits 2 + note [D].d64"]
-swaps = [{ disk = 2, at = 156.0, key = "space", key_delay = 19.1 }]
+events = [{ at = 156.0, disk = 2 }, { at = 175.1, key = "space" }]
 
 [demozoo.327741]
 title = "Iron-Drums"

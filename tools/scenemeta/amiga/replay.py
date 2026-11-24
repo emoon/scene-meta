@@ -1,8 +1,7 @@
 """Plays entries of the data files (``data/amiga``, see docs/DESIGN.md) exactly as
 written, through the player, and says whether every disk was loaded.
 
-An entry with keys, on its swaps or of its own, is played a second time without
-them: a key is needed only when the production does not run without it.
+An entry with keys is played a second time without them: a key is needed only when the production does not run without it.
 """
 
 import os
@@ -37,14 +36,12 @@ def all_entries(data):
 
 
 def entries(data):
-    """``{id: entry}`` of the Demozoo productions that have swaps or keys."""
-    return {p: e for p, e in all_entries(data).items()
-            if e.get("swaps") or e.get("keys")}
+    """``{id: entry}`` of the Demozoo productions that have events."""
+    return {p: e for p, e in all_entries(data).items() if e.get("events")}
 
 
 def _has_keys(entry):
-    return bool(entry.get("keys")) or \
-        any("key" in s for s in entry.get("swaps", []))
+    return any("key" in e for e in entry.get("events", []))
 
 
 def _one(prod, entry, default):
@@ -73,7 +70,7 @@ def run(ids=None, data=None, jobs=None, log=print):
     todo = {p: e for p, e in found.items()
             if (p in ids if ids else _has_keys(e))}
     for p in sorted(set(ids or ()) - set(found)):
-        log(f"{p}: no entry with swaps or keys")
+        log(f"{p}: no entry with events")
     # Two emulators per production, each about two cores.
     jobs = jobs or max(1, (os.cpu_count() or 4) // 4)
     return player.play_each(sorted(todo.items()),

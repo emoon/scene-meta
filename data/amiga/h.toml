@@ -258,7 +258,7 @@ title = "Hallucinations And Dreams"
 group = "Union"
 source = "script"
 disks = ["!Union-HallucinationsA.dms", "Union-HallucinationsB.dms"]
-swaps = [{ disk = 2, at = 148.2 }]
+events = [{ at = 148.2, disk = 2 }]
 
 [demozoo.169398]
 title = "Hallucinations And Dreams Preview"
@@ -2337,7 +2337,7 @@ title = "Hit Fido"
 group = "KGB"
 source = "script"
 disks = ["KGB-HitFido-A.dms", "KGB-HitFido-B.dms"]
-swaps = [{ disk = 2, at = 301.1, key = "lmb" }]
+events = [{ at = 301.1, disk = 2 }, { at = 306.1, key = "lmb" }]
 
 [demozoo.234358]
 title = "Hit Me With a Rubber Duck"
@@ -2682,7 +2682,7 @@ group = "Infect"
 source = "script"
 machine = "a1200"
 disks = ["Infect-HopefullyA.DMS", "Infect-HopefullyB.DMS"]
-swaps = [{ disk = 2, at = 51.5 }]
+events = [{ at = 51.5, disk = 2 }]
 
 [demozoo.252858]
 title = "Hopefully Dead"

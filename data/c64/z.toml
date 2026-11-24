@@ -76,7 +76,7 @@ title = "Zax-Disc No.02"
 group = "Wizards of Illusions"
 source = "script"
 disks = ["Wizard Of Illusion - WOI Ripp #094-#137.D64", "Wizard Of Illusion - WOI Ripp #138-#188.D64"]
-swaps = [{ disk = 2, at = 59.7, key = "p1fire", key_delay = 35.2 }]
+events = [{ at = 59.7, disk = 2 }, { at = 94.9, key = "p1fire" }]
 
 [demozoo.317483]
 title = "Zaxx"
@@ -134,7 +134,7 @@ title = "Zeros & Ones"
 group = "Wile Coyote"
 source = "script"
 disks = ["0&1_0.d64", "0&1_1.d64"]
-swaps = [{ disk = 2, at = 160.7, key = "space", key_delay = 14.0 }]
+events = [{ at = 160.7, disk = 2 }, { at = 174.7, key = "space" }]
 
 [demozoo.359622]
 title = "Zewa's Warning"

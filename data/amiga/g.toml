@@ -1154,7 +1154,7 @@ title = "Glitch Demo"
 group = "Mystix"
 source = "script"
 disks = ["Mystix-GlitchA.adf", "Mystix-GlitchB.adf"]
-swaps = [{ disk = 2, at = 227.3 }]
+events = [{ at = 227.3, disk = 2 }]
 
 [demozoo.194320]
 title = "Glitch My Bits Up"
@@ -2490,7 +2490,7 @@ machine = "a1200"
 drives = 2
 kind = "separate-disks"
 disks = ["ApB-GuignolDance2-v1.adf", "ApB-GuignolDance2-v2.adf", "ApB-GuignolDance2-v3.adf"]
-swaps = [{ disk = 3, at = 135.4, key = "lmb" }]
+events = [{ at = 135.4, disk = 3 }, { at = 140.4, key = "lmb" }]
 note = "v1, v2, v3 each boot alone to the same loader and play (a1200)"
 
 [demozoo.21838]

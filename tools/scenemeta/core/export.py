@@ -21,6 +21,11 @@ from .. import machines, merge
 TRIES = 3    # the entries of one production put to the gate
 
 
+# Seconds from an insert to the key that has it taken, where a sweep did not
+# keep when the key went down.
+KEY_DELAY = 5.0
+
+
 @dataclasses.dataclass
 class Variant:
     """A finished variant and one run of it."""

@@ -17,7 +17,7 @@ from scenemeta.core.gate import Judgement, Play, Run, SwapTaken
 
 class PlayTest(unittest.TestCase):
     ENTRY = {"title": "x", "disks": ["a.adf", "b.adf"],
-             "swaps": [{"disk": 2, "at": 10, "key": "lmb"}]}
+             "events": [{"at": 10, "disk": 2}, {"at": 15, "key": "lmb"}]}
 
     def play(self, run, verdict=Verdict("works", 9)):
         record = Play(True, swaps=(SwapTaken(2, True),))
@@ -32,7 +32,8 @@ class PlayTest(unittest.TestCase):
 
     def test_a_run_is_the_entry_as_the_gate_changed_it_on_the_runs_seed(self):
         entry, kw = self.play(Run(3, late=True))
-        self.assertEqual(entry["swaps"], [{"disk": 2, "at": 40, "key": "lmb"}])
+        self.assertEqual(entry["events"], [{"at": 40, "disk": 2},
+                                           {"at": 45, "key": "lmb"}])
         self.assertEqual(kw["seed"], 3)
 
     def test_late_runs_as_long_as_its_later_disk_needs(self):
@@ -41,7 +42,7 @@ class PlayTest(unittest.TestCase):
 
     def test_without_a_key_runs_as_long_as_the_entry_as_written(self):
         entry, kw = self.play(Run(1, without=0))
-        self.assertEqual(entry["swaps"], [{"disk": 2, "at": 10}])
+        self.assertEqual(entry["events"], [{"at": 10, "disk": 2}])
         self.assertEqual(kw["frames"], (10 + 5) * 50 + player.TAIL_FRAMES)
 
     def test_an_emulator_that_showed_nothing_is_an_error_not_a_fail(self):
@@ -50,7 +51,7 @@ class PlayTest(unittest.TestCase):
 
 
 class OneTest(unittest.TestCase):
-    ENTRY = {"title": "x", "swaps": [{"disk": 2, "at": 10}]}
+    ENTRY = {"title": "x", "events": [{"at": 10, "disk": 2}]}
 
     def one(self, play, each=map):
         with mock.patch.object(player, "ready") as self.ready, \
@@ -275,7 +276,7 @@ title = "x"
 source = "script"
 machine = "a1200"
 disks = ["a.adf", "b.adf"]
-swaps = [{ disk = 2, at = 10.0 }]
+events = [{ at = 10.0, disk = 2 }]
 
 [demozoo.8]
 title = "xa"
@@ -363,7 +364,7 @@ source = "script"
         self.assertIn("0 added, 1 replaced, 0 kept", out)
         self.assertEqual((self.data / "x.toml").read_text(), self.FILE.replace(
             'machine = "a1200"\ndisks = ["a.adf", "b.adf"]\n'
-            'swaps = [{ disk = 2, at = 10.0 }]\n',
+            'events = [{ at = 10.0, disk = 2 }]\n',
             'result = "unknown"\ndisks = ["a.adf", "b.adf"]\n'
             'note = "failed the gate: seed 2: on 2"\n'))
 

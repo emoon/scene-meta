@@ -280,7 +280,7 @@ title = "Late Ejaculation"
 group = "Elysium"
 source = "script"
 disks = ["late_ejaculation_a.d64", "late_ejaculation_b.d64"]
-swaps = [{ disk = 2, at = 520.1 }]
+events = [{ at = 520.1, disk = 2 }]
 
 [demozoo.232198]
 title = "Latest Demo"
@@ -432,14 +432,14 @@ title = "Legendary Oldies #03"
 group = "The Remembers"
 source = "script"
 disks = ["LegendaryOldies3a_1994.d64", "LegendaryOldies3b_1994.d64"]
-swaps = [{ disk = 2, at = 128.7, key = "space", key_delay = 18.2 }]
+events = [{ at = 128.7, disk = 2 }, { at = 146.9, key = "space" }]
 
 [demozoo.382666]
 title = "Legendary Oldies #04"
 group = "The Remembers"
 source = "script"
 disks = ["the_remembers-legendary_oldies_4-s1.d64", "the_remembers-legendary_oldies_4-s2.d64"]
-swaps = [{ disk = 2, at = 46.2, key = "p2fire", key_delay = 53.5 }]
+events = [{ at = 46.2, disk = 2 }, { at = 99.7, key = "p2fire" }]
 
 [demozoo.349234]
 title = "Legendary Oldies #05"
@@ -466,7 +466,7 @@ title = "Legoland 3"
 group = "Fairlight"
 source = "script"
 disks = ["Legoland 3-1.d64", "Legoland 3-2.d64"]
-swaps = [{ disk = 2, at = 288.6, key = "space", key_delay = 16.9 }]
+events = [{ at = 288.6, disk = 2 }, { at = 305.5, key = "space" }]
 
 [demozoo.90593]
 title = "Leifi!"
@@ -536,7 +536,7 @@ title = "Let's Oldie"
 group = "Jam"
 source = "script"
 disks = ["01lets_oldie-JAM.d64", "02lets_oldie-JAM.d64"]
-swaps = [{ disk = 2, at = 148.4, key = "space", key_delay = 19.0 }]
+events = [{ at = 148.4, disk = 2 }, { at = 167.4, key = "space" }]
 
 [demozoo.189284]
 title = "Let's Party"
@@ -563,7 +563,7 @@ title = "Let's Scroll It"
 group = "c64.com"
 source = "script"
 disks = ["let's_scroll_it_a.d64", "let's_scroll_it_b.d64"]
-swaps = [{ disk = 2, at = 434.5 }]
+events = [{ at = 434.5, disk = 2 }]
 
 [demozoo.340005]
 title = "Let's Session"
@@ -743,7 +743,7 @@ title = "Lifework"
 group = "Arise"
 source = "script"
 disks = ["Lifework_Arise_S1.d64", "Lifework_Arise_S2.d64"]
-swaps = [{ disk = 2, at = 185.9, key = "space", key_delay = 17.0 }]
+events = [{ at = 185.9, disk = 2 }, { at = 202.9, key = "space" }]
 
 [demozoo.358498]
 title = "Light"
@@ -775,7 +775,7 @@ title = "Lightning 2"
 group = "Union"
 source = "script"
 disks = ["Lightning 2 [Union].d64", "Lightning_II.D64"]
-swaps = [{ disk = 2, at = 159.9, key = "space", key_delay = 17.1 }]
+events = [{ at = 159.9, disk = 2 }, { at = 177.0, key = "space" }]
 
 [demozoo.187989]
 title = "Lights of Dawn"
@@ -1230,8 +1230,7 @@ group = "Agony Design"
 source = "ai"
 machine = "pal_1541_8580"
 disks = ["agony_love-A.d64", "agony_love-B.d64"]
-swaps = [{ disk = 2, at = 573.5, key = "space", key_delay = 18.3 }]
-keys = [{ at = 152.2, key = "1" }]
+events = [{ at = 152.2, key = "1" }, { at = 573.5, disk = 2 }, { at = 591.8, key = "space" }]
 note = "Love: menu key 1, demo ends on FLIP DISC picture, needs insert then space; disk 2: menu at ~120M, key 1 at 150M; FLIP DISC picture from ~520M (no upper limit seen); insert alone does nothing, space ~18M later starts side B"
 
 [demozoo.336717]
@@ -1250,7 +1249,7 @@ group = "Horizon"
 source = "script"
 result = "crashes-later"
 disks = ["Love_This_Now_S1.d64", "Love_This_Now_S2.d64"]
-swaps = [{ disk = 2, at = 1390.0, key = "space", key_delay = 15.7 }]
+events = [{ at = 1390.0, disk = 2 }, { at = 1405.7, key = "space" }]
 
 [demozoo.374054]
 title = "Love U 4 Ever"
@@ -1347,21 +1346,21 @@ group = "Antic"
 source = "script"
 result = "crashes-later"
 disks = ["Lunacy 7-1.d64", "Lunacy 7-2.d64"]
-swaps = [{ disk = 2, at = 607.3, key = "p1fire", key_delay = 32.6 }]
+events = [{ at = 607.3, disk = 2 }, { at = 639.9, key = "p1fire" }]
 
 [demozoo.55084]
 title = "Lunacy V"
 group = "Antic"
 source = "script"
 disks = ["Lunacy 5 [Side 1].d64", "Lunacy 5 [Side 2].d64"]
-swaps = [{ disk = 2, at = 161.1, key = "space", key_delay = 14.3 }]
+events = [{ at = 161.1, disk = 2 }, { at = 175.4, key = "space" }]
 
 [demozoo.164626]
 title = "Lunatico"
 group = "lft"
 source = "script"
 disks = ["lft-lunatico-side1.d64", "lft-lunatico-side2.d64"]
-swaps = [{ disk = 2, at = 459.0 }]
+events = [{ at = 459.0, disk = 2 }]
 
 [demozoo.326873]
 title = "Luneberg"

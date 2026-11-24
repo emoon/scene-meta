@@ -72,15 +72,15 @@ class DemotedTest(unittest.TestCase):
         entry = {"title": "x", "group": "g", "source": "script",
                  "machine": "a1200", "drives": 2, "boot": "floppy",
                  "result": "crashes-later", "disks": ["a.adf", "b.adf"],
-                 "swaps": [{"disk": 2, "at": 10.0}],
-                 "keys": [{"at": 5.0, "key": "lmb"}], "run": "demo.exe",
+                 "events": [{"at": 5.0, "key": "lmb"},
+                            {"at": 10.0, "disk": 2}], "run": "demo.exe",
                  "note": "the sweep only reached disk 1 of 2"}
         self.assertEqual(demote.demoted(entry, "seed 1: never came alive"), {
             "title": "x", "group": "g", "source": "script", "boot": "floppy",
             "result": "unknown", "disks": ["a.adf", "b.adf"],
             "run": "demo.exe",
             "note": "failed the gate: seed 1: never came alive"})
-        self.assertIn("swaps", entry)
+        self.assertIn("events", entry)
 
 
 if __name__ == "__main__":

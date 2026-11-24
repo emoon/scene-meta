@@ -1406,7 +1406,7 @@ group = "Paradise"
 source = "ai"
 machine = "a1200_030"
 disks = ["Paradise-VirtualMeltdownA.dms", "Paradise-VirtualMeltdownB.dms"]
-swaps = [{ disk = 2, at = 520.0 }]
+events = [{ at = 520.0, disk = 2 }]
 
 [demozoo.318803]
 title = "Virtual Pain"
