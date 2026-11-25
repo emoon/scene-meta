@@ -41,6 +41,11 @@ def repeats_from(a, changes, p):
     count, so a cell that mostly rests does not match at any lag."""
     event = changes[p:] | changes[:-p]
     bad = event & (a[p:] != a[:-p])
+    # Absorb +-1 frame period drift on non-trivial loops (e.g. fractional-frame
+    # CIA/VBlank cadences like 5539/5540 in 89549 or 1168/1169 in 24435).
+    if p >= 100 and len(bad) > 2:
+        bad[:-1] &= (a[p:-1] != a[1:-p])
+        bad[1:] &= (a[p + 1:] != a[:-p - 1])
 
     def ahead(x):   # per frame, over the WINDOW frames from it on
         total = np.concatenate(([0], np.cumsum(x), np.full(WINDOW, x.sum())))
@@ -48,7 +53,7 @@ def repeats_from(a, changes, p):
     ev_w = ahead(event)
     # In sparse cells (few changes per 20 s window), tolerate 1-2 stray
     # single-frame jitter glitches while still failing genuine mismatches.
-    allow = np.maximum(np.minimum(2, ev_w // 3), TOL * ev_w)
+    allow = np.maximum(np.minimum(2, (ev_w + 1) // 3), TOL * ev_w)
     fails = np.nonzero(ahead(bad) > allow)[0]
     return p + (int(fails[-1]) + 1 if len(fails) else 0)
 

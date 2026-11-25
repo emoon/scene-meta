@@ -203,6 +203,27 @@ class TestVideo(unittest.TestCase):
         self.assertEqual(p, 130)
         self.assertLess(shown, 1500)
 
+    def test_repeats_from_tolerates_one_frame_period_drift(self):
+        # Like 89549 (5539/5540) and 24435 (1168/1169): loop passes drift by
+        # 1 frame partway through the trace; shown must still walk all the way
+        # back to the start of the second pass.
+        n = 20000
+        pat = np.arange(1, 1170, dtype=np.uint64)
+        a = np.zeros(n, dtype=np.uint64)
+        pos = 1000
+        pass_lens = [1169, 1169, 1168, 1168, 1168, 1168, 1168, 1168, 1168, 1168,
+                     1168, 1168, 1168, 1168, 1168, 1168, 1168]
+        for L in pass_lens:
+            if pos >= n:
+                break
+            end = min(n, pos + L)
+            a[pos:end] = pat[:end - pos]
+            pos = end
+        kind, p, shown = video.cell_period(a, 10000)
+        self.assertEqual(kind, "loop")
+        self.assertIn(p, (1168, 1169))
+        self.assertLess(shown, 2500)
+
 
 class TestStreams(unittest.TestCase):
     def test_filters_rom_pc(self):
@@ -485,6 +506,22 @@ class TestAnalyze(unittest.TestCase):
         v = analyze.verdict(rows, cells, song=(9200, 10000), data=43560, text_data=43560)
         self.assertEqual(v["ending"], "loops")
         self.assertAlmostEqual(v["end"], 871.2, delta=1.0)
+
+    def test_rom_trapped_crash_with_free_running_bitplane_dma_is_crashed(self):
+        # Like 90583: crash at frame 870 leaves CPU in Kickstart ROM (99.9%)
+        # with 0 newram, while orphaned bitplane DMA keeps changing screen cells.
+        n = 15000
+        cells = np.arange(n * 4, dtype=np.uint64).reshape(n, 4)
+        rows = _make_rows(
+            n,
+            newram_at={200: 50, 869: 5},
+            alert_at=870,
+            rom_fn=lambda i: 999 if i >= 870 else 0,
+        )
+        for i in range(870, n):
+            rows[i]["alert"] = 0x0000000b
+        v = analyze.verdict(rows, cells, song=None)
+        self.assertEqual(v["ending"], "crashed")
 
 
 if __name__ == "__main__":

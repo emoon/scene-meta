@@ -89,7 +89,13 @@ def video_loop(cells, t0):
     loops = [k for k in kinds if k[0] == "loop"]
     if not loops or any(k[0] == "open" for k in kinds):
         return 0, 0, kinds
-    return max(k[1] for k in loops), max(k[2] for k in kinds), kinds
+    # When many cells loop, take the 90th-percentile shown frame across looping
+    # cells so 1-2 cells with sub-cadence tearing (e.g. v17/v18 in 89549) do
+    # not drag video_shown hundreds of seconds past the other 30 cells.
+    l_shown = sorted(k[2] for k in loops)
+    loop_shown = l_shown[int(0.9 * (len(l_shown) - 1))] if len(l_shown) >= 10 else l_shown[-1]
+    still_shown = max((k[2] for k in kinds if k[0] == "still"), default=0)
+    return max(k[1] for k in loops), max(loop_shown, still_shown), kinds
 
 
 def kinds_open(kinds):
@@ -244,10 +250,15 @@ def _fatal_guru(rows, cells):
             instr_after = sum(rows[k]["instr"] for k in range(i + 50, j_end)) or 1
             rom_after = sum(rows[k]["rom"] for k in range(i + 50, j_end)) / instr_after
             alert_cleared = any(rows[k]["alert"] == 0 for k in range(i + 50, j_end))
+            has_newram = rows[0]["newram"] is not None
+            newram_after = (sum((rows[k]["newram"] or 0) for k in range(i + 50, j_end))
+                            if has_newram else 1)
             if audio_active >= 250 and (rom_after <= 0.5 or seg.sum() >= 50 or alert_cleared):
                 prev_alert = a
                 continue
-            if len(seg) >= 250:
+            # Also guard screen-change bypass against ROM-trapped crashes whose
+            # orphaned Copperlist/bitplane DMA keeps scanning Chip RAM (e.g. 90583).
+            if (rom_after <= 0.5 or alert_cleared or newram_after > 0) and len(seg) >= 250:
                 cs = np.concatenate(([0], np.cumsum(seg)))
                 if (cs[250:] - cs[:-250]).max() >= 50:
                     prev_alert = a
@@ -417,8 +428,10 @@ def verdict(rows, cells, song, halted=False, data=None, swaps=(), meta=None,
         elif song and song[0] >= 0.6 * played:
             # When the song spans the whole production, use its period unless a
             # longer full-screen video loop was observed for a full second pass
-            # (e.g. a scrolltext intro whose text loops slower than the tune).
-            if vp and vp > song[0] and (n - vshown) >= vp:
+            # AND confirmed by a sequential scrolltext stream (avoids inflating
+            # short tunes with LCM/rational-convergent animation periods like
+            # 9384 or 18525).
+            if vp and vp > song[0] and (n - vshown) >= vp and text_data and text_data >= vp - 500:
                 out["end"] = round(max(played, vp) / FPS, 1)
             else:
                 out["end"] = round(max(played, song[0]) / FPS, 1)
