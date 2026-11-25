@@ -240,10 +240,13 @@ def require_libs(libs_dir=None):
         raise CannotPlay(f"no {', '.join(missing)} in {libs_dir}")
 
 
-def prepare(root, command, libs_dir=None):
+def prepare(root, command, libs_dir=None, all_libs=False):
     """Make ``root`` boot like a Workbench disk into ``command`` (the
     startup-sequence text): the setup program runs first, and libraries
-    from ``libs_dir`` the tree does not have go into its libs."""
+    from ``libs_dir`` the tree does not have go into its libs. When
+    ``all_libs`` is True (hard-drive boots), every library in ``libs_dir``
+    is copied so packed executables whose library names are compressed still
+    find them."""
     s = _subdir(root, "s")
     if s is None:
         raise CannotPlay("no place for the startup-sequence: the download"
@@ -264,7 +267,9 @@ def prepare(root, command, libs_dir=None):
     if not libs_dir.is_dir() or libs is None:
         return
     have = {p.name.lower() for p in libs.iterdir()} if libs.is_dir() else set()
-    for lib in _wanted_libs(root, libs_dir):
+    wanted = ([p for p in libs_dir.iterdir() if p.is_file()] if all_libs
+              else _wanted_libs(root, libs_dir))
+    for lib in wanted:
         if lib.name.lower() not in have:
             libs.mkdir(exist_ok=True)
             shutil.copyfile(lib, libs / lib.name)

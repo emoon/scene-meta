@@ -134,6 +134,33 @@ class PickExeTest(unittest.TestCase):
         d = self.tree({"RAM-Handler": EXE, "C/BLISS-OUT": EXE})
         self.assertIsNone(media._pick_exe(d)[0])
 
+    def test_skips_non_longword_hunk_files(self):
+        # Like OTLUE2Z61.exe (3195 B): starts with HUNK_MAGIC but is not
+        # longword-aligned, so AmigaDOS rejects it ("file is not executable").
+        bad = media.HUNK_MAGIC + b"\0" * 59   # 63 bytes (mod 4 == 3)
+        d = self.tree({"OTLUE2Z61.exe": bad, "sub/real.exe": EXE})
+        self.assertIsNone(media.sniff(d / "OTLUE2Z61.exe"))
+        self.assertEqual(media._pick_exe(d)[0].name, "real.exe")
+
+    def test_deprioritizes_speedhunk_bbs_ad_stubs(self):
+        # Like 2944 / 29162 / 2505: BBS advert stub at root tagged HEADDBGV01
+        # must lose to the real demo inside a subdirectory, yet still run if
+        # it is the only executable in the archive.
+        bbs_ad = (media.HUNK_MAGIC + b"\0" * 20
+                  + b"\x00\x00\x03\xf1\x00\x00\x00\x0b\x00\x00\x00\x00HEADDBGV01"
+                  + b"\0" * 18)   # 64 bytes
+        d = self.tree({"WHEREFUNROLEZ.EXE": bbs_ad,
+                       "advertro/Instinct-AdvertTro.x": EXE})
+        self.assertEqual(media._pick_exe(d, "Swappers For Everyone")[0].name,
+                         "Instinct-AdvertTro.x")
+        d_only = self.tree({"ad.exe": bbs_ad})
+        self.assertEqual(media._pick_exe(d_only)[0].name, "ad.exe")
+
+    def test_title_match_beats_shallower_unrelated_exe(self):
+        # Party packs / archives with root tools: nested title match wins.
+        d = self.tree({"helper.exe": EXE * 4, "64k/3/O.K.exe": EXE})
+        self.assertEqual(media._pick_exe(d, "o.k.")[0].name, "O.K.exe")
+
     def test_join_split_parts(self):
         d = self.tree({"ht-stag.lzx.001": b"ab", "ht-stag.lzx.002": b"cd",
                        "EM.1": b"x", "em.2": b"y", "keep.1": b"k"})

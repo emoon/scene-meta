@@ -150,3 +150,15 @@ class WorkbenchTest(unittest.TestCase):
         workbench.prepare(root, "demo\n", libs_dir=libs)
         self.assertEqual(sorted(p.name for p in (root / "libs").iterdir()),
                          ["xpkSQSH.library", "xpkmaster.library"])
+
+    def test_all_libs_copies_every_library_without_replacing(self):
+        root, libs = self.dir(), self.dir()
+        (root / "libs").mkdir()
+        (root / "libs" / "asl.library").write_bytes(b"own")
+        for n in ("asl.library", "commodities.library", "datatypes.library"):
+            (libs / n).write_bytes(b"wb")
+        (root / "demo").write_bytes(b"packed binary with no plaintext lib names")
+        workbench.prepare(root, "demo\n", libs_dir=libs, all_libs=True)
+        self.assertEqual(sorted(p.name for p in (root / "libs").iterdir()),
+                         ["asl.library", "commodities.library", "datatypes.library"])
+        self.assertEqual((root / "libs" / "asl.library").read_bytes(), b"own")

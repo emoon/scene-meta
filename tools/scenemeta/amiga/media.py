@@ -115,7 +115,8 @@ def sniff(path):
     except OSError:
         return None
     if head[:4] == HUNK_MAGIC:
-        return "exe"
+        size = path.stat().st_size
+        return "exe" if size >= 28 and size % 4 == 0 else None
     if head[:4] == b"DMS!":
         return "disk"
     if head[:2] == b"PK" or head[2:5] in (b"-lh", b"-lz"):
@@ -398,6 +399,20 @@ def _norm(name):
     return "".join(c for c in name.lower() if c.isalnum())
 
 
+def _is_bbs_ad(path):
+    """True for SpeedHunk/Exe-Ad BBS advert stubs bundled in archive roots
+    (``_negerkuß!!.exe``, ``WHEREFUNROLEZ.EXE``, ``LE-win1196.exe``,
+    ``friendsonly.exe``): every one begins with a HUNK_DEBUG block tagged
+    ``HEADDBGV01``. Deprioritized below real executables, never dropped if
+    it is the sole executable in the archive."""
+    try:
+        with open(path, "rb") as f:
+            head = f.read(64)
+    except OSError:
+        return False
+    return b"HEADDBGV01" in head[24:64]
+
+
 def _pick_exe(tree, title="", run=None):
     """The executable a user would start in an unpacked tree, plus a note
     when there was a choice: ``(path | None, note)``. ``run`` is the one
@@ -416,15 +431,16 @@ def _pick_exe(tree, title="", run=None):
             cands.append(p)
     if not cands:
         return None, ""
-    # Shallowest first, then one named after the production, then one with
-    # an icon (what a user double-clicks), then one not named like data (an
-    # overlay the loader reads: Hardcore's hc.2xy-ko.dat beside the
-    # hc.1ph-pip.exe that loads it), then the biggest.
+    # Explicit ``run`` first, then non-BBS-ad and non-data executables, then
+    # one named after the production (even inside a subdirectory of a party
+    # pack), then shallowest, then one with an icon (what a user
+    # double-clicks), then the biggest.
     cands.sort(key=lambda p: (run not in (p.name, _rel(p, tree)),
-                              len(p.relative_to(tree).parts),
-                              not _named_after(p.stem, title),
-                              not p.with_name(p.name + ".info").exists(),
+                              _is_bbs_ad(p),
                               p.suffix.lower() in _DATA_EXTS,
+                              not _named_after(p.stem, title),
+                              len(p.relative_to(tree).parts),
+                              not p.with_name(p.name + ".info").exists(),
                               -p.stat().st_size))
     exe = cands[0]
     note = f"{len(cands)} executables, picked {exe.name}" if len(cands) > 1 else ""

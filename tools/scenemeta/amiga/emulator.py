@@ -41,7 +41,7 @@ KEYS = {"lmb": "mouse click 0", "rmb": "mouse click 1",
         "p1fire": "joy 0 fire", "p2fire": "joy 1 fire"}
 KEY_HOLD_FRAMES = 3
 # What a key retry presses, one per nudge in turn.
-NUDGE_KEYS = ("return", "space", "p2fire")
+NUDGE_KEYS = ("return", "space", "p2fire", "rmb")
 
 
 @dataclasses.dataclass
@@ -134,7 +134,7 @@ def _uae_config(machine, variant, tmp, drives=1, seed=DEFAULT_SEED):
             if machine.fpu_off:
                 (root / FPU_ON).write_bytes(FPU_ON_EXE)
                 command = f"{FPU_ON}\n{command}"
-            workbench.prepare(root, command)
+            workbench.prepare(root, command, all_libs=True)
         lines.append(f"filesystem2=rw,DH0:Demo:{root},0\n")
     return "".join(lines), swaps
 

@@ -137,7 +137,7 @@ class ScriptTest(unittest.TestCase):
             "input key 68 down", "input key 68 up",
             "input key 64 down", "input key 64 up",
             "input joy 1 fire down", "input joy 1 fire up",
-            "input key 68 down", "input key 68 up"])
+            "input mouse click 1"])
 
     def test_key_is_held_across_a_few_frames(self):
         cmds = self.script(frames=500, key_every=500)
@@ -170,7 +170,7 @@ class PressedTest(unittest.TestCase):
         self.assertEqual(
             emulator.pressed(2000, emulator.Options(key_every=500)),
             [(500, "return", None), (1000, "space", None),
-             (1500, "p2fire", None), (2000, "return", None)])
+             (1500, "p2fire", None), (2000, "rmb", None)])
 
     def test_a_pulse_s_click_names_its_disk_left_and_right_in_turn(self):
         got = emulator.pressed(4500, emulator.Options(schedule=(500, 1000)))
