@@ -156,6 +156,16 @@ class PickExeTest(unittest.TestCase):
         d_only = self.tree({"ad.exe": bbs_ad})
         self.assertEqual(media._pick_exe(d_only)[0].name, "ad.exe")
 
+    def test_hd_fallback_tries_launch_script_beside_exe(self):
+        # Karate / Engine demos: a launcher script passes s=... b=... w=320 h=240.
+        d = self.tree({"Karate": EXE, "Prase Party Story": b"karate s=main.txt w=320"})
+        v = media._tree_variant(d, "Prase Party Story")
+        fbs = media.fallbacks(v, 1074, "Prase Party Story")
+        self.assertEqual(fbs[0][0], "hd")
+        sv = fbs[0][1]()
+        self.assertEqual((sv.kind, sv.run, sv.choice), ("hd", "Prase Party Story", True))
+        self.assertEqual(sv.command, f"{GO_ON}karate s=main.txt w=320\n")
+
     def test_title_match_beats_shallower_unrelated_exe(self):
         # Party packs / archives with root tools: nested title match wins.
         d = self.tree({"helper.exe": EXE * 4, "64k/3/O.K.exe": EXE})

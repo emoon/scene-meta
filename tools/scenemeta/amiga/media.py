@@ -390,8 +390,9 @@ def _script_variant(script, run, note=""):
     """A hard-drive variant that executes ``script`` from its directory:
     its text is the startup-sequence, so its ``cd`` and assigns hold for
     the parts it runs."""
+    body = script.read_text("latin-1").rstrip("\r\n") + "\n"
     return Variant("hd", [], root=str(script.parent),
-                   command=f"{workbench.GO_ON}\n" + script.read_text("latin-1"),
+                   command=f"{workbench.GO_ON}\n" + body,
                    note=note, run=run, choice=True)
 
 
@@ -800,9 +801,20 @@ def fallbacks(v, prod_id, title="", run=None):
     it did not work: ``(kind, make)`` each, where ``make()`` gives a variant
     of that kind, or None. ``run`` is the file an entry says to start."""
     if v.kind == "hd":
+        if v.command is None:
+            return []
+        out = []
+        if v.root:
+            root = pathlib.Path(v.root)
+            script = _named_script(root, run) if run \
+                else _launch_script(root, title)
+            if script is not None:
+                rel = _rel(script, root)
+                out.append(("hd", lambda s=script, r=rel: _script_variant(
+                    s, run or r, f"runs script {r}")))
         # Files a demo loads from DF0: rather than from its directory.
-        return [] if v.command is None else \
-            [("floppy", lambda: floppy_variant(v, prod_id))]
+        out.append(("floppy", lambda: floppy_variant(v, prod_id)))
+        return out
     # A floppy set that never got going may be a Workbench disk: run its
     # demo directly instead. A set that still does not may be meant to be
     # installed: run it from one directory holding every disk.
