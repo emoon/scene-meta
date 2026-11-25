@@ -5958,7 +5958,7 @@ source = "script"
 [demozoo.306062]
 title = "Anti-Zeus Demo"
 source = "script"
-machine = "a500_512k"
+machine = "a1200"
 
 [demozoo.354797]
 title = "Anti-ZZZ-Multipart"

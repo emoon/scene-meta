@@ -1373,7 +1373,7 @@ machine = "a1200_fast"
 title = "Virtual Illusion"
 group = "Illusion"
 source = "script"
-machine = "a500_1mb_chip"
+result = "unknown"
 
 [demozoo.1939]
 title = "Virtual Intelligence"
@@ -1766,7 +1766,7 @@ result = "unknown"
 title = "Vote Now"
 group = "Apathy"
 source = "script"
-machine = "a500_512k"
+machine = "a1200"
 
 [demozoo.346437]
 title = "Votebastards"

@@ -57,6 +57,12 @@ class TaskHeldTest(unittest.TestCase):
     def test_requester_in_another_palette(self):
         self.assertEqual("task-held", alertshot.box(png("task_held_blue.png")))
 
+    def test_the_alert_above_the_screen_it_pushed_down(self):
+        # Journey to VIP on KS1.3: the same words as an alert, not a
+        # requester, over the AmigaDOS window.
+        self.assertEqual("task-held",
+                         alertshot.box(png("task_held_alert_over_cli.png")))
+
     def test_requester_over_a_demo_screen(self):
         self.assertEqual("task-held", alertshot.box(png("task_held_demo_bg.png")))
 

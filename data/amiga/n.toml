@@ -522,7 +522,7 @@ source = "script"
 title = "Neon Memories"
 group = "Stonehead"
 source = "script"
-machine = "a500_512k"
+machine = "a1200_030"
 
 [demozoo.242803]
 title = "Neon Skates Demo"
@@ -4466,7 +4466,7 @@ source = "script"
 title = "No Name"
 group = "Stop"
 source = "script"
-machine = "a500_512k"
+result = "unknown"
 run = "wildplayer"
 
 [demozoo.177795]

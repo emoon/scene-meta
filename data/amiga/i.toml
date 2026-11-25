@@ -531,8 +531,8 @@ note = "its readme asks for a 68040 with FPU; frozen on a plasma frame from 88 s
 title = "Impact"
 group = "DC.Clark"
 source = "script"
-machine = "a500_512k"
-run = "impact020.exe"
+machine = "a1200"
+boot = "floppy"
 
 [demozoo.139426]
 title = "Impassioned"
@@ -866,8 +866,9 @@ source = "script"
 title = "In Memorium Of ZX"
 group = "KYO Corp"
 source = "script"
-machine = "a500_512k"
+result = "unknown"
 run = "IMoZX.eXe"
+note = "the sweep saw works-then-crash on a1200; no entry of it passed the gate"
 
 [demozoo.314014]
 title = "In Memory Of Maf"

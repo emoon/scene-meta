@@ -1968,7 +1968,7 @@ run = "retro"
 title = "Retro"
 group = "LSD"
 source = "script"
-machine = "a500_512k"
+result = "unknown"
 
 [demozoo.40852]
 title = "Retro 64k"

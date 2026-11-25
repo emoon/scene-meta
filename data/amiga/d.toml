@@ -197,7 +197,7 @@ source = "script"
 title = "Dala Horse"
 group = "Razor 1911"
 source = "script"
-machine = "a500_1mb_chip"
+result = "unknown"
 
 [demozoo.112774]
 title = "Damage"
@@ -3920,7 +3920,7 @@ source = "script"
 title = "DJFF greets Edison"
 group = "DJ Fistfuck"
 source = "script"
-machine = "a500_512k"
+machine = "a1200"
 
 [demozoo.234208]
 title = "Djungle BBS is Back"

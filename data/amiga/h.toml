@@ -310,7 +310,7 @@ source = "script"
 title = "HAM Magic"
 group = "Deathstar"
 source = "script"
-machine = "a500_512k"
+result = "unknown"
 
 [demozoo.151970]
 title = "HAM Scroll"
@@ -2427,7 +2427,9 @@ machine = "a500_1mb"
 title = "Hobbits Second Demo"
 group = "Sky Voyagers"
 source = "script"
-machine = "a500_512k"
+boot = "floppy"
+result = "unknown"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.131921]
 title = "Hodor"

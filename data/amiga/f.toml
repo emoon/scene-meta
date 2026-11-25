@@ -633,7 +633,7 @@ machine = "a1200_fast"
 title = "Fast"
 group = "Jim"
 source = "script"
-machine = "a500_512k"
+result = "unknown"
 
 [demozoo.235069]
 title = "Fast"
@@ -766,7 +766,7 @@ source = "script"
 title = "Fast0xb"
 group = "Unity FR"
 source = "script"
-machine = "a500_512k"
+result = "unknown"
 
 [demozoo.143741]
 title = "Faster Than Hell"
@@ -4736,7 +4736,7 @@ source = "script"
 title = "Franz Fonts Disk"
 group = "Digitech / The Knight Hawks / Italian Bad Boys"
 source = "script"
-machine = "a500_512k"
+result = "unknown"
 
 [demozoo.215024]
 title = "Fraud 3 Intro"

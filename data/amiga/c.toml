@@ -1248,7 +1248,7 @@ source = "script"
 title = "Chip Tuner"
 group = "Unity"
 source = "script"
-machine = "a500_1mb_chip"
+result = "unknown"
 
 [demozoo.254147]
 title = "Chip's 18th Birthday"
@@ -2339,7 +2339,7 @@ source = "script"
 title = "Colour Me AGA"
 group = "NightWarriors"
 source = "script"
-machine = "a500_512k"
+result = "unknown"
 
 [demozoo.238772]
 title = "Colour Scroll"

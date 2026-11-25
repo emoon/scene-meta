@@ -1246,7 +1246,7 @@ source = "script"
 title = "Entitys First"
 group = "The Brothers"
 source = "script"
-machine = "a500_512k"
+machine = "a1200"
 
 [demozoo.215185]
 title = "Entropy"

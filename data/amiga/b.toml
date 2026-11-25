@@ -626,7 +626,7 @@ source = "script"
 title = "BALSAM Invitation"
 group = "NC Gamez"
 source = "script"
-machine = "a500_512k"
+machine = "a1200"
 
 [demozoo.153220]
 title = "Bamba Beach"
@@ -5110,7 +5110,7 @@ source = "script"
 title = "Borntro"
 group = "Stoopid"
 source = "script"
-machine = "a500_512k"
+machine = "a1200"
 
 [demozoo.225081]
 title = "Borntro"

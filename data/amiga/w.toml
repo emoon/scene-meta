@@ -726,7 +726,7 @@ source = "script"
 title = "We Are Mungoz"
 group = "Apathy"
 source = "script"
-machine = "a500_512k"
+machine = "a1200"
 
 [demozoo.244466]
 title = "We Are Not Dead"

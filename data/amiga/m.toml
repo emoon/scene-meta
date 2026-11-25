@@ -398,7 +398,7 @@ source = "script"
 title = "Magical Box"
 group = "Grasshopper Developments"
 source = "script"
-machine = "a500_2mb_chip"
+machine = "a1200"
 
 [demozoo.224738]
 title = "Magical Moments"
@@ -3540,7 +3540,7 @@ source = "script"
 title = "Megastrobo 1.8"
 group = "Degens"
 source = "script"
-machine = "a500_512k"
+result = "unknown"
 run = "MEGA-STROBO"
 
 [demozoo.232915]
@@ -5694,7 +5694,7 @@ machine = "a1200_fast"
 title = "Mitt Liv Som Pixel"
 group = "Craze"
 source = "script"
-machine = "a500_2mb_chip"
+machine = "a1200"
 
 [demozoo.29098]
 title = "Mitä Hirmu sanoo?"
@@ -6648,7 +6648,7 @@ machine = "a1200_fast"
 title = "Mr. T vs. Britney Spears"
 group = "Przyjaciele Stefana B."
 source = "script"
-machine = "a500_512k"
+result = "unknown"
 run = "ScalaMM"
 
 [demozoo.238415]

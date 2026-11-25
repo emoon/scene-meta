@@ -330,7 +330,7 @@ machine = "a500_512k"
 title = "Keep Cool"
 group = "German Spreading Crew"
 source = "script"
-machine = "a500_512k"
+result = "unknown"
 
 [demozoo.238966]
 title = "Keep Cool"
@@ -1019,7 +1019,7 @@ source = "script"
 title = "Knight Rider Demo 1"
 group = "Knightrider"
 source = "script"
-machine = "a500_512k"
+result = "unknown"
 
 [demozoo.230492]
 title = "Knin Peaks"

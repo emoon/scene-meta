@@ -1487,7 +1487,7 @@ source = "script"
 title = "Second Part"
 group = "Sekhmet"
 source = "script"
-machine = "a500_1mb_chip"
+result = "unknown"
 
 [demozoo.219464]
 title = "Second Production"
@@ -3067,7 +3067,7 @@ source = "script"
 title = "Sine Intro"
 group = "Miracle / Rebels"
 source = "script"
-machine = "a500_512k"
+result = "broken"
 
 [demozoo.241452]
 title = "Sine Intro"
@@ -4276,7 +4276,7 @@ source = "script"
 title = "Small Intro"
 group = "The Supply Team"
 source = "script"
-machine = "a500_512k"
+result = "unknown"
 
 [demozoo.215932]
 title = "Small Intro"
@@ -6131,7 +6131,8 @@ run = "MadHatter.exe"
 title = "Spacedust"
 group = "Lemon."
 source = "script"
-machine = "a500_2mb_chip"
+machine = "a1200"
+events = [{ at = 60.0, key = "space" }]
 
 [demozoo.222196]
 title = "Spacehulk"

@@ -814,7 +814,7 @@ source = "script"
 title = "Journey to VIP"
 group = "Unity"
 source = "script"
-machine = "a500_512k"
+result = "unknown"
 
 [demozoo.45800]
 title = "Joy"

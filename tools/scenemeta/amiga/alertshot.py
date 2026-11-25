@@ -10,7 +10,8 @@ only evidence.
 Kickstart 1.x shows a recoverable alert above the screen it found, pushed
 down: the AmigaDOS window is still there. A demo's own picture can be red on
 black in the same place, so that box is known by its words, "Guru
-Meditation #", matched against a template mask.
+Meditation #", matched against a template mask. So is the alert it shows
+there for a task that crashed, "Software error - task held".
 
 Kickstart 1.x's "Software error - task held" requester (Intuition's
 AutoRequest for a task that crashed) leaves LastAlert at -1 as well. It is
@@ -71,7 +72,7 @@ def _rows(png):
 
 
 GURU_BOX = (216, 86, 352, 100)  # x0, y0, x1, y1 around "Guru Meditation #"
-GURU_MATCH = 0.8                # share of the template's ink the screen must reproduce
+ALERT_MATCH = 0.8               # share of the template's ink the screen must reproduce
 # One row per line of the words as they are above a screen (a box with
 # nothing beneath is drawn wider), one bit per pixel, 1 = ink.
 GURU_MASK = tuple(int(row, 16) for row in (
@@ -89,6 +90,26 @@ GURU_MASK = tuple(int(row, 16) for row in (
     "199998198031981986069986861999801b",
     "0f8efc0ec0318f0ecf030ec30f0f19801b",
     "0f8efc0ec0318f0ecf030ec30f0f19801b",
+))
+
+# Kickstart 1.x's other alert above a screen, for a task that crashed: its
+# first line, "Software error - task held".
+HELD_ALERT_BOX = (88, 48, 304, 62)
+HELD_ALERT_MASK = tuple(int(row, 16) for row in (
+    "07800381000000000000000000000000000100001c001c000701c0",
+    "07800381000000000000000000000000000100001c001c000701c0",
+    "0cc006c3000000000000000000000000000300000c000c000300c0",
+    "0cc006c3000000000000000000000000000300000c000c000300c0",
+    "0e078607cc679d8780079d9d879d80000007c787ccc00d878306c0",
+    "0e078607cc679d8780079d9d879d80000007c787ccc00d878306c0",
+    "070ccf030d60ceccc00ccececccec00fc00300cc0d800eccc30dc0",
+    "070ccf030d60ceccc00ccececccec00fc00300cc0d800eccc30dc0",
+    "01ccc6030d63cccfc00fccccccccc000000303c78f000ccfc30cc0",
+    "01ccc6030d63cccfc00fccccccccc000000303c78f000ccfc30cc0",
+    "0cccc60346cccc0c000c0c0c0ccc000000034cc0cd800ccc030cc0",
+    "0cccc60346cccc0c000c0c0c0ccc000000034cc0cd800ccc030cc0",
+    "07878f0186c77e0780079e1e079e00000001876f9cc01cc7878760",
+    "07878f0186c77e0780079e1e079e00000001876f9cc01cc7878760",
 ))
 
 HELD_BOX = (90, 66, 384, 134)  # x0, y0, x1, y1 around the requester's text
@@ -212,12 +233,12 @@ def _task_held(rows):
                   lambda px: abs(_lum(px) - background) > HELD_INK, HELD_MATCH)
 
 
-def _says_guru(rows):
-    """True when "Guru Meditation #" is on screen where exec writes it above
-    a screen."""
-    crop = _crop(rows, GURU_BOX)
-    return bool(crop) and _reads(crop, GURU_MASK,
-                                 lambda px: _alert_red(*px), GURU_MATCH)
+def _says(rows, area, mask):
+    """True when an alert's words, the template ``mask``, are in ``area``:
+    where exec writes them above a screen."""
+    crop = _crop(rows, area)
+    return bool(crop) and _reads(crop, mask, lambda px: _alert_red(*px),
+                                 ALERT_MATCH)
 
 
 def _is_guru(rows, height):
@@ -244,6 +265,7 @@ def box(png):
         rows = list(itertools.islice(decoded, height // 2))
     except (ValueError, zlib.error, struct.error, StopIteration):
         return ""
-    if _is_guru(rows, height) or _says_guru(rows):
+    if _is_guru(rows, height) or _says(rows, GURU_BOX, GURU_MASK):
         return "guru"
-    return "task-held" if _task_held(rows) else ""
+    held = _task_held(rows) or _says(rows, HELD_ALERT_BOX, HELD_ALERT_MASK)
+    return "task-held" if held else ""

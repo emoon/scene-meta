@@ -984,7 +984,7 @@ source = "script"
 title = "Tetris Expansion"
 group = "Unity"
 source = "script"
-machine = "a500_512k"
+result = "unknown"
 
 [demozoo.188122]
 title = "Tetris Pro Intro"
@@ -4382,7 +4382,7 @@ source = "script"
 title = "The Tetris Expansion"
 group = "Unity FR"
 source = "script"
-machine = "a500_512k"
+result = "unknown"
 
 [demozoo.5334]
 title = "The Tetris Intro (Legalize It 3)"
@@ -5119,7 +5119,7 @@ source = "script"
 title = "Third Part"
 group = "Sekhmet"
 source = "script"
-machine = "a500_512k"
+result = "unknown"
 
 [demozoo.249127]
 title = "Thirty Balls"
@@ -5875,7 +5875,7 @@ source = "script"
 title = "Together"
 group = "Phase Truce"
 source = "script"
-machine = "a500_1mb_chip"
+result = "unknown"
 run = "Together.exe"
 
 [demozoo.40179]
@@ -5888,7 +5888,7 @@ result = "unknown"
 title = "Together Remix"
 group = "Phase Truce"
 source = "script"
-machine = "a500_2mb_chip"
+result = "unknown"
 
 [demozoo.27322]
 title = "Toilet Human Excrement"
