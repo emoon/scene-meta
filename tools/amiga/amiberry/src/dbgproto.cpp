@@ -240,40 +240,56 @@ static void emit_error(int s, const std::string &cmd, const char *msg)
 
 /* ---- display measure -------------------------------------------------- */
 /* Where a run shows bitplanes, by the registers (custom.cpp notes each shown
- * line): per line and per column, in how many frames. */
+ * line): per line and per column, in how many frames, apart for each mode:
+ * a resolution, interlaced or not, and whether the copper list was the
+ * system's (COP1LC as Kickstart sets it: AmigaDOS's own screen, or a
+ * production that draws through the system). A frame is of the finest its
+ * lines had, and the system's when every line was. */
 int dbgproto_display_on = 0;
 
 #define DISP_MAX 1024       /* lines of a frame; lores columns of a line */
 #define DISP_MAX_DIW 32
+#define DISP_MODES 12       /* resolution, + 3 interlaced, + 6 the system's */
 
 struct disp_diw { uae_u16 strt, stop; long lines; };
 
 static struct {
-	long frames;                    /* frames that showed a line */
-	long rows[DISP_MAX], cols[DISP_MAX];
+	struct {
+		long frames;                /* frames that showed a line */
+		long rows[DISP_MAX], cols[DISP_MAX];
+	} mode[DISP_MODES];
+	uae_u32 os_cop;                 /* the system's COP1LC; 0: not told */
 	std::vector<disp_diw> diw;      /* DIWSTRT/DIWSTOP of the shown lines */
 	bool more_diw;                  /* and others, not kept */
 	/* the frame being drawn */
 	bool row[DISP_MAX];
-	int x0, y0, x1, y1;
+	int x0, y0, x1, y1, res;
+	bool lace, os;
 } disp;
 
 static void disp_new_frame(void)
 {
 	disp.x0 = disp.y0 = DISP_MAX;
 	disp.x1 = disp.y1 = 0;
+	disp.res = 0;
+	disp.lace = false;
+	disp.os = disp.os_cop != 0;
 }
 
-void dbgproto_display_line(int line, int x0, int x1,
-	uae_u16 diwstrt, uae_u16 diwstop)
+void dbgproto_display_line(int line, int x0, int x1, int res, bool lace,
+	uae_u32 cop1lc, uae_u16 diwstrt, uae_u16 diwstop)
 {
-	if (line < 0 || line >= DISP_MAX || x0 < 0 || x1 > DISP_MAX)
+	if (line < 0 || line >= DISP_MAX || x0 < 0 || x1 > DISP_MAX
+		|| res < 0 || res > 2)
 		return;
 	disp.row[line] = true;
 	disp.x0 = std::min(disp.x0, x0);
 	disp.x1 = std::max(disp.x1, x1);
 	disp.y0 = std::min(disp.y0, line);
 	disp.y1 = std::max(disp.y1, line + 1);
+	disp.res = std::max(disp.res, res);
+	disp.lace |= lace;
+	disp.os &= cop1lc == disp.os_cop;
 	for (auto &d : disp.diw) {
 		if (d.strt == diwstrt && d.stop == diwstop) {
 			d.lines++;
@@ -289,13 +305,14 @@ void dbgproto_display_line(int line, int x0, int x1,
 static void disp_vsync(void)
 {
 	if (disp.x1 > disp.x0) {
-		disp.frames++;
+		auto &m = disp.mode[disp.res + (disp.lace ? 3 : 0) + (disp.os ? 6 : 0)];
+		m.frames++;
 		for (int y = disp.y0; y < disp.y1; y++) {
-			disp.rows[y] += disp.row[y];
+			m.rows[y] += disp.row[y];
 			disp.row[y] = false;
 		}
 		for (int x = disp.x0; x < disp.x1; x++)
-			disp.cols[x]++;
+			m.cols[x]++;
 	}
 	disp_new_frame();
 }
@@ -476,13 +493,13 @@ static void cmd_status(int s, const std::string &cmd)
 		"{\"frame\":%ld,\"pc\":\"%x\",\"halt\":%d,\"stopped\":%d,"
 		"\"dmacon\":%u,\"intena\":%u,\"intreq\":%u,\"bplcon0\":%u,"
 		"\"ddfstrt\":%u,\"ddfstop\":%u,\"diwstrt\":%u,\"diwstop\":%u,"
-		"\"coppc\":\"%x\",\"vpos\":%d,"
+		"\"coppc\":\"%x\",\"cop1lc\":\"%x\",\"vpos\":%d,"
 		"\"motor\":%d,\"cyl\":%d,\"df0\":\"%s\",\"warp\":%d,"
 		"\"resets\":%d}",
 		frame_counter, m68k_getpc(), regs.halted, regs.stopped ? 1 : 0,
 		(unsigned)cs.dmacon, (unsigned)cs.intena, (unsigned)cs.intreq,
 		(unsigned)cs.bplcon0, (unsigned)cs.ddfstrt, (unsigned)cs.ddfstop,
-		(unsigned)cs.diwstrt, (unsigned)cs.diwstop, cs.coppc, cs.vpos,
+		(unsigned)cs.diwstrt, (unsigned)cs.diwstop, cs.coppc, cs.cop1lc, cs.vpos,
 		d0->drive_motor ? 1 : 0, d0->drive_track, df0,
 		currprefs.turbo_emulation ? 1 : 0,
 		reset_counter);
@@ -522,7 +539,8 @@ static void cmd_shot_new(int s, const std::string &cmd, int permille,
 	emit(s, cmd, body);
 }
 
-/* display measure on|off: start (from nothing) or stop the measure.
+/* display measure on [os=ADDR] | off: start (from nothing) or stop the
+ * measure; ADDR is the system's COP1LC, in hex.
  * display status: what it holds and, of the picture a screenshot would give
  * now, the box of the pixels that are not the border's (``screen``), to set
  * against it. */
@@ -532,6 +550,8 @@ static void cmd_display(int s, const std::string &cmd,
 	if (t.size() >= 3 && t[1] == "measure" && (t[2] == "on" || t[2] == "off")) {
 		if (t[2] == "on") {
 			disp = {};
+			std::string os = kv(t, "os");
+			disp.os_cop = os.empty() ? 0 : parse_addr(os);
 			disp_new_frame();
 		}
 		dbgproto_display_on = t[2] == "on";
@@ -539,14 +559,24 @@ static void cmd_display(int s, const std::string &cmd,
 		return;
 	}
 	if (t.size() < 2 || t[1] != "status") {
-		emit_error(s, cmd, "usage: display measure on|off | status");
+		emit_error(s, cmd, "usage: display measure on [os=ADDR] | off | status");
 		return;
 	}
 	char buf[256];
-	snprintf(buf, sizeof buf, "{\"on\":%s,\"frames\":%ld,\"rows\":",
-		dbgproto_display_on ? "true" : "false", disp.frames);
-	std::string body = buf + disp_runs(disp.rows) + ",\"cols\":"
-		+ disp_runs(disp.cols) + ",\"diw\":[";
+	std::string body = dbgproto_display_on ? "{\"on\":true" : "{\"on\":false";
+	body += ",\"modes\":[";
+	bool first = true;
+	for (int i = 0; i < DISP_MODES; i++) {
+		const auto &m = disp.mode[i];
+		if (!m.frames)
+			continue;
+		snprintf(buf, sizeof buf, "%s{\"res\":%d,\"lace\":%s,\"os\":%s,"
+			"\"frames\":%ld,\"rows\":", first ? "" : ",", i % 3,
+			i % 6 >= 3 ? "true" : "false", i >= 6 ? "true" : "false", m.frames);
+		body += buf + disp_runs(m.rows) + ",\"cols\":" + disp_runs(m.cols) + "}";
+		first = false;
+	}
+	body += "],\"diw\":[";
 	for (size_t i = 0; i < disp.diw.size(); i++) {
 		snprintf(buf, sizeof buf, "%s[%u,%u,%ld]", i ? "," : "",
 			(unsigned)disp.diw[i].strt, (unsigned)disp.diw[i].stop,

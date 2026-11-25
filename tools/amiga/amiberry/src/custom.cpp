@@ -793,6 +793,7 @@ void dbgproto_custom_status(struct dbgproto_custom_state *out)
 	out->diwstrt = diwstrt;
 	out->diwstop = diwstop;
 	out->coppc = cop_state.ip;
+	out->cop1lc = cop1lc;
 	out->vpos = vpos;
 }
 
@@ -5543,7 +5544,8 @@ static void dbgproto_note_line(void)
 	x0 = std::max(x0, hstrt);
 	x1 = std::min(x1, hstop);
 	if (x1 > x0) {
-		dbgproto_display_line(vpos, x0, x1, diwstrt, diwstop);
+		dbgproto_display_line(vpos, x0, x1, bplcon0_res, (bplcon0 & 4) != 0,
+			cop1lc, diwstrt, diwstop);
 	}
 }
 

@@ -38,7 +38,7 @@ its `USE_*` feature off, so removing it breaks the build.
   `watch set ADDR SIZE | watch clear`, `disasm ADDR [N]` (raw
   opcode words — disassemble host-side with capstone), `load ADDR PATH`,
   `disk swap-next|insert|status|autoswap on|click|off`,
-  `display measure on|off | status`,
+  `display measure on [os=ADDR] | off | status`,
   `input mouse BTN down|up | mouse move|rel X Y |
   mouse click|doubleclick [BTN] | joy PORT BTN down|up | key CODE down|up`
   (inject input for game testing — trainers wait for mouse clicks; button and
@@ -185,10 +185,15 @@ its `USE_*` feature off, so removing it breaks the build.
   blank) and between which columns: those the horizontal display window
   and the fetch from DDFSTRT to DDFSTOP share, in lores pixels as DIWSTRT
   counts them ($81 is the first of a standard screen). Nothing else is
-  touched, so a run is the same with the measure on. `display status`
-  answers `frames` (those that showed a line), `rows` and `cols` (stretches
-  `[from, to, frames]`, `to` not included: in how many frames each line
-  and column was shown), `diw` (`[DIWSTRT, DIWSTOP, lines]` of the
+  touched, so a run is the same with the measure on. The counts are kept
+  apart per mode: the resolution (`res`: 0 lores, 1 hires, 2 super-hires),
+  interlaced or not (`lace`), and whether COP1LC was the ADDR given as
+  `os=` (hex) on every line (`os`: the system's copper list; `status` now
+  answers `cop1lc`, so a bare boot tells it). A frame is of the finest
+  mode its lines had. `display status` answers `modes`, of each that showed
+  a line its `res`, `lace`, `os`, `frames` (those that showed a line),
+  `rows` and `cols` (stretches `[from, to, frames]`, `to` not included: in
+  how many frames each line and column was shown), then `diw` (`[DIWSTRT, DIWSTOP, lines]` of the
   shown lines, 32 pairs at most, `more_diw` when there were others) and
   `screen`: the size of the picture a screenshot would give now and, as
   `box`, the box of its pixels that are not the border's colour, the

@@ -140,16 +140,27 @@ def _uae_config(machine, variant, tmp, drives=1, seed=DEFAULT_SEED):
 
 LAST_ALERT = 0x202   # ExecBase->LastAlert
 NO_ALERT = 0xFFFFFFFF
-_execbase_cache = {}
+_bare_cache = {}
 
 
 def execbase(machine, kind="floppy"):
-    """Where this machine's Kickstart puts ExecBase. Fixed for a given ROM and
-    memory layout, so it is measured once by booting with no demo. The boot
-    media matter: with Z3 fast RAM, KS3.0 puts it $20 higher when the
-    hard drive is mounted."""
+    """Where this machine's Kickstart puts ExecBase (see ``_bare``)."""
+    return _bare(machine, kind)[0]
+
+
+def system_copper(machine, kind="floppy"):
+    """The COP1LC this machine's Kickstart shows its own screens with (see
+    ``_bare``): a production's own copper list is another."""
+    return _bare(machine, kind)[1]
+
+
+def _bare(machine, kind):
+    """``(ExecBase, COP1LC)`` of this machine with no demo. Fixed for a given
+    ROM and memory layout, so measured once by booting it. The boot media
+    matter: with Z3 fast RAM, KS3.0 puts ExecBase $20 higher when the hard
+    drive is mounted."""
     key = (machine.name, kind == "hd")
-    if key not in _execbase_cache:
+    if key not in _bare_cache:
         with tempfile.TemporaryDirectory(prefix="scenemeta-eb-") as t:
             tmp = pathlib.Path(t)
             media = "nr_floppies=1\n"
@@ -162,11 +173,13 @@ def execbase(machine, kind="floppy"):
                            + media)
             out = _invoke([str(config.AMIBERRY), "-f", str(cfg),
                            "--dbg", "warp on", "--dbg", "run frames=300",
-                           "--dbg", "peek 4 4"], tmp, 120)[0]
-            hexval = next((r["result"].get("hex", "") for r in _records(out)
-                           if r.get("cmd") == "peek 4 4"), "")
-            _execbase_cache[key] = int(hexval[:8], 16)
-    return _execbase_cache[key]
+                           "--dbg", "peek 4 4", "--dbg", "status"], tmp, 120)[0]
+            said = {r.get("cmd"): r["result"] for r in _records(out)
+                    if "result" in r}
+            _bare_cache[key] = (
+                int(said.get("peek 4 4", {}).get("hex", "")[:8], 16),
+                int(said.get("status", {}).get("cop1lc", "0"), 16))
+    return _bare_cache[key]
 
 
 @dataclasses.dataclass(frozen=True)
@@ -257,7 +270,8 @@ def run(machine, variant, frames, opts=Options(), interval=250, timeout=None):
         script = _play if opts.play else _script
         cmds = ["warp on", _autoswap(opts)]
         if opts.area:
-            cmds.append("display measure on")
+            cmds.append("display measure on"
+                        f" os={system_copper(machine, variant.kind):x}")
         cmds += script(frames, interval, alert_peek, shots, swaps, opts)
         argv = [str(config.AMIBERRY), "-f", str(cfg)]
         argv += [f"-diskswapper={d}" for d in swaps]
@@ -477,7 +491,7 @@ class _Reader:
                 self.max_cyl[u] = max(self.max_cyl[u], d.get("cyl", -1))
 
     def _display(self, res):
-        if "rows" in res:
+        if "modes" in res:
             self.display = res
             self.boxes.append(res.get("screen", {}).get("box"))
 

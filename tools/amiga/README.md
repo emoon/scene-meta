@@ -256,16 +256,28 @@ stays in the table, to be written by hand.
 
 The emulator counts, per line and per column, the frames in which bitplanes
 were fetched inside the display window (`display measure`, see
-`amiberry/SNAPSHOT.md`): from the registers, with no picture looked at. The
-area is the lines and columns shown in a quarter of those frames or more,
-in lores pixels and lines.
+`amiberry/SNAPSHOT.md`): from the registers, with no picture looked at, and
+apart for each mode, a resolution interlaced or not. A mode's part of the
+screen is the lines and columns shown in a quarter of its frames or more.
+The area is the box around the parts of every mode, in the pixels of the
+finest: 5312 3D Demo II is lores but for half a minute of hires interlaced
+pictures, and is 640x512.
+
+Two things are not the production's. AmigaDOS's window is hires and up
+while a production loads (69 seconds of 3D Demo II): frames shown by the
+copper list Kickstart sets up, which is found once per machine by booting
+it bare, are left out unless the run showed no other. And a mode shown for
+less than a second is the frame in which a production takes the screen
+over (6114 Fascism Sucks has one hires frame of its own). A production
+that draws through the system and is started from the AmigaDOS window is
+not told from that window, and gets the larger of the two.
 
 The registers do not say everything. Bitplanes that are shown but empty
 count (a 256-line screen with a picture drawn into the middle 180), and a
 picture the copper makes alone does not. So the box of what each sample's
 picture shows that is not the border's colour is taken too, in the
 emulator, and the columns and rows inside a quarter of those boxes are
-stored beside the area as what was drawn. Where the two differ much, the
+stored beside the area as what was drawn, in the area's pixels. Where the two differ much, the
 area is not to be trusted:
 
 ```

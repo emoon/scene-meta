@@ -211,15 +211,16 @@ class ParseTest(unittest.TestCase):
 
     def test_the_last_display_status_and_the_box_of_each_picture(self):
         def status(frames, screen):
-            return ('{"cmd": "display status", "result": {"frames": %d,'
-                    ' "rows": [], "cols": [], "diw": [[21121, 1729, 180]],'
+            return ('{"cmd": "display status", "result": {"modes": [{"res": 0,'
+                    ' "lace": false, "os": false, "frames": %d, "rows": [],'
+                    ' "cols": []}], "diw": [[21121, 1729, 180]],'
                     ' "screen": %s}}' % (frames, screen))
         out = "\n".join([status(250, '{"w": 752, "h": 574}'),
                          status(500, '{"w": 752, "h": 574,'
                                      ' "box": [76, 114, 716, 474]}')])
         log = emulator._parse((out, "", 0, False), pathlib.Path("/none"), {},
                               0, "peek x 4")
-        self.assertEqual(log.display["frames"], 500)
+        self.assertEqual(log.display["modes"][0]["frames"], 500)
         self.assertEqual(log.display["diw"], [[0x5281, 0x06c1, 180]])
         self.assertEqual(log.boxes, [None, [76, 114, 716, 474]])
 
@@ -268,7 +269,8 @@ class AreaRunTest(unittest.TestCase):
         ran = ("", "", 0, False)
         with tempfile.NamedTemporaryFile(suffix=".adf") as adf, \
                 mock.patch.object(emulator.machines, "require_rom"), \
-                mock.patch.object(emulator, "execbase", return_value=0), \
+                mock.patch.object(emulator, "_bare",
+                                  return_value=(0, 0x420)), \
                 mock.patch.object(emulator, "_invoke", return_value=ran) as invoke:
             adf.write(b"\0" * 901120)
             adf.flush()
@@ -281,7 +283,8 @@ class AreaRunTest(unittest.TestCase):
 
     def test_the_measure_is_on_from_the_start(self):
         cmds = self.cmds(area=True)
-        self.assertLess(cmds.index("display measure on"),
+        # Told the copper list of Kickstart's own screens.
+        self.assertLess(cmds.index("display measure on os=420"),
                         cmds.index("run frames=250"))
         self.assertEqual(cmds.count("display status"), 2)
 

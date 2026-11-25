@@ -371,8 +371,9 @@ class PlayTest(unittest.TestCase):
 
     def test_the_area_of_a_measured_run(self):
         self.LOG = dataclasses.replace(
-            self.LOG, boxes=[[76, 114, 716, 474]], display={
-                "frames": 9, "rows": [[83, 263, 9]], "cols": [[129, 449, 9]]})
+            self.LOG, boxes=[[76, 114, 716, 474]], display={"modes": [{
+                "res": 0, "lace": False, "os": False, "frames": 90,
+                "rows": [[83, 263, 90]], "cols": [[129, 449, 90]]}]})
         out, _ = self.measured()
         self.assertEqual(out.area, Area(320, 180, 320, 180))
 

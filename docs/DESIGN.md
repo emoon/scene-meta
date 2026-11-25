@@ -133,11 +133,12 @@ Kickstart 1.x a script can only run its parts.
 `area` is for a frontend that shows the production full screen and not
 with thick borders: some productions draw into 320x180 in the middle of
 the 320x256 PAL screen, others into 320x200, and nothing in a download
-says so. It is the largest part the production draws into for a good share
-of its run: a part drawn into less does not change it, and neither does a
-loader or a title that fills the screen before a smaller main part. On
-Amiga it is in lores pixels and lines whatever the resolution, so a hires
-interlaced picture that fills the PAL screen is 320x256 too. An area of
+says so. It is the part of the screen the production draws into, in the
+finest pixels it uses: a production with a hires interlaced picture is
+640x512 when its parts fill the PAL screen, however much of it is lores.
+A part drawn into less does not change it, and neither does a title that
+fills the screen for a short time before a smaller main part; the system's
+own screen while the production loads is not the production's. An area of
 320x180 has `aspect = "16:9"`. Any other area stands alone: 320x200 is
 usually still 4:3, so a player may cut the borders away but must not
 stretch the picture. How a production is shown is the player's choice.
