@@ -18,6 +18,7 @@ one works.
 | `a500_1mb` | 68000, ECS Agnus, KS1.3, 1M chip + 512K slow |
 | `a500_ks12` | 68000, OCS, KS1.2, 512K chip + 512K slow |
 | `a500_512k` | 68000, OCS, KS1.3, 512K chip |
+| `a500_ks12_512k` | 68000, OCS, KS1.2, 512K chip |
 | `a500_1mb_chip` | 68000, ECS Agnus, KS1.3, 1M chip |
 | `a500_2mb_chip` | 68000, ECS Agnus, KS1.3, 2M chip |
 | `a1200` | 68EC020, AGA, KS3.0, 2M chip |
@@ -27,7 +28,7 @@ one works.
 
 AGA-only productions start at `a1200`. Productions released before Oct 1992 skip the 030/060 rungs. ROMs go in `roms/` (`kick13.rom`,
 `kick30.rom`, and `kick12.rom`, a 256K Kickstart 1.2: without it the
-`a500_ks12` rung is skipped). Without `kick13.rom` or `kick30.rom` a sweep
+`a500_ks12` and `a500_ks12_512k` rungs are skipped). Without `kick13.rom` or `kick30.rom` a sweep
 stops before its first production, and no run of any command starts
 without the ROM of its machine: the error names the ROM and the directory. Demos of the 1.2 era hard-code ROM addresses
 and guru under 1.3. Some intros only run when AmigaDOS loads them into chip

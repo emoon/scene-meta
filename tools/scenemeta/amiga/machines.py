@@ -92,6 +92,13 @@ LADDER = (
     Machine("a500_512k", "kick13.rom",
             _A500 + "chipset=ocs\nchipmem_size=1\nbogomem_size=0\n",
             False, "A500 68000, OCS, KS1.3, 512K chip"),
+    # Stock 512K A500 with Kickstart 1.2: demos of the 1.2 era that hard-code
+    # ROM addresses AND omit MEMF_CHIP (Meatheads Party Demo, Burpa Demo), so
+    # slow RAM puts their bitplanes/samples at $C00000 where Agnus/Paula cannot
+    # DMA.
+    Machine("a500_ks12_512k", "kick12.rom",
+            _A500 + "chipset=ocs\nchipmem_size=1\nbogomem_size=0\n",
+            False, "A500 68000, OCS, KS1.2, 512K chip", True),
     # With slow RAM present, Kefmania's own reboot into disk 2 Gurus during
     # the boot; it also refuses to run on 512K chip ("REQUIRS 1MEG").
     Machine("a500_1mb_chip", "kick13.rom",

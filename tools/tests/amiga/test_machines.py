@@ -28,23 +28,29 @@ class LadderTest(unittest.TestCase):
     def test_ks12_is_skipped_without_its_rom(self):
         n = names(machines.ladder_for(False, self.roms()))
         self.assertNotIn("a500_ks12", n)
+        self.assertNotIn("a500_ks12_512k", n)
         self.assertEqual(n[:2], ["a500", "a500_1mb"])
 
     def test_required_machines_never_depend_on_the_rom_dir(self):
         n = names(machines.ladder_for(False, self.roms()))
         self.assertEqual(n, [m.name for m in machines.LADDER
-                             if m.name != "a500_ks12"])
+                             if not m.optional])
 
     def test_aga_only_tries_aga_first_then_the_a500s(self):
         n = names(machines.ladder_for(True, self.roms("kick12.rom")))
         self.assertEqual(n[0], "a1200")
-        self.assertEqual(n[-3:], ["a500_512k", "a500_1mb_chip",
-                                  "a500_2mb_chip"])
+        self.assertEqual(n[-4:], ["a500_512k", "a500_ks12_512k",
+                                  "a500_1mb_chip", "a500_2mb_chip"])
 
     def test_chip_only_a500_comes_after_the_slow_ram_ones(self):
         # A new rung must not change what already works further down.
         n = names(machines.ladder_for(False, self.roms("kick12.rom")))
-        self.assertEqual(n[:4], ["a500", "a500_1mb", "a500_ks12", "a500_512k"])
+        self.assertEqual(n[:5], ["a500", "a500_1mb", "a500_ks12",
+                                 "a500_512k", "a500_ks12_512k"])
+        text = machines.uae_text(machines.BY_NAME["a500_ks12_512k"])
+        self.assertIn("chipmem_size=1\n", text)
+        self.assertIn("bogomem_size=0\n", text)
+        self.assertEqual(machines.BY_NAME["a500_ks12_512k"].rom, "kick12.rom")
 
     def test_2m_chip_a500_is_the_last_before_the_a1200s(self):
         n = names(machines.ladder_for(False, self.roms()))
