@@ -89,11 +89,23 @@ def video_loop(cells, t0):
     loops = [k for k in kinds if k[0] == "loop"]
     if not loops or any(k[0] == "open" for k in kinds):
         return 0, 0, kinds
-    # When many cells loop, take the 90th-percentile shown frame across looping
-    # cells so 1-2 cells with sub-cadence tearing (e.g. v17/v18 in 89549) do
-    # not drag video_shown hundreds of seconds past the other 30 cells.
-    l_shown = sorted(k[2] for k in loops)
-    loop_shown = l_shown[int(0.9 * (len(l_shown) - 1))] if len(l_shown) >= 10 else l_shown[-1]
+    # Group looping cells by period (within 2%) and take the 75th-percentile
+    # shown frame for large groups (>= 10 cells) so a strip of cells with minor
+    # sub-cadence tearing (e.g. v17/v18 in 89549, v00..v06 in 139138) does not
+    # drag video_shown hundreds of seconds past the rest of the screen, while
+    # preserving any smaller distinct-period scroller strip.
+    groups = []
+    for _, p, s in sorted(loops, key=lambda x: x[1]):
+        if groups and abs(p - groups[-1][0]) <= max(2, groups[-1][0] // 50):
+            groups[-1][1].append(s)
+        else:
+            groups.append((p, [s]))
+    loop_shown = 0
+    for _, gs in groups:
+        gs.sort()
+        pick = gs[int(0.75 * (len(gs) - 1))] if len(gs) >= 10 else gs[-1]
+        if pick > loop_shown:
+            loop_shown = pick
     still_shown = max((k[2] for k in kinds if k[0] == "still"), default=0)
     return max(k[1] for k in loops), max(loop_shown, still_shown), kinds
 
@@ -419,6 +431,7 @@ def verdict(rows, cells, song, halted=False, data=None, swaps=(), meta=None,
         out["end"] = max(out["music_over"], out["last_new"])
     elif out["reset_after"] or (period and period >= 0.6 * played and (
             not song or (song[1] - song[0]) <= max(3000, 0.4 * played)
+            or (out["disk_after"] and (song[1] - song[0]) < played)
             or (played < 3000 and rows[-1]["frame"] - song[1] < song[0]))):
         # the loop holds the whole production: a demo that starts over, or
         # one screen whose song comes round
@@ -493,13 +506,17 @@ def verdict(rows, cells, song, halted=False, data=None, swaps=(), meta=None,
         td_s = round(text_data / FPS, 1)
         out["text_end"] = td_s
         # Classic scrolltext intro/demo: song loops while a sequential byte/word
-        # text stream keeps feeding non-looping (open or noisy) screen cells
-        # until it finishes well before the trace ends.
+        # text stream keeps feeding non-looping (open or noisy) screen cells,
+        # OR all cells eventually looped and video_shown corroborates text_end.
+        vis_confirmed = (
+            kinds_open(kinds) > 0
+            or (vp and abs(rows[vshown]["frame"] - text_data) <= 750)
+        )
         if (out.get("ending") in ("loops", "end-loop")
-                and kinds_open(kinds) > 0 and "end" in out):
-            if out["end"] < td_s < out["trace"] - 15:
+                and vis_confirmed and "end" in out):
+            if td_s > out["end"]:
                 out["end"] = td_s
-            elif td_s >= out["trace"] - 15:
+            if td_s >= out["trace"] - 15:
                 out["text_after_trace"] = True
     # the script's disk swaps say how long the production is: the swap that
     # the trace never reached means it runs longer than the trace; an end

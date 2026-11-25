@@ -449,6 +449,7 @@ class TestAnalyze(unittest.TestCase):
         )
         v = analyze.verdict(rows, cells, song=(4500, 5000), data=44950, text_data=44950)
         self.assertTrue(v.get("text_after_trace"))
+        self.assertAlmostEqual(v["end"], 899.0, delta=1.0)
 
     def test_sustained_post_new_silence_before_mod_wraparound(self):
         # Like 281473: music ends at 7000 (140s), silent for 600s, then wraps
@@ -522,6 +523,73 @@ class TestAnalyze(unittest.TestCase):
             rows[i]["alert"] = 0x0000000b
         v = analyze.verdict(rows, cells, song=None)
         self.assertEqual(v["ending"], "crashed")
+
+    def test_disk_reloading_demo_with_slow_boot_is_restarts(self):
+        # Like 310464 (Hopscotch): reloads from floppy every 8106f (162.1s),
+        # with a 67.9s boot+load before music starts (song[1]-song[0]=3395 > 0.4*played).
+        n = 45000
+        cells = np.zeros((n, 4), dtype=np.uint64)
+        p = 8106
+        for c in range(4):
+            cells[:, c] = (np.arange(n, dtype=np.uint64) % p) + c * 100000
+        rows = _make_rows(
+            n,
+            newram_at={8088: 50},
+            aenergy_fn=lambda i: 50000,
+            awrites_fn=lambda i: 5,
+            chan_fn=lambda i: "PPPP",
+        )
+        # Disk DMA repeats on each pass
+        for i in range(n):
+            rows[i]["lastdma"] = (i // p) * p + 2900 if (i % p) >= 200 else max(0, (i // p - 1) * p + 2900)
+        v = analyze.verdict(rows, cells, song=(8105, 11500))
+        self.assertEqual(v["ending"], "restarts")
+        self.assertAlmostEqual(v["end"], 162.1, delta=1.0)
+
+    def test_looped_scrolltext_corroborated_by_video_shown_extends_end(self):
+        # Like 5326 / 217285 / 136157: all cells eventually loop (kinds_open==0),
+        # song loops earlier, and video_shown corroborates text_end within 15s.
+        n = 45000
+        cells = np.zeros((n, 4), dtype=np.uint64)
+        # Intro runs 0..10400, then scroller loops with period 7200 (144s) -> shown=17600 (352s)
+        cells[:10400, 0] = np.arange(1, 10401, dtype=np.uint64)
+        cells[10400:, 0] = 20000 + (np.arange(n - 10400, dtype=np.uint64) % 7200)
+        rows = _make_rows(
+            n,
+            newram_at={11800: 50},
+            aenergy_fn=lambda i: 50000,
+            awrites_fn=lambda i: 5,
+            chan_fn=lambda i: "PPPP",
+        )
+        v = analyze.verdict(rows, cells, song=(11400, 13750), data=17700, text_data=17700)
+        self.assertEqual(v["ending"], "loops")
+        self.assertAlmostEqual(v["end"], 354.0, delta=2.0)
+
+    def test_same_period_75th_percentile_ignores_torn_strip_keeps_scroller(self):
+        # Like 139138: 25 cells share period 4900 with shown ~21800, while 7 cells
+        # of the same period glitch late at ~38800. Must use ~21800, not 38800,
+        # while a separate smaller strip with a longer period is still preserved.
+        n = 45000
+        p = 4900
+        cells = np.zeros((n, 32), dtype=np.uint64)
+        base = np.arange(n, dtype=np.uint64) % p + 1
+        for c in range(32):
+            cells[:, c] = base + c * 100000
+            # Unique intro before 16900 so loop starts at 16900 -> shown = 21800
+            cells[:16900, c] = np.arange(16900, dtype=np.uint64) + 5000000 + c * 100000
+        # Inject a 35-frame mismatch burst around 33850 into 7 cells (v00..v06),
+        # making their p=4900 shown jump to ~38785 (< max_shown=42000).
+        for c in range(7):
+            cells[33850:33885, c] = 99999999 + np.arange(35, dtype=np.uint64)
+        vp, vshown, _ = analyze.video_loop(cells, 20000)
+        self.assertEqual(vp, p)
+        self.assertLess(vshown, 23000)
+        # Meanwhile a distinct-period scroller strip (4 cells, period 7200) keeps its shown.
+        for c in range(4):
+            cells[24000:, c] = 7000000 + (np.arange(n - 24000, dtype=np.uint64) % 7200) + c * 100000
+        vp2, vshown2, _ = analyze.video_loop(cells, 20000)
+        self.assertEqual(vp2, 7200)
+        self.assertGreaterEqual(vshown2, 31000)
 
 
 if __name__ == "__main__":
