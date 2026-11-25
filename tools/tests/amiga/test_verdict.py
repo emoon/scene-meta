@@ -27,6 +27,14 @@ def log(spec, events=(), rc=0, alert=None):
     return RunLog(samples(spec, alert), list(events), rc, False, "")
 
 
+def shown(spec):
+    """A log with bitplane DMA on throughout: a changed screen counts."""
+    lg = log(spec)
+    for s in lg.samples:
+        s.dmacon |= 0x100
+    return lg
+
+
 def raised(spec, alert, at):
     """A log whose LastAlert is ``alert`` from sample ``at`` on."""
     lg = log(spec, alert=NO_ALERT)
@@ -218,6 +226,19 @@ class ClassifyTest(unittest.TestCase):
         self.assertEqual((v.verdict, v.alive, v.ended_frame),
                          ("works-short", 4, 1000))
         self.assertFalse(v.works)
+
+    def test_a_tune_among_screen_changes_is_works_short(self):
+        # Bash 2 Party Intro: one sample with sound, text scrolling in the
+        # others.
+        v = verdict.classify(shown(".cacccc" + "." * 10), 17)
+        self.assertEqual((v.verdict, v.alive), ("works-short", 7))
+
+    def test_a_silent_screen_that_changed_and_stopped_is_not_works_short(self):
+        # Kickstart's own screen changes too: the Workbench opening
+        # (Harlequin Demo), a program printing why it cannot run (Neon
+        # Memories), a requester for a volume (Impact).
+        v = verdict.classify(shown(".ccc" + "." * 10), 14)
+        self.assertEqual((v.verdict, v.alive), ("no-activity", 4))
 
     def test_a_flicker_before_a_prompt_is_not_works_short(self):
         v = verdict.classify(log("c" + "." * 13), 14)
