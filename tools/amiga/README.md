@@ -251,9 +251,14 @@ entry that passes goes into `scene.db` (table `area`) with the entry it
 was measured of, and `export` writes it as the entry's `area` (and
 `aspect = "16:9"` for 320x180 and for the same part of the screen in finer
 pixels, 640x180 or 640x360) while the entry is still that one. The
-line of the entry says it: `area 320x180, drawn into 318x180`. The export
-rewrites `script` entries only: the area of an entry somebody worked on
-stays in the table, to be written by hand.
+line of the entry says it: `area 320x180, drawn into 318x180`. The area
+belongs to the judgement it was measured in: a later gate of the entry that
+fails, or one from another download or player version, removes it. Without
+`--ids` the pass plays the entries judged already that pass and hold no
+area. A script entry the gate demotes loses `area` and `aspect` with the
+rest of what it said of a run. The export rewrites `script` entries only:
+the area of an entry somebody worked on stays in the table, to be written
+by hand.
 
 The emulator counts, per line and per column, the frames in which bitplanes
 were fetched inside the display window (`display measure`, see

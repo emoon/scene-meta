@@ -1,3 +1,4 @@
+import json
 import pathlib
 import tempfile
 import unittest
@@ -18,6 +19,35 @@ class MissingRomTest(unittest.TestCase):
                              media.Variant("floppy", ["a.adf"]), 250)
         self.assertIn(empty, str(e.exception))
         invoke.assert_not_called()
+
+
+class BareBootTest(unittest.TestCase):
+    """What a bare boot of the machine says: ExecBase and COP1LC."""
+
+    def boot(self, peek, status):
+        out = "\n".join(json.dumps(r) for r in (
+            {"cmd": "peek 4 4", "result": peek},
+            {"cmd": "status", "result": status}))
+        emulator._bare_cache.clear()
+        self.addCleanup(emulator._bare_cache.clear)
+        with mock.patch.object(emulator.machines, "uae_text", return_value=""), \
+                mock.patch.object(emulator.machines, "rom_path",
+                                  return_value="/rom"), \
+                mock.patch.object(emulator, "_invoke",
+                                  return_value=(out, "", 0, False)):
+            return emulator._bare(machines.BY_NAME["a500"], "floppy")
+
+    def test_the_execbase_and_the_copper_list_it_said(self):
+        self.assertEqual(self.boot({"hex": "00c00276"}, {"cop1lc": "420"}),
+                         (0xc00276, 0x420))
+
+    def test_an_emulator_that_does_not_say_the_copper_list_is_refused(self):
+        with self.assertRaisesRegex(CannotPlay, "cop1lc"):
+            self.boot({"hex": "00c00276"}, {"frame": 300})
+
+    def test_an_emulator_that_does_not_say_execbase_is_refused(self):
+        with self.assertRaisesRegex(CannotPlay, "peek"):
+            self.boot({}, {"cop1lc": "420"})
 
 
 class UaeConfigTest(unittest.TestCase):

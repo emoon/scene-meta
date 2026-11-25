@@ -64,9 +64,9 @@ class StoreTest(unittest.TestCase):
 
     def test_the_area_of_a_production_and_the_entry_it_was_measured_of(self):
         entry = {"title": "x", "machine": "a1200"}
-        self.db.put_area(7, entry, Area(320, 256))
-        self.db.put_area(7, entry, Area(320, 180, 318, 180))
-        self.db.put_area(8, {"title": "y"}, Area(320, 200))
+        self.db.put_area(7, entry, Area(320, 256), "aa", "1")
+        self.db.put_area(7, entry, Area(320, 180, 318, 180), "aa", "1")
+        self.db.put_area(8, {"title": "y"}, Area(320, 200), "aa", "1")
         self.assertEqual(self.db.areas(), {
             7: (gatelog.name(entry), Area(320, 180, 318, 180)),
             8: (gatelog.name({"title": "y"}), Area(320, 200))})
@@ -137,6 +137,46 @@ class StoreTest(unittest.TestCase):
              for r in self.db.gated()],
             [(7, 1, False, "bb", "2"), (7, 2, True, "bb", "2"),
              (8, 1, True, "aa", "1"), (8, 2, True, "aa", "1")])
+
+    def measured(self, *seeds, **kw):
+        """Production 7 gated, then an area measured of that."""
+        self.gate(7, *seeds)
+        self.db.put_area(7, {"title": "x"}, Area(320, 180), "aa", "1")
+
+    def test_the_area_stays_when_the_entry_is_gated_again_the_same_way(self):
+        self.measured((1, True))
+        self.gate(7, (1, True), (2, True))
+        self.assertEqual(set(self.db.areas()), {7})
+
+    def test_the_area_goes_when_the_entry_is_gated_again_and_fails(self):
+        self.measured((1, True))
+        self.gate(7, (1, True), (2, False))
+        self.assertEqual(self.db.areas(), {})
+
+    def test_the_area_goes_with_the_download_or_the_player_it_was_measured_by(self):
+        for other in ({"sha256": "bb"}, {"player": "2"}):
+            self.measured((1, True))
+            self.gate(7, (1, True), **other)
+            self.assertEqual(self.db.areas(), {}, other)
+
+    def test_the_area_of_another_production_stays(self):
+        self.measured((1, True))
+        self.db.put_area(8, {"title": "y"}, Area(320, 200), "aa", "1")
+        self.gate(7, (1, False))
+        self.assertEqual(set(self.db.areas()), {8})
+
+    def test_a_database_from_before_the_area_said_its_download_is_read(self):
+        self.db.db.executescript(
+            "drop table area; create table area (prod_id integer primary key,"
+            " entry text not null, width integer not null, height integer not"
+            " null, drawn_width integer not null, drawn_height integer not"
+            " null, at text not null);"
+            "insert into area values (7, 'x', 320, 180, 320, 180, 't')")
+        self.db.close()
+        self.db = store.Store(self.path)
+        self.assertEqual(set(self.db.areas()), {7})
+        self.gate(7, (1, True))
+        self.assertEqual(self.db.areas(), {}, "of no known download")
 
     def test_a_record_names_the_entry_it_is_of(self):
         entry = {"title": "x", "machine": "a1200"}

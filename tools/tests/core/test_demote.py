@@ -74,7 +74,8 @@ class DemotedTest(unittest.TestCase):
                  "result": "crashes-later", "disks": ["a.adf", "b.adf"],
                  "events": [{"at": 5.0, "key": "lmb"},
                             {"at": 10.0, "disk": 2}], "run": "demo.exe",
-                 "note": "the sweep only reached disk 1 of 2"}
+                 "note": "the sweep only reached disk 1 of 2",
+                 "area": [320, 180], "aspect": "16:9"}
         self.assertEqual(demote.demoted(entry, "seed 1: never came alive"), {
             "title": "x", "group": "g", "source": "script", "boot": "floppy",
             "result": "unknown", "disks": ["a.adf", "b.adf"],

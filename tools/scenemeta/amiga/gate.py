@@ -76,10 +76,12 @@ def each(todo, db, data, jobs=None, again=True, areas=None):
     todo = list(todo)
     entries = dict(todo)
     records = {} if again else _by_prod(db.gated())
+    held = {} if areas is None else db.areas()
     why, seen = {}, {}
 
     def one(prod, entry):
-        if _judged(records.get(prod), entry):
+        if _judged(records.get(prod), entry) and not _wants_area(
+                records[prod], entry, held.get(prod), areas is not None):
             return None
         try:
             seen[prod] = None if areas is None else []
@@ -98,7 +100,8 @@ def each(todo, db, data, jobs=None, again=True, areas=None):
                 db.put_gate(prod, entries[prod], got, sha256, player.VERSION)
                 if got.passed and seen.get(prod):
                     areas[prod] = seen[prod][0]
-                    db.put_area(prod, entries[prod], areas[prod])
+                    db.put_area(prod, entries[prod], areas[prod], sha256,
+                                player.VERSION)
             else:
                 db.put_gate_error(prod, entries[prod], why[prod])
             yield prod, ok, got
@@ -109,6 +112,13 @@ def _judged(records, entry):
     ``entry`` by today's player from today's download?"""
     return gatelog.held(records, entry) and not gatelog.stale(
         records, media.download_sha256, player.VERSION)
+
+
+def _wants_area(records, entry, held, asked):
+    """Is the area asked for of ``entry``, which ``records`` say passed,
+    and not held of it? ``held``: ``(entry, Area)`` or None."""
+    return asked and gatelog.passes(records, entry) and (
+        not held or held[0] != gatelog.name(entry))
 
 
 def _stands(records, entry):

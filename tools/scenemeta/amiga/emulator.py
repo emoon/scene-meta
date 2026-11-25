@@ -14,6 +14,7 @@ import shutil
 import subprocess
 import tempfile
 
+from ..core import errors
 from . import alertshot, config, machines, workbench
 
 # Idle trigger for "press mouse button / insert disk" prompts that never touch
@@ -176,10 +177,21 @@ def _bare(machine, kind):
                            "--dbg", "peek 4 4", "--dbg", "status"], tmp, 120)[0]
             said = {r.get("cmd"): r["result"] for r in _records(out)
                     if "result" in r}
-            _bare_cache[key] = (
-                int(said.get("peek 4 4", {}).get("hex", "")[:8], 16),
-                int(said.get("status", {}).get("cop1lc", "0"), 16))
+            _bare_cache[key] = (_said(said, "peek 4 4", "hex", 8, machine),
+                                _said(said, "status", "cop1lc", None, machine))
     return _bare_cache[key]
+
+
+def _said(said, cmd, field, digits, machine):
+    """The hex ``field`` of the answer to ``cmd`` of a bare boot of
+    ``machine``, as a number. Raises errors.CannotPlay when it is not there:
+    an emulator built before it was said."""
+    try:
+        return int(said[cmd][field][:digits], 16)
+    except (KeyError, ValueError):
+        raise errors.CannotPlay(
+            f"the emulator's `{cmd}` gave no {field} on a bare boot of"
+            f" {machine.name}: rebuild it (tools/amiga/README.md)") from None
 
 
 @dataclasses.dataclass(frozen=True)

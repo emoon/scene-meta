@@ -56,7 +56,8 @@ create table if not exists gate_error (
 create table if not exists area (
     prod_id integer primary key, entry text not null, width integer not null,
     height integer not null, drawn_width integer not null,
-    drawn_height integer not null, at text not null);
+    drawn_height integer not null, at text not null, sha256 text,
+    player text);
 drop view if exists best;
 create view best as
     select p.id prod_id, p.title, p.groups, p.platforms, v.idx variant,
@@ -103,7 +104,9 @@ class Store:
         # and the gate's records their entry.
         for table, column, kind in (("swap", "drive", "integer"),
                                     ("swap", "until", "real"),
-                                    ("gate", "entry", "text")):
+                                    ("gate", "entry", "text"),
+                                    ("area", "sha256", "text"),
+                                    ("area", "player", "text")):
             if column not in [c[1] for c in self.db.execute(
                     f"pragma table_info({table})")]:
                 self.db.execute(f"alter table {table} add column {column} {kind}")
@@ -194,6 +197,7 @@ class Store:
         the download ``sha256`` by version ``player`` of the player."""
         self.db.execute("delete from gate where prod_id=?", (prod_id,))
         self.db.execute("delete from gate_error where prod_id=?", (prod_id,))
+        self._drop_area_unless(prod_id, said.passed, sha256, player)
         self.db.executemany(
             "insert into gate values (?,?,?,?,?,?,?,?)",
             [(prod_id, seed, int(on.passed), on.reason, sha256, player, _now(),
@@ -222,13 +226,22 @@ class Store:
                     " from gate order by prod_id, seed")]
 
     # -- the area ------------------------------------------------------------
-    def put_area(self, prod_id, entry, area):
+    def put_area(self, prod_id, entry, area, sha256, player):
         """Store the result.Area a run of ``entry`` measured, in place of
-        what was stored of the production."""
-        self.db.execute("insert or replace into area values (?,?,?,?,?,?,?)",
+        what was stored of the production: it was played from the download
+        ``sha256`` by version ``player`` of the player."""
+        self.db.execute("insert or replace into area values (?,?,?,?,?,?,?,?,?)",
                         (prod_id, gatelog.name(entry), area.width, area.height,
-                         area.drawn_width, area.drawn_height, _now()))
+                         area.drawn_width, area.drawn_height, _now(), sha256,
+                         player))
         self.db.commit()
+
+    def _drop_area_unless(self, prod_id, passed, sha256, player):
+        """The area of the production is of the judgement it was measured
+        in: it goes with a fail, and with another download or player."""
+        self.db.execute(
+            "delete from area where prod_id=? and (not ? or sha256 is not ?"
+            " or player is not ?)", (prod_id, passed, sha256, player))
 
     def areas(self):
         """``{prod_id: (entry, Area)}``: the area measured of each

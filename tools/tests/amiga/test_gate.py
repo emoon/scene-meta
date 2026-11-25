@@ -326,6 +326,41 @@ class EveryEntryTest(StoreCase):
         self.assertEqual(played, [7])
 
 
+class EveryEntryAreaTest(EveryEntryTest):
+    """``run`` without ids, asked for the area."""
+
+    def measure(self):
+        """Gate every entry for the area; the productions played."""
+        played = []
+
+        def one(p, entry, default, each, areas):
+            played.append(p)
+            areas.append(Area(320, 180))
+            return judgement(True), f"sha{p}"
+        with mock.patch.object(gate, "_one", side_effect=one):
+            gate.run(None, self.db, data=self.data, jobs=1, log=self.log,
+                     area=True)
+        return played
+
+    def test_an_entry_judged_without_an_area_is_played_for_it(self):
+        self.every()
+        self.assertEqual(self.measure(), [7, 8])
+        self.assertEqual(set(self.db.areas()), {7, 8})
+        self.assertEqual(self.measure(), [], "the area is held")
+
+    def test_an_entry_judged_a_fail_has_no_area_to_measure(self):
+        self.run_gate([7], lambda *a: (judgement(True, False), "sha7"))
+        self.run_gate([8], lambda *a: (judgement(True), "sha8"))
+        self.assertEqual(self.measure(), [8])
+
+    def test_an_area_of_another_entry_is_measured_again(self):
+        self.every()
+        self.measure()
+        gate.replay.all_entries.return_value = {
+            **self.ENTRIES, 8: {"title": "y", "machine": "a1200"}}
+        self.assertEqual(self.measure(), [8])
+
+
 class DemoteTest(unittest.TestCase):
     """Real data files: the demotions are merged into them."""
     FILE = """\
