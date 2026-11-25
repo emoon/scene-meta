@@ -20,6 +20,10 @@ class NameTest(unittest.TestCase):
                  "source": "ai", "note": "seen"}
         self.assertEqual(gatelog.name(other), gatelog.name(self.ENTRY))
 
+    def test_the_area_is_no_setting(self):
+        measured = dict(self.ENTRY, area=[320, 180], aspect="16:9")
+        self.assertEqual(gatelog.name(measured), gatelog.name(self.ENTRY))
+
     def test_another_setting_is_another_name(self):
         for change in ({"machine": "a500"}, {"result": "crashes-later"},
                        {"events": [{"at": 800.1, "disk": 2},

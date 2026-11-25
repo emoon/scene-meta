@@ -327,6 +327,40 @@ class ExportTest(unittest.TestCase):
                 "differs: [demozoo.7] Demo 7: machine: has 'a1200', sweep"
                 " says 'a600'"])
 
+    def test_an_entry_says_the_area_measured_of_it(self):
+        self.passing = {"a500"}
+        self.swept(7, "a500")
+        entry = self.export()[7]
+        self.db.put_area(7, entry, result.Area(320, 180, 318, 180))
+        self.played.clear()
+        self.assertEqual(self.export()[7],
+                         {**entry, "area": [320, 180], "aspect": "16:9"})
+        self.assertEqual(self.played, [])
+        self.db.put_area(7, entry, result.Area(320, 200))
+        self.assertEqual(self.export()[7], {**entry, "area": [320, 200]})
+
+    def test_an_area_measured_of_another_entry_is_not_said(self):
+        self.passing = {"a500"}
+        self.swept(7, "a500")
+        self.db.put_area(7, {"title": "Demo 7", "machine": "a1200"},
+                         result.Area(320, 180))
+        self.assertNotIn("area", self.export()[7])
+
+    def test_an_entry_somebody_worked_on_is_not_given_an_area(self):
+        self.swept(7, "a600")
+        kept = self.has(7, source="ai", machine="a600")
+        self.db.put_area(7, kept, result.Area(320, 180))
+        self.assertEqual(self.export()[7], kept)
+        self.assertEqual(self.report, [
+            "0 added, 0 replaced, 1 kept as edited; 0 files written"])
+
+    def test_an_entry_that_does_not_run_says_no_area(self):
+        self.swept(7, "a500")
+        unknown = self.export()[7]
+        self.assertEqual(unknown["result"], "unknown")
+        self.db.put_area(7, unknown, result.Area(320, 180))
+        self.assertNotIn("area", self.export()[7])
+
     def test_a_script_entry_is_replaced(self):
         self.passing = {"a600"}
         self.swept(7, "a600")

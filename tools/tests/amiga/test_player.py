@@ -1,3 +1,4 @@
+import dataclasses
 import pathlib
 import tempfile
 import threading
@@ -9,6 +10,7 @@ from scenemeta.amiga.emulator import RunLog, Sample
 from scenemeta.amiga.verdict import Verdict
 from scenemeta.core.errors import BadEntry, CannotPlay
 from scenemeta.core.gate import Play, SwapTaken
+from scenemeta.core.result import Area
 
 
 def samples(spec):
@@ -351,6 +353,28 @@ class PlayTest(unittest.TestCase):
         self.assertEqual((out.machine, out.loaded), ("a1200", [True]))
         self.assertIs(out.log, self.LOG)
         self.assertEqual(out.verdict.verdict, "no-activity")
+
+    def measured(self):
+        """The entry played by its Ready, asked for the area."""
+        with mock.patch.object(player.media, "variants",
+                               return_value=([self.SET], [])), \
+                mock.patch.object(player.emulator, "run",
+                                  return_value=self.LOG) as run:
+            return player.ready(7, self.ENTRY, "a500").play(area=True), run
+
+    def test_the_area_is_measured_only_when_asked(self):
+        _, run = self.play(self.ENTRY)
+        self.assertFalse(run.call_args.args[3].area)
+        out, run = self.measured()
+        self.assertTrue(run.call_args.args[3].area)
+        self.assertIsNone(out.area)
+
+    def test_the_area_of_a_measured_run(self):
+        self.LOG = dataclasses.replace(
+            self.LOG, boxes=[[76, 114, 716, 474]], display={
+                "frames": 9, "rows": [[83, 263, 9]], "cols": [[129, 449, 9]]})
+        out, _ = self.measured()
+        self.assertEqual(out.area, Area(320, 180, 320, 180))
 
     def test_patient_the_disk_goes_in_at_its_until_and_is_looked_for_then(self):
         entry = dict(self.ENTRY, events=[{"at": 15, "until": 20, "disk": 2},

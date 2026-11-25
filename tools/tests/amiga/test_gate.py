@@ -13,19 +13,20 @@ from scenemeta.core.errors import BadEntry, CannotPlay
 from scenemeta.core import gate as core
 from scenemeta.core import gatelog as core_log
 from scenemeta.core.gate import Judgement, Play, Run, SwapTaken
+from scenemeta.core.result import Area
 
 
 class PlayTest(unittest.TestCase):
     ENTRY = {"title": "x", "disks": ["a.adf", "b.adf"],
              "events": [{"at": 10, "disk": 2}, {"at": 15, "key": "lmb"}]}
 
-    def play(self, run, verdict=Verdict("works", 9)):
+    def play(self, run, verdict=Verdict("works", 9), area=None, **kw):
         record = Play(True, swaps=(SwapTaken(2, True),))
-        outcome = player.Outcome("a500", verdict, [], None, record)
+        outcome = player.Outcome("a500", verdict, [], None, record, area)
         ready = player.Ready(self.ENTRY, None, None)
         with mock.patch.object(player.Ready, "play", autospec=True,
                                return_value=outcome) as self.played:
-            got = gate._play(ready, run)
+            got = gate._play(ready, run, **kw)
         self.assertIs(got, record)
         (played,), kw = self.played.call_args
         return played.entry, kw
@@ -48,6 +49,24 @@ class PlayTest(unittest.TestCase):
         self.assertEqual(entry["events"], [{"at": 10, "disk": 2}])
         self.assertEqual(kw["frames"], (10 + 5) * 50 + player.TAIL_FRAMES)
 
+    def test_no_run_measures_the_area_unless_asked(self):
+        _, kw = self.play(gate.MEASURED)
+        self.assertFalse(kw["area"])
+
+    def test_asked_the_entry_as_written_measures_it_on_the_first_seed(self):
+        for run, measures in ((Run(1), True), (Run(2), False),
+                              (Run(1, patient=True), False),
+                              (Run(1, without=0), False)):
+            areas = []
+            _, kw = self.play(run, areas=areas, area=Area(320, 180))
+            self.assertEqual(kw["area"], measures, run)
+            self.assertEqual(areas, [Area(320, 180)] * measures, run)
+
+    def test_a_run_that_showed_no_bitplanes_gives_no_area(self):
+        areas = []
+        self.play(Run(1), areas=areas)
+        self.assertEqual(areas, [])
+
     def test_an_emulator_that_showed_nothing_is_an_error_not_a_fail(self):
         with self.assertRaisesRegex(CannotPlay, "no-samples \\(timeout\\)"):
             self.play(Run(1), Verdict("error", 0, crash="no-samples (timeout)"))
@@ -64,28 +83,28 @@ class OneTest(unittest.TestCase):
             return gate._one(7, self.ENTRY, "a500", each)
 
     def test_the_gates_judgement_of_the_entrys_runs(self):
-        said, _ = self.one(lambda ready, run: Play(
+        said, _ = self.one(lambda ready, run, areas: Play(
             True, swaps=(SwapTaken(2, run.seed != 2),)))
         self.assertEqual(str(said), "fail (seed 2: disk 2 never loaded)")
         self.ready.assert_called_once_with(7, self.ENTRY, "a500")
         self.assertEqual(
             self.play.call_args_list,
-            [mock.call(self.ready.return_value, r)
+            [mock.call(self.ready.return_value, r, None)
              for r in core.runs(self.ENTRY)])
 
     def test_a_pass(self):
         said, _ = self.one(
-            lambda ready, run: Play(True, swaps=(SwapTaken(2, True),)))
+            lambda ready, run, areas: Play(True, swaps=(SwapTaken(2, True),)))
         self.assertEqual(str(said), "pass (3 seeds: came alive, no crash, every"
                          " disk loaded)")
 
     def test_the_sha256_is_of_the_productions_download(self):
-        _, sha256 = self.one(lambda ready, run: Play(True))
+        _, sha256 = self.one(lambda ready, run, areas: Play(True))
         self.assertEqual(sha256, "aa")
         self.sha256.assert_called_once_with(7)
 
     def test_a_run_that_cannot_be_played_is_the_entrys_error(self):
-        def cannot(ready, run):
+        def cannot(ready, run, areas):
             raise CannotPlay("the emulator gave nothing")
         with self.assertRaisesRegex(CannotPlay, "gave nothing"):
             self.one(cannot)
@@ -96,7 +115,7 @@ class OneTest(unittest.TestCase):
         def each(play, runs):
             made.extend(runs)
             return map(play, runs)
-        self.one(lambda ready, run: Play(True, swaps=(SwapTaken(2, True),)), each)
+        self.one(lambda ready, run, areas: Play(True, swaps=(SwapTaken(2, True),)), each)
         self.assertEqual(made, core.runs(self.ENTRY))
 
 
@@ -150,17 +169,53 @@ class RunTest(StoreCase):
     def test_a_record_is_stored_per_entry_and_seed(self):
         said = {7: judgement(True, False, True), 8: judgement(True, True)}
         with mock.patch.object(player, "VERSION", "9"):
-            self.run_gate([7, 8], lambda p, e, default, each: (said[p], f"sha{p}"))
+            self.run_gate([7, 8], lambda p, *a: (said[p], f"sha{p}"))
         self.assertEqual(self.stored(), [
             (7, 1, True, "on 1", "sha7", "9"), (7, 2, False, "on 2", "sha7", "9"),
             (7, 3, True, "on 3", "sha7", "9"),
             (8, 1, True, "on 1", "sha8", "9"), (8, 2, True, "on 2", "sha8", "9")])
 
+    def measuring(self, said, area=Area(320, 180, 318, 180)):
+        """Gate 7 and 8 asked for the area: every entry shows ``area``, or
+        with None no bitplanes."""
+        def one(p, entry, default, each, areas):
+            if area:
+                areas.append(area)
+            return said[p], "aa"
+        with mock.patch.object(gate, "_one", side_effect=one):
+            gate.run([7, 8], self.db, data=self.data, jobs=1, log=self.log,
+                     area=True)
+
+    def test_asked_the_area_of_an_entry_that_passes_is_stored_and_said(self):
+        self.measuring({7: judgement(True), 8: judgement(False)})
+        self.assertEqual(self.db.areas(), {
+            7: (core_log.name(self.ENTRIES[7]), Area(320, 180, 318, 180))})
+        self.assertEqual(self.lines, [
+            "7 x: pass (said); area 320x180, drawn into 318x180",
+            "8 y: fail (said)"])
+
+    def test_a_pass_that_showed_no_bitplanes_has_no_area(self):
+        self.measuring({7: judgement(True), 8: judgement(True)}, area=None)
+        self.assertEqual(self.db.areas(), {})
+        self.assertEqual(self.lines, ["7 x: pass (said)", "8 y: pass (said)"])
+
+    def test_gated_again_without_the_area_the_one_stored_stays(self):
+        self.measuring({7: judgement(True), 8: judgement(True)})
+        stored = self.db.areas()
+        self.run_gate([7], lambda p, *a: (judgement(True), "aa"))
+        self.assertEqual(self.db.areas(), stored)
+
+    def test_not_asked_no_area_is_measured(self):
+        seen = []
+        self.run_gate([7], lambda p, e, default, each, areas: (
+            seen.append(areas), (judgement(True), "aa"))[1])
+        self.assertEqual((seen, self.db.areas()), ([None], {}))
+
     def test_the_runs_of_one_entry_are_made_in_parallel(self):
         # Passes only when two runs of the entry are in flight at once.
         together = threading.Barrier(2, timeout=10)
 
-        def play(ready, run):
+        def play(ready, run, areas):
             together.wait()
             return Play(True)
         with mock.patch.object(player, "ready"), \

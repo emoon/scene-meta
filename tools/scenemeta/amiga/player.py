@@ -11,6 +11,7 @@ import dataclasses
 from .. import events
 from ..core import gate
 from ..core.errors import BadEntry, CannotPlay
+from . import area as areas
 from . import emulator, machines, media, verdict, workbench
 from .machines import FPS
 
@@ -38,6 +39,7 @@ class Outcome:
     loaded: list                # per swap that went in: was that disk loaded?
     log: emulator.RunLog
     record: gate.Play = None    # the same, as every platform reports it
+    area: object = None         # the result.Area of a run asked to measure it
 
 
 @dataclasses.dataclass(frozen=True)
@@ -49,18 +51,19 @@ class Ready:
     variant: media.Variant
 
     def play(self, keys=True, keep=None, seed=emulator.DEFAULT_SEED,
-             frames=None, patient=False):
+             frames=None, patient=False, area=False):
         """Play the entry as written, eager or ``patient`` (see
         events.patient). Without ``keys`` the disks go in and nothing is
         pressed, in a run as long. ``keep`` is a directory
         for the pictures of the run, ``seed`` the emulator's (see
         emulator.Options), ``frames`` how long when not the entry's own
-        time (see ``frames_of``)."""
+        time (see ``frames_of``), ``area`` whether it measures the area
+        the production draws into (see area.py)."""
         acts = actions(self.entry, keys, patient)
         frames = frames or frames_of(self.entry, patient)
         log = emulator.run(self.machine, self.variant, frames, emulator.Options(
             drives=self.entry.get("drives", 1), play=tuple(acts), detect=False,
-            keep=keep, seed=seed))
+            keep=keep, seed=seed, area=area))
         inserts = [(f, *arg) for f, what, arg in acts if what == "insert"]
         v = verdict.classify(log, frames // 250)
         took = loaded(log.samples, [(f, unit) for f, _, unit in inserts])
@@ -69,7 +72,7 @@ class Ready:
             v.verdict in RAN, v.crash,
             tuple(gate.SwapTaken(first + k, ok)
                   for (_, k, _), ok in zip(inserts, took)),
-            last_read(log.samples)))
+            last_read(log.samples)), areas.measured(log))
 
 
 def ready(prod, entry, default):

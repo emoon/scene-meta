@@ -70,6 +70,10 @@ class RunLog:
     # Highest cylinder each drive was seen at with its motor on, sampled at
     # the status points (multi-drive runs only): shows a disk was read.
     max_cyl: list = dataclasses.field(default_factory=list)
+    # Of a run with ``area``: the last ``display status``, and the box each
+    # sample's picture shows drawn (None: nothing).
+    display: dict = None
+    boxes: list = dataclasses.field(default_factory=list)
 
 
 MAX_DRIVES = 4
@@ -207,6 +211,9 @@ class Options:
     its index) whose picture differs from the last one kept in more than
     ``keep_permille`` of every thousand pixels: the emulator does the
     comparing, so the run's samples still say which of them were kept.
+
+    ``area`` has the emulator measure where the run shows bitplanes (see
+    area.py); the run is the same with it and without.
     """
     triggers: str = ""
     drives: int = 1
@@ -220,6 +227,7 @@ class Options:
     play: tuple = ()
     keep: pathlib.Path = None
     keep_permille: int = 20
+    area: bool = False
 
     @property
     def detects(self):
@@ -248,6 +256,8 @@ def run(machine, variant, frames, opts=Options(), interval=250, timeout=None):
 
         script = _play if opts.play else _script
         cmds = ["warp on", _autoswap(opts)]
+        if opts.area:
+            cmds.append("display measure on")
         cmds += script(frames, interval, alert_peek, shots, swaps, opts)
         argv = [str(config.AMIBERRY), "-f", str(cfg)]
         argv += [f"-diskswapper={d}" for d in swaps]
@@ -360,6 +370,8 @@ def _sample(i, alert_peek, shots, disk_status, opts):
             f"screenshot {shots / f'{i:04d}.png'}", "disk autoswap status"]
     if opts.keep:
         cmds.append(f"shot-new {opts.keep_permille} {opts.keep / f'{i:04d}.png'}")
+    if opts.area:
+        cmds.append("display status")
     return cmds + ["disk status"] if disk_status else cmds
 
 
@@ -410,12 +422,14 @@ class _Reader:
     def __init__(self, shots, names, eb, alert_peek):
         self.samples, self.events = [], []
         self.max_cyl = [-1] * MAX_DRIVES
+        self.display, self.boxes = None, []
         self._shots, self._names, self._eb = shots, names, eb
         self._eb_ok = False
         self._box_cache = {}
         self._commands = {"status": self._status,
                           "disk autoswap status": self._last_dma,
                           "disk status": self._disk_status,
+                          "display status": self._display,
                           "peek 4 4": self._execbase,
                           alert_peek: self._alert}
 
@@ -462,6 +476,11 @@ class _Reader:
             if d.get("motor"):
                 self.max_cyl[u] = max(self.max_cyl[u], d.get("cyl", -1))
 
+    def _display(self, res):
+        if "rows" in res:
+            self.display = res
+            self.boxes.append(res.get("screen", {}).get("box"))
+
     def _execbase(self, res):
         self._eb_ok = _peek_long(res) == self._eb
 
@@ -482,7 +501,7 @@ def _parse(ran, shots, names, eb, alert_peek):
     pngs = sorted(shots.glob("*.png"))
     last = pngs[-1].read_bytes() if pngs else b""
     return RunLog(reader.samples, reader.events, rc, timed_out, stderr[-600:],
-                  last, reader.max_cyl)
+                  last, reader.max_cyl, reader.display, reader.boxes)
 
 
 # An alert box is mostly black: its PNG is a few KB, a demo's screen is not.

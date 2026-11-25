@@ -5,7 +5,7 @@ import unittest
 from scenemeta.core import export, gatelog, store, sweep
 from scenemeta.core.catalog import Production
 from scenemeta.core.gate import Judgement
-from scenemeta.core.result import Key, Run, Swap, Variant
+from scenemeta.core.result import Area, Key, Run, Swap, Variant
 
 PROD = Production(7, "Demo", "Group", ("ocs",), ("Demo",), "1991", [])
 
@@ -61,6 +61,15 @@ class StoreTest(unittest.TestCase):
         self.db = store.Store(self.path)
         (_, _, _, (v,)), = export.productions(self.db)
         self.assertEqual(v.swaps, [Swap(2, 536.88, "poll", key="lmb")])
+
+    def test_the_area_of_a_production_and_the_entry_it_was_measured_of(self):
+        entry = {"title": "x", "machine": "a1200"}
+        self.db.put_area(7, entry, Area(320, 256))
+        self.db.put_area(7, entry, Area(320, 180, 318, 180))
+        self.db.put_area(8, {"title": "y"}, Area(320, 200))
+        self.assertEqual(self.db.areas(), {
+            7: (gatelog.name(entry), Area(320, 180, 318, 180)),
+            8: (gatelog.name({"title": "y"}), Area(320, 200))})
 
     def test_key_presses_with_no_swap_are_kept(self):
         runs = [Run("m1", 180.0, "works", 60.0, keys=[Key(86.1, "lmb")])]

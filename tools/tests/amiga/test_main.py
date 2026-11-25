@@ -62,7 +62,7 @@ class GateCommandsTest(unittest.TestCase):
             self.main("sweep", "--machine", "a4000")
 
     def test_gate_stores_into_the_sweep_database(self):
-        def run(ids, db, jobs=None):
+        def run(ids, db, jobs=None, area=False):
             db.put_gate(ids[0], {"title": "x"}, Judgement(True, "", seeds=(
                 (1, Judgement(True, "ok")),)), "aa", "1")
             return 0
@@ -75,7 +75,12 @@ class GateCommandsTest(unittest.TestCase):
         with mock.patch.object(gate, "run", return_value=0) as run:
             self.assertEqual(self.main("gate", "--jobs", "3")[0], 0)
         self.assertIsNone(run.call_args.args[0])
-        self.assertEqual(run.call_args.kwargs, {"jobs": 3})
+        self.assertEqual(run.call_args.kwargs, {"jobs": 3, "area": False})
+
+    def test_gate_measures_the_area_when_asked(self):
+        with mock.patch.object(gate, "run", return_value=0) as run:
+            self.main("gate", "--ids", "7", "--area")
+        self.assertTrue(run.call_args.kwargs["area"])
 
     def test_gate_demote_writes_only_when_asked(self):
         with mock.patch.object(gate, "demote") as demote:

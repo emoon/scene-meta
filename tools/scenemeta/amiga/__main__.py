@@ -53,6 +53,9 @@ def main(argv=None):
                        " without --ids, of every one not gated yet")
     p.add_argument("--ids", type=int, nargs="*")
     p.add_argument("--jobs", type=int)
+    p.add_argument("--area", action="store_true",
+                   help="measure the area each entry that passes draws into,"
+                   " for the export")
     p = sub.add_parser("gate-demote", help="the entries the gate failed:"
                        " which it demotes to unknown, which are kept")
     p.add_argument("--write", action="store_true",
@@ -106,7 +109,8 @@ def _command(args):
             return min(1, export.run(db, ids=set(args.ids or ()),
                                      jobs=args.jobs))
         elif args.cmd == "gate":
-            return min(1, gate.run(args.ids, db, jobs=args.jobs))
+            return min(1, gate.run(args.ids, db, jobs=args.jobs,
+                                   area=args.area))
         elif args.cmd == "gate-demote":
             gate.demote(db, write=args.write)
         elif args.cmd == "gate-summary":

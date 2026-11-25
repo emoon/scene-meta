@@ -44,6 +44,13 @@ void dbgproto_note_disk_dma(int cyl);         /* disk DMA started; cyl = highest
                                                  selected-drive cylinder, -1 if
                                                  none selected */
 
+/* `display measure`: non-zero while on. custom.cpp then notes every line
+ * that showed bitplanes: its columns x0 to x1 (not included), in lores
+ * pixels as DIWSTRT counts them. */
+extern int dbgproto_display_on;
+void dbgproto_display_line(int line, int x0, int x1,
+	uae_u16 diwstrt, uae_u16 diwstop);
+
 /* Implemented in custom.cpp (needs its file-static chipset state). */
 struct dbgproto_custom_state {
 	uae_u16 dmacon, intena, intreq, bplcon0;

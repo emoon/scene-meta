@@ -6,6 +6,9 @@ entries a pass over all of them demotes (see core.demote).
 
 ``first`` is the gate of the export: of the entries a production may be
 written as, the first that passes.
+
+Asked for the area, the MEASURED run of each entry measures it (see
+area.py), and that of an entry that passes is kept in the log too.
 """
 
 import concurrent.futures as cf
@@ -18,28 +21,38 @@ from ..core.errors import BadEntry, CannotPlay
 from . import config, media, player, replay
 
 
-def _play(ready, run):
+# The run that measures the area: the entry as written.
+MEASURED = gate.Run(gate.SEEDS[0])
+
+
+def _play(ready, run, areas=None):
     """The record of ``run`` of the entry of ``ready``, as long as the
     longer of the entry and what is played of it. Raises CannotPlay when
-    the emulator showed nothing."""
+    the emulator showed nothing. ``areas``: a list that gets the area the
+    MEASURED run shows."""
     changed = gate.as_played(ready.entry, run)
     frames = max(player.frames_of(e, run.patient)
                  for e in (ready.entry, changed))
+    measure = areas is not None and run == MEASURED
     ran = dataclasses.replace(ready, entry=changed).play(
-        seed=run.seed, frames=frames, patient=run.patient)
+        seed=run.seed, frames=frames, patient=run.patient, area=measure)
     if ran.verdict.verdict == "error":
         raise CannotPlay(f"the emulator gave nothing: {ran.verdict.crash}")
+    if measure and ran.area:
+        areas.append(ran.area)
     return ran.record
 
 
-def _one(prod, entry, default, each=map):
+def _one(prod, entry, default, each=map, areas=None):
     """``(judgement, sha256)`` of one production: the gate's judgement, its
     runs made through ``each`` (see core.gate.check), and the SHA-256 of
     the download they were played from. Raises CannotPlay when something
-    it needs is missing, or the emulator showed nothing of a run."""
+    it needs is missing, or the emulator showed nothing of a run.
+    ``areas``: see ``_play``."""
     ready = player.ready(prod, entry, default)
     sha256 = media.download_sha256(prod)
-    return gate.check(entry, lambda run: _play(ready, run), each), sha256
+    return gate.check(entry, lambda run: _play(ready, run, areas),
+                      each), sha256
 
 
 def _by_prod(records):
@@ -49,26 +62,28 @@ def _by_prod(records):
     return out
 
 
-def each(todo, db, data, jobs=None, again=True):
+def each(todo, db, data, jobs=None, again=True, areas=None):
     """Gate every ``(prod, entry)`` of ``todo``, entries of the data files
     ``data``, ``jobs`` emulators at a time. Yields of each, as it ends,
     ``(prod, True, judgement)``, what the gate saw then being in the store
     ``db``, or ``(prod, False, line)`` with the line that reports why it
     could not be played, which is stored as its error. Without ``again``
     an entry the log holds a judgement of is not played, and not
-    yielded."""
+    yielded. ``areas``: a dict that gets the area measured of each entry
+    that passes, by id, which is stored too; None, and none is measured."""
     default = export.default_machine(data)
     jobs = jobs or max(1, (os.cpu_count() or 4) // 2)
     todo = list(todo)
     entries = dict(todo)
     records = {} if again else _by_prod(db.gated())
-    why = {}
+    why, seen = {}, {}
 
     def one(prod, entry):
         if _judged(records.get(prod), entry):
             return None
         try:
-            return _one(prod, entry, default, pool.map)
+            seen[prod] = None if areas is None else []
+            return _one(prod, entry, default, pool.map, seen[prod])
         except CannotPlay as e:
             why[prod] = str(e)
             raise
@@ -81,6 +96,9 @@ def each(todo, db, data, jobs=None, again=True):
             if ok:
                 got, sha256 = got
                 db.put_gate(prod, entries[prod], got, sha256, player.VERSION)
+                if got.passed and seen.get(prod):
+                    areas[prod] = seen[prod][0]
+                    db.put_area(prod, entries[prod], areas[prod])
             else:
                 db.put_gate_error(prod, entries[prod], why[prod])
             yield prod, ok, got
@@ -142,19 +160,33 @@ def first(todo, db, data, jobs=None):
             yield prod, ok, got
 
 
-def run(ids, db, data=None, jobs=None, log=print):
+def _area_said(a):
+    """What a line says of the result.Area ``a``, or of none."""
+    return (f"; area {a.width}x{a.height}, drawn into"
+            f" {a.drawn_width}x{a.drawn_height}") if a else ""
+
+
+def run(ids, db, data=None, jobs=None, log=print, area=False):
     """Gate the productions ``ids`` (see ``each``): a line of each. With
     None, every entry the log holds no judgement of. Returns how many could
-    not be played."""
+    not be played. With ``area`` the area of each entry that passes is
+    measured (see ``each``), and its line says it."""
     data = data or config.DATA_DIR
     found = replay.all_entries(data)
     for p in sorted(set(ids or ()) - set(found)):
         log(f"{p}: no entry in the data files")
     todo = sorted((p, e) for p, e in found.items() if ids is None or p in ids)
     errors = 0
-    for prod, ok, got in each(todo, db, data, jobs, again=ids is not None):
+    areas = {} if area else None
+    for prod, ok, got in each(todo, db, data, jobs, again=ids is not None,
+                              areas=areas):
         errors += not ok
-        log(f"{prod} {found[prod]['title']}: {got}" if ok else got, flush=True)
+        line = got
+        if ok:
+            line = f"{prod} {found[prod]['title']}: {got}"
+            if area:
+                line += _area_said(areas.get(prod))
+        log(line, flush=True)
     return errors
 
 

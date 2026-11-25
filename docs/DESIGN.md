@@ -86,6 +86,8 @@ appears once per platform, as a key or as a cross-reference.
 | `run` | the file to start, when the obvious one is wrong or ambiguous: an executable, or the download's launcher script (see below) |
 | `boot_disk`, `boot_file` | the disk (1-based) and file to boot, when not the first |
 | `assign` | AmigaDOS assigns, e.g. `{ Killer = "SYS:" }` |
+| `area` | `[width, height]` of the part of the screen the production draws into, when it was measured (see below) |
+| `aspect` | `16:9` when the area has that shape; no other shape is said |
 | `note` | free text |
 | `variant` | see below |
 
@@ -127,6 +129,20 @@ Kickstart 2 and later a command the download does not ship (the author's
 own `fadeout`) is skipped and the script goes on, `cd` is built in and
 `assign name: path` works; no other Workbench command is supplied. On
 Kickstart 1.x a script can only run its parts.
+
+`area` is for a frontend that shows the production full screen and not
+with thick borders: some productions draw into 320x180 in the middle of
+the 320x256 PAL screen, others into 320x200, and nothing in a download
+says so. It is the largest part the production draws into for a good share
+of its run: a part drawn into less does not change it, and neither does a
+loader or a title that fills the screen before a smaller main part. On
+Amiga it is in lores pixels and lines whatever the resolution, so a hires
+interlaced picture that fills the PAL screen is 320x256 too. An area of
+320x180 has `aspect = "16:9"`. Any other area stands alone: 320x200 is
+usually still 4:3, so a player may cut the borders away but must not
+stretch the picture. How a production is shown is the player's choice.
+Neither field changes how the production is run, so an entry with them
+plays as the same entry without.
 
 Settings sit on the production. A variant appears only when one specific
 download needs different settings; it is identified by file name and SHA-256

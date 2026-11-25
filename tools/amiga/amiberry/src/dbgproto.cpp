@@ -18,6 +18,7 @@
 #include "sysconfig.h"
 #include "sysdeps.h"
 
+#include <algorithm>
 #include <vector>
 #include <string>
 
@@ -42,6 +43,7 @@ extern void warpmode(int mode);          /* inputdevice.cpp */
 extern bool create_screenshot(void);     /* osdep/amiberry_gfx.cpp */
 extern int save_thumb_if_new(const std::string &path, int permille, int *changed);
 extern int save_thumb(const std::string &path);
+extern int screenshot_box(int *w, int *h, int box[4]);
 extern bool render_screen(int monid, int mode, bool immediate);
 
 static std::vector<std::string> commands;
@@ -234,6 +236,88 @@ static void emit_error(int s, const std::string &cmd, const char *msg)
 	char buf[256];
 	snprintf(buf, sizeof buf, "{\"error\":\"%s\"}", msg);
 	emit(s, cmd, buf);
+}
+
+/* ---- display measure -------------------------------------------------- */
+/* Where a run shows bitplanes, by the registers (custom.cpp notes each shown
+ * line): per line and per column, in how many frames. */
+int dbgproto_display_on = 0;
+
+#define DISP_MAX 1024       /* lines of a frame; lores columns of a line */
+#define DISP_MAX_DIW 32
+
+struct disp_diw { uae_u16 strt, stop; long lines; };
+
+static struct {
+	long frames;                    /* frames that showed a line */
+	long rows[DISP_MAX], cols[DISP_MAX];
+	std::vector<disp_diw> diw;      /* DIWSTRT/DIWSTOP of the shown lines */
+	bool more_diw;                  /* and others, not kept */
+	/* the frame being drawn */
+	bool row[DISP_MAX];
+	int x0, y0, x1, y1;
+} disp;
+
+static void disp_new_frame(void)
+{
+	disp.x0 = disp.y0 = DISP_MAX;
+	disp.x1 = disp.y1 = 0;
+}
+
+void dbgproto_display_line(int line, int x0, int x1,
+	uae_u16 diwstrt, uae_u16 diwstop)
+{
+	if (line < 0 || line >= DISP_MAX || x0 < 0 || x1 > DISP_MAX)
+		return;
+	disp.row[line] = true;
+	disp.x0 = std::min(disp.x0, x0);
+	disp.x1 = std::max(disp.x1, x1);
+	disp.y0 = std::min(disp.y0, line);
+	disp.y1 = std::max(disp.y1, line + 1);
+	for (auto &d : disp.diw) {
+		if (d.strt == diwstrt && d.stop == diwstop) {
+			d.lines++;
+			return;
+		}
+	}
+	if (disp.diw.size() < DISP_MAX_DIW)
+		disp.diw.push_back({ diwstrt, diwstop, 1 });
+	else
+		disp.more_diw = true;
+}
+
+static void disp_vsync(void)
+{
+	if (disp.x1 > disp.x0) {
+		disp.frames++;
+		for (int y = disp.y0; y < disp.y1; y++) {
+			disp.rows[y] += disp.row[y];
+			disp.row[y] = false;
+		}
+		for (int x = disp.x0; x < disp.x1; x++)
+			disp.cols[x]++;
+	}
+	disp_new_frame();
+}
+
+/* ``counts`` as [[from, to, count], ...]: each stretch with one count that is
+ * not zero, ``to`` not included. */
+static std::string disp_runs(const long *counts)
+{
+	std::string out = "[";
+	char buf[64];
+	for (int i = 0; i < DISP_MAX;) {
+		int j = i;
+		while (j < DISP_MAX && counts[j] == counts[i])
+			j++;
+		if (counts[i]) {
+			snprintf(buf, sizeof buf, "%s[%d,%d,%ld]", out.size() > 1 ? "," : "",
+				i, j, counts[i]);
+			out += buf;
+		}
+		i = j;
+	}
+	return out + "]";
 }
 
 /* ---- small parsing helpers ------------------------------------------ */
@@ -436,6 +520,55 @@ static void cmd_shot_new(int s, const std::string &cmd, int permille,
 		"{\"ok\":%s,\"kept\":%s,\"changed\":%d,\"path\":\"%s\"}",
 		kept >= 0 ? "true" : "false", kept > 0 ? "true" : "false", changed, esc);
 	emit(s, cmd, body);
+}
+
+/* display measure on|off: start (from nothing) or stop the measure.
+ * display status: what it holds and, of the picture a screenshot would give
+ * now, the box of the pixels that are not the border's (``screen``), to set
+ * against it. */
+static void cmd_display(int s, const std::string &cmd,
+	const std::vector<std::string> &t)
+{
+	if (t.size() >= 3 && t[1] == "measure" && (t[2] == "on" || t[2] == "off")) {
+		if (t[2] == "on") {
+			disp = {};
+			disp_new_frame();
+		}
+		dbgproto_display_on = t[2] == "on";
+		emit(s, cmd, "{\"ok\":true}");
+		return;
+	}
+	if (t.size() < 2 || t[1] != "status") {
+		emit_error(s, cmd, "usage: display measure on|off | status");
+		return;
+	}
+	char buf[256];
+	snprintf(buf, sizeof buf, "{\"on\":%s,\"frames\":%ld,\"rows\":",
+		dbgproto_display_on ? "true" : "false", disp.frames);
+	std::string body = buf + disp_runs(disp.rows) + ",\"cols\":"
+		+ disp_runs(disp.cols) + ",\"diw\":[";
+	for (size_t i = 0; i < disp.diw.size(); i++) {
+		snprintf(buf, sizeof buf, "%s[%u,%u,%ld]", i ? "," : "",
+			(unsigned)disp.diw[i].strt, (unsigned)disp.diw[i].stop,
+			disp.diw[i].lines);
+		body += buf;
+	}
+	body += disp.more_diw ? "],\"more_diw\":true" : "]";
+	render_screen(0, 1, true);
+	int w, h, box[4];
+	int found = create_screenshot() ? screenshot_box(&w, &h, box) : -1;
+	if (found >= 0) {
+		snprintf(buf, sizeof buf, ",\"screen\":{\"w\":%d,\"h\":%d", w, h);
+		body += buf;
+		if (found) {
+			snprintf(buf, sizeof buf, ",\"box\":[%d,%d,%d,%d]", box[0], box[1],
+				box[2], box[3]);
+			body += buf;
+		}
+		body += "}";
+	}
+	body += "}";
+	emit(s, cmd, body.c_str());
 }
 
 static void cmd_load(int s, const std::string &cmd, uaecptr addr,
@@ -967,6 +1100,8 @@ static void dispatch(void)
 			cmd_load(s, cmd, parse_addr(t[1]), cmd.substr(p));
 		} else if (t[0] == "disk") {
 			cmd_disk(s, cmd, t);
+		} else if (t[0] == "display") {
+			cmd_display(s, cmd, t);
 		} else if (t[0] == "input") {
 			cmd_input(s, cmd, t);
 		} else {
@@ -1347,6 +1482,8 @@ void dbgproto_vsync(void)
 	if (!dbgproto_active || finished)
 		return;
 	frame_counter++;
+	if (dbgproto_display_on)
+		disp_vsync();
 	act_vsync();
 	swap_vsync();
 	if (dead_end())

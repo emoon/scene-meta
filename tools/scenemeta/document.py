@@ -10,7 +10,7 @@ import re
 # follow ``machine``.
 _HEAD = ("title", "group", "source", "demozoo", "csdb", "machine")
 _TAIL = ("boot", "kind", "result", "disks", "events", "run",
-         "boot_disk", "boot_file", "assign", "note")
+         "boot_disk", "boot_file", "assign", "area", "aspect", "note")
 _VARIANT_HEAD = ("file", "sha256", "machine")
 
 _HEADER = re.compile(r"\[(demozoo|csdb)\.(\d+)\]\s*(#.*)?")

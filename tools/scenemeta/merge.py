@@ -10,8 +10,9 @@ import tomllib
 
 from . import document, machines, schema
 
-# Fields a sweep has no opinion on: a difference there is not a disagreement.
-_NOT_COMPARED = ("title", "group", "source", "note")
+# Fields that say nothing of how a production is run: a difference there is
+# not a disagreement.
+_NOT_COMPARED = ("title", "group", "source", "note", "area", "aspect")
 
 
 @dataclasses.dataclass
@@ -24,7 +25,7 @@ class Report:
 
 
 def settings(entry):
-    """What ``entry`` sets: its fields a sweep has an opinion on."""
+    """What ``entry`` sets: its fields that say how the production is run."""
     return {k: v for k, v in entry.items() if k not in _NOT_COMPARED}
 
 

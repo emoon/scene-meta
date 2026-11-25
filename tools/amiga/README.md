@@ -94,6 +94,7 @@ python3 -m scenemeta amiga export --ids 142      # specific productions
 python3 -m scenemeta amiga replay --ids 142      # play data-file entries as written
 python3 -m scenemeta amiga gate --ids 142        # pass or fail on every seed, and why
 python3 -m scenemeta amiga gate                  # every entry not gated yet, resumable
+python3 -m scenemeta amiga gate --ids 142 --area # and the area it draws into, for the export
 python3 -m scenemeta amiga gate-demote           # the failures: what --write demotes
 python3 -m scenemeta amiga gate-summary          # scene.db -> amiga/gate-summary.txt
 python3 -m scenemeta amiga gate-stale            # entries to gate again
@@ -239,6 +240,42 @@ CC=clang CXX=clang++ cmake -S tools/amiga/amiberry -B build/amiberry -G Ninja \
     -DUSE_UAENET_PCAP=OFF -DUSE_UAENET_TAP=OFF -DUSE_ZSTD=OFF
 cmake --build build/amiberry
 ```
+
+## The area a production draws into (`../scenemeta/amiga/area.py`)
+
+`gate --area` has one run of each entry, the entry as written on the first
+seed, measure where the production shows bitplanes. The run is the one the
+gate makes anyway, on the machine the entry names, and the measure only
+reads: what the gate sees is the same with it and without. The area of an
+entry that passes goes into `scene.db` (table `area`) with the entry it
+was measured of, and `export` writes it as the entry's `area` (and
+`aspect = "16:9"` for 320x180) while the entry is still that one. The
+line of the entry says it: `area 320x180, drawn into 318x180`. The export
+rewrites `script` entries only: the area of an entry somebody worked on
+stays in the table, to be written by hand.
+
+The emulator counts, per line and per column, the frames in which bitplanes
+were fetched inside the display window (`display measure`, see
+`amiberry/SNAPSHOT.md`): from the registers, with no picture looked at. The
+area is the lines and columns shown in a quarter of those frames or more,
+in lores pixels and lines.
+
+The registers do not say everything. Bitplanes that are shown but empty
+count (a 256-line screen with a picture drawn into the middle 180), and a
+picture the copper makes alone does not. So the box of what each sample's
+picture shows that is not the border's colour is taken too, in the
+emulator, and the columns and rows inside a quarter of those boxes are
+stored beside the area as what was drawn. Where the two differ much, the
+area is not to be trusted:
+
+```
+select prod_id, width, height, drawn_width, drawn_height from area
+where abs(width - drawn_width) > 16 or abs(height - drawn_height) > 16;
+```
+
+A border the production colours itself makes the drawn box larger than the
+area. The gate plays an entry for three minutes, or until its last disk
+has loaded: a part later than that is not measured.
 
 ## Known limits
 

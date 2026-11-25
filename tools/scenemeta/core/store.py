@@ -22,7 +22,7 @@ import time
 
 from . import gatelog
 from .gatelog import Error, Record
-from .result import Key, Swap
+from .result import Area, Key, Swap
 
 VERSION = 1    # pragma user_version; 0 is a database from before this schema
 
@@ -53,6 +53,10 @@ create table if not exists gate (
 create table if not exists gate_error (
     prod_id integer primary key, reason text not null, at text not null,
     entry text not null);
+create table if not exists area (
+    prod_id integer primary key, entry text not null, width integer not null,
+    height integer not null, drawn_width integer not null,
+    drawn_height integer not null, at text not null);
 drop view if exists best;
 create view best as
     select p.id prod_id, p.title, p.groups, p.platforms, v.idx variant,
@@ -216,6 +220,22 @@ class Store:
                 for prod, seed, passed, *rest in self.db.execute(
                     "select prod_id, seed, passed, reason, sha256, player, at, entry"
                     " from gate order by prod_id, seed")]
+
+    # -- the area ------------------------------------------------------------
+    def put_area(self, prod_id, entry, area):
+        """Store the result.Area a run of ``entry`` measured, in place of
+        what was stored of the production."""
+        self.db.execute("insert or replace into area values (?,?,?,?,?,?,?)",
+                        (prod_id, gatelog.name(entry), area.width, area.height,
+                         area.drawn_width, area.drawn_height, _now()))
+        self.db.commit()
+
+    def areas(self):
+        """``{prod_id: (entry, Area)}``: the area measured of each
+        production and the ``name`` of the entry it was measured of."""
+        return {prod: (entry, Area(*rest)) for prod, entry, *rest in
+                self.db.execute("select prod_id, entry, width, height,"
+                                " drawn_width, drawn_height from area")}
 
     # -- reading -------------------------------------------------------------
     def keys(self, run_id):

@@ -14,6 +14,11 @@ KINDS = ("collection", "standalone", "separate-disks", "menu", "boot_fresh")
 # download offers.
 BOOTS = ("floppy", "hd")
 
+# The shape of the area a production draws into, when it is not the
+# screen's.
+ASPECT_16_9 = "16:9"
+ASPECTS = (ASPECT_16_9,)
+
 
 def bucket(title):
     """The file a production is kept in: the first character of its title."""

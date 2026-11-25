@@ -209,6 +209,25 @@ class ParseTest(unittest.TestCase):
                               0, "peek x 4")
         self.assertEqual(log.samples[0].cyls, [12, 0])
 
+    def test_the_last_display_status_and_the_box_of_each_picture(self):
+        def status(frames, screen):
+            return ('{"cmd": "display status", "result": {"frames": %d,'
+                    ' "rows": [], "cols": [], "diw": [[21121, 1729, 180]],'
+                    ' "screen": %s}}' % (frames, screen))
+        out = "\n".join([status(250, '{"w": 752, "h": 574}'),
+                         status(500, '{"w": 752, "h": 574,'
+                                     ' "box": [76, 114, 716, 474]}')])
+        log = emulator._parse((out, "", 0, False), pathlib.Path("/none"), {},
+                              0, "peek x 4")
+        self.assertEqual(log.display["frames"], 500)
+        self.assertEqual(log.display["diw"], [[0x5281, 0x06c1, 180]])
+        self.assertEqual(log.boxes, [None, [76, 114, 716, 474]])
+
+    def test_a_run_not_measured_has_no_display(self):
+        log = emulator._parse(("", "", 0, False), pathlib.Path("/none"), {},
+                              0, "peek x 4")
+        self.assertEqual((log.display, log.boxes), (None, []))
+
 
 class AutoswapTest(unittest.TestCase):
     def test_clicks_when_a_new_disk_is_not_picked_up(self):
@@ -238,3 +257,35 @@ class SampleCommandsTest(unittest.TestCase):
     def test_kept_shot_is_named_after_its_sample(self):
         self.assertIn("shot-new 20 /keep/0003.png",
                       self.cmds(keep=pathlib.Path("/keep")))
+
+    def test_the_display_is_read_only_when_the_area_is_asked_for(self):
+        self.assertNotIn("display status", self.cmds())
+        self.assertEqual(self.cmds(area=True)[-1], "display status")
+
+
+class AreaRunTest(unittest.TestCase):
+    def cmds(self, **kw):
+        ran = ("", "", 0, False)
+        with tempfile.NamedTemporaryFile(suffix=".adf") as adf, \
+                mock.patch.object(emulator.machines, "require_rom"), \
+                mock.patch.object(emulator, "execbase", return_value=0), \
+                mock.patch.object(emulator, "_invoke", return_value=ran) as invoke:
+            adf.write(b"\0" * 901120)
+            adf.flush()
+            emulator.run(machines.BY_NAME["a500"],
+                         media.Variant("floppy", [adf.name]), 500,
+                         emulator.Options(**kw))
+        argv = invoke.call_args.args[0]
+        return [argv[i + 1] for i, a in enumerate(argv) if a == "--dbg"
+                and not argv[i + 1].startswith("screenshot ")]
+
+    def test_the_measure_is_on_from_the_start(self):
+        cmds = self.cmds(area=True)
+        self.assertLess(cmds.index("display measure on"),
+                        cmds.index("run frames=250"))
+        self.assertEqual(cmds.count("display status"), 2)
+
+    def test_a_run_not_asked_is_the_run_it_was(self):
+        measured = [c for c in self.cmds(area=True)
+                    if not c.startswith("display ")]
+        self.assertEqual(self.cmds(), measured)

@@ -9,11 +9,14 @@ whatever somebody edited in the data files stays.
 A ``script`` entry that says the production runs is put to the gate first.
 When it fails, the entries of the next best runs are, core.export.TRIES in
 all; when none passes the production is written as ``unknown``.
+
+An entry that runs says its area when ``gate --area`` measured it; one
+somebody edited is kept as written, so not that one.
 """
 
 from .. import events
-from ..core import export
-from . import classes, config, gate, media, replay
+from ..core import export, gatelog
+from . import area, classes, config, gate, media, replay
 
 _RUNS = ("works", "works-short")
 _ALIVE = _RUNS + ("works-then-crash",)
@@ -150,6 +153,14 @@ def _entry(title, groups, v, variants, cls, default, failed=False):
     return e
 
 
+def with_area(entry, held):
+    """``entry`` saying the area ``held`` (see Store.areas), when it runs
+    and the area was measured of it."""
+    if not held or entry.get("result") or held[0] != gatelog.name(entry):
+        return entry
+    return {**entry, **area.fields(held[1])}
+
+
 def proposals(store, cls, default, kept, ids=None):
     """``({id: entry}, {id: (tries, failed)})``: the productions written as
     the sweep saw them (not running, classified by hand, or in ``kept``),
@@ -191,5 +202,7 @@ def run(store, data=None, ids=None, jobs=None, log=print):
         if said:
             log(f"{prod} {entries[prod]['title']}: "
                 + ", then ".join(map(str, said)), flush=True)
-    export.run(data, (("demozoo", p, e) for p, e in sorted(entries.items())))
+    areas = store.areas()
+    export.run(data, (("demozoo", p, with_area(e, areas.get(p)))
+                      for p, e in sorted(entries.items())))
     return errors

@@ -50,6 +50,12 @@ def _assign(v):
         return "must be a table of name = path"
 
 
+def _pixels(v):
+    if not isinstance(v, list) or len(v) != 2 \
+            or any(_number_from(1)(x) for x in v):
+        return "must be [width, height] in pixels"
+
+
 def _rows(required, optional=()):
     """A list of inline tables with these fields (name -> check)."""
     fields = {**dict(required), **dict(optional)}
@@ -107,6 +113,8 @@ SETTINGS = {
     "boot_disk": _number_from(1),
     "boot_file": _text,
     "assign": _assign,
+    "area": _pixels,
+    "aspect": _one_of(schema.ASPECTS),
     "note": _text,
 }
 

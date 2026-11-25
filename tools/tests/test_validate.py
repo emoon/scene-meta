@@ -96,6 +96,18 @@ class ValidateTest(unittest.TestCase):
         got = self.one('[demozoo.5]\ntitle = "Dz"\nsource = "human"\n')
         self.assertEqual(got, ["[demozoo.5] source must be one of script, ai, verified"])
 
+    def test_an_area_is_a_width_and_a_height(self):
+        entry = '[demozoo.5]\ntitle = "Dz"\nsource = "ai"\narea = %s\n'
+        self.assertEqual(self.one(entry % "[320, 180]" + 'aspect = "16:9"\n'), [])
+        for bad in ("[320]", "[320, 0]", '"320x180"', "[320.0, 180]"):
+            self.assertEqual(self.one(entry % bad), [
+                "[demozoo.5] area must be [width, height] in pixels"], bad)
+
+    def test_an_aspect_is_one_of_the_known(self):
+        got = self.one('[demozoo.5]\ntitle = "Dz"\nsource = "ai"\n'
+                       'area = [320, 200]\naspect = "4:3"\n')
+        self.assertEqual(got, ["[demozoo.5] aspect must be one of 16:9"])
+
     def test_unknown_field(self):
         got = self.one('[demozoo.5]\ntitle = "Dz"\nsource = "ai"\nemulator = "x"\n')
         self.assertEqual(got, ["[demozoo.5] unknown field emulator"])

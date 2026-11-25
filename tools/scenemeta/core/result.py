@@ -31,6 +31,17 @@ class Key:
     key: str
 
 
+@dataclasses.dataclass(frozen=True)
+class Area:
+    """The area a production draws into, as a run of its entry measured it."""
+    width: int
+    height: int
+    # What the pictures of the run show drawn, in the same pixels, to set
+    # against it; 0 when they show nothing.
+    drawn_width: int = 0
+    drawn_height: int = 0
+
+
 @dataclasses.dataclass
 class Run:
     """One boot of one variant on one machine."""
