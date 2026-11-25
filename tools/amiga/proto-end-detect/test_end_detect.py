@@ -150,7 +150,7 @@ class TestNotes(unittest.TestCase):
                 base = 500 + rep * period
                 for step in range(0, 625):  # 6250f notes, 1750f silence
                     f = base + step * 10
-                    lines.append(f"{f},0,2,{100 + (step * 29) % 300:x}\n")
+                    lines.append(f"{f},0,2,{100 + (step * 29) % 997:x}\n")
             p.write_text("".join(lines))
             # Trace ends during active notes (38750), with 35s silent breakdowns inside
             res = notes.song_loop(str(p), trace_end=38800)
@@ -226,6 +226,27 @@ class TestStreams(unittest.TestCase):
             any_end, text_end = streams.stream_ends(str(p))
             self.assertEqual(any_end, 18000 + 119 * 100)
             self.assertEqual(text_end, 100 + 119 * 100)
+
+    def test_2d_scanline_jumps_and_single_frame_burst_not_text_stream(self):
+        # Like 23458: a 320-wide chunky buffer reader makes +1 byte reads
+        # mixed with +320 scanline jumps (50% overall sequential purity), plus
+        # an isolated 12-read burst in a single frame after a 150s gap.
+        with tempfile.TemporaryDirectory() as td:
+            p = pathlib.Path(td) / "t.reads"
+            lines = []
+            for row in range(100):
+                base = 0x40036000 + row * 0x140
+                f = 10000 + row * 10
+                lines.append(f"{f},S,40021b4e,{base:x}\n")
+                lines.append(f"{f},S,40021b4e,{base + 1:x}\n")
+            # Isolated single-frame burst at frame 40520
+            for row in range(12):
+                base = 0x40043000 + row * 0x140
+                lines.append(f"40520,S,40021b4e,{base:x}\n")
+                lines.append(f"40520,S,40021b4e,{base + 1:x}\n")
+            p.write_text("".join(lines))
+            _, text_end = streams.stream_ends(str(p))
+            self.assertEqual(text_end, 0)
 
 
 class TestAnalyze(unittest.TestCase):
@@ -407,6 +428,63 @@ class TestAnalyze(unittest.TestCase):
         )
         v = analyze.verdict(rows, cells, song=(4500, 5000), data=44950, text_data=44950)
         self.assertTrue(v.get("text_after_trace"))
+
+    def test_sustained_post_new_silence_before_mod_wraparound(self):
+        # Like 281473: music ends at 7000 (140s), silent for 600s, then wraps
+        # around at 37000..42800. Must detect music_over=140s, not 856s.
+        n = 45000
+        rng = np.random.default_rng(13)
+        cells = rng.integers(0, 500, size=(n, 4), dtype=np.uint64)
+        rows = _make_rows(
+            n,
+            newram_at={6600: 100},
+            aenergy_fn=lambda i: 50000 if (i < 7000 or 37000 <= i < 42800) else 0,
+            awrites_fn=lambda i: 16,
+            chan_fn=lambda i: "PPPP" if (i < 7000 or 37000 <= i < 42800) else "SSSS",
+        )
+        v = analyze.verdict(rows, cells, song=None)
+        self.assertAlmostEqual(v["music_over"], 140.0, delta=2.0)
+        self.assertAlmostEqual(v["end"], 140.0, delta=2.0)
+
+    def test_rom_trapped_crash_with_surviving_vblank_music_is_crashed(self):
+        # Like 250551: real crash at 2850 traps CPU in Kickstart Idle (rom=99%,
+        # frozen screen) while a VBlank interrupt keeps playing periodic audio.
+        n = 20000
+        cells = np.zeros((n, 4), dtype=np.uint64)
+        cells[:2300, 0] = np.arange(2300, dtype=np.uint64)
+        cells[2300:, 0] = 2300
+        rows = _make_rows(
+            n,
+            newram_at={2300: 100},
+            alert_at=2850,
+            aenergy_fn=lambda i: 50000 if (i % 5000) < 1500 else 0,
+            awrites_fn=lambda i: 16,
+            chan_fn=lambda i: "PPPP" if (i % 5000) < 1500 else "SSSS",
+            rom_fn=lambda i: 995 if i >= 2850 else 0,
+        )
+        # Keep alert latched after crash (as Kickstart does)
+        for i in range(2850, n):
+            rows[i]["alert"] = 0x00000004
+        v = analyze.verdict(rows, cells, song=None)
+        self.assertEqual(v["ending"], "crashed")
+
+    def test_noisy_scrolltext_with_looping_borders_uses_text_end(self):
+        # Like 166282: border cell loops every 320f (6.4s) while center cells
+        # are "noisy" (unique per frame) with a scrolltext ending at 871s.
+        n = 45000
+        cells = np.zeros((n, 4), dtype=np.uint64)
+        cells[:, 0] = np.arange(n, dtype=np.uint64) % 320  # looping border
+        cells[:, 1] = np.arange(100000, 100000 + n, dtype=np.uint64)  # noisy center
+        rows = _make_rows(
+            n,
+            newram_at={1500: 100},
+            aenergy_fn=lambda i: 50000,
+            awrites_fn=lambda i: 5,
+            chan_fn=lambda i: "PPPP",
+        )
+        v = analyze.verdict(rows, cells, song=(9200, 10000), data=43560, text_data=43560)
+        self.assertEqual(v["ending"], "loops")
+        self.assertAlmostEqual(v["end"], 871.2, delta=1.0)
 
 
 if __name__ == "__main__":

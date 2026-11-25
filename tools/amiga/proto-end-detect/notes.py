@@ -16,15 +16,15 @@ QUIET_TAIL = 500  # frames: if last note is older than this before trace_end, mu
 MAX_LAG_SAMPLES = 64  # cap backward occurrences per event to keep histogram O(N)
 
 
-def channel(ev):
+def channel(ev, k=K):
     """ev: [(frame, key)] of one channel -> (frames, keys, where) with ``where``
-    mapping each run of K events to the sorted frames it ended at."""
+    mapping each run of k events to the sorted frames it ended at."""
     frames = [f for f, _ in ev]
-    h = [hash(k) for _, k in ev]
+    h = [hash(x) for _, x in ev]
     keys = [None] * len(ev)
     where = collections.defaultdict(list)
-    for i in range(K - 1, len(ev)):
-        keys[i] = hash(tuple(h[i - K + 1:i + 1]))
+    for i in range(k - 1, len(ev)):
+        keys[i] = hash(tuple(h[i - k + 1:i + 1]))
         where[keys[i]].append(frames[i])
     return frames, keys, where
 
@@ -35,7 +35,7 @@ def _has_match(occ, target, tol):
     return j < len(occ) and occ[j] <= target + tol
 
 
-def _walk_back(data, p, end):
+def _walk_back(data, p, end, k=K):
     """Frame where the second pass of a song of period ``p`` begins, walking
     backward from ``end`` in 5 s buckets. A bucket with no notes matches when
     one period earlier is also silent (up to one full period of silence)."""
@@ -44,7 +44,7 @@ def _walk_back(data, p, end):
     ok = {}
     for fr, keys, where in data.values():
         tot, hit = collections.Counter(), collections.Counter()
-        for i in range(K - 1, len(fr)):
+        for i in range(k - 1, len(fr)):
             b = fr[i] // step
             tot[b] += 1
             if _has_match(where[keys[i]], fr[i] - p, tol):
@@ -199,7 +199,11 @@ def song_loop(path, log=lambda *a: None, trace_end=None):
         log("no loop found")
         return None
     p = best
-    at = _walk_back(data, p, end)
+    # Use a shorter K_WALK=4 run for walk-back so a single bar-variation note
+    # on a sparse stream does not smear across 6+ consecutive 5 s buckets.
+    k_walk = 4
+    wdata = {ch: channel(chans[ch], k=k_walk) for ch in data}
+    at = _walk_back(wdata, p, end, k=k_walk)
     # If the shortest tail-matching period fails to sustain for even one full
     # period (an internal A-B-A section that happens to fill the last 60 s,
     # e.g. 295201, 270755), check longer passing candidates for the true loop.
@@ -211,10 +215,33 @@ def song_loop(path, log=lambda *a: None, trace_end=None):
             if any(abs(cand_p - sp) <= max(BIN, sp // 50) for sp in seen_p):
                 continue
             seen_p.append(cand_p)
-            cand_at = _walk_back(data, cand_p, end)
+            cand_at = _walk_back(wdata, cand_p, end, k=k_walk)
             if end - cand_at >= cand_p and cand_at < at - TAIL:
                 p, at = cand_p, cand_at
                 break
+    # On sparse streams (< 50 events/ch in TAIL), K=16 can penalize a true
+    # shorter bar-period whose only difference is 1-2 accent notes (e.g. 191219).
+    # Test integer divisors with K_WALK=4 if they match >= 85% across the tail.
+    min_tail_ev = min(len(fr) - bisect.bisect_left(fr, t0) for fr, _, _ in data.values())
+    if min_tail_ev < 50:
+        for k_div in range(p // MIN_PERIOD, 1, -1):
+            sub_p = round(p / k_div)
+            if sub_p < MIN_PERIOD:
+                continue
+            sub_tol = max(BIN, sub_p // 100)
+            shares = []
+            for fr, keys, where in wdata.values():
+                i0 = max(k_walk - 1, bisect.bisect_left(fr, t0))
+                n_idx = len(fr) - i0
+                if n_idx > 5:
+                    hit = sum(_has_match(where[keys[i]], fr[i] - sub_p, sub_tol)
+                              for i in range(i0, len(fr)))
+                    shares.append(hit / n_idx)
+            if shares and min(shares) >= 0.85:
+                sub_at = _walk_back(wdata, sub_p, end, k=k_walk)
+                if end - sub_at >= sub_p:
+                    p, at = sub_p, sub_at
+                    break
     log(f"SONG LOOPS: period ~{p / FPS:.1f}s; second pass from {at / FPS:.0f}s, "
           f"so the loop began ~{(at - p) / FPS:.0f}s")
     return p, at

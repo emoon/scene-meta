@@ -33,6 +33,7 @@ def stream_ends(reads):
         return None, None
     last, seen = {}, collections.defaultdict(set)
     at = collections.defaultdict(list)
+    total_s = collections.Counter()
     with open(reads) as f:
         for line in f:
             parts = line.split(",")
@@ -47,6 +48,7 @@ def stream_ends(reads):
                 continue
             if kind != "S" or addr < VECTORS or ROM_START <= pc_i < ROM_END:
                 continue
+            total_s[pc_i] += 1
             if pc_i in last and 0 < addr - last[pc_i] <= STEP and not any(
                     a in seen[pc_i] for a in range(addr + 1, addr + STEP + 1)):
                 at[pc_i].append((frame_i, addr - last[pc_i]))
@@ -54,17 +56,24 @@ def stream_ends(reads):
             seen[pc_i].add(addr)
     end = 0
     text_end = 0
-    for evs in at.values():
+    for pc_i, evs in at.items():
         frames = [f for f, _ in evs]
         for k in range(NEED - 1, len(frames)):
             if frames[k] - frames[k - NEED + 1] <= WIN * FPS:
                 end = max(end, frames[k])
+        # A real sequential text/scrolltext stream has >= TEXT_MIN_EVENTS reads
+        # with >= TEXT_MIN_FRAC of ALL non-ROM S-reads (not just <=STEP ones)
+        # advancing by <= TEXT_STEP bytes (excludes 2D chunky buffers jumping
+        # +320 bytes per scanline), and must end on >= NEED distinct frames
+        # within WIN seconds (excludes isolated 1-frame bursts after long gaps).
         if len(evs) >= TEXT_MIN_EVENTS:
             small = [f for f, st in evs if st <= TEXT_STEP]
-            if len(small) / len(evs) >= TEXT_MIN_FRAC:
-                for k in range(NEED - 1, len(small)):
-                    if small[k] - small[k - NEED + 1] <= WIN * FPS:
-                        text_end = max(text_end, small[k])
+            denom = max(1, total_s[pc_i] - 1)
+            if len(small) / denom >= TEXT_MIN_FRAC:
+                uniq = sorted(set(small))
+                for k in range(NEED - 1, len(uniq)):
+                    if uniq[k] - uniq[k - NEED + 1] <= WIN * FPS:
+                        text_end = max(text_end, uniq[k])
     return end, text_end
 
 

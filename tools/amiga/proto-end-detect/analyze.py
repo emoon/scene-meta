@@ -148,10 +148,11 @@ def audio_loop(rows, limit=None):
     best_r = float(corr[:max_idx + 1].max())
     if best_r < 0.90:
         return None
-    # Require candidate period to match within 0.03 of the strongest peak so a
-    # weak repeating motif (e.g. r=0.90 vs 0.995 in Zeon) doesn't hide the song
-    # period.
-    thresh = max(0.90, best_r - 0.03)
+    # Require candidate period to match close to the strongest peak so a
+    # weaker repeating beat/motif (e.g. r=0.969 vs 0.989 in 9384, or r=0.90 vs
+    # 0.995 in Zeon) doesn't alias the true song period.
+    margin = 0.008 if best_r >= 0.98 else (0.015 if best_r >= 0.96 else 0.03)
+    thresh = max(0.90, best_r - margin)
     hits = np.where(corr[:max_idx + 1] >= thresh)[0]
     if not len(hits):
         return None
@@ -232,14 +233,20 @@ def _fatal_guru(rows, cells):
                     prev_alert = a
                     continue
                 return i
+            # Only count active audio ("P", not silent Paula writes), and do
+            # not let a surviving VBlank music interrupt override a real crash
+            # when the CPU is trapped in Kickstart ROM with a frozen screen.
             audio_active = sum(
                 1 for k in range(i + 50, j_end)
-                if "P" in rows[k]["chan"] or rows[k]["awrites"] > 0
+                if "P" in rows[k]["chan"]
             )
-            if audio_active >= 250:
+            seg = changed[i + 50:j_end]
+            instr_after = sum(rows[k]["instr"] for k in range(i + 50, j_end)) or 1
+            rom_after = sum(rows[k]["rom"] for k in range(i + 50, j_end)) / instr_after
+            alert_cleared = any(rows[k]["alert"] == 0 for k in range(i + 50, j_end))
+            if audio_active >= 250 and (rom_after <= 0.5 or seg.sum() >= 50 or alert_cleared):
                 prev_alert = a
                 continue
-            seg = changed[i + 50:j_end]
             if len(seg) >= 250:
                 cs = np.concatenate(([0], np.cumsum(seg)))
                 if (cs[250:] - cs[:-250]).max() >= 50:
@@ -272,6 +279,27 @@ def verdict(rows, cells, song, halted=False, data=None, swaps=(), meta=None,
     sil = n   # no channel plays anything but silence or one unchanged loop
     while sil > 0 and "P" not in rows[sil - 1]["chan"]:
         sil -= 1
+    # If the music stopped for >= 60 s continuously after the last new code
+    # (with no disk DMA afterward) and only replayed much later because a MOD
+    # pattern table wrapped around (e.g. 281473), treat the first sustained
+    # silence as the end of music rather than scanning back from trace end.
+    first_sil = None
+    if sil > 0 and rows[-1]["lastdma"] <= rows[new]["frame"] + 250:
+        run_start = None
+        seen_p = any("P" in rows[k]["chan"] for k in range(0, max(0, new - 750)))
+        for k in range(max(0, new - 750), n):
+            if "P" in rows[k]["chan"]:
+                seen_p = True
+                run_start = None
+            elif seen_p:
+                if run_start is None:
+                    run_start = k
+                elif k - run_start + 1 >= PRE_EXIT_WAIT:
+                    first_sil = run_start
+                    break
+    if first_sil is not None and first_sil < sil:
+        sil = first_sil
+        song = None
     quiet = n  # nothing is written to Paula
     while quiet > 0 and not rows[quiet - 1]["awrites"]:
         quiet -= 1
@@ -379,7 +407,8 @@ def verdict(rows, cells, song, halted=False, data=None, swaps=(), meta=None,
         out["end_part"] = sec(new)
         out["end"] = max(out["music_over"], out["last_new"])
     elif out["reset_after"] or (period and period >= 0.6 * played and (
-            not song or (song[1] - song[0]) <= max(3000, 0.4 * played))):
+            not song or (song[1] - song[0]) <= max(3000, 0.4 * played)
+            or (played < 3000 and rows[-1]["frame"] - song[1] < song[0]))):
         # the loop holds the whole production: a demo that starts over, or
         # one screen whose song comes round
         out["ending"] = "restarts" if out["reset_after"] or out["disk_after"] else "loops"
@@ -394,8 +423,13 @@ def verdict(rows, cells, song, halted=False, data=None, swaps=(), meta=None,
             else:
                 out["end"] = round(max(played, song[0]) / FPS, 1)
         else:
-            shown = rows[vshown]["frame"] if vp else 0
-            out["end"] = round(max(played, period, shown) / FPS, 1)
+            # Ignore an unconfirmed long video_period (less than half a second
+            # pass observed) when a real song loop already exists (e.g. 9384).
+            if vp and song and (n - vshown) < vp // 2:
+                out["end"] = round(max(played, song[0]) / FPS, 1)
+            else:
+                shown = rows[vshown]["frame"] if vp else 0
+                out["end"] = round(max(played, period, shown) / FPS, 1)
     elif period:
         out["ending"] = "end-loop"
         out["end_part"] = sec(new)
@@ -446,13 +480,13 @@ def verdict(rows, cells, song, halted=False, data=None, swaps=(), meta=None,
         td_s = round(text_data / FPS, 1)
         out["text_end"] = td_s
         # Classic scrolltext intro/demo: song loops while a sequential byte/word
-        # text stream keeps feeding open (non-looping) screen cells until it
-        # finishes well before the trace ends.
-        if (out.get("ending") in ("loops", "end-loop") and not vp
-                and out["cells"]["open"] > 0 and "end" in out):
-            if out["end"] < td_s < out["trace"] - 30:
+        # text stream keeps feeding non-looping (open or noisy) screen cells
+        # until it finishes well before the trace ends.
+        if (out.get("ending") in ("loops", "end-loop")
+                and kinds_open(kinds) > 0 and "end" in out):
+            if out["end"] < td_s < out["trace"] - 15:
                 out["end"] = td_s
-            elif td_s >= out["trace"] - 30:
+            elif td_s >= out["trace"] - 15:
                 out["text_after_trace"] = True
     # the script's disk swaps say how long the production is: the swap that
     # the trace never reached means it runs longer than the trace; an end
@@ -568,9 +602,11 @@ def main():
                   f"first pass began {t(max(0, s - p))}  [{len(runs)} runs]")
         else:
             print(f"  {name} repeats: no")
+    data, text_data = data_ends_of(a.trace)
     print("  VERDICT:", json.dumps(verdict(rows, cells, song_of(a.trace, trace_end),
-                                           halted_of(a.trace), data_of(a.trace), swaps, meta,
-                                           notes_path=a.trace + ".notes")))
+                                           halted_of(a.trace), data, swaps, meta,
+                                           notes_path=a.trace + ".notes",
+                                           text_data=text_data)))
     tail = range(max(0, n - 1000), n)
     ins = sum(rows[i]["instr"] for i in tail) or 1
     print(f"  ROM share of the last 1000 frames: {sum(rows[i]['rom'] for i in tail) / ins:.0%}; resets {rows[-1]['resets']}")
