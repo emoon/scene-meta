@@ -378,7 +378,6 @@ source = "script"
 title = "Underground BBS"
 group = "Industry"
 source = "script"
-result = "unknown"
 
 [demozoo.151510]
 title = "Underground Tape"
@@ -653,6 +652,7 @@ title = "Unsorted Ideas"
 group = "Illusion"
 source = "script"
 machine = "a1200"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.170685]
 title = "Unstable Traktor"
@@ -664,9 +664,9 @@ run = "AceMan - Unstable Traktor (68000).exe"
 title = "Unswerving"
 group = "Gods"
 source = "script"
-machine = "a1200_030"
 boot = "floppy"
-result = "crashes-later"
+result = "unknown"
+note = "the sweep saw works-then-crash on a1200_030; no entry of it passed the gate"
 
 [demozoo.35437]
 title = "Untitled"
@@ -866,7 +866,6 @@ result = "unknown"
 title = "Utilities 1 - intro"
 group = "Liberty"
 source = "script"
-result = "unknown"
 
 [demozoo.222374]
 title = "Utilities 3 - Intro"
@@ -961,9 +960,9 @@ source = "script"
 [demozoo.9285]
 title = "Utmost Vacancy"
 group = "Scum"
-source = "script"
-result = "unknown"
-run = "LE-window6.12"
+source = "ai"
+machine = "a1200_fast"
+run = "Scum/Utmost.exe"
 
 [demozoo.9056]
 title = "Utopia"
@@ -985,7 +984,6 @@ source = "script"
 title = "Uulima"
 group = "CNCD"
 source = "script"
-result = "unknown"
 
 [demozoo.8260]
 title = "Uusi"

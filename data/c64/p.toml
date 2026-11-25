@@ -149,7 +149,7 @@ group = "Pretzel Logic"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["PAPEL_Side1.D64", "PAPEL_Side2.D64"]
-swaps = [{ disk = 2, at = 498.6 }]
+events = [{ at = 498.6, disk = 2 }]
 
 [demozoo.306299]
 title = "Paper Demo"
@@ -249,7 +249,7 @@ title = "Paranoid 5"
 group = "The Ancient Temple"
 source = "script"
 disks = ["Paranoid_5_SideA.D64", "Paranoid_5_SideB.D64"]
-swaps = [{ disk = 2, at = 131.4, key = "space", key_delay = 12.9 }]
+events = [{ at = 131.4, disk = 2 }, { at = 144.3, key = "space" }]
 
 [demozoo.188995]
 title = "Paranoimia"
@@ -326,7 +326,7 @@ title = "Party Attraction"
 group = "Flash Inc."
 source = "script"
 disks = ["flash_inc_party_attraction-A.d64", "flash_inc_party_attraction-B.d64"]
-swaps = [{ disk = 2, at = 162.6, key = "space", key_delay = 12.7 }]
+events = [{ at = 162.6, disk = 2 }, { at = 175.3, key = "space" }]
 
 [demozoo.337227]
 title = "Party Awake"
@@ -343,7 +343,7 @@ title = "Party Demo"
 group = "Fire-Eagle / Genesis Project"
 source = "script"
 disks = ["Party_Demo.d64", "Slot_Mashine.d64"]
-swaps = [{ disk = 2, at = 146.7, key = "space", key_delay = 19.2 }]
+events = [{ at = 146.7, disk = 2 }, { at = 165.9, key = "space" }]
 
 [demozoo.101543]
 title = "Party Demo"
@@ -476,7 +476,7 @@ title = "Party Scroll"
 group = "Network"
 source = "script"
 disks = ["Network_1988_PartyScroll.d64", "partyscroll.d64"]
-swaps = [{ disk = 2, at = 64.8, key = "p1fire", key_delay = 37.4 }]
+events = [{ at = 64.8, disk = 2 }, { at = 102.2, key = "p1fire" }]
 
 [demozoo.182945]
 title = "Party Song"
@@ -504,7 +504,7 @@ group = "Richard"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["KBITCOMPO.D64", "Richard_Oxyron_2008_Disk_CORRECT.d64"]
-swaps = [{ disk = 2, at = 193.5, key = "p1fire" }]
+events = [{ at = 193.5, disk = 2 }, { at = 198.5, key = "p1fire" }]
 
 [demozoo.334051]
 title = "Party Vector"
@@ -610,7 +610,7 @@ group = "Fatzone"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["Partypopper-Disk1.d64", "Partypopper-Disk2.d64"]
-swaps = [{ disk = 2, at = 376.2 }]
+events = [{ at = 376.2, disk = 2 }]
 
 [demozoo.354682]
 title = "Partypåg"
@@ -675,8 +675,7 @@ title = "Patto's Music Collection"
 group = "Onslaught"
 source = "ai"
 disks = ["Patto's Music Collection Side1.d64", "Patto's Music Collection Side2.d64"]
-swaps = [{ disk = 2, at = 180.7, key = "return", key_delay = 10.1 }]
-keys = [{ at = 71.0, key = "space" }, { at = 131.9, key = "down" }, { at = 147.2, key = "return" }]
+events = [{ at = 71.0, key = "space" }, { at = 131.9, key = "down" }, { at = 147.2, key = "return" }, { at = 180.7, disk = 2 }, { at = 190.8, key = "return" }]
 note = "Patto's Music Collection: 62-tune player, side B tunes ask for the flip; disk 2: TURN DISK icon shows after Return on a side B tune; no upper limit seen"
 
 [demozoo.330967]
@@ -695,7 +694,7 @@ title = "Payback"
 group = "Varsity"
 source = "script"
 disks = ["0208a.d64", "Payback.d64"]
-swaps = [{ disk = 2, at = 604.7, key = "p1fire", key_delay = 35.2 }]
+events = [{ at = 604.7, disk = 2 }, { at = 639.9, key = "p1fire" }]
 
 [demozoo.40501]
 title = "PC-fun"
@@ -939,7 +938,7 @@ title = "Petscii Nightmares"
 group = "Judas"
 source = "script"
 disks = ["PetsciiNightmares_A.d64", "PetsciiNightmares_B.d64"]
-swaps = [{ disk = 2, at = 193.3, key = "p1fire", key_delay = 36.5 }]
+events = [{ at = 193.3, disk = 2 }, { at = 229.8, key = "p1fire" }]
 
 [demozoo.326545]
 title = "Petskiippi"
@@ -1266,7 +1265,7 @@ title = "Plainness"
 group = "Digitech"
 source = "script"
 disks = ["Plainness.D64", "Plainness (1990-09-15)(Digitech).d64"]
-swaps = [{ disk = 2, at = 478.1, key = "p1fire", key_delay = 35.6 }]
+events = [{ at = 478.1, disk = 2 }, { at = 513.7, key = "p1fire" }]
 
 [demozoo.274119]
 title = "Plan-M"
@@ -1339,7 +1338,7 @@ title = "Plotkiform"
 group = "Hujowa"
 source = "script"
 disks = ["plotkiform_s1.d64", "plotkiform_s2.d64"]
-swaps = [{ disk = 2, at = 270.7 }]
+events = [{ at = 270.7, disk = 2 }]
 
 [demozoo.126738]
 title = "Plots 4"
@@ -1562,7 +1561,7 @@ group = "Lepsi Developments / Miracles"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["portal.d64", "portal2.d64"]
-swaps = [{ disk = 2, at = 394.7 }]
+events = [{ at = 394.7, disk = 2 }]
 
 [demozoo.286622]
 title = "Pose"
@@ -1800,7 +1799,7 @@ title = "Primary Star 2003 Winners"
 group = "Raiders of the Lost Empire"
 source = "script"
 disks = ["AP29A.D64", "AP29B.D64"]
-swaps = [{ disk = 2, at = 126.9, key = "p2fire", key_delay = 48.6 }]
+events = [{ at = 126.9, disk = 2 }, { at = 175.5, key = "p2fire" }]
 
 [demozoo.80103]
 title = "Primary's Color's"
@@ -1873,7 +1872,7 @@ title = "Pro Memoria 2"
 group = "Arise"
 source = "script"
 disks = ["Promemoria_II.Side_A.D64", "Promemoria_II.Side_B.D64"]
-swaps = [{ disk = 2, at = 109.1, key = "space", key_delay = 13.2 }]
+events = [{ at = 109.1, disk = 2 }, { at = 122.3, key = "space" }]
 
 [demozoo.179584]
 title = "Pro Memoria 4"
@@ -1926,7 +1925,7 @@ title = "Project Pitchfork"
 group = "Smash Designs"
 source = "script"
 disks = ["project1.d64", "project2.d64"]
-swaps = [{ disk = 2, at = 474.4 }]
+events = [{ at = 474.4, disk = 2 }]
 
 [demozoo.390442]
 title = "Project X"

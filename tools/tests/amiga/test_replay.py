@@ -25,11 +25,12 @@ class JudgeTest(unittest.TestCase):
 
 class ReportTest(unittest.TestCase):
     ENTRY = {"title": "x", "disks": ["a.adf", "b.adf"],
-             "swaps": [{"disk": 2, "at": 10, "key": "space"}]}
+             "events": [{"at": 10, "disk": 2}, {"at": 15, "key": "f1"}]}
     ADF = player.media.Variant("floppy", ["/d/a.adf", "/d/b.adf"])
 
     def setUp(self):
         for needed in ((player.machines, "require_rom"),
+                       (player.workbench, "require_libs"),
                        (player.media, "require_mirror")):
             patch = mock.patch.object(*needed)
             patch.start()
@@ -39,7 +40,7 @@ class ReportTest(unittest.TestCase):
         with mock.patch.object(player.media, "variants",
                                   return_value=([self.ADF], [])), \
                 mock.patch.object(player.emulator, "run") as run:
-            with self.assertRaisesRegex(CannotPlay, "'space'"):
+            with self.assertRaisesRegex(CannotPlay, "'f1'"):
                 replay._one(7, self.ENTRY, "a500")
         run.assert_not_called()
 
@@ -54,29 +55,42 @@ class ReportTest(unittest.TestCase):
             return replay._one(7, entry, "a500")
 
     def test_an_entry_with_keys_is_played_again_without_them(self):
-        entry = {"title": "x", "swaps": [{"disk": 2, "at": 10, "key": "lmb"}]}
+        entry = {"title": "x", "events": [{"at": 10, "disk": 2}, {"at": 15, "key": "lmb"}]}
         line = self.one(entry, self.outcome("works", [True]),
                         self.outcome("works", [False]))
         self.assertEqual(line, "7 x: keys needed (as written: works, disks"
                          " loaded y; without keys: works, disks loaded n)")
         self.assertEqual([c.kwargs for c in self.play.call_args_list],
-                         [{}, {"keys": False}])
+                         [{"patient": False},
+                          {"keys": False, "patient": False}])
         # Both from the media found once.
         self.ready.assert_called_once_with(7, entry, "a500")
 
     def test_with_no_disk_to_put_in_the_run_itself_is_the_evidence(self):
-        entry = {"title": "x", "keys": [{"at": 10, "key": "lmb"}]}
+        entry = {"title": "x", "events": [{"at": 10, "key": "lmb"}]}
         line = self.one(entry, self.outcome("works", []),
                         self.outcome("crash", []))
         self.assertEqual(line, "7 x: keys needed (as written: works, disks"
                          " loaded y; without keys: crash, disks loaded n)")
 
     def test_an_entry_without_keys_is_played_once(self):
-        entry = {"title": "x", "swaps": [{"disk": 2, "at": 10}]}
+        entry = {"title": "x", "events": [{"at": 10, "disk": 2}]}
         line = self.one(entry, self.outcome("works-then-crash", [False]))
         self.assertEqual(line, "7 x: does not replay (as written:"
                          " works-then-crash, disks loaded n)")
-        self.play.assert_called_once_with()
+        self.play.assert_called_once_with(patient=False)
+
+    def test_patient_both_runs_are(self):
+        entry = {"title": "x", "events": [{"at": 10, "until": 40, "disk": 2},
+                                          {"at": 15, "key": "lmb"}]}
+        with mock.patch.object(player, "ready") as ready:
+            ready.return_value.play.side_effect = (
+                self.outcome("works", [True]), self.outcome("works", [False]))
+            line = replay._one(7, entry, "a500", patient=True)
+        self.assertEqual(line, "7 x: keys needed (patient: works, disks"
+                         " loaded y; without keys: works, disks loaded n)")
+        self.assertEqual([c.kwargs for c in ready.return_value.play.call_args_list],
+                         [{"patient": True}, {"keys": False, "patient": True}])
 
     def test_the_run_counts_its_errors(self):
         lines = []
@@ -91,7 +105,8 @@ class ReportTest(unittest.TestCase):
             errors = replay.run(data=pathlib.Path(d), jobs=1,
                                 log=lambda line, **kw: lines.append(line))
         self.assertEqual(errors, 1)
-        self.assertEqual(lines, ["7 x: error: no way to press key 'space'"])
+        self.assertEqual(lines, ["7 x: error: no way to press key 'f1': the keys are"
+                                 " lmb, rmb, return, space, p1fire, p2fire"])
         run.assert_not_called()
 
 

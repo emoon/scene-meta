@@ -83,7 +83,7 @@ title = "Ultra Violet 3"
 group = "Matrix"
 source = "script"
 disks = ["Ultra Violet 3 [Side 1].d64", "Ultra Violet 3 [Side 2].d64"]
-swaps = [{ disk = 2, at = 53.3, key = "space", key_delay = 19.6 }]
+events = [{ at = 53.3, disk = 2 }, { at = 72.9, key = "space" }]
 
 [demozoo.363452]
 title = "Ultra Violet 4"
@@ -126,14 +126,14 @@ group = "Bonzai"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["Unboxed side 1.D64", "Unboxed side 2.D64", "Unboxed side 3.D64"]
-swaps = [{ disk = 2, at = 557.0 }, { disk = 3, at = 1019.7 }]
+events = [{ at = 557.0, disk = 2 }, { at = 1019.7, disk = 3 }]
 
 [demozoo.366416]
 title = "Unbranded"
 group = "Pyrotech"
 source = "script"
 disks = ["Pyrotech - Unbranded.d64", "Unbranded.d64"]
-swaps = [{ disk = 2, at = 460.2, key = "p1fire", key_delay = 35.9 }]
+events = [{ at = 460.2, disk = 2 }, { at = 496.1, key = "p1fire" }]
 
 [demozoo.124839]
 title = "Uncensored"
@@ -141,7 +141,7 @@ group = "Booze Design"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["boozedemo1.d64", "boozedemo2.d64"]
-swaps = [{ disk = 2, at = 695.8 }]
+events = [{ at = 695.8, disk = 2 }]
 
 [demozoo.317306]
 title = "Uncertain Future 2023"
@@ -273,7 +273,7 @@ title = "Union Box"
 group = "De Danske Crackers"
 source = "script"
 disks = ["union_box_part_1.d64", "unionbox.d64"]
-swaps = [{ disk = 2, at = 90.6, key = "p1fire", key_delay = 34.5 }]
+events = [{ at = 90.6, disk = 2 }, { at = 125.1, key = "p1fire" }]
 
 [demozoo.388151]
 title = "Union Music II"
@@ -375,7 +375,7 @@ group = "Byterapers"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["B-Unsigned.d64", "B-Unsigned.EMU.SYNCLAG.200ms.d64"]
-swaps = [{ disk = 2, at = 283.6, key = "space", key_delay = 16.0 }]
+events = [{ at = 283.6, disk = 2 }, { at = 299.6, key = "space" }]
 
 [demozoo.296496]
 title = "Unstopable"
@@ -469,7 +469,7 @@ title = "USA"
 group = "Swappas With Attitude"
 source = "script"
 disks = ["other_releases.d64", "usa.d64"]
-swaps = [{ disk = 2, at = 186.3, key = "space", key_delay = 17.9 }]
+events = [{ at = 186.3, disk = 2 }, { at = 204.2, key = "space" }]
 
 [demozoo.2218]
 title = "Use Your Illusion"

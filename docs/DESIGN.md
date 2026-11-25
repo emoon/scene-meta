@@ -65,7 +65,7 @@ title  = "Desert Dream"
 group  = "Kefrens"
 source = "script"
 disks  = ["DesertDream-A.adf", "DesertDream-B.adf"]
-swaps  = [{ disk = 2, at = 536.9, key = "lmb" }]
+events = [{ at = 536.9, until = 566.9, disk = 2 }, { at = 541.9, key = "lmb" }]
 ```
 
 The key is `[demozoo.N]`, or `[csdb.N]` when Demozoo has no entry. The other
@@ -82,19 +82,71 @@ appears once per platform, as a key or as a cross-reference.
 | `boot` | `floppy` or `hd`: what to start it from, when that is not the first thing the download offers (an executable that only runs from a floppy, a disk set better run from its hard-drive archive) |
 | `kind` | `collection`, `standalone`, `separate-disks`, `menu`, `boot_fresh` |
 | `disks` | file names in disk order: a multi-disk production's, or the one disk meant where the download has several |
-| `swaps` | disk swaps: `disk`, `at`, and optionally `until`, `key`, `key_delay` |
-| `keys` | key presses at fixed times, other than a swap's own key: `at`, `key` |
-| `run` | the file to start, when the obvious one is wrong or ambiguous |
+| `events` | what is done while it plays, in the order it happens: each has `at`, optionally `until`, and is a disk that goes in (`disk`, and optionally `drive`) or a key pressed (`key`) |
+| `run` | the file to start, when the obvious one is wrong or ambiguous: an executable, or the download's launcher script (see below) |
 | `boot_disk`, `boot_file` | the disk (1-based) and file to boot, when not the first |
 | `assign` | AmigaDOS assigns, e.g. `{ Killer = "SYS:" }` |
+| `area` | `[width, height]` of the part of the screen the production draws into, when it was measured (see below) |
+| `aspect` | `16:9` when that part of the screen has that shape, whatever the pixels: 320x180, and 640x180 in hires; no other shape is said |
 | `note` | free text |
 | `variant` | see below |
 
-All times are seconds of emulated time since power-on. In a swap, `disk` is
+All times are seconds of emulated time since power-on. An event is one
+thing done at its `at`, and says which by the field it has: `disk` or
+`key`, one of them. Another kind of event will be another field. `disk` is
 the number of the disk that goes in (1 when the production booted from a
-later one), `at` is an insert time known to work and `until` the last one
-known to work; `key` is pressed `key_delay` seconds after the insert. Key
-names are lowercase (`space`, `return`, `p1fire`, `p2fire`, `lmb`).
+later one). `drive` is the drive the disk goes into when that
+is not the first: 2 or more, and no more than the machine's `drives` (on
+Amiga `drive = 2` is DF1). A key that has a disk taken is an event of its
+own, after the disk's.
+
+An event of either kind has a window. `at` is the earliest time it is known
+to work, `until` the latest; with no `until` only `at` is known.
+`until = inf` says the event may wait for ever (a disk prompt with no
+timeout), which a time, the latest anybody tried, does not. Events are in
+the order of their `at`, whatever their `until`.
+
+Which end of a window is taken is the player's setting and not the entry's.
+An eager player does every event at its `at`. A patient one does it at its
+`until` and lets the production show what it shows while it waits (a part
+that an early disk skips). Every later event is then done as much later as
+this one waited, since the production stood still that long, and the waits
+add up; an event that may wait for ever waits as long as the player
+chooses. A production that does not stand still while it waits (a part on
+a timer whatever is pressed) cannot be said yet.
+
+Key names are lowercase (`space`, `return`, `p1fire`, `p2fire`, `lmb`,
+`rmb`: the fire button of the joystick in port 1 or 2, the left and the
+right mouse button). On Amiga these six are all there are, and another name
+is an error.
+
+Where a download ships a script that runs its parts in turn (`.bat`,
+`RunMe`, `start`, `execute_me`), `run` names the script, by its name or its
+path in the download, and not one of the parts. The script is executed as
+AmigaDOS would from its own directory, so the order of the parts, its `cd`
+and its assigns are the download's own and the entry repeats none of them. On
+Kickstart 2 and later a command the download does not ship (the author's
+own `fadeout`) is skipped and the script goes on, `cd` is built in and
+`assign name: path` works; no other Workbench command is supplied. On
+Kickstart 1.x a script can only run its parts.
+
+`area` is for a frontend that shows the production full screen and not
+with thick borders: some productions draw into 320x180 in the middle of
+the 320x256 PAL screen, others into 320x200, and nothing in a download
+says so. It is the part of the screen the production draws into, in the
+finest pixels it uses: a production with a hires interlaced picture is
+640x512 when its parts fill the PAL screen, however much of it is lores.
+A part drawn into less does not change it, and a title that fills the
+screen for a few seconds before a smaller main part is of it: a player that
+cuts to the area must show every part whole. The system's
+own screen while the production loads is not the production's. An area of
+320x180 has `aspect = "16:9"`, and so has the same part of the screen in
+finer pixels: a hires pixel is half as wide and an interlaced line half as
+high, so 640x180 and 640x360 are that shape too. Any other area stands alone: 320x200 is
+usually still 4:3, so a player may cut the borders away but must not
+stretch the picture. How a production is shown is the player's choice.
+Neither field changes how the production is run, so an entry with them
+plays as the same entry without.
 
 Settings sit on the production. A variant appears only when one specific
 download needs different settings; it is identified by file name and SHA-256
@@ -113,7 +165,7 @@ One level per production, lowest first:
 
 | `source` | meaning |
 |----------|---------|
-| `script` | found by a sweep, nobody looked |
+| `script` | found by a sweep and passed the gate, nobody looked |
 | `ai` | worked out with AI assistance |
 | `verified` | a person watched the production to its end, including every disk swap, on the stated machine (emulator or real hardware) |
 
@@ -123,6 +175,11 @@ is in the git history.
 A sweep export is a merge: it writes only entries marked `script` and never
 touches `ai` or `verified` ones. Where it disagrees with one of those, the
 disagreement goes into a report for a person to look at.
+
+The export writes a working entry only when that entry passed the gate
+(Amiga; the C64 has no gate yet). When the sweep's best run does not, its
+next best are tried, three in all; then the production is written as
+`result = "unknown"`.
 
 ## Initial import
 

@@ -103,6 +103,7 @@ class CannotPlayTest(unittest.TestCase):
         """``_one`` raises ``error``; returns the meta filed, or None."""
         with tempfile.TemporaryDirectory() as d, \
                 mock.patch.object(shots.player.machines, "require_rom"), \
+                mock.patch.object(shots.player.workbench, "require_libs"), \
                 mock.patch.object(shots.player.media, "variants",
                                   return_value=([], ["x"])), \
                 mock.patch.object(shots.player.emulator, "run") as run:
@@ -119,10 +120,11 @@ class CannotPlayTest(unittest.TestCase):
 
     def test_an_entry_that_is_the_error_is_filed_as_one(self):
         # It is not played again until somebody changes it.
-        entry = {"keys": [{"at": 10, "key": "space"}]}
-        filed = self.one(entry, BadEntry, "'space'")
+        entry = {"events": [{"at": 10, "key": "f1"}]}
+        filed = self.one(entry, BadEntry, "'f1'")
         self.assertEqual(
-            (filed["status"], filed["reason"], filed["machine"], filed["shots"]),
-            ("error", "no way to press key 'space'", "a500", []))
+            (filed["status"], filed["machine"], filed["shots"]),
+            ("error", "a500", []))
+        self.assertIn("no way to press key 'f1'", filed["reason"])
         self.assertEqual(filed["entry"],
                          shots.entry_digest({"title": "x", **entry}))

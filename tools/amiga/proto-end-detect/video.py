@@ -5,12 +5,13 @@ scroller over a bob object) still count as a loop.
 
     python3 amiga/proto-end-detect/video.py TRACE.csv
 """
-import csv, sys
+import bisect, csv, sys
 
 import numpy as np
 
 FPS = 50
 WINDOW = 1000     # frames a period is first looked for in, and judged over
+STILL_TAIL = 1500 # frames of stillness at the end that make a cell still
 TOL = 0.02        # share of a cell's changes allowed to differ one period on
 NOISY = 0.9       # share of changes to a never-seen value: fresh every time
 MIN_LANDMARK = 1500   # frames: a shorter landmark period may be a slide show
@@ -52,7 +53,8 @@ def cell_period(a, t0):
     """What one cell does from ``t0`` to the end of the trace: ``(kind,
     period, shown)``. ``shown`` is the frame by which it has shown all it
     will: where it went still, or where the second pass of its loop began
-    (a loop counts when that is before ``t0``)."""
+    (a loop counts when at least WINDOW frames of its second pass run to
+    the end of the trace)."""
     n = len(a)
     changes = np.zeros(n, dtype=bool)
     changes[1:] = a[1:] != a[:-1]
@@ -60,12 +62,23 @@ def cell_period(a, t0):
     last = int(at[-1]) if len(at) else 0
     if last < t0:
         return "still", 1, last + 1
+    # Check if the cell stopped moving for STILL_TAIL frames at the end,
+    # unless it's a slow slideshow whose own inter-slide gap is comparable.
+    if last < n - STILL_TAIL:
+        gaps = np.diff(at)
+        big = gaps[gaps >= 250]
+        slow_gap = int(big[-4:].max()) if len(big) else 0
+        if n - last >= max(STILL_TAIL, int(1.5 * slow_gap)):
+            return "still", 1, last + 1
     if last + 1 >= WINDOW + 2:
         for p in candidates(a, changes, last + 1):
             shown = repeats_from(a, changes, p)
-            if shown <= t0:
+            max_shown = max(t0, n - max(3000, p // 3))
+            if shown <= max_shown:
                 return "loop", p, shown
     tail = at[at >= t0]
+    if not len(tail):
+        return "still", 1, last + 1
     _, first = np.unique(a, return_index=True)
     return ("noisy" if np.isin(tail, first).mean() >= NOISY else "open"), 0, 0
 
@@ -81,17 +94,26 @@ def chain_period(events, start, n, min_period):
     within a period of ``start``, and half of all the events from there on
     (the rest are strays)."""
     ev = sorted(events)
-    for p in sorted({b - a for a in ev for b in ev if b - a >= min_period}):
+    if len(ev) < 3 or len(ev) > 400:
+        return 0
+    periods = sorted({b - a for a in ev for b in ev if b - a >= min_period})
+    for p in periods:
         tol = max(8, p // 500)
-        for last in ev:
-            if last + p + tol < n:
-                continue        # the next one would be in the trace
+        # Only events within (p + tol) of n can be the last in a chain running to n
+        i_min = bisect.bisect_left(ev, n - p - tol)
+        for last in ev[i_min:]:
             chain = [last]
-            while (prev := [e for e in ev if abs(chain[-1] - p - e) <= tol]):
-                chain.append(prev[0])
-            later = sum(e >= chain[-1] for e in ev)
-            if len(chain) >= 3 and chain[-1] <= start + p and 2 * len(chain) >= later:
-                return p
+            while True:
+                target = chain[-1] - p
+                j = bisect.bisect_left(ev, target - tol)
+                if j < len(ev) and ev[j] <= target + tol:
+                    chain.append(ev[j])
+                else:
+                    break
+            if len(chain) >= 3 and chain[-1] <= start + p:
+                later = len(ev) - bisect.bisect_left(ev, chain[-1])
+                if 2 * len(chain) >= later:
+                    return p
     return 0
 
 
@@ -107,7 +129,7 @@ def landmark(cells, kinds, start):
     """Period at which the cells no loop explains return together to their
     commonest picture (a scroller's gap, a black frame between pages)."""
     idx = [c for c, k in enumerate(kinds) if k[0] in ("noisy", "open")]
-    if not idx:
+    if not idx or start >= len(cells):
         return 0
     mul = np.arange(1, 2 * len(idx), 2, dtype=np.uint64) * np.uint64(0x9e3779b97f4a7c15)
     key = (cells[:, idx] * mul).sum(axis=1)

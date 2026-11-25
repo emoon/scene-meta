@@ -19,8 +19,8 @@ machine = "a1200"
 [demozoo.18451]
 title = "Habakuk"
 group = "Dreamline Entertainment"
-source = "script"
-machine = "a1200"
+source = "ai"
+machine = "a1200_fast"
 run = "Habakuk"
 
 [demozoo.38732]
@@ -47,7 +47,6 @@ source = "script"
 title = "Hack-Mag 5 Intro"
 group = "D-Tect"
 source = "script"
-result = "unknown"
 
 [demozoo.46728]
 title = "Hack-Mag 6 Intro"
@@ -225,7 +224,6 @@ source = "script"
 title = "Halloween Party Demo"
 group = "Barsk"
 source = "script"
-result = "unknown"
 
 [demozoo.352383]
 title = "Halloween Party Demo"
@@ -258,7 +256,7 @@ title = "Hallucinations And Dreams"
 group = "Union"
 source = "script"
 disks = ["!Union-HallucinationsA.dms", "Union-HallucinationsB.dms"]
-swaps = [{ disk = 2, at = 148.2 }]
+events = [{ at = 148.2, disk = 2 }]
 
 [demozoo.169398]
 title = "Hallucinations And Dreams Preview"
@@ -274,6 +272,8 @@ source = "script"
 title = "HAM"
 group = "Securitate"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.326645]
 title = "Ham bootblock"
@@ -380,7 +380,8 @@ source = "script"
 title = "Handshake Slideshow v1.0 Intro"
 group = "Goonies 2041"
 source = "script"
-machine = "a500_1mb"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.225981]
 title = "Hang Em High"
@@ -857,15 +858,16 @@ boot = "floppy"
 [demozoo.32581]
 title = "Hardcore"
 group = "Syndrome"
-source = "script"
-result = "unknown"
-run = "WHEREFUNROLEZ.EXE"
+source = "ai"
+machine = "a1200_fast"
+run = "HardCORE.exe"
 
 [demozoo.178671]
 title = "Hardcore"
 group = "Deathless"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
+note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
 
 [demozoo.258876]
 title = "Hardcore"
@@ -958,7 +960,7 @@ source = "script"
 title = "Harlequin Demo"
 group = "TecSoft"
 source = "script"
-result = "unknown"
+machine = "a500_512k"
 
 [demozoo.213874]
 title = "Harley Davidson"
@@ -1058,8 +1060,9 @@ run = "Hate1.dat"
 title = "Hate 2"
 group = "Fanatic"
 source = "script"
-machine = "a1200"
+result = "unknown"
 run = "pv.exe"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.7483]
 title = "Hauki"
@@ -1098,7 +1101,7 @@ source = "script"
 title = "Have A Nice Day"
 group = "Obsession"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.257053]
 title = "Have You A Dog?"
@@ -1405,7 +1408,7 @@ machine = "a1200_030"
 title = "Heartcore"
 group = "Delon Dezign"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.219449]
 title = "Heartro"
@@ -1450,6 +1453,8 @@ source = "script"
 title = "Heavy Ball"
 group = "Brainstorm"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.154542]
 title = "Heavy Ball"
@@ -1476,7 +1481,8 @@ source = "script"
 title = "Hedgehog"
 group = "Racoon"
 source = "script"
-machine = "a1200_030"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.265275]
 title = "Hein Design Party Gfx"
@@ -1518,6 +1524,8 @@ source = "script"
 title = "Heliopolis"
 group = "EMT Design"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.177737]
 title = "Helis - 2nd Demo"
@@ -1665,7 +1673,6 @@ machine = "a1200"
 title = "Help Croatia"
 group = "Unreal"
 source = "script"
-result = "unknown"
 
 [demozoo.232309]
 title = "Help Us"
@@ -1757,7 +1764,7 @@ source = "script"
 title = "Heroes"
 group = "Candle"
 source = "script"
-result = "unknown"
+machine = "a500_1mb"
 
 [demozoo.263728]
 title = "Heroes Of The Lance Hint Disk"
@@ -1815,7 +1822,8 @@ machine = "a500_1mb"
 title = "Hetero Sapiens"
 group = "Traktor"
 source = "script"
-machine = "a1200_030"
+result = "unknown"
+note = "the sweep saw works on a1200_030; no entry of it passed the gate"
 
 [demozoo.21840]
 title = "Heureka"
@@ -1849,13 +1857,12 @@ title = "Hexadecimal Perfection"
 group = "Action Direct"
 source = "script"
 disks = ["ACTION_DIRECT-hexPerf-A.dms", "ACTION_DIRECT-hexPerf-B.dms"]
-swaps = [{ disk = 2, at = 475.0 }]
+note = "the sweep only reached disk 1 of 2"
 
 [demozoo.246821]
 title = "Hexagone 2 Intro"
 group = "Intense"
 source = "script"
-result = "unknown"
 
 [demozoo.185606]
 title = "Hexel"
@@ -1994,6 +2001,8 @@ source = "script"
 title = "Hidden Rats"
 group = "Abandon"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.214003]
 title = "Hidden Vectors"
@@ -2253,7 +2262,8 @@ machine = "a1200"
 title = "Hipnosis"
 group = "Dream's Day"
 source = "script"
-machine = "a1200_030"
+result = "unknown"
+note = "the sweep saw works on a1200_030; no entry of it passed the gate"
 
 [demozoo.232428]
 title = "Hipp-Leif"
@@ -2323,7 +2333,7 @@ title = "Hit Fido"
 group = "KGB"
 source = "script"
 disks = ["KGB-HitFido-A.dms", "KGB-HitFido-B.dms"]
-swaps = [{ disk = 2, at = 301.1, key = "lmb" }]
+events = [{ at = 301.1, disk = 2 }, { at = 306.1, key = "lmb" }]
 
 [demozoo.234358]
 title = "Hit Me With a Rubber Duck"
@@ -2341,7 +2351,7 @@ title = "Hit The Road"
 group = "Flash Production"
 source = "script"
 disks = ["FP-HitTheRoad_A.dms", "FP-HitTheRoad_B.dms"]
-swaps = [{ disk = 2, at = 90.5, key = "lmb" }]
+note = "the sweep only reached disk 1 of 2"
 
 [demozoo.143752]
 title = "Hit The Sky"
@@ -2417,7 +2427,9 @@ machine = "a500_1mb"
 title = "Hobbits Second Demo"
 group = "Sky Voyagers"
 source = "script"
+boot = "floppy"
 result = "unknown"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.131921]
 title = "Hodor"
@@ -2457,7 +2469,7 @@ machine = "a1200"
 title = "Hoi Saga Demo 2 - Mindwarp"
 group = "Team Hoi"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.47936]
 title = "Hoi Saga Demo 3 - The Final Chapter"
@@ -2465,7 +2477,7 @@ group = "The Flame Arrows / Team Hoi"
 source = "script"
 machine = "a1200"
 disks = ["TeamHoi-HoiSaga3A.dms", "TeamHoi-HoiSaga3B.dms", "TeamHoi-HoiSaga3C.dms"]
-swaps = [{ disk = 2, at = 455.9 }, { disk = 3, at = 1033.4 }]
+note = "the sweep only reached disk 1 of 3"
 
 [demozoo.199833]
 title = "Hokus Pokus Trailer"
@@ -2476,7 +2488,6 @@ source = "script"
 title = "Hola De Nuevo"
 group = "Destroyers"
 source = "script"
-result = "unknown"
 
 [demozoo.259096]
 title = "Hold On"
@@ -2581,7 +2592,8 @@ source = "script"
 title = "Holy Thing"
 group = "Road Riders"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.171248]
 title = "Home"
@@ -2667,7 +2679,7 @@ group = "Infect"
 source = "script"
 machine = "a1200"
 disks = ["Infect-HopefullyA.DMS", "Infect-HopefullyB.DMS"]
-swaps = [{ disk = 2, at = 51.5 }]
+events = [{ at = 51.5, disk = 2 }]
 
 [demozoo.252858]
 title = "Hopefully Dead"
@@ -2680,6 +2692,7 @@ title = "Hoppy Demo"
 group = "Ipec Elite"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.227994]
 title = "Hoppydemo -Totaly Waste of Chip Mem and or Brainpain-"
@@ -2760,7 +2773,7 @@ source = "script"
 title = "Horse-Shit"
 group = "Birra Bros"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.174693]
 title = "Horten Moss Ferry"
@@ -2907,7 +2920,6 @@ source = "script"
 title = "Hot New Stuff"
 group = "Australian Crackers United"
 source = "script"
-result = "unknown"
 
 [demozoo.234934]
 title = "Hot New Stuff"
@@ -3143,6 +3155,8 @@ source = "script"
 title = "Hotdog Hits & Rock'nRoll"
 group = "Tulou"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.263608]
 title = "Hotline BBS Intro"
@@ -3169,7 +3183,7 @@ source = "script"
 title = "Hovel"
 group = "Vacuum"
 source = "script"
-result = "unknown"
+machine = "a500_2mb_chip"
 
 [demozoo.29793]
 title = "Hovsa"
@@ -3516,6 +3530,8 @@ source = "script"
 title = "Huunous"
 group = "TBB Productions"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.252354]
 title = "Hvor Er Min Bikini?"
@@ -3677,7 +3693,6 @@ machine = "a1200"
 title = "Hypnosis"
 group = "Compact Digital Audio"
 source = "script"
-result = "unknown"
 
 [demozoo.232660]
 title = "Hypnotic Circles"
@@ -3716,7 +3731,7 @@ title = "Hysteria"
 group = "Analogy"
 source = "script"
 disks = ["Analogy-HysteriaA.dms", "Analogy-HysteriaB.dms"]
-swaps = [{ disk = 2, at = 184.7 }]
+events = [{ at = 184.7, disk = 2 }]
 
 [demozoo.165258]
 title = "Hysteria"

@@ -7,6 +7,8 @@ Prints one row per bucket (the state, to eyeball), then the events derived.
 """
 import argparse, csv, json, os, sys
 
+import numpy as np
+
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from notes import song_loop  # noqa: E402
 from streams import stream_end  # noqa: E402
@@ -22,10 +24,13 @@ def load(path):
     rows = []
     with open(path) as f:
         r = csv.reader(f)
-        # (traces recorded before the alert and newram columns have none)
+        # (traces recorded before the alert/newram/solid/bplcon0/cop1lc columns have none)
         head = next(r)
         alert = head.index("alert") if "alert" in head else None
         newram = head.index("newram") if "newram" in head else None
+        solid = head.index("solid") if "solid" in head else None
+        bplcon0 = head.index("bplcon0") if "bplcon0" in head else None
+        cop1lc = head.index("cop1lc") if "cop1lc" in head else None
         for x in r:
             rows.append(dict(
                 frame=int(x[0]), dmacon=int(x[1], 16), aw=x[2], awrites=int(x[3]),
@@ -33,7 +38,10 @@ def load(path):
                 instr=int(x[8]), rom=int(x[9]), lastdma=int(x[10]),
                 resets=int(x[11]), chan=x[13],
                 alert=int(x[alert], 16) if alert is not None else 0,
-                newram=int(x[newram]) if newram is not None else None))
+                newram=int(x[newram]) if newram is not None else None,
+                solid=int(x[solid]) if solid is not None else None,
+                bplcon0=int(x[bplcon0], 16) if bplcon0 is not None else None,
+                cop1lc=int(x[cop1lc], 16) if cop1lc is not None else None))
     return rows, load_cells(path)
 
 
@@ -69,6 +77,7 @@ DRONE = 1500  # frames without a Paula write that make a sound still playing a d
 SHOWN = 50    # frames the picture changes in that booting to the shell alone takes
 HELD = 9000   # frames a silent single screen with no end of its own is given
 SPARSE = 0.01 # share of frames with Paula writes below which they carry no music
+PRE_EXIT_WAIT = 3000  # frames (60s) of stillness or no-new-code before OS exit
 
 
 def video_loop(cells, t0):
@@ -97,7 +106,112 @@ def silence_landmark(rows, new):
     return chain_period(onsets(silent), new, len(rows), MIN_LANDMARK)
 
 
-def verdict(rows, cells, song, halted=False, data=None, swaps=()):
+def audio_loop(rows, limit=None):
+    """Fallback song-loop detector via FFT Pearson autocorrelation of the
+    per-frame audio energy envelope (handles software-mixed music like
+    TFMX/PS3M/OctaMED/AHI where Paula note writes are absent).
+    Returns ``(period, second_pass_from)`` in frames, or None."""
+    n = len(rows) if limit is None else min(limit, len(rows))
+    if n < 2500:
+        return None
+    ae = np.array([rows[i]["aenergy"] for i in range(n)], dtype=np.float64)
+    if ae[-500:].mean() < 100:
+        return None
+    tail = ae[-min(n, 3000):]
+    if tail.std() < 0.05 * max(tail.mean(), 1.0):
+        return None
+    ds = 2  # 25 Hz envelope (0.04 s resolution avoids grid-rounding jitter)
+    m = n // ds
+    x = ae[:m * ds].reshape(m, ds).mean(axis=1)
+    w = min(3750, m // 3)  # up to 150 s reference tail
+    if w < 250 or m - w < 150:
+        return None
+    ref = x[-w:]
+    r0 = ref - ref.mean()
+    r_norm = float(np.linalg.norm(r0))
+    if r_norm < 1e-6:
+        return None
+    fft_n = 1 << (m + w).bit_length()
+    dot = np.fft.irfft(np.fft.rfft(x, fft_n) * np.conj(np.fft.rfft(r0, fft_n)))[:m - w]
+    cs1 = np.concatenate(([0.0], np.cumsum(x)))
+    cs2 = np.concatenate(([0.0], np.cumsum(x * x)))
+    s1 = cs1[w:m] - cs1[:m - w]
+    s2 = cs2[w:m] - cs2[:m - w]
+    var = np.maximum(0.0, s2 - (s1 * s1) / w)
+    denom = np.sqrt(var) * r_norm
+    corr = np.where(denom > 1e-6, dot / np.where(denom > 1e-6, denom, 1.0), 0.0)
+    # lags >= 5 s (125 samples at 25 Hz)
+    min_p = 125
+    max_idx = m - w - min_p
+    if max_idx <= 0:
+        return None
+    best_r = float(corr[:max_idx + 1].max())
+    if best_r < 0.90:
+        return None
+    # Require candidate period to match within 0.03 of the strongest peak so a
+    # weak repeating motif (e.g. r=0.90 vs 0.995 in Zeon) doesn't hide the song
+    # period.
+    thresh = max(0.90, best_r - 0.03)
+    hits = np.where(corr[:max_idx + 1] >= thresh)[0]
+    if not len(hits):
+        return None
+    # Shortest passing period (largest index)
+    j = int(hits[-1])
+    lo, hi = max(0, j - 10), min(max_idx + 1, j + 11)
+    j = lo + int(np.argmax(corr[lo:hi]))
+    p = (m - w) - j
+    # Walk backwards in 5 s blocks to find where the second pass began
+    step = 125  # 5 s at 25 Hz
+    b = (m - step) // step * step
+    best_b = b
+    miss = 0
+    while b - step >= p:
+        prev = b - step
+        a_seg = x[prev:prev + step]
+        b_seg = x[prev - p:prev - p + step]
+        if a_seg.mean() < 100 and b_seg.mean() < 100:
+            miss += 1
+            if miss >= 5:
+                break
+            b = prev
+            continue
+        a0, b0 = a_seg - a_seg.mean(), b_seg - b_seg.mean()
+        dn = float(np.linalg.norm(a0) * np.linalg.norm(b0))
+        if dn > 1e-6 and float(np.dot(a0, b0)) / dn >= 0.70:
+            best_b = prev
+            miss = 0
+        else:
+            miss += 1
+            if miss >= 2:
+                break
+        b = prev
+    return p * ds, rows[min(best_b * ds, n - 1)]["frame"]
+
+
+def _last_burst(rows, limit, ram_only=False):
+    """Last frame index < limit with a new-code burst (>= BURST)."""
+    key = "newram" if (ram_only and rows and rows[0]["newram"] is not None) else "newpc"
+    for i in range(limit - 1, -1, -1):
+        if (rows[i][key] or 0) >= BURST:
+            return i
+    return 0
+
+
+def _exit_start(rows, still, over, os_cop):
+    """For a run that exits to the OS, the index where the exit transition
+    began (before the shell window drew)."""
+    n = len(rows)
+    if os_cop is not None and rows[-1]["cop1lc"] == os_cop:
+        t = n
+        while t > 0 and rows[t - 1]["cop1lc"] == os_cop:
+            t -= 1
+        if 0 < t < n:
+            return t
+    return min(still, over)
+
+
+def verdict(rows, cells, song, halted=False, data=None, swaps=(), meta=None,
+            notes_path=None):
     """The model: nothing new runs after the last burst of new code. What
     the demo does from there says how it ends. ``song`` is what
     ``song_loop`` found, ``halted`` whether the CPU halted at the end of
@@ -105,22 +219,44 @@ def verdict(rows, cells, song, halted=False, data=None, swaps=()):
     (None: not recorded), ``swaps`` the s at which the entry's script puts in
     the next disk. Returns a dict, times in s."""
     n = len(rows)
-    sec = lambda i: round(rows[min(i, n - 1)]["frame"] / FPS, 1)
-    new = max((i for i in range(n) if rows[i]["newpc"] >= BURST), default=0)
+    if not n:
+        return {"ending": "crashed" if halted else "not-started"}
+    sec = lambda i: round(rows[min(max(i, 0), n - 1)]["frame"] / FPS, 1)
+    moved = (cells[1:] != cells[:-1]).any(axis=1).nonzero()[0]
+    still = int(moved[-1]) + 2 if len(moved) else 0
+    # If the demo actually showed visuals and then went completely still for
+    # >= 30 s to the end of the trace, ignore any late runaway/garbage burst
+    # after the screen froze (e.g. .plong counter overflow at 899 s).
+    new_limit = min(n, still + 250) if (len(moved) >= SHOWN and still < n - 1500) else n
+    new = _last_burst(rows, new_limit, ram_only=True)
     sil = n   # no channel plays anything but silence or one unchanged loop
     while sil > 0 and "P" not in rows[sil - 1]["chan"]:
         sil -= 1
     quiet = n  # nothing is written to Paula
     while quiet > 0 and not rows[quiet - 1]["awrites"]:
         quiet -= 1
-    moved = (cells[1:] != cells[:-1]).any(axis=1).nonzero()[0]
-    still = int(moved[-1]) + 2 if len(moved) else 0
+    paula_used = sum(r["awrites"] for r in rows) > 100
     tail = range(max(0, n - 1000), n)
     rom = sum(rows[i]["rom"] for i in tail) / (sum(rows[i]["instr"] for i in tail) or 1)
+    drone = "R" in rows[-1]["chan"] or (paula_used and 0 < quiet < n - DRONE <= sil)
+    # Silent Paula register writes (volume=0) must not count as a looping song
+    if sil < n - 500:
+        song = None
+    # Software-mixed music fallback: audio energy autocorrelation when Paula
+    # note matching found nothing and music is actively playing (not a drone)
+    if song is None and not drone and sil >= n - 500:
+        song = audio_loop(rows)
     vp, vshown, kinds = video_loop(cells, new + (n - new) // 2)
     lp = 0 if vp or song else landmark(cells, kinds, new) or silence_landmark(rows, new)
     played = rows[new]["frame"]
-    out = dict(trace=sec(n - 1), last_new=sec(new), sound=sil > 0,
+    # the sound is over: silent, one loop unchanged, or Paula music left
+    # playing unwritten for > DRONE frames (a drone, not a software mixer)
+    over = n
+    if sil < n - 500 and (paula_used or not drone):
+        over = min(over, sil)
+    if paula_used and quiet < n - DRONE:
+        over = min(over, quiet)
+    out = dict(trace=sec(n - 1), last_new=sec(new), sound=sil > 0 or paula_used,
                resets=rows[-1]["resets"],
                reset_after=rows[-1]["resets"] > rows[new]["resets"],
                disk_after=rows[-1]["lastdma"] > rows[new]["frame"] + 250,
@@ -130,18 +266,28 @@ def verdict(rows, cells, song, halted=False, data=None, swaps=()):
                song_period=round(song[0] / FPS, 1) if song else None,
                song_second_pass=round(song[1] / FPS, 1) if song else None,
                landmark_period=round(lp / FPS, 1) if lp else None,
-               music_over=sec(sil) if 0 < sil < n - 500 else None,
-               drone="R" in rows[-1]["chan"] or 0 < quiet < n - DRONE <= sil)
-    # the sound is over: silent, one loop unchanged, or left playing unwritten
-    over = sil if sil < n - 500 else quiet if quiet < n - DRONE else n
-    stopped = still < n - 500 and over < n
+               music_over=sec(over) if 0 < over < n else None,
+               drone=drone)
+    # A slow slideshow (e.g. a new slide every 74 s) is not "stopped" just
+    # because the trace ended 58 s after its last slide.
+    still_gap = 500
+    if len(moved) >= 3 and still < n - 500:
+        mgaps = np.diff(moved)
+        big_gaps = mgaps[mgaps >= 500]
+        if len(big_gaps) >= 2:
+            still_gap = max(still_gap, int(1.5 * big_gaps[-4:].max()))
+    stopped = still < n - still_gap and over < n
     period = max(vp, song[0] if song else 0, lp)
-    guru = next((i for i in range(n) if rows[i]["alert"]), None)
-    if guru is not None or halted:
-        # a Guru or a halted CPU: the production crashed, so it has no end
-        # and no length
+    guru = next((i for i in range(n) if rows[i]["alert"]
+                 and (rows[i]["alert"] & 0x7fffffff) != 0
+                 and ((rows[i]["alert"] >> 24) & 0x7f) <= 0x3f), None)
+    end_box = (meta or {}).get("end_box") or ""
+    os_cop = (meta or {}).get("os_cop")
+    if guru is not None or halted or end_box in ("guru", "task-held"):
+        # a Guru, task-held requester, or a halted CPU: crashed
         out["ending"] = "crashed"
-        out["alert"] = f"{rows[guru]['alert']:08x}" if guru is not None else "halt"
+        out["alert"] = (f"{rows[guru]['alert']:08x}" if guru is not None
+                        else end_box or "halt")
         out["crashed"] = sec(guru if guru is not None else n - 1)
     elif rows[0]["newram"] is not None and not any(r["newram"] for r in rows):
         # no code but the Kickstart's ever ran (its insert-disk screen):
@@ -153,46 +299,99 @@ def verdict(rows, cells, song, halted=False, data=None, swaps=()):
         out["ending"] = "not-started"
     elif stopped:
         out["ending"] = "exits" if rom > 0.5 else "stops"
-        out["end"] = sec(max(still, over))
-    elif out["reset_after"] or (period and period >= 0.6 * played):
+        end_i = max(still, over)
+        # Before exiting to the OS, did the demo sit on a still end-screen or
+        # loop its song for a long stretch (timeout-exit, e.g. Greenday, Showstopper)?
+        if out["ending"] == "exits":
+            ex = _exit_start(rows, still, over, os_cop)
+            if ex > PRE_EXIT_WAIT:
+                pre_moved = moved[moved < ex - 50]
+                pre_still = int(pre_moved[-1]) + 2 if len(pre_moved) else 0
+                pre_new = _last_burst(rows, max(0, ex - 50), ram_only=True)
+                pre_song = None
+                if notes_path and os.path.exists(notes_path) and pre_new < ex - PRE_EXIT_WAIT:
+                    try:
+                        pre_song = song_loop(notes_path, trace_end=rows[ex]["frame"])
+                    except ValueError:
+                        pre_song = None
+                if pre_song is None and pre_new < ex - PRE_EXIT_WAIT:
+                    pre_song = audio_loop(rows, limit=ex)
+                if pre_song and rows[ex]["frame"] - pre_song[1] >= max(6000, pre_song[0]):
+                    out["song_period"] = round(pre_song[0] / FPS, 1)
+                    out["song_second_pass"] = round(pre_song[1] / FPS, 1)
+                    out["end_part"] = sec(pre_new)
+                    out["end"] = round(max(rows[pre_new]["frame"], pre_song[1]) / FPS, 1)
+                elif len(pre_moved) >= SHOWN and pre_still < ex - 6000 and pre_new <= pre_still + 250:
+                    if pre_song and pre_song[1] < rows[ex]["frame"] - 1500:
+                        out["song_period"] = round(pre_song[0] / FPS, 1)
+                        out["song_second_pass"] = round(pre_song[1] / FPS, 1)
+                        out["end"] = round(max(rows[pre_still]["frame"], pre_song[1]) / FPS, 1)
+                    else:
+                        out["end"] = sec(pre_still)
+                else:
+                    out["end"] = sec(end_i)
+            else:
+                out["end"] = sec(end_i)
+        else:
+            out["end"] = sec(end_i)
+    elif out["music_over"] and not song and not vp and not out["disk_after"] and over >= new - 750:
+        # The music played and ended around the last new code, leaving only a
+        # silent landmark/open screen (e.g. Painted Eggs, 1% AiDS).
+        out["ending"] = "end-loop" if period else "open"
+        out["end_part"] = sec(new)
+        out["end"] = max(out["music_over"], out["last_new"])
+    elif out["reset_after"] or (period and period >= 0.6 * played and (
+            not song or (song[1] - song[0]) <= max(3000, 0.4 * played))):
         # the loop holds the whole production: a demo that starts over, or
         # one screen whose song comes round
         out["ending"] = "restarts" if out["reset_after"] or out["disk_after"] else "loops"
-        # (a restart is the end itself: the second boot differs from the first)
-        shown = rows[vshown]["frame"] if vp and out["ending"] == "loops" else 0
-        out["end"] = round(max(played, period, shown) / FPS, 1)
+        if out["ending"] == "restarts":
+            out["end"] = round(max(played, period) / FPS, 1)
+        elif song and song[0] >= 0.6 * played:
+            # When the song spans the whole production, the song's period is
+            # the length even if a scroller takes longer (The Halberd Intro).
+            out["end"] = round(max(played, song[0]) / FPS, 1)
+        else:
+            shown = rows[vshown]["frame"] if vp else 0
+            out["end"] = round(max(played, period, shown) / FPS, 1)
     elif period:
         out["ending"] = "end-loop"
         out["end_part"] = sec(new)
-        # all shown once: the picture through its loop, the song into its
-        # second pass, or one landmark period into the end part
-        done = [rows[vshown]["frame"]] if vp else []
-        done += [song[1]] if song else []
-        done += [played + lp] if lp else []
-        out["end"] = round(max(done + [played]) / FPS, 1)
+        # If both the final video loop started AND the music died well before
+        # a tiny stray late code burst (e.g. Eon), cap at max(vshown, over).
+        if (vp and out["music_over"] and not song and not out["disk_after"]
+                and rows[vshown]["frame"] < played and rows[over]["frame"] < played):
+            tail_after = max(vshown, over) + 250
+            late_ram = sum((rows[i]["newram"] or 0) for i in range(min(tail_after, n), n))
+            if late_ram < 50:
+                out["end"] = round(max(rows[vshown]["frame"], rows[over]["frame"]) / FPS, 1)
+                done = None
+            else:
+                done = [rows[vshown]["frame"]]
+        else:
+            done = [rows[vshown]["frame"]] if vp else []
+        if done is not None:
+            # all shown once: the picture through its loop, the song into its
+            # second pass, or one landmark period into the end part
+            done += [song[1]] if song else []
+            done += [played + lp] if lp else []
+            out["end"] = round(max(done + [played]) / FPS, 1)
     else:
         out["ending"] = "open"
         out["end_part"] = sec(new)
         if out["music_over"]:
             out["end"] = max(out["music_over"], out["last_new"])
+        elif data is not None and rows[new]["frame"] < data < rows[-1]["frame"] - 1500:
+            # No video or song loop, and a data stream (scroller/script) ran
+            # past the last new code and finished well before the trace ended.
+            out["end"] = round(data / FPS, 1)
         elif not out["sound"] and not out["disk_after"] and n - new >= HELD:
             # one silent screen that moves for good, nothing new for as long
             # as it is given: it has no end of its own, so it gets a default
             out["ending"] = "held"
             out["end"] = max(round(HELD / FPS, 1), out["last_new"])
-    # an end that rests on the song or a landmark while the picture has
-    # cells no period explains: text may still be running. The last new
-    # data read says when it has all been shown; without it the end is unsure
-    if out["ending"] in ("loops", "end-loop") and not vp and kinds_open(kinds):
-        if data is None:
-            out["unsure"] = True
-        elif data >= rows[-1]["frame"] - 500:
-            # still being read when the trace ends: longer than the trace
-            out["last_data"] = round(data / FPS, 1)
-            out["unsure"] = True
-        else:
-            out["last_data"] = round(data / FPS, 1)
-            out["end"] = max(out["end"], out["last_data"])
+    if data is not None and data > 0:
+        out["last_data"] = round(data / FPS, 1)
     # the script's disk swaps say how long the production is: the swap that
     # the trace never reached means it runs longer than the trace; an end
     # before the last swap that was made is not the end
@@ -207,13 +406,18 @@ def verdict(rows, cells, song, halted=False, data=None, swaps=()):
     return out
 
 
-def song_of(trace):
+def song_of(trace, trace_end=None):
     notes = trace + ".notes"
-    return song_loop(notes) if os.path.exists(notes) else None
+    return song_loop(notes, trace_end=trace_end) if os.path.exists(notes) else None
 
 
 def data_of(trace):
     return stream_end(trace + ".reads")
+
+
+def meta_of(trace):
+    p = os.path.join(os.path.dirname(trace), "meta.json")
+    return json.load(open(p)) if os.path.exists(p) else None
 
 
 def halted_of(trace):
@@ -241,8 +445,14 @@ def main():
     alag = lags(akeys)
     changed = [0] + (cells[1:] != cells[:-1]).sum(axis=1).tolist()
 
+    meta = meta_of(a.trace)
+    swaps = meta.get("swaps", ()) if meta else ()
+    trace_end = rows[-1]["frame"] if rows else None
+
     if a.json:
-        print(json.dumps(verdict(rows, cells, song_of(a.trace), halted_of(a.trace), data_of(a.trace))))
+        print(json.dumps(verdict(rows, cells, song_of(a.trace, trace_end),
+                                 halted_of(a.trace), data_of(a.trace), swaps, meta,
+                                 notes_path=a.trace + ".notes")))
         return
     if not a.quiet:
         print("   time  vchg  cells vnew%  vlag(mode)  aenergy  awr  anew% alag(mode) newpc rom% dma")
@@ -290,7 +500,9 @@ def main():
                   f"first pass began {t(max(0, s - p))}  [{len(runs)} runs]")
         else:
             print(f"  {name} repeats: no")
-    print("  VERDICT:", json.dumps(verdict(rows, cells, song_of(a.trace), halted_of(a.trace))))
+    print("  VERDICT:", json.dumps(verdict(rows, cells, song_of(a.trace, trace_end),
+                                           halted_of(a.trace), data_of(a.trace), swaps, meta,
+                                           notes_path=a.trace + ".notes")))
     tail = range(max(0, n - 1000), n)
     ins = sum(rows[i]["instr"] for i in tail) or 1
     print(f"  ROM share of the last 1000 frames: {sum(rows[i]['rom'] for i in tail) / ins:.0%}; resets {rows[-1]['resets']}")

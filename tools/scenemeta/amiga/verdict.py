@@ -6,8 +6,10 @@ a CLI saying "not enough memory") are static and silent, so a failed start
 never stays alive; a running demo does. A Guru Meditation box blinks, which
 changes the screen: it is never alive. A run *works* when it collects
 WORKS_ALIVE alive samples before any crash signal. A run that played
-SHORT_ALIVE to WORKS_ALIVE-1 and then ended at a quiet prompt is
-*works-short*: a short tune or intro, not a failed start.
+SHORT_ALIVE to WORKS_ALIVE-1, with sound in it, and then ended quiet is
+*works-short*: a short tune or intro, not a failed start. Without sound it
+is one: Kickstart's screen changes for as long while the Workbench opens or
+a program prints why it cannot run.
 """
 
 import dataclasses
@@ -186,7 +188,8 @@ def classify(log, expected_samples):
     if len(flags) > ENDED_QUIET and not any(flags[-ENDED_QUIET:]) and any(flags):
         last = max(i for i, f in enumerate(flags) if f)
         ended = log.samples[last].frame
-        if v == "no-activity" and alive_before >= SHORT_ALIVE:
+        if v == "no-activity" and alive_before >= SHORT_ALIVE and any(
+                audio_on(s.dmacon) for s in log.samples):
             v = "works-short"
     wants = any(e.get("event") == "autoswap-exhausted" for e in log.events)
     return Verdict(v, alive_before, crash, crash_frame, ended, wants)
@@ -237,7 +240,8 @@ def swaps(log):
     """The disk changes the run performed, in order: ``[(frame, disk, how)]``
     where ``how`` is the detector trigger (poll | idle | reread), or
     "scheduled" for an insert at a fixed frame that the demo then read, plus
-    ``+click`` when a mouse click was needed to make the demo take the disk.
+    ``+click`` when the detector clicked the left mouse button for the demo
+    to take the disk, and ``+rclick`` when it then clicked the right one.
     Inserts the demo refused (rolled back) are dropped."""
     out, trigger = [], "poll"
     for e in log.events:
@@ -257,6 +261,8 @@ def swaps(log):
                 out.append([e.get("frame"), e.get("disk"), "scheduled"])
         elif ev == "autoswap-click" and out:
             out[-1][2] += "+click"
+        elif ev == "autoswap-click-right" and out:
+            out[-1][2] += "+rclick"
         elif ev == "autoswap-rollback" and out:
             # The demo refused the disk and got its old one back.
             out.pop()

@@ -524,7 +524,6 @@ source = "script"
 title = "Sargon III"
 group = "Hotline"
 source = "script"
-result = "unknown"
 
 [demozoo.254281]
 title = "Satanas"
@@ -540,7 +539,6 @@ source = "script"
 title = "Satanic Rites 1 Loader"
 group = "Destiny"
 source = "script"
-result = "unknown"
 
 [demozoo.394336]
 title = "Satanic Rites Reprieve"
@@ -644,8 +642,9 @@ machine = "a1200"
 title = "Saunaboys"
 group = "Keso"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
 run = "Keso-sb.exe"
+note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
 
 [demozoo.24201]
 title = "Sauron 20th anniversary"
@@ -701,6 +700,7 @@ title = "Sayko"
 group = "Lamers"
 source = "script"
 machine = "a1200"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.248632]
 title = "Sayko 2"
@@ -925,6 +925,8 @@ machine = "a1200"
 title = "Schmoovy"
 group = "Kefrens / Melon Dezign"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.233467]
 title = "Schokovectors"
@@ -935,7 +937,6 @@ source = "script"
 title = "Scholastika"
 group = "Sign"
 source = "script"
-result = "unknown"
 
 [demozoo.139178]
 title = "School Sucks"
@@ -1035,7 +1036,7 @@ result = "unknown"
 title = "Scottie is Lame"
 group = "Midway"
 source = "script"
-result = "unknown"
+boot = "floppy"
 
 [demozoo.41304]
 title = "Scout"
@@ -1348,6 +1349,7 @@ title = "Searchtro"
 group = "Uco"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.231052]
 title = "Searchtro"
@@ -1557,7 +1559,6 @@ source = "script"
 title = "Secular BBS Intro"
 group = "Zeus"
 source = "script"
-result = "unknown"
 
 [demozoo.83323]
 title = "Sedna"
@@ -1575,6 +1576,7 @@ machine = "a1200_fast"
 title = "See Forever"
 group = "Quadtrip"
 source = "script"
+machine = "a500_512k"
 
 [demozoo.213840]
 title = "See ya Gab"
@@ -1688,7 +1690,6 @@ source = "script"
 title = "Send Another Programme"
 group = "The Kent Team"
 source = "script"
-result = "unknown"
 
 [demozoo.267502]
 title = "Send It To Stuff Time!"
@@ -1810,9 +1811,9 @@ source = "script"
 title = "Session"
 group = "Oops!"
 source = "script"
-machine = "a1200_fast"
-result = "crashes-later"
+result = "unknown"
 run = "session.exe"
+note = "the sweep saw works-then-crash on a1200_fast; no entry of it passed the gate"
 
 [demozoo.139140]
 title = "Set Rector"
@@ -2251,6 +2252,7 @@ title = "Shiny Bubbles"
 group = "Dual Crew"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.371371]
 title = "Shinya 1986"
@@ -2273,7 +2275,7 @@ source = "script"
 title = "Shit Happens"
 group = "Kameli"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.236733]
 title = "Shit Intro"
@@ -3023,6 +3025,8 @@ source = "script"
 title = "Sine Demo"
 group = "Future Mirror"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.214337]
 title = "Sine Demo"
@@ -3063,7 +3067,7 @@ source = "script"
 title = "Sine Intro"
 group = "Miracle / Rebels"
 source = "script"
-machine = "a1200_060"
+result = "broken"
 
 [demozoo.241452]
 title = "Sine Intro"
@@ -3280,7 +3284,6 @@ machine = "a500_ks12"
 title = "Sine Sine"
 group = "Bounty"
 source = "script"
-result = "unknown"
 
 [demozoo.229385]
 title = "Sine Wave v5.00"
@@ -3301,7 +3304,6 @@ source = "script"
 title = "Sineintro"
 group = "The Timecircle"
 source = "script"
-result = "unknown"
 
 [demozoo.237974]
 title = "Sineintro"
@@ -3312,7 +3314,6 @@ source = "script"
 title = "SineLines"
 group = "Newlook"
 source = "script"
-result = "unknown"
 
 [demozoo.248548]
 title = "Sinemania"
@@ -3506,7 +3507,6 @@ source = "script"
 title = "Sinus Intro"
 group = "Cave"
 source = "script"
-result = "unknown"
 
 [demozoo.256713]
 title = "Sinus Mini"
@@ -3660,7 +3660,7 @@ source = "script"
 title = "Skenery 98 Invitation"
 group = "Jakkar"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.50309]
 title = "Skenery Invitation"
@@ -3700,15 +3700,16 @@ source = "script"
 title = "Skizzo Demo"
 group = "Gnu Design"
 source = "script"
+result = "unknown"
 disks = ["GNU_DESIGN_SkizzoDemoI-A.adf", "GNU_DESIGN_SkizzoDemoI-B.adf"]
-swaps = [{ disk = 2, at = 338.7, key = "lmb" }]
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.244878]
 title = "Skizzo Demo 2"
 group = "Gnu Design"
 source = "script"
 disks = ["Skizzo_Demo_2-Disk1.DMS", "Skizzo_Demo_2-Disk2.DMS", "Skizzo_Demo_2-Disk3.DMS", "Skizzo_Demo_2-Disk4.DMS"]
-swaps = [{ disk = 2, at = 224.2 }, { disk = 3, at = 442.3 }, { disk = 4, at = 735.5 }]
+events = [{ at = 224.2, disk = 2 }, { at = 442.3, disk = 3 }, { at = 735.5, disk = 4 }]
 
 [demozoo.40854]
 title = "Skizzy"
@@ -4054,6 +4055,8 @@ machine = "a1200"
 title = "Slemming"
 group = "Eon"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.118468]
 title = "Sliced & Diced"
@@ -4360,7 +4363,7 @@ source = "script"
 title = "Small Pack-Intro"
 group = "Amiga Cracking Service"
 source = "script"
-result = "unknown"
+machine = "a500_512k"
 
 [demozoo.223774]
 title = "Small Party Intro"
@@ -4418,7 +4421,7 @@ source = "script"
 title = "Smart"
 group = "Elven 11"
 source = "script"
-machine = "a1200_fast"
+machine = "a1200"
 run = "smart.exe"
 
 [demozoo.27967]
@@ -4467,17 +4470,17 @@ machine = "a1200"
 [demozoo.32303]
 title = "Smells Like Lame Spirit"
 group = "Dinx Project"
-source = "script"
-result = "unknown"
-run = "LE-window6.12"
+source = "ai"
+machine = "a1200"
+run = "dxp4kAGA"
 
 [demozoo.252283]
 title = "Smells Like Peanuts"
 group = "Noxious"
 source = "script"
-disks = ["Noxious-SmellsLikePeanutsA-launch.adf", "Noxious-SmellsLikePeanutsB.adf", "Noxious-SmellsLikePeanutsC.adf", "Noxious-SmellsLikePeanutsD.adf", "Noxious-SmellsLikePeanutsE.adf", "Noxious-SmellsLikePeanutsF.adf"]
-swaps = [{ disk = 2, at = 199.7 }, { disk = 3, at = 288.5 }, { disk = 4, at = 399.9 }, { disk = 5, at = 497.3 }, { disk = 6, at = 590.6, key = "lmb" }]
-run = "Peanuts"
+result = "unknown"
+disks = ["Noxious-SmellsLikePeanutsA.adf", "Noxious-SmellsLikePeanutsB.adf", "Noxious-SmellsLikePeanutsC.adf", "Noxious-SmellsLikePeanutsD.adf", "Noxious-SmellsLikePeanutsE.adf", "Noxious-SmellsLikePeanutsF.adf"]
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.257078]
 title = "Smile Or Die"
@@ -4717,7 +4720,6 @@ machine = "a1200_030"
 title = "Snow in Summer"
 group = "Magic Dragon"
 source = "script"
-result = "unknown"
 
 [demozoo.293133]
 title = "Snowstration"
@@ -4776,7 +4778,7 @@ title = "So What"
 group = "Equinox"
 source = "script"
 disks = ["EQUINOX-Sowhat-A.dms", "EQUINOX-SoWhat-B.dms"]
-swaps = [{ disk = 2, at = 478.7, key = "lmb" }]
+note = "the sweep only reached disk 1 of 2"
 
 [demozoo.5804]
 title = "So What"
@@ -4905,11 +4907,11 @@ source = "script"
 [demozoo.221158]
 title = "Soho"
 group = "Nova"
-source = "script"
+source = "ai"
 machine = "a1200_fast"
 drives = 2
 disks = ["Nova-SohoA.dms", "Nova-SohoB.dms", "Nova-SohoC.dms"]
-swaps = [{ disk = 3, at = 225.0 }]
+events = [{ at = 225.0, disk = 3, drive = 2 }]
 
 [demozoo.336653]
 title = "Soil"
@@ -5281,7 +5283,8 @@ source = "script"
 title = "Some Vectors"
 group = "Starline"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.196271]
 title = "Some Vectors"
@@ -5607,7 +5610,7 @@ group = "The Silents"
 source = "script"
 machine = "a1200"
 disks = ["SILENTS-SoulKitchen-A.DMS", "SILENTS-SoulKitchen-B.DMS"]
-swaps = [{ disk = 2, at = 76.0, key = "lmb" }]
+events = [{ at = 76.0, disk = 2 }, { at = 81.0, key = "lmb" }]
 
 [demozoo.254203]
 title = "Soulless"
@@ -5954,8 +5957,9 @@ result = "unknown"
 title = "Space Case"
 group = "Pas Maters"
 source = "script"
-machine = "a1200"
+result = "unknown"
 run = "Spejs.bre"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.340712]
 title = "Space Dancers"
@@ -5966,6 +5970,8 @@ source = "script"
 title = "Space Deliria"
 group = "Crusaders"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.248754]
 title = "Space Demo"
@@ -5981,7 +5987,8 @@ source = "script"
 title = "Space Dots Norway Import"
 group = "Razor 1911"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.208758]
 title = "Space Drop"
@@ -6124,7 +6131,8 @@ run = "MadHatter.exe"
 title = "Spacedust"
 group = "Lemon."
 source = "script"
-result = "unknown"
+machine = "a1200"
+events = [{ at = 60.0, key = "space" }]
 
 [demozoo.222196]
 title = "Spacehulk"
@@ -6325,7 +6333,6 @@ source = "script"
 title = "Specialized is Dead"
 group = "Vlsi"
 source = "script"
-result = "unknown"
 
 [demozoo.260433]
 title = "Specters First"
@@ -6347,7 +6354,6 @@ source = "script"
 title = "Spectre Has Now Rissen"
 group = "Spectre"
 source = "script"
-result = "unknown"
 
 [demozoo.254645]
 title = "Spectre's Comeback"
@@ -6386,7 +6392,7 @@ title = "Speed"
 group = "Sim Productions"
 source = "script"
 disks = ["Sim-SpeedA.adf", "Sim-SpeedB.adf", "Sim-SpeedC.adf", "Sim-SpeedD.adf"]
-swaps = [{ disk = 2, at = 54.0 }, { disk = 3, at = 107.4 }, { disk = 4, at = 137.3 }]
+events = [{ at = 54.0, disk = 2 }, { at = 107.4, disk = 3 }, { at = 137.3, disk = 4 }]
 
 [demozoo.7250]
 title = "Speed"
@@ -6548,8 +6554,7 @@ machine = "a1200"
 title = "Spinning Heads"
 group = "Spectre"
 source = "script"
-result = "unknown"
-run = "skit.c"
+boot = "floppy"
 
 [demozoo.317487]
 title = "Spinotic"
@@ -6639,7 +6644,6 @@ source = "script"
 title = "Splash"
 group = "Spreadpoint"
 source = "script"
-result = "unknown"
 
 [demozoo.7673]
 title = "Splash-O-Mania 2"
@@ -6844,7 +6848,6 @@ source = "script"
 title = "Spread Intro"
 group = "The Special Brothers"
 source = "script"
-result = "unknown"
 
 [demozoo.266671]
 title = "Spread Intro"
@@ -6860,7 +6863,6 @@ source = "script"
 title = "Spread Intro"
 group = "Taipan"
 source = "script"
-result = "unknown"
 
 [demozoo.266674]
 title = "Spread Intro"
@@ -6951,7 +6953,6 @@ source = "script"
 title = "Spreaded by"
 group = "Da Solid Posse"
 source = "script"
-result = "unknown"
 
 [demozoo.223525]
 title = "Spreaded by Morgue"
@@ -7141,7 +7142,6 @@ source = "script"
 title = "ST Bash"
 group = "Sepultura"
 source = "script"
-machine = "a1200"
 
 [demozoo.368841]
 title = "ST#17 Intro"
@@ -7164,7 +7164,7 @@ source = "script"
 title = "Stad i Ljus"
 group = "Deathbringers"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.134613]
 title = "Stag - The Next Generation"
@@ -7193,7 +7193,7 @@ source = "script"
 title = "Stalk"
 group = "Drinkers Inc."
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.263587]
 title = "Stamp Collection 2 - Menu"
@@ -7762,8 +7762,9 @@ source = "script"
 title = "Stillborn"
 group = "Powerline"
 source = "script"
-machine = "a500_1mb"
+result = "unknown"
 run = "fmv.exe"
+note = "the sweep saw works on a500_1mb; no entry of it passed the gate"
 
 [demozoo.246671]
 title = "Stills"
@@ -7948,7 +7949,6 @@ source = "script"
 title = "Stormlord Soundeffects"
 group = "Maniacs of Noise"
 source = "script"
-result = "unknown"
 
 [demozoo.254365]
 title = "Storms 1st Pack Menu"
@@ -8333,10 +8333,9 @@ source = "script"
 title = "Subliminal XTC"
 group = "Mirage UK"
 source = "script"
-machine = "a500_ks12"
-result = "crashes-later"
+machine = "a1200"
 disks = ["MirageUK-SubliminalXtcA.adf", "MirageUk-SubliminalXtcB.adf"]
-swaps = [{ disk = 2, at = 20.0 }]
+note = "the sweep only reached disk 1 of 2"
 
 [demozoo.100505]
 title = "Submissive Retrogression"
@@ -8407,15 +8406,14 @@ source = "script"
 [demozoo.8360]
 title = "Subzero"
 group = "Syndrome"
-source = "script"
-result = "unknown"
-run = "Relyscully.exe.bak"
+source = "ai"
+machine = "a1200_fast"
+run = "subzero_4mb.exe"
 
 [demozoo.219453]
 title = "Suck"
 group = "Dual Format"
 source = "script"
-result = "unknown"
 
 [demozoo.222690]
 title = "Suck My Axe"
@@ -8867,14 +8865,16 @@ machine = "a1200_030"
 title = "SunStone"
 group = "Half Brains Team"
 source = "script"
+result = "crashes-later"
 disks = ["HBT-SunstoneA.adf", "HBT-SunstoneB.adf"]
-swaps = [{ disk = 2, at = 473.1, key = "lmb" }]
+note = "the sweep only reached disk 1 of 2"
 
 [demozoo.213841]
 title = "Sunstone Announctro"
 group = "Half Brains Team"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.33982]
 title = "Suoli"
@@ -9016,6 +9016,8 @@ run = "superunknown.exe"
 title = "Super-Giga-Turbo-Overdrive-MEGADEMO ZW3000XL"
 group = "Daniel Bryde"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.19429]
 title = "Superautodrome"
@@ -9033,7 +9035,8 @@ machine = "a1200_fast"
 title = "Superave"
 group = "Creations of the Mind"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.675]
 title = "Superbored"
@@ -9056,7 +9059,6 @@ result = "unknown"
 title = "Superfant"
 group = "Deffpaccers"
 source = "script"
-result = "unknown"
 
 [demozoo.375504]
 title = "Superglenz"
@@ -9091,8 +9093,8 @@ machine = "a1200_fast"
 [demozoo.22602]
 title = "Supermonster"
 group = "Spaceballs"
-source = "script"
-machine = "a1200"
+source = "ai"
+machine = "a1200_030"
 run = "Spb-SuperMonster.exe"
 
 [demozoo.256714]
@@ -9242,7 +9244,6 @@ source = "script"
 title = "Sus Ultimas Novedades"
 group = "Destroyers"
 source = "script"
-result = "unknown"
 
 [demozoo.227106]
 title = "Susan"
@@ -9419,6 +9420,8 @@ source = "script"
 title = "Swapping Logos"
 group = "The Special Brothers"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.231733]
 title = "Swappit v2.0 Intro"
@@ -9550,7 +9553,6 @@ source = "script"
 title = "Sweden First Demo"
 group = "Quartz"
 source = "script"
-result = "unknown"
 
 [demozoo.230404]
 title = "Sweden First Demo Ever - The Intro"
@@ -9747,7 +9749,7 @@ group = "Rebels"
 source = "script"
 machine = "a1200"
 disks = ["dd-rbs1.dms", "dd-rbs2.dms"]
-swaps = [{ disk = 2, at = 280.2 }]
+events = [{ at = 280.2, disk = 2 }]
 
 [demozoo.231736]
 title = "Switchblade's Balls"

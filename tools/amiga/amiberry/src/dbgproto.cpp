@@ -18,6 +18,7 @@
 #include "sysconfig.h"
 #include "sysdeps.h"
 
+#include <algorithm>
 #include <vector>
 #include <string>
 
@@ -43,6 +44,7 @@ extern void warpmode(int mode);          /* inputdevice.cpp */
 extern bool create_screenshot(void);     /* osdep/amiberry_gfx.cpp */
 extern int save_thumb_if_new(const std::string &path, int permille, int *changed);
 extern int save_thumb(const std::string &path);
+extern int screenshot_box(int *w, int *h, int box[4]);
 extern bool render_screen(int monid, int mode, bool immediate);
 
 static std::vector<std::string> commands;
@@ -237,6 +239,105 @@ static void emit_error(int s, const std::string &cmd, const char *msg)
 	emit(s, cmd, buf);
 }
 
+/* ---- display measure -------------------------------------------------- */
+/* Where a run shows bitplanes, by the registers (custom.cpp notes each shown
+ * line): per line and per column, in how many frames, apart for each mode:
+ * a resolution, interlaced or not, and whether the copper list was the
+ * system's (COP1LC as Kickstart sets it: AmigaDOS's own screen, or a
+ * production that draws through the system). A frame is of the finest its
+ * lines had, and the system's when every line was. */
+int dbgproto_display_on = 0;
+
+#define DISP_MAX 1024       /* lines of a frame; lores columns of a line */
+#define DISP_MAX_DIW 32
+#define DISP_MODES 12       /* resolution, + 3 interlaced, + 6 the system's */
+
+struct disp_diw { uae_u16 strt, stop; long lines; };
+
+static struct {
+	struct {
+		long frames;                /* frames that showed a line */
+		long rows[DISP_MAX], cols[DISP_MAX];
+	} mode[DISP_MODES];
+	uae_u32 os_cop;                 /* the system's COP1LC; 0: not told */
+	std::vector<disp_diw> diw;      /* DIWSTRT/DIWSTOP of the shown lines */
+	bool more_diw;                  /* and others, not kept */
+	/* the frame being drawn */
+	bool row[DISP_MAX];
+	int x0, y0, x1, y1, res;
+	bool lace, os;
+} disp;
+
+static void disp_new_frame(void)
+{
+	disp.x0 = disp.y0 = DISP_MAX;
+	disp.x1 = disp.y1 = 0;
+	disp.res = 0;
+	disp.lace = false;
+	disp.os = disp.os_cop != 0;
+}
+
+void dbgproto_display_line(int line, int x0, int x1, int res, bool lace,
+	uae_u32 cop1lc, uae_u16 diwstrt, uae_u16 diwstop)
+{
+	if (line < 0 || line >= DISP_MAX || x0 < 0 || x1 > DISP_MAX
+		|| res < 0 || res > 2)
+		return;
+	disp.row[line] = true;
+	disp.x0 = std::min(disp.x0, x0);
+	disp.x1 = std::max(disp.x1, x1);
+	disp.y0 = std::min(disp.y0, line);
+	disp.y1 = std::max(disp.y1, line + 1);
+	disp.res = std::max(disp.res, res);
+	disp.lace |= lace;
+	disp.os &= cop1lc == disp.os_cop;
+	for (auto &d : disp.diw) {
+		if (d.strt == diwstrt && d.stop == diwstop) {
+			d.lines++;
+			return;
+		}
+	}
+	if (disp.diw.size() < DISP_MAX_DIW)
+		disp.diw.push_back({ diwstrt, diwstop, 1 });
+	else
+		disp.more_diw = true;
+}
+
+static void disp_vsync(void)
+{
+	if (disp.x1 > disp.x0) {
+		auto &m = disp.mode[disp.res + (disp.lace ? 3 : 0) + (disp.os ? 6 : 0)];
+		m.frames++;
+		for (int y = disp.y0; y < disp.y1; y++) {
+			m.rows[y] += disp.row[y];
+			disp.row[y] = false;
+		}
+		for (int x = disp.x0; x < disp.x1; x++)
+			m.cols[x]++;
+	}
+	disp_new_frame();
+}
+
+/* ``counts`` as [[from, to, count], ...]: each stretch with one count that is
+ * not zero, ``to`` not included. */
+static std::string disp_runs(const long *counts)
+{
+	std::string out = "[";
+	char buf[64];
+	for (int i = 0; i < DISP_MAX;) {
+		int j = i;
+		while (j < DISP_MAX && counts[j] == counts[i])
+			j++;
+		if (counts[i]) {
+			snprintf(buf, sizeof buf, "%s[%d,%d,%ld]", out.size() > 1 ? "," : "",
+				i, j, counts[i]);
+			out += buf;
+		}
+		i = j;
+	}
+	return out + "]";
+}
+
 /* ---- small parsing helpers ------------------------------------------ */
 
 static std::vector<std::string> tokenize(const std::string &s)
@@ -279,10 +380,13 @@ static std::string kv(const std::vector<std::string> &t, const char *key)
 
 /* ---- command implementations ---------------------------------------- */
 
+static void trace_close(void);
+
 static void quit_batch(void)
 {
 	finished = true;
 	dbgproto_instr_gate = 0;
+	trace_close();
 	uae_quit();
 	/* make the CPU inner loop yield promptly */
 	set_special(SPCFLAG_BRK | SPCFLAG_MODE_CHANGE);
@@ -396,13 +500,13 @@ static void cmd_status(int s, const std::string &cmd)
 		"{\"frame\":%ld,\"pc\":\"%x\",\"halt\":%d,\"stopped\":%d,"
 		"\"dmacon\":%u,\"intena\":%u,\"intreq\":%u,\"bplcon0\":%u,"
 		"\"ddfstrt\":%u,\"ddfstop\":%u,\"diwstrt\":%u,\"diwstop\":%u,"
-		"\"coppc\":\"%x\",\"vpos\":%d,"
+		"\"coppc\":\"%x\",\"cop1lc\":\"%x\",\"vpos\":%d,"
 		"\"motor\":%d,\"cyl\":%d,\"df0\":\"%s\",\"warp\":%d,"
 		"\"resets\":%d}",
 		frame_counter, m68k_getpc(), regs.halted, regs.stopped ? 1 : 0,
 		(unsigned)cs.dmacon, (unsigned)cs.intena, (unsigned)cs.intreq,
 		(unsigned)cs.bplcon0, (unsigned)cs.ddfstrt, (unsigned)cs.ddfstop,
-		(unsigned)cs.diwstrt, (unsigned)cs.diwstop, cs.coppc, cs.vpos,
+		(unsigned)cs.diwstrt, (unsigned)cs.diwstop, cs.coppc, cs.cop1lc, cs.vpos,
 		d0->drive_motor ? 1 : 0, d0->drive_track, df0,
 		currprefs.turbo_emulation ? 1 : 0,
 		reset_counter);
@@ -440,6 +544,68 @@ static void cmd_shot_new(int s, const std::string &cmd, int permille,
 		"{\"ok\":%s,\"kept\":%s,\"changed\":%d,\"path\":\"%s\"}",
 		kept >= 0 ? "true" : "false", kept > 0 ? "true" : "false", changed, esc);
 	emit(s, cmd, body);
+}
+
+/* display measure on [os=ADDR] | off: start (from nothing) or stop the
+ * measure; ADDR is the system's COP1LC, in hex.
+ * display status: what it holds and, of the picture a screenshot would give
+ * now, the box of the pixels that are not the border's (``screen``), to set
+ * against it. */
+static void cmd_display(int s, const std::string &cmd,
+	const std::vector<std::string> &t)
+{
+	if (t.size() >= 3 && t[1] == "measure" && (t[2] == "on" || t[2] == "off")) {
+		if (t[2] == "on") {
+			disp = {};
+			std::string os = kv(t, "os");
+			disp.os_cop = os.empty() ? 0 : parse_addr(os);
+			disp_new_frame();
+		}
+		dbgproto_display_on = t[2] == "on";
+		emit(s, cmd, "{\"ok\":true}");
+		return;
+	}
+	if (t.size() < 2 || t[1] != "status") {
+		emit_error(s, cmd, "usage: display measure on [os=ADDR] | off | status");
+		return;
+	}
+	char buf[256];
+	std::string body = dbgproto_display_on ? "{\"on\":true" : "{\"on\":false";
+	body += ",\"modes\":[";
+	bool first = true;
+	for (int i = 0; i < DISP_MODES; i++) {
+		const auto &m = disp.mode[i];
+		if (!m.frames)
+			continue;
+		snprintf(buf, sizeof buf, "%s{\"res\":%d,\"lace\":%s,\"os\":%s,"
+			"\"frames\":%ld,\"rows\":", first ? "" : ",", i % 3,
+			i % 6 >= 3 ? "true" : "false", i >= 6 ? "true" : "false", m.frames);
+		body += buf + disp_runs(m.rows) + ",\"cols\":" + disp_runs(m.cols) + "}";
+		first = false;
+	}
+	body += "],\"diw\":[";
+	for (size_t i = 0; i < disp.diw.size(); i++) {
+		snprintf(buf, sizeof buf, "%s[%u,%u,%ld]", i ? "," : "",
+			(unsigned)disp.diw[i].strt, (unsigned)disp.diw[i].stop,
+			disp.diw[i].lines);
+		body += buf;
+	}
+	body += disp.more_diw ? "],\"more_diw\":true" : "]";
+	render_screen(0, 1, true);
+	int w, h, box[4];
+	int found = create_screenshot() ? screenshot_box(&w, &h, box) : -1;
+	if (found >= 0) {
+		snprintf(buf, sizeof buf, ",\"screen\":{\"w\":%d,\"h\":%d", w, h);
+		body += buf;
+		if (found) {
+			snprintf(buf, sizeof buf, ",\"box\":[%d,%d,%d,%d]", box[0], box[1],
+				box[2], box[3]);
+			body += buf;
+		}
+		body += "}";
+	}
+	body += "}";
+	emit(s, cmd, body.c_str());
 }
 
 static void cmd_load(int s, const std::string &cmd, uaecptr addr,
@@ -946,10 +1112,12 @@ void dbgproto_note_audio_reg(int nr, int reg, unsigned v)
 	if (!trace_fp)
 		return;
 	tr_awhash = (tr_awhash ^ (uint32_t)(nr | reg << 4 | v << 8)) * 16777619u;
-	tr_same[nr] = 0;
-	tr_prev_pass[nr] = 0;
-	if (notes_fp && reg != 4)   /* the notes: every write but volume */
-		fprintf(notes_fp, "%ld,%d,%d,%x\n", frame_counter, nr, reg, v);
+	if (reg != 4) {
+		tr_same[nr] = 0;
+		tr_prev_pass[nr] = 0;
+		if (notes_fp)   /* the notes: every write but volume */
+			fprintf(notes_fp, "%ld,%d,%d,%x\n", frame_counter, nr, reg, v);
+	}
 	tr_awrites++;
 }
 
@@ -979,36 +1147,42 @@ static uint8_t *read_bits = NULL;
 static uint8_t *site_bits = NULL;
 static FILE *reads_fp = NULL;   /* PATH.reads: frame,kind,pc,addr */
 #define READ_LOW 0x1000000u
-#define READ_Z3 0x40000000u
 #define READ_Z3_SIZE 0x4000000u
 #define SITE_BITS (1u << 29)
-#define READS_LOGGED 4
+#define READS_LOGGED 32
 static long tr_new_read = 0, tr_new_site = 0;
+static long tr_logged_read = 0, tr_logged_site = 0;
 static uaecptr tr_pc = 0;
 
 void dbgproto_note_read(uaecptr addr, int size)
 {
 	uint32_t i;
+	const uint32_t z3base = currprefs.z3autoconfig_start ? currprefs.z3autoconfig_start : 0x40000000u;
 	if (addr < 0xa00000 || (addr >= 0xc00000 && addr < 0xd80000))
 		i = addr;
-	else if (addr >= READ_Z3 && addr < READ_Z3 + READ_Z3_SIZE - 4)
-		i = READ_LOW + (addr - READ_Z3);
+	else if (addr >= z3base && addr < z3base + READ_Z3_SIZE - 4)
+		i = READ_LOW + (addr - z3base);
 	else
 		return;
+	bool got_read = false, got_site = false;
 	for (; size > 0; size--, i++) {
 		if (!(read_bits[i >> 3] & (1 << (i & 7)))) {
 			read_bits[i >> 3] |= 1 << (i & 7);
-			if (tr_new_read++ < READS_LOGGED && reads_fp)
-				fprintf(reads_fp, "%ld,A,%x,%x\n", frame_counter, tr_pc, addr);
+			tr_new_read++;
+			got_read = true;
 		}
 		uint32_t h = (i * 2654435761u) ^ (tr_pc * 2246822519u);
 		h = (h ^ h >> 15) & (SITE_BITS - 1);
 		if (!(site_bits[h >> 3] & (1 << (h & 7)))) {
 			site_bits[h >> 3] |= 1 << (h & 7);
-			if (tr_new_site++ < READS_LOGGED && reads_fp)
-				fprintf(reads_fp, "%ld,S,%x,%x\n", frame_counter, tr_pc, addr);
+			tr_new_site++;
+			got_site = true;
 		}
 	}
+	if (got_read && tr_logged_read++ < READS_LOGGED && reads_fp)
+		fprintf(reads_fp, "%ld,A,%x,%x\n", frame_counter, tr_pc, addr);
+	if (got_site && tr_logged_site++ < READS_LOGGED && reads_fp)
+		fprintf(reads_fp, "%ld,S,%x,%x\n", frame_counter, tr_pc, addr);
 }
 
 static void trace_instr(uaecptr pc)
@@ -1018,7 +1192,12 @@ static void trace_instr(uaecptr pc)
 	const bool rom = pc >= 0xe00000 && pc <= 0xffffff;
 	if (rom)
 		tr_rom_instr++;
-	const uint32_t op = currprefs.cpu_model >= 68020 ? regs.irc : regs.opcode;
+	/* 68000 CE has regs.opcode loaded before dbgproto_instr; 68020 CE /
+	 * prefetch has regs.irc; non-CE 68020+/030/060 (m68k_run_2_020) fetches
+	 * after dbgproto_instr and leaves regs.irc stale, so read via get_wordi. */
+	const uint32_t op = (currprefs.cpu_model < 68020) ? regs.opcode
+		: (currprefs.cpu_compatible || currprefs.cpu_cycle_exact) ? regs.irc
+		: get_wordi(pc);
 	uint32_t h = (pc * 2654435761u) ^ (op * 40503u);
 	h &= COV_BITS - 1;
 	if (!(cov_bits[h >> 3] & (1 << (h & 7)))) {
@@ -1026,10 +1205,8 @@ static void trace_instr(uaecptr pc)
 		tr_new_pc++;
 		/* new code in RAM, a library's jump table (JMP abs.l) aside: only
 		   something loaded runs that, the Kickstart alone never does */
-		dbgproto_read_trace = 0;   /* the trace's own reads are not the demo's */
-		if (!rom && get_word(pc) != 0x4ef9)
+		if (!rom && op != 0x4ef9)
 			tr_new_ram++;
-		dbgproto_read_trace = 1;
 	}
 }
 
@@ -1051,8 +1228,17 @@ static void trace_vsync(void)
 	for (int r = 0; r < TR_ROWS; r++)
 		for (int c = 0; c < TR_COLS; c++)
 			cell[r][c] = 1469598103934665603ull;
-	if (sf && sf->pixels) {
+	bool solid = true;
+	if (sf && sf->pixels && sf->w > 0 && sf->h > 0) {
 		const int bpp = SDL_BYTESPERPIXEL(sf->format);
+		uint64_t p0_64 = 0;
+		uint8_t p0_bytes[8] = { 0 };
+		if (bpp >= 1 && bpp <= 4) {
+			memcpy(p0_bytes, sf->pixels, (size_t)bpp);
+			for (int k = bpp; k < 8; k++)
+				p0_bytes[k] = p0_bytes[k % bpp];
+			memcpy(&p0_64, p0_bytes, 8);
+		}
 		for (int y = 0; y < sf->h; y++) {
 			const uint8_t *row = (const uint8_t *)sf->pixels + (size_t)y * sf->pitch;
 			int r = y * TR_ROWS / sf->h;
@@ -1065,11 +1251,16 @@ static void trace_vsync(void)
 				for (; i + 8 <= n; i += 8) {
 					uint64_t w;
 					memcpy(&w, p + i, 8);
+					if (solid && w != p0_64)
+						solid = false;
 					h = (h ^ w) * 1099511628211ull;
 					h ^= h >> 29;
 				}
-				for (; i < n; i++)
+				for (; i < n; i++) {
+					if (solid && p[i] != p0_bytes[i % (size_t)bpp])
+						solid = false;
 					h = (h ^ p[i]) * 1099511628211ull;
+				}
 				cell[r][c] = h;
 			}
 		}
@@ -1089,18 +1280,38 @@ static void trace_vsync(void)
 	dbgproto_read_trace = 0;
 	const uint32_t alert = trace_alert();
 	dbgproto_read_trace = 1;
-	fprintf(trace_fp, ",%x,%ld,%ld,%ld", alert, tr_new_ram, tr_new_read, tr_new_site);
+	fprintf(trace_fp, ",%x,%ld,%ld,%ld,%d,%x,%x",
+		alert, tr_new_ram, tr_new_read, tr_new_site,
+		solid ? 1 : 0, (unsigned)cs.bplcon0, (unsigned)cs.cop1lc);
 	for (int r = 0; r < TR_ROWS; r++)
 		for (int c = 0; c < TR_COLS; c++)
 			fprintf(trace_fp, ",%08x", (uint32_t)(cell[r][c] ^ cell[r][c] >> 32));
 	fputc('\n', trace_fp);
 	tr_awhash = 2166136261u;
-	tr_awrites = tr_aenergy = tr_asamples = tr_new_pc = tr_new_ram = tr_new_read = tr_new_site = tr_instr = tr_rom_instr = 0;
+	tr_awrites = tr_aenergy = tr_asamples = tr_new_pc = tr_new_ram = tr_new_read = tr_new_site = tr_logged_read = tr_logged_site = tr_instr = tr_rom_instr = 0;
 	tr_apeak = 0;
+}
+
+static void trace_close(void)
+{
+	dbgproto_read_trace = 0;
+	if (trace_fp) {
+		fclose(trace_fp);
+		trace_fp = NULL;
+	}
+	if (notes_fp) {
+		fclose(notes_fp);
+		notes_fp = NULL;
+	}
+	if (reads_fp) {
+		fclose(reads_fp);
+		reads_fp = NULL;
+	}
 }
 
 static void cmd_trace(int s, const std::string &cmd, const std::string &path)
 {
+	trace_close();
 	trace_fp = fopen(path.c_str(), "w");
 	if (!trace_fp) {
 		emit_error(s, cmd, "cannot open trace file");
@@ -1116,7 +1327,8 @@ static void cmd_trace(int s, const std::string &cmd, const std::string &path)
 	reads_fp = fopen((path + ".reads").c_str(), "w");
 	dbgproto_read_trace = 1;
 	fprintf(trace_fp, "frame,dmacon,awhash,awrites,aenergy,apeak,asamples,"
-		"newpc,instr,rominstr,lastdma,resets,pc,chan,alert,newram,newread,newsite");
+		"newpc,instr,rominstr,lastdma,resets,pc,chan,alert,newram,newread,newsite,"
+		"solid,bplcon0,cop1lc");
 	for (int i = 0; i < TR_ROWS * TR_COLS; i++)
 		fprintf(trace_fp, ",v%d", i);
 	fputc('\n', trace_fp);
@@ -1197,12 +1409,16 @@ static void dispatch(void)
 			cmd_load(s, cmd, parse_addr(t[1]), cmd.substr(p));
 		} else if (t[0] == "disk") {
 			cmd_disk(s, cmd, t);
+		} else if (t[0] == "display") {
+			cmd_display(s, cmd, t);
 		} else if (t[0] == "input") {
 			cmd_input(s, cmd, t);
 		} else if (t[0] == "trace" && t.size() >= 2) {
 			cmd_trace(s, cmd, cmd.substr(cmd.find(' ') + 1));
 		} else if (t[0] == "state" && t.size() >= 3 && t[1] == "save") {
-			cmd_state_save(s, cmd, cmd.substr(cmd.find(t[2])));
+			size_t p = cmd.find("save");
+			p = cmd.find_first_not_of(' ', p + 4);
+			cmd_state_save(s, cmd, p == std::string::npos ? t[2] : cmd.substr(p));
 		} else {
 			emit_error(s, cmd, "unknown command");
 		}
@@ -1609,6 +1825,8 @@ void dbgproto_vsync(void)
 	frame_counter++;
 	if (trace_fp)
 		trace_vsync();
+	if (dbgproto_display_on)
+		disp_vsync();
 	act_vsync();
 	swap_vsync();
 	if (dead_end())

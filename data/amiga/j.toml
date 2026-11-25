@@ -1,9 +1,9 @@
 [demozoo.24664]
 title = "J"
 group = "Ephidrena"
-source = "script"
+source = "ai"
 machine = "a1200_fast"
-run = "part1"
+run = "execute_me"
 
 [demozoo.27648]
 title = "J.A.M."
@@ -146,7 +146,8 @@ source = "script"
 title = "JamJam"
 group = "Incal"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
+note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
 
 [demozoo.181]
 title = "Jammin"
@@ -218,7 +219,7 @@ source = "script"
 title = "Jasiu Zabijaka"
 group = "Radiator"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.212297]
 title = "Jason's Pack Intro"
@@ -229,7 +230,6 @@ source = "script"
 title = "JD Mallander Antidemo"
 group = "4-Mat"
 source = "script"
-result = "unknown"
 
 [demozoo.177986]
 title = "JD-00: HACK-IN-BOX"
@@ -297,6 +297,8 @@ machine = "a1200_030"
 title = "Jergen Puckel"
 group = "CP-Dezajn"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.214320]
 title = "Jerry the Jolly Giraffe"
@@ -307,7 +309,6 @@ source = "script"
 title = "Jesienny deszcz"
 group = "Random22"
 source = "script"
-result = "unknown"
 
 [demozoo.250552]
 title = "Jessica"
@@ -333,7 +334,7 @@ group = "LSD"
 source = "script"
 machine = "a1200"
 disks = ["lsd-jesusoneas-a.dms", "lsd-jesusoneas-b.dms"]
-swaps = [{ disk = 2, at = 23.9, key = "lmb" }]
+note = "the sweep only reached disk 1 of 2"
 
 [demozoo.108960]
 title = "Jesus Stole My Jelly Beans"
@@ -506,7 +507,6 @@ source = "script"
 title = "Joinswap"
 group = "Energy"
 source = "script"
-result = "unknown"
 
 [demozoo.246602]
 title = "Joint Ihr Schweine"
@@ -1292,7 +1292,6 @@ source = "script"
 title = "Just Another Record"
 group = "Skandal"
 source = "script"
-result = "unknown"
 
 [demozoo.144734]
 title = "Just Another Show"
@@ -1382,7 +1381,6 @@ note = "Zenith/Brain Wave musicdisk, tune scroller"
 title = "Just Kidding"
 group = "Lamers"
 source = "script"
-result = "unknown"
 
 [demozoo.224984]
 title = "Just Out Walking"

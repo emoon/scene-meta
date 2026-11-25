@@ -298,14 +298,14 @@ title = "Vicious SID"
 group = "Masters' Design Group"
 source = "script"
 disks = ["Vicious Sid 1.d64", "Vicious Sid 2.d64"]
-swaps = [{ disk = 2, at = 716.8, key = "space" }]
+events = [{ at = 716.8, disk = 2 }, { at = 721.8, key = "space" }]
 
 [demozoo.44556]
 title = "Vicious Sid 2"
 group = "The Noisy Bunch"
 source = "script"
 disks = ["vicious_sid2-sidea.d64", "vicious_sid2-sideb.d64"]
-swaps = [{ disk = 2, at = 1371.6 }]
+events = [{ at = 1371.6, disk = 2 }]
 
 [demozoo.134379]
 title = "Victorian Era VIC 20 Sound Chip Emulator"
@@ -333,7 +333,7 @@ group = "SID-Spieler"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["side1.d64", "side2.d64"]
-swaps = [{ disk = 2, at = 125.3, key = "p1fire", key_delay = 33.6 }]
+events = [{ at = 125.3, disk = 2 }, { at = 158.9, key = "p1fire" }]
 
 [demozoo.280211]
 title = "Violation"
@@ -505,7 +505,7 @@ title = "Vivian II"
 group = "Hurricane / Vertical"
 source = "script"
 disks = ["Vivian 2.d64", "vivian_ii.d64"]
-swaps = [{ disk = 2, at = 75.4, key = "p1fire", key_delay = 36.5 }]
+events = [{ at = 75.4, disk = 2 }, { at = 111.9, key = "p1fire" }]
 
 [demozoo.300851]
 title = "VIY"
@@ -559,7 +559,7 @@ title = "Void"
 group = "Resource / Coma"
 source = "script"
 disks = ["Void_S1.D64", "Void_S2.D64"]
-swaps = [{ disk = 2, at = 153.4, key = "space", key_delay = 14.3 }]
+events = [{ at = 153.4, disk = 2 }, { at = 167.7, key = "space" }]
 
 [demozoo.196838]
 title = "Vojtabrog"
@@ -582,7 +582,7 @@ title = "Voodoomania"
 group = "Civitas"
 source = "script"
 disks = ["Ody_Rip_Disk_5a.d64", "Ody_Rip_Disk_5b.d64"]
-swaps = [{ disk = 2, at = 409.1, key = "p1fire", key_delay = 28.0 }]
+events = [{ at = 409.1, disk = 2 }, { at = 437.1, key = "p1fire" }]
 
 [demozoo.295315]
 title = "Vortex 42 Copy-Party Demo"

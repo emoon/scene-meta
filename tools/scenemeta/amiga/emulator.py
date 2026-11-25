@@ -14,6 +14,7 @@ import shutil
 import subprocess
 import tempfile
 
+from ..core import errors
 from . import alertshot, config, machines, workbench
 
 # Idle trigger for "press mouse button / insert disk" prompts that never touch
@@ -31,11 +32,16 @@ DEAD_FRAMES = 6000
 # the first insert.
 SCHEDULE_PULSES = 6
 SCHEDULE_PULSE_FRAMES = 1500
-# What a key retry presses, one per nudge in turn: Return (rawkey 0x44),
-# Space (0x40), the port-2 fire button. The key command takes decimal codes.
-# Held a few frames so a poll sees it.
-NUDGE_KEYS = ("key 68", "key 64", "joy 1 fire")
+# The keys a run can press, by their names in the data files, as the input
+# command takes them: a mouse button is clicked; a key (its rawkey code, in
+# decimal) or the fire button of a port (the Amiga's port 1 is port 0) is
+# held a few frames so a poll sees it.
+KEYS = {"lmb": "mouse click 0", "rmb": "mouse click 1",
+        "return": "key 68", "space": "key 64",
+        "p1fire": "joy 0 fire", "p2fire": "joy 1 fire"}
 KEY_HOLD_FRAMES = 3
+# What a key retry presses, one per nudge in turn.
+NUDGE_KEYS = ("return", "space", "p2fire")
 
 
 @dataclasses.dataclass
@@ -65,6 +71,10 @@ class RunLog:
     # Highest cylinder each drive was seen at with its motor on, sampled at
     # the status points (multi-drive runs only): shows a disk was read.
     max_cyl: list = dataclasses.field(default_factory=list)
+    # Of a run with ``area``: the last ``display status``, and the box each
+    # sample's picture shows drawn (None: nothing).
+    display: dict = None
+    boxes: list = dataclasses.field(default_factory=list)
 
 
 MAX_DRIVES = 4
@@ -131,16 +141,27 @@ def _uae_config(machine, variant, tmp, drives=1, seed=DEFAULT_SEED):
 
 LAST_ALERT = 0x202   # ExecBase->LastAlert
 NO_ALERT = 0xFFFFFFFF
-_execbase_cache = {}
+_bare_cache = {}
 
 
 def execbase(machine, kind="floppy"):
-    """Where this machine's Kickstart puts ExecBase. Fixed for a given ROM and
-    memory layout, so it is measured once by booting with no demo. The boot
-    media matter: with Z3 fast RAM, KS3.0 puts it $20 higher when the
-    hard drive is mounted."""
+    """Where this machine's Kickstart puts ExecBase (see ``_bare``)."""
+    return _bare(machine, kind)[0]
+
+
+def system_copper(machine, kind="floppy"):
+    """The COP1LC this machine's Kickstart shows its own screens with (see
+    ``_bare``): a production's own copper list is another."""
+    return _bare(machine, kind)[1]
+
+
+def _bare(machine, kind):
+    """``(ExecBase, COP1LC)`` of this machine with no demo. Fixed for a given
+    ROM and memory layout, so measured once by booting it. The boot media
+    matter: with Z3 fast RAM, KS3.0 puts ExecBase $20 higher when the hard
+    drive is mounted."""
     key = (machine.name, kind == "hd")
-    if key not in _execbase_cache:
+    if key not in _bare_cache:
         with tempfile.TemporaryDirectory(prefix="scenemeta-eb-") as t:
             tmp = pathlib.Path(t)
             media = "nr_floppies=1\n"
@@ -153,11 +174,24 @@ def execbase(machine, kind="floppy"):
                            + media)
             out = _invoke([str(config.AMIBERRY), "-f", str(cfg),
                            "--dbg", "warp on", "--dbg", "run frames=300",
-                           "--dbg", "peek 4 4"], tmp, 120)[0]
-            hexval = next((r["result"].get("hex", "") for r in _records(out)
-                           if r.get("cmd") == "peek 4 4"), "")
-            _execbase_cache[key] = int(hexval[:8], 16)
-    return _execbase_cache[key]
+                           "--dbg", "peek 4 4", "--dbg", "status"], tmp, 120)[0]
+            said = {r.get("cmd"): r["result"] for r in _records(out)
+                    if "result" in r}
+            _bare_cache[key] = (_said(said, "peek 4 4", "hex", 8, machine),
+                                _said(said, "status", "cop1lc", None, machine))
+    return _bare_cache[key]
+
+
+def _said(said, cmd, field, digits, machine):
+    """The hex ``field`` of the answer to ``cmd`` of a bare boot of
+    ``machine``, as a number. Raises errors.CannotPlay when it is not there:
+    an emulator built before it was said."""
+    try:
+        return int(said[cmd][field][:digits], 16)
+    except (KeyError, ValueError):
+        raise errors.CannotPlay(
+            f"the emulator's `{cmd}` gave no {field} on a bare boot of"
+            f" {machine.name}: rebuild it (tools/amiga/README.md)") from None
 
 
 @dataclasses.dataclass(frozen=True)
@@ -174,7 +208,8 @@ class Options:
 
     ``drives`` mounts that many disks of the set at boot (DF0..), for demos
     that want disk 2 in an external drive. ``unit`` is the drive the rest
-    of the set is swapped into (Soho: disks 2 and 3 both go in DF1).
+    of the set is swapped into (Soho: disks 2 and 3 both go in DF1); the
+    inserts of ``play`` name their own.
 
     ``click_every`` presses the left mouse button every that many frames,
     for "click to continue" screens (right clicks too would leave some
@@ -192,19 +227,18 @@ class Options:
     run, and with ``detect=False``: a run that only shows where the demo
     stops reading.
 
-    ``swap_click=False`` leaves out the click the detector makes when a
-    disk it put in is not loaded from within 5 s, and ``nudge_until`` stops
-    the ``click_every`` and ``key_every`` presses from that frame on: for
-    the run that shows whether that click was needed.
-
     ``play`` does fixed things at exact frames and nothing else, the
-    detector off: ``(frame, "insert", k)`` puts disk ``k`` of the swap list
-    in, ``(frame, "click", button)`` clicks a mouse button.
+    detector off: ``(frame, "insert", (k, unit))`` puts disk ``k`` of the
+    swap list in drive ``unit``, ``(frame, "press", key)`` presses a key of
+    KEYS.
 
     ``keep`` is a directory that gets a ``NNNN.png`` of each sample (``NNNN``
     its index) whose picture differs from the last one kept in more than
     ``keep_permille`` of every thousand pixels: the emulator does the
     comparing, so the run's samples still say which of them were kept.
+
+    ``area`` has the emulator measure where the run shows bitplanes (see
+    area.py); the run is the same with it and without.
     """
     triggers: str = ""
     drives: int = 1
@@ -215,11 +249,10 @@ class Options:
     max_clicks: int = 0
     key_every: int = 0
     seed: int = DEFAULT_SEED
-    swap_click: bool = True
-    nudge_until: int = 0
     play: tuple = ()
     keep: pathlib.Path = None
     keep_permille: int = 20
+    area: bool = False
 
     @property
     def detects(self):
@@ -248,6 +281,9 @@ def run(machine, variant, frames, opts=Options(), interval=250, timeout=None):
 
         script = _play if opts.play else _script
         cmds = ["warp on", _autoswap(opts)]
+        if opts.area:
+            cmds.append("display measure on"
+                        f" os={system_copper(machine, variant.kind):x}")
         cmds += script(frames, interval, alert_peek, shots, swaps, opts)
         argv = [str(config.AMIBERRY), "-f", str(cfg)]
         argv += [f"-diskswapper={d}" for d in swaps]
@@ -266,8 +302,7 @@ def _autoswap(opts):
     for a disk we do not have shows up."""
     if not opts.detects:
         return "disk autoswap off"
-    cmd = (f"disk autoswap {'click' if opts.swap_click else 'on'}"
-           f" idle={AUTOSWAP_IDLE_SECONDS}"
+    cmd = (f"disk autoswap click idle={AUTOSWAP_IDLE_SECONDS}"
            f" tail={AUTOSWAP_TAIL_FRAMES} dead={DEAD_FRAMES}")
     if opts.unit:
         cmd += f" unit={opts.unit}"
@@ -277,8 +312,20 @@ def _autoswap(opts):
 def _script(frames, interval, alert_peek, shots, swaps, opts):
     """The batch commands of a run: per sample interval a status and a
     screenshot, plus the scheduled inserts and the input nudges."""
-    cmds = []
-    n = max(1, frames // interval)
+    cmds, held = [], 0
+    for i, (key, _, inserts) in enumerate(_inputs(frames, interval, opts)):
+        cmds += [f"run frames={interval - held}"] + _sample(
+            i, alert_peek, shots, opts.drives > 1, opts)
+        press, held = _press(key) if key else ([], 0)
+        cmds += press + [f"disk insert {opts.unit} {swaps[k]}"
+                         for k in inserts if k < len(swaps)]
+    return cmds
+
+
+def _inputs(frames, interval, opts):
+    """What such a run does after each of its samples: ``(key, k, inserts)``,
+    the key it presses or None, the disk of the swap list a scheduled
+    insert's click follows (None of a nudge), and the disks it puts in."""
     # (frame, swap list index): each scheduled disk goes in, then the
     # pulses re-insert it.
     pending = []
@@ -286,33 +333,34 @@ def _script(frames, interval, alert_peek, shots, swaps, opts):
         pending += [(f + p * SCHEDULE_PULSE_FRAMES, k)
                     for p in range(SCHEDULE_PULSES + 1)]
     pending.sort(key=lambda x: x[0])
-    click_next, clicks, periodic, keys = False, 0, 0, 0
-    for i in range(n):
-        nudge = not (opts.nudge_until
-                     and (i + 1) * interval >= opts.nudge_until)
-        cmds += [f"run frames={interval}"] + _sample(
-            i, alert_peek, shots, opts.drives > 1, opts)
-        if click_next:
+    put_in, clicks, periodic, keys = None, 0, 0, 0   # put_in: at the last sample
+    for i in range(max(1, frames // interval)):
+        frame = (i + 1) * interval
+        key, k = None, None
+        if put_in is not None:
             # After a scheduled insert: left and right in turn (Lethal
             # Dose 2 takes its disk on the right button only).
-            cmds.append(f"input mouse click {clicks % 2}")
+            key, k = ("lmb", "rmb")[clicks % 2], put_in
             clicks += 1
-            click_next = False
-        elif nudge and opts.click_every \
-                and (i + 1) * interval % opts.click_every == 0 \
+        elif opts.click_every and frame % opts.click_every == 0 \
                 and not (opts.max_clicks and periodic >= opts.max_clicks):
-            cmds.append("input mouse click 0")
+            key = "lmb"
             periodic += 1
-        elif nudge and opts.key_every \
-                and (i + 1) * interval % opts.key_every == 0:
-            cmds += _press(NUDGE_KEYS[keys % len(NUDGE_KEYS)])
+        elif opts.key_every and frame % opts.key_every == 0:
+            key = NUDGE_KEYS[keys % len(NUDGE_KEYS)]
             keys += 1
-        while pending and (i + 1) * interval >= pending[0][0]:
-            _, k = pending.pop(0)
-            if k < len(swaps):
-                cmds.append(f"disk insert {opts.unit} {swaps[k]}")
-            click_next = True
-    return cmds
+        inserts = []
+        while pending and frame >= pending[0][0]:
+            inserts.append(pending.pop(0)[1])
+        put_in = inserts[-1] if inserts else None
+        yield key, k, inserts
+
+
+def pressed(frames, opts, interval=250):
+    """``(frame, key, k)`` of each press a run with no ``play`` makes of
+    itself (not the detector's click): ``k`` as in ``_inputs``."""
+    return [((i + 1) * interval, key, k) for i, (key, k, _) in enumerate(
+        _inputs(frames, interval, opts)) if key]
 
 
 def _play(frames, interval, alert_peek, shots, swaps, opts):
@@ -328,9 +376,13 @@ def _play(frames, interval, alert_peek, shots, swaps, opts):
             if frame > at:
                 cmds.append(f"run frames={frame - at}")
                 at = frame
-            cmds.append(f"disk insert {opts.unit} {swaps[arg]}"
-                        if what == "insert"
-                        else f"input mouse click {arg}")
+            if what == "insert":
+                k, unit = arg
+                cmds.append(f"disk insert {unit} {swaps[k]}")
+            else:
+                press, held = _press(arg)
+                cmds += press
+                at += held
         if end > at:
             cmds.append(f"run frames={end - at}")
             at = end
@@ -344,13 +396,19 @@ def _sample(i, alert_peek, shots, disk_status, opts):
             f"screenshot {shots / f'{i:04d}.png'}", "disk autoswap status"]
     if opts.keep:
         cmds.append(f"shot-new {opts.keep_permille} {opts.keep / f'{i:04d}.png'}")
+    if opts.area:
+        cmds.append("display status")
     return cmds + ["disk status"] if disk_status else cmds
 
 
 def _press(key):
-    """A key (or joystick fire) held down for KEY_HOLD_FRAMES frames."""
-    return [f"input {key} down", f"run frames={KEY_HOLD_FRAMES}",
-            f"input {key} up"]
+    """``(commands, frames)``: what presses ``key`` of KEYS, and the frames
+    the run goes on while it is held."""
+    what = KEYS[key]
+    if what.startswith("mouse"):
+        return [f"input {what}"], 0
+    return [f"input {what} down", f"run frames={KEY_HOLD_FRAMES}",
+            f"input {what} up"], KEY_HOLD_FRAMES
 
 
 def _invoke(argv, tmp, timeout):
@@ -390,12 +448,14 @@ class _Reader:
     def __init__(self, shots, names, eb, alert_peek):
         self.samples, self.events = [], []
         self.max_cyl = [-1] * MAX_DRIVES
+        self.display, self.boxes = None, []
         self._shots, self._names, self._eb = shots, names, eb
         self._eb_ok = False
         self._box_cache = {}
         self._commands = {"status": self._status,
                           "disk autoswap status": self._last_dma,
                           "disk status": self._disk_status,
+                          "display status": self._display,
                           "peek 4 4": self._execbase,
                           alert_peek: self._alert}
 
@@ -442,6 +502,11 @@ class _Reader:
             if d.get("motor"):
                 self.max_cyl[u] = max(self.max_cyl[u], d.get("cyl", -1))
 
+    def _display(self, res):
+        if "modes" in res:
+            self.display = res
+            self.boxes.append(res.get("screen", {}).get("box"))
+
     def _execbase(self, res):
         self._eb_ok = _peek_long(res) == self._eb
 
@@ -462,7 +527,7 @@ def _parse(ran, shots, names, eb, alert_peek):
     pngs = sorted(shots.glob("*.png"))
     last = pngs[-1].read_bytes() if pngs else b""
     return RunLog(reader.samples, reader.events, rc, timed_out, stderr[-600:],
-                  last, reader.max_cyl)
+                  last, reader.max_cyl, reader.display, reader.boxes)
 
 
 # An alert box is mostly black: its PNG is a few KB, a demo's screen is not.

@@ -1,3 +1,4 @@
+import hashlib
 import os
 import pathlib
 import struct
@@ -10,6 +11,7 @@ import zipfile
 from scenemeta.amiga import media
 
 EXE = media.HUNK_MAGIC + b"\0" * 60
+GO_ON = media.workbench.GO_ON + "\n"
 
 
 class PickExeTest(unittest.TestCase):
@@ -52,6 +54,32 @@ class PickExeTest(unittest.TestCase):
         # A file that is not there changes nothing.
         self.assertEqual(media._pick_exe(d, "Sheep Dictionary", "gone")[0].name,
                          "Dictionary")
+
+    def test_an_entry_may_name_a_launcher_script(self):
+        # Megademo $c: Megademo$C.bat runs the five parts in turn.
+        bat = b"intro.exe\nmdctrad.exe\nN\xc5.exe\n"
+        d = self.tree({"intro.exe": EXE, "MDCtrad.exe": EXE * 9,
+                       "N\u00c5.exe": EXE, "Megademo$C.bat": bat,
+                       "sub/go": b'assign dev: ""\npart1\n', "sub/part1": EXE})
+        v = media._tree_variant(d, "Megademo $c", "Megademo$C.bat")
+        self.assertEqual((v.kind, v.root, v.run, v.choice),
+                         ("hd", str(d), "Megademo$C.bat", True))
+        # Past a command the download lacks, as on its author's machine.
+        self.assertEqual(v.command,
+                         f"{media.workbench.GO_ON}\n" + bat.decode("latin-1"))
+        self.assertTrue(media.fits(v, {"run": "Megademo$C.bat"}, "hd"))
+        # Executed from its own directory, so what it names is beside it.
+        # Named as the entry names it, by its path or its name alone.
+        for run in ("sub/go", "go"):
+            v = media._tree_variant(d, "", run)
+            self.assertEqual((v.root, v.run), (str(d / "sub"), run))
+            self.assertTrue(media.fits(v, {"run": run}, "hd"))
+
+    def test_only_a_text_file_is_a_script(self):
+        d = self.tree({"demo": EXE, "data": b"a\0b", "empty": b"",
+                       "big": b"x" * 20000})
+        for run in ("data", "empty", "big", "gone"):
+            self.assertEqual(media._tree_variant(d, "", run).run, "demo")
 
     def test_what_an_entry_says_of_a_variant(self):
         only = media.Variant("hd", [], run="demo")
@@ -277,6 +305,30 @@ class FloppyVariantTest(unittest.TestCase):
         self.assertNotEqual(pathlib.Path(one.disks[0]).read_bytes(),
                             pathlib.Path(two.disks[0]).read_bytes())
 
+    def test_a_merged_set_runs_the_script_its_entry_names(self):
+        def unpacked(adf, box):
+            tree = box / "files"
+            tree.mkdir(parents=True, exist_ok=True)
+            for name, data in {"a.exe": EXE, "b.exe": EXE,
+                               "start": b"a.exe\nb.exe\n",
+                               "alt/other": b"cd /\nb.exe\n"}.items():
+                (tree / name).parent.mkdir(exist_ok=True)
+                (tree / name).write_bytes(data)
+            return tree
+        disks = ["/d/x-a.adf", "/d/x-b.adf"]
+        with unittest.mock.patch.object(media, "_unpack_disk", unpacked):
+            picked = media.merged_variant(disks, 1, "")
+            self.assertEqual((picked.run, picked.command),
+                             ("start", GO_ON + "a.exe\nb.exe\n"))
+            named = media.merged_variant(disks, 1, "", "alt/other")
+            self.assertEqual((named.run, named.command),
+                             ("alt/other", GO_ON + "cd /\nb.exe\n"))
+            self.assertEqual(pathlib.Path(named.root).name, "alt")
+            self.assertEqual(media.merged_variant(disks, 1, "", "other").run,
+                             "other")
+            self.assertEqual(media.merged_variant(disks, 1, "", "b.exe").run,
+                             "b.exe")
+
     def test_the_merge_of_one_set_outlives_the_making_of_anothers(self):
         def unpacked(adf, box):
             tree = box / "files"
@@ -316,6 +368,65 @@ class ArchiveSetTest(unittest.TestCase):
         root = pathlib.Path(vs[0].root)
         self.assertEqual(sorted(p.name for p in (root / "data").iterdir()),
                          ["rep-001.data", "rep-002.data"])
+
+    def test_a_download_asked_to_start_its_script(self):
+        top = pathlib.Path(tempfile.mkdtemp())
+        self.addCleanup(media._rmtree, top)
+        for k, v in {"DEMOZOO_DIR": top / "nas", "WORK": top / "work"}.items():
+            patch = unittest.mock.patch.object(media.config, k, v)
+            patch.start()
+            self.addCleanup(patch.stop)
+        src = media.config.prod_dir(44911)
+        src.mkdir(parents=True)
+        with zipfile.ZipFile(src / "demo.zip", "w") as z:
+            for n, data in {"intro.exe": EXE, "end.exe": EXE * 2,
+                            "demo.bat": b"intro.exe\nend.exe\n"}.items():
+                z.writestr(n, data)
+        (today,), _ = media.variants(44911, "Demo")
+        self.assertEqual(today.command, '"end.exe"\n')
+        (asked,), _ = media.variants(44911, "Demo", "demo.bat")
+        self.assertEqual((asked.run, asked.command),
+                         ("demo.bat", GO_ON + "intro.exe\nend.exe\n"))
+
+
+class DownloadSha256Test(unittest.TestCase):
+    def setUp(self):
+        top = pathlib.Path(tempfile.mkdtemp())
+        self.addCleanup(media._rmtree, top)
+        patch = unittest.mock.patch.object(media.config, "DEMOZOO_DIR", top)
+        patch.start()
+        self.addCleanup(patch.stop)
+        self.src = media.config.prod_dir(142)
+        self.src.mkdir(parents=True)
+
+    def test_one_file_is_its_sha256(self):
+        (self.src / "demo.lha").write_bytes(b"abc")
+        self.assertEqual(media.download_sha256(142),
+                         hashlib.sha256(b"abc").hexdigest())
+
+    def test_a_file_still_being_fetched_is_no_part_of_it(self):
+        (self.src / "demo.lha").write_bytes(b"abc")
+        (self.src / "demo2.lha.part").write_bytes(b"ab")
+        self.assertEqual(media.download_sha256(142),
+                         hashlib.sha256(b"abc").hexdigest())
+
+    def test_several_files_change_it_by_content_and_by_name(self):
+        def of(files):
+            for f in self.src.iterdir():
+                f.unlink()
+            for name, data in files.items():
+                (self.src / name).write_bytes(data)
+            return media.download_sha256(142)
+        both = of({"a.adf": b"1", "b.adf": b"2"})
+        self.assertRegex(both, "^[0-9a-f]{64}$")
+        self.assertEqual(of({"b.adf": b"2", "a.adf": b"1"}), both)
+        self.assertNotEqual(of({"a.adf": b"1", "b.adf": b"3"}), both)
+        self.assertNotEqual(of({"a.adf": b"1", "c.adf": b"2"}), both)
+        self.assertNotEqual(of({"a.adf": b"1"}), both)
+
+    def test_no_download_has_none(self):
+        self.assertIsNone(media.download_sha256(142))
+        self.assertIsNone(media.download_sha256(143))
 
 
 class DmsPartsTest(unittest.TestCase):

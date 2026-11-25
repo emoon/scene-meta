@@ -28,8 +28,9 @@ def summary(variants):
         for v, b in ((v, v.chosen) for v in variants))
 
 
-def run_all(prods, store, job, jobs=None, log=print):
-    """Sweep ``prods`` that the store does not hold finished yet.
+def run_all(prods, store, job, jobs=None, log=print, again=False):
+    """Sweep ``prods`` that the store does not hold finished yet, or with
+    ``again`` every one of them.
 
     ``job(prod)`` is the platform's work on one production, run in a worker
     process (so it must pickle): it returns ``(problems, variants)``, the
@@ -39,7 +40,7 @@ def run_all(prods, store, job, jobs=None, log=print):
     is stored of its production, and the ones not started are not run.
     """
     jobs = jobs or max(1, (os.cpu_count() or 2) * 3 // 4)
-    done = store.done_productions()
+    done = () if again else store.done_productions()
     todo = [p for p in prods if p.id not in done]
     log(f"{len(todo)} productions to run ({len(prods) - len(todo)} done), "
         f"{jobs} jobs")

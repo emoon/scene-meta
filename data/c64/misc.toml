@@ -30,7 +30,7 @@ group = "Plush"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["PLUSH.D64", "PLUSH2.D64"]
-swaps = [{ disk = 2, at = 787.2 }]
+events = [{ at = 787.2, disk = 2 }]
 
 [demozoo.302796]
 title = ".H.F."
@@ -75,7 +75,7 @@ title = "❤️MIX"
 group = "Artline Designs / Extend / Virtual Dreams"
 source = "script"
 disks = ["heartmix_side_a.d64", "heartmix_side_b.d64"]
-swaps = [{ disk = 2, at = 390.4 }]
+events = [{ at = 390.4, disk = 2 }]
 
 [demozoo.141417]
 title = "氣 - Qi"
@@ -84,7 +84,7 @@ source = "ai"
 machine = "pal_1541_reu"
 sid = "8580"
 disks = ["qi_a.d64", "qi_b.d64"]
-swaps = [{ disk = 2, at = 304.5 }]
+events = [{ at = 304.5, disk = 2 }]
 note = "Qi: needs a REU (-reu -reusize 16384); without it disk 1 stops at READY; disk 2: TURN DISK yoga picture, no key; no upper limit seen (loop ran to 700M)"
 
 [demozoo.137935]

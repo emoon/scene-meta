@@ -9,8 +9,8 @@ import re
 # Fields in the order they are written; any other (the hardware overrides)
 # follow ``machine``.
 _HEAD = ("title", "group", "source", "demozoo", "csdb", "machine")
-_TAIL = ("boot", "kind", "result", "disks", "swaps", "keys", "run",
-         "boot_disk", "boot_file", "assign", "note")
+_TAIL = ("boot", "kind", "result", "disks", "events", "run",
+         "boot_disk", "boot_file", "assign", "area", "aspect", "note")
 _VARIANT_HEAD = ("file", "sha256", "machine")
 
 _HEADER = re.compile(r"\[(demozoo|csdb)\.(\d+)\]\s*(#.*)?")

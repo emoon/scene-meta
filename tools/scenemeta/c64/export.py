@@ -10,7 +10,7 @@ whatever somebody edited in the data files stays.
 import dataclasses
 import os
 
-from .. import machines
+from .. import events, machines
 from ..core import export
 from . import config, sid
 
@@ -66,21 +66,27 @@ def seen(store, prod_id, v):
                 store.schedule(prod_id, v.idx))
 
 
-def _swap(w):
-    swap = {"disk": w.disk, "at": round(w.at, 1)}
-    if w.until is not None:
-        swap["until"] = round(w.until, 1)
-    if w.key:
-        swap["key"] = w.key.lower()
-        if w.key_delay is not None:
-            swap["key_delay"] = round(w.key_delay, 1)
-    return swap
+# Seconds from an insert to its key where a window gives no delay. Nobody
+# measured it: the delays that were measured are 10 s and more.
+KEY_DELAY = 5.0
 
 
-def _keys(windows):
-    """The keys to press before the windows' inserts, in time order."""
-    return [{"at": round(at, 1), "key": key.lower()}
-            for at, key in sorted(k for w in windows for k in w.pre_keys)]
+def _events(windows):
+    """The windows as an entry says them, in time order: each disk that
+    goes in, the key pressed after it, and the keys to press before."""
+    out = [{"at": round(at, 1), "key": key.lower()}
+           for w in windows for at, key in w.pre_keys]
+    for w in windows:
+        if w.at is None:
+            continue
+        at = round(w.at, 1)
+        out.append({"at": at, "disk": w.disk})
+        if w.until is not None:
+            out[-1]["until"] = round(w.until, 1)
+        if w.key:
+            delay = KEY_DELAY if w.key_delay is None else round(w.key_delay, 1)
+            out.append({"at": round(at + delay, 1), "key": w.key.lower()})
+    return events.ordered(out)
 
 
 def _note(seen):
@@ -116,10 +122,8 @@ def entry(title, groups, v, seen, model, presets):
     if len(v.disks) > 1:
         e["disks"] = [os.path.basename(d) for d in v.disks]
     if chain:
-        if swaps := [_swap(w) for w in seen.windows if w.at is not None]:
-            e["swaps"] = swaps
-        if keys := _keys(seen.windows):
-            e["keys"] = keys
+        if does := _events(seen.windows):
+            e["events"] = does
     if seen.boot_disk:
         e["boot_disk"] = seen.boot_disk + 1
     if seen.boot_file:

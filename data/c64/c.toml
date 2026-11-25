@@ -39,7 +39,7 @@ group = "Performers"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["image1.d64", "image2.d64"]
-swaps = [{ disk = 2, at = 442.8 }]
+events = [{ at = 442.8, disk = 2 }]
 
 [demozoo.376545]
 title = "C-Rash"
@@ -167,7 +167,7 @@ title = "Calculation"
 group = "Artline Designs"
 source = "script"
 disks = ["ALD_Calculation_Side1.d64", "ALD_Calculation_Side2.d64"]
-swaps = [{ disk = 2, at = 379.9 }]
+events = [{ at = 379.9, disk = 2 }]
 
 [demozoo.346190]
 title = "Call Me Psycho Music"
@@ -302,7 +302,7 @@ group = "Tropyx"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["Stary_piernik_4a.d64", "Stary_piernik_4b.d64"]
-swaps = [{ disk = 2, at = 53.1, key = "p2fire", key_delay = 49.4 }]
+events = [{ at = 53.1, disk = 2 }, { at = 102.5, key = "p2fire" }]
 
 [demozoo.299086]
 title = "Cat Stevens"
@@ -343,7 +343,7 @@ title = "CCCP Greet"
 group = "Competent Commodore Cracking Pirates"
 source = "script"
 disks = ["cccp.d64", "cccp greet.d64"]
-swaps = [{ disk = 2, at = 92.7, key = "p2fire", key_delay = 52.5 }]
+events = [{ at = 92.7, disk = 2 }, { at = 145.2, key = "p2fire" }]
 boot_file = "cccp greet ....."
 
 [demozoo.178171]
@@ -427,7 +427,7 @@ title = "Cepelia"
 group = "Elysium"
 source = "script"
 disks = ["Cepelia_side1.d64", "Cepelia_side2.d64"]
-swaps = [{ disk = 2, at = 362.9 }]
+events = [{ at = 362.9, disk = 2 }]
 
 [demozoo.358121]
 title = "Chain Intro"
@@ -461,7 +461,7 @@ title = "Changing"
 group = "Astral"
 source = "script"
 disks = ["Changing 1991 (Side 1).d64", "Changing 1991 (Side 2).d64"]
-swaps = [{ disk = 2, at = 171.9, key = "space", key_delay = 17.5 }]
+events = [{ at = 171.9, disk = 2 }, { at = 189.4, key = "space" }]
 
 [demozoo.349859]
 title = "Channel 4"
@@ -501,7 +501,7 @@ group = "Surgeon"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["Stary_piernik_4a.d64", "Stary_piernik_4b.d64"]
-swaps = [{ disk = 2, at = 52.3, key = "p2fire", key_delay = 50.6 }]
+events = [{ at = 52.3, disk = 2 }, { at = 102.9, key = "p2fire" }]
 
 [demozoo.293721]
 title = "Chaos Logo"
@@ -846,7 +846,7 @@ title = "Cleve's music collection"
 group = "Charged"
 source = "script"
 disks = ["cleve.d64", "clevemusiccollection.d64"]
-swaps = [{ disk = 2, at = 147.0, key = "p2fire", key_delay = 49.8 }]
+events = [{ at = 147.0, disk = 2 }, { at = 196.8, key = "p2fire" }]
 
 [demozoo.348656]
 title = "Cleve's music pack"
@@ -1075,7 +1075,7 @@ group = "Booze Design"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["CodeboysAndEndians_1.d64", "CodeboysAndEndians_2.d64"]
-swaps = [{ disk = 2, at = 462.9 }]
+events = [{ at = 462.9, disk = 2 }]
 
 [demozoo.110860]
 title = "Codename: Remoff 98%"
@@ -1192,7 +1192,7 @@ title = "Colossal Pictures"
 group = "Rogue"
 source = "script"
 disks = ["Colossal Pictures (Side 1).d64", "Colossal Pictures (Side 2).d64"]
-swaps = [{ disk = 2, at = 267.2, key = "space", key_delay = 15.1 }]
+events = [{ at = 267.2, disk = 2 }, { at = 282.3, key = "space" }]
 
 [demozoo.184572]
 title = "Colour Blob"
@@ -1234,7 +1234,7 @@ title = "Coma Light 11"
 group = "Oxyron"
 source = "script"
 disks = ["Coma_Light_11_S1.d64", "Coma_Light_11_S2.d64"]
-swaps = [{ disk = 2, at = 107.2, key = "space", key_delay = 18.8 }]
+events = [{ at = 107.2, disk = 2 }, { at = 126.0, key = "space" }]
 boot_file = "-coma  light 11-"
 
 [demozoo.44403]
@@ -1243,7 +1243,7 @@ group = "Oxyron"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["side1.d64", "side2.d64"]
-swaps = [{ disk = 2, at = 454.2, key = "space" }]
+events = [{ at = 454.2, disk = 2 }, { at = 459.2, key = "space" }]
 
 [demozoo.55085]
 title = "Coma Light 4"
@@ -1251,8 +1251,7 @@ group = "Oxyron"
 source = "ai"
 machine = "ntsc_1541"
 disks = ["Coma_Light_04_S1.D64", "Coma_Light_04_S2.D64"]
-swaps = [{ disk = 2, at = 464.4, key = "space", key_delay = 15.6 }]
-keys = [{ at = 117.3, key = "space" }, { at = 146.7, key = "space" }, { at = 176.0, key = "space" }, { at = 205.3, key = "space" }, { at = 234.7, key = "space" }, { at = 264.0, key = "space" }, { at = 293.3, key = "space" }, { at = 322.7, key = "space" }, { at = 352.0, key = "space" }, { at = 381.3, key = "space" }, { at = 410.7, key = "space" }, { at = 440.0, key = "space" }]
+events = [{ at = 117.3, key = "space" }, { at = 146.7, key = "space" }, { at = 176.0, key = "space" }, { at = 205.3, key = "space" }, { at = 234.7, key = "space" }, { at = 264.0, key = "space" }, { at = 293.3, key = "space" }, { at = 322.7, key = "space" }, { at = 352.0, key = "space" }, { at = 381.3, key = "space" }, { at = 410.7, key = "space" }, { at = 440.0, key = "space" }, { at = 464.4, disk = 2 }, { at = 480.0, key = "space" }]
 note = "Coma Light 4: space-driven part chain on side 1 (space every 30M from 120M; space before ~100M breaks the load); last part '09.turn the disk' shows from ~463M; after insert the vector-mania part appears; disk 2: verified: insert 475M + space 16M later -> side 2 part starts; no spaces after 450M (against disk 1 destructive)"
 
 [demozoo.86429]
@@ -1262,8 +1261,7 @@ source = "ai"
 machine = "ntsc_1541"
 sid = "8580"
 disks = ["Coma_Light_05_S1.d64", "Coma_Light_05_S2.d64"]
-swaps = [{ disk = 2, at = 440.0, key = "space", key_delay = 15.6 }]
-keys = [{ at = 117.3, key = "space" }, { at = 146.7, key = "space" }, { at = 176.0, key = "space" }, { at = 205.3, key = "space" }, { at = 234.7, key = "space" }, { at = 264.0, key = "space" }, { at = 293.3, key = "space" }, { at = 322.7, key = "space" }, { at = 352.0, key = "space" }]
+events = [{ at = 117.3, key = "space" }, { at = 146.7, key = "space" }, { at = 176.0, key = "space" }, { at = 205.3, key = "space" }, { at = 234.7, key = "space" }, { at = 264.0, key = "space" }, { at = 293.3, key = "space" }, { at = 322.7, key = "space" }, { at = 352.0, key = "space" }, { at = 440.0, disk = 2 }, { at = 455.6, key = "space" }]
 note = "Coma Light 5: space-driven chain (space every 30M from 120M); 07.turn the disk logo up from ~390M; side 2 starts with TV-pyramid/cube part; disk 2: verified: insert 450M + space +16M -> new part by ~485M; keys stop at 360M"
 
 [demozoo.72221]
@@ -1272,7 +1270,7 @@ group = "Oxyron"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["comalight8-s1.d64", "comalight8-s2.d64"]
-swaps = [{ disk = 2, at = 162.1, key = "space", key_delay = 14.9 }]
+events = [{ at = 162.1, disk = 2 }, { at = 177.0, key = "space" }]
 
 [demozoo.103422]
 title = "Coma Light 9"
@@ -1280,8 +1278,7 @@ group = "Oxyron"
 source = "ai"
 machine = "ntsc_1541"
 disks = ["Coma_Light_09_Side_1.D64", "Coma_Light_09_Side_2.D64"]
-swaps = [{ disk = 2, at = 469.3, key = "space", key_delay = 15.6 }]
-keys = [{ at = 117.3, key = "space" }, { at = 146.7, key = "space" }, { at = 176.0, key = "space" }, { at = 205.3, key = "space" }, { at = 234.7, key = "space" }, { at = 264.0, key = "space" }, { at = 293.3, key = "space" }, { at = 322.7, key = "space" }, { at = 352.0, key = "space" }, { at = 381.3, key = "space" }]
+events = [{ at = 117.3, key = "space" }, { at = 146.7, key = "space" }, { at = 176.0, key = "space" }, { at = 205.3, key = "space" }, { at = 234.7, key = "space" }, { at = 264.0, key = "space" }, { at = 293.3, key = "space" }, { at = 322.7, key = "space" }, { at = 352.0, key = "space" }, { at = 381.3, key = "space" }, { at = 469.3, disk = 2 }, { at = 484.9, key = "space" }]
 note = "Coma Light 9: space-driven chain (space every 30M from 120M); TURN DISK part up from ~419M; side 2 starts with oxyron/conaught sphere part; disk 2: verified: insert 480M + space +16M -> new part by ~500M; keys stop at 390M"
 
 [demozoo.124841]
@@ -1290,7 +1287,7 @@ group = "Censor Design / Oxyron"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["image1.d64", "image2.d64", "image3.d64", "image4.d64"]
-swaps = [{ disk = 2, at = 374.7, key = "space" }, { disk = 3, at = 668.1, key = "space" }, { disk = 4, at = 1075.9 }]
+events = [{ at = 374.7, disk = 2 }, { at = 379.7, key = "space" }, { at = 668.1, disk = 3 }, { at = 673.1, key = "space" }, { at = 1075.9, disk = 4 }]
 
 [demozoo.140070]
 title = "Comaland 100%"
@@ -1298,7 +1295,7 @@ group = "Censor Design / Oxyron"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["image1.d64", "image2.d64", "image3.d64", "image4.d64"]
-swaps = [{ disk = 2, at = 301.8, key = "space", key_delay = 16.5 }, { disk = 3, at = 575.9, key = "space", key_delay = 16.8 }, { disk = 4, at = 894.4 }]
+events = [{ at = 301.8, disk = 2 }, { at = 318.3, key = "space" }, { at = 575.9, disk = 3 }, { at = 592.7, key = "space" }, { at = 894.4, disk = 4 }]
 
 [demozoo.359438]
 title = "Combat  Fool"
@@ -1860,7 +1857,7 @@ title = "Contact Razor"
 group = "System"
 source = "script"
 disks = ["Contact Razor [System].d64", "Contact_Razor_SYS.d64"]
-swaps = [{ disk = 2, at = 147.4, key = "space", key_delay = 17.6 }]
+events = [{ at = 147.4, disk = 2 }, { at = 165.0, key = "space" }]
 
 [demozoo.308691]
 title = "Contact RCA"
@@ -1929,7 +1926,7 @@ title = "Contact Us"
 group = "Bad Karma"
 source = "script"
 disks = ["0979a.d64", "contact_us.d64"]
-swaps = [{ disk = 2, at = 172.8, key = "p2fire", key_delay = 54.1 }]
+events = [{ at = 172.8, disk = 2 }, { at = 226.9, key = "p2fire" }]
 
 [demozoo.206005]
 title = "Contact Us"
@@ -2434,7 +2431,7 @@ title = "Courtesy of Soviet"
 group = "Wrath Designs"
 source = "script"
 disks = ["Courtesy_of_Soviet_-side1-_WRATH-DES.d64", "Courtesy_of_Soviet_-side2-_WRATH-DES.d64"]
-swaps = [{ disk = 2, at = 381.1, key = "space", key_delay = 17.8 }]
+events = [{ at = 381.1, disk = 2 }, { at = 398.9, key = "space" }]
 
 [demozoo.302966]
 title = "Cover-Demo"
@@ -2551,7 +2548,7 @@ group = "Vegeta"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["Symphony 2005 Warez.d64", "You Can't Stop Us!.d64"]
-swaps = [{ disk = 2, at = 74.9, key = "space", key_delay = 17.5 }]
+events = [{ at = 74.9, disk = 2 }, { at = 92.4, key = "space" }]
 
 [demozoo.206294]
 title = "Crazy World"
@@ -2634,7 +2631,7 @@ title = "Crest Slide Story 90%"
 group = "Crest"
 source = "ai"
 disks = ["Crest-CSS_SideA.d64", "Crest-CSS_SideB.d64", "Crest-CSS_SideC.d64", "Crest-CSS_Tooldisk.d64"]
-swaps = [{ disk = 2, at = 782.3 }, { disk = 3, at = 1532.0 }]
+events = [{ at = 782.3, disk = 2 }, { at = 1532.0, disk = 3 }]
 note = "Crest Slide Story: sides A-C are the demo; disk 4 is a standalone tool disk nothing loads"
 
 [demozoo.383071]
@@ -2647,7 +2644,7 @@ title = "Crime of the Century"
 group = "Century"
 source = "script"
 disks = ["Crime_of_the_Century_S1.d64", "Crime_of_the_Century_S2.d64"]
-swaps = [{ disk = 2, at = 99.6, key = "space", key_delay = 13.4 }]
+events = [{ at = 99.6, disk = 2 }, { at = 113.0, key = "space" }]
 
 [demozoo.275771]
 title = "Criminal"
@@ -2817,8 +2814,7 @@ group = "Hitmen"
 source = "ai"
 machine = "ntsc_1541"
 disks = ["Cucumber_Juice_2_SideA.D64", "Cucumber_Juice_2_SideB.D64"]
-swaps = [{ disk = 2, at = 931.8, key = "space", key_delay = 18.1 }]
-keys = [{ at = 73.3, key = "return" }]
+events = [{ at = 73.3, key = "return" }, { at = 931.8, disk = 2 }, { at = 949.9, key = "space" }]
 boot_file = "cucumber juice 2"
 note = "Cucumber Juice 2: setup screen needs Return, long demo, TURN DISK/PRESS SPACE at ~860M; disk 2: setup screen at ~55M, Return at 75M; TURN DISK PRESS SPACE screen waits (no upper limit seen, still up at 1.8G); insert then space"
 
@@ -2861,7 +2857,7 @@ title = "Cyberland"
 group = "Thunders"
 source = "script"
 disks = ["Cyberland_Side_1.d64", "Cyberland_Side_2.d64"]
-swaps = [{ disk = 2, at = 172.2, key = "space", key_delay = 17.3 }]
+events = [{ at = 172.2, disk = 2 }, { at = 189.5, key = "space" }]
 
 [demozoo.368377]
 title = "Cyberland 2"

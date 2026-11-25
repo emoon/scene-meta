@@ -17,6 +17,8 @@ source = "script"
 title = "T.I.L.T."
 group = "Fun Factory"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.224462]
 title = "T.P.B. Video Slate BBS"
@@ -220,7 +222,6 @@ source = "script"
 title = "Tankstellenbande!"
 group = "Birdhouse Projects"
 source = "script"
-result = "unknown"
 
 [demozoo.393579]
 title = "Tanz Debil 1"
@@ -231,6 +232,8 @@ source = "script"
 title = "Tanzen"
 group = "Frost"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.205954]
 title = "Targoor's Demo"
@@ -371,7 +374,6 @@ source = "script"
 title = "TEC's First"
 group = "Dual Crew / X-Men"
 source = "script"
-result = "unknown"
 
 [demozoo.229686]
 title = "Tech Dreams"
@@ -586,6 +588,8 @@ machine = "a500_1mb"
 title = "Teenage Magnetic Fields Ninja Turtles Big Intro"
 group = "Magnetic Fields"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.218734]
 title = "Teenage Mutant Ninja Turtle Demo"
@@ -750,7 +754,8 @@ machine = "a1200_060"
 title = "Ten Years Of Fun"
 group = "Equinox"
 source = "script"
-machine = "a1200_030"
+result = "unknown"
+note = "the sweep saw works on a1200_030; no entry of it passed the gate"
 
 [demozoo.28545]
 title = "Tenebra"
@@ -946,6 +951,7 @@ machine = "a500_1mb"
 title = "Testing It"
 group = "Eremation"
 source = "script"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.296831]
 title = "Testing Testing"
@@ -1018,7 +1024,6 @@ machine = "a1200_030"
 title = "Teu Teu"
 group = "Syndrome"
 source = "script"
-result = "unknown"
 
 [demozoo.98094]
 title = "Tex-tro"
@@ -1210,7 +1215,6 @@ source = "script"
 title = "The 4ko Intro"
 group = "Psykotrope"
 source = "script"
-result = "unknown"
 
 [demozoo.220584]
 title = "The 4th"
@@ -1317,10 +1321,10 @@ source = "script"
 [demozoo.119622]
 title = "The Animatunes"
 group = "New Generation Crew"
-source = "script"
+source = "ai"
 machine = "a1200"
 disks = ["NGC-TheAnimatunesA.DMS", "NGC-TheAnimatunesB.DMS"]
-swaps = [{ disk = 2, at = 40.0 }]
+events = [{ at = 10.0, key = "lmb" }, { at = 40.0, disk = 2 }]
 
 [demozoo.224989]
 title = "The Anime Slideshow 2 Intro"
@@ -1373,7 +1377,8 @@ source = "script"
 title = "The B.I.G. Demo (Amiga Port)"
 group = "The Exceptions / Mr Styckx"
 source = "script"
-machine = "a500_1mb"
+result = "unknown"
+note = "the sweep saw works on a500_1mb; no entry of it passed the gate"
 
 [demozoo.176240]
 title = "The Bad Tongue #3 Announcement"
@@ -1452,7 +1457,6 @@ source = "script"
 title = "The Beginning"
 group = "Unreal"
 source = "script"
-result = "unknown"
 
 [demozoo.221432]
 title = "The Benderlyser"
@@ -1474,6 +1478,7 @@ title = "The Best Demos From the Cryptoburners Party"
 group = "Razor 1911 / Cryptoburners"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.222326]
 title = "The Best of Stryxx"
@@ -1522,7 +1527,7 @@ source = "script"
 title = "The Black"
 group = "Erotic Design"
 source = "script"
-machine = "a1200"
+machine = "a1200_fast"
 
 [demozoo.359965]
 title = "The Blaster"
@@ -1670,7 +1675,6 @@ source = "script"
 title = "The Charts 6 Intro"
 group = "Ram Jam"
 source = "script"
-result = "unknown"
 
 [demozoo.255463]
 title = "The Charts 9 Intro - Little Pinocchio"
@@ -1697,6 +1701,8 @@ source = "script"
 title = "The Clairvoyant-Iron Maiden 4"
 group = "Commando Frontier"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.241356]
 title = "The Clinic BBS Intro"
@@ -1869,7 +1875,7 @@ title = "The Dark Ages"
 group = "Syntex"
 source = "script"
 disks = ["Syntex-DarkAges1.adf", "Syntex-DarkAges2.adf"]
-swaps = [{ disk = 2, at = 840.0 }]
+events = [{ at = 840.0, disk = 2 }]
 
 [demozoo.334345]
 title = "The Dark Ages"
@@ -1931,7 +1937,8 @@ source = "script"
 title = "The Deep Dentro"
 group = "After Eights"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
+note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
 
 [demozoo.342447]
 title = "The Deep Meet"
@@ -2244,9 +2251,9 @@ source = "script"
 [demozoo.185607]
 title = "The Fall"
 group = "The Deadliners / Lemon."
-source = "script"
+source = "ai"
 disks = ["demo.adf", "Demo_d2.adf"]
-swaps = [{ disk = 2, at = 121.6 }]
+note = "plays to 465 s from disk 1 alone; disk 2 put in at 121.6 s leaves it black from 137 s"
 
 [demozoo.2879]
 title = "The Family Robot"
@@ -2431,7 +2438,8 @@ source = "script"
 title = "The Gate"
 group = "Artwork"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
+note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
 
 [demozoo.219754]
 title = "The Gate Keeper Demo"
@@ -2453,7 +2461,7 @@ run = "3_Hoaxers"
 title = "The Gathering 1995 4k Intro"
 group = "Maak"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.217293]
 title = "The Gathering 1997 Invitation"
@@ -2673,7 +2681,8 @@ source = "script"
 title = "The Huib Demo"
 group = "Mellow"
 source = "script"
-machine = "a500_1mb"
+result = "unknown"
+note = "the sweep saw works on a500_1mb; no entry of it passed the gate"
 
 [demozoo.3778]
 title = "The Human Body Is A Curious Contraption"
@@ -2685,6 +2694,8 @@ machine = "a1200_fast"
 title = "The Hunt For 7th October"
 group = "Cryptoburners"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.228599]
 title = "The Hunt For Bussemennene"
@@ -2776,8 +2787,9 @@ source = "script"
 title = "The Intruder"
 group = "Syntex"
 source = "script"
+result = "unknown"
 disks = ["Syntex-TheIntruderA.dms", "Syntex-TheIntruderB.dms"]
-swaps = [{ disk = 2, at = 170.0 }]
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.245242]
 title = "The Jam"
@@ -2819,7 +2831,6 @@ source = "script"
 title = "The Juggler"
 group = "Eric Graham"
 source = "script"
-result = "unknown"
 
 [demozoo.321842]
 title = "The Jungle 9 Intro"
@@ -2831,7 +2842,6 @@ machine = "a1200"
 title = "The Kaleidoscope Demo"
 group = "Fugazi"
 source = "script"
-result = "unknown"
 
 [demozoo.27955]
 title = "The Karakatoes Demo"
@@ -2842,9 +2852,11 @@ machine = "a1200"
 [demozoo.19413]
 title = "The Katto Demo"
 group = "Kiki Productions"
-source = "script"
+source = "ai"
 machine = "a1200_fast"
-run = "1.party"
+result = "broken"
+run = "StartMe"
+note = "StartMe asks START or ABOUT with RequestChoice, which the player has not, and then runs 1.party to 4.party; 1.party alone spins on a white screen from 172 s"
 
 [demozoo.248185]
 title = "The Katto Demo"
@@ -2943,8 +2955,7 @@ source = "script"
 title = "The Last Lemming"
 group = "Intryx"
 source = "script"
-result = "unknown"
-run = "last"
+boot = "floppy"
 
 [demozoo.194928]
 title = "The Last One"
@@ -2959,8 +2970,8 @@ source = "script"
 [demozoo.194634]
 title = "The Last Sun"
 group = "Ackerlight"
-source = "script"
-run = "JOE"
+source = "ai"
+run = "JP"
 
 [demozoo.255335]
 title = "The Last Walk"
@@ -3182,7 +3193,7 @@ source = "script"
 title = "The Mask"
 group = "Mystic"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.248122]
 title = "The Matchpin Intro"
@@ -3261,7 +3272,6 @@ source = "script"
 title = "The Midnight-Intro"
 group = "Fraxion"
 source = "script"
-result = "unknown"
 
 [demozoo.215154]
 title = "The Mighty Zoom"
@@ -3347,6 +3357,8 @@ source = "script"
 title = "The Museum BBS Intro"
 group = "Delight"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.220091]
 title = "The Music From Fantasy World Dizzy"
@@ -3833,7 +3845,8 @@ source = "script"
 title = "The Red Roses"
 group = "Rats"
 source = "script"
-result = "unknown"
+machine = "a500_2mb_chip"
+boot = "floppy"
 
 [demozoo.228738]
 title = "The Reformation Intro"
@@ -3861,7 +3874,7 @@ title = "The Return"
 group = "Joker"
 source = "script"
 disks = ["Joker-ReturnA.adf", "Joker-ReturnB.adf"]
-swaps = [{ disk = 2, at = 117.8 }]
+events = [{ at = 117.8, disk = 2 }]
 
 [demozoo.190935]
 title = "The Return"
@@ -3986,10 +3999,11 @@ source = "script"
 [demozoo.180128]
 title = "The Saturne Day"
 group = "Apex"
-source = "script"
+source = "ai"
 machine = "a1200"
 disks = ["Apex-TheSaturneDayA.adf", "Apex-TheSaturneDayB.adf", "Apex-TheSaturneDayC.adf"]
-swaps = [{ disk = 2, at = 105.0 }, { disk = 3, at = 180.0 }]
+events = [{ at = 75.0, disk = 2 }, { at = 80.0, key = "lmb" }, { at = 250.0, disk = 3 }, { at = 295.0, key = "lmb" }]
+note = "disk 3 has to be in before 'INSERT DISK3 INTO DF0' shows at 285 s, and the click comes after it"
 
 [demozoo.158238]
 title = "The Scrollermaker"
@@ -4357,7 +4371,7 @@ group = "Status OK"
 source = "script"
 machine = "a1200"
 disks = ["disk1.DMS", "disk2.DMS"]
-swaps = [{ disk = 2, at = 42.1, key = "lmb" }]
+events = [{ at = 42.1, disk = 2 }, { at = 47.1, key = "lmb" }]
 
 [demozoo.253520]
 title = "The Terry and Johnny Show"
@@ -4429,6 +4443,8 @@ source = "script"
 title = "The Tower BBS"
 group = "Skid Row"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500_512k; no entry of it passed the gate"
 
 [demozoo.261851]
 title = "The Trader 2 Intro"
@@ -4624,7 +4640,6 @@ result = "unknown"
 title = "The Virus Exterminator Disk V3.0"
 group = "Rebels"
 source = "script"
-result = "unknown"
 
 [demozoo.262768]
 title = "The Vision of a Great Group"
@@ -4673,7 +4688,7 @@ machine = "a500_ks12"
 title = "The Walrus"
 group = "Hotdog Productions"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.246110]
 title = "The Walrus 2"
@@ -4846,7 +4861,6 @@ source = "script"
 title = "The X-mas Release"
 group = "Birdhouse Projects"
 source = "script"
-result = "unknown"
 
 [demozoo.265237]
 title = "The XMas Rat Demo"
@@ -4864,6 +4878,7 @@ title = "The Yard BBS Intro"
 group = "Up Rough"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.210398]
 title = "The-Star-With-The-Hole-Intro"
@@ -4876,6 +4891,7 @@ group = "Apathy"
 source = "script"
 result = "unknown"
 run = "TheByoot.exe"
+note = "the sweep saw works on a500_512k; no entry of it passed the gate"
 
 [demozoo.258714]
 title = "Their 2nd Rebirth"
@@ -5134,6 +5150,8 @@ source = "script"
 title = "This File Passed Rising Hope BBS"
 group = "Warriors of Art"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.223461]
 title = "This Import"
@@ -5543,9 +5561,8 @@ machine = "a1200"
 title = "Time Zone"
 group = "Tristar and Red Sector Inc."
 source = "script"
-machine = "a500_1mb"
 disks = ["TRSI-TimezoneA.DMS", "TRSI-TimezoneB.DMS"]
-swaps = [{ disk = 2, at = 690.0 }]
+note = "the sweep only reached disk 1 of 2"
 
 [demozoo.251130]
 title = "Time's The Remedy"
@@ -5614,7 +5631,6 @@ source = "script"
 title = "Timezone BBS Ad 3"
 group = "Tronix"
 source = "script"
-result = "unknown"
 
 [demozoo.264414]
 title = "Timezone BBS Ad 4"
@@ -5661,7 +5677,7 @@ note = "TBL-Tint.LHA; the 6 floppies are installer disks (disk 1 does not boot)"
 title = "Tintin Inside"
 group = "Candle"
 source = "script"
-machine = "a1200"
+machine = "a1200_fast"
 
 [demozoo.23614]
 title = "Tintology Vogue"
@@ -5710,13 +5726,15 @@ title = "Tiny Squares"
 group = "gigabates"
 source = "script"
 result = "unknown"
+disks = ["._tiny-squares.adf"]
 
 [demozoo.367696]
 title = "Tiny Triangles"
 group = "gigabates"
 source = "script"
-machine = "a500_512k"
 boot = "hd"
+result = "unknown"
+note = "the sweep saw works on a500_512k; no entry of it passed the gate"
 
 [demozoo.195136]
 title = "Tiny Tunes 2"
@@ -5787,7 +5805,8 @@ source = "script"
 title = "TLU-4K"
 group = "Tulou"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
+note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
 
 [demozoo.142975]
 title = "TMC is jarig"
@@ -6108,7 +6127,6 @@ machine = "a1200"
 title = "Top Secret 6 Intro"
 group = "Majic 12"
 source = "script"
-result = "unknown"
 
 [demozoo.240989]
 title = "Top Swap & Onsala Sector"
@@ -6254,7 +6272,7 @@ source = "script"
 title = "Total Extasy Preview"
 group = "Cryptoburners"
 source = "script"
-result = "unknown"
+boot = "floppy"
 
 [demozoo.207380]
 title = "Total Lameness"
@@ -6651,7 +6669,6 @@ run = "TrailWay.exe"
 title = "Trainer Menu Example 2"
 group = "Energy"
 source = "script"
-result = "unknown"
 
 [demozoo.212362]
 title = "Trainer Menu Example 3"
@@ -7217,8 +7234,7 @@ run = "Part2"
 title = "Trip Trough Your 64 II"
 group = "The Feigling Crew"
 source = "script"
-result = "unknown"
-run = "Part4"
+boot = "floppy"
 
 [demozoo.297182]
 title = "Tripaloski"
@@ -7433,7 +7449,6 @@ source = "script"
 title = "True Stress"
 group = "Shining"
 source = "script"
-result = "unknown"
 
 [demozoo.6111]
 title = "True Stress II"
@@ -7695,7 +7710,7 @@ source = "script"
 title = "Turn Around"
 group = "Underflow"
 source = "script"
-result = "unknown"
+machine = "a1200"
 run = "!tURN-aRoUND!"
 
 [demozoo.182931]
@@ -7916,7 +7931,7 @@ group = "Polka Brothers"
 source = "script"
 machine = "a1200_030"
 disks = ["PB-Twisted-A.DMS", "PB-Twisted-B.DMS", "PB-Twisted-C.DMS", "PB-Twisted-D.DMS"]
-swaps = [{ disk = 2, at = 54.1 }, { disk = 3, at = 240.8 }, { disk = 4, at = 344.2 }]
+events = [{ at = 54.1, disk = 2 }, { at = 240.8, disk = 3 }, { at = 344.2, disk = 4 }]
 
 [demozoo.241767]
 title = "Twisted"

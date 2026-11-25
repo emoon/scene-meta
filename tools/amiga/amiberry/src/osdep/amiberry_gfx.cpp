@@ -1713,6 +1713,41 @@ int save_thumb(const std::string& path)
 	return ret;
 }
 
+/* The box of the screenshot's pixels that are not the border's: ``box`` gets
+ * x0, y0, x1, y1 (the last two not included), ``w`` and ``h`` the picture's
+ * size. The border is the pixel SCREEN_EDGE in from the top left, and the
+ * edge outside it is not looked at: the picture's first rows and columns are
+ * blanked. Returns 1 with a box, 0 when every pixel is the border's, -1 with
+ * no screenshot. */
+#define SCREEN_EDGE 8
+int screenshot_box(int* w, int* h, int box[4])
+{
+	SDL_Surface* s = current_screenshot;
+	if (s == nullptr || s->w <= 2 * SCREEN_EDGE || s->h <= 2 * SCREEN_EDGE)
+		return -1;
+	const int bpp = SDL_BYTESPERPIXEL(s->format);
+	const auto* pixels = static_cast<const uae_u8*>(s->pixels);
+	const auto* border = pixels + (size_t)SCREEN_EDGE * s->pitch + (size_t)SCREEN_EDGE * bpp;
+	int x0 = s->w, y0 = s->h, x1 = 0, y1 = 0;
+	for (int y = SCREEN_EDGE; y < s->h - SCREEN_EDGE; y++) {
+		const auto* row = pixels + (size_t)y * s->pitch;
+		for (int x = SCREEN_EDGE; x < s->w - SCREEN_EDGE; x++) {
+			if (memcmp(row + (size_t)x * bpp, border, bpp) != 0) {
+				x0 = std::min(x0, x);
+				x1 = std::max(x1, x + 1);
+				y0 = std::min(y0, y);
+				y1 = y + 1;
+			}
+		}
+	}
+	*w = s->w;
+	*h = s->h;
+	box[0] = x0, box[1] = y0, box[2] = x1, box[3] = y1;
+	SDL_DestroySurface(current_screenshot);
+	current_screenshot = nullptr;
+	return x1 > x0 ? 1 : 0;
+}
+
 /* The pixels of the last picture save_thumb_if_new kept: a frame is new when
  * enough of its pixels differ from them. */
 static struct {

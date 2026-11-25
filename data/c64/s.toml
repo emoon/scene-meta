@@ -305,7 +305,7 @@ title = "Scarlet Music Collection"
 group = "Samar Productions"
 source = "script"
 disks = ["Scarlet Music Collection.d64", "Scarlet_Music_Collection.D64"]
-swaps = [{ disk = 2, at = 147.1, key = "space", key_delay = 18.3 }]
+events = [{ at = 147.1, disk = 2 }, { at = 165.4, key = "space" }]
 
 [demozoo.196526]
 title = "Scatter Raster Intro"
@@ -332,7 +332,7 @@ title = "Schaedelhammer"
 group = "The Ultimate Mayas"
 source = "script"
 disks = ["CH2K-SI1.D64", "CH2K-SI2.D64"]
-swaps = [{ disk = 2, at = 185.3, key = "p2fire" }]
+events = [{ at = 185.3, disk = 2 }, { at = 190.3, key = "p2fire" }]
 
 [demozoo.324964]
 title = "Schnapps"
@@ -431,7 +431,7 @@ group = "Fairlight / Prosonix / Offence"
 source = "ai"
 machine = "pal_1541_8580"
 disks = ["scrollwars_(a)_rc2.d64", "scrollwars_(b)_rc2.d64", "scrollwars_(c)_rc2.d64"]
-swaps = [{ disk = 2, at = 477.0, key = "space", key_delay = 14.2 }, { disk = 3, at = 862.7, key = "space", key_delay = 12.2 }]
+events = [{ at = 477.0, disk = 2 }, { at = 491.2, key = "space" }, { at = 862.7, disk = 3 }, { at = 874.9, key = "space" }]
 note = "Scrollwars: 3 disks (a,b,c); 'INSERT NEXT DISK' then space ~13M after the insert; ends on THE END card; disk 2: verified; disk 3: verified; second prompt appears ~320M after disk 2 chain starts"
 
 [demozoo.345240]
@@ -487,7 +487,7 @@ title = "Seaworld"
 group = "Blazon"
 source = "script"
 disks = ["blazon-seaworld.d64", "seaworld.d64"]
-swaps = [{ disk = 2, at = 144.0, key = "space", key_delay = 18.1 }]
+events = [{ at = 144.0, disk = 2 }, { at = 162.1, key = "space" }]
 
 [demozoo.321482]
 title = "Second"
@@ -512,8 +512,7 @@ group = "Smash Designs / The Obsessed Maniacs"
 source = "ai"
 machine = "pal_1541_8580"
 disks = ["2ndReality_S1.D64", "2ndReality_S2.D64"]
-swaps = [{ disk = 2, at = 481.1, key = "space", key_delay = 15.2 }]
-keys = [{ at = 131.9, key = "1" }, { at = 167.5, key = "left" }, { at = 187.8, key = "return" }]
+events = [{ at = 131.9, key = "1" }, { at = 167.5, key = "left" }, { at = 187.8, key = "return" }, { at = 481.1, disk = 2 }, { at = 496.3, key = "space" }]
 boot_file = "second reality ."
 note = "Second Reality: menu 1, config screen needs Left (soundcard SID) then Return, then 'please insert side 2'; disk 2: menu at ~120M; config screen ~140M: Left selects SID, Return; 'please insert side 2' waits (still up 250M later); keys Left/Return need monkeypatch xinput.Keys.SYMS['Left']='Left'"
 
@@ -1523,7 +1522,7 @@ title = "Skåneland 2"
 group = "Fairlight"
 source = "script"
 disks = ["skaaneland2-disk-a.d64", "skaaneland2-disk-b.d64"]
-swaps = [{ disk = 2, at = 606.3 }]
+events = [{ at = 606.3, disk = 2 }]
 
 [demozoo.200303]
 title = "Skånskt Madademo"
@@ -1717,7 +1716,7 @@ title = "Snapshot"
 group = "Glance"
 source = "script"
 disks = ["glance_snapshot_a.d64", "glance_snapshot_b.d64"]
-swaps = [{ disk = 2, at = 601.0, key = "space" }]
+events = [{ at = 601.0, disk = 2 }, { at = 606.0, key = "space" }]
 
 [demozoo.348597]
 title = "Snapshots of LiQid '95 Party"
@@ -1862,14 +1861,14 @@ title = "Soiled Legacy"
 group = "Resource"
 source = "script"
 disks = ["soiled1.d64", "soiled2.d64"]
-swaps = [{ disk = 2, at = 385.7 }]
+events = [{ at = 385.7, disk = 2 }]
 
 [demozoo.336701]
 title = "Solar Eclipse"
 group = "Century"
 source = "script"
 disks = ["Century-Solar_Eclipse_S1.d64", "Century-Solar_Eclipse_S2.d64"]
-swaps = [{ disk = 2, at = 141.5, key = "space", key_delay = 18.1 }]
+events = [{ at = 141.5, disk = 2 }, { at = 159.6, key = "space" }]
 
 [demozoo.336194]
 title = "Solar Wind"
@@ -2043,7 +2042,7 @@ title = "Sonic"
 group = "Triumwyrat"
 source = "script"
 disks = ["SONIC_A.D64", "SONIC_B.D64"]
-swaps = [{ disk = 2, at = 154.9, key = "space", key_delay = 11.8 }]
+events = [{ at = 154.9, disk = 2 }, { at = 166.7, key = "space" }]
 
 [demozoo.349392]
 title = "Sonic Blast"
@@ -2060,7 +2059,7 @@ title = "Sonic Temple"
 group = "Shade"
 source = "script"
 disks = ["sonic temple.d64", "Sonic_Temple.D64"]
-swaps = [{ disk = 2, at = 150.0, key = "space", key_delay = 18.1 }]
+events = [{ at = 150.0, disk = 2 }, { at = 168.1, key = "space" }]
 
 [demozoo.368484]
 title = "Sonic Tonic"
@@ -2138,7 +2137,7 @@ group = "Booze Design"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["Soul_Side1.D64", "Soul_Side2.D64"]
-swaps = [{ disk = 2, at = 176.5 }]
+events = [{ at = 176.5, disk = 2 }]
 
 [demozoo.348666]
 title = "Sound & Vision"
@@ -2160,7 +2159,7 @@ title = "Sound Collection 5"
 group = "Gloom"
 source = "script"
 disks = ["SC5_S1.d64", "SC5_S2.d64"]
-swaps = [{ disk = 2, at = 120.6, key = "space", key_delay = 17.3 }]
+events = [{ at = 120.6, disk = 2 }, { at = 137.9, key = "space" }]
 
 [demozoo.349987]
 title = "Sound Demo"
@@ -2283,7 +2282,7 @@ title = "Soya 50yo"
 group = "Fairlight"
 source = "script"
 disks = ["soya-50yo-36417cd4-a.d64", "soya-50yo-36417cd4-b.d64"]
-swaps = [{ disk = 2, at = 169.2 }]
+events = [{ at = 169.2, disk = 2 }]
 
 [demozoo.266531]
 title = "sp05 - the commodore demo"
@@ -2468,14 +2467,14 @@ group = "Panic"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["panic_speedway_2-a.d64", "panic_speedway_2-b.d64"]
-swaps = [{ disk = 2, at = 427.2, key = "space", key_delay = 16.8 }]
+events = [{ at = 427.2, disk = 2 }, { at = 444.0, key = "space" }]
 
 [demozoo.22696]
 title = "Speedway 3"
 group = "Panic"
 source = "script"
 disks = ["Speedway_3_S1.D64", "Speedway_3_S2.D64"]
-swaps = [{ disk = 2, at = 420.8, key = "space", key_delay = 16.6 }]
+events = [{ at = 420.8, disk = 2 }, { at = 437.4, key = "space" }]
 
 [demozoo.361472]
 title = "Speedy Gonzales"
@@ -2504,8 +2503,7 @@ group = "Horizon / Instinct / Triad"
 source = "ai"
 machine = "ntsc_1541"
 disks = ["sphaeristerium-a.d64", "sphaeristerium-b.d64"]
-swaps = [{ disk = 2, at = 171.1 }]
-keys = [{ at = 39.1, key = "d" }]
+events = [{ at = 39.1, key = "d" }, { at = 171.1, disk = 2 }]
 note = "Sphaeristerium: boot intro's SID-noise screen melt never finishes in VICE (needs poke c444=46 at ~25M to exit), then 'Demo or Note' needs key D; disk 2: no key after the insert; loader idles with motor on after the afro picture (~153M) and takes side B within 2.5M; upper limit not tested"
 
 [demozoo.336237]
@@ -2640,7 +2638,7 @@ title = "Spring Loda"
 group = "Vulture"
 source = "script"
 disks = ["Symphony 2005 Warez.d64", "You Can't Stop Us!.d64"]
-swaps = [{ disk = 2, at = 74.7, key = "space", key_delay = 17.5 }]
+events = [{ at = 74.7, disk = 2 }, { at = 92.2, key = "space" }]
 
 [demozoo.305913]
 title = "Sprite Bukkake"
@@ -2907,7 +2905,7 @@ title = "Steam"
 group = "Lithium"
 source = "script"
 disks = ["0206b.d64", "steam.d64"]
-swaps = [{ disk = 2, at = 152.7, key = "p1fire", key_delay = 36.1 }]
+events = [{ at = 152.7, disk = 2 }, { at = 188.8, key = "p1fire" }]
 
 [demozoo.302412]
 title = "Stepy Debilizmu"
@@ -2920,7 +2918,7 @@ group = "Phonics"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["phonics-stereo-a.d64", "phonics-stereo-b.d64"]
-swaps = [{ disk = 2, at = 293.5 }]
+events = [{ at = 293.5, disk = 2 }]
 
 [demozoo.373138]
 title = "Stereo Pendejo"
@@ -2935,7 +2933,7 @@ group = "Phonics"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["phonics-stereo-a.d64", "phonics-stereo-b.d64"]
-swaps = [{ disk = 2, at = 293.7 }]
+events = [{ at = 293.7, disk = 2 }]
 
 [demozoo.135542]
 title = "Stereophonik [2sid]"
@@ -2987,7 +2985,7 @@ title = "Still Rising"
 group = "Artline / Bloodsuckers / Extend / Orange"
 source = "script"
 disks = ["BSK-StillRising-disk1.d64", "BSK-StillRising-disk2.d64"]
-swaps = [{ disk = 2, at = 227.3 }]
+events = [{ at = 227.3, disk = 2 }]
 
 [demozoo.370634]
 title = "Still Standing"
@@ -3042,7 +3040,7 @@ group = "Klax"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["Symphony 2005 Warez.d64", "You Can't Stop Us!.d64"]
-swaps = [{ disk = 2, at = 73.3, key = "space", key_delay = 18.4 }]
+events = [{ at = 73.3, disk = 2 }, { at = 91.7, key = "space" }]
 
 [demozoo.350938]
 title = "Stone Cold"
@@ -3248,7 +3246,7 @@ title = "Sud Islamica"
 group = "Rizing"
 source = "script"
 disks = ["Sud Islamica.d64", "sudislamica-rizing.d64"]
-swaps = [{ disk = 2, at = 158.0, key = "p1fire", key_delay = 35.5 }]
+events = [{ at = 158.0, disk = 2 }, { at = 193.5, key = "p1fire" }]
 
 [demozoo.359741]
 title = "Suicide"
@@ -3299,7 +3297,7 @@ title = "Summer Haze"
 group = "Breeze Designs"
 source = "script"
 disks = ["0010b.d64", "SummerHaze.d64"]
-swaps = [{ disk = 2, at = 210.9, key = "space", key_delay = 18.0 }]
+events = [{ at = 210.9, disk = 2 }, { at = 228.9, key = "space" }]
 
 [demozoo.347141]
 title = "Summer Lames"
@@ -3353,7 +3351,7 @@ title = "Super 16"
 group = "Triad"
 source = "script"
 disks = ["TRIAD_SUPER16 SIDE A.d64", "TRIAD_SUPER16 SIDE B.d64"]
-swaps = [{ disk = 2, at = 205.0 }]
+events = [{ at = 205.0, disk = 2 }]
 
 [demozoo.366010]
 title = "Super Demo"
@@ -3447,7 +3445,7 @@ title = "Supremacy 2"
 group = "Jazzcat"
 source = "ai"
 disks = ["supremacy2-a.d64", "supremacy2-b.d64"]
-swaps = [{ disk = 2, at = 104.5, until = 143.1 }]
+events = [{ at = 104.5, disk = 2, until = 143.1 }]
 note = "Supremacy 2: only inserts made while the drive port is 0xde (motor and LED solid) work; disk 2: after a random 8M-72M cycles the port drops to 0xd2 and no insert works any more; no key helps"
 
 [demozoo.60869]
@@ -3694,7 +3692,7 @@ title = "Synthetics"
 group = "Amigo"
 source = "script"
 disks = ["Synthetics.d64", "synthetics_alt_crunch-amigo.d64"]
-swaps = [{ disk = 2, at = 148.4, key = "space", key_delay = 16.8 }]
+events = [{ at = 148.4, disk = 2 }, { at = 165.2, key = "space" }]
 
 [demozoo.126064]
 title = "SYNTRO"

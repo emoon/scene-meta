@@ -13,10 +13,15 @@ that a demo can depend on to a boot directory:
   topaz 8 everybody had. Count Duckula's trainer renders its scroller with
   Text() into an 8 line bitmap placed right before its own code, and a 9th
   line overwrites the next instruction.
-- Disk-based libraries (LIBS_DIR, optional: they come from a Workbench
-  disk): Motion Blur gurus when mathieeedoubbas.library does not open. A
+- Disk-based libraries (LIBS_DIR: they come from a Workbench disk, and
+  ``require_libs`` stops a run without them): Motion Blur gurus when mathieeedoubbas.library does not open. A
   library goes in only when a file of the tree names it (a floppy fallback
   has no room for them all), apart from the math libraries.
+- C:Assign, when the tree has none: a launcher script assigns a name its
+  parts load from (J: ``assign dev: ""``). Ours takes ``name: path`` only
+  and needs Kickstart 2.
+
+It also puts GO_ON there, for a script to run first.
 """
 
 import os
@@ -24,9 +29,14 @@ import pathlib
 import shutil
 import struct
 
+from ..core.errors import CannotPlay
 from . import config
 
 SETUP = "s/scenemeta-setup"
+# A script that runs this first goes on past a command that fails with less
+# than 21: one the download lacks (the author's own fadeout) fails with 10.
+# Kickstart 2 and later.
+GO_ON = "s/scenemeta-go-on"
 
 # Copied even when no file names them: packed executables hide the names.
 ALWAYS_LIBS = {"mathtrans.library", "mathieeedoubbas.library",
@@ -102,20 +112,132 @@ _CODE = bytes.fromhex(
 ) + b"dos.library\0RAM:ENV\0ENV\0"   # ba, c6, ce
 
 
+# 68000 code, position independent. The arguments are ``name: path``, the
+# path in quotes or not:
+#   if !(dos = OpenLibrary("dos.library", 36)): return 20
+#   ok = (lock = Lock(path, SHARED_LOCK)) && AssignLock(name, lock)
+#   CloseLibrary(dos)
+#   return ok ? 0 : 20
+_ASSIGN_CODE = bytes.fromhex(
+    "2448"          # 00 movea.l a0,a2
+    "2c780004"      # 02 movea.l 4.w,a6
+    "43fa008a"      # 06 lea     dosname(pc),a1
+    "7024"          # 0a moveq   #36,d0
+    "4eaefdd8"      # 0c jsr     OpenLibrary(a6)
+    "4a80"          # 10 tst.l   d0
+    "677a"          # 12 beq.s   nodos
+    "2c40"          # 14 movea.l d0,a6
+    "0c1a0020"      # 16 name: cmpi.b #' ',(a2)+
+    "67fa"          # 1a beq.s   name
+    "538a"          # 1c subq.l  #1,a2
+    "260a"          # 1e move.l  a2,d3
+    "101a"          # 20 colon: move.b (a2)+,d0
+    "0c000020"      # 22 cmpi.b  #' ',d0
+    "6552"          # 26 bcs.s   bad             (the line ends: no name)
+    "0c00003a"      # 28 cmpi.b  #':',d0
+    "66f2"          # 2c bne.s   colon
+    "422affff"      # 2e clr.b   -1(a2)
+    "0c1a0020"      # 32 path: cmpi.b #' ',(a2)+
+    "67fa"          # 36 beq.s   path
+    "538a"          # 38 subq.l  #1,a2
+    "0c120022"      # 3a cmpi.b  #'"',(a2)
+    "6614"          # 3e bne.s   bare
+    "528a"          # 40 addq.l  #1,a2
+    "220a"          # 42 move.l  a2,d1
+    "101a"          # 44 quoted: move.b (a2)+,d0
+    "0c000020"      # 46 cmpi.b  #' ',d0
+    "6510"          # 4a bcs.s   end
+    "0c000022"      # 4c cmpi.b  #'"',d0
+    "66f2"          # 50 bne.s   quoted
+    "6008"          # 52 bra.s   end
+    "220a"          # 54 bare: move.l a2,d1
+    "0c1a0020"      # 56 word: cmpi.b #' ',(a2)+
+    "62fa"          # 5a bhi.s   word
+    "422affff"      # 5c end: clr.b -1(a2)
+    "74fe"          # 60 moveq   #ACCESS_READ,d2
+    "4eaeffac"      # 62 jsr     Lock(a6)
+    "2400"          # 66 move.l  d0,d2
+    "6710"          # 68 beq.s   bad
+    "2203"          # 6a move.l  d3,d1
+    "4eaefd9c"      # 6c jsr     AssignLock(a6)
+    "4a80"          # 70 tst.l   d0
+    "660a"          # 72 bne.s   ok
+    "2202"          # 74 move.l  d2,d1           (the lock is still ours)
+    "4eaeffa6"      # 76 jsr     UnLock(a6)
+    "7814"          # 7a bad: moveq #20,d4
+    "6002"          # 7c bra.s   close
+    "7800"          # 7e ok: moveq #0,d4
+    "224e"          # 80 close: movea.l a6,a1
+    "2c780004"      # 82 movea.l 4.w,a6
+    "4eaefe62"      # 86 jsr     CloseLibrary(a6)
+    "2004"          # 8a move.l  d4,d0
+    "4e75"          # 8c rts
+    "7014"          # 8e nodos: moveq #20,d0
+    "4e75"          # 90 rts
+) + b"dos.library\0"   # 92
+
+# 68000 code, position independent: FailAt 21. A program, as a ``failat``
+# line is itself an unknown command on Kickstart 1.x and ends the script
+# there; 1.x ends it at the next unknown command all the same.
+#   if (cli = BADDR(FindTask(0)->pr_CLI)): cli->cli_FailLevel = 21
+#   return 0
+_GO_ON_CODE = bytes.fromhex(
+    "2c780004"      # 00 movea.l 4.w,a6
+    "93c9"          # 04 suba.l  a1,a1
+    "4eaefeda"      # 06 jsr     FindTask(a6)
+    "2040"          # 0a movea.l d0,a0
+    "202800ac"      # 0c move.l  pr_CLI(a0),d0
+    "670a"          # 10 beq.s   out
+    "e588"          # 12 lsl.l   #2,d0
+    "2040"          # 14 movea.l d0,a0
+    "7015"          # 16 moveq   #21,d0
+    "21400014"      # 18 move.l  d0,cli_FailLevel(a0)
+    "7000"          # 1c out: moveq #0,d0
+    "4e75"          # 1e rts
+)
+
+
 def setup_exe():
-    """The setup program as an AmigaDOS executable (one code hunk)."""
-    code = _CODE + b"\0" * (-len(_CODE) % 4)
+    """The setup program as an AmigaDOS executable."""
+    return _exe(_CODE)
+
+
+def go_on_exe():
+    """The program GO_ON names, as an AmigaDOS executable."""
+    return _exe(_GO_ON_CODE)
+
+
+def assign_exe():
+    """Our C:Assign as an AmigaDOS executable."""
+    return _exe(_ASSIGN_CODE)
+
+
+def _exe(code):
+    """``code`` as an AmigaDOS executable (one code hunk)."""
+    code += b"\0" * (-len(code) % 4)
     n = len(code) // 4
     return (struct.pack(">6I", 0x3F3, 0, 1, 0, 0, n)
             + struct.pack(">2I", 0x3E9, n) + code + struct.pack(">I", 0x3F2))
 
 
 def _subdir(root, name):
-    """``root``/``name``, matched without case as AmigaDOS would."""
+    """``root``/``name``, matched without case as AmigaDOS would; None
+    when a file of the tree has the name, so no directory can."""
     for p in root.iterdir():
-        if p.is_dir() and p.name.lower() == name:
-            return p
+        if p.name.lower() == name:
+            return p if p.is_dir() else None
     return root / name
+
+
+def require_libs(libs_dir=None):
+    """Raise unless the libraries no run does without are there: without
+    them a demo that opens one ends at the prompt, and the run reads as a
+    production doing nothing."""
+    libs_dir = config.LIBS_DIR if libs_dir is None else libs_dir
+    have = ({p.name.lower() for p in libs_dir.iterdir()}
+            if libs_dir.is_dir() else set())
+    if missing := sorted(ALWAYS_LIBS - have):
+        raise CannotPlay(f"no {', '.join(missing)} in {libs_dir}")
 
 
 def prepare(root, command, libs_dir=None):
@@ -123,14 +245,24 @@ def prepare(root, command, libs_dir=None):
     startup-sequence text): the setup program runs first, and libraries
     from ``libs_dir`` the tree does not have go into its libs."""
     s = _subdir(root, "s")
+    if s is None:
+        raise CannotPlay("no place for the startup-sequence: the download"
+                         " has a file named S")
     s.mkdir(exist_ok=True)
     (s / SETUP.split("/")[1]).write_bytes(setup_exe())
+    (s / GO_ON.split("/")[1]).write_bytes(go_on_exe())
     (s / "startup-sequence").write_text(
         f"{SETUP}\n{command}", encoding="latin-1")   # AmigaDOS charset
+    c = _subdir(root, "c")
+    if c is not None and (not c.is_dir()
+                          or "assign" not in {p.name.lower()
+                                              for p in c.iterdir()}):
+        c.mkdir(exist_ok=True)
+        (c / "Assign").write_bytes(assign_exe())
     libs_dir = config.LIBS_DIR if libs_dir is None else libs_dir
-    if not libs_dir.is_dir():
-        return
     libs = _subdir(root, "libs")
+    if not libs_dir.is_dir() or libs is None:
+        return
     have = {p.name.lower() for p in libs.iterdir()} if libs.is_dir() else set()
     for lib in _wanted_libs(root, libs_dir):
         if lib.name.lower() not in have:

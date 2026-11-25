@@ -128,7 +128,7 @@ group = "Lethargy"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["GAMERTRO Side #1 [Lethargy].d64", "GAMERTRO Side #2 [Lethargy].d64"]
-swaps = [{ disk = 2, at = 468.1 }]
+events = [{ at = 468.1, disk = 2 }]
 
 [demozoo.154538]
 title = "Gamerz Xtreme Intro"
@@ -217,7 +217,7 @@ title = "GBA Basketball: Two on Two"
 group = "Eagle Soft Incorporated / Tuerk's Cracker Incorperation"
 source = "script"
 disks = ["gb.d64", "TwoOnTwo.d64"]
-swaps = [{ disk = 2, at = 133.9, key = "space", key_delay = 19.6 }]
+events = [{ at = 133.9, disk = 2 }, { at = 153.5, key = "space" }]
 
 [demozoo.285032]
 title = "GCC Demo XIV"
@@ -338,7 +338,7 @@ title = "Get in the Van"
 group = "Atlantis"
 source = "script"
 disks = ["get_in_the_van_28side_a_main29.d64", "get_in_the_van_28side_b_transwarp29.d64"]
-swaps = [{ disk = 2, at = 182.7, key = "p1fire", key_delay = 33.0 }]
+events = [{ at = 182.7, disk = 2 }, { at = 215.7, key = "p1fire" }]
 
 [demozoo.184442]
 title = "Get Into It"
@@ -542,7 +542,7 @@ title = "Glory 2"
 group = "Cocyne"
 source = "script"
 disks = ["Cocyne - Glory 2 (Side 1).d64", "Cocyne - Glory 2 (Side 2).d64"]
-swaps = [{ disk = 2, at = 63.2, key = "space", key_delay = 19.7 }]
+events = [{ at = 63.2, disk = 2 }, { at = 82.9, key = "space" }]
 
 [demozoo.325556]
 title = "Glory 3"
@@ -574,8 +574,7 @@ title = "Go Gray"
 group = "Profik"
 source = "ai"
 disks = ["go_gray_s1.d64", "go_gray_s2.d64"]
-swaps = [{ disk = 2, at = 218.2, until = 232.4 }]
-keys = [{ at = 60.9, key = "space" }]
+events = [{ at = 60.9, key = "space" }, { at = 218.2, disk = 2, until = 232.4 }]
 note = "Go Gray: slideshow; the 'Flip Disc' picture is up only ~17 s; disk 2: space on the title page; no key after the insert; later inserts fail, disk 1 has looped"
 
 [demozoo.330725]
@@ -609,7 +608,7 @@ group = "Fairlight / Noice / Offence"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["GoatLight(A).d64", "GoatLight(B).d64"]
-swaps = [{ disk = 2, at = 487.7 }]
+events = [{ at = 487.7, disk = 2 }]
 
 [demozoo.24474]
 title = "Goatology"
@@ -1066,7 +1065,7 @@ title = "Gunnar 2: Galne Gunnar"
 group = "Dual Crew"
 source = "script"
 disks = ["gunnar_a.d64", "gunnar_b.d64"]
-swaps = [{ disk = 2, at = 143.1, key = "space", key_delay = 17.8 }]
+events = [{ at = 143.1, disk = 2 }, { at = 160.9, key = "space" }]
 
 [demozoo.158807]
 title = "Gunnar Sa OK!"

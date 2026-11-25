@@ -38,6 +38,7 @@ its `USE_*` feature off, so removing it breaks the build.
   `watch set ADDR SIZE | watch clear`, `disasm ADDR [N]` (raw
   opcode words — disassemble host-side with capstone), `load ADDR PATH`,
   `disk swap-next|insert|status|autoswap on|click|off`,
+  `display measure on [os=ADDR] | off | status`,
   `input mouse BTN down|up | mouse move|rel X Y |
   mouse click|doubleclick [BTN] | joy PORT BTN down|up | key CODE down|up`
   (inject input for game testing — trainers wait for mouse clicks; button and
@@ -175,6 +176,30 @@ its `USE_*` feature off, so removing it breaks the build.
   (killing the window), while a genuinely rolled-back real wait just
   retries. `autoswap-exhausted` is one-shot: after the last disk is in,
   its own monitor phases keep firing the detector.
+- `src/dbgproto.cpp`, `src/custom.cpp` (`dbgproto_note_line`),
+  `src/osdep/amiberry_gfx.cpp` (`screenshot_box`) — **display measure**:
+  where a run shows bitplanes, from the registers. `display measure on`
+  starts it from nothing, `display measure off` stops it. While it is on,
+  the end of every line notes whether the line was shown (bitplane DMA on,
+  planes in BPLCON0, inside the vertical display window, outside vertical
+  blank) and between which columns: those the horizontal display window
+  and the fetch from DDFSTRT to DDFSTOP share, in lores pixels as DIWSTRT
+  counts them ($81 is the first of a standard screen). Nothing else is
+  touched, so a run is the same with the measure on. The counts are kept
+  apart per mode: the resolution (`res`: 0 lores, 1 hires, 2 super-hires),
+  interlaced or not (`lace`), and whether COP1LC was the ADDR given as
+  `os=` (hex) on every line (`os`: the system's copper list; `status` now
+  answers `cop1lc`, so a bare boot tells it). A frame is of the finest
+  mode its lines had. `display status` answers `modes`, of each that showed
+  a line its `res`, `lace`, `os`, `frames` (those that showed a line),
+  `rows` and `cols` (stretches `[from, to, frames]`, `to` not included: in
+  how many frames each line and column was shown), then `diw` (`[DIWSTRT, DIWSTOP, lines]` of the
+  shown lines, 32 pairs at most, `more_diw` when there were others) and
+  `screen`: the size of the picture a screenshot would give now and, as
+  `box`, the box of its pixels that are not the border's colour, the
+  border being the pixel 8 in from the top left (the first rows and
+  columns of the picture are blanked). A line's number is one more than
+  the line DIWSTRT names.
 - `src/dbgproto.cpp` (r2-scene-db) — `disk autoswap ... idle=N anycyl`:
   `anycyl` drops the idle trigger's df0-at-cyl-0 gate. Soul Kitchen shows
   "Insert disk 2.." waiting for LMB with the head parked at cyl 75, motor
@@ -349,7 +374,7 @@ and ~100 MB RSS under warp, so keep the job count at or below the core count
 ## Known accuracy note
 
 Unlike the Lite snapshot, v8.2.2's default cycle-exact chipset is WinUAE-synced
-and renders the demos in this corpus (including the Rink a Dink Redux plasma)
+and renders the demos of this data set (including the Rink a Dink Redux plasma)
 without the lower-right dropout Lite showed. If a future divergence from real
 hardware turns up, check whether it also reproduces in stock upstream Amiberry
 before assuming it is a local-patch regression.

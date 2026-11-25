@@ -1,49 +1,82 @@
+import dataclasses
 import pathlib
 import tempfile
+import threading
 import unittest
 from unittest import mock
 
 from scenemeta.amiga import machines, player
 from scenemeta.amiga.emulator import RunLog, Sample
+from scenemeta.amiga.verdict import Verdict
 from scenemeta.core.errors import BadEntry, CannotPlay
+from scenemeta.core.gate import Play, SwapTaken
+from scenemeta.core.result import Area
 
 
 def samples(spec):
-    """spec: ``(frame, last_dma, head cylinder of DF0)`` per sample."""
+    """spec: ``(frame, last_dma, head cylinder of DF0, of DF1...)`` per
+    sample."""
     return [Sample(frame=f, pc=0, dmacon=0, bplcon0=0, resets=0, df0="",
-                   shot="", last_dma=dma, cyls=[cyl]) for f, dma, cyl in spec]
+                   shot="", last_dma=dma, cyls=cyls) for f, dma, *cyls in spec]
 
 
 class ActionsTest(unittest.TestCase):
     ENTRY = {"disks": ["a.adf", "b.adf", "c.adf"],
-             "swaps": [{"disk": 2, "at": 66.1, "key": "lmb"},
-                       {"disk": 3, "at": 120.0}]}
+             "events": [{"at": 66.1, "disk": 2}, {"at": 71.1, "key": "lmb"},
+                        {"at": 120.0, "disk": 3}]}
 
     def test_as_written(self):
-        # The key goes down 5 s after its insert.
         self.assertEqual(player.actions(self.ENTRY), [
-            (3305, "insert", 0), (3555, "click", 0), (6000, "insert", 1)])
+            (3305, "insert", (0, 0)), (3555, "press", "lmb"), (6000, "insert", (1, 0))])
 
     def test_without_the_keys(self):
         self.assertEqual(player.actions(self.ENTRY, keys=False),
-                         [(3305, "insert", 0), (6000, "insert", 1)])
+                         [(3305, "insert", (0, 0)), (6000, "insert", (1, 0))])
 
-    def test_key_delay(self):
+    WINDOWS = {"disks": ["a.adf", "b.adf"],
+               "events": [{"at": 66.1, "until": 96.1, "disk": 2},
+                          {"at": 71.1, "until": float("inf"), "key": "lmb"},
+                          {"at": 120.0, "key": "space"}]}
+
+    def test_eager_every_event_is_at_its_at(self):
+        self.assertEqual(player.actions(self.WINDOWS), [
+            (3305, "insert", (0, 0)), (3555, "press", "lmb"),
+            (6000, "press", "space")])
+
+    def test_patient_at_its_until_and_the_later_ones_as_much_later(self):
+        wait = round(player.PATIENCE * 50)
+        self.assertEqual(player.actions(self.WINDOWS, patient=True), [
+            (4805, "insert", (0, 0)), (5055 + wait, "press", "lmb"),
+            (7500 + wait, "press", "space")])
+
+    def test_a_disk_goes_in_before_a_key_of_the_same_moment(self):
         entry = {"disks": ["a", "b"],
-                 "swaps": [{"disk": 2, "at": 10, "key": "lmb", "key_delay": 1.5}]}
+                 "events": [{"at": 10, "disk": 2}, {"at": 10, "key": "lmb"}]}
         self.assertEqual(player.actions(entry),
-                         [(500, "insert", 0), (575, "click", 0)])
+                         [(500, "insert", (0, 0)), (500, "press", "lmb")])
 
     def test_disks_in_the_other_drives_are_not_on_the_swap_list(self):
         # With two drives disk 3 is the first one swapped in.
         entry = {"drives": 2, "disks": ["a", "b", "c"],
-                 "swaps": [{"disk": 3, "at": 10}]}
-        self.assertEqual(player.actions(entry), [(500, "insert", 0)])
+                 "events": [{"at": 10, "disk": 3}]}
+        self.assertEqual(player.actions(entry), [(500, "insert", (0, 0))])
+
+    def test_a_swap_goes_into_the_drive_it_names(self):
+        # Soho: disk 2 sits in DF1 from the start, disk 3 goes in there.
+        entry = {"drives": 2, "disks": ["a", "b", "c"],
+                 "events": [{"at": 10, "disk": 3, "drive": 2}]}
+        self.assertEqual(player.actions(entry), [(500, "insert", (0, 1))])
+
+    def test_a_drive_the_machine_has_not_got_is_an_error(self):
+        entry = {"disks": ["a", "b"],
+                 "events": [{"at": 10, "disk": 2, "drive": 2}]}
+        with self.assertRaisesRegex(BadEntry, "no drive 2 .* drives = 1"):
+            player.actions(entry)
 
     def test_a_disk_that_cannot_go_in_is_an_error_not_another_disk(self):
         def swap(disk, **entry):
             return {"disks": ["a", "b", "c"], **entry,
-                    "swaps": [{"disk": disk, "at": 10}]}
+                    "events": [{"at": 10, "disk": disk}]}
         # Disk 1 sits in the drive, and with two drives so does disk 2.
         with self.assertRaisesRegex(BadEntry, "disk 1: .* are 2 to 3"):
             player.actions(swap(1))
@@ -53,45 +86,65 @@ class ActionsTest(unittest.TestCase):
             player.actions(swap(4))
         # One disk, or a hard drive: nothing to swap.
         with self.assertRaisesRegex(BadEntry, "disk 2: there is none"):
-            player.actions({"swaps": [{"disk": 2, "at": 10}]})
+            player.actions({"events": [{"at": 10, "disk": 2}]})
 
     def test_keys_of_their_own(self):
-        # No disk goes in; the entry's keys come in time order.
-        entry = {"keys": [{"at": 90, "key": "lmb"}, {"at": 10, "key": "lmb"}]}
+        # No disk goes in; the keys come in time order whatever the file's.
+        entry = {"events": [{"at": 90, "key": "lmb"}, {"at": 10, "key": "lmb"}]}
         self.assertEqual(player.actions(entry),
-                         [(500, "click", 0), (4500, "click", 0)])
+                         [(500, "press", "lmb"), (4500, "press", "lmb")])
         self.assertEqual(player.actions(entry, keys=False), [])
+
+    def test_an_event_that_is_neither_is_an_error(self):
+        with self.assertRaisesRegex(BadEntry, "at 12 that is neither"):
+            player.actions({"events": [{"at": 12.0, "frob": 1}]})
 
     def test_a_key_it_cannot_press_is_an_error_naming_the_key(self):
         entry = {"disks": ["a", "b"],
-                 "swaps": [{"disk": 2, "at": 10, "key": "space"}]}
-        with self.assertRaisesRegex(CannotPlay, "'space'"):
+                 "events": [{"at": 10, "disk": 2}, {"at": 15, "key": "f1"}]}
+        with self.assertRaisesRegex(CannotPlay, "'f1': the keys are lmb, rmb"):
             player.actions(entry)
-        entry = {"keys": [{"at": 10, "key": "return"}]}
-        with self.assertRaisesRegex(CannotPlay, "'return'"):
+        entry = {"events": [{"at": 10, "key": "Return"}]}
+        with self.assertRaisesRegex(CannotPlay, "'Return'"):
             player.actions(entry)
+
+    def test_every_key_name_before_a_swap_and_after_it(self):
+        for key in ("lmb", "rmb", "space", "return", "p1fire", "p2fire"):
+            entry = {"disks": ["a", "b"],
+                     "events": [{"at": 1, "key": key}, {"at": 10, "disk": 2},
+                                {"at": 15, "key": key}]}
+            self.assertEqual(player.actions(entry), [
+                (50, "press", key), (500, "insert", (0, 0)), (750, "press", key)])
 
 
 class LoadedTest(unittest.TestCase):
     def test_disk_read_past_its_first_cylinders(self):
         s = samples([(3251, 2834, 40), (3501, 3400, 0), (3751, 3700, 12)])
-        self.assertEqual(player.loaded(s, [3305]), [True])
+        self.assertEqual(player.loaded(s, [(3305, 0)]), [True])
 
     def test_id_check_alone_is_not_a_load(self):
         # Odyssey reads the new disk's ID at cylinder 0, then waits for the
         # mouse button.
         s = samples([(3251, 2834, 40), (3501, 3400, 0), (3751, 3400, 0)])
-        self.assertEqual(player.loaded(s, [3305]), [False])
+        self.assertEqual(player.loaded(s, [(3305, 0)]), [False])
 
     def test_disk_nobody_looked_at(self):
         # The head still sits where disk 1 left it.
         s = samples([(3251, 2834, 40), (3501, 2834, 40), (3751, 2834, 40)])
-        self.assertEqual(player.loaded(s, [3305]), [False])
+        self.assertEqual(player.loaded(s, [(3305, 0)]), [False])
 
     def test_each_disk_is_judged_until_the_next_goes_in(self):
         s = samples([(1001, 900, 30), (1251, 900, 30),      # disk 2: ignored
                      (2001, 1900, 0), (2251, 2200, 20)])    # disk 3: loaded
-        self.assertEqual(player.loaded(s, [1000, 1500]), [False, True])
+        self.assertEqual(player.loaded(s, [(1000, 0), (1500, 0)]), [False, True])
+
+    def test_a_disk_is_judged_by_the_head_of_its_own_drive(self):
+        # DF0's head stays where disk 1 left it; DF1 reads the new disk.
+        s = samples([(3251, 2834, 40, 71), (3501, 3400, 40, 0),
+                     (3751, 3700, 40, 12)])
+        self.assertEqual(player.loaded(s, [(3305, 1)]), [True])
+        s = samples([(3251, 2834, 40, 0), (3751, 3700, 40, 0)])
+        self.assertEqual(player.loaded(s, [(3305, 1)]), [False])
 
 
 class VariantOfTest(unittest.TestCase):
@@ -255,15 +308,22 @@ class FramesTest(unittest.TestCase):
         self.assertEqual(player.frames_of({"title": "x"}), player.PLAIN_FRAMES)
 
     def test_a_set_plays_until_its_last_disk_has_loaded(self):
-        entry = {"disks": ["a", "b"], "swaps": [{"disk": 2, "at": 100}]}
+        entry = {"disks": ["a", "b"], "events": [{"at": 100, "disk": 2}]}
         self.assertEqual(player.frames_of(entry), 5000 + player.TAIL_FRAMES)
+
+    def test_patient_it_plays_as_much_longer_as_its_events_wait(self):
+        entry = {"disks": ["a", "b"],
+                 "events": [{"at": 100, "until": 160, "disk": 2}]}
+        self.assertEqual(player.frames_of(entry), 5000 + player.TAIL_FRAMES)
+        self.assertEqual(player.frames_of(entry, patient=True),
+                         8000 + player.TAIL_FRAMES)
 
 
 class PlayTest(unittest.TestCase):
     SET = player.media.Variant("floppy", ["/d/a.adf", "/d/b.adf"])
     ENTRY = {"title": "x", "machine": "a1200", "drives": 1,
              "disks": ["a.adf", "b.adf"],
-             "swaps": [{"disk": 2, "at": 20, "key": "lmb"}]}
+             "events": [{"at": 20, "disk": 2}, {"at": 25, "key": "lmb"}]}
     # Disk 2 goes in at frame 1000 and is read past its first cylinders.
     LOG = RunLog(samples([(750, 700, 40), (1250, 1100, 12)]), [], 0, False, "")
 
@@ -271,6 +331,9 @@ class PlayTest(unittest.TestCase):
         rom = mock.patch.object(player.machines, "require_rom")
         self.require_rom = rom.start()
         self.addCleanup(rom.stop)
+        libs = mock.patch.object(player.workbench, "require_libs")
+        self.require_libs = libs.start()
+        self.addCleanup(libs.stop)
 
     def play(self, entry, default="a500", **kw):
         with mock.patch.object(player.media, "variants",
@@ -285,17 +348,106 @@ class PlayTest(unittest.TestCase):
         self.assertIs(machine, machines.BY_NAME["a1200"])
         self.assertIs(variant, self.SET)
         self.assertEqual(frames, 1250 + player.TAIL_FRAMES)
-        self.assertEqual(opts.play, ((1000, "insert", 0), (1250, "click", 0)))
+        self.assertEqual(opts.play, ((1000, "insert", (0, 0)), (1250, "press", "lmb")))
         self.assertFalse(opts.detects)
         self.assertEqual((out.machine, out.loaded), ("a1200", [True]))
         self.assertIs(out.log, self.LOG)
         self.assertEqual(out.verdict.verdict, "no-activity")
 
+    def measured(self):
+        """The entry played by its Ready, asked for the area."""
+        with mock.patch.object(player.media, "variants",
+                               return_value=([self.SET], [])), \
+                mock.patch.object(player.emulator, "run",
+                                  return_value=self.LOG) as run:
+            return player.ready(7, self.ENTRY, "a500").play(area=True), run
+
+    def test_the_area_is_measured_only_when_asked(self):
+        _, run = self.play(self.ENTRY)
+        self.assertFalse(run.call_args.args[3].area)
+        out, run = self.measured()
+        self.assertTrue(run.call_args.args[3].area)
+        self.assertIsNone(out.area)
+
+    def test_the_area_of_a_measured_run(self):
+        self.LOG = dataclasses.replace(
+            self.LOG, boxes=[[76, 114, 716, 474]], display={"modes": [{
+                "res": 0, "lace": False, "os": False, "frames": 90,
+                "rows": [[83, 263, 90]], "cols": [[129, 449, 90]]}]})
+        out, _ = self.measured()
+        self.assertEqual(out.area, Area(320, 180, 320, 180))
+
+    def test_patient_the_disk_goes_in_at_its_until_and_is_looked_for_then(self):
+        entry = dict(self.ENTRY, events=[{"at": 15, "until": 20, "disk": 2},
+                                         {"at": 20, "key": "lmb"}])
+        out, run = self.play(entry, patient=True)
+        _, _, frames, opts = run.call_args.args
+        self.assertEqual(frames, 1250 + player.TAIL_FRAMES)
+        self.assertEqual(opts.play, ((1000, "insert", (0, 0)), (1250, "press", "lmb")))
+        self.assertEqual(out.loaded, [True])
+        out, run = self.play(entry)
+        self.assertEqual(run.call_args.args[3].play,
+                         ((750, "insert", (0, 0)), (1000, "press", "lmb")))
+
+    def test_the_run_is_reported_as_the_record_of_every_platform(self):
+        out, _ = self.play(self.ENTRY)
+        self.assertEqual(out.record,
+                         Play(False, None, (SwapTaken(2, True),), far=22.0))
+
+    def test_a_disk_in_another_drive_is_put_there_and_looked_for_there(self):
+        three = player.media.Variant("floppy", ["/d/a.adf", "/d/b.adf", "/d/c.adf"])
+        entry = {"title": "x", "drives": 2, "disks": ["a.adf", "b.adf", "c.adf"],
+                 "events": [{"at": 20, "disk": 3, "drive": 2}]}
+        # DF0 is past its first cylinders and stays; DF1 loads disk 3.
+        log = RunLog(samples([(750, 700, 40, 71), (1250, 1100, 40, 12)]),
+                     [], 0, False, "")
+        with mock.patch.object(player.media, "variants",
+                               return_value=([three], [])), \
+                mock.patch.object(player.emulator, "run",
+                                  return_value=log) as run:
+            out = player.play(7, entry, "a500")
+        self.assertEqual(run.call_args.args[3].play, ((1000, "insert", (0, 1)),))
+        self.assertEqual(out.record.swaps, (SwapTaken(3, True),))
+
+    def test_how_far_is_the_last_read_of_a_disk(self):
+        self.assertEqual(player.last_read(samples([(250, 240, 0), (500, 240, 0)])),
+                         4.8)
+        self.assertLess(player.last_read([]), 0)
+
+    def test_the_record_numbers_a_disk_as_the_entry_does(self):
+        entry = {**self.ENTRY, "drives": 2, "disks": ["a.adf", "b.adf", "c.adf"],
+                 "events": [{"at": 20, "disk": 3}]}
+        with mock.patch.object(player.media, "variants", return_value=(
+                [player.media.Variant("floppy", ["/d/a.adf", "/d/b.adf",
+                                                 "/d/c.adf"])], [])), \
+                mock.patch.object(player.emulator, "run", return_value=self.LOG):
+            out = player.play(7, entry, "a500")
+        self.assertEqual(out.record.swaps, (SwapTaken(3, True),))
+
+    def test_the_record_says_what_came_alive_and_what_crashed(self):
+        def record(verdict, crash=None):
+            with mock.patch.object(player.verdict, "classify",
+                                   return_value=Verdict(verdict, 0, crash)):
+                out, _ = self.play({"title": "x", "disks": ["a.adf", "b.adf"]})
+            return out.record
+        self.assertEqual(record("works"), Play(True, far=22.0))
+        self.assertEqual(record("works-short"), Play(True, far=22.0))
+        self.assertEqual(record("works-then-crash", "guru"), Play(True, "guru", far=22.0))
+        self.assertEqual(record("crash", "halt"), Play(False, "halt", far=22.0))
+        self.assertEqual(record("no-activity"), Play(False, far=22.0))
+
     def test_without_keys_runs_as_long_and_presses_nothing(self):
         _, run = self.play(self.ENTRY, keys=False)
         _, _, frames, opts = run.call_args.args
         self.assertEqual(frames, 1250 + player.TAIL_FRAMES)
-        self.assertEqual(opts.play, ((1000, "insert", 0),))
+        self.assertEqual(opts.play, ((1000, "insert", (0, 0)),))
+
+    def test_a_run_is_as_long_as_the_caller_says(self):
+        with mock.patch.object(player.emulator, "run",
+                               return_value=self.LOG) as run:
+            player.Ready(self.ENTRY, machines.BY_NAME["a500"],
+                         self.SET).play(frames=40000)
+        self.assertEqual(run.call_args.args[2], 40000)
 
     def test_an_entry_with_nothing_to_do_still_runs_undetected(self):
         out, run = self.play({"title": "x", "disks": ["a.adf", "b.adf"]})
@@ -309,6 +461,15 @@ class PlayTest(unittest.TestCase):
         keep = pathlib.Path("/shots")
         _, run = self.play(self.ENTRY, keep=keep)
         self.assertEqual(run.call_args.args[3].keep, keep)
+
+    def test_the_seed_is_the_callers(self):
+        _, run = self.play(self.ENTRY)
+        self.assertEqual(run.call_args.args[3].seed, player.emulator.DEFAULT_SEED)
+        with mock.patch.object(player.emulator, "run",
+                               return_value=self.LOG) as run:
+            player.Ready(self.ENTRY, machines.BY_NAME["a1200"],
+                         self.SET).play(seed=7)
+        self.assertEqual(run.call_args.args[3].seed, 7)
 
     def cannot(self, entry, error, text):
         """Playing ``entry`` raises ``error``; returns the media lookup."""
@@ -326,8 +487,8 @@ class PlayTest(unittest.TestCase):
                     "c.adf")
 
     def test_a_key_it_cannot_press_is_found_before_the_download_is_unpacked(self):
-        entry = {**self.ENTRY, "swaps": [{"disk": 2, "at": 10, "key": "space"}]}
-        self.cannot(entry, BadEntry, "'space'").assert_not_called()
+        entry = {**self.ENTRY, "events": [{"at": 10, "disk": 2}, {"at": 15, "key": "f1"}]}
+        self.cannot(entry, BadEntry, "'f1'").assert_not_called()
 
     def test_a_machine_it_does_not_have_is_an_error_naming_it(self):
         self.cannot({**self.ENTRY, "machine": "a600"}, BadEntry,
@@ -356,6 +517,23 @@ class PlayEachTest(unittest.TestCase):
         self.assertEqual(errors, 1)
         self.assertEqual(lines, ["1 fine",
                                  "2 b: error: no way to press key 'space'"])
+
+    def test_a_slow_production_does_not_hold_back_the_lines_of_the_others(self):
+        ended = threading.Event()
+
+        def one(prod, entry):
+            if prod == 1:   # ends only once the line of 2 is logged
+                self.assertTrue(ended.wait(10))
+            return f"{prod} fine"
+        lines = []
+
+        def log(line, **kw):
+            lines.append(line)
+            ended.set()
+        with mock.patch.object(player.media, "require_mirror"):
+            player.play_each([(1, {"title": "a"}), (2, {"title": "b"})], one,
+                             2, log)
+        self.assertEqual(lines, ["2 fine", "1 fine"])
 
     def test_without_the_mirror_nothing_is_played(self):
         one = mock.Mock()

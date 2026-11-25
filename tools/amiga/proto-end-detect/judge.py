@@ -15,16 +15,29 @@ import analyze, notes  # noqa: E402
 REC = None
 SWAPS = {}  # id -> [s of each scripted swap]
 DATA = pathlib.Path(__file__).resolve().parents[3] / "data" / "amiga"
-BIG = 12_000_000  # bytes of .notes: ~1M events
+
+
+def _trace_end(trace):
+    """Last frame number in trace.csv without parsing the whole file."""
+    try:
+        with open(trace, "rb") as f:
+            f.seek(0, os.SEEK_END)
+            size = f.tell()
+            f.seek(max(0, size - 4096))
+            lines = f.read().splitlines()
+            for line in reversed(lines):
+                if line and line[0:1].isdigit():
+                    return int(line.split(b",", 1)[0])
+    except (OSError, ValueError):
+        pass
+    return None
 
 
 def song(i):
-    p = f"{REC}/{i}/trace.csv.notes"
-    if os.path.exists(p) and os.path.getsize(p) > BIG:  # the matcher does not finish on these
-        print("skip", i, flush=True)
-        return i, None
+    t = f"{REC}/{i}/trace.csv"
+    p = t + ".notes"
     try:
-        return i, (notes.song_loop(p) if os.path.exists(p) else None)
+        return i, (notes.song_loop(p, trace_end=_trace_end(t)) if os.path.exists(p) else None)
     except ValueError:  # a run killed mid-write ends on a cut line
         return i, None
 
@@ -34,7 +47,15 @@ def verdict(args):
     t = f"{REC}/{i}/trace.csv"
     try:
         rows, cells = analyze.load(t)
-        v = analyze.verdict(rows, cells, s and tuple(s), analyze.halted_of(t), analyze.data_of(t), SWAPS.get(int(i), ()))
+        meta = analyze.meta_of(t)
+        v = analyze.verdict(
+            rows, cells, s and tuple(s),
+            halted=analyze.halted_of(t),
+            data=analyze.data_of(t),
+            swaps=SWAPS.get(int(i), ()),
+            meta=meta,
+            notes_path=t + ".notes",
+        )
     except Exception as e:  # one bad trace must not lose the batch
         return {"id": int(i), "ending": "error", "error": repr(e)}
     v["id"] = int(i)
@@ -45,8 +66,9 @@ def swaps_of_entries():
     out = {}
     for p in glob.glob(str(DATA / "*.toml")):
         for k, e in tomllib.loads(pathlib.Path(p).read_text("utf-8")).get("demozoo", {}).items():
-            if e.get("swaps"):
-                out[int(k)] = [s["at"] for s in e["swaps"]]
+            sw = [ev["at"] for ev in e.get("events", []) if "disk" in ev]
+            if sw:
+                out[int(k)] = sw
     return out
 
 

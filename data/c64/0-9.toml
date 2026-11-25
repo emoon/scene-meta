@@ -60,7 +60,7 @@ title = "1 Year Radius"
 group = "Radius"
 source = "script"
 disks = ["1 Year Radius (1991)(Radius).d64", "1_year_radius_credits.d64"]
-swaps = [{ disk = 2, at = 142.9, key = "space", key_delay = 18.5 }]
+events = [{ at = 142.9, disk = 2 }, { at = 161.4, key = "space" }]
 
 [demozoo.312061]
 title = "1. Microdemo"
@@ -98,7 +98,7 @@ title = "10 Years HVSC"
 group = "HVSC Crew"
 source = "script"
 disks = ["10_Years_HVSC_1.d64", "10_Years_HVSC_2.d64"]
-swaps = [{ disk = 2, at = 300.8 }]
+events = [{ at = 300.8, disk = 2 }]
 
 [demozoo.22403]
 title = "10 Years Role"
@@ -175,7 +175,7 @@ group = "Fairlight"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["fairlight-1337-58679b69-a.d64", "fairlight-1337-58679b69-b.d64", "fairlight-1337-58679b69-c.d64"]
-swaps = [{ disk = 2, at = 371.7 }, { disk = 3, at = 682.1 }]
+events = [{ at = 371.7, disk = 2 }, { at = 682.1, disk = 3 }]
 
 [demozoo.108091]
 title = "14th"
@@ -357,7 +357,7 @@ title = "2 Years Crest"
 group = "Crest"
 source = "script"
 disks = ["2 Years Crest [Crest].d64", "2_years_crest.d64"]
-swaps = [{ disk = 2, at = 145.8, key = "space", key_delay = 17.1 }]
+events = [{ at = 145.8, disk = 2 }, { at = 162.9, key = "space" }]
 
 [demozoo.392437]
 title = "2 Years Slackers"
@@ -447,8 +447,7 @@ title = "2011:  A Press Space Odyssey"
 group = "Prosonix / Offence"
 source = "ai"
 disks = ["apso-1.d64", "apso-2.d64", "apso-3.d64", "apso-4.d64"]
-swaps = [{ disk = 2, at = 406.0, until = 710.5 }, { disk = 3, at = 812.0, until = 1522.5 }, { disk = 4, at = 1421.0 }]
-keys = [{ at = 60.9, key = "space" }, { at = 86.3, key = "space" }, { at = 111.6, key = "space" }, { at = 137.0, key = "space" }, { at = 162.4, key = "space" }, { at = 187.8, key = "space" }, { at = 213.1, key = "space" }, { at = 238.5, key = "space" }, { at = 263.9, key = "space" }, { at = 289.3, key = "space" }, { at = 314.6, key = "space" }, { at = 340.0, key = "space" }, { at = 507.5, key = "space" }, { at = 548.1, key = "space" }, { at = 588.7, key = "space" }, { at = 629.3, key = "space" }, { at = 669.9, key = "space" }, { at = 710.5, key = "space" }, { at = 751.1, key = "space" }, { at = 791.7, key = "space" }, { at = 1015.0, key = "space" }, { at = 1045.4, key = "space" }, { at = 1075.9, key = "space" }, { at = 1106.3, key = "space" }, { at = 1136.8, key = "space" }]
+events = [{ at = 60.9, key = "space" }, { at = 86.3, key = "space" }, { at = 111.6, key = "space" }, { at = 137.0, key = "space" }, { at = 162.4, key = "space" }, { at = 187.8, key = "space" }, { at = 213.1, key = "space" }, { at = 238.5, key = "space" }, { at = 263.9, key = "space" }, { at = 289.3, key = "space" }, { at = 314.6, key = "space" }, { at = 340.0, key = "space" }, { at = 406.0, disk = 2, until = 710.5 }, { at = 507.5, key = "space" }, { at = 548.1, key = "space" }, { at = 588.7, key = "space" }, { at = 629.3, key = "space" }, { at = 669.9, key = "space" }, { at = 710.5, key = "space" }, { at = 751.1, key = "space" }, { at = 791.7, key = "space" }, { at = 812.0, disk = 3, until = 1522.5 }, { at = 1015.0, key = "space" }, { at = 1045.4, key = "space" }, { at = 1075.9, key = "space" }, { at = 1106.3, key = "space" }, { at = 1136.8, key = "space" }, { at = 1421.0, disk = 4 }]
 note = "A Press Space Odyssey: space-driven demo (each part waits for space); all 4 disks are one chain: walker part loops 'INSERT DISK 2', disk 2 ends in a no-prompt guestbook loop that polls the drive, disk 3 ends on a 'turn disk' 4 picture. Space timings shift by 20-40M cycles between runs.; disk 2: INSERT DISK 2 apeman loop from ~330M; no key after insert; 604M insert also worked; disk 3: no prompt: disk 2 ends in the guestbook scroller loop (drive blips f0/f4); insert at 800M or 1100M worked; no key after; disk 4: 'turn disk' on the big 4 picture from ~1140M; no key; no upper limit seen (loops to 2600M+)"
 
 [demozoo.272948]
@@ -500,7 +499,7 @@ group = "Abyss-Connection"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["25years_ac-disk1.d64", "25years_ac-disk2.d64"]
-swaps = [{ disk = 2, at = 536.2 }]
+events = [{ at = 536.2, disk = 2 }]
 
 [demozoo.164708]
 title = "25 Years"
@@ -654,7 +653,7 @@ group = "Arise"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["3sira_by_arise_A.d64", "3sira_by_arise_B.d64", "3sira_by_arise_C.d64"]
-swaps = [{ disk = 2, at = 422.1 }, { disk = 3, at = 787.6 }]
+events = [{ at = 422.1, disk = 2 }, { at = 787.6, disk = 3 }]
 
 [demozoo.291033]
 title = "4 Christmas"
@@ -820,7 +819,7 @@ group = "Vulture Design"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["69pos_s1.d64", "69pos_s2.d64", "UNP.D64"]
-swaps = [{ disk = 2, at = 204.4, key = "space", key_delay = 17.1 }, { disk = 3, at = 1472.8, key = "p2fire", key_delay = 44.2 }]
+events = [{ at = 204.4, disk = 2 }, { at = 221.5, key = "space" }, { at = 1472.8, disk = 3 }, { at = 1517.0, key = "p2fire" }]
 
 [demozoo.386339]
 title = "6th Demo"

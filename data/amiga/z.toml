@@ -119,7 +119,6 @@ source = "script"
 title = "Zarified"
 group = "Hemoroids"
 source = "script"
-result = "unknown"
 
 [demozoo.217546]
 title = "Zarter Schmelz"
@@ -337,7 +336,6 @@ source = "script"
 title = "Zimny Kaloryfer"
 group = "Random22"
 source = "script"
-result = "unknown"
 
 [demozoo.116170]
 title = "Zine 11 Headlines - Blue Incantation"
@@ -490,7 +488,6 @@ source = "script"
 title = "Zool Pack 12 Menu"
 group = "Intense"
 source = "script"
-result = "unknown"
 
 [demozoo.19191]
 title = "Zoom"
@@ -513,6 +510,8 @@ source = "script"
 title = "Zoom Parallax Demo"
 group = "Balance"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.28443]
 title = "Zoombi"

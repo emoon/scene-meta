@@ -793,6 +793,7 @@ void dbgproto_custom_status(struct dbgproto_custom_state *out)
 	out->diwstrt = diwstrt;
 	out->diwstop = diwstop;
 	out->coppc = cop_state.ip;
+	out->cop1lc = cop1lc;
 	out->vpos = vpos;
 }
 
@@ -5517,9 +5518,44 @@ static void hautoscale_check(void)
 	}
 }
 
+// Local patch: the line that ends here, for `display measure` (dbgproto.cpp).
+static void dbgproto_note_line(void)
+{
+	if (!bplcon0_planes || !dmaen(DMA_BITPLANE) || agnus_vb_active
+		|| vdiwstate != diw_states::DIW_waiting_stop || !fetchunit) {
+		return;
+	}
+	int hstrt = diwstrt & 0xff, hstop = diwstop & 0xff;
+	if (diwhigh_written && ecs_agnus) {
+		hstrt |= (diwhigh & 0x0020) << 3;
+		hstop |= (diwhigh & 0x2000) >> 5;
+	} else {
+		hstop |= 0x100;
+	}
+	// The first pixel fetched at DDFSTRT comes out this many lores pixels
+	// later: $38 gives $81 in lores, $3c gives $81 in hires.
+	static const int delay[] = { 0x11, 0x09, 0x05 };
+	int x0 = ddfstrt * 2 + delay[bplcon0_res];
+	int x1 = hstop;
+	if (ddfstop >= ddfstrt) {
+		int units = (ddfstop - ddfstrt + fetchunit - 1) / fetchunit + 1;
+		x1 = x0 + units * fetchunit * 2;
+	}
+	x0 = std::max(x0, hstrt);
+	x1 = std::min(x1, hstop);
+	if (x1 > x0) {
+		dbgproto_display_line(vpos, x0, x1, bplcon0_res, (bplcon0 & 4) != 0,
+			cop1lc, diwstrt, diwstop);
+	}
+}
+
 // this finishes current line
 static void hsync_handler_pre(bool onvsync)
 {
+	if (dbgproto_display_on) {
+		dbgproto_note_line();
+	}
+
 	if (!custom_disabled) {
 
 		/* reset light pen latch */

@@ -311,6 +311,7 @@ title = "A Little Intro"
 group = "Phantasm"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.196032]
 title = "A Little Intro"
@@ -604,6 +605,8 @@ source = "script"
 title = "A New Dentro"
 group = "Pleasure"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.261198]
 title = "A New Dentro"
@@ -645,6 +648,7 @@ title = "A New Group Has Entered The Scene"
 group = "Curse"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.123602]
 title = "A New Group Is Born"
@@ -748,6 +752,7 @@ title = "A New Intro"
 group = "Curse"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.114803]
 title = "A New Intro"
@@ -979,7 +984,6 @@ source = "script"
 title = "A New Intro"
 group = "Trance Inc."
 source = "script"
-result = "unknown"
 
 [demozoo.263307]
 title = "A New Intro"
@@ -1197,7 +1201,6 @@ source = "script"
 title = "A Nice Compact"
 group = "The Outsider"
 source = "script"
-result = "unknown"
 
 [demozoo.177536]
 title = "A Nice Little Show"
@@ -1369,7 +1372,7 @@ title = "A Trip to Deep Bass"
 group = "Data X"
 source = "script"
 disks = ["DataX-TripToDeepBassA.dms", "DataX-TripToDeepBassB.dms"]
-swaps = [{ disk = 2, at = 75.0 }]
+events = [{ at = 75.0, disk = 2 }]
 
 [demozoo.137684]
 title = "A Trip To Mars"
@@ -1386,7 +1389,6 @@ machine = "a1200"
 title = "A Trip to Surprise Land"
 group = "Scoopex / Surprise! Productions"
 source = "script"
-result = "unknown"
 
 [demozoo.20774]
 title = "A Very Long Precalc"
@@ -1459,7 +1461,6 @@ source = "script"
 title = "A.W.O.L. BBS Intro"
 group = "Pyrodex"
 source = "script"
-machine = "a1200"
 
 [demozoo.212904]
 title = "A320 Airbus Spreading"
@@ -1640,9 +1641,9 @@ source = "script"
 title = "Absolute Inebriation"
 group = "Virtual Dreams"
 source = "script"
-result = "crashes-later"
+result = "unknown"
 disks = ["VD-AbsoluteInebriation-A.DMS", "VD-AbsoluteInebriation-B.DMS"]
-note = "the sweep only reached disk 1 of 2"
+note = "the sweep saw works-then-crash on a500; no entry of it passed the gate"
 
 [demozoo.212656]
 title = "Absolutly First Demo"
@@ -1768,7 +1769,6 @@ machine = "a1200_fast"
 title = "Acid"
 group = "Melon"
 source = "script"
-result = "unknown"
 run = "02.Acid.exe"
 
 [demozoo.110609]
@@ -1795,7 +1795,8 @@ source = "script"
 title = "Acid Demo"
 group = "Piranhas"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.229213]
 title = "Acid Demo"
@@ -1851,7 +1852,7 @@ source = "script"
 title = "Acid Trip"
 group = "Melon Dezign"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.223160]
 title = "Acidflash 1"
@@ -1931,7 +1932,6 @@ source = "script"
 title = "Action Fighter - UAE fix"
 group = "Lazarus"
 source = "script"
-result = "unknown"
 
 [demozoo.236283]
 title = "Action Force Intro"
@@ -2084,7 +2084,6 @@ machine = "a1200"
 title = "Advert"
 group = "Desire / Facet's Pussy"
 source = "script"
-result = "unknown"
 
 [demozoo.199758]
 title = "Advertintro"
@@ -2138,7 +2137,6 @@ machine = "a1200"
 title = "Affects People"
 group = "Enemy"
 source = "script"
-result = "unknown"
 
 [demozoo.249260]
 title = "Aflyseren"
@@ -2170,7 +2168,8 @@ source = "script"
 title = "After Dark"
 group = "Cyberdreams"
 source = "script"
-machine = "a500_1mb"
+result = "unknown"
+note = "the sweep saw works on a500_1mb; no entry of it passed the gate"
 
 [demozoo.222843]
 title = "After Easter Demo"
@@ -2285,7 +2284,6 @@ source = "script"
 title = "Again Another Spread"
 group = "Flash Production"
 source = "script"
-result = "unknown"
 
 [demozoo.265250]
 title = "Again Some Stunning Stuff"
@@ -2404,7 +2402,6 @@ source = "script"
 title = "Airborne Ranger"
 group = "Tristar"
 source = "script"
-result = "unknown"
 
 [demozoo.236682]
 title = "Airrun"
@@ -2425,12 +2422,14 @@ source = "script"
 title = "Ajwaj"
 group = "Q-Crew-Klan"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.221692]
 title = "Akira"
 group = "Balance"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.212064]
 title = "Alarm"
@@ -2528,9 +2527,9 @@ source = "script"
 [demozoo.159]
 title = "Alien 2 Amiga"
 group = "Scoopex"
-source = "script"
+source = "ai"
 machine = "a1200_030"
-run = "Part2.exe"
+run = "Alien2.bat"
 
 [demozoo.155673]
 title = "Alien 4 Demo"
@@ -2586,7 +2585,6 @@ source = "script"
 title = "Alien Syndrome"
 group = "Australian Crackers United"
 source = "script"
-result = "unknown"
 
 [demozoo.230481]
 title = "Alien Syndrome"
@@ -2842,13 +2840,14 @@ title = "Alpha & Omega II: Downtown"
 group = "Pure Metal Coders"
 source = "script"
 disks = ["AlphaOmegaII-1.adf", "AlphaOmegaII-2.adf", "AlphaOmegaII-3.adf"]
-swaps = [{ disk = 2, at = 57.4 }, { disk = 3, at = 294.3 }]
+events = [{ at = 57.4, disk = 2 }, { at = 294.3, disk = 3 }]
 
 [demozoo.141979]
 title = "Alpha Complex Meeting Demo"
 group = "Lynx / PowerDrive"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.220922]
 title = "Alphalats"
@@ -2933,11 +2932,9 @@ machine = "a1200"
 [demozoo.28709]
 title = "Amazed"
 group = "Vanity"
-source = "script"
+source = "ai"
 machine = "a1200_fast"
-disks = ["ss2_vty1-launch.adf", "ss2_vty2.dms", "ss2_vty3.dms"]
-swaps = [{ disk = 2, at = 52.8 }, { disk = 3, at = 67.7 }]
-run = "amazed.exe"
+boot = "hd"
 
 [demozoo.305785]
 title = "Amazing Amiga Tunes 07 - intro"
@@ -3106,7 +3103,6 @@ source = "script"
 title = "Amiga Club Intro"
 group = "Energy"
 source = "script"
-result = "unknown"
 
 [demozoo.257836]
 title = "Amiga Computing Demo"
@@ -3310,7 +3306,8 @@ source = "script"
 title = "Amiga Smile"
 group = "Bohema"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.254588]
 title = "Amiga Summit 91 Party Slideshow"
@@ -3508,7 +3505,7 @@ title = "Amos-Mega-Demo"
 group = "Dynamic Guys"
 source = "script"
 disks = ["DynamicGuys-MegademoD1.DMS", "DynamicGuys-MegademoD2.DMS"]
-swaps = [{ disk = 2, at = 39.2 }]
+events = [{ at = 39.2, disk = 2 }]
 
 [demozoo.300065]
 title = "Amotrax Demo 1"
@@ -3554,6 +3551,8 @@ machine = "a1200"
 title = "Amusing IV"
 group = "Razor 1911"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.229065]
 title = "Amy Putt"
@@ -3761,7 +3760,7 @@ title = "Andis Demo"
 group = "Classic"
 source = "script"
 disks = ["CLASSIC-Andis1.adf", "CLASSIC-Andis2.adf"]
-swaps = [{ disk = 2, at = 780.4 }]
+events = [{ at = 74.5, disk = 2 }, { at = 79.5, key = "lmb" }]
 
 [demozoo.261875]
 title = "Andromeda"
@@ -3843,6 +3842,7 @@ title = "Animation Demo"
 group = "Accuracy"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500_1mb_chip; no entry of it passed the gate"
 
 [demozoo.237646]
 title = "Animation Rulez -Star-"
@@ -3864,6 +3864,8 @@ source = "script"
 title = "Ankara Section Contact Intro"
 group = "Bronx"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.261346]
 title = "Ankeborg BBS Intro"
@@ -3898,7 +3900,6 @@ machine = "a1200"
 title = "Anniversary"
 group = "Lazy Bones"
 source = "script"
-result = "unknown"
 
 [demozoo.225281]
 title = "Anniversary"
@@ -4113,7 +4114,6 @@ source = "script"
 title = "Another Brilliant Pack - Intro"
 group = "Mexx"
 source = "script"
-result = "unknown"
 
 [demozoo.238923]
 title = "Another Bronx BBS Intro"
@@ -4191,7 +4191,6 @@ source = "script"
 title = "Another Cool Compaction"
 group = "The Turning Point"
 source = "script"
-result = "unknown"
 
 [demozoo.169220]
 title = "Another Cool Compie"
@@ -4346,7 +4345,8 @@ source = "script"
 title = "Another Crack Intro"
 group = "Genesis Project"
 source = "script"
-machine = "a500_ks12"
+result = "unknown"
+note = "the sweep saw works on a500_ks12; no entry of it passed the gate"
 
 [demozoo.294085]
 title = "Another Creamy Load"
@@ -4854,7 +4854,6 @@ source = "script"
 title = "Another Hot Release"
 group = "Napalm"
 source = "script"
-result = "unknown"
 
 [demozoo.386472]
 title = "Another Hot Release"
@@ -5219,7 +5218,6 @@ source = "script"
 title = "Another Mindblasting Release"
 group = "Rebels"
 source = "script"
-result = "unknown"
 
 [demozoo.216585]
 title = "Another Mindblasting Release"
@@ -5410,7 +5408,8 @@ source = "script"
 title = "Another Phantasie Import"
 group = "Phantasie"
 source = "script"
-result = "unknown"
+machine = "a500_1mb"
+boot = "floppy"
 
 [demozoo.227997]
 title = "Another Phoenix Intro"
@@ -5604,7 +5603,6 @@ source = "script"
 title = "Another Spread Product"
 group = "Da Solid Posse"
 source = "script"
-result = "unknown"
 
 [demozoo.276657]
 title = "Another Statement"
@@ -5772,6 +5770,7 @@ source = "script"
 title = "Anti Fascism"
 group = "Turnips"
 source = "script"
+machine = "a500_1mb"
 
 [demozoo.217308]
 title = "Anti Force 1 Demo"
@@ -5959,7 +5958,7 @@ source = "script"
 [demozoo.306062]
 title = "Anti-Zeus Demo"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.354797]
 title = "Anti-ZZZ-Multipart"
@@ -6467,15 +6466,17 @@ group = "Tristar and Red Sector Inc."
 source = "script"
 machine = "a1200"
 disks = ["TRSI-ArtificeA.adf", "TRSI-ArtificeB.adf"]
-swaps = [{ disk = 2, at = 250.0 }]
+events = [{ at = 250.0, disk = 2 }]
 
 [demozoo.89547]
 title = "Artificial Paradise"
 group = "New Generation Crew"
-source = "script"
+source = "ai"
 machine = "a1200"
 drives = 2
+result = "crashes-later"
 disks = ["NGC-ArtificialParadiseA.adf", "NGC-ArtificialParadiseB.adf"]
+note = "black screen and a tight loop from 172 s with disk B in DF1; with one drive the screen is noise from 35 s"
 
 [demozoo.250430]
 title = "Artificial Slaw"
@@ -6729,6 +6730,8 @@ source = "script"
 title = "Assembly 92 Partyinfo Intro"
 group = "Rebels"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.7486]
 title = "Assembly 95 40k Intro"
@@ -6976,7 +6979,7 @@ machine = "a1200"
 title = "Atom Demo 1 -The Very First Atom Demo-"
 group = "North Star"
 source = "script"
-machine = "a1200"
+boot = "floppy"
 
 [demozoo.252327]
 title = "Atom Demo 2"
@@ -7042,6 +7045,7 @@ title = "Attention"
 group = "Apathy"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.282731]
 title = "AUD"
@@ -7052,6 +7056,8 @@ source = "script"
 title = "Audio Power 2 Intro"
 group = "Zigag / Destiny"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.212814]
 title = "Audio Visual Paradise"
@@ -7154,7 +7160,7 @@ source = "script"
 title = "Australian Style 2 Preview"
 group = "Trip"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.87648]
 title = "Authentic World of Commodore Colors"
@@ -7308,6 +7314,8 @@ source = "script"
 title = "Axel's 20th Demo"
 group = "Axel Retro-Software"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.234798]
 title = "Axel's 25th Demo"

@@ -20,6 +20,8 @@ class Swap:
     key: str = None              # pressed after the insert to have it taken
     key_at: float = None
     screenshot: bytes = b""      # the screen when the swap was decided
+    drive: int = 1               # 1-based number of the drive it went into
+    until: float = None          # the latest time it was seen to go in
 
 
 @dataclasses.dataclass
@@ -27,6 +29,17 @@ class Key:
     """A key press the production needs that no disk change goes with."""
     at: float
     key: str
+
+
+@dataclasses.dataclass(frozen=True)
+class Area:
+    """The area a production draws into, as a run of its entry measured it."""
+    width: int
+    height: int
+    # What the pictures of the run show drawn, in the same pixels, to set
+    # against it; 0 when they show nothing.
+    drawn_width: int = 0
+    drawn_height: int = 0
 
 
 @dataclasses.dataclass

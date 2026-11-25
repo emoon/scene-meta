@@ -2,8 +2,9 @@ import pathlib
 import tempfile
 import unittest
 
-from scenemeta.amiga import machines
+from scenemeta.amiga import config, machines
 from scenemeta.core.errors import CannotPlay
+from scenemeta.machines import load
 
 
 def names(ms):
@@ -37,12 +38,28 @@ class LadderTest(unittest.TestCase):
     def test_aga_only_tries_aga_first_then_the_a500s(self):
         n = names(machines.ladder_for(True, self.roms("kick12.rom")))
         self.assertEqual(n[0], "a1200")
-        self.assertEqual(n[-2:], ["a500_512k", "a500_1mb_chip"])
+        self.assertEqual(n[-3:], ["a500_512k", "a500_1mb_chip",
+                                  "a500_2mb_chip"])
 
     def test_chip_only_a500_comes_after_the_slow_ram_ones(self):
         # A new rung must not change what already works further down.
         n = names(machines.ladder_for(False, self.roms("kick12.rom")))
         self.assertEqual(n[:4], ["a500", "a500_1mb", "a500_ks12", "a500_512k"])
+
+    def test_2m_chip_a500_is_the_last_before_the_a1200s(self):
+        n = names(machines.ladder_for(False, self.roms()))
+        i = n.index("a500_2mb_chip")
+        self.assertEqual(n[i - 1:i + 2], ["a500_1mb_chip", "a500_2mb_chip",
+                                          "a1200"])
+        text = machines.uae_text(machines.BY_NAME["a500_2mb_chip"])
+        self.assertIn("chipmem_size=4\n", text)
+        self.assertIn("bogomem_size=0\n", text)
+        self.assertIn("cpu_type=68000\n", text)
+
+    def test_every_rung_is_a_preset_an_entry_can_name(self):
+        _, presets, problems = load(config.DATA_DIR / "machines.toml")
+        self.assertEqual(problems, [])
+        self.assertEqual(list(presets), [m.name for m in machines.LADDER])
 
     def test_pre_aga_productions_skip_the_fast_cpu_rungs(self):
         # 8 of 10,962 pre-AGA variants worked only on the 030/060 rungs; the

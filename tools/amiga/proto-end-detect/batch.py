@@ -6,7 +6,7 @@
 Run from tools/. One production id per line. A production whose trace.csv
 already has its last frame is skipped, so a killed batch can be rerun.
 """
-import argparse, os, pathlib, subprocess, sys, time
+import argparse, json, os, pathlib, subprocess, sys, time
 from concurrent.futures import ThreadPoolExecutor
 
 HERE = pathlib.Path(__file__).resolve().parent
@@ -14,9 +14,17 @@ OUT = pathlib.Path(os.environ.get("PROTO_OUT", "/tmp/proto-end-detect"))
 
 
 def finished(prod, frames):
-    t = OUT / str(prod) / "trace.csv"
-    if not t.exists():
+    d = OUT / str(prod)
+    t = d / "trace.csv"
+    m = d / "meta.json"
+    if not t.exists() or not m.exists():
         return False
+    try:
+        meta = json.loads(m.read_text())
+    except (OSError, ValueError):
+        return False
+    if meta.get("rc") == 2:
+        return True
     with open(t, "rb") as f:
         return sum(1 for _ in f) > frames
 

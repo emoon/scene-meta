@@ -32,6 +32,8 @@ machine = "a1200"
 title = "I Got Busted"
 group = "Mrs. King"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.4322]
 title = "I Has A Demomaker"
@@ -44,6 +46,8 @@ run = "karate"
 title = "I Have A Dog!"
 group = "Enemy"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.145669]
 title = "I Like Traffic Lights"
@@ -345,8 +349,8 @@ source = "script"
 title = "Ihana Elamae"
 group = "Snus"
 source = "script"
-machine = "a1200_030"
-result = "crashes-later"
+result = "unknown"
+note = "the sweep saw works-then-crash on a1200_030; no entry of it passed the gate"
 
 [demozoo.115246]
 title = "IKA I Rutan"
@@ -400,7 +404,7 @@ machine = "a1200"
 title = "Ill Flower"
 group = "Scum Of The Earth"
 source = "script"
-machine = "a1200"
+machine = "a1200_fast"
 
 [demozoo.214453]
 title = "Illegal Nonsense"
@@ -430,7 +434,7 @@ result = "unknown"
 title = "Illusion Pictures"
 group = "Terminators / Fluid Design"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.250459]
 title = "Illusion's Intro"
@@ -517,16 +521,18 @@ source = "script"
 [demozoo.151386]
 title = "Impact"
 group = "Moons"
-source = "script"
-machine = "a1200_030"
+source = "ai"
+machine = "a1200_060"
+result = "crashes-later"
 run = "impact_nc.exe"
+note = "its readme asks for a 68040 with FPU; frozen on a plasma frame from 88 s on a 68030 and a 68060, a left click changes nothing"
 
 [demozoo.239910]
 title = "Impact"
 group = "DC.Clark"
 source = "script"
-result = "unknown"
-run = "impact020.exe"
+machine = "a1200"
+boot = "floppy"
 
 [demozoo.139426]
 title = "Impassioned"
@@ -774,20 +780,21 @@ title = "Impulse"
 group = "Tilt"
 source = "script"
 disks = ["TILT-ImpulseA.DMS", "TILT-ImpulseB.DMS"]
-swaps = [{ disk = 2, at = 72.5 }]
+events = [{ at = 72.5, disk = 2 }]
 
 [demozoo.171972]
 title = "Impulse 2"
 group = "Old Bulls / Tilt"
 source = "script"
 disks = ["Tilt-Impulse2-a.dms", "Tilt-Impulse2-b.dms"]
-swaps = [{ disk = 2, at = 72.5 }]
+events = [{ at = 72.5, disk = 2 }]
 
 [demozoo.70683]
 title = "Impulse 3.09"
 group = "Tilt"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.177757]
 title = "Impulse Preview"
@@ -798,9 +805,8 @@ source = "script"
 title = "Imuzination"
 group = "Ram Jam"
 source = "script"
-machine = "a1200_fast"
 disks = ["RAMJAM-MuziNation-A.DMS", "RAMJAM-MuziNation-B.DMS"]
-swaps = [{ disk = 2, at = 410.0 }]
+note = "the sweep only reached disk 1 of 2"
 
 [demozoo.227096]
 title = "IMX 1990 Demo"
@@ -862,6 +868,7 @@ group = "KYO Corp"
 source = "script"
 result = "unknown"
 run = "IMoZX.eXe"
+note = "the sweep saw works-then-crash on a1200; no entry of it passed the gate"
 
 [demozoo.314014]
 title = "In Memory Of Maf"
@@ -1108,7 +1115,8 @@ result = "unknown"
 title = "Ines"
 group = "Faque"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.220770]
 title = "Inf-Tro"
@@ -1121,7 +1129,7 @@ group = "Three Times No"
 source = "script"
 machine = "a1200_fast"
 disks = ["io2-ttn1.dms", "io2-ttn2.dms"]
-swaps = [{ disk = 2, at = 48.2 }]
+events = [{ at = 48.2, disk = 2 }]
 
 [demozoo.357316]
 title = "Infamia 0 Intro"
@@ -1413,12 +1421,13 @@ machine = "a1200_fast"
 title = "Innocence of Mind"
 group = "Cybornetics"
 source = "script"
-result = "unknown"
 
 [demozoo.212816]
 title = "Innovation - Preversion"
 group = "Axxis"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.154112]
 title = "Innovation Part Two"
@@ -1429,6 +1438,8 @@ source = "script"
 title = "Innuendo"
 group = "Rednex"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.18187]
 title = "Insane"
@@ -1467,7 +1478,6 @@ machine = "a1200_fast"
 title = "Insects In Space Soundeffects"
 group = "Maniacs of Noise"
 source = "script"
-result = "unknown"
 
 [demozoo.7740]
 title = "Inside"
@@ -1504,6 +1514,8 @@ source = "script"
 title = "Inside Anarchy"
 group = "23 Celsius Crew"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.151400]
 title = "Inside Deluxe"
@@ -1525,7 +1537,8 @@ source = "script"
 title = "Insipid Injection"
 group = "Anathema"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.35145]
 title = "Insomnia"
@@ -1622,13 +1635,17 @@ machine = "a500_1mb"
 title = "Instant Thing"
 group = "Visdom"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.148840]
 title = "Instinct"
 group = "C-Lous"
-source = "script"
+source = "ai"
 machine = "a1200"
+result = "crashes-later"
 run = "Instinct.Exe"
+note = "Instinct.Exe calls Anim.exe, which is in a second archive the download lacks: 'object not found' at 63 s"
 
 [demozoo.291465]
 title = "Instinct"
@@ -1706,7 +1723,8 @@ machine = "a1200"
 title = "Intel Toilet 2"
 group = "T.C.W"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.212098]
 title = "Intel Toilet 2"
@@ -1848,7 +1866,6 @@ source = "script"
 title = "International Soccer Challenge"
 group = "Exage"
 source = "script"
-result = "unknown"
 
 [demozoo.179439]
 title = "International Super-Best"
@@ -1946,7 +1963,6 @@ source = "script"
 title = "Intoxication"
 group = "Abyss"
 source = "script"
-result = "unknown"
 
 [demozoo.102221]
 title = "Intrigue"
@@ -2028,7 +2044,6 @@ source = "script"
 title = "Intro"
 group = "Delicious Designs"
 source = "script"
-result = "unknown"
 
 [demozoo.188201]
 title = "Intro"
@@ -2064,7 +2079,6 @@ source = "script"
 title = "Intro"
 group = "Agima"
 source = "script"
-result = "unknown"
 
 [demozoo.209625]
 title = "Intro"
@@ -2282,7 +2296,6 @@ source = "script"
 title = "Intro"
 group = "Star Bilgisayar"
 source = "script"
-result = "unknown"
 
 [demozoo.228012]
 title = "Intro"
@@ -2384,13 +2397,11 @@ source = "script"
 title = "Intro"
 group = "Interactive"
 source = "script"
-result = "unknown"
 
 [demozoo.248455]
 title = "Intro"
 group = "Kreator"
 source = "script"
-result = "unknown"
 
 [demozoo.252056]
 title = "Intro"
@@ -2475,13 +2486,11 @@ source = "script"
 title = "Intro"
 group = "Crack Band Crew"
 source = "script"
-result = "unknown"
 
 [demozoo.312838]
 title = "Intro"
 group = "IRQ"
 source = "script"
-result = "unknown"
 
 [demozoo.312898]
 title = "Intro"
@@ -2666,7 +2675,7 @@ source = "script"
 title = "Intro 4K Musica"
 group = "Drareg"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.221471]
 title = "Intro 5"
@@ -2698,7 +2707,6 @@ result = "unknown"
 title = "Intro A2"
 group = "Smooth Soft"
 source = "script"
-result = "unknown"
 
 [demozoo.247168]
 title = "Intro by Big Muff"
@@ -2945,7 +2953,6 @@ machine = "a1200"
 title = "Intro to Salvation"
 group = "Creators"
 source = "script"
-result = "unknown"
 
 [demozoo.113903]
 title = "Intro To Trinity"
@@ -3080,7 +3087,6 @@ source = "script"
 title = "Introette"
 group = "Slipstream"
 source = "script"
-result = "unknown"
 
 [demozoo.258653]
 title = "Introette '92"
@@ -3267,7 +3273,7 @@ source = "script"
 title = "IQ 0,03"
 group = "Candle"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.246996]
 title = "IQ2000 Goes Str8"
@@ -3284,7 +3290,8 @@ source = "script"
 title = "IRepoMeiita"
 group = "Harvester"
 source = "script"
-machine = "a1200_030"
+result = "unknown"
+note = "the sweep saw works on a1200_030; no entry of it passed the gate"
 
 [demozoo.237017]
 title = "Iris"
@@ -3337,7 +3344,6 @@ source = "script"
 title = "Iron Maiden"
 group = "Defeat"
 source = "script"
-machine = "a1200"
 
 [demozoo.217542]
 title = "Irongods-Talk"
@@ -3387,10 +3393,10 @@ source = "script"
 [demozoo.22315]
 title = "Iso"
 group = "Scoopex"
-source = "script"
+source = "ai"
 machine = "a1200"
 disks = ["SCOOPEX-Iso_A.dms", "SCOOPEX-Iso_B.dms"]
-swaps = [{ disk = 2, at = 92.7 }]
+events = [{ at = 60.0, disk = 2 }]
 
 [demozoo.295540]
 title = "IsoMessages"
@@ -3423,7 +3429,7 @@ group = "Ram Jam"
 source = "script"
 machine = "a1200"
 disks = ["RamJam-ItCantBeDoneA.dms", "!RamJam-ItCantBeDoneB.dms"]
-swaps = [{ disk = 2, at = 90.6 }]
+events = [{ at = 90.6, disk = 2 }]
 
 [demozoo.145578]
 title = "It is New, It Is Great"
@@ -3483,7 +3489,6 @@ source = "script"
 title = "It's All Gonna Blow"
 group = "Amaze"
 source = "script"
-result = "unknown"
 
 [demozoo.84238]
 title = "It's been a while tro"
@@ -3553,7 +3558,6 @@ source = "script"
 title = "It's So Cool"
 group = "Cave"
 source = "script"
-result = "unknown"
 
 [demozoo.122156]
 title = "It's Tricky"
@@ -3569,7 +3573,6 @@ source = "script"
 title = "It's You"
 group = "Smellon"
 source = "script"
-result = "unknown"
 
 [demozoo.9383]
 title = "Italian Disco"

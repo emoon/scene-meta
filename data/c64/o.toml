@@ -155,7 +155,7 @@ title = "Oksen"
 group = "Starion"
 source = "script"
 disks = ["Oksen_S1.d64", "Oksen_S2.d64"]
-swaps = [{ disk = 2, at = 185.6, key = "space", key_delay = 12.6 }]
+events = [{ at = 185.6, disk = 2 }, { at = 198.2, key = "space" }]
 
 [demozoo.326060]
 title = "Ol3-Yle-K23"
@@ -194,7 +194,7 @@ group = "Fossil"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["OMIUC-side1.d64", "OMIUC-side2.d64"]
-swaps = [{ disk = 2, at = 330.8, key = "space" }]
+events = [{ at = 330.8, disk = 2 }, { at = 335.8, key = "space" }]
 
 [demozoo.175223]
 title = "Old Musics Collection"
@@ -423,7 +423,7 @@ group = "Fairlight"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["fairlight-onequarter-sidea.d64", "fairlight-onequarter-sideb.d64"]
-swaps = [{ disk = 2, at = 434.2, key = "space", key_delay = 15.8 }]
+events = [{ at = 434.2, disk = 2 }, { at = 450.0, key = "space" }]
 
 [demozoo.345034]
 title = "One Year"
@@ -442,7 +442,7 @@ title = "One Year Action"
 group = "Action"
 source = "script"
 disks = ["One Year Action.d64", "oneyearaction2bnote5baction5d.d64"]
-swaps = [{ disk = 2, at = 165.4, key = "space", key_delay = 17.0 }]
+events = [{ at = 165.4, disk = 2 }, { at = 182.4, key = "space" }]
 
 [demozoo.2213]
 title = "One Year Camelot 3"
@@ -530,7 +530,7 @@ title = "Ooops Up"
 group = "Stash"
 source = "script"
 disks = ["ooopsupstash.d64", "oops_up-stash.d64"]
-swaps = [{ disk = 2, at = 150.3, key = "space", key_delay = 18.2 }]
+events = [{ at = 150.3, disk = 2 }, { at = 168.5, key = "space" }]
 
 [demozoo.367850]
 title = "Oor Demo"
@@ -570,7 +570,7 @@ title = "Opium 95%"
 group = "Samar"
 source = "script"
 disks = ["Opium_S1.D64", "Opium_S2.D64"]
-swaps = [{ disk = 2, at = 175.2 }]
+events = [{ at = 175.2, disk = 2 }]
 
 [demozoo.366897]
 title = "OPS"
@@ -720,7 +720,7 @@ title = "Our Darkness"
 group = "Smash Designs"
 source = "script"
 disks = ["OUR_DARKNESS_S1.D64", "OUR_DARKNESS_S2.D64"]
-swaps = [{ disk = 2, at = 191.7, key = "p2fire", key_delay = 42.2 }]
+events = [{ at = 191.7, disk = 2 }, { at = 233.9, key = "p2fire" }]
 
 [demozoo.357204]
 title = "Our Departure"
@@ -834,7 +834,7 @@ title = "Out of Contex"
 group = "Artline Designs"
 source = "ai"
 disks = ["ALD_Out_of_Contex_SIDEA.d64", "ALD_Out_of_Contex_SIDEB.d64"]
-swaps = [{ disk = 2, at = 233.4, key = "space", key_delay = 17.3 }]
+events = [{ at = 233.4, disk = 2 }, { at = 250.7, key = "space" }]
 note = "Out of Contex: side A runs title/face/ring parts then shows TURN DISK (~154-180M); insert side B then space ~17M later, new parts (car, tunnel, cube) follow; inserting before the TURN screen hangs on a pink screen; disk 2: TURN DISK shows from ~154-180M and stays 400M+; no upper limit seen; insert before ~154M hangs"
 
 [demozoo.325151]

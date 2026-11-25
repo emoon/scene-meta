@@ -168,6 +168,8 @@ source = "script"
 title = "Pack Preview"
 group = "Psycho"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.230927]
 title = "Pack Preview"
@@ -266,7 +268,7 @@ source = "script"
 title = "Paha Maku"
 group = "Teemu Ja Tuomas"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.189156]
 title = "Pahamies"
@@ -277,7 +279,7 @@ source = "script"
 title = "Paid in Full"
 group = "Mystic"
 source = "script"
-result = "unknown"
+machine = "a500_1mb"
 
 [demozoo.102224]
 title = "Pain"
@@ -340,7 +342,6 @@ result = "unknown"
 title = "Pal-O-Vision"
 group = "Intuition"
 source = "script"
-result = "unknown"
 
 [demozoo.35443]
 title = "Paleo"
@@ -370,7 +371,6 @@ source = "script"
 title = "Pamper Demo"
 group = "Faith"
 source = "script"
-result = "unknown"
 
 [demozoo.262701]
 title = "Pan II"
@@ -720,6 +720,8 @@ boot = "floppy"
 title = "Partro"
 group = "Appendix"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.231277]
 title = "Partro"
@@ -906,6 +908,8 @@ source = "script"
 title = "Party Demo"
 group = "Ascension"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.222390]
 title = "Party Demo"
@@ -1268,7 +1272,6 @@ source = "script"
 title = "Party Intro"
 group = "Eon"
 source = "script"
-result = "unknown"
 
 [demozoo.248476]
 title = "Party Intro"
@@ -1350,7 +1353,7 @@ source = "script"
 title = "Party Invitation"
 group = "Creators"
 source = "script"
-result = "unknown"
+boot = "floppy"
 
 [demozoo.241072]
 title = "Party Invitation"
@@ -1757,6 +1760,8 @@ source = "script"
 title = "Paskahor"
 group = "Joga"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.217286]
 title = "Paskalla"
@@ -1890,7 +1895,6 @@ source = "script"
 title = "PBI"
 group = "Archaos"
 source = "script"
-result = "unknown"
 
 [demozoo.180204]
 title = "PC Demo"
@@ -1996,7 +2000,7 @@ source = "script"
 title = "Peartro"
 group = "Lamers Inc."
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.385551]
 title = "Peasoup"
@@ -2125,16 +2129,14 @@ source = "script"
 title = "Persil"
 group = "Madwizards"
 source = "script"
-result = "unknown"
 run = "MWI-Persil_020+.exe"
 
 [demozoo.169514]
 title = "Persistence Megademo"
 group = "Brainstorm"
 source = "script"
-machine = "a500_1mb"
 disks = ["BRS-MegademoA.dms", "BRS-MegademoB.dms"]
-swaps = [{ disk = 2, at = 129.2, key = "lmb" }]
+note = "the sweep only reached disk 1 of 2"
 
 [demozoo.223710]
 title = "Perspective"
@@ -2388,7 +2390,6 @@ source = "script"
 title = "Phon-O-Bomb III Commercial"
 group = "Acrid"
 source = "script"
-result = "unknown"
 
 [demozoo.261616]
 title = "Phone-Dialer"
@@ -2523,7 +2524,7 @@ group = "Axis"
 source = "script"
 machine = "a1200_fast"
 disks = ["axs-pbk1.dms", "axs-pbk2.dms", "axs-pbk3.dms", "axs-pbk4.dms"]
-swaps = [{ disk = 2, at = 98.2 }, { disk = 3, at = 225.8 }, { disk = 4, at = 309.5 }]
+events = [{ at = 98.2, disk = 2 }, { at = 225.8, disk = 3 }, { at = 309.5, disk = 4 }]
 
 [demozoo.212319]
 title = "Picture Move"
@@ -2719,9 +2720,8 @@ machine = "a1200"
 title = "Pink Floyd - The Wall"
 group = "Split Dimension"
 source = "script"
-drives = 2
 disks = ["SD-TheWallA.dms", "SD-TheWallB.dms", "SD-TheWallC.dms", "SD-TheWallD.dms", "SD-TheWallE.dms", "SD-TheWallF.dms"]
-swaps = [{ disk = 3, at = 39.1, key = "lmb" }, { disk = 4, at = 314.3, key = "lmb" }, { disk = 5, at = 346.6, key = "lmb" }, { disk = 6, at = 379.0, key = "lmb" }]
+note = "the sweep only reached disk 1 of 6"
 
 [demozoo.193570]
 title = "Pink In Mono"
@@ -3007,7 +3007,6 @@ source = "script"
 title = "Plasma"
 group = "Flashers"
 source = "script"
-result = "unknown"
 
 [demozoo.221744]
 title = "Plasma"
@@ -3216,7 +3215,6 @@ source = "script"
 title = "Play It Loud"
 group = "Epsilon / Wings of Tomorrow"
 source = "script"
-result = "unknown"
 
 [demozoo.238575]
 title = "Play With The Keys"
@@ -3305,7 +3303,7 @@ source = "script"
 title = "Plump"
 group = "Session"
 source = "script"
-result = "unknown"
+machine = "a500_2mb_chip"
 run = "jojo.ssn"
 
 [demozoo.253451]
@@ -3477,7 +3475,8 @@ result = "unknown"
 title = "Polish Autumn 1993 Invitation Demo"
 group = "Mad Elks"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "the sweep saw works on a500_2mb_chip; no entry of it passed the gate"
 
 [demozoo.194475]
 title = "Polish Autumn Party Intro"
@@ -3644,9 +3643,9 @@ source = "script"
 [demozoo.20972]
 title = "Popgun"
 group = "Paragon"
-source = "script"
+source = "ai"
 machine = "a1200_fast"
-run = "Damasm98.exe"
+run = "popgun.exe"
 
 [demozoo.44749]
 title = "Popjunkie"
@@ -3719,13 +3718,11 @@ run = "hb-porno.exe"
 title = "Porno Movie Intro"
 group = "The Prophets AG"
 source = "script"
-result = "unknown"
 
 [demozoo.317910]
 title = "Porno Pack 1 Intro"
 group = "Alpha"
 source = "script"
-result = "unknown"
 
 [demozoo.9567]
 title = "Pornofunk"
@@ -3811,7 +3808,7 @@ title = "Possessed Megademo"
 group = "Possessed"
 source = "script"
 disks = ["Possessed-MegademoA.adf", "Possessed-MegademoB.adf"]
-swaps = [{ disk = 2, at = 271.7, key = "lmb" }]
+note = "the sweep only reached disk 1 of 2"
 
 [demozoo.9562]
 title = "Possible"
@@ -3956,6 +3953,7 @@ source = "script"
 title = "Power Cycler"
 group = "Istari"
 source = "script"
+boot = "hd"
 
 [demozoo.205945]
 title = "Power Demo"
@@ -4261,7 +4259,6 @@ machine = "a1200"
 title = "Present Intro"
 group = "Universal"
 source = "script"
-result = "unknown"
 
 [demozoo.265316]
 title = "Presentation 1"
@@ -4362,12 +4359,13 @@ source = "script"
 title = "Prevail Pack Preview 4"
 group = "Effect"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.242613]
 title = "Prevail Pack Trainer"
 group = "Effect"
 source = "script"
-result = "unknown"
 
 [demozoo.242846]
 title = "Preview"
@@ -4541,12 +4539,13 @@ result = "unknown"
 title = "Prism Part 2"
 group = "Absurd"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.95283]
 title = "Prism Vectors"
 group = "Surprise! Productions"
 source = "script"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.329265]
 title = "Private Meeting Intro"
@@ -4718,9 +4717,9 @@ machine = "a1200"
 title = "Project W"
 group = "The Planet of Leather Moomins"
 source = "script"
-machine = "a1200_030"
 boot = "floppy"
-result = "crashes-later"
+result = "unknown"
+note = "the sweep saw works-then-crash on a1200_030; no entry of it passed the gate"
 
 [demozoo.45604]
 title = "Project42"
@@ -4744,6 +4743,8 @@ machine = "a1200"
 title = "Prolog"
 group = "Experience"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.254530]
 title = "Promax Demo 2"
@@ -4764,13 +4765,14 @@ source = "script"
 title = "Promax Intro 1"
 group = "Atomic Team"
 source = "script"
-machine = "a500_512k"
+result = "unknown"
+note = "the sweep saw works on a500_512k; no entry of it passed the gate"
 
 [demozoo.61932]
 title = "Promille"
 group = "Rock"
 source = "script"
-result = "unknown"
+machine = "a1200"
 run = "promille_release.exe"
 
 [demozoo.237177]
@@ -4860,8 +4862,9 @@ machine = "a500_ks12"
 title = "Prot"
 group = "Nevermind"
 source = "script"
-machine = "a1200"
+result = "unknown"
 run = "Prot.exe"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.53957]
 title = "Proton"
@@ -5071,7 +5074,8 @@ source = "script"
 title = "PsychoBass"
 group = "Deathless"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
+note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
 
 [demozoo.232054]
 title = "Psychomania"
@@ -5120,7 +5124,7 @@ run = "fankijam.exe"
 title = "Psykospasme 2"
 group = "Ukonx"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.18514]
 title = "PsyLOVEcicle"
@@ -5195,7 +5199,6 @@ run = "pukamat.com"
 title = "Puke"
 group = "Craze"
 source = "script"
-result = "unknown"
 
 [demozoo.57740]
 title = "Puke 12"
@@ -5229,6 +5232,8 @@ source = "script"
 title = "Pulling The Trigger"
 group = "Palace"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.18877]
 title = "Pulp"
@@ -5316,7 +5321,7 @@ source = "script"
 title = "Pumpkin"
 group = "Grey"
 source = "script"
-result = "unknown"
+boot = "floppy"
 
 [demozoo.32973]
 title = "Puost - The Demo"
@@ -5389,9 +5394,9 @@ source = "script"
 title = "Purgatory"
 group = "The Black Lotus"
 source = "script"
-machine = "a500_1mb"
+result = "unknown"
 disks = ["TBL-PurgatoryA.adf", "TBL-PurgatoryB.adf"]
-swaps = [{ disk = 2, at = 300.9 }]
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.167894]
 title = "Purple"
@@ -5402,8 +5407,9 @@ source = "script"
 title = "Purple"
 group = "Deathless"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
 run = "MainPart.exe"
+note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
 
 [demozoo.371515]
 title = "Purple"

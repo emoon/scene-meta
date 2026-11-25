@@ -18,10 +18,10 @@ source = "script"
 [demozoo.6576]
 title = "Q.E.D. 2"
 group = "Talent"
-source = "script"
+source = "ai"
 machine = "a1200"
 disks = ["Talent-QED2-A.dms", "Talent-QED2-B.dms"]
-swaps = [{ disk = 2, at = 150.5, key = "lmb" }]
+events = [{ at = 50.0, disk = 2 }, { at = 55.0, key = "lmb" }]
 
 [demozoo.21517]
 title = "QAPMOC"
@@ -66,7 +66,7 @@ source = "script"
 title = "QuadraPedia"
 group = "Team PowerAmiga"
 source = "script"
-result = "unknown"
+machine = "a500_1mb"
 
 [demozoo.227488]
 title = "Quadrilled"
@@ -210,7 +210,7 @@ source = "script"
 title = "Quick"
 group = "Fucking United Network"
 source = "script"
-result = "unknown"
+boot = "floppy"
 
 [demozoo.213254]
 title = "Quick Advtro"

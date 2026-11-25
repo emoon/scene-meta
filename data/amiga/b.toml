@@ -121,7 +121,6 @@ source = "script"
 title = "Baby Jo - In \"Going Home\""
 group = "Model"
 source = "script"
-result = "unknown"
 
 [demozoo.173652]
 title = "Baby Steps"
@@ -397,7 +396,6 @@ source = "script"
 title = "BAD Announcement"
 group = "The Silents"
 source = "script"
-result = "unknown"
 
 [demozoo.254944]
 title = "Bad Boy Club BBS"
@@ -628,7 +626,7 @@ source = "script"
 title = "BALSAM Invitation"
 group = "NC Gamez"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.153220]
 title = "Bamba Beach"
@@ -691,7 +689,7 @@ machine = "a1200"
 title = "Ban This"
 group = "Eltech"
 source = "script"
-result = "unknown"
+machine = "a500_2mb_chip"
 
 [demozoo.35133]
 title = "Banan"
@@ -858,7 +856,6 @@ source = "script"
 title = "Bash 2 Party Intro"
 group = "Red Rats"
 source = "script"
-result = "unknown"
 
 [demozoo.246654]
 title = "Bash 3 Intro"
@@ -869,8 +866,9 @@ source = "script"
 title = "Basic Instinct BBS"
 group = "Suspiria / Scoopex"
 source = "script"
-machine = "a1200"
 boot = "floppy"
+result = "unknown"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.195697]
 title = "Basic Intro"
@@ -881,7 +879,6 @@ source = "script"
 title = "Basic is Funny"
 group = "Awesome Games"
 source = "script"
-result = "unknown"
 
 [demozoo.220738]
 title = "Basic Resistance"
@@ -968,7 +965,7 @@ group = "Batman Group"
 source = "script"
 machine = "a500_1mb"
 disks = ["Batman_Rises_disk1.adf", "Batman_Rises_disk2.adf"]
-swaps = [{ disk = 2, at = 281.6 }]
+events = [{ at = 281.6, disk = 2 }]
 
 [demozoo.231961]
 title = "Batman Style"
@@ -980,7 +977,7 @@ title = "Batman Vuelve"
 group = "Batman Group"
 source = "script"
 disks = ["BG-BatmanVuelveA.dms", "BG-BatmanVuelveB.dms"]
-swaps = [{ disk = 2, at = 66.1, key = "lmb" }]
+events = [{ at = 66.1, disk = 2 }, { at = 71.1, key = "lmb" }]
 
 [demozoo.331089]
 title = "Batman!"
@@ -1087,7 +1084,6 @@ source = "script"
 title = "BBS Advert"
 group = "F Team"
 source = "script"
-result = "unknown"
 
 [demozoo.246581]
 title = "BBS Advert Intro"
@@ -1123,6 +1119,8 @@ source = "script"
 title = "BBS Dentro"
 group = "Dual Crew"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.233922]
 title = "BBS Dentro"
@@ -1255,7 +1253,6 @@ source = "script"
 title = "BBS Intro"
 group = "Spreadpoint / Amiga Industries"
 source = "script"
-result = "unknown"
 
 [demozoo.230083]
 title = "BBS Intro"
@@ -1887,6 +1884,8 @@ source = "script"
 title = "Beneath A Steel Sky Explanation"
 group = "Mellow"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.150058]
 title = "Bengt"
@@ -1914,7 +1913,7 @@ group = "Ramses"
 source = "script"
 machine = "a1200_030"
 disks = ["Ramses-BenoitA.dms", "Ramses-BenoitB.dms"]
-swaps = [{ disk = 2, at = 68.5 }]
+events = [{ at = 68.5, disk = 2 }]
 
 [demozoo.136457]
 title = "Benoît"
@@ -2048,7 +2047,7 @@ title = "Beton"
 group = "Defensywa"
 source = "script"
 disks = ["Defensywa-BetonA.adf", "Defensywa-BetonB.adf"]
-swaps = [{ disk = 2, at = 59.0, key = "lmb" }]
+events = [{ at = 59.0, disk = 2 }, { at = 64.0, key = "lmb" }]
 
 [demozoo.225247]
 title = "Betoniporsas"
@@ -2270,7 +2269,8 @@ result = "unknown"
 title = "Big Business 4 Intro"
 group = "Pleasure"
 source = "script"
-result = "unknown"
+machine = "a500_1mb"
+boot = "floppy"
 
 [demozoo.232806]
 title = "Big Demo"
@@ -2351,7 +2351,7 @@ group = "Axis"
 source = "script"
 machine = "a1200_fast"
 disks = ["Axis-BigTimeSensuality-A.adf", "Axis-BigTimeSensuality-B.dms"]
-swaps = [{ disk = 2, at = 71.5 }]
+events = [{ at = 71.5, disk = 2 }]
 
 [demozoo.37013]
 title = "Big!"
@@ -2566,7 +2566,6 @@ source = "script"
 [demozoo.375379]
 title = "Bird Animation"
 source = "script"
-result = "unknown"
 
 [demozoo.284539]
 title = "Birrabanderas"
@@ -2582,7 +2581,8 @@ source = "script"
 title = "Birth Intro"
 group = "Loctite"
 source = "script"
-result = "unknown"
+machine = "a500_2mb_chip"
+boot = "floppy"
 
 [demozoo.169515]
 title = "Birthday"
@@ -2954,8 +2954,7 @@ source = "script"
 title = "Black Scarlett"
 group = "Dalthon"
 source = "script"
-machine = "a1200_030"
-boot = "floppy"
+machine = "a500_2mb_chip"
 
 [demozoo.133771]
 title = "Black-up"
@@ -3009,7 +3008,6 @@ source = "script"
 title = "Blade Is A Gay Shit (Preview)"
 group = "End of Century 1999"
 source = "script"
-result = "unknown"
 
 [demozoo.241340]
 title = "Bladewarriors Sin Scroller"
@@ -3055,6 +3053,7 @@ source = "script"
 title = "Blasphemy"
 group = "Anexius"
 source = "script"
+machine = "a500_512k"
 
 [demozoo.170897]
 title = "Blast From The Past"
@@ -3132,6 +3131,8 @@ source = "script"
 title = "Blerkenwiegel"
 group = "Scoopex"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.250190]
 title = "Bleu de Prusse"
@@ -3160,8 +3161,9 @@ run = "44"
 title = "Bliss Out"
 group = "Ukonx"
 source = "script"
+result = "unknown"
 disks = ["Ukonx-BlissOut1.DMS", "Ukonx-BlissOut2.DMS"]
-swaps = [{ disk = 2, at = 564.4 }]
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.189783]
 title = "Blit it"
@@ -3299,7 +3301,7 @@ source = "script"
 title = "block rockin' tits"
 group = "Rave Network Overscan"
 source = "script"
-machine = "a1200_030"
+machine = "a500_1mb"
 
 [demozoo.100503]
 title = "Blockboot"
@@ -3449,7 +3451,7 @@ source = "script"
 title = "Blub!"
 group = "Abyss"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.132843]
 title = "Blub! Blub!"
@@ -3546,6 +3548,8 @@ source = "script"
 title = "Blue House 2"
 group = "Blue House Productions / Sonic Projects / Rebels"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.203704]
 title = "Blue II"
@@ -3713,7 +3717,7 @@ machine = "a1200"
 title = "Blur"
 group = "Pumba / Bore"
 source = "script"
-result = "unknown"
+machine = "a1200"
 run = "Blur.exe"
 
 [demozoo.39854]
@@ -3960,8 +3964,6 @@ source = "script"
 title = "Bobs Are The Spice of Life"
 group = "Switch"
 source = "script"
-machine = "a1200"
-boot = "floppy"
 
 [demozoo.182660]
 title = "Bobs Controller"
@@ -4138,7 +4140,7 @@ source = "script"
 title = "Bomb the Duck"
 group = "Aldi"
 source = "script"
-result = "unknown"
+machine = "a500_1mb"
 
 [demozoo.226561]
 title = "Bombastic Passion"
@@ -4197,7 +4199,7 @@ machine = "a1200_fast"
 title = "Bong"
 group = "I486"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.136528]
 title = "Bongonight"
@@ -4367,7 +4369,6 @@ source = "script"
 title = "Boom! Boom!"
 group = "Razor 1911"
 source = "script"
-result = "unknown"
 
 [demozoo.154432]
 title = "Booo"
@@ -4441,13 +4442,11 @@ source = "script"
 title = "Boot Intro"
 group = "The Enforcers"
 source = "script"
-result = "unknown"
 
 [demozoo.225980]
 title = "Boot Intro"
 group = "The Law Breakers"
 source = "script"
-result = "unknown"
 
 [demozoo.226529]
 title = "Boot Intro"
@@ -4484,7 +4483,7 @@ source = "script"
 title = "Boot Intro"
 group = "Tristar"
 source = "script"
-result = "unknown"
+machine = "a500_512k"
 
 [demozoo.265073]
 title = "Boot Intro"
@@ -4574,7 +4573,6 @@ source = "script"
 title = "Boot-Intro"
 group = "Adept"
 source = "script"
-result = "unknown"
 
 [demozoo.217536]
 title = "Boot-Intro"
@@ -4635,6 +4633,7 @@ source = "script"
 title = "Bootfail"
 group = "Void"
 source = "script"
+machine = "a1200_030"
 
 [demozoo.240169]
 title = "Bootintro"
@@ -4721,8 +4720,7 @@ source = "script"
 [demozoo.277281]
 title = "Boozedrome III"
 group = "Dekadence"
-source = "script"
-result = "unknown"
+source = "ai"
 run = "dkd-boozedrome3.exe"
 
 [demozoo.292290]
@@ -4885,7 +4883,6 @@ source = "script"
 title = "Born"
 group = "Red Thread"
 source = "script"
-result = "unknown"
 
 [demozoo.221662]
 title = "Born"
@@ -5070,6 +5067,8 @@ title = "BornTro"
 group = "Unity"
 source = "script"
 result = "unknown"
+run = "Unity_BornTro"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.176291]
 title = "Borntro"
@@ -5111,7 +5110,7 @@ source = "script"
 title = "Borntro"
 group = "Stoopid"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.225081]
 title = "Borntro"
@@ -5135,7 +5134,7 @@ machine = "a1200"
 title = "Borntro"
 group = "Selfesteem"
 source = "script"
-result = "unknown"
+machine = "a500_2mb_chip"
 
 [demozoo.239485]
 title = "Borntro"
@@ -5156,7 +5155,6 @@ source = "script"
 title = "Borntro"
 group = "Impulse"
 source = "script"
-result = "unknown"
 
 [demozoo.247787]
 title = "Borntro"
@@ -5419,7 +5417,6 @@ source = "script"
 title = "Brain Damage 2 Intro"
 group = "Giants"
 source = "script"
-result = "unknown"
 
 [demozoo.1957]
 title = "Brain Drain"
@@ -5747,7 +5744,7 @@ machine = "a500_1mb"
 title = "Broken Connection"
 group = "Anaheim"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.85080]
 title = "Broken Eyes"
@@ -5852,6 +5849,8 @@ run = "teo_-_moonlight.exe"
 title = "Brume"
 group = "New Generation Crew"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.183588]
 title = "Bruno Carette Tribute"
@@ -5936,7 +5935,7 @@ source = "script"
 title = "Bubble Intro"
 group = "Anaheim"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.235479]
 title = "Bubble-Stars"
@@ -6123,7 +6122,6 @@ machine = "a1200_fast"
 title = "Bunker 42 Announcement Intro"
 group = "Rage"
 source = "script"
-result = "unknown"
 
 [demozoo.307618]
 title = "Bunny Cracktro"
@@ -6205,8 +6203,9 @@ source = "script"
 title = "Bustro"
 group = "Carnage"
 source = "script"
-machine = "a1200_030"
 boot = "floppy"
+result = "unknown"
+note = "the sweep saw works on a1200_030; no entry of it passed the gate"
 
 [demozoo.182545]
 title = "Butcher's Newst and Coolest"
@@ -6317,7 +6316,6 @@ source = "script"
 title = "Bytekiller 1.3 Intro"
 group = "Bamiga Sector One / The Kent Team"
 source = "script"
-result = "unknown"
 
 [demozoo.364]
 title = "ByteKiller Pro 1.0 Spreading Intro"

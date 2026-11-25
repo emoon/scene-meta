@@ -27,13 +27,16 @@ def is_aga(prod):
 
 
 def known_machines(data):
-    """``{id: machine name}`` of the productions the data files already
-    file under a machine: a sweep starts there, not at the bottom."""
+    """``{id: machine name}`` of the productions the data files say run,
+    and so file under a machine: a sweep starts there, not at the bottom.
+    Not one whose entry says it does not run: starting at the default would
+    cut the AGA rungs off an AGA-only production's ladder."""
     default = default_machine(data)
     out = {}
     for path in sorted(data.glob("*.toml")):
         if path.name != presets.FILE:
             for key, e in tomllib.loads(path.read_text("utf-8")) \
                     .get("demozoo", {}).items():
-                out[int(key)] = e.get("machine", default)
+                if e.get("result") in (None, "crashes-later"):
+                    out[int(key)] = e.get("machine", default)
     return out

@@ -3,9 +3,12 @@
 import concurrent.futures as cf
 import dataclasses
 import functools
+import itertools
 
-from ..core import result, sweep as driver
-from . import catalog, config, emulator, machines, media, verdict
+from .. import events
+from ..core import gate, result, sweep as driver
+from . import (catalog, config, emulator, machines, media, player, verdict,
+               workbench)
 from .machines import FPS
 
 SINGLE_DISK_FRAMES = 9000       # 3 minutes of a demo
@@ -21,6 +24,14 @@ def budget(variant):
     return SINGLE_DISK_FRAMES if n <= 1 else min(PER_DISK_FRAMES * n, MAX_FRAMES)
 
 
+@dataclasses.dataclass(frozen=True)
+class Press:
+    """A key a run pressed."""
+    frame: int
+    key: str
+    swap: int = None    # index of the swap whose disk it follows; None: on its own
+
+
 @dataclasses.dataclass
 class Attempt:
     machine: str
@@ -34,7 +45,9 @@ class Attempt:
     click_every: int = 0
     key_every: int = 0
     seed: int = emulator.DEFAULT_SEED
-    clicks: tuple = ()    # frames of the clicks a run with no swap made
+    presses: tuple = ()   # the Press an entry of it needs
+    untils: tuple = ()    # per swap: the latest frame it was seen to go in
+    play: gate.Play = None  # of a run through the player
 
     @property
     def ran(self):
@@ -61,15 +74,20 @@ class Attempt:
         def seconds(frames):
             return None if frames is None else frames / FPS
         v, log = self.verdict, self.log
+        keyed = {p.swap: p for p in self.presses}
         return result.Run(
             self.machine, seconds(self.frames), v.verdict,
             seconds(v.alive * SAMPLE_FRAMES), v.crash, seconds(v.crash_frame),
             seconds(v.ended_frame), v.wants_disk, self.drives, self.reached,
             [result.Swap(disk, seconds(frame), how,
-                         key="lmb" if "click" in how else None)
-             for frame, disk, how in self.swaps],
+                         key=keyed[i].key if i in keyed else None,
+                         key_at=seconds(keyed[i].frame) if i in keyed else None,
+                         drive=self.unit + 1,
+                         until=seconds(dict(enumerate(self.untils)).get(i)))
+             for i, (frame, disk, how) in enumerate(self.swaps)],
             {"returncode": log.returncode, "events": log.events}, log.last_shot,
-            [result.Key(seconds(f), "lmb") for f in self.clicks])
+            [result.Key(seconds(p.frame), p.key) for p in self.presses
+             if p.swap is None])
 
 
 CLICK_EVERY = 1500    # 30 s between nudges on the click retry
@@ -106,8 +124,58 @@ def attempt(m, variant, frames, **kw):
     """One run and what it showed. ``kw`` are emulator.Options fields."""
     opts = emulator.Options(**kw)
     log = emulator.run(m, variant, frames, opts)
+    return _seen(m, variant, frames, opts, log,
+                 verdict.classify(log, frames // 250))
+
+
+def played(m, variant, entry, seed, patient=False):
+    """One run of ``entry`` as written, through the player, and what it
+    showed."""
+    ran = player.Ready(entry, m, variant).play(seed=seed, patient=patient)
+    opts = emulator.Options(drives=entry.get("drives", 1), seed=seed)
+    return dataclasses.replace(
+        _seen(m, variant, player.frames_of(entry, patient), opts, ran.log,
+              ran.verdict),
+        play=ran.record)
+
+
+# A disk is tried as much later as a patient player waits at most.
+WINDOW_FRAMES = round(player.PATIENCE * FPS)
+
+
+def windows(m, variant, a):
+    """The latest frame each disk of attempt ``a`` is seen to go in, from
+    one patient run of its entry with every disk WINDOW_FRAMES late: of the
+    swaps up to the first whose disk did not load, of none when that run
+    crashed or never came alive."""
+    if not a.swaps or not a.ran:
+        return ()
+    entry = _entry(variant, a, a.presses)
+    for event in entry["events"]:
+        if "disk" in event:
+            event["until"] = event["at"] + WINDOW_FRAMES / FPS
+    play = played(m, variant, entry, a.seed, patient=True).play
+    if play.crash or not play.ran:
+        return ()
+    loaded = itertools.takewhile(lambda s: s.loaded, play.swaps)
+    return tuple(swap[0] + WINDOW_FRAMES for swap, _ in zip(a.swaps, loaded))
+
+
+def _entry(variant, a, presses):
+    """The entry of attempt ``a`` with ``presses``, as far as the player
+    reads one."""
+    does = [{"at": p.frame / FPS, "key": p.key} for p in presses]
+    for frame, disk, _ in a.swaps:
+        does.append({"at": frame / FPS, "disk": disk})
+        if a.unit:
+            does[-1]["drive"] = a.unit + 1
+    return {"drives": a.drives, "disks": variant.disks,
+            "events": events.ordered(does)}
+
+
+def _seen(m, variant, frames, opts, log, v):
+    """The Attempt of a finished run."""
     log.events.append({"event": "seed", "seed": opts.seed})
-    v = verdict.classify(log, frames // 250)
     sw = verdict.swaps(log)
     reached = verdict.disks_reached(log, verdict.played_swaps(log, sw, v),
                                     opts.drives, len(variant.disks))
@@ -133,12 +201,22 @@ class _Tries:
     def stalled(self):
         return waits_for_click(self.tries)
 
-    def once(self, frames, **kw):
-        """One more attempt, for ``frames``: not one of the waves."""
-        got = attempt(self._run[0], self._run[1], frames, **kw)
+    def played(self, a, presses):
+        """One more attempt, not one of the waves: the entry of attempt
+        ``a`` with ``presses``, played as written."""
+        m, variant, _ = self._run
+        got = dataclasses.replace(
+            played(m, variant, _entry(variant, a, presses), a.seed),
+            unit=a.unit)
         self.tries.append(got)
-        self.asked.append(kw)
+        self.asked.append(dict(seed=a.seed))
         return got
+
+    def replace(self, a, **changes):
+        """Attempt ``a`` with ``changes``, in its place."""
+        i = next(i for i, x in enumerate(self.tries) if x is a)
+        self.tries[i] = dataclasses.replace(a, **changes)
+        return self.tries[i]
 
     def wave(self, *kws):
         """Run one attempt per set of arguments, all at once."""
@@ -255,24 +333,85 @@ def _try_scheduled_swaps(t):
             break
 
 
-def _best(t):
-    """The best attempt, run once more without its swap click when it had
-    one, to see whether the click was needed."""
-    best, kw = max(zip(t.tries, t.asked), key=lambda x: x[0].rank)
-    at = clicked_swap(best)
-    if at is None:
-        return best
-    # The detector clicks whenever a new disk is not loaded from within
-    # 5 s, and a slow start then looks like the click's doing (Desert
-    # Dream). Only the same run without the click shows it was needed:
-    # with nothing pressed at all once that disk is in, a retry's own
-    # clicks included (Megademo III).
-    plain = t.wave(dict(kw, seed=best.seed, swap_click=False,
-                        nudge_until=at))[0]
-    return plain if as_far(plain, best) else best
-
-
 SWAP_CLICK_FRAMES = 250   # the detector clicks this long after an insert
+
+
+def detector_clicks(a):
+    """The Press of each click the detector made in attempt ``a`` for a
+    disk it put in to be taken."""
+    out = []
+    for i, (frame, _, how) in enumerate(a.swaps):
+        if "+click" in how:
+            out.append(Press(frame + SWAP_CLICK_FRAMES, "lmb", i))
+        if "+rclick" in how:
+            out.append(Press(frame + 2 * SWAP_CLICK_FRAMES, "rmb", i))
+    return out
+
+
+def presses_made(a, kw):
+    """The Press of every key pressed in attempt ``a``, asked for with the
+    emulator.Options fields ``kw``, in time order."""
+    index = {disk: i for i, (_, disk, _) in enumerate(a.swaps)}
+    own = [Press(frame, key, None if k is None else index.get(a.drives + 1 + k))
+           for frame, key, k in emulator.pressed(a.frames,
+                                                 emulator.Options(**kw))]
+    return sorted(own + detector_clicks(a), key=lambda p: p.frame)
+
+
+# The most runs made to find the presses one attempt needs.
+NEEDED_RUNS = 12
+
+
+def _best(t):
+    """The best attempt, with the presses it needs. A run presses keys
+    nobody asked for (the detector clicks a disk that is only slow to load:
+    Desert Dream), so the player plays the entry of it with no key, then
+    with one more press at a time, kept when the run without it got less
+    far. That run is the best one when it passes the gate's judgement."""
+    i = max(range(len(t.tries)), key=lambda i: t.tries[i].rank)
+    best = t.tries[i]
+    left = presses_made(best, t.asked[i])
+    if not left or not best.ran:
+        return best
+    kept, got = [], t.played(best, [])
+    for _ in range(NEEDED_RUNS):
+        press = _next_press(best, got, kept, left)
+        if press is None:
+            break
+        left.remove(press)
+        more = t.played(best, kept + [press])
+        if gate.far(more.play) > gate.far(got.play):
+            kept, got = kept + [press], more
+    if gate.judge(got.play).passed and got.ran >= best.ran:
+        return t.replace(got, swaps=best.swaps, reached=best.reached,
+                         presses=tuple(kept))
+    return t.replace(best, presses=tuple(kept))
+
+
+def _next_press(best, got, kept, left):
+    """The press of ``left`` to try next, for the player's run ``got`` of
+    ``best`` with the presses ``kept`` to get further; None when it is not
+    short of anything a press is known to give. For a disk that did not
+    load: its own key first, then the nearest press since the disk before
+    it. For a run that never came alive: the last press before ``best``
+    did."""
+    short = next((i for i, s in enumerate(got.play.swaps) if not s.loaded),
+                 None)
+    if short is not None:
+        frames = [f for f, _, _ in best.swaps]
+        at = frames[short]
+        since, until = ([0] + frames)[short], (frames + [float("inf")])[short + 1]
+        keyed = any(p.swap == short for p in kept)
+        near = [p for p in left if since < p.frame < until
+                and (p.swap is None or p.swap == short and not keyed)]
+        return min(near, key=lambda p: (p.swap is None, abs(p.frame - at)),
+                   default=None)
+    if got.play.ran:
+        return None
+    flags = verdict.alive_flags(best.log.samples)
+    alive = next((s.frame for f, s in zip(flags, best.log.samples) if f), 0)
+    return max((p for p in left if p.swap is None and p.frame < alive),
+               key=lambda p: p.frame, default=None)
 
 
 def _try_clicks_only(t):
@@ -295,23 +434,12 @@ def _try_clicks_only(t):
     if t.n < 2 or proven or not crashed:
         return
     base = max(crashed, key=lambda a: a.rank)
-    clicks = tuple(f + SWAP_CLICK_FRAMES for f, _, how in base.swaps
-                   if "click" in how)
-    got = t.once(clicks[-1] + emulator.AUTOSWAP_TAIL_FRAMES, seed=base.seed,
-                 play=tuple((f, "click", 0) for f in clicks))
+    clicks = tuple(Press(p.frame, p.key) for p in detector_clicks(base))
+    # As the entry an export would write of it, the disk in from the start.
+    got = t.played(dataclasses.replace(base, swaps=[]), clicks)
     if got.verdict.works and got.verdict.crash is None:
         # The set is not short of a disk the production does not ask for.
-        t.tries[-1] = dataclasses.replace(got, reached=t.n, clicks=clicks)
-
-
-def clicked_swap(a):
-    """The insert frame of ``a``'s first swap that got a click, or None."""
-    return next((f for f, _, how in a.swaps if "click" in how), None)
-
-
-def as_far(a, b):
-    """Did ``a`` get as far as ``b``: running, the same disks, no new crash."""
-    return a.rank[:3] >= b.rank[:3]
+        t.replace(got, reached=t.n, presses=clicks)
 
 
 def swap_frames(a):
@@ -343,23 +471,34 @@ def swap_frames(a):
     return [f for f in out if crash is None or f < crash]
 
 
-def rungs(variant, aga_only, release_date=None, start=None):
-    """The machines to try ``variant`` on. A disk that boots from the Fast
-    File System cannot be mounted by Kickstart 1.x: only the KS3 rungs."""
+def rungs(variant, aga_only, release_date=None, start=None, only=None):
+    """The machines to try ``variant`` on: the one named ``only``, else the
+    ladder. A disk that boots from the Fast File System cannot be mounted
+    by Kickstart 1.x: only the KS3 rungs."""
+    if only:
+        return [machines.BY_NAME[only]]
     ladder = machines.ladder_for(aga_only, release_date=release_date, start=start)
     return [m for m in ladder if m.aga] if variant.ffs else ladder
 
 
-def climb(variant, aga_only, release_date=None, start=None):
+def climb(variant, aga_only, release_date=None, start=None, only=None):
     """Run ``variant`` up the ladder until a machine works (and, for a disk
     set, reaches every disk).
 
-    Returns ``(attempts, best)``: every Attempt made, and the chosen one.
+    Returns ``(attempts, best)``: every Attempt made, and the chosen one,
+    which says until when each of its disks can go in (see ``windows``).
     """
+    attempts, best = _climb(variant, aga_only, release_date, start, only)
+    known = dataclasses.replace(best, untils=windows(
+        machines.BY_NAME[best.machine], variant, best))
+    return [known if a is best else a for a in attempts], known
+
+
+def _climb(variant, aga_only, release_date, start, only=None):
     frames = budget(variant)
     attempts, chosen = [], []
     n = len(variant.disks)
-    for m in rungs(variant, aga_only, release_date, start):
+    for m in rungs(variant, aga_only, release_date, start, only):
         tries = try_machine(m, variant, frames)
         attempts += tries
         chosen.append(tries[-1])
@@ -389,14 +528,13 @@ def _record(v, attempts, best):
         next(i for i, a in enumerate(attempts) if a is best))
 
 
-def _job(prod, multi_only=False, known=None):
-    """Worker: build the production's variants and climb each one."""
-    variants, problems = media.variants(prod.id, prod.title)
-    if multi_only:
-        variants = [v for v in variants if len(v.disks) > 1]
+def _climbed(prod, variants, start=None, only=None):
+    """``(variants, results)``: each of ``variants`` climbed, and after one
+    that does not work its fallbacks, as far as one that does."""
     aga_only = catalog.is_aga(prod)
-    start = (known or {}).get(prod.id)
-    results = [climb(v, aga_only, prod.release_date, start) for v in variants]
+    variants = list(variants)
+    results = [climb(v, aga_only, prod.release_date, start, only)
+               for v in variants]
     for v, (_, best) in list(zip(variants, results)):
         if best.verdict.works:
             continue
@@ -404,18 +542,46 @@ def _job(prod, multi_only=False, known=None):
             fv = make()
             if fv:
                 variants.append(fv)
-                results.append(climb(fv, aga_only, prod.release_date, start))
+                results.append(climb(fv, aga_only, prod.release_date, start,
+                                     only))
                 if results[-1][1].verdict.works:
                     break
+    return variants, results
+
+
+def _job(prod, multi_only=False, known=None, only=None):
+    """Worker: build the production's variants and climb each one. With
+    ``only``, a machine's name, the production is left out unless a variant
+    works on that machine; one that does is climbed like any other, so it
+    is filed under the first machine it works on (and is run on the named
+    machine a second time)."""
+    variants, problems = media.variants(prod.id, prod.title)
+    if multi_only:
+        variants = [v for v in variants if len(v.disks) > 1]
+    if only and not any(best.verdict.works for _, best in
+                        _climbed(prod, variants, only=only)[1]):
+        return None
+    variants, results = _climbed(prod, variants, (known or {}).get(prod.id))
     return problems, [_record(v, *r) for v, r in zip(variants, results)]
 
 
-def run_all(prods, store, jobs=None, multi_only=False, log=print):
-    # Before any production: a run without its ROM would be stored as one
-    # where nothing happened, a production without the mirror as one with
+def run_all(prods, store, jobs=None, multi_only=False, log=print,
+            machine=None, again=False):
+    """Sweep ``prods`` the store does not hold yet up the ladder, each from
+    the machine the data files file it under; or, with ``again``, every one
+    of them, and with ``machine`` those that work on that machine, held or
+    not, in place of what was held. A production swept again climbs the
+    whole ladder: the machine it is filed under may be what is wrong."""
+    # Before any production: a run without its ROM or the libraries would
+    # be stored as one where nothing happened, a production without the mirror as one with
     # no files.
     machines.require_roms()
+    if machine:
+        machines.require_rom(machines.BY_NAME[machine])
+    workbench.require_libs()
     media.require_mirror()
-    known = catalog.known_machines(config.DATA_DIR)
+    again = again or bool(machine)
+    known = {} if again else catalog.known_machines(config.DATA_DIR)
     driver.run_all(prods, store, functools.partial(
-        _job, multi_only=multi_only, known=known), jobs, log)
+        _job, multi_only=multi_only, known=known, only=machine), jobs, log,
+        again=again)

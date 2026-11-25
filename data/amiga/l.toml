@@ -308,6 +308,8 @@ source = "script"
 title = "Lamebomb"
 group = "Lamers"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.215555]
 title = "Lamedemo"
@@ -748,7 +750,6 @@ source = "script"
 title = "Latest Incredible Release"
 group = "Nightmare Boyz"
 source = "script"
-result = "unknown"
 
 [demozoo.193426]
 title = "Latest Intro"
@@ -897,6 +898,8 @@ run = "dkd-shattered_ks13.exe"
 title = "Laufertro"
 group = "Apex"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.27146]
 title = "Laurent & Anna"
@@ -978,7 +981,6 @@ result = "unknown"
 title = "Leaflet of Gedan 3"
 group = "Obsession"
 source = "script"
-result = "unknown"
 
 [demozoo.276694]
 title = "Leaflet of Gedan 4"
@@ -1017,7 +1019,6 @@ run = "mds-lof_hi.exe"
 title = "Leather Dream"
 group = "Parallax"
 source = "script"
-result = "unknown"
 
 [demozoo.226557]
 title = "Leatherneck"
@@ -1250,6 +1251,7 @@ title = "Les Rois Du Gag"
 group = "Profecy"
 source = "script"
 machine = "a500_1mb"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.145463]
 title = "Lesbian Tartar"
@@ -1361,7 +1363,7 @@ group = "Faculty"
 source = "script"
 machine = "a1200"
 disks = ["Faculty-LethalDose2A.adf", "Faculty-LethalDose2B.adf"]
-swaps = [{ disk = 2, at = 80.0, key = "lmb" }]
+events = [{ at = 80.0, disk = 2 }, { at = 85.0, key = "rmb" }]
 
 [demozoo.5319]
 title = "Lethal Exit"
@@ -1447,10 +1449,12 @@ machine = "a1200"
 [demozoo.178169]
 title = "Liars"
 group = "Nerve Axis"
-source = "script"
+source = "ai"
 machine = "a1200"
+result = "unknown"
 disks = ["NERVE_AXIS-LiarsA.dms", "NERVE_AXIS-LiarsB.dms"]
-swaps = [{ disk = 2, at = 65.0 }]
+events = [{ at = 65.0, disk = 2 }]
+note = "'INSERT DISK ONE' at 392 s, which no swap can say: the player puts in disks 2 and up only"
 
 [demozoo.213833]
 title = "Libero - Almost Microintro 3"
@@ -1731,7 +1735,6 @@ source = "script"
 title = "Lintro"
 group = "Admirals"
 source = "script"
-result = "unknown"
 
 [demozoo.243274]
 title = "Lintro"
@@ -1926,7 +1929,6 @@ source = "script"
 title = "Little Charlie Plays Guitar"
 group = "Cyberdreams"
 source = "script"
-result = "unknown"
 
 [demozoo.226619]
 title = "Little Competition Demo"
@@ -2325,6 +2327,7 @@ title = "Little Thing"
 group = "Goonies 2041"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.247315]
 title = "Little Toons Story"
@@ -2421,7 +2424,7 @@ title = "Living Legend"
 group = "Men Of Science"
 source = "script"
 disks = ["MOS-LivingLegend1.adf", "MOS-LivingLegend2.adf"]
-swaps = [{ disk = 2, at = 630.1, key = "lmb" }]
+events = [{ at = 630.1, disk = 2 }, { at = 635.1, key = "lmb" }]
 
 [demozoo.231789]
 title = "Lixard's First Demo"
@@ -2452,7 +2455,6 @@ source = "script"
 title = "Loading & Dekruszion"
 group = "Lamers"
 source = "script"
-result = "unknown"
 
 [demozoo.111879]
 title = "Loading..."
@@ -2525,7 +2527,7 @@ machine = "a1200_fast"
 title = "Logo"
 group = "Kefrens"
 source = "script"
-result = "unknown"
+boot = "floppy"
 
 [demozoo.140965]
 title = "Logo 4K"
@@ -2548,7 +2550,6 @@ source = "script"
 title = "Logo-Ego"
 group = "Cave"
 source = "script"
-result = "unknown"
 
 [demozoo.241030]
 title = "Logomania II Intro"
@@ -2599,7 +2600,6 @@ result = "unknown"
 title = "Lonkero"
 group = "Piru"
 source = "script"
-result = "unknown"
 
 [demozoo.365498]
 title = "Looking For A Group"
@@ -2918,6 +2918,7 @@ source = "script"
 title = "Lovecraft"
 group = "Iris"
 source = "script"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.247317]
 title = "Lovecraft Endpart"
@@ -3049,7 +3050,7 @@ source = "script"
 title = "LSI 4K"
 group = "Lightstorm Inc."
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 run = "LSi-TP7F.exe"
 
 [demozoo.241031]
@@ -3140,7 +3141,7 @@ group = "Suburban Base"
 source = "script"
 machine = "a1200"
 disks = ["Suburban-LurkingShadowsA.dms", "Suburban-LurkingShadowsB.dms"]
-swaps = [{ disk = 2, at = 61.6 }]
+events = [{ at = 61.6, disk = 2 }]
 
 [demozoo.235081]
 title = "Lustful Offer"

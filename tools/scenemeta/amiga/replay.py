@@ -1,8 +1,7 @@
 """Plays entries of the data files (``data/amiga``, see docs/DESIGN.md) exactly as
 written, through the player, and says whether every disk was loaded.
 
-An entry with keys, on its swaps or of its own, is played a second time without
-them: a key is needed only when the production does not run without it.
+An entry with keys is played a second time without them: a key is needed only when the production does not run without it.
 """
 
 import os
@@ -37,23 +36,22 @@ def all_entries(data):
 
 
 def entries(data):
-    """``{id: entry}`` of the Demozoo productions that have swaps or keys."""
-    return {p: e for p, e in all_entries(data).items()
-            if e.get("swaps") or e.get("keys")}
+    """``{id: entry}`` of the Demozoo productions that have events."""
+    return {p: e for p, e in all_entries(data).items() if e.get("events")}
 
 
 def _has_keys(entry):
-    return bool(entry.get("keys")) or \
-        any("key" in s for s in entry.get("swaps", []))
+    return any("key" in e for e in entry.get("events", []))
 
 
-def _one(prod, entry, default):
+def _one(prod, entry, default, patient=False):
     """The report line of one production. Raises CannotPlay when something
     it needs is missing."""
     ready = player.ready(prod, entry, default)
-    runs = [("as written", ready.play())]
+    runs = [("patient" if patient else "as written",
+             ready.play(patient=patient))]
     if _has_keys(entry):
-        runs.append(("without keys", ready.play(keys=False)))
+        runs.append(("without keys", ready.play(keys=False, patient=patient)))
     # With no disk to put in, the run itself is the evidence.
     got = [(name, o.verdict.verdict, o.loaded or [o.verdict.works])
            for name, o in runs]
@@ -64,17 +62,19 @@ def _one(prod, entry, default):
     return f"{prod} {entry['title']}: {said} ({detail})"
 
 
-def run(ids=None, data=None, jobs=None, log=print):
+def run(ids=None, data=None, jobs=None, log=print, patient=False):
     """Replay the productions ``ids``; without ids, every entry that has a
-    key, on a swap or of its own. Returns how many could not be played."""
+    key. ``patient``: see events.patient. Returns how many could not be
+    played."""
     data = data or config.DATA_DIR
     default = default_machine(data)
     found = entries(data)
     todo = {p: e for p, e in found.items()
             if (p in ids if ids else _has_keys(e))}
     for p in sorted(set(ids or ()) - set(found)):
-        log(f"{p}: no entry with swaps or keys")
+        log(f"{p}: no entry with events")
     # Two emulators per production, each about two cores.
     jobs = jobs or max(1, (os.cpu_count() or 4) // 4)
     return player.play_each(sorted(todo.items()),
-                            lambda p, e: _one(p, e, default), jobs, log)
+                            lambda p, e: _one(p, e, default, patient),
+                            jobs, log)

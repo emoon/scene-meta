@@ -9,7 +9,7 @@ group = "Arise"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["e2ira_A.d64", "e2ira_B.d64", "e2ira_C.d64"]
-swaps = [{ disk = 2, at = 347.3 }, { disk = 3, at = 733.3 }]
+events = [{ at = 347.3, disk = 2 }, { at = 733.3, disk = 3 }]
 
 [demozoo.365850]
 title = "Eager To Play"
@@ -133,7 +133,7 @@ group = "Onslaught"
 source = "ai"
 machine = "pal_1541_8580"
 disks = ["eclectic-side1.d64", "eclectic-side2.d64"]
-swaps = [{ disk = 2, at = 713.9 }]
+events = [{ at = 713.9, disk = 2 }]
 note = "Eclectic: spinning floppy animation, drive motor keeps toggling; disk 2: no key; no upper limit seen (loop still spinning after 6 Gcycles)"
 
 [demozoo.392142]
@@ -189,7 +189,7 @@ group = "Booze Design"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["EdgeOfDisgrace_0.d64", "EdgeOfDisgrace_1a.d64", "EdgeOfDisgrace_1b.d64"]
-swaps = [{ disk = 2, at = 315.9 }, { disk = 3, at = 1079.2 }]
+events = [{ at = 315.9, disk = 2 }, { at = 1079.2, disk = 3 }]
 
 [demozoo.173832]
 title = "Edislove"
@@ -228,7 +228,7 @@ title = "Eggsuck"
 group = "Legion"
 source = "script"
 disks = ["Eggsuck.D64", "eggsuck-legion.d64"]
-swaps = [{ disk = 2, at = 213.0, key = "p1fire", key_delay = 37.0 }]
+events = [{ at = 213.0, disk = 2 }, { at = 250.0, key = "p1fire" }]
 
 [demozoo.343299]
 title = "Egon Kowalski"
@@ -296,7 +296,7 @@ title = "Electric"
 group = "Smash Designs"
 source = "script"
 disks = ["electr1.d64", "electr2.d64"]
-swaps = [{ disk = 2, at = 141.4, key = "space", key_delay = 17.5 }]
+events = [{ at = 141.4, disk = 2 }, { at = 158.9, key = "space" }]
 
 [demozoo.18799]
 title = "Electric Dreams"
@@ -367,7 +367,7 @@ title = "Elysion - The Requiem"
 group = "Origo Dreamline"
 source = "script"
 disks = ["Elysion.d64", "Elysion_Extra.d64"]
-swaps = [{ disk = 2, at = 225.0 }]
+events = [{ at = 225.0, disk = 2 }]
 
 [demozoo.375849]
 title = "Eläin"
@@ -384,7 +384,7 @@ title = "Embryo"
 group = "Padua"
 source = "script"
 disks = ["embryo_1.d64", "embryo_2.d64"]
-swaps = [{ disk = 2, at = 705.7 }]
+events = [{ at = 705.7, disk = 2 }]
 
 [demozoo.367227]
 title = "Emerald Mine II"
@@ -413,7 +413,7 @@ title = "Emotional Breakdown"
 group = "Offence"
 source = "script"
 disks = ["Emotional_Breakdown_S1.d64", "Emotional_Breakdown_S2.d64"]
-swaps = [{ disk = 2, at = 291.4, key = "p1fire", key_delay = 25.9 }]
+events = [{ at = 291.4, disk = 2 }, { at = 317.3, key = "p1fire" }]
 
 [demozoo.206018]
 title = "Emotional Breakdown"
@@ -477,7 +477,7 @@ title = "Energizer"
 group = "Plush"
 source = "script"
 disks = ["ENERG1.D64", "ENERG2.D64"]
-swaps = [{ disk = 2, at = 96.0, key = "space", key_delay = 17.2 }]
+events = [{ at = 96.0, disk = 2 }, { at = 113.2, key = "space" }]
 
 [demozoo.309477]
 title = "Enigma"
@@ -924,7 +924,7 @@ group = "Smash Designs"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["exe_over_sds_s1.d64", "exe_over_sds_s2.d64"]
-swaps = [{ disk = 2, at = 716.4 }]
+events = [{ at = 716.4, disk = 2 }]
 
 [demozoo.301931]
 title = "Executed"
@@ -995,7 +995,7 @@ source = "ai"
 machine = "pal_1541_reu"
 sid = "8580"
 disks = ["Expand by Bonzai - Disk1.D64", "Expand by Bonzai - Disk2.D64"]
-swaps = [{ disk = 2, at = 349.7, key = "space", key_delay = 18.3 }]
+events = [{ at = 349.7, disk = 2 }, { at = 368.0, key = "space" }]
 note = "Expand: needs a 512 KB REU (-reu -reusize 512); without it disk 1 stops on a 'requires a REU' screen; disk 2: starfield alternates HIT SPACE / TURN DISK; insert with no key does nothing; no upper limit seen (572 s also worked)"
 
 [demozoo.396083]
@@ -1055,7 +1055,7 @@ title = "Extasy Mega Demo"
 group = "ZZap"
 source = "script"
 disks = ["Extasy_s1.d64", "Extasy_s2.d64"]
-swaps = [{ disk = 2, at = 164.8, key = "space", key_delay = 18.8 }]
+events = [{ at = 164.8, disk = 2 }, { at = 183.6, key = "space" }]
 
 [demozoo.343600]
 title = "Extermination"
@@ -1133,7 +1133,7 @@ title = "Eyes"
 group = "Fairlight"
 source = "script"
 disks = ["fairlight-eyes-e9aca7e-a.d64", "fairlight-eyes-e9aca7e-b.d64"]
-swaps = [{ disk = 2, at = 356.7 }]
+events = [{ at = 356.7, disk = 2 }]
 
 [demozoo.343966]
 title = "Eyes Killer"

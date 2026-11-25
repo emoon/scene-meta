@@ -138,6 +138,7 @@ title = "1024 Bobs"
 group = "Avoid"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.250376]
 title = "10k"
@@ -247,7 +248,6 @@ source = "script"
 title = "165 Bobs"
 group = "Scoopex"
 source = "script"
-result = "unknown"
 
 [demozoo.234283]
 title = "16:12:01:19:20 09:17:21:05"
@@ -355,9 +355,9 @@ source = "script"
 [demozoo.274566]
 title = "1992"
 group = "Focus Design"
-source = "script"
-machine = "a1200_030"
-run = "mainpart.exe"
+source = "ai"
+machine = "a1200_060"
+run = "runme.bat"
 
 [demozoo.265538]
 title = "1992 Delirium"
@@ -791,7 +791,6 @@ source = "script"
 title = "262"
 group = "Limbo"
 source = "script"
-result = "unknown"
 
 [demozoo.99035]
 title = "27+1"
@@ -846,7 +845,7 @@ machine = "a500_1mb"
 title = "2K Intro"
 group = "Iris"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.151405]
 title = "2k Is Too Much"
@@ -1156,7 +1155,7 @@ title = "3D Demo 3: The Last Drop"
 group = "Lemon."
 source = "script"
 disks = ["Lemon_3DDemo3_TheLastDrop1.adf", "Lemon_3DDemo3_TheLastDrop2.adf", "Lemon_3DDemo3_TheLastDrop3.adf"]
-swaps = [{ disk = 2, at = 41.1 }, { disk = 3, at = 287.6 }]
+events = [{ at = 41.1, disk = 2 }, { at = 287.6, disk = 3 }]
 
 [demozoo.5312]
 title = "3D Demo II"
@@ -1249,7 +1248,6 @@ source = "script"
 title = "3D Wave Demo"
 group = "Vision One / Alpha Flight"
 source = "script"
-result = "unknown"
 
 [demozoo.55862]
 title = "3D-Boing"
@@ -1572,7 +1570,8 @@ machine = "a1200"
 title = "40k Too Little?"
 group = "After Eights"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.221570]
 title = "40k With Built-In Musicdisk"
@@ -1673,6 +1672,7 @@ title = "4840"
 group = "Gunnars Farvebio"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.244729]
 title = "4am Finish"
@@ -1696,7 +1696,6 @@ machine = "a1200"
 title = "4D Sports Driving"
 group = "Liberty"
 source = "script"
-result = "unknown"
 
 [demozoo.358703]
 title = "4FX"
@@ -1745,14 +1744,13 @@ run = "LE-window6.12"
 title = "4K Intro"
 group = "Floppy"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.140969]
 title = "4k Intro"
 group = "Dinx Project"
-source = "script"
-result = "unknown"
-run = "WHEREFUNROLEZ.EXE"
+source = "ai"
+run = "6-dxp4kb.exe"
 
 [demozoo.163660]
 title = "4k Intro"
@@ -1763,13 +1761,11 @@ source = "script"
 title = "4k Intro"
 group = "Scalaris"
 source = "script"
-result = "unknown"
 
 [demozoo.163664]
 title = "4k Intro"
 group = "Corky Inc."
 source = "script"
-result = "unknown"
 
 [demozoo.163666]
 title = "4k Intro"
@@ -1810,7 +1806,6 @@ source = "script"
 title = "4k Intro"
 group = "Genesis Project"
 source = "script"
-result = "unknown"
 
 [demozoo.250138]
 title = "4k Intro"
@@ -1827,7 +1822,6 @@ source = "script"
 title = "4k Intro"
 group = "Tronix"
 source = "script"
-result = "unknown"
 
 [demozoo.163662]
 title = "4k Maze"
@@ -1878,7 +1872,7 @@ machine = "a1200"
 title = "4kb"
 group = "Whelpz"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 
 [demozoo.165997]
 title = "4kb Imperium"
@@ -2181,14 +2175,14 @@ source = "script"
 title = "7 days"
 group = "D.T.A. Software Studio"
 source = "script"
-result = "unknown"
+machine = "a500_1mb_chip"
 
 [demozoo.42164]
 title = "7 dni i 7 nocy"
 group = "Przyjaciele Stefana B."
-source = "script"
+source = "ai"
 machine = "a1200_fast"
-run = "psb-7d7n.e02"
+run = "psb-7d7n.bat"
 
 [demozoo.182983]
 title = "702 Years for Switzerland"
@@ -2281,7 +2275,6 @@ source = "script"
 title = "8891 Oldschool"
 group = "Melon"
 source = "script"
-result = "unknown"
 run = "01.8891_oLDsCHOOL.exe"
 
 [demozoo.236716]
@@ -2305,7 +2298,7 @@ title = "9 Fingers"
 group = "Spaceballs"
 source = "script"
 disks = ["Spaceballs-9Fingers-A.dms", "Spaceballs-9Fingers-B.dms"]
-swaps = [{ disk = 2, at = 94.5 }]
+events = [{ at = 94.5, disk = 2 }]
 
 [demozoo.7253]
 title = "9 Lives"

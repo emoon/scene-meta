@@ -313,7 +313,7 @@ group = "Fairlight / Prosonix / Offence"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["offence-we_are_connected-side_a.d64", "offence-we_are_connected-side_b.d64", "offence-we_are_connected-side_c.d64"]
-swaps = [{ disk = 2, at = 610.4 }, { disk = 3, at = 1372.5 }]
+events = [{ at = 610.4, disk = 2 }, { at = 1372.5, disk = 3 }]
 
 [demozoo.346582]
 title = "We Are Back"
@@ -351,7 +351,7 @@ group = "Fairlight / Noice / Offence"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["WeAreDemo(A).d64", "WeAreDemo(B).d64"]
-swaps = [{ disk = 2, at = 417.0 }]
+events = [{ at = 417.0, disk = 2 }]
 
 [demozoo.164711]
 title = "We Are Diskmag"
@@ -382,14 +382,14 @@ group = "Fairlight"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["We Are New [Fairlight] (Side 1)_RC1.d64", "We Are New [Fairlight] (Side 2)_RC1.d64"]
-swaps = [{ disk = 2, at = 493.7 }]
+events = [{ at = 493.7, disk = 2 }]
 
 [demozoo.380988]
 title = "We Are The Anomaly"
 group = "Extend / Genesis Project"
 source = "script"
 disks = ["WeAreTheAnomaly-Side1.d64", "WeAreTheAnomaly-Side2.d64"]
-swaps = [{ disk = 2, at = 398.2 }]
+events = [{ at = 398.2, disk = 2 }]
 
 [demozoo.348937]
 title = "We Are The Belt"
@@ -452,7 +452,7 @@ title = "We Hate PC 2 (too)"
 group = "Spiders-Crew"
 source = "script"
 disks = ["We hate pc1.d64", "We hate pc2.d64"]
-swaps = [{ disk = 2, at = 148.2, key = "space", key_delay = 17.7 }]
+events = [{ at = 148.2, disk = 2 }, { at = 165.9, key = "space" }]
 
 [demozoo.21534]
 title = "We Hate PC's"
@@ -575,7 +575,7 @@ title = "Weekend"
 group = "Wrath Designs"
 source = "script"
 disks = ["Weekend_A.D64", "Weekend_B.D64"]
-swaps = [{ disk = 2, at = 188.1, key = "space", key_delay = 14.2 }]
+events = [{ at = 188.1, disk = 2 }, { at = 202.3, key = "space" }]
 
 [demozoo.337188]
 title = "Weekend"
@@ -713,14 +713,14 @@ title = "Wet Dreams"
 group = "JSL"
 source = "script"
 disks = ["AP29A.D64", "AP29B.D64"]
-swaps = [{ disk = 2, at = 126.1, key = "p2fire", key_delay = 50.0 }]
+events = [{ at = 126.1, disk = 2 }, { at = 176.1, key = "p2fire" }]
 
 [demozoo.118771]
 title = "Wet Dreams 2"
 group = "Paradize / Moz(ic)art"
 source = "script"
 disks = ["Wet_Dreams_II_Side1.D64", "Wet_Dreams_II_Side2.D64"]
-swaps = [{ disk = 2, at = 558.5, key = "p2fire", key_delay = 43.1 }]
+events = [{ at = 558.5, disk = 2 }, { at = 601.6, key = "p2fire" }]
 
 [demozoo.288492]
 title = "Wet Paint Intro"
@@ -905,7 +905,7 @@ title = "Wicked"
 group = "Forces of Evil"
 source = "script"
 disks = ["&file=wicked.s1_foe.d64", "&file=wicked.s2_foe.d64"]
-swaps = [{ disk = 2, at = 230.5, key = "space", key_delay = 19.2 }]
+events = [{ at = 230.5, disk = 2 }, { at = 249.7, key = "space" }]
 
 [demozoo.359742]
 title = "Wicked"
@@ -1126,14 +1126,14 @@ group = "Censor Design"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["censor_wlxi_image1.d64", "censor_wlxi_image2.d64"]
-swaps = [{ disk = 2, at = 778.6 }]
+events = [{ at = 778.6, disk = 2 }]
 
 [demozoo.82035]
 title = "Wonderland XII"
 group = "Censor Design"
 source = "script"
 disks = ["Wonderland XII - Censor - s1.d64", "Wonderland XII - Censor - s2.d64", "Wonderland XII - Censor - s3.d64", "Wonderland XII - Censor - s3.d64"]
-swaps = [{ disk = 2, at = 477.7 }, { disk = 3, at = 895.1 }, { disk = 4, at = 1219.7, key = "p2fire", key_delay = 55.6 }]
+events = [{ at = 477.7, disk = 2 }, { at = 895.1, disk = 3 }, { at = 1219.7, disk = 4 }, { at = 1275.3, key = "p2fire" }]
 
 [demozoo.164627]
 title = "Wonderland XIII"
@@ -1141,7 +1141,7 @@ group = "Censor Design"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["wlxiii_s1.d64", "wlxiii_s2.d64", "wlxiii_s3.d64"]
-swaps = [{ disk = 2, at = 410.2 }, { disk = 3, at = 743.7 }]
+events = [{ at = 410.2, disk = 2 }, { at = 743.7, disk = 3 }]
 
 [demozoo.324783]
 title = "Wonderland XIV"
@@ -1149,7 +1149,7 @@ group = "Censor Design"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["wonderland_xiv_s1.d64", "wonderland_xiv_s2.d64", "wonderland_xiv_s3.d64", "wonderland_xiv_s4.d64"]
-swaps = [{ disk = 2, at = 451.8, key = "space" }, { disk = 3, at = 894.6 }, { disk = 4, at = 1254.1 }]
+events = [{ at = 451.8, disk = 2 }, { at = 456.8, key = "space" }, { at = 894.6, disk = 3 }, { at = 1254.1, disk = 4 }]
 
 [demozoo.357938]
 title = "Woody's First"
@@ -1234,7 +1234,7 @@ title = "Worldwar"
 group = "War Deal Lamers"
 source = "script"
 disks = ["WarDealLamers_1989_Worldwar1.d64", "worldwar.d64"]
-swaps = [{ disk = 2, at = 190.5, key = "space", key_delay = 17.7 }]
+events = [{ at = 190.5, disk = 2 }, { at = 208.2, key = "space" }]
 
 [demozoo.367087]
 title = "Worldwide"
@@ -1271,7 +1271,7 @@ title = "Wow Story III"
 group = "Warriors of the Wasteland"
 source = "script"
 disks = ["Wow_Story_3_s1.d64", "Wow_Story_3_s2.d64"]
-swaps = [{ disk = 2, at = 137.7, key = "space", key_delay = 17.1 }]
+events = [{ at = 137.7, disk = 2 }, { at = 154.8, key = "space" }]
 
 [demozoo.343291]
 title = "Wow This Is HCA"

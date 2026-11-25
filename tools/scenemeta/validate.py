@@ -8,7 +8,7 @@ import re
 import sys
 import tomllib
 
-from . import machines, schema
+from . import events, machines, schema
 
 DATA = pathlib.Path(__file__).resolve().parents[2] / "data"
 MACHINES = machines.FILE
@@ -22,7 +22,7 @@ def _text(v):
 
 
 def _seconds(v):
-    if isinstance(v, bool) or not isinstance(v, (int, float)) or v < 0:
+    if isinstance(v, bool) or not isinstance(v, (int, float)) or not v >= 0:
         return "must be a time in seconds"
 
 
@@ -48,6 +48,12 @@ def _texts(v):
 def _assign(v):
     if not isinstance(v, dict) or not v or any(_text(x) for x in v.values()):
         return "must be a table of name = path"
+
+
+def _pixels(v):
+    if not isinstance(v, list) or len(v) != 2 \
+            or any(_number_from(1)(x) for x in v):
+        return "must be [width, height] in pixels"
 
 
 def _rows(required, optional=()):
@@ -76,19 +82,25 @@ def _sha256(v):
         return "must be 64 lowercase hex digits"
 
 
-def _swaps(v):
-    if problem := _SWAP_ROWS(v):
+def _events(v):
+    if problem := _EVENT_ROWS(v):
         return problem
-    for swap in v:
-        if "until" in swap and swap["until"] < swap["at"]:
+    for event in v:
+        if ("disk" in event) == ("key" in event):
+            return "an event is a disk or a key, one of them"
+        if "drive" in event and "disk" not in event:
+            return "drive is of a disk"
+        if "until" in event and event["until"] < event["at"]:
             return "until is before at"
-        if "key_delay" in swap and "key" not in swap:
-            return "key_delay without key"
+    if v != events.ordered(v):
+        return ("must be in the order they happen, a disk before a key of"
+                " the same moment")
 
 
 # A production booted from a later disk can ask for disk 1.
-_SWAP_ROWS = _rows((("disk", _number_from(1)), ("at", _seconds)),
-                   (("until", _seconds), ("key", _text), ("key_delay", _seconds)))
+_EVENT_ROWS = _rows((("at", _seconds),),
+                    (("disk", _number_from(1)), ("drive", _number_from(2)),
+                     ("until", _seconds), ("key", _text)))
 
 # What a production needs to run. A variant may restate any of them.
 SETTINGS = {
@@ -96,12 +108,13 @@ SETTINGS = {
     "result": _one_of(schema.RESULTS),
     "kind": _one_of(schema.KINDS),
     "disks": _texts,
-    "swaps": _swaps,
-    "keys": _rows((("at", _seconds), ("key", _text))),
-    "run": _text,
+    "events": _events,
+    "run": _text,   # an executable, or a script that runs the parts
     "boot_disk": _number_from(1),
     "boot_file": _text,
     "assign": _assign,
+    "area": _pixels,
+    "aspect": _one_of(schema.ASPECTS),
     "note": _text,
 }
 

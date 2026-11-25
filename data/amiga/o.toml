@@ -134,6 +134,8 @@ source = "script"
 title = "Obvious Disaster - Final"
 group = "Phenomena"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.251803]
 title = "Obviousness"
@@ -214,6 +216,7 @@ title = "Ode to ATCW"
 group = "Ghost / Dimension X"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.221213]
 title = "Ode to Sonic"
@@ -234,6 +237,8 @@ source = "script"
 title = "Odelsgutt 2"
 group = "Paramount Productions"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.202306]
 title = "Odelsgutt 3"
@@ -277,7 +282,7 @@ title = "Odyssey"
 group = "Alcatraz"
 source = "script"
 disks = ["atz-ody1.dms", "atz-ody2.dms", "atz-ody3.dms", "atz-ody4.dms", "atz-ody5.dms"]
-swaps = [{ disk = 2, at = 519.8, key = "lmb" }, { disk = 3, at = 905.4, key = "lmb" }, { disk = 4, at = 1653.2, key = "lmb" }, { disk = 5, at = 2174.0, key = "lmb" }]
+events = [{ at = 519.8, disk = 2 }, { at = 524.8, key = "lmb" }, { at = 905.4, disk = 3 }, { at = 910.4, key = "lmb" }, { at = 1653.2, disk = 4 }, { at = 1658.2, key = "lmb" }, { at = 2174.0, disk = 5 }, { at = 2179.0, key = "lmb" }]
 
 [demozoo.233071]
 title = "Odyssey Preview"
@@ -417,7 +422,7 @@ result = "unknown"
 title = "Oklagija"
 group = "Avnoj"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.227310]
 title = "Oko Do Bazy"
@@ -480,7 +485,8 @@ source = "script"
 title = "Old Prod"
 group = "Intense"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.6592]
 title = "Old School"
@@ -901,6 +907,8 @@ source = "script"
 title = "Onkel Vanja"
 group = "neXus"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.257746]
 title = "Online Box BBS intro"
@@ -1002,9 +1010,8 @@ source = "script"
 title = "Ooh! It's Obscene V"
 group = "Anarchy"
 source = "script"
-machine = "a1200_030"
 disks = ["Anarchy-Obscene05A.adf", "Anarchy-Obscene05B.adf"]
-swaps = [{ disk = 2, at = 77.8 }]
+note = "the sweep only reached disk 1 of 2"
 
 [demozoo.210713]
 title = "Oops 1"
@@ -1109,9 +1116,9 @@ machine = "a1200_fast"
 [demozoo.153486]
 title = "Optikal"
 group = "K!nky"
-source = "script"
+source = "ai"
 machine = "a1200"
-run = "part2"
+run = "start_low"
 
 [demozoo.276972]
 title = "Optimal Workflow"
@@ -1240,7 +1247,7 @@ group = "Complex"
 source = "script"
 machine = "a1200"
 disks = ["complex.origin-1.dms", "complex.origin-2.dms"]
-swaps = [{ disk = 2, at = 51.5, key = "lmb" }]
+events = [{ at = 51.5, disk = 2 }, { at = 56.5, key = "lmb" }]
 
 [demozoo.212626]
 title = "Original Rips 6"
@@ -1603,6 +1610,8 @@ machine = "a1200_fast"
 title = "Outland"
 group = "Rebels"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.177745]
 title = "Outland"
@@ -1626,7 +1635,6 @@ run = "outlander.exe"
 title = "Outlaw Advertisment"
 group = "Eremation"
 source = "script"
-result = "unknown"
 
 [demozoo.43846]
 title = "Outside"

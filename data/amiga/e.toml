@@ -2,7 +2,6 @@
 title = "E"
 group = "Diagnosis"
 source = "script"
-result = "unknown"
 
 [demozoo.182275]
 title = "E 163"
@@ -48,7 +47,6 @@ machine = "a1200_fast"
 title = "Eagleplayer v1.0 Informer Intro"
 group = "Defect"
 source = "script"
-result = "unknown"
 
 [demozoo.240170]
 title = "Eagleplayer v1.01 Informer Intro"
@@ -59,7 +57,6 @@ source = "script"
 title = "Eagleplayer v1.11 Informer Intro"
 group = "Defect"
 source = "script"
-result = "unknown"
 
 [demozoo.368824]
 title = "Ear Bros Promo"
@@ -327,7 +324,7 @@ machine = "a1200"
 title = "Educational Sex Lesson"
 group = "Limbo"
 source = "script"
-machine = "a1200"
+machine = "a1200_fast"
 
 [demozoo.95399]
 title = "Educational Sex Lesson 2013"
@@ -388,6 +385,8 @@ source = "script"
 title = "Efter Plugget"
 group = "Draco"
 source = "script"
+machine = "a500_512k"
+boot = "floppy"
 
 [demozoo.195570]
 title = "Egg'n'Spam 1"
@@ -485,7 +484,7 @@ source = "script"
 title = "Ejaculation"
 group = "Illusion"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.248229]
 title = "Ekademo"
@@ -752,7 +751,7 @@ source = "script"
 title = "Eleven Seconds Film"
 group = "Delon"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.313255]
 title = "Elfairy (For Real)"
@@ -879,9 +878,9 @@ source = "script"
 [demozoo.31914]
 title = "Embraced"
 group = "Floppy"
-source = "script"
+source = "ai"
 machine = "a1200_fast"
-run = "FLP-EMBRACED.001"
+run = "FLP-EMBRACED.EXE"
 
 [demozoo.135107]
 title = "Embrolic Coding"
@@ -1247,7 +1246,7 @@ source = "script"
 title = "Entitys First"
 group = "The Brothers"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.215185]
 title = "Entropy"
@@ -1266,7 +1265,7 @@ title = "Eon"
 group = "The Black Lotus"
 source = "script"
 disks = ["tbl_eon_party_ver_disk1.adf", "tbl_eon_party_ver_disk2.adf"]
-swaps = [{ disk = 2, at = 160.3 }]
+events = [{ at = 160.3, disk = 2 }]
 
 [demozoo.34510]
 title = "Eph vs Cpu"
@@ -1307,9 +1306,11 @@ machine = "a1200_fast"
 [demozoo.35129]
 title = "Episode"
 group = "Nah-Kolor"
-source = "script"
+source = "ai"
+machine = "a1200"
 result = "unknown"
-run = "_negerkuß!!.exe"
+run = "episode/Episode.exe"
+note = "the script Episode.exe assigns Episode: and starts the demo; the music plays and the screen stays black on a 68EC020, a 68020 with 8M and a 68030"
 
 [demozoo.219658]
 title = "Epson Scanner"
@@ -1368,6 +1369,7 @@ title = "Equations"
 group = "Cyberstate"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.352330]
 title = "Equilibrium"
@@ -1400,6 +1402,7 @@ title = "Equipose"
 group = "Complex"
 source = "script"
 machine = "a500_1mb"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.198528]
 title = "Equivoque"
@@ -1426,6 +1429,8 @@ source = "script"
 title = "Ergens in Het Klompenland"
 group = "Conquest"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.31952]
 title = "Error - The Intro"
@@ -1627,7 +1632,6 @@ source = "script"
 title = "Euro Trade Center BBS Ad"
 group = "Outlaws"
 source = "script"
-result = "unknown"
 
 [demozoo.90008]
 title = "EuroChart 25 Trailer Intro"
@@ -1778,13 +1782,15 @@ source = "script"
 title = "Euskal Party 5 Invitation"
 group = "Network"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
+note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
 
 [demozoo.173805]
 title = "evar_rof"
 group = "iNSANE"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.264760]
 title = "Eve-L I"
@@ -1812,6 +1818,8 @@ result = "unknown"
 title = "Every Joke Is Deadly"
 group = "Abandon"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500_1mb; no entry of it passed the gate"
 
 [demozoo.115697]
 title = "Everybody Dance"
@@ -1913,6 +1921,7 @@ source = "script"
 title = "Evokaetion"
 group = "The Electronic Knights"
 source = "script"
+machine = "a500_1mb"
 
 [demozoo.213017]
 title = "Evolutif Pack IV Intro"
@@ -2035,13 +2044,11 @@ run = "bb-evyl"
 title = "EX v2.0 Intro"
 group = "Scoopex / Surprise! Productions"
 source = "script"
-result = "unknown"
 
 [demozoo.78298]
 title = "Ex-Flies"
 group = "Limbo"
 source = "script"
-result = "unknown"
 
 [demozoo.223707]
 title = "Examination"
@@ -2094,7 +2101,6 @@ source = "script"
 title = "Excusetro"
 group = "Iris"
 source = "script"
-result = "unknown"
 
 [demozoo.243362]
 title = "Exec is Born"
@@ -2121,6 +2127,8 @@ source = "script"
 title = "Existenz"
 group = "Existenz"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.139100]
 title = "Existro"
@@ -2148,9 +2156,9 @@ machine = "a1200_fast"
 [demozoo.18977]
 title = "Exit Planet Dust"
 group = "Artwork"
-source = "script"
-machine = "a1200_fast"
-run = "tomate"
+source = "ai"
+machine = "a1200_030"
+run = "dust_runme"
 
 [demozoo.48220]
 title = "Exodus"
@@ -2168,14 +2176,13 @@ source = "script"
 title = "Exodus"
 group = "RetroActive"
 source = "script"
-result = "unknown"
+machine = "a1200"
 run = "4k_Exodus.decrunch"
 
 [demozoo.207386]
 title = "Exodus - Megademo Part (preview)"
 group = "Agency"
 source = "script"
-result = "unknown"
 
 [demozoo.209567]
 title = "Exodus Demo"
@@ -2328,7 +2335,7 @@ title = "Explocalipse"
 group = "Ukonx"
 source = "script"
 disks = ["UKONX_E-Explocalipse_A.dms", "UKONX_E-Explocalipse_B.dms"]
-swaps = [{ disk = 2, at = 49.6 }]
+events = [{ at = 49.6, disk = 2 }]
 
 [demozoo.99700]
 title = "Exploited Brilliance"
@@ -2521,7 +2528,6 @@ source = "script"
 title = "Extremely Short and Simple Demo"
 group = "Supplex"
 source = "script"
-result = "unknown"
 
 [demozoo.303910]
 title = "Exuding Sararr (executable)"
@@ -2553,6 +2559,7 @@ source = "script"
 title = "Eyes"
 group = "Style & Blacky"
 source = "script"
+machine = "a500_1mb_chip"
 
 [demozoo.358750]
 title = "Eyetarget"

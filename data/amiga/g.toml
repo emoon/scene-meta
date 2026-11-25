@@ -50,7 +50,7 @@ source = "script"
 title = "G4"
 group = "Rock"
 source = "script"
-machine = "a1200"
+machine = "a1200_fast"
 
 [demozoo.189849]
 title = "Gabbetuss har Boozdag"
@@ -155,6 +155,8 @@ source = "script"
 title = "Galaxy Love"
 group = "Enigma"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.234522]
 title = "Gale 1"
@@ -194,7 +196,6 @@ machine = "a1200"
 title = "Galileo"
 group = "Bamiga Sector One"
 source = "script"
-result = "unknown"
 
 [demozoo.237480]
 title = "Gallery Intro"
@@ -352,6 +353,8 @@ source = "script"
 title = "Gammelheter 2"
 group = "Senex"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.221304]
 title = "Gang-Maker"
@@ -391,7 +394,8 @@ machine = "a1200_fast"
 title = "Garbage Faktory"
 group = "Contraz"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.217183]
 title = "Garden Party Intro"
@@ -527,7 +531,8 @@ machine = "a1200_fast"
 title = "Gen4 Demo"
 group = "Dragons"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
+note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
 
 [demozoo.137680]
 title = "Gen4 Demo"
@@ -585,9 +590,9 @@ source = "script"
 title = "Genesis"
 group = "Lloret Free Byte"
 source = "script"
-machine = "a1200_fast"
+machine = "a1200_030"
 disks = ["LLFB-Genesis1.DMS", "LLFB-Genesis2.DMS", "LLFB-Genesis3.DMS", "LLFB-Genesis4.DMS"]
-swaps = [{ disk = 2, at = 81.1 }, { disk = 3, at = 374.9 }, { disk = 4, at = 496.8 }]
+events = [{ at = 54.5, disk = 2, until = 84.5 }, { at = 342.9, disk = 3, until = 372.9 }, { at = 458.7, disk = 4, until = 488.7 }]
 
 [demozoo.196139]
 title = "Genesis"
@@ -795,18 +800,20 @@ source = "script"
 title = "Getno 1"
 group = "ISCH Crew"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.212075]
 title = "Getno 2"
 group = "ISCH Crew"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.230486]
 title = "Getting In Deep"
 source = "script"
-machine = "a500_1mb"
-disks = ["Reality-GettingInDeep_disk1.adf", "Reality-GettingInDeep_disk2.adf"]
-swaps = [{ disk = 2, at = 45.0 }]
+boot = "hd"
 
 [demozoo.119666]
 title = "Gevalia"
@@ -851,9 +858,9 @@ result = "unknown"
 [demozoo.85900]
 title = "Ghost In The Shell"
 group = "Honoo"
-source = "script"
+source = "ai"
 machine = "a1200_fast"
-run = "GhostInTheShell.exe"
+run = "GhostInTheShell"
 
 [demozoo.252055]
 title = "Ghost Logo"
@@ -990,6 +997,8 @@ source = "script"
 title = "Gintro"
 group = "Hellrazor"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.323002]
 title = "Giralda - Batman Vuelve Advert Intro"
@@ -1143,7 +1152,7 @@ title = "Glitch Demo"
 group = "Mystix"
 source = "script"
 disks = ["Mystix-GlitchA.adf", "Mystix-GlitchB.adf"]
-swaps = [{ disk = 2, at = 227.3 }]
+events = [{ at = 227.3, disk = 2 }]
 
 [demozoo.194320]
 title = "Glitch My Bits Up"
@@ -1161,6 +1170,7 @@ title = "Global Gathering '94 Invitation"
 group = "The Studio"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.28710]
 title = "Global Hazard"
@@ -1187,7 +1197,6 @@ source = "script"
 title = "Glootokisshell"
 group = "Dreamolers CAPS"
 source = "script"
-result = "unknown"
 
 [demozoo.234139]
 title = "Glorify"
@@ -1357,6 +1366,7 @@ machine = "a1200"
 title = "Gods"
 group = "Psykotrope"
 source = "script"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.234352]
 title = "Gods - Preview"
@@ -1590,6 +1600,7 @@ source = "script"
 title = "Goonie Meditation"
 group = "Goonies 2041"
 source = "script"
+machine = "a500_1mb"
 
 [demozoo.30526]
 title = "Gorau"
@@ -1857,7 +1868,7 @@ source = "script"
 title = "Gravity"
 group = "Appendix"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.248542]
 title = "Gravtro"
@@ -2052,7 +2063,6 @@ source = "script"
 title = "Greetings Intro"
 group = "Factor 4"
 source = "script"
-result = "unknown"
 
 [demozoo.219787]
 title = "Greetings Intro"
@@ -2073,7 +2083,6 @@ source = "script"
 title = "Greetings Intro"
 group = "X-Factor"
 source = "script"
-result = "unknown"
 
 [demozoo.264667]
 title = "Greetings List V1.0"
@@ -2100,7 +2109,6 @@ run = "bzb-sauna!-020+.exe"
 title = "Greetingxscroller"
 group = "Apex"
 source = "script"
-result = "unknown"
 
 [demozoo.241066]
 title = "Greetro"
@@ -2175,7 +2183,6 @@ machine = "a1200_fast"
 title = "Grid"
 group = "IRQ"
 source = "script"
-result = "unknown"
 
 [demozoo.24668]
 title = "Grid 2"
@@ -2314,7 +2321,7 @@ source = "script"
 title = "Group Slideshow nr. 3"
 group = "ANC Europe / The Amiga Gang"
 source = "script"
-result = "unknown"
+machine = "a500_512k"
 
 [demozoo.194097]
 title = "Grouptro"
@@ -2351,13 +2358,15 @@ source = "script"
 title = "Grzbiety Rulez Kurwa"
 group = "Vodka People"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
+note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
 
 [demozoo.92780]
 title = "Grzbiety rulez Kurwa!"
 group = "Vodka Projects"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
+note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
 
 [demozoo.227825]
 title = "Grzes Nie Doczekal"
@@ -2385,7 +2394,6 @@ machine = "a1200"
 title = "GSC News"
 group = "German Spreading Crew"
 source = "script"
-result = "unknown"
 
 [demozoo.228755]
 title = "GTB First Intro"
@@ -2418,6 +2426,7 @@ source = "script"
 title = "Guardian Dragon II"
 group = "Kefrens"
 source = "script"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.224067]
 title = "Guardian Snail"
@@ -2471,7 +2480,7 @@ machine = "a1200"
 drives = 2
 kind = "separate-disks"
 disks = ["ApB-GuignolDance2-v1.adf", "ApB-GuignolDance2-v2.adf", "ApB-GuignolDance2-v3.adf"]
-swaps = [{ disk = 3, at = 135.4, key = "lmb" }]
+events = [{ at = 135.4, disk = 3 }, { at = 140.4, key = "lmb" }]
 note = "v1, v2, v3 each boot alone to the same loader and play (a1200)"
 
 [demozoo.21838]
@@ -2500,7 +2509,8 @@ source = "script"
 title = "Gulf War"
 group = "Dominators"
 source = "script"
-result = "crashes-later"
+result = "unknown"
+note = "the sweep saw works-then-crash on a500; no entry of it passed the gate"
 
 [demozoo.213042]
 title = "Gulf War"
@@ -2516,6 +2526,7 @@ source = "script"
 title = "Gummy Bear: The Demo"
 group = "Void"
 source = "script"
+machine = "a500_1mb"
 
 [demozoo.28195]
 title = "Gun"
@@ -2538,7 +2549,6 @@ source = "script"
 title = "Gunship"
 group = "Australian Crackers United"
 source = "script"
-result = "unknown"
 
 [demozoo.255387]
 title = "Gurgle's Return"
@@ -2572,6 +2582,8 @@ run = "TLU-GURU.exe"
 title = "Guru"
 group = "Majic 12"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.249893]
 title = "Guru"
@@ -2587,7 +2599,8 @@ source = "script"
 title = "Guru Meditation"
 group = "Digitech"
 source = "script"
-result = "unknown"
+machine = "a500_512k"
+run = "1"
 
 [demozoo.240998]
 title = "Guru Meditation"
@@ -2598,9 +2611,7 @@ source = "script"
 title = "Guru Meditation With Premeditation"
 group = "Melon Dezign"
 source = "script"
-machine = "a500_1mb"
-boot = "floppy"
-result = "crashes-later"
+machine = "a500_1mb_chip"
 
 [demozoo.324376]
 title = "Guru Panic"
@@ -2634,7 +2645,6 @@ run = "Gush.exe_nt"
 title = "Gustav 140k intro"
 group = "Den Tøffe Klubben"
 source = "script"
-result = "unknown"
 
 [demozoo.253802]
 title = "Gute Rap Intro"

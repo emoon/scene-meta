@@ -12,6 +12,8 @@ source = "script"
 title = "Vaaleansininen huivi"
 group = "Carillon"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.342445]
 title = "VAAU"
@@ -40,8 +42,9 @@ machine = "a1200_fast"
 title = "Vach"
 group = "Deathless"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
 run = "vach.exe"
+note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
 
 [demozoo.156633]
 title = "Vactro 2"
@@ -477,7 +480,6 @@ source = "script"
 title = "Vector Intro"
 group = "DutchCrack"
 source = "script"
-result = "unknown"
 
 [demozoo.223454]
 title = "Vector Intro"
@@ -848,7 +850,6 @@ source = "script"
 title = "Vegemite - Beyond Taste"
 group = "Frontier"
 source = "script"
-result = "unknown"
 
 [demozoo.209772]
 title = "Veil of Sorrow 2"
@@ -899,7 +900,6 @@ source = "script"
 title = "Veloci-Vendors"
 group = "Parallax"
 source = "script"
-result = "unknown"
 
 [demozoo.144833]
 title = "Velociraptore"
@@ -1177,9 +1177,9 @@ source = "script"
 title = "Vibes"
 group = "Oops!"
 source = "script"
-machine = "a1200"
 boot = "floppy"
-result = "crashes-later"
+result = "unknown"
+note = "the sweep saw works-then-crash on a1200; no entry of it passed the gate"
 
 [demozoo.214163]
 title = "Vibrating Arrow"
@@ -1246,7 +1246,6 @@ machine = "a1200"
 title = "VidGen v1.0"
 group = "Vision"
 source = "script"
-result = "unknown"
 
 [demozoo.242936]
 title = "Vidi Mice 1.0"
@@ -1352,9 +1351,11 @@ source = "script"
 [demozoo.18873]
 title = "Virtual"
 group = "Skahn-X"
-source = "script"
-machine = "a1200_fast"
+source = "ai"
+machine = "a1200_030"
+result = "unknown"
 run = "virtual.exe"
+note = "tested on a 68030 by its info; the music plays and the screen stays black on a 68020, a 68030 and a 68060, and it exits at about 190 s"
 
 [demozoo.250792]
 title = "Virtual Conspiracy 95 Party Invitation"
@@ -1398,10 +1399,10 @@ source = "script"
 [demozoo.5318]
 title = "Virtual Meltdown"
 group = "Paradise"
-source = "script"
+source = "ai"
 machine = "a1200_030"
 disks = ["Paradise-VirtualMeltdownA.dms", "Paradise-VirtualMeltdownB.dms"]
-swaps = [{ disk = 2, at = 508.8, key = "lmb" }]
+events = [{ at = 520.0, disk = 2 }]
 
 [demozoo.318803]
 title = "Virtual Pain"
@@ -1419,6 +1420,8 @@ result = "unknown"
 title = "Virtual World"
 group = "TomSoft"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.197374]
 title = "Virus Boot"
@@ -1445,6 +1448,8 @@ source = "script"
 title = "Virus Terminator 2.0"
 group = "Bamiga Sector One"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.262736]
 title = "Viruskiller Update Intro"
@@ -1455,7 +1460,6 @@ source = "script"
 title = "Viruskiller V1.0 Intro"
 group = "Tristar"
 source = "script"
-result = "unknown"
 
 [demozoo.220483]
 title = "Visibility"
@@ -1554,7 +1558,7 @@ result = "unknown"
 title = "Vital"
 group = "Mystic"
 source = "script"
-machine = "a500_1mb"
+machine = "a500_2mb_chip"
 
 [demozoo.22196]
 title = "Vitsippe Hater"
@@ -1570,7 +1574,8 @@ source = "script"
 title = "Vittuliukaste -Vittu, pakko kai tää on julkasta ku tuli tehtyä-"
 group = "Poro"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.247637]
 title = "Vitun Munkit"
@@ -1761,7 +1766,7 @@ result = "unknown"
 title = "Vote Now"
 group = "Apathy"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.346437]
 title = "Votebastards"
@@ -1824,7 +1829,6 @@ source = "script"
 title = "Voyager's Demo"
 group = "Doom"
 source = "script"
-result = "unknown"
 
 [demozoo.220412]
 title = "Vranov '94"
@@ -1845,7 +1849,8 @@ source = "script"
 title = "Vrroemm?!"
 group = "Desire"
 source = "script"
-machine = "a500_1mb"
+result = "unknown"
+note = "the sweep saw works on a500_1mb; no entry of it passed the gate"
 
 [demozoo.2155]
 title = "Vuku"

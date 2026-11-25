@@ -9,7 +9,7 @@ group = "Genesis Project"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["XMARKS-1.d64", "XMARKS-2.d64", "XMARKS-3.d64"]
-swaps = [{ disk = 2, at = 378.8 }, { disk = 3, at = 718.2 }]
+events = [{ at = 378.8, disk = 2 }, { at = 718.2, disk = 3 }]
 
 [demozoo.385113]
 title = "X-95 Partydemo"
@@ -302,7 +302,7 @@ group = "Lethargy"
 source = "script"
 machine = "pal_1541_8580"
 disks = ["XXX Side #1 [Lethargy].d64", "XXX Side #2 [Lethargy].d64"]
-swaps = [{ disk = 2, at = 423.0 }]
+events = [{ at = 423.0, disk = 2 }]
 
 [demozoo.309729]
 title = "XXX+I"
@@ -320,7 +320,7 @@ title = "Xylon"
 group = "Paramount"
 source = "script"
 disks = ["Xylon.d64", "xylon-paramount.d64"]
-swaps = [{ disk = 2, at = 191.2, key = "space", key_delay = 18.3 }]
+events = [{ at = 191.2, disk = 2 }, { at = 209.5, key = "space" }]
 
 [demozoo.300300]
 title = "Xyzzy Demo"

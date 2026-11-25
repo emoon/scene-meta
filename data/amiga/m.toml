@@ -225,7 +225,7 @@ title = "Madness Week"
 group = "Syntex"
 source = "script"
 disks = ["Syntex-MadnessWeek1.adf", "Syntex-MadnessWeek2.adf"]
-swaps = [{ disk = 2, at = 35.0 }]
+note = "the sweep only reached disk 1 of 2"
 
 [demozoo.227089]
 title = "Madonna Demo"
@@ -398,7 +398,7 @@ source = "script"
 title = "Magical Box"
 group = "Grasshopper Developments"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.224738]
 title = "Magical Moments"
@@ -642,7 +642,7 @@ source = "script"
 title = "Malestar General"
 group = "Balance"
 source = "script"
-result = "unknown"
+boot = "floppy"
 
 [demozoo.207485]
 title = "Malfunction"
@@ -730,7 +730,6 @@ source = "script"
 title = "Mandaelbro"
 group = "Goblins"
 source = "script"
-result = "unknown"
 
 [demozoo.326647]
 title = "Mandel bootblock"
@@ -757,7 +756,6 @@ result = "unknown"
 title = "Manhattan Dealers"
 group = "Goonies 2041"
 source = "script"
-result = "unknown"
 
 [demozoo.250464]
 title = "Manhatten Dealers"
@@ -768,7 +766,6 @@ source = "script"
 title = "Manhunter"
 group = "Tristar"
 source = "script"
-result = "unknown"
 
 [demozoo.215676]
 title = "Mania"
@@ -784,6 +781,8 @@ source = "script"
 title = "Maniac demo down"
 group = "Crazy Maniacs of Hades"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.263721]
 title = "Maniac Mansion"
@@ -863,7 +862,6 @@ result = "unknown"
 title = "Mapper Demo"
 group = "Voids"
 source = "script"
-result = "unknown"
 
 [demozoo.206960]
 title = "Marantz BBS Intro"
@@ -1200,8 +1198,10 @@ machine = "a1200"
 [demozoo.113574]
 title = "Materialized"
 group = "Cryptoburners"
-source = "script"
-run = "Materie.Music"
+source = "ai"
+result = "unknown"
+run = "CRB-Materialized"
+note = "Materie.Music is its music file; CRB-Materialized shows a garbled screen at 10 s and goes black at 25 s on every A500, and shows nothing on an A1200"
 
 [demozoo.260784]
 title = "Math-Amation"
@@ -1222,10 +1222,10 @@ machine = "a500_ks12"
 [demozoo.221372]
 title = "Mathik"
 group = "Mathic Entertainment"
-source = "script"
+source = "ai"
 machine = "a500_1mb"
 disks = ["MATHIC-MegademoA.DMS", "MATHIC-MegademoB.DMS"]
-swaps = [{ disk = 2, at = 405.0 }]
+events = [{ at = 385.0, disk = 2 }, { at = 390.0, key = "lmb" }]
 
 [demozoo.188221]
 title = "Maths Essay"
@@ -1248,7 +1248,7 @@ machine = "a1200"
 title = "Matrix Joined"
 group = "Phantasy"
 source = "script"
-result = "unknown"
+boot = "floppy"
 
 [demozoo.193531]
 title = "Matrix's First Intro"
@@ -1317,14 +1317,14 @@ group = "Rage"
 source = "script"
 machine = "a1200"
 disks = ["RGE-MAX1.DMS", "RGE-MAX2.DMS"]
-swaps = [{ disk = 2, at = 47.3 }]
+events = [{ at = 47.3, disk = 2 }]
 
 [demozoo.262819]
 title = "Maximum Overdrive"
 group = "The Special Brothers"
 source = "script"
 disks = ["TSB-MaximumOverdriveA.adf", "TSB-MaximumOverdriveB.adf"]
-swaps = [{ disk = 2, at = 531.6 }]
+note = "the sweep only reached disk 1 of 2"
 
 [demozoo.255324]
 title = "Maximum Overdrive 2 Intro"
@@ -1338,7 +1338,7 @@ group = "Rage"
 source = "script"
 machine = "a1200"
 disks = ["rage1.dms", "rage2.dms", "rage3.dms"]
-swaps = [{ disk = 2, at = 132.4 }, { disk = 3, at = 191.4 }]
+events = [{ at = 132.4, disk = 2 }, { at = 191.4, disk = 3 }]
 
 [demozoo.169004]
 title = "Maximum Pleasure Party Intro"
@@ -1419,7 +1419,6 @@ source = "script"
 title = "Mc Disk 5 - spread intro"
 group = "Tristar and Red Sector Inc."
 source = "script"
-result = "unknown"
 
 [demozoo.223971]
 title = "MC1310P"
@@ -1479,6 +1478,7 @@ machine = "a1200"
 title = "Meadows"
 group = "Rift"
 source = "script"
+machine = "a500_1mb"
 
 [demozoo.294042]
 title = "Meaningless"
@@ -1802,6 +1802,8 @@ source = "script"
 title = "Meetro"
 group = "Reflectors"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.194040]
 title = "Meetro"
@@ -1877,8 +1879,9 @@ source = "script"
 title = "Mega Demo"
 group = "Deathstar"
 source = "script"
+result = "unknown"
 disks = ["Deathstar-MegademoA.dms", "Deathstar-MegademoB.dms"]
-swaps = [{ disk = 2, at = 25.7 }]
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.153783]
 title = "Mega Demo"
@@ -1904,6 +1907,8 @@ source = "script"
 title = "Mega Demo 1"
 group = "Robots"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.230493]
 title = "Mega Dycpers"
@@ -2051,8 +2056,9 @@ source = "script"
 title = "Mega-Demo"
 group = "Treacl"
 source = "script"
+result = "unknown"
 disks = ["Treacl-MegademoA.dms", "Treacl-MegademoB.dms", "Treacl-MegademoC.dms"]
-swaps = [{ disk = 2, at = 160.0 }, { disk = 3, at = 230.0 }]
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.19014]
 title = "Mega-Demo Preview"
@@ -2079,7 +2085,8 @@ source = "script"
 title = "Mega-lo-Mania"
 group = "The Power Connection"
 source = "script"
-machine = "a1200"
+result = "unknown"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.233249]
 title = "Mega-Lomania Demo"
@@ -2140,6 +2147,8 @@ source = "script"
 title = "Megacrash"
 group = "Avalanche"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.287286]
 title = "Megadef Downsmashing Intro"
@@ -2165,9 +2174,11 @@ run = "Part8"
 [demozoo.2020]
 title = "Megademo"
 group = "Budbrain"
-source = "script"
+source = "ai"
+result = "broken"
 disks = ["BUDBRAIN-Megademo1a.dms", "BUDBRAIN-Megademo1b.dms"]
-swaps = [{ disk = 2, at = 317.8, key = "lmb" }]
+events = [{ at = 317.8, disk = 2 }, { at = 322.8, key = "lmb" }]
+note = "asks for disk 1 again 7 s after disk 2 loaded, which no swap can say: the player puts in disks 2 and up only"
 
 [demozoo.2183]
 title = "Megademo"
@@ -2184,7 +2195,7 @@ title = "Megademo"
 group = "Red Sector Inc."
 source = "script"
 disks = ["RSI-MegademoA.dms", "RSI-MegademoB.dms"]
-keys = [{ at = 86.1, key = "lmb" }]
+events = [{ at = 86.1, key = "lmb" }]
 
 [demozoo.22680]
 title = "Megademo"
@@ -2218,7 +2229,7 @@ title = "Megademo"
 group = "Royal Amiga Force"
 source = "script"
 disks = ["RAF-Megademo-A.DMS", "RAF-Megademo-B.DMS"]
-swaps = [{ disk = 2, at = 270.7, key = "lmb" }]
+note = "the sweep only reached disk 1 of 2"
 
 [demozoo.70419]
 title = "Megademo"
@@ -2253,7 +2264,7 @@ title = "Megademo"
 group = "United Forces"
 source = "script"
 disks = ["UFO-MegademoA.adf", "UFO-MegademoB.dms"]
-swaps = [{ disk = 2, at = 79.0, key = "lmb" }]
+note = "the sweep only reached disk 1 of 2"
 
 [demozoo.154550]
 title = "Megademo"
@@ -2286,7 +2297,7 @@ group = "Powerslaves"
 source = "script"
 machine = "a500_1mb"
 disks = ["Powerslaves-MegademoA.dms", "Powerslaves-MegademoB.dms"]
-swaps = [{ disk = 2, at = 145.0, key = "lmb" }]
+note = "the sweep only reached disk 1 of 2"
 
 [demozoo.158893]
 title = "Megademo"
@@ -2302,6 +2313,8 @@ source = "script"
 title = "Megademo"
 group = "Legion 7"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.167262]
 title = "Megademo"
@@ -2434,7 +2447,6 @@ source = "script"
 title = "Megademo"
 group = "Punk Croc Crew"
 source = "script"
-result = "unknown"
 
 [demozoo.217769]
 title = "Megademo"
@@ -2461,7 +2473,7 @@ title = "Megademo"
 group = "Ringard Production"
 source = "script"
 disks = ["Ringard-MegademoA.dms", "Ringard-MegademoB.dms"]
-swaps = [{ disk = 2, at = 26.5, key = "lmb" }]
+events = [{ at = 26.5, disk = 2 }, { at = 31.5, key = "lmb" }]
 
 [demozoo.221515]
 title = "Megademo"
@@ -2472,14 +2484,14 @@ source = "script"
 title = "Megademo"
 group = "The Dark Ram Service"
 source = "script"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.221840]
 title = "Megademo"
 group = "Predators"
 source = "script"
-machine = "a500_512k"
 disks = ["Predators-MegademoI-A.dms", "Predators-MegademoI-B.dms"]
-swaps = [{ disk = 2, at = 20.0 }]
+note = "the sweep only reached disk 1 of 2"
 
 [demozoo.222080]
 title = "Megademo"
@@ -2497,12 +2509,14 @@ group = "Death Handlers"
 source = "script"
 machine = "a1200"
 disks = ["DH-MegademoA.adf", "DH-MegademoB.adf"]
-swaps = [{ disk = 2, at = 135.8 }]
+events = [{ at = 106.0, disk = 2 }, { at = 111.0, key = "lmb" }]
 
 [demozoo.225442]
 title = "Megademo"
 group = "Design House"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.227083]
 title = "Megademo"
@@ -2606,7 +2620,6 @@ source = "script"
 title = "Megademo"
 group = "Pure Metal Coders"
 source = "script"
-result = "unknown"
 
 [demozoo.257713]
 title = "Megademo"
@@ -2638,9 +2651,7 @@ source = "script"
 title = "Megademo"
 group = "Trilogy"
 source = "script"
-machine = "a1200_fast"
-disks = ["TRILOGY-MegademoA.DMS", "TRILOGY-MegademoB.DMS"]
-swaps = [{ disk = 2, at = 23.9, key = "lmb" }]
+boot = "hd"
 
 [demozoo.269713]
 title = "Megademo"
@@ -2668,7 +2679,7 @@ title = "Megademo"
 group = "Shadow"
 source = "script"
 disks = ["Shadow-MegademoA.adf", "Shadow-MegademoB.adf"]
-swaps = [{ disk = 2, at = 177.1 }]
+events = [{ at = 177.1, disk = 2 }]
 
 [demozoo.321243]
 title = "Megademo"
@@ -2700,9 +2711,9 @@ run = "_negerkuß!!.exe"
 [demozoo.44911]
 title = "Megademo $c"
 group = "Gunnars Farvebio"
-source = "script"
+source = "ai"
 machine = "a1200_fast"
-run = "MDCtrad.exe"
+run = "Megademo$C.bat"
 
 [demozoo.37806]
 title = "Megademo $d"
@@ -2740,8 +2751,9 @@ source = "script"
 title = "Megademo - Masters At Work"
 group = "Flash Production"
 source = "script"
+result = "unknown"
 disks = ["FP-MastersAtWorkA.adf", "FP-MastersAtWorkB.adf"]
-swaps = [{ disk = 2, at = 81.6, key = "lmb" }]
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.356965]
 title = "Megademo - Part 4"
@@ -2832,9 +2844,8 @@ run = "a1"
 title = "Megademo 1"
 group = "Business After Dark"
 source = "script"
-result = "crashes-later"
 disks = ["BAD-CopperAtWorkMD1a.adf", "BAD-CopperAtWorkMD1b.adf"]
-swaps = [{ disk = 2, at = 145.0 }]
+note = "the sweep only reached disk 1 of 2"
 
 [demozoo.224423]
 title = "Megademo 1"
@@ -2971,6 +2982,7 @@ group = "Scoopex"
 source = "ai"
 kind = "menu"
 disks = ["SCOOPEX-Megademo2A.DMS", "SCOOPEX-Megademo2B.DMS", "SCOOPEX-Megademo2C.DMS"]
+events = [{ at = 30.0, key = "return" }, { at = 120.0, key = "return" }]
 note = "Scoopex Megademo II part list (preface, opening, ...)"
 
 [demozoo.265078]
@@ -3082,8 +3094,9 @@ source = "script"
 title = "Megademo 4"
 group = "Fanatix"
 source = "script"
-drives = 2
+result = "unknown"
 disks = ["Fanatix-Megademo4A.adf", "Fanatix-Megademo4B.adf"]
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.5322]
 title = "Megademo 4 - Bogøfærgerne II"
@@ -3150,9 +3163,9 @@ machine = "a1200"
 title = "Megademo 7"
 group = "Fanatix"
 source = "script"
-drives = 2
+result = "unknown"
 disks = ["Fanatix-Megademo7_D1.adf", "Fanatix-Megademo7_D2.adf", "Fanatix-Megademo7_D3.adf"]
-swaps = [{ disk = 3, at = 30.0 }]
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.71940]
 title = "Megademo 8"
@@ -3249,6 +3262,7 @@ title = "Megademo II"
 group = "Cybornetics"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500_2mb_chip; no entry of it passed the gate"
 
 [demozoo.167365]
 title = "Megademo II - Back to the Roots"
@@ -3259,13 +3273,15 @@ source = "script"
 title = "Megademo II: Think Over The Star"
 group = "Dreamdealers"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.45034]
 title = "Megademo III"
 group = "Fairlight / North Star"
 source = "script"
 disks = ["NST_FLT-Megademo3A.dms", "NST_FLT-Megademo3B.dms"]
-keys = [{ at = 85.6, key = "lmb" }]
+events = [{ at = 85.6, key = "lmb" }]
 
 [demozoo.224508]
 title = "Megademo III"
@@ -3289,7 +3305,7 @@ title = "Megademo IV: Devil's Key"
 group = "Alcatraz"
 source = "script"
 disks = ["Alcatraz-Megademo4a.dms", "Alcatraz-Megademo4b.dms", "Alcatraz-Megademo4c.dms"]
-swaps = [{ disk = 2, at = 292.4, key = "lmb" }, { disk = 3, at = 809.4, key = "lmb" }]
+note = "the sweep only reached disk 1 of 3"
 
 [demozoo.228143]
 title = "Megademo Last Part"
@@ -3301,7 +3317,6 @@ machine = "a500_ks12"
 title = "Megademo Loader"
 group = "Intuition"
 source = "script"
-result = "unknown"
 
 [demozoo.278232]
 title = "Megademo number 1"
@@ -3563,7 +3578,6 @@ source = "script"
 title = "Mekka"
 group = "Columbus"
 source = "script"
-result = "unknown"
 
 [demozoo.19433]
 title = "Mekka & Symposium 98 Invitation"
@@ -3575,7 +3589,7 @@ title = "Mekkademo"
 group = "Cyborx"
 source = "script"
 disks = ["CYBORX-MekkaDemo_A.dms", "CYBORX-MekkaDemo_B.dms"]
-swaps = [{ disk = 2, at = 26.8, key = "lmb" }]
+note = "the sweep only reached disk 1 of 2"
 
 [demozoo.9559]
 title = "Melba"
@@ -3737,7 +3751,6 @@ source = "script"
 title = "Members Wanted"
 group = "Zeus"
 source = "script"
-result = "unknown"
 
 [demozoo.222418]
 title = "Members Wanted"
@@ -3753,6 +3766,8 @@ source = "script"
 title = "Members Wanted"
 group = "Gate"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.256012]
 title = "Members Wanted"
@@ -3983,7 +3998,6 @@ machine = "a500_ks12"
 title = "Mental Disaster"
 group = "Cyan"
 source = "script"
-result = "unknown"
 
 [demozoo.253806]
 title = "Mental Distortion"
@@ -4094,6 +4108,8 @@ source = "script"
 title = "Merry Christmas"
 group = "Goonies 2041"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.224581]
 title = "Merry Christmas"
@@ -4293,7 +4309,6 @@ source = "script"
 title = "Mestro"
 group = "Phoenix"
 source = "script"
-result = "unknown"
 
 [demozoo.191218]
 title = "Meta Brain"
@@ -4400,9 +4415,9 @@ source = "script"
 title = "Metatag Lock K-231277"
 group = "Madwizards"
 source = "script"
-machine = "a1200_030"
-result = "crashes-later"
+result = "unknown"
 run = "mwi-mtag.030"
+note = "the sweep saw works-then-crash on a1200_030; no entry of it passed the gate"
 
 [demozoo.236338]
 title = "Meteli 1"
@@ -4427,7 +4442,7 @@ group = "Byterapers"
 source = "ai"
 kind = "menu"
 disks = ["BRS-Meteli4A.dms", "BRS-Meteli4B.dms"]
-swaps = [{ disk = 2, at = 80.0 }]
+events = [{ at = 80.0, disk = 2 }, { at = 85.0, key = "rmb" }]
 note = "part list under the Meteli IV logo, scroller"
 
 [demozoo.236342]
@@ -4435,6 +4450,7 @@ title = "Meteli 5"
 group = "Byterapers"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.236343]
 title = "Meteli 6"
@@ -4516,6 +4532,8 @@ source = "script"
 title = "MFD"
 group = "CMD / 8BitError"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.261898]
 title = "MGF - JOY Megaintrodisk Trainer Intro"
@@ -4525,9 +4543,11 @@ source = "script"
 [demozoo.317579]
 title = "mhm-hny2023"
 group = "mayHem"
-source = "script"
-machine = "a1200_030"
+source = "ai"
+machine = "a1200_060"
+result = "unknown"
 run = "dhl2023.aga"
+note = "file_id.diz asks for an A1200 with 8 MB and a 68040 or 68060; the music plays and the screen stays black on a 68030 and a 68060"
 
 [demozoo.107019]
 title = "Mi lett volna ha..."
@@ -4552,7 +4572,7 @@ title = "Miami Vice Theme"
 group = "Swiss Cracking Association"
 source = "script"
 disks = ["SCA-MiamiViceA.adf", "SCA-MiamiViceB.adf", "SCA-MiamiViceC.adf", "SCA-MiamiViceD.adf"]
-swaps = [{ disk = 2, at = 100.2 }, { disk = 3, at = 196.2 }, { disk = 4, at = 292.2 }]
+events = [{ at = 100.2, disk = 2 }, { at = 196.2, disk = 3 }, { at = 292.2, disk = 4 }]
 
 [demozoo.52048]
 title = "MiBootie"
@@ -4702,6 +4722,7 @@ title = "Midnight Caller BBS Intro"
 group = "Digital Access"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.294225]
 title = "Midnight Madness"
@@ -4727,7 +4748,6 @@ source = "script"
 title = "Midnite Mess 2 Intro"
 group = "The Dark Demon"
 source = "script"
-result = "unknown"
 
 [demozoo.261802]
 title = "Midnite Mess 3 Advertising"
@@ -4756,7 +4776,6 @@ result = "unknown"
 title = "Miggybyte Christmas Intro"
 group = "Mr. Tickle"
 source = "script"
-result = "unknown"
 
 [demozoo.243790]
 title = "Mighty Bob Party Vol 1"
@@ -4811,9 +4830,11 @@ machine = "a1200_fast"
 [demozoo.63622]
 title = "Mime!"
 group = "Silicon"
-source = "script"
-machine = "a1200_fast"
+source = "ai"
+machine = "a1200_030"
+result = "broken"
 run = "Mime!_030.exe"
+note = "the CPU halts at 35 s on a 68030 and a 68060, with Mime!_030.exe and Mime!_060.exe; on a 68020 its own error screen says illegal instruction at 45 s"
 
 [demozoo.101067]
 title = "Mimosa House"
@@ -4968,9 +4989,9 @@ machine = "a1200"
 [demozoo.32583]
 title = "Mind Traveller"
 group = "Limited Edition"
-source = "script"
-result = "unknown"
-run = "WHEREFUNROLEZ.EXE"
+source = "ai"
+machine = "a1200_fast"
+run = "mindtraveller.exe"
 
 [demozoo.18185]
 title = "Mindabuse"
@@ -5135,7 +5156,6 @@ source = "script"
 title = "Mini Intro"
 group = "Spetsnatz"
 source = "script"
-result = "unknown"
 
 [demozoo.187533]
 title = "Mini Intro"
@@ -5211,7 +5231,6 @@ source = "script"
 title = "Mini Intro"
 group = "Eremation"
 source = "script"
-result = "unknown"
 
 [demozoo.243825]
 title = "Mini Intro"
@@ -5268,7 +5287,6 @@ source = "script"
 title = "Mini Logo Intro"
 group = "The Silents"
 source = "script"
-result = "unknown"
 
 [demozoo.167569]
 title = "Mini Mega Demo"
@@ -5279,6 +5297,7 @@ source = "script"
 title = "Mini Mega Demo"
 group = "Express"
 source = "script"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.251625]
 title = "Mini Mega Intro"
@@ -5300,7 +5319,6 @@ source = "script"
 title = "Mini Micro Intro"
 group = "Supreme"
 source = "script"
-result = "unknown"
 
 [demozoo.223684]
 title = "Mini Partintro"
@@ -5336,7 +5354,7 @@ source = "script"
 title = "Mini-Intro"
 group = "Hotdog Productions"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.249171]
 title = "Mini-Intro"
@@ -5468,7 +5486,6 @@ source = "script"
 title = "Mintro"
 group = "Coroner"
 source = "script"
-result = "unknown"
 
 [demozoo.224760]
 title = "Mintro"
@@ -5565,7 +5582,7 @@ result = "unknown"
 title = "Mirrors 2"
 group = "Maq"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.7478]
 title = "Misery"
@@ -5644,6 +5661,8 @@ source = "script"
 title = "Mission Nostromo"
 group = "Focus Design"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.178224]
 title = "Mission Nostromo II"
@@ -5675,7 +5694,7 @@ machine = "a1200_fast"
 title = "Mitt Liv Som Pixel"
 group = "Craze"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.29098]
 title = "Mitä Hirmu sanoo?"
@@ -5700,6 +5719,7 @@ title = "Mixin Mach II"
 group = "Flash Production"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.268123]
 title = "Mixture 12 Menu"
@@ -5838,7 +5858,6 @@ machine = "a1200_fast"
 title = "Modular Abyss BBS"
 group = "Emax / Snozz"
 source = "script"
-result = "unknown"
 
 [demozoo.262326]
 title = "Moduleplayer V3.0 & 3.1 Intro"
@@ -6010,7 +6029,6 @@ machine = "a1200_fast"
 title = "Mono"
 group = "Tomtemaffia"
 source = "script"
-result = "unknown"
 
 [demozoo.315769]
 title = "Monochrome"
@@ -6341,7 +6359,7 @@ machine = "a1200_fast"
 title = "Morph"
 group = "Darkage"
 source = "script"
-result = "unknown"
+machine = "a1200"
 run = "Morph.exe"
 
 [demozoo.166144]
@@ -6368,7 +6386,6 @@ source = "script"
 title = "Morphy Brown"
 group = "Status OK"
 source = "script"
-result = "unknown"
 
 [demozoo.211711]
 title = "Mortal Sin 001"
@@ -6455,7 +6472,7 @@ group = "Bomb"
 source = "script"
 machine = "a1200"
 disks = ["motion1.dms", "motion2.dms"]
-swaps = [{ disk = 2, at = 77.7 }]
+events = [{ at = 77.7, disk = 2 }]
 
 [demozoo.151402]
 title = "Motions"
@@ -6599,7 +6616,7 @@ source = "script"
 title = "Mr. Monkey"
 group = "Rebels"
 source = "script"
-machine = "a1200_fast"
+machine = "a1200"
 
 [demozoo.248105]
 title = "Mr. Munk In Fluidland"
@@ -6757,7 +6774,6 @@ source = "script"
 title = "Multi Scroll"
 group = "Phaze101"
 source = "script"
-result = "unknown"
 
 [demozoo.247031]
 title = "Multi Scroll"
@@ -7252,7 +7268,7 @@ source = "script"
 title = "Mutually Excluded"
 group = "Crusaders"
 source = "script"
-result = "unknown"
+boot = "floppy"
 
 [demozoo.337617]
 title = "Muuntuja"
@@ -7300,7 +7316,6 @@ run = "S_MDIB_starter"
 title = "My Dog Ben"
 group = "Dual Format"
 source = "script"
-result = "unknown"
 
 [demozoo.267721]
 title = "My Fair Lady Nomad"
@@ -7343,9 +7358,9 @@ machine = "a1200_fast"
 [demozoo.90]
 title = "My Kingdom"
 group = "Haujobb / Scoopex"
-source = "script"
+source = "ai"
 machine = "a1200_fast"
-run = "PART3.EXE"
+run = "MyKing.bat"
 
 [demozoo.335]
 title = "My Life As A Pizza"
@@ -7360,10 +7375,12 @@ source = "script"
 [demozoo.242098]
 title = "My Mama Is a Vampire"
 group = "Duplo"
-source = "script"
+source = "ai"
 machine = "a1200_030"
 drives = 2
+result = "crashes-later"
 disks = ["Duplo-MyMamaVampireA.dms", "Duplo-MyMamaVampireB.dms"]
+note = "plays two parts with disk B in DF1, then a blank grey screen and silence from 355 s; with one drive it waits from 100 s, and on a 68020 it crashes at 50 s"
 
 [demozoo.3006]
 title = "My Pain"
@@ -7412,7 +7429,7 @@ machine = "a1200"
 title = "Myst"
 group = "Universe"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.151441]
 title = "Myster & Tremor The Demor"
@@ -7551,7 +7568,6 @@ machine = "a1200_030"
 title = "Mømb A1200 Remix"
 group = "Gunnars Farvebio"
 source = "script"
-result = "unknown"
 
 [demozoo.258797]
 title = "Müsli Demo"

@@ -1,27 +1,34 @@
 """The Amiga player: the only way from an entry of the data files
 (``data/amiga``, see docs/DESIGN.md) to an emulator run. ``play`` resolves the
-entry's machine and media, puts each disk in at its time, presses each key
-after its insert and each key of ``keys`` at its time, and returns what
-happened. Nothing is detected and nothing retried, so a run shows what the
+entry's machine and media, puts each disk in and presses each key at the time
+of its event, and returns what happened. Nothing is detected and nothing retried, so a run shows what the
 entry says, not what a sweep can find.
 """
 
 import concurrent.futures as cf
 import dataclasses
 
+from .. import events
+from ..core import gate
 from ..core.errors import BadEntry, CannotPlay
-from . import emulator, machines, media, verdict
+from . import area as areas
+from . import emulator, machines, media, verdict, workbench
 from .machines import FPS
 
-KEY_DELAY = 5.0      # seconds from an insert to its key, when not given
-BUTTONS = {"lmb": 0}
+# Raised with every change to what a run of an entry shows: what the gate
+# saw by another version is seen again (see core.gatelog.stale).
+VERSION = "2"
 # Keep going this long after the last insert or key, to see the disk load.
 TAIL_FRAMES = emulator.AUTOSWAP_TAIL_FRAMES
-# An entry with no swaps or keys is watched this long.
+# An entry with no events is watched this long.
 PLAIN_FRAMES = 9000
 # A disk is loaded when it was read with the head past its first cylinders:
 # cylinders 0 and 1 are where a demo checks which disk is in.
 LOADED_CYL = 2
+# What a patient run gives an event that may wait for ever, in seconds.
+PATIENCE = 30.0
+# The verdicts of a production that came alive.
+RAN = ("works", "works-short", "works-then-crash")
 
 
 @dataclasses.dataclass(frozen=True)
@@ -31,6 +38,8 @@ class Outcome:
     verdict: verdict.Verdict
     loaded: list                # per swap that went in: was that disk loaded?
     log: emulator.RunLog
+    record: gate.Play = None    # the same, as every platform reports it
+    area: object = None         # the result.Area of a run asked to measure it
 
 
 @dataclasses.dataclass(frozen=True)
@@ -41,18 +50,29 @@ class Ready:
     machine: machines.Machine
     variant: media.Variant
 
-    def play(self, keys=True, keep=None):
-        """Play the entry as written. Without ``keys`` the disks go in and
-        nothing is pressed, in a run as long. ``keep`` is a directory for
-        the pictures of the run (see emulator.Options)."""
-        acts = actions(self.entry, keys)
-        frames = frames_of(self.entry)
+    def play(self, keys=True, keep=None, seed=emulator.DEFAULT_SEED,
+             frames=None, patient=False, area=False):
+        """Play the entry as written, eager or ``patient`` (see
+        events.patient). Without ``keys`` the disks go in and nothing is
+        pressed, in a run as long. ``keep`` is a directory
+        for the pictures of the run, ``seed`` the emulator's (see
+        emulator.Options), ``frames`` how long when not the entry's own
+        time (see ``frames_of``), ``area`` whether it measures the area
+        the production draws into (see area.py)."""
+        acts = actions(self.entry, keys, patient)
+        frames = frames or frames_of(self.entry, patient)
         log = emulator.run(self.machine, self.variant, frames, emulator.Options(
             drives=self.entry.get("drives", 1), play=tuple(acts), detect=False,
-            keep=keep))
-        inserts = [f for f, what, _ in acts if what == "insert"]
-        return Outcome(self.machine.name, verdict.classify(log, frames // 250),
-                       loaded(log.samples, inserts), log)
+            keep=keep, seed=seed, area=area))
+        inserts = [(f, *arg) for f, what, arg in acts if what == "insert"]
+        v = verdict.classify(log, frames // 250)
+        took = loaded(log.samples, [(f, unit) for f, _, unit in inserts])
+        first = self.entry.get("drives", 1) + 1
+        return Outcome(self.machine.name, v, took, log, gate.Play(
+            v.verdict in RAN, v.crash,
+            tuple(gate.SwapTaken(first + k, ok)
+                  for (_, k, _), ok in zip(inserts, took)),
+            last_read(log.samples)), areas.measured(log))
 
 
 def ready(prod, entry, default):
@@ -67,86 +87,111 @@ def ready(prod, entry, default):
         raise BadEntry(f"no machine with {entry['drives']} drives")
     # What costs nothing to find missing, before the download is unpacked.
     machines.require_rom(machine)
+    workbench.require_libs()
     actions(entry)
     return Ready(entry, machine, _variant_of(prod, entry))
 
 
-def play(prod, entry, default, keys=True, keep=None):
+def play(prod, entry, default, keys=True, keep=None, patient=False):
     """Play ``entry`` of production ``prod`` once: see ``ready`` and
     ``Ready.play``."""
-    return ready(prod, entry, default).play(keys, keep)
+    return ready(prod, entry, default).play(keys, keep, patient=patient)
 
 
-def play_each(todo, one, jobs, log=print):
-    """Play every ``(prod, entry)`` of ``todo``, ``jobs`` at a time:
-    ``one(prod, entry)`` plays it and returns its report line. An entry that
-    cannot be played is reported as an error. Returns how many were.
+def each_played(todo, one, jobs):
+    """Play every ``(prod, entry)`` of ``todo``, ``jobs`` at a time. Yields
+    of each, as it ends, ``(prod, True, one(prod, entry))``, or ``(prod,
+    False, line)`` with the line that reports why it cannot be played.
     Raises CannotPlay when there is no mirror to play any of them from."""
     media.require_mirror()
 
     def report(prod, entry):
         try:
-            return True, one(prod, entry)
+            return prod, True, one(prod, entry)
         except CannotPlay as e:
-            return False, f"{prod} {entry['title']}: error: {e}"
+            return prod, False, f"{prod} {entry['title']}: error: {e}"
 
-    errors = 0
     with cf.ThreadPoolExecutor(jobs) as pool:
-        for ok, line in pool.map(lambda pe: report(*pe), todo):
-            errors += not ok
-            log(line, flush=True)
+        for fut in cf.as_completed([pool.submit(report, *pe) for pe in todo]):
+            yield fut.result()
+
+
+def play_each(todo, one, jobs, log=print):
+    """Log the report line ``one(prod, entry)`` returns of each entry
+    played (see ``each_played``). Returns how many could not be played."""
+    errors = 0
+    for _, ok, line in each_played(todo, one, jobs):
+        errors += not ok
+        log(line, flush=True)
     return errors
 
 
-def actions(entry, keys=True):
+def actions(entry, keys=True, patient=False):
     """What to do when, for emulator.Options' ``play``. Without ``keys`` the
-    disks go in and nothing is pressed. Raises BadEntry for a key that
-    cannot be pressed and for a swap of a disk that cannot go in."""
+    disks go in and nothing is pressed. ``patient``: see events.patient.
+    Raises BadEntry for a key that cannot be pressed and for a swap of a
+    disk that cannot go in, or into a drive the machine has not got."""
     out = []
-    first = entry.get("drives", 1) + 1      # the first disk that is swapped in
+    drives = entry.get("drives", 1)
+    first = drives + 1      # the first disk that is swapped in
     last = len(entry.get("disks", ()))
-    for swap in entry.get("swaps", []):
+    does = entry.get("events", [])
+    for event in events.patient(does, PATIENCE) if patient else does:
+        frame = round(event["at"] * FPS)
+        if "key" in event:
+            if keys:
+                out.append((frame, "press", _key(event["key"])))
+            continue
+        if "disk" not in event:
+            raise BadEntry(f"an event at {event['at']:g} that is neither a"
+                           " disk nor a key")
+        swap = event
         if not first <= swap["disk"] <= last:
             # A disk that sits in a drive from the start is not swapped in.
             raise BadEntry(
                 f"no way to put in disk {swap['disk']}: " + (
                     f"the disks to put in are {first} to {last}"
                     if first <= last else "there is none to put in"))
-        frame = round(swap["at"] * FPS)
-        out.append((frame, "insert", swap["disk"] - first))
-        if "key" in swap and keys:
-            delay = swap.get("key_delay", KEY_DELAY)
-            out.append((frame + round(delay * FPS), "click",
-                        _button(swap["key"])))
-    if keys:
-        out += [(round(k["at"] * FPS), "click", _button(k["key"]))
-                for k in entry.get("keys", [])]
+        drive = swap.get("drive", 1)
+        if drive > drives:
+            raise BadEntry(f"no drive {drive} to put disk {swap['disk']} in: "
+                           f"the entry has drives = {drives}")
+        out.append((frame, "insert", (swap["disk"] - first, drive - 1)))
     return sorted(out)
 
 
-def _button(key):
-    if key not in BUTTONS:
-        raise BadEntry(f"no way to press key {key!r}")
-    return BUTTONS[key]
+def _key(key):
+    if key not in emulator.KEYS:
+        raise BadEntry(f"no way to press key {key!r}: the keys are "
+                       + ", ".join(emulator.KEYS))
+    return key
 
 
-def frames_of(entry):
+def frames_of(entry, patient=False):
     """How long ``entry`` is played: until the last disk of the entry as
     written, keys and all, has had time to load; else the time an entry
     with nothing to do gets."""
-    acts = actions(entry)
+    acts = actions(entry, patient=patient)
     return acts[-1][0] + TAIL_FRAMES if acts else PLAIN_FRAMES
 
 
-def loaded(samples, inserts, unit=0):
-    """For each insert frame: was that disk loaded before the next one went
-    in? Read after its insert, and the head then past LOADED_CYL."""
+def loaded(samples, inserts):
+    """For each insert, ``(frame, unit)``: was that disk loaded before the
+    next one went in? Read after its insert, and the head of its drive then
+    past LOADED_CYL."""
     out = []
-    for i, frame in enumerate(inserts):
-        until = inserts[i + 1] if i + 1 < len(inserts) else float("inf")
+    for i, (frame, unit) in enumerate(inserts):
+        until = inserts[i + 1][0] if i + 1 < len(inserts) else float("inf")
         out.append(any(frame < s.frame <= until and s.last_dma > frame
                        and s.cyls[unit] >= LOADED_CYL for s in samples))
     return out
+
+
+def last_read(samples):
+    """When a disk was last read, in seconds: how far a run got, for the
+    gate. A production that goes on after a key reads later than one left
+    waiting for it."""
+    return max((s.last_dma for s in samples), default=-1) / FPS
 
 
 def _variant_of(prod, entry):

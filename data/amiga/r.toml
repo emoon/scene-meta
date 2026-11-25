@@ -29,7 +29,6 @@ source = "script"
 title = "R-Type Demo"
 group = "Starlight"
 source = "script"
-result = "unknown"
 
 [demozoo.238582]
 title = "R-Type II Prerelease"
@@ -198,6 +197,8 @@ source = "script"
 title = "Radio Gargaj"
 group = "Scoopex"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.8669]
 title = "Radio In Your Eyes"
@@ -447,7 +448,8 @@ source = "script"
 title = "Randomized.sheep"
 group = "Loonies"
 source = "script"
-machine = "a1200_030"
+result = "unknown"
+note = "failed the gate: seed 1: never came alive"
 
 [demozoo.164025]
 title = "Randy Recliner"
@@ -480,7 +482,7 @@ machine = "a1200"
 title = "ranuL - seluR"
 group = "Thefect"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.45795]
 title = "Raos"
@@ -492,6 +494,8 @@ machine = "a1200_fast"
 title = "Rap Around The Clock"
 group = "Extend"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.232567]
 title = "Rap Total"
@@ -599,7 +603,6 @@ source = "script"
 title = "Rastermania"
 group = "Overkill"
 source = "script"
-result = "unknown"
 
 [demozoo.252578]
 title = "Rastorbars"
@@ -616,6 +619,8 @@ result = "unknown"
 title = "Rational Prodigy"
 group = "Analogy"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.233936]
 title = "Ratman's Revenge"
@@ -869,9 +874,9 @@ machine = "a1200"
 title = "Rayworld"
 group = "Investation / Deform"
 source = "script"
-machine = "a1200_fast"
+result = "unknown"
 disks = ["Deform&Investation-RayworldA.dms", "Deform&Investation-RayworldB.dms", "Deform&Investation-RayworldC.dms"]
-swaps = [{ disk = 2, at = 54.8 }, { disk = 3, at = 347.0 }]
+note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
 
 [demozoo.222917]
 title = "Razor 1911 and Illusion Summer Party Invitation"
@@ -960,7 +965,7 @@ title = "Real Empathy"
 group = "Virtual"
 source = "script"
 disks = ["Virtual-RealEmpathyA.dms", "Virtual-RealEmpathyB.dms"]
-swaps = [{ disk = 2, at = 385.7 }]
+events = [{ at = 385.7, disk = 2 }]
 
 [demozoo.18446]
 title = "Real FD"
@@ -1063,6 +1068,8 @@ source = "script"
 title = "Real Time is Fucked up Preview"
 group = "Divina"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.228633]
 title = "Real Time Raytracing Demo"
@@ -1135,6 +1142,7 @@ machine = "a1200"
 title = "Realtime Margherita"
 group = "Arise"
 source = "script"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.248465]
 title = "Realtime Ugabuh-Zumbalai"
@@ -1462,7 +1470,8 @@ machine = "a1200_fast"
 title = "Reductio Ad Absurdum"
 group = "Noice"
 source = "script"
-machine = "a500_1mb"
+result = "unknown"
+note = "the sweep saw works on a500_1mb; no entry of it passed the gate"
 
 [demozoo.228020]
 title = "Redundancy Intro"
@@ -1705,7 +1714,7 @@ source = "script"
 title = "Remarkable Intro"
 group = "The Outrunners"
 source = "script"
-result = "unknown"
+machine = "a500_512k"
 
 [demozoo.223668]
 title = "Remedy"
@@ -2126,7 +2135,7 @@ title = "Revenge"
 group = "Etilik"
 source = "script"
 disks = ["Etilik-RevengeA.dms", "Etilik-RevengeB.dms"]
-swaps = [{ disk = 2, at = 260.0 }]
+note = "the sweep only reached disk 1 of 2"
 
 [demozoo.224444]
 title = "Revenge"
@@ -2398,7 +2407,6 @@ source = "script"
 title = "Rewired"
 group = "Instinct"
 source = "script"
-result = "unknown"
 
 [demozoo.31934]
 title = "Rex"
@@ -2551,7 +2559,6 @@ source = "script"
 title = "Ringing a Doorbell"
 group = "Movement"
 source = "script"
-result = "unknown"
 
 [demozoo.163]
 title = "Rink A Dink"
@@ -2716,6 +2723,7 @@ title = "Roadrunner"
 group = "Copperteam"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.209736]
 title = "Roadzanity"
@@ -2886,6 +2894,7 @@ title = "Roller"
 group = "End of Century 1999"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.81514]
 title = "Rollin' Dice"
@@ -2898,7 +2907,7 @@ run = "lax-roll.exe"
 title = "ROM 3 Announce Intro"
 group = "Sonik"
 source = "script"
-result = "unknown"
+machine = "a500_1mb"
 
 [demozoo.150543]
 title = "ROM 4 Intro"
@@ -2960,7 +2969,7 @@ group = "DTS"
 source = "script"
 machine = "a1200_fast"
 disks = ["rootro-disk_1.dms", "rootro-disk_2.dms"]
-swaps = [{ disk = 2, at = 264.7 }]
+events = [{ at = 264.7, disk = 2 }]
 
 [demozoo.6954]
 title = "Roots"
@@ -2982,7 +2991,7 @@ source = "script"
 title = "Rosa Bananer"
 group = "Tronix"
 source = "script"
-result = "unknown"
+machine = "a1200"
 run = "rosa_banan.exe"
 
 [demozoo.223552]
@@ -3055,6 +3064,8 @@ result = "unknown"
 title = "Rotating Cheque Board"
 group = "Anarchy"
 source = "script"
+result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.260114]
 title = "Rotating Delirium"
@@ -3065,7 +3076,7 @@ source = "script"
 title = "Rotating Logo"
 group = "Sinners"
 source = "script"
-result = "unknown"
+machine = "a500_512k"
 
 [demozoo.210388]
 title = "Rotating Sine"
@@ -3251,6 +3262,9 @@ source = "script"
 title = "Rubber Boys First"
 group = "Phoenix"
 source = "script"
+boot = "floppy"
+result = "unknown"
+note = "the sweep saw works on a500_2mb_chip; no entry of it passed the gate"
 
 [demozoo.229221]
 title = "Rubber Goonies"
@@ -3344,8 +3358,9 @@ run = "11-Joker.Focus"
 title = "Runaway"
 group = "Logic System / 2000 A.D."
 source = "script"
+result = "unknown"
 disks = ["2KAD&LS-RunawayA.dms", "2KAD&LS-RunawayB.dms"]
-swaps = [{ disk = 2, at = 53.5 }]
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.6582]
 title = "Runaway Brain"
