@@ -7,6 +7,11 @@ verdict would otherwise count as a demo playing. LastAlert is no help on
 Kickstart 1.x (it stays -1 for a "Software Failure"), so the picture is the
 only evidence.
 
+Kickstart 1.x shows a recoverable alert above the screen it found, pushed
+down: the AmigaDOS window is still there. A demo's own picture can be red on
+black in the same place, so that box is known by its words, "Guru
+Meditation #", matched against a template mask.
+
 Kickstart 1.x's "Software error - task held" requester (Intuition's
 AutoRequest for a task that crashed) leaves LastAlert at -1 as well. It is
 a fixed window in the top-left corner whatever the palette, so its three
@@ -64,6 +69,27 @@ def _rows(png):
         yield row
         prev = row
 
+
+GURU_BOX = (216, 86, 352, 100)  # x0, y0, x1, y1 around "Guru Meditation #"
+GURU_MATCH = 0.8                # share of the template's ink the screen must reproduce
+# One row per line of the words as they are above a screen (a box with
+# nothing beneath is drawn wider), one bit per pixel, 1 = ink.
+GURU_MASK = tuple(int(row, 16) for row in (
+    "0f0000000020800386020002060000001b",
+    "0f0000000020800386020002060000001b",
+    "198000000031800180060006000000001b",
+    "198000000031800180060006000000001b",
+    "3019bb19803b8f0d8e0f8f0f8e0f1f003f",
+    "3019bb19803b8f0d8e0f8f0f8e0f1f003f",
+    "33999d99803f999b86060186061999801b",
+    "33999d99803f999b86060186061999801b",
+    "3199999980359f9986060786061999803f",
+    "3199999980359f9986060786061999803f",
+    "199998198031981986069986861999801b",
+    "199998198031981986069986861999801b",
+    "0f8efc0ec0318f0ecf030ec30f0f19801b",
+    "0f8efc0ec0318f0ecf030ec30f0f19801b",
+))
 
 HELD_BOX = (90, 66, 384, 134)  # x0, y0, x1, y1 around the requester's text
 HELD_MATCH = 0.8               # share of the template's ink the screen must reproduce
@@ -147,24 +173,51 @@ def _lum(pixel):
     return 3 * pixel[0] + 6 * pixel[1] + pixel[2]
 
 
+def _alert_red(r, g, b):
+    return r > 150 and g < 90 and b < 60
+
+
+def _crop(rows, area):
+    """The pixels of ``area`` (x0, y0, x1, y1), a list per row; None when
+    the screen is too small to hold it."""
+    x0, y0, x1, y1 = area
+    if len(rows) < y1 or len(rows[0]) < 3 * x1:
+        return None
+    return [[tuple(row[3 * x:3 * x + 3]) for x in range(x0, x1)]
+            for row in rows[y0:y1]]
+
+
+def _reads(crop, mask, ink, match):
+    """True when the ink of ``crop`` is the template ``mask``'s: ``ink(px)``
+    says which of its pixels are."""
+    both = either = 0
+    for pixels, want in zip(crop, mask):
+        bits = 0
+        for px in pixels:
+            bits = bits << 1 | ink(px)
+        both += (bits & want).bit_count()
+        either += (bits | want).bit_count()
+    return both >= match * either
+
+
 def _task_held(rows):
     """True when the requester's text is on screen. The box's background is
     the commonest colour in the crop; ink is whatever differs from it."""
-    x0, y0, x1, y1 = HELD_BOX
-    if len(rows) < y1 or len(rows[0]) < 3 * x1:
+    crop = _crop(rows, HELD_BOX)
+    if not crop:
         return False
-    crop = [[tuple(row[3 * x:3 * x + 3]) for x in range(x0, x1)]
-            for row in rows[y0:y1]]
     background = _lum(collections.Counter(
         itertools.chain.from_iterable(crop)).most_common(1)[0][0])
-    both = ink = 0
-    for pixels, want in zip(crop, HELD_MASK):
-        bits = 0
-        for px in pixels:
-            bits = bits << 1 | (abs(_lum(px) - background) > HELD_INK)
-        both += (bits & want).bit_count()
-        ink += (bits | want).bit_count()
-    return both >= HELD_MATCH * ink
+    return _reads(crop, HELD_MASK,
+                  lambda px: abs(_lum(px) - background) > HELD_INK, HELD_MATCH)
+
+
+def _says_guru(rows):
+    """True when "Guru Meditation #" is on screen where exec writes it above
+    a screen."""
+    crop = _crop(rows, GURU_BOX)
+    return bool(crop) and _reads(crop, GURU_MASK,
+                                 lambda px: _alert_red(*px), GURU_MATCH)
 
 
 def _is_guru(rows, height):
@@ -177,7 +230,7 @@ def _is_guru(rows, height):
                 if y >= BAND * height:
                     return False
                 lit += 1
-                red += r > 150 and g < 90 and b < 60
+                red += _alert_red(r, g, b)
     return lit >= MIN_PIXELS and red >= 0.97 * lit
 
 
@@ -191,6 +244,6 @@ def box(png):
         rows = list(itertools.islice(decoded, height // 2))
     except (ValueError, zlib.error, struct.error, StopIteration):
         return ""
-    if _is_guru(rows, height):
+    if _is_guru(rows, height) or _says_guru(rows):
         return "guru"
     return "task-held" if _task_held(rows) else ""

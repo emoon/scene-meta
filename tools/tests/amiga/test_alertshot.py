@@ -29,6 +29,19 @@ class AlertScreenTest(unittest.TestCase):
     def test_box_with_border(self):
         self.assertEqual("guru", alertshot.box(png("guru_blink_on.png")))
 
+    def test_box_above_the_screen_it_pushed_down(self):
+        # Colour Me AGA on KS1.3: a recoverable alert, the AmigaDOS window
+        # still showing above and below it.
+        self.assertEqual("guru", alertshot.box(png("guru_over_cli.png")))
+
+    def test_box_above_the_screen_with_the_border_blinked_off(self):
+        self.assertEqual("guru",
+                         alertshot.box(png("guru_over_cli_blink_off.png")))
+
+    def test_text_a_demo_shows_with_display_alert_is_not_a_guru(self):
+        # Tankstellenbande!: its credits, taller than exec's box.
+        self.assertEqual("", alertshot.box(png("display_alert_text.png")))
+
     def test_demo_screen_is_not_an_alert(self):
         self.assertEqual("", alertshot.box(png("demo_screen.png")))
 
