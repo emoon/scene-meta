@@ -25,7 +25,12 @@ SHARE = 0.25
 LEAST = 50
 # A screenshot has this many pixels to a lores pixel, and rows to a line.
 SCREEN_SCALE = 2
-ASPECTS = {(320, 180): schema.ASPECT_16_9}
+# The shape is that of the part of the screen, not of the pixel counts: a
+# hires pixel is half as wide and an interlaced line half as high, so 320x180
+# lores is the same 16:9 box as 640x180, 640x360 or 1280x180. No other part
+# of a PAL screen has these sizes: it is 376 lores pixels by 287 lines at most.
+ASPECTS = {(320 << res, 180 << lace): schema.ASPECT_16_9
+           for res in (0, 1, 2) for lace in (0, 1)}
 
 
 def _extent(runs, least):

@@ -161,6 +161,14 @@ class FieldsTest(unittest.TestCase):
         self.assertEqual(area.fields(Area(320, 180)),
                          {"area": [320, 180], "aspect": "16:9"})
 
+    def test_the_same_part_of_the_screen_in_finer_pixels_is_16_9_too(self):
+        # A hires pixel is half as wide, an interlaced line half as high.
+        for size in ((640, 180), (320, 360), (640, 360), (1280, 180),
+                     (1280, 360)):
+            self.assertEqual(area.fields(Area(*size)),
+                             {"area": list(size), "aspect": "16:9"}, size)
+
     def test_any_other_area_is_recorded_alone(self):
-        self.assertEqual(area.fields(Area(320, 200, 320, 200)),
-                         {"area": [320, 200]})
+        for size in ((320, 200), (640, 200), (640, 512), (352, 180)):
+            self.assertEqual(area.fields(Area(*size)), {"area": list(size)},
+                             size)

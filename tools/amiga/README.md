@@ -249,7 +249,8 @@ gate makes anyway, on the machine the entry names, and the measure only
 reads: what the gate sees is the same with it and without. The area of an
 entry that passes goes into `scene.db` (table `area`) with the entry it
 was measured of, and `export` writes it as the entry's `area` (and
-`aspect = "16:9"` for 320x180) while the entry is still that one. The
+`aspect = "16:9"` for 320x180 and for the same part of the screen in finer
+pixels, 640x180 or 640x360) while the entry is still that one. The
 line of the entry says it: `area 320x180, drawn into 318x180`. The export
 rewrites `script` entries only: the area of an entry somebody worked on
 stays in the table, to be written by hand.

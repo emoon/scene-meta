@@ -87,7 +87,7 @@ appears once per platform, as a key or as a cross-reference.
 | `boot_disk`, `boot_file` | the disk (1-based) and file to boot, when not the first |
 | `assign` | AmigaDOS assigns, e.g. `{ Killer = "SYS:" }` |
 | `area` | `[width, height]` of the part of the screen the production draws into, when it was measured (see below) |
-| `aspect` | `16:9` when the area has that shape; no other shape is said |
+| `aspect` | `16:9` when that part of the screen has that shape, whatever the pixels: 320x180, and 640x180 in hires; no other shape is said |
 | `note` | free text |
 | `variant` | see below |
 
@@ -139,7 +139,9 @@ finest pixels it uses: a production with a hires interlaced picture is
 A part drawn into less does not change it, and neither does a title that
 fills the screen for a short time before a smaller main part; the system's
 own screen while the production loads is not the production's. An area of
-320x180 has `aspect = "16:9"`. Any other area stands alone: 320x200 is
+320x180 has `aspect = "16:9"`, and so has the same part of the screen in
+finer pixels: a hires pixel is half as wide and an interlaced line half as
+high, so 640x180 and 640x360 are that shape too. Any other area stands alone: 320x200 is
 usually still 4:3, so a player may cut the borders away but must not
 stretch the picture. How a production is shown is the player's choice.
 Neither field changes how the production is run, so an entry with them
