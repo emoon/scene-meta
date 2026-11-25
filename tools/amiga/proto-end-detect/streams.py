@@ -19,12 +19,20 @@ ROM_START = 0xe00000
 ROM_END = 0x1000000
 
 
-def stream_end(reads):
-    """Frame of the last stream read; 0 when there is none, None when the
-    trace has no reads file (recorded before there was one)."""
+TEXT_STEP = 2       # byte or word stream (scrolltext / sequential text)
+TEXT_MIN_EVENTS = 80
+TEXT_MIN_FRAC = 0.80
+
+
+def stream_ends(reads):
+    """``(any_end, text_end)`` in frames: ``any_end`` is the last stream read
+    (step <= STEP), ``text_end`` is the last read of a clean sequential
+    byte/word text stream (scrolltext). Returns ``(None, None)`` when no
+    reads file exists."""
     if not os.path.exists(reads):
-        return None
-    last, seen, at = {}, collections.defaultdict(set), collections.defaultdict(list)
+        return None, None
+    last, seen = {}, collections.defaultdict(set)
+    at = collections.defaultdict(list)
     with open(reads) as f:
         for line in f:
             parts = line.split(",")
@@ -41,12 +49,26 @@ def stream_end(reads):
                 continue
             if pc_i in last and 0 < addr - last[pc_i] <= STEP and not any(
                     a in seen[pc_i] for a in range(addr + 1, addr + STEP + 1)):
-                at[pc_i].append(frame_i)
+                at[pc_i].append((frame_i, addr - last[pc_i]))
             last[pc_i] = addr
             seen[pc_i].add(addr)
     end = 0
-    for frames in at.values():
+    text_end = 0
+    for evs in at.values():
+        frames = [f for f, _ in evs]
         for k in range(NEED - 1, len(frames)):
             if frames[k] - frames[k - NEED + 1] <= WIN * FPS:
                 end = max(end, frames[k])
-    return end
+        if len(evs) >= TEXT_MIN_EVENTS:
+            small = [f for f, st in evs if st <= TEXT_STEP]
+            if len(small) / len(evs) >= TEXT_MIN_FRAC:
+                for k in range(NEED - 1, len(small)):
+                    if small[k] - small[k - NEED + 1] <= WIN * FPS:
+                        text_end = max(text_end, small[k])
+    return end, text_end
+
+
+def stream_end(reads):
+    """Frame of the last stream read; 0 when there is none, None when the
+    trace has no reads file (recorded before there was one)."""
+    return stream_ends(reads)[0]

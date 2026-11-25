@@ -108,6 +108,56 @@ class TestNotes(unittest.TestCase):
             # Second pass starts around 500 + 4785 = 5285, NOT stuck at ~20000
             self.assertLess(res[1], 7000)
 
+    def test_aba_subperiod_rejected_for_true_full_period(self):
+        # Like 295201 / 270755: song structure A-B-A-C where section A (3500f)
+        # fills the 60s TAIL and also occurred 4500f earlier, while the true
+        # period is 8000f (160s). Must pick 8000f, not 4500f.
+        with tempfile.TemporaryDirectory() as td:
+            p = pathlib.Path(td) / "t.notes"
+            lines = []
+            # Build distinct 500f/3500f sections: A (0..3500), B (3500..4500),
+            # A (4500..8000) -> wait: make period=8000: B(0..1000) A(1000..4500) C(4500..5500) A'(5500..8000)...
+            # Simpler: period=8000, [0..4000]=A, [4000..5000]=B, [5000..8000]=A[:3000]
+            # Wait: at end=40000, [37000..40000] is A[:3000], which ALSO appeared
+            # at [32000..35000] (lag 5000!) AND at [29000..32000] (lag 8000!).
+            # Lag 5000 fails before 37000 (hits B vs A); lag 8000 matches all the way back!
+            period = 8000
+            for rep in range(5):
+                base = rep * period
+                for step in range(0, 800):  # 10f per step = 8000f
+                    f = base + step * 10
+                    if step < 300:
+                        val = 100 + (step * 17) % 300       # A1 (0..3000)
+                    elif step < 500:
+                        val = 450 + ((step - 300) * 19) % 300  # B (3000..5000)
+                    else:
+                        val = 100 + ((step - 500) * 17) % 300  # A1 again (5000..8000)
+                    lines.append(f"{f},0,2,{val:x}\n")
+            p.write_text("".join(lines))
+            res = notes.song_loop(str(p), trace_end=40000)
+            self.assertIsNotNone(res)
+            self.assertAlmostEqual(res[0], period, delta=50)
+            self.assertLess(res[1], 10000)
+
+    def test_walkback_crosses_long_matching_silence(self):
+        # Like 310464: 8000f (160s) period with a 35s (1750f) quiet breakdown
+        # every pass (7 empty 5s buckets, > old limit of 4).
+        with tempfile.TemporaryDirectory() as td:
+            p = pathlib.Path(td) / "t.notes"
+            lines = []
+            period = 8000
+            for rep in range(5):
+                base = 500 + rep * period
+                for step in range(0, 625):  # 6250f notes, 1750f silence
+                    f = base + step * 10
+                    lines.append(f"{f},0,2,{100 + (step * 29) % 300:x}\n")
+            p.write_text("".join(lines))
+            # Trace ends during active notes (38750), with 35s silent breakdowns inside
+            res = notes.song_loop(str(p), trace_end=38800)
+            self.assertIsNotNone(res)
+            self.assertAlmostEqual(res[0], period, delta=50)
+            self.assertLess(res[1], 10000)
+
 
 class TestVideo(unittest.TestCase):
     def test_chain_period_fast_on_blinking_screen(self):
@@ -139,6 +189,20 @@ class TestVideo(unittest.TestCase):
         kind1, _, _ = video.cell_period(a1, 20000)
         self.assertEqual(kind1, "still")
 
+    def test_sparse_cell_tolerates_single_frame_jitter(self):
+        # Like 185204 / 89549: sparse 130-frame (2.6s) loop with one stray
+        # glitch frame at frame 20000 must not push shown to 20000.
+        n = 30000
+        a = np.zeros(n, dtype=np.uint64)
+        for base in range(500, n, 130):
+            a[base:min(n, base + 65)] = 1
+            a[min(n, base + 65):min(n, base + 130)] = 2
+        a[20000] = 999  # single stray jitter frame
+        kind, p, shown = video.cell_period(a, 15000)
+        self.assertEqual(kind, "loop")
+        self.assertEqual(p, 130)
+        self.assertLess(shown, 1500)
+
 
 class TestStreams(unittest.TestCase):
     def test_filters_rom_pc(self):
@@ -147,6 +211,21 @@ class TestStreams(unittest.TestCase):
             lines = [f"{100 + i * 10},S,fc1234,{0x1000 + i:x}\n" for i in range(20)]
             p.write_text("".join(lines))
             self.assertEqual(streams.stream_end(str(p)), 0)
+
+    def test_text_stream_separates_scrolltext_from_struct_reads(self):
+        with tempfile.TemporaryDirectory() as td:
+            p = pathlib.Path(td) / "t.reads"
+            # PC 0x10000 reads a 1-byte scrolltext (120 events up to frame 12000)
+            # PC 0x20000 reads a mixed-stride struct (steps 6 and 8 up to frame 30000)
+            lines = [f"{100 + i * 100},S,10000,{0x50000 + i:x}\n" for i in range(120)]
+            addr = 0x60000
+            for i in range(120):
+                addr += 6 if i % 2 == 0 else 8
+                lines.append(f"{18000 + i * 100},S,20000,{addr:x}\n")
+            p.write_text("".join(lines))
+            any_end, text_end = streams.stream_ends(str(p))
+            self.assertEqual(any_end, 18000 + 119 * 100)
+            self.assertEqual(text_end, 100 + 119 * 100)
 
 
 class TestAnalyze(unittest.TestCase):
@@ -261,6 +340,73 @@ class TestAnalyze(unittest.TestCase):
         rows = _make_rows(n, newram_at={11500: 500})
         v = analyze.verdict(rows, cells, song=None)
         self.assertNotEqual(v["ending"], "stops")
+
+    def test_nonfatal_exec_alert_ignored_when_demo_keeps_playing(self):
+        # Like 8991 / 156134: demo overwrites ExecBase+$202 early then keeps
+        # playing music & visuals for hundreds of seconds.
+        n = 15000
+        cells = np.arange(n * 4, dtype=np.uint64).reshape(n, 4)
+        rows = _make_rows(
+            n,
+            newram_at={1000: 100, 6000: 100},
+            alert_at=900,
+            aenergy_fn=lambda i: 50000 if i < 6500 else 0,
+            awrites_fn=lambda i: 5 if i < 6500 else 0,
+            chan_fn=lambda i: "PPPP" if i < 6500 else "SSSS",
+        )
+        v = analyze.verdict(rows, cells, song=None)
+        self.assertNotEqual(v["ending"], "crashed")
+
+    def test_scrolltext_extends_looping_intro_when_screen_open(self):
+        # Classic single-screen scrolltext intro: 90s song loops while a 240s
+        # byte/word scrolltext feeds open screen cells and finishes well before 900s.
+        n = 45000
+        # Open cells (non-looping values that repeat enough not to be "noisy")
+        rng = np.random.default_rng(7)
+        cells = rng.integers(0, 500, size=(n, 4), dtype=np.uint64)
+        rows = _make_rows(
+            n,
+            newram_at={1500: 100},
+            aenergy_fn=lambda i: 50000,
+            awrites_fn=lambda i: 5,
+            chan_fn=lambda i: "PPPP",
+        )
+        v = analyze.verdict(rows, cells, song=(4500, 5000), data=12000, text_data=12000)
+        self.assertEqual(v["ending"], "loops")
+        self.assertAlmostEqual(v["end"], 240.0, delta=1.0)
+        self.assertAlmostEqual(v["text_end"], 240.0, delta=1.0)
+
+    def test_still_screen_after_song_loop_extends_end(self):
+        # Like 90008: song loops at 72s, code stops at 106s, visuals keep moving
+        # until 186s and then go completely still while music keeps looping.
+        n = 45000
+        cells = np.zeros((n, 4), dtype=np.uint64)
+        cells[:9300, 0] = np.arange(9300, dtype=np.uint64)
+        cells[9300:, 0] = 9300
+        rows = _make_rows(
+            n,
+            newram_at={5300: 100},
+            aenergy_fn=lambda i: 50000,
+            awrites_fn=lambda i: 5,
+            chan_fn=lambda i: "PPPP",
+        )
+        v = analyze.verdict(rows, cells, song=(3600, 4750))
+        self.assertEqual(v["ending"], "loops")
+        self.assertAlmostEqual(v["end"], 186.0, delta=1.0)
+
+    def test_unfinished_scrolltext_flagged_as_text_after_trace(self):
+        n = 45000
+        rng = np.random.default_rng(11)
+        cells = rng.integers(0, 500, size=(n, 4), dtype=np.uint64)
+        rows = _make_rows(
+            n,
+            newram_at={1500: 100},
+            aenergy_fn=lambda i: 50000,
+            awrites_fn=lambda i: 5,
+            chan_fn=lambda i: "PPPP",
+        )
+        v = analyze.verdict(rows, cells, song=(4500, 5000), data=44950, text_data=44950)
+        self.assertTrue(v.get("text_after_trace"))
 
 
 if __name__ == "__main__":

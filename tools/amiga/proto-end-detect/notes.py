@@ -35,6 +35,54 @@ def _has_match(occ, target, tol):
     return j < len(occ) and occ[j] <= target + tol
 
 
+def _walk_back(data, p, end):
+    """Frame where the second pass of a song of period ``p`` begins, walking
+    backward from ``end`` in 5 s buckets. A bucket with no notes matches when
+    one period earlier is also silent (up to one full period of silence)."""
+    tol = max(BIN, p // 100)
+    step = 250
+    ok = {}
+    for fr, keys, where in data.values():
+        tot, hit = collections.Counter(), collections.Counter()
+        for i in range(K - 1, len(fr)):
+            b = fr[i] // step
+            tot[b] += 1
+            if _has_match(where[keys[i]], fr[i] - p, tol):
+                hit[b] += 1
+        for b in tot:
+            ok.setdefault(b, []).append(hit[b] / tot[b])
+    p_buckets = max(1, round(p / step))
+    b = end // step - 1
+    best_b = b
+    miss = 0
+    silent_run = 0
+    while b > 0:
+        prev = b - 1
+        if prev in ok:
+            if min(ok[prev]) >= 0.6:
+                best_b = prev
+                miss = 0
+                silent_run = 0
+            else:
+                miss += 1
+                if miss >= 2:
+                    break
+        else:
+            # Empty 5 s bucket: if one period earlier was also quiet, silence
+            # matches silence (e.g. a quiet breakdown inside a song).
+            ago = prev - p_buckets
+            ago_quiet = (ago >= 0 and ago not in ok
+                         and (ago - 1) not in ok and (ago + 1) not in ok)
+            if ago_quiet and silent_run < p_buckets:
+                silent_run += 1
+            else:
+                miss += 1
+                if miss >= 5:
+                    break
+        b = prev
+    return best_b * step
+
+
 def song_loop(path, log=lambda *a: None, trace_end=None):
     """``(period, second_pass_from)`` in frames, or None.
 
@@ -150,41 +198,23 @@ def song_loop(path, log=lambda *a: None, trace_end=None):
     if best is None:
         log("no loop found")
         return None
-    p, tol = best, max(BIN, best // 100)
-    # per 5 s: is the music a replay of one period before? walk back.
-    step = 250
-    ok = {}
-    for fr, keys, where in data.values():
-        tot, hit = collections.Counter(), collections.Counter()
-        for i in range(K - 1, len(fr)):
-            b = fr[i] // step
-            tot[b] += 1
-            if _has_match(where[keys[i]], fr[i] - p, tol):
-                hit[b] += 1
-        for b in tot:
-            ok.setdefault(b, []).append(hit[b] / tot[b])
-    b = end // step - 1
-    best_b = b
-    miss = 0
-    while b > 0:
-        prev = b - 1
-        if prev in ok:
-            if min(ok[prev]) >= 0.6:
-                best_b = prev
-                miss = 0
-            else:
-                miss += 1
-                if miss >= 2:
-                    break
-        else:
-            # Empty 5s bucket (silent pause inside song): don't require phase
-            # alignment with a 5s grid one period earlier; allow up to 4 empty
-            # buckets as long as matching resumes before them.
-            miss += 1
-            if miss >= 5:
+    p = best
+    at = _walk_back(data, p, end)
+    # If the shortest tail-matching period fails to sustain for even one full
+    # period (an internal A-B-A section that happens to fill the last 60 s,
+    # e.g. 295201, 270755), check longer passing candidates for the true loop.
+    if end - at < p:
+        seen_p = []
+        for _, cand_p in sorted(passed, key=lambda sp: sp[1]):
+            if cand_p <= p:
+                continue
+            if any(abs(cand_p - sp) <= max(BIN, sp // 50) for sp in seen_p):
+                continue
+            seen_p.append(cand_p)
+            cand_at = _walk_back(data, cand_p, end)
+            if end - cand_at >= cand_p and cand_at < at - TAIL:
+                p, at = cand_p, cand_at
                 break
-        b = prev
-    at = best_b * step
     log(f"SONG LOOPS: period ~{p / FPS:.1f}s; second pass from {at / FPS:.0f}s, "
           f"so the loop began ~{(at - p) / FPS:.0f}s")
     return p, at

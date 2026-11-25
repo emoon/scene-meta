@@ -45,7 +45,11 @@ def repeats_from(a, changes, p):
     def ahead(x):   # per frame, over the WINDOW frames from it on
         total = np.concatenate(([0], np.cumsum(x), np.full(WINDOW, x.sum())))
         return total[WINDOW:WINDOW + len(x)] - total[:len(x)]
-    fails = np.nonzero(ahead(bad) > TOL * ahead(event))[0]
+    ev_w = ahead(event)
+    # In sparse cells (few changes per 20 s window), tolerate 1-2 stray
+    # single-frame jitter glitches while still failing genuine mismatches.
+    allow = np.maximum(np.minimum(2, ev_w // 3), TOL * ev_w)
+    fails = np.nonzero(ahead(bad) > allow)[0]
     return p + (int(fails[-1]) + 1 if len(fails) else 0)
 
 

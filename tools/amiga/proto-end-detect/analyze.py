@@ -11,7 +11,7 @@ import numpy as np
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from notes import song_loop  # noqa: E402
-from streams import stream_end  # noqa: E402
+from streams import stream_end, stream_ends  # noqa: E402
 from video import cell_periods, chain_period, landmark, load_cells, onsets, MIN_LANDMARK  # noqa: E402
 
 K = 100       # frames of Paula writes that make one "bar" of music to match
@@ -210,8 +210,48 @@ def _exit_start(rows, still, over, os_cop):
     return min(still, over)
 
 
+def _fatal_guru(rows, cells):
+    """First frame index of a real Guru Meditation alert (not a demo that
+    reused ExecBase+$202 for its own data/code and kept playing)."""
+    n = len(rows)
+    changed = np.zeros(n, dtype=bool)
+    if n > 1:
+        changed[1:] = (cells[1:] != cells[:-1]).any(axis=1)
+    prev_alert = 0
+    for i in range(n):
+        a = rows[i]["alert"]
+        is_valid = bool(a and a != 0xffffffff and (a & 0x7fffffff) != 0
+                        and ((a >> 24) & 0x7f) <= 0x3f)
+        if is_valid and a != prev_alert:
+            boot = rows[i]["resets"]
+            j_end = i + 50
+            while j_end < n and rows[j_end]["resets"] == boot:
+                j_end += 1
+            if i + 50 >= j_end:
+                if i >= n - 50 and "P" in rows[-1]["chan"]:
+                    prev_alert = a
+                    continue
+                return i
+            audio_active = sum(
+                1 for k in range(i + 50, j_end)
+                if "P" in rows[k]["chan"] or rows[k]["awrites"] > 0
+            )
+            if audio_active >= 250:
+                prev_alert = a
+                continue
+            seg = changed[i + 50:j_end]
+            if len(seg) >= 250:
+                cs = np.concatenate(([0], np.cumsum(seg)))
+                if (cs[250:] - cs[:-250]).max() >= 50:
+                    prev_alert = a
+                    continue
+            return i
+        prev_alert = a
+    return None
+
+
 def verdict(rows, cells, song, halted=False, data=None, swaps=(), meta=None,
-            notes_path=None):
+            notes_path=None, text_data=None):
     """The model: nothing new runs after the last burst of new code. What
     the demo does from there says how it ends. ``song`` is what
     ``song_loop`` found, ``halted`` whether the CPU halted at the end of
@@ -278,9 +318,7 @@ def verdict(rows, cells, song, halted=False, data=None, swaps=(), meta=None,
             still_gap = max(still_gap, int(1.5 * big_gaps[-4:].max()))
     stopped = still < n - still_gap and over < n
     period = max(vp, song[0] if song else 0, lp)
-    guru = next((i for i in range(n) if rows[i]["alert"]
-                 and (rows[i]["alert"] & 0x7fffffff) != 0
-                 and ((rows[i]["alert"] >> 24) & 0x7f) <= 0x3f), None)
+    guru = _fatal_guru(rows, cells)
     end_box = (meta or {}).get("end_box") or ""
     os_cop = (meta or {}).get("os_cop")
     if guru is not None or halted or end_box in ("guru", "task-held"):
@@ -348,9 +386,13 @@ def verdict(rows, cells, song, halted=False, data=None, swaps=(), meta=None,
         if out["ending"] == "restarts":
             out["end"] = round(max(played, period) / FPS, 1)
         elif song and song[0] >= 0.6 * played:
-            # When the song spans the whole production, the song's period is
-            # the length even if a scroller takes longer (The Halberd Intro).
-            out["end"] = round(max(played, song[0]) / FPS, 1)
+            # When the song spans the whole production, use its period unless a
+            # longer full-screen video loop was observed for a full second pass
+            # (e.g. a scrolltext intro whose text loops slower than the tune).
+            if vp and vp > song[0] and (n - vshown) >= vp:
+                out["end"] = round(max(played, vp) / FPS, 1)
+            else:
+                out["end"] = round(max(played, song[0]) / FPS, 1)
         else:
             shown = rows[vshown]["frame"] if vp else 0
             out["end"] = round(max(played, period, shown) / FPS, 1)
@@ -392,6 +434,26 @@ def verdict(rows, cells, song, halted=False, data=None, swaps=(), meta=None,
             out["end"] = max(round(HELD / FPS, 1), out["last_new"])
     if data is not None and data > 0:
         out["last_data"] = round(data / FPS, 1)
+    # If the screen went completely still (all cells still) well before the
+    # trace ended while music kept looping, the visuals ran until ``still``.
+    if (out.get("ending") in ("loops", "end-loop")
+            and out["cells"]["still"] == cells.shape[1]
+            and len(moved) >= SHOWN and still < n - 1500 and "end" in out):
+        still_s = sec(still)
+        if still_s > out["end"]:
+            out["end"] = still_s
+    if text_data is not None and text_data > 0:
+        td_s = round(text_data / FPS, 1)
+        out["text_end"] = td_s
+        # Classic scrolltext intro/demo: song loops while a sequential byte/word
+        # text stream keeps feeding open (non-looping) screen cells until it
+        # finishes well before the trace ends.
+        if (out.get("ending") in ("loops", "end-loop") and not vp
+                and out["cells"]["open"] > 0 and "end" in out):
+            if out["end"] < td_s < out["trace"] - 30:
+                out["end"] = td_s
+            elif td_s >= out["trace"] - 30:
+                out["text_after_trace"] = True
     # the script's disk swaps say how long the production is: the swap that
     # the trace never reached means it runs longer than the trace; an end
     # before the last swap that was made is not the end
@@ -413,6 +475,10 @@ def song_of(trace, trace_end=None):
 
 def data_of(trace):
     return stream_end(trace + ".reads")
+
+
+def data_ends_of(trace):
+    return stream_ends(trace + ".reads")
 
 
 def meta_of(trace):
@@ -450,9 +516,11 @@ def main():
     trace_end = rows[-1]["frame"] if rows else None
 
     if a.json:
+        data, text_data = data_ends_of(a.trace)
         print(json.dumps(verdict(rows, cells, song_of(a.trace, trace_end),
-                                 halted_of(a.trace), data_of(a.trace), swaps, meta,
-                                 notes_path=a.trace + ".notes")))
+                                 halted_of(a.trace), data, swaps, meta,
+                                 notes_path=a.trace + ".notes",
+                                 text_data=text_data)))
         return
     if not a.quiet:
         print("   time  vchg  cells vnew%  vlag(mode)  aenergy  awr  anew% alag(mode) newpc rom% dma")

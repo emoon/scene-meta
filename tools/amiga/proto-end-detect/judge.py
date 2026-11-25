@@ -48,13 +48,15 @@ def verdict(args):
     try:
         rows, cells = analyze.load(t)
         meta = analyze.meta_of(t)
+        data, text_data = analyze.data_ends_of(t)
         v = analyze.verdict(
             rows, cells, s and tuple(s),
             halted=analyze.halted_of(t),
-            data=analyze.data_of(t),
+            data=data,
             swaps=SWAPS.get(int(i), ()),
             meta=meta,
             notes_path=t + ".notes",
+            text_data=text_data,
         )
     except Exception as e:  # one bad trace must not lose the batch
         return {"id": int(i), "ending": "error", "error": repr(e)}
