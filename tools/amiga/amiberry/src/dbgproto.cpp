@@ -1075,10 +1075,9 @@ static void cmd_watch(int s, const std::string &cmd,
 /* Process commands until a `run` starts or the batch ends. Called from the
  * instruction hook (initial dispatch, breakpoint hit) and from the vsync
  * hook (frame countdown / audio-dma / run budget exhausted). */
-/* ---- PROTOTYPE (end detection): per-frame trace -------------------------
+/* ---- Per-frame trace (end-of-demo detection) ----------------------------
  * `trace PATH` writes one CSV line per frame: what the display, Paula and
- * the CPU did in it. Throwaway; the detector itself is prototyped host-side
- * (tools/amiga/proto-end-detect/). */
+ * the CPU did in it, consumed host-side by tools/scenemeta/amiga/enddetect/. */
 static FILE *trace_fp = NULL;
 static FILE *notes_fp = NULL;   /* PATH.notes: frame,channel,reg,value */
 #define TR_COLS 4
@@ -1343,7 +1342,7 @@ static void cmd_state_save(int s, const std::string &cmd, const std::string &pat
 	emit(s, cmd, "{\"ok\":true}");
 }
 static FILE *trace_fp_get(void) { return trace_fp; }
-/* ---- end PROTOTYPE ---------------------------------------------------- */
+/* ---- end per-frame trace ---------------------------------------------- */
 
 static void dispatch(void)
 {

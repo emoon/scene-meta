@@ -1,4 +1,4 @@
-"""PROTOTYPE (throwaway): the last new data read as a stream.
+"""Sequential RAM data and scrolltext stream detector.
 
 The trace's ``.reads`` file lists, per frame, the first few bytes an
 instruction read that it had not read before. A text, a script or a pattern

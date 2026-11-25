@@ -1,9 +1,9 @@
-#!/usr/bin/env python3
-"""PROTOTYPE (throwaway): does the picture loop? Each cell of the screen grid
-is tested for its own period, so two effects with unrelated periods (a
-scroller over a bob object) still count as a loop.
+"""Per-cell screen-grid video loop and landmark detector.
 
-    python3 amiga/proto-end-detect/video.py TRACE.csv
+Each cell of the screen grid is tested for its own period, so two effects
+with unrelated periods (a scroller over a bob object) still count as a loop.
+
+    python3 -m scenemeta.amiga.enddetect.video TRACE.csv
 """
 import bisect, csv, sys
 

@@ -39,6 +39,7 @@ its `USE_*` feature off, so removing it breaks the build.
   opcode words — disassemble host-side with capstone), `load ADDR PATH`,
   `disk swap-next|insert|status|autoswap on|click|off`,
   `display measure on [os=ADDR] | off | status`,
+  `trace PATH`, `state save PATH`, `pcs [N]`,
   `input mouse BTN down|up | mouse move|rel X Y |
   mouse click|doubleclick [BTN] | joy PORT BTN down|up | key CODE down|up`
   (inject input for game testing — trainers wait for mouse clicks; button and
@@ -219,6 +220,23 @@ its `USE_*` feature off, so removing it breaks the build.
   `dead=N` ends the batch (`{"event":"dead-end"}`) once the display (hash
   sampled every 25 frames), audio DMA and disk DMA have all been still for
   N frames: a crash or frozen screen need not run out a sweep budget.
+- `src/dbgproto.cpp`, `src/audio.cpp`, `src/memory.cpp` — **per-frame trace
+  for end-of-demo detection** (`trace PATH`, `state save PATH`, `pcs [N]`):
+  - `trace PATH` opens three files — `PATH` (per-frame CSV of `dmacon`, Paula
+    write hash/count, audio energy/peak/samples, new-PC / new-RAM-PC counts,
+    instruction & ROM counts, `lastdma`, `resets`, `pc`, per-channel state
+    `S`/`R`/`P`, `LastAlert`, new RAM read / read-site counts, `solid`,
+    `bplcon0`, `cop1lc`, and a 4x8 grid of screen-cell hashes `v0..v31`),
+    `PATH.notes` (Paula pointer/period/length writes per channel for song-loop
+    matching), and `PATH.reads` (first-time RAM read streams per PC for
+    scrolltext/script stream detection). Hooks in `src/audio.cpp`
+    (`dbgproto_note_audio_reg`/`_loop`/`_sample`) and `src/memory.cpp`
+    (`dbgproto_note_read`, gated by `dbgproto_read_trace`) have zero overhead
+    when tracing is off.
+  - `state save PATH` schedules a compressed UAE savestate write at the next
+    hsync (paired with `--statefile` to resume traces from a checkpoint).
+  - `pcs [N]` returns the last `N` (default 64, max 4096) executed PCs
+    recorded under `run until=bp`.
 - `src/main.cpp` `parse_diskswapper` — repeated `-diskswapper=` arguments
   accumulate into `dfxlist` instead of each restarting at slot 0
   (upstream last-arg-wins dropped every earlier entry; `tools/runner.py`

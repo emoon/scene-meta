@@ -1,18 +1,18 @@
-#!/usr/bin/env python3
-"""PROTOTYPE (throwaway): what do the per-frame signals of a trace say?
+"""Classify an Amiga demo's ending and duration from its per-frame trace.
 
-    python3 amiga/proto-end-detect/analyze.py TRACE.csv [--bucket 500]
+    python3 -m scenemeta.amiga.enddetect.analyze TRACE.csv [--bucket 500] [--json]
 
-Prints one row per bucket (the state, to eyeball), then the events derived.
+Combines screen-cell loops, Paula note loops, audio-energy autocorrelation,
+sequential RAM stream / scrolltext reads, new-code bursts, and crash/exit
+signals into a structured verdict.
 """
-import argparse, csv, json, os, sys
+import argparse, csv, json, os
 
 import numpy as np
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from notes import song_loop  # noqa: E402
-from streams import stream_end, stream_ends  # noqa: E402
-from video import cell_periods, chain_period, landmark, load_cells, onsets, MIN_LANDMARK  # noqa: E402
+from .notes import song_loop
+from .streams import stream_end, stream_ends
+from .video import cell_periods, chain_period, landmark, load_cells, onsets, MIN_LANDMARK
 
 K = 100       # frames of Paula writes that make one "bar" of music to match
 FPS = 50
@@ -554,6 +554,32 @@ def halted_of(trace):
     """Did the CPU halt in the run? The emulator says so in the run's output."""
     log = os.path.join(os.path.dirname(trace), "stdout.log")
     return os.path.exists(log) and '"event":"halt"' in open(log).read()
+
+
+def analyze_trace(trace, swaps=None, meta=None, song=None, precomputed_song=False):
+    """Load ``trace`` (plus its sibling ``.notes``, ``.reads``, ``meta.json``
+    and ``stdout.log``) and return the end-detection ``verdict`` dict."""
+    trace = str(trace)
+    rows, cells = load(trace)
+    if meta is None:
+        meta = meta_of(trace)
+    if swaps is None:
+        swaps = meta.get("swaps", ()) if meta else ()
+    trace_end = rows[-1]["frame"] if rows else None
+    if not precomputed_song:
+        song = song_of(trace, trace_end)
+    data, text_data = data_ends_of(trace)
+    return verdict(
+        rows,
+        cells,
+        song,
+        halted=halted_of(trace),
+        data=data,
+        swaps=swaps,
+        meta=meta,
+        notes_path=trace + ".notes",
+        text_data=text_data,
+    )
 
 
 def main():

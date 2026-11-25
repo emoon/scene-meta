@@ -32,11 +32,11 @@ void dbgproto_instr(uaecptr pc);              /* per instruction when gated */
 void dbgproto_vsync(void);                    /* once per emulated frame */
 void dbgproto_audio_dma(void);                /* audio DMA channel enabled */
 void dbgproto_halt(int id);                   /* from cpu_halt() */
-void dbgproto_note_audio_reg(int nr, int reg, unsigned v);   /* PROTOTYPE */
-void dbgproto_note_audio_loop(int nr);                        /* PROTOTYPE */
-void dbgproto_note_audio_sample(int nr, int sample, int vol); /* PROTOTYPE */
-extern int dbgproto_read_trace;                               /* PROTOTYPE */
-void dbgproto_note_read(uaecptr addr, int size);              /* PROTOTYPE */
+void dbgproto_note_audio_reg(int nr, int reg, unsigned v);
+void dbgproto_note_audio_loop(int nr);
+void dbgproto_note_audio_sample(int nr, int sample, int vol);
+extern int dbgproto_read_trace;
+void dbgproto_note_read(uaecptr addr, int size);
 void dbgproto_note_cpu_reset(void);           /* from cpureset(), the RESET op */
 
 /* Swap-wait detector notes, called from disk.cpp (cheap counters; the

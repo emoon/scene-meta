@@ -100,6 +100,8 @@ python3 -m scenemeta amiga gate-demote           # the failures: what --write de
 python3 -m scenemeta amiga gate-summary          # scene.db -> amiga/gate-summary.txt
 python3 -m scenemeta amiga gate-stale            # entries to gate again
 python3 -m scenemeta amiga expected                # gate expected.toml -> amiga/expected-score.txt
+python3 -m scenemeta amiga end-detect --ids 142    # trace and detect demo end -> scene.db (ending)
+python3 -m scenemeta amiga end-judge REC_DIR OUT.json --jobs 32  # batch re-analyze recorded traces
 python3 -m scenemeta amiga migrate               # convert an older scene.db
 python3 -m unittest discover -s tests -t .
 ```
@@ -297,6 +299,23 @@ where abs(width - drawn_width) > 16 or abs(height - drawn_height) > 16;
 A border the production colours itself makes the drawn box larger than the
 area. The gate plays an entry for three minutes, or until its last disk
 has loaded: a part later than that is not measured.
+
+## End-of-demo detection (`../scenemeta/amiga/enddetect/`)
+
+`end-detect` plays entries as written (default 45,000 frames / 15 minutes)
+with Amiberry's `trace` command enabled (`amiberry/SNAPSHOT.md`), combines
+four independent signals from the per-frame trace — Paula note-event song
+loops (`notes.py`), audio-energy autocorrelation for software mixers,
+per-cell screen-grid loops and landmarks (`video.py`), and sequential RAM
+stream / scrolltext reads (`streams.py`) alongside new-code bursts and
+crash/OS-exit detection (`analyze.py`) — and stores each verdict in `scene.db`
+(table `ending`).
+
+Pass `--out DIR` to keep and reuse recorded traces under `DIR/<id>/` (without
+`--out`, traces are recorded in a temporary directory and removed after
+analysis). `end-judge REC_DIR [OUT.json]` re-analyzes an existing directory
+of recordings in parallel (`--reuse-songs` skips note matching when a cached
+`.songs.json` sits next to `OUT.json`).
 
 ## Known limits
 

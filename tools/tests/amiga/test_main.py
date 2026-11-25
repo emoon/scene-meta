@@ -138,6 +138,28 @@ class GateCommandsTest(unittest.TestCase):
             self.main("expected")
         self.assertEqual(stop.exception.code, f"{config.EXPECTED}:\nbad")
 
+    def test_end_detect_uses_store_and_passes_options(self):
+        with mock.patch.object(cli.enddetect, "run", return_value=0) as run:
+            code, _ = self.main("end-detect", "--ids", "142", "--jobs", "4",
+                                "--frames", "12000", "--out", "/tmp/rec",
+                                "--again", "--machine", "a500_ks12_512k",
+                                "--patient")
+        self.assertEqual(code, 0)
+        (db,), kw = run.call_args
+        self.assertIsInstance(db, store.Store)
+        self.assertEqual(kw, {
+            "ids": [142], "jobs": 4, "frames": 12000, "out": "/tmp/rec",
+            "again": True, "machine": "a500_ks12_512k", "patient": True,
+        })
+
+    def test_end_judge_runs_without_database(self):
+        with mock.patch.object(cli.enddetect, "judge_dir", return_value=[]) as judge:
+            code, _ = self.main("end-judge", "/tmp/rec", "/tmp/out.json",
+                                "--jobs", "8", "--reuse-songs")
+        self.assertEqual(code, 0)
+        judge.assert_called_once_with("/tmp/rec", "/tmp/out.json",
+                                      jobs=8, reuse_songs=True)
+
 
 if __name__ == "__main__":
     unittest.main()

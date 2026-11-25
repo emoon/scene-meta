@@ -1,8 +1,9 @@
-#!/usr/bin/env python3
-"""PROTOTYPE (throwaway): does the song loop? Matches the note events (Paula
-pointer and period writes, in order) of each channel, not frames.
+"""Paula note-event song-loop matcher.
 
-    python3 amiga/proto-end-detect/notes.py TRACE.csv.notes
+Matches the note events (Paula pointer and period writes, in order) of each
+channel, rather than raw frames.
+
+    python3 -m scenemeta.amiga.enddetect.notes TRACE.csv.notes
 """
 import bisect, collections, sys
 

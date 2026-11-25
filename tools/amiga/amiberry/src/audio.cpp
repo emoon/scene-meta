@@ -1585,7 +1585,7 @@ static void newsample(int nr, sample8_t sample)
 #endif
 	if (!(audio_channel_mask & (1 << nr)))
 		sample = 0;
-	dbgproto_note_audio_sample(nr, sample, cdp->data.audvol); /* PROTOTYPE */
+	dbgproto_note_audio_sample(nr, sample, cdp->data.audvol);
 	if (currprefs.sound_volcnt) {
 		cdp->data.new_sample = sample;
 	} else {
@@ -2542,7 +2542,7 @@ void event_audxdat_func(uae_u32 v)
 #endif
 			if (cdp->wlen == 1) {
 				cdp->wlen = cdp->len;
-				dbgproto_note_audio_loop(nr); /* PROTOTYPE */
+				dbgproto_note_audio_loop(nr);
 				audio_low_period_hack(cdp);
 				if (!(v & 0x80000000)) {
 					cdp->intreq2 = true;
@@ -2651,7 +2651,7 @@ uaecptr audio_getloadpt(int nr)
 
 void AUDxLCH(int nr, uae_u16 v)
 {
-	dbgproto_note_audio_reg(nr, 0, v); /* PROTOTYPE */
+	dbgproto_note_audio_reg(nr, 0, v);
 	struct audio_channel_data *cdp = audio_channel + nr;
 	audio_activate();
 	update_audio();
@@ -2681,7 +2681,7 @@ void AUDxLCH(int nr, uae_u16 v)
 
 void AUDxLCL(int nr, uae_u16 v)
 {
-	dbgproto_note_audio_reg(nr, 1, v); /* PROTOTYPE */
+	dbgproto_note_audio_reg(nr, 1, v);
 	struct audio_channel_data *cdp = audio_channel + nr;
 	audio_activate();
 	update_audio();
@@ -2708,7 +2708,7 @@ void AUDxLCL(int nr, uae_u16 v)
 
 void AUDxPER (int nr, uae_u16 v)
 {
-	dbgproto_note_audio_reg(nr, 2, v); /* PROTOTYPE */
+	dbgproto_note_audio_reg(nr, 2, v);
 	struct audio_channel_data *cdp = audio_channel + nr;
 
 	audio_activate ();
@@ -2745,7 +2745,7 @@ void AUDxPER (int nr, uae_u16 v)
 
 void AUDxLEN (int nr, uae_u16 v)
 {
-	dbgproto_note_audio_reg(nr, 3, v); /* PROTOTYPE */
+	dbgproto_note_audio_reg(nr, 3, v);
 	struct audio_channel_data *cdp = audio_channel + nr;
 	audio_activate ();
 	update_audio ();
@@ -2758,7 +2758,7 @@ void AUDxLEN (int nr, uae_u16 v)
 
 void AUDxVOL (int nr, uae_u16 v)
 {
-	dbgproto_note_audio_reg(nr, 4, v); /* PROTOTYPE */
+	dbgproto_note_audio_reg(nr, 4, v);
 	struct audio_channel_data *cdp = audio_channel + nr;
 
 	audio_activate ();

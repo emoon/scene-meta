@@ -1,13 +1,13 @@
-"""Unit tests for proto-end-detect: recorder commands, notes, video, streams, analyze."""
-import pathlib, sys, tempfile, unittest
+"""Unit tests for scenemeta.amiga.enddetect: runner, notes, video, streams, analyze, store."""
+import json
+import pathlib
+import tempfile
+import unittest
 
 import numpy as np
 
-HERE = pathlib.Path(__file__).resolve().parent
-sys.path.insert(0, str(HERE))
-sys.path.insert(0, str(HERE.parents[1]))
-
-import analyze, notes, record, streams, video  # noqa: E402
+from scenemeta.amiga import store
+from scenemeta.amiga.enddetect import analyze, notes, runner, streams, video
 
 
 def _make_rows(n, *, newpc_at=(), newram_at=(), aenergy_fn=None, awrites_fn=None,
@@ -50,7 +50,7 @@ class TestRecordCommands(unittest.TestCase):
             (500, "cmd", "screenshot /tmp/s.png"),
             (600, "press", "lmb"),
         ]
-        cmds = record._build_commands(acts, 0, 1000, out / "trace.csv", out)
+        cmds = runner.build_commands(acts, 0, 1000, out / "trace.csv", out)
         self.assertNotIn("run frames=0", cmds)
         self.assertIn("disk insert 1 /tmp/d2.adf", cmds)
         self.assertIn("input key 68 down", cmds)
@@ -59,6 +59,39 @@ class TestRecordCommands(unittest.TestCase):
         # Total run frames should equal 1000
         total = sum(int(c.split("=")[1]) for c in cmds if c.startswith("run frames="))
         self.assertEqual(total, 1000)
+
+    def test_is_recorded_and_format_result(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            d = pathlib.Path(tmp)
+            self.assertFalse(runner.is_recorded(d, 100))
+            (d / "meta.json").write_text(json.dumps({"rc": 0}))
+            (d / "trace.csv").write_text("header\n" + "1\n" * 50)
+            self.assertFalse(runner.is_recorded(d, 100))
+            (d / "trace.csv").write_text("header\n" + "1\n" * 100)
+            self.assertTrue(runner.is_recorded(d, 100))
+            # Halted run (rc=2) counts as finished even with fewer frames
+            (d / "meta.json").write_text(json.dumps({"rc": 2}))
+            (d / "trace.csv").write_text("header\n1\n")
+            self.assertTrue(runner.is_recorded(d, 100))
+        line = runner.format_result(
+            142, "Desert Dream",
+            {"ending": "end-loop", "end": 632.0, "text_after_trace": True},
+            elapsed=12.3,
+        )
+        self.assertEqual(line, "142 Desert Dream: end-loop 632.0s [text>trace] (12s)")
+
+    def test_store_ending_roundtrip(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            db = store.Store(pathlib.Path(tmp) / "scene.db")
+            self.addCleanup(db.close)
+            entry = {"title": "Test", "source": "script"}
+            verdict = {"ending": "loops", "end": 180.5, "trace": 900.0}
+            db.put_ending(42, entry, verdict)
+            got = db.ending(42)
+            self.assertIsNotNone(got)
+            self.assertEqual(got[1], verdict)
+            self.assertIn(42, db.endings())
+            self.assertIsNone(db.ending(999))
 
 
 class TestNotes(unittest.TestCase):

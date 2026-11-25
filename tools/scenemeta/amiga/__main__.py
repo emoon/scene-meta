@@ -12,6 +12,11 @@
     python3 -m scenemeta amiga gate-stale
     python3 -m scenemeta amiga expected [--jobs N]
     python3 -m scenemeta amiga shots --out DIR [--ids ...] [--jobs N]
+    python3 -m scenemeta amiga end-detect [--ids ...] [--jobs N] [--frames N]
+                                          [--out DIR] [--again] [--machine NAME]
+                                          [--patient]
+    python3 -m scenemeta amiga end-judge REC_DIR [OUT.json] [--jobs N]
+                                         [--reuse-songs]
     python3 -m scenemeta amiga migrate [scene.db]
 """
 
@@ -19,8 +24,8 @@ import os
 import sys
 
 from ..core import cli
-from . import (catalog, classes, config, expected, export, fetch, gate,
-               machines, media, migrate, replay, shots, store, sweep)
+from . import (catalog, classes, config, enddetect, expected, export, fetch,
+               gate, machines, media, migrate, replay, shots, store, sweep)
 from ..core.expected import Invalid
 from ..core.errors import CannotPlay
 
@@ -73,6 +78,26 @@ def main(argv=None):
                    help="where they go (default $SCENEMETA_SHOTS)")
     p.add_argument("--ids", type=int, nargs="*")
     p.add_argument("--jobs", type=int)
+    p = sub.add_parser("end-detect", help="record per-frame traces and detect"
+                       " when productions end, storing results in scene.db")
+    p.add_argument("--ids", type=int, nargs="*")
+    p.add_argument("--jobs", type=int)
+    p.add_argument("--frames", type=int, default=enddetect.DEFAULT_FRAMES,
+                   help=f"frames to record per production (default {enddetect.DEFAULT_FRAMES})")
+    p.add_argument("--out", help="directory to keep/reuse traces under (temp dir if omitted)")
+    p.add_argument("--again", action="store_true",
+                   help="re-detect entries already stored in scene.db")
+    p.add_argument("--machine", choices=list(machines.BY_NAME),
+                   help="override the entry's machine preset")
+    p.add_argument("--patient", action="store_true",
+                   help="every event at its until, not its at")
+    p = sub.add_parser("end-judge", help="re-analyze an existing directory of"
+                       " recorded traces")
+    p.add_argument("rec", help="directory containing <id>/trace.csv recordings")
+    p.add_argument("out", nargs="?", help="optional path to write JSON verdicts")
+    p.add_argument("--jobs", type=int)
+    p.add_argument("--reuse-songs", action="store_true",
+                   help="reuse cached .songs.json instead of re-running note matcher")
     args = ap.parse_args(argv)
     if args.cmd == "shots" and not args.out:
         ap.error("shots needs --out or $SCENEMETA_SHOTS")
@@ -92,6 +117,10 @@ def _command(args):
                                  patient=args.patient))
     if args.cmd == "shots":
         return min(1, shots.run(args.out, args.ids, jobs=args.jobs))
+    if args.cmd == "end-judge":
+        enddetect.judge_dir(args.rec, args.out, jobs=args.jobs,
+                            reuse_songs=args.reuse_songs)
+        return 0
     if args.cmd == "migrate":
         return cli.migrate(migrate.run, args.db or config.RESULTS_DB)
 
@@ -119,6 +148,11 @@ def _command(args):
             gate.stale(db)
         elif args.cmd == "expected":
             return min(1, expected.run(db, jobs=args.jobs))
+        elif args.cmd == "end-detect":
+            return min(1, enddetect.run(
+                db, ids=args.ids, jobs=args.jobs, frames=args.frames,
+                out=args.out, again=args.again, machine=args.machine,
+                patient=args.patient))
     finally:
         db.close()
 

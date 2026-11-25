@@ -4275,7 +4275,7 @@ uae_u32 memory_get_wordi(uaecptr addr)
 }
 uae_u32 memory_get_long(uaecptr addr)
 {
-	if (dbgproto_read_trace) /* PROTOTYPE (end detection) */
+	if (dbgproto_read_trace)
 		dbgproto_note_read(addr, 4);
 	addrbank *ab = &get_mem_bank(addr);
 	if (!ab->baseaddr_direct_r) {
@@ -4290,7 +4290,7 @@ uae_u32 memory_get_long(uaecptr addr)
 }
 uae_u32 memory_get_word(uaecptr addr)
 {
-	if (dbgproto_read_trace) /* PROTOTYPE (end detection) */
+	if (dbgproto_read_trace)
 		dbgproto_note_read(addr, 2);
 	addrbank *ab = &get_mem_bank(addr);
 	if (!ab->baseaddr_direct_r) {
@@ -4305,7 +4305,7 @@ uae_u32 memory_get_word(uaecptr addr)
 }
 uae_u32 memory_get_byte(uaecptr addr)
 {
-	if (dbgproto_read_trace) /* PROTOTYPE (end detection) */
+	if (dbgproto_read_trace)
 		dbgproto_note_read(addr, 1);
 	addrbank *ab = &get_mem_bank(addr);
 	if (!ab->baseaddr_direct_r) {
