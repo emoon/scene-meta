@@ -136,8 +136,9 @@ the 320x256 PAL screen, others into 320x200, and nothing in a download
 says so. It is the part of the screen the production draws into, in the
 finest pixels it uses: a production with a hires interlaced picture is
 640x512 when its parts fill the PAL screen, however much of it is lores.
-A part drawn into less does not change it, and neither does a title that
-fills the screen for a short time before a smaller main part; the system's
+A part drawn into less does not change it, and a title that fills the
+screen for a few seconds before a smaller main part is of it: a player that
+cuts to the area must show every part whole. The system's
 own screen while the production loads is not the production's. An area of
 320x180 has `aspect = "16:9"`, and so has the same part of the screen in
 finer pixels: a hires pixel is half as wide and an interlaced line half as

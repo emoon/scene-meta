@@ -2,13 +2,15 @@
 emulator's ``display measure`` counted of a run: in how many frames each
 line and each column showed bitplanes, by the registers, apart for each
 mode (a resolution, interlaced or not). A mode's part of the screen is the
-lines and columns shown in SHARE of its frames or more. The area is the
-box around the parts of every mode, in the pixels of the finest: a lores
-production with a hires interlaced picture is 640x512.
+lines and columns shown for LEAST frames or more: a title that fills the
+screen for a few seconds before a smaller main part is of the area, as a
+player that cuts to the area must show it whole. The area is the box around
+the parts of every mode, in the pixels of the finest: a lores production
+with a hires interlaced picture is 640x512.
 
 What Kickstart's own copper list showed (AmigaDOS's hires window while the
 production loads) is left out, unless nothing else was shown: a production
-that draws through the system. So is a mode shown for less than LEAST
+that draws through the system. So is what was shown for less than LEAST
 frames, the frame in which a production takes the screen over.
 
 Empty bitplanes count as shown and a picture the copper makes alone does
@@ -19,10 +21,11 @@ kept with the area.
 from .. import schema
 from ..core.result import Area
 
-# A line or column is of the area when this much of the run showed it.
-SHARE = 0.25
-# A mode counts when it was shown this many frames: a second.
+# A mode counts when it was shown this many frames, and a line or column of
+# it too: a second.
 LEAST = 50
+# A column or row is of what was drawn when this much of the pictures show it.
+SHARE = 0.25
 # A screenshot has this many pixels to a lores pixel, and rows to a line.
 SCREEN_SCALE = 2
 # The shape is that of the part of the screen, not of the pixel counts: a
@@ -40,13 +43,11 @@ def _extent(runs, least):
     return (min(a for a, _ in kept), max(b for _, b in kept)) if kept else None
 
 
-def _box(cols, rows, of):
+def _box(cols, rows, least):
     """``((x0, x1), (y0, y1))`` around the columns and rows (see
-    ``_extent``) counted in SHARE of ``of`` or more: two parts at different
+    ``_extent``) counted ``least`` times or more: two parts at different
     places give the box around both. None with none."""
-    if not of:
-        return None
-    cols, rows = (_extent(runs, of * SHARE) for runs in (cols, rows))
+    cols, rows = (_extent(runs, least) for runs in (cols, rows))
     return (cols, rows) if cols and rows else None
 
 
@@ -58,7 +59,7 @@ def shown(display):
     ``display status``."""
     modes = [m for m in display["modes"] if m["frames"] >= LEAST]
     modes = [m for m in modes if not m["os"]] or modes
-    boxes = [(m, _box(m["cols"], m["rows"], m["frames"])) for m in modes]
+    boxes = [(m, _box(m["cols"], m["rows"], LEAST)) for m in modes]
     boxes = [(m, box) for m, box in boxes if box]
     if not boxes:
         return None
@@ -84,7 +85,8 @@ def drawn(boxes, scale):
     ``[x0, y0, x1, y1]`` of each picture that shows something, in its own
     pixels. ``(0, 0)`` with none."""
     box = _box(_covered([(b[0], b[2]) for b in boxes]),
-               _covered([(b[1], b[3]) for b in boxes]), len(boxes))
+               _covered([(b[1], b[3]) for b in boxes]),
+               len(boxes) * SHARE)
     if not box:
         return 0, 0
     return tuple(round((hi - lo) * k / SCREEN_SCALE)

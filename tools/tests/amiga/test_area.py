@@ -30,24 +30,26 @@ class ShownTest(unittest.TestCase):
         # Eon: DIWSTRT $5281, DIWSTOP $06c1.
         self.assertEqual(size(mode([[83, 263, 1000]], COLS)), (320, 180))
 
-    def test_a_full_frame_loader_before_a_smaller_main_part_is_not_the_area(self):
+    def test_a_full_frame_title_before_a_smaller_main_part_is_of_the_area(self):
+        # Two seconds of it: a player that cuts to the area must show it whole.
         rows = [[45, 83, 100], [83, 263, 1000], [263, 301, 100]]
-        self.assertEqual(size(mode(rows, COLS)), (320, 180))
+        self.assertEqual(size(mode(rows, COLS)), (320, 256))
 
     def test_a_part_drawn_into_less_does_not_change_it(self):
         rows = [[45, 83, 600], [83, 263, 1000], [263, 301, 600]]
         self.assertEqual(size(mode(rows, COLS)), (320, 256))
 
-    def test_a_share_of_the_run_is_of_the_area(self):
-        rows = [[45, 83, 250], [83, 263, 1000]]
+    def test_what_was_shown_for_a_second_is_of_the_area(self):
+        rows = [[45, 83, 50], [83, 263, 1000]]
         self.assertEqual(size(mode(rows, COLS)), (320, 218))
 
     def test_a_gap_between_two_shown_stretches_is_inside_the_area(self):
         rows = [[45, 100, 1000], [200, 301, 1000]]
         self.assertEqual(size(mode(rows, COLS)), (320, 256))
 
-    def test_one_frame_short_of_the_share_is_not_of_the_area(self):
-        rows = [[45, 83, 249], [83, 263, 1000]]
+    def test_one_frame_short_of_a_second_is_not_of_the_area(self):
+        # The frames in which a production takes the screen over.
+        rows = [[45, 83, 49], [83, 263, 1000]]
         self.assertEqual(size(mode(rows, COLS)), (320, 180))
 
     def test_two_parts_at_different_places_give_the_box_around_both(self):
@@ -55,8 +57,10 @@ class ShownTest(unittest.TestCase):
         self.assertEqual(size(mode(rows, COLS)), (320, 200))
 
     def test_columns_as_lines(self):
-        cols = [[113, 129, 100], [129, 449, 1000], [449, 465, 100]]
+        cols = [[113, 129, 49], [129, 449, 1000], [449, 465, 49]]
         self.assertEqual(size(mode([[45, 245, 1000]], cols)), (320, 200))
+        cols = [[113, 129, 50], [129, 449, 1000], [449, 465, 50]]
+        self.assertEqual(size(mode([[45, 245, 1000]], cols)), (352, 200))
 
     def test_a_run_that_showed_no_bitplanes_has_none(self):
         self.assertIsNone(size())

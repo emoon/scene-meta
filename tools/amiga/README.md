@@ -259,7 +259,9 @@ The emulator counts, per line and per column, the frames in which bitplanes
 were fetched inside the display window (`display measure`, see
 `amiberry/SNAPSHOT.md`): from the registers, with no picture looked at, and
 apart for each mode, a resolution interlaced or not. A mode's part of the
-screen is the lines and columns shown in a quarter of its frames or more.
+screen is the lines and columns shown for a second or more: a title that
+fills the screen for a few seconds before a smaller main part is of the
+area, since a player that cuts to the area must show the title whole.
 The area is the box around the parts of every mode, in the pixels of the
 finest: 5312 3D Demo II is lores but for half a minute of hires interlaced
 pictures, and is 640x512.
@@ -267,9 +269,9 @@ pictures, and is 640x512.
 Two things are not the production's. AmigaDOS's window is hires and up
 while a production loads (69 seconds of 3D Demo II): frames shown by the
 copper list Kickstart sets up, which is found once per machine by booting
-it bare, are left out unless the run showed no other. And a mode shown for
-less than a second is the frame in which a production takes the screen
-over (6114 Fascism Sucks has one hires frame of its own). A production
+it bare, are left out unless the run showed no other. And a mode, a line
+or a column shown for less than a second is the frame in which a production
+takes the screen over (6114 Fascism Sucks has one hires frame of its own). A production
 that draws through the system and is started from the AmigaDOS window is
 not told from that window, and gets the larger of the two.
 
