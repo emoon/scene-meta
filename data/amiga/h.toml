@@ -8,7 +8,7 @@ machine = "a1200"
 title = "H5"
 group = "Core Productions"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.2788]
 title = "Haakan"
@@ -626,7 +626,7 @@ source = "script"
 title = "Happy New Year"
 group = "EMS Design"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.184936]
 title = "Happy New Year 1990 Intro"
@@ -750,7 +750,7 @@ source = "script"
 title = "Harboe-san"
 group = "Nature / Scarab"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 
 [demozoo.352385]
 title = "Hard 'n' Heavy"
@@ -805,7 +805,7 @@ source = "script"
 title = "Hard Rock Cafe"
 group = "Caedes"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.216839]
 title = "Hard Stuff Buddy 2"
@@ -1347,6 +1347,7 @@ title = "Head Quest"
 group = "Escape"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500_ks12; no entry of it passed the gate"
 
 [demozoo.81780]
 title = "Headache"
@@ -1578,7 +1579,6 @@ run = "Karate"
 title = "Hello Demo Scene"
 group = "Outsiders"
 source = "script"
-result = "unknown"
 
 [demozoo.250457]
 title = "Hello in 1989"
@@ -1869,6 +1869,7 @@ title = "Hexel"
 group = "Ephidrena"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a1200_030; no entry of it passed the gate"
 
 [demozoo.223246]
 title = "Hey Freaks"
@@ -1973,7 +1974,7 @@ source = "script"
 title = "Hidden CocaCola"
 group = "Drifters / Delight"
 source = "script"
-result = "broken"
+run = "0"
 
 [demozoo.260126]
 title = "Hidden Lines"
@@ -2206,8 +2207,8 @@ machine = "a500_1mb"
 title = "Hills"
 group = "Picco"
 source = "script"
-result = "unknown"
-run = "LE-window6.12"
+machine = "a1200"
+run = "Hills.exe"
 
 [demozoo.195592]
 title = "Him Again"
@@ -2262,8 +2263,9 @@ machine = "a1200"
 title = "Hipnosis"
 group = "Dream's Day"
 source = "script"
+boot = "floppy"
 result = "unknown"
-note = "the sweep saw works on a1200_030; no entry of it passed the gate"
+note = "the sweep saw works on a1200_060; no entry of it passed the gate"
 
 [demozoo.232428]
 title = "Hipp-Leif"
@@ -2504,6 +2506,8 @@ title = "Hole in Space"
 group = "Void"
 source = "script"
 result = "unknown"
+run = "Void-Hole in Space.exe"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.222388]
 title = "Holiday"
@@ -2593,7 +2597,7 @@ title = "Holy Thing"
 group = "Road Riders"
 source = "script"
 result = "unknown"
-note = "the sweep saw works on a1200; no entry of it passed the gate"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.171248]
 title = "Home"
@@ -2973,7 +2977,7 @@ machine = "a500_ks12"
 title = "Hot Sister Competition Slideshow"
 group = "End of Century 1999"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.119205]
 title = "Hot Stuff"
@@ -3155,8 +3159,7 @@ source = "script"
 title = "Hotdog Hits & Rock'nRoll"
 group = "Tulou"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+machine = "a1200"
 
 [demozoo.263608]
 title = "Hotline BBS Intro"
@@ -3600,7 +3603,7 @@ source = "script"
 title = "Hyper"
 group = "Focus Design / Scoopex"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.92772]
 title = "Hyper"

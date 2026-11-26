@@ -151,7 +151,7 @@ source = "script"
 title = "VarezMUI 2.0"
 group = "Resistance"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.32737]
 title = "Vart är mitt F.O.L."
@@ -986,7 +986,7 @@ source = "script"
 title = "Versitro -Very Simple Intro-"
 group = "Symbiosis"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.36112]
 title = "Versor"
@@ -1124,7 +1124,7 @@ source = "script"
 title = "Very Small Shitty Tro"
 group = "Przyjaciele Stefana B. / 8 Bits"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.241080]
 title = "Very Tired"
@@ -1200,7 +1200,8 @@ source = "script"
 title = "Vice"
 group = "V-Nom"
 source = "script"
-result = "unknown"
+machine = "a1200"
+run = "start"
 
 [demozoo.233945]
 title = "Victims 1St"
@@ -1223,7 +1224,7 @@ machine = "a1200"
 title = "Victory"
 group = "V-Nom"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.185947]
 title = "Victory"
@@ -1504,6 +1505,7 @@ title = "Visions"
 group = "Ram Jam"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.322615]
 title = "Visor Beams"
@@ -1552,7 +1554,6 @@ run = "VitaDiMerda.exe"
 title = "Vitae"
 group = "Marquee Design"
 source = "script"
-result = "unknown"
 
 [demozoo.139137]
 title = "Vital"
@@ -1575,7 +1576,7 @@ title = "Vittuliukaste -Vittu, pakko kai tää on julkasta ku tuli tehtyä-"
 group = "Poro"
 source = "script"
 result = "unknown"
-note = "the sweep saw works on a1200; no entry of it passed the gate"
+note = "the sweep saw works-then-crash on a1200; no entry of it passed the gate"
 
 [demozoo.247637]
 title = "Vitun Munkit"
@@ -1647,7 +1648,7 @@ run = "3.dat"
 title = "VOD"
 group = "Void / Candle"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.261736]
 title = "Vodka Dreams"
@@ -1749,7 +1750,8 @@ source = "script"
 title = "Vortex 42 Party Demo 2"
 group = "The Young Ones"
 source = "script"
-result = "unknown"
+machine = "a500_ks12_512k"
+boot = "floppy"
 
 [demozoo.313806]
 title = "Vote for \"Bridge\""

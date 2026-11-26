@@ -110,7 +110,7 @@ source = "script"
 title = "Babenoise"
 group = "Spaceballs"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.238943]
 title = "Babes"
@@ -495,7 +495,7 @@ source = "script"
 title = "Balcerowicz Wypierdalac"
 group = "Socjalistic Union of Scene Youth"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 run = "susy-bw.exe"
 
 [demozoo.253328]
@@ -595,7 +595,7 @@ source = "script"
 title = "balls (amos)"
 group = "Ephidrena"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.137724]
 title = "Balls and Brains"
@@ -695,8 +695,8 @@ machine = "a500_2mb_chip"
 title = "Banan"
 group = "Zsmp"
 source = "script"
-result = "unknown"
-run = "OTLUE2Z61.exe"
+machine = "a1200_fast"
+run = "Banan64k.exe"
 
 [demozoo.274563]
 title = "Banan Är Gott"
@@ -708,6 +708,7 @@ title = "Banana BBS Intro"
 group = "Paradise"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500_ks12_512k; no entry of it passed the gate"
 
 [demozoo.185208]
 title = "Banana Jones"
@@ -866,9 +867,7 @@ source = "script"
 title = "Basic Instinct BBS"
 group = "Suspiria / Scoopex"
 source = "script"
-boot = "floppy"
-result = "unknown"
-note = "the sweep saw works on a1200; no entry of it passed the gate"
+machine = "a500_ks12_512k"
 
 [demozoo.195697]
 title = "Basic Intro"
@@ -897,6 +896,7 @@ title = "Basstro #1"
 group = "Basstech"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.110395]
 title = "Bastardemon"
@@ -1201,7 +1201,7 @@ source = "script"
 title = "BBS Intro"
 group = "Fusion"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.216597]
 title = "BBS Intro"
@@ -1610,7 +1610,7 @@ machine = "a1200_030"
 title = "Beape"
 group = "mayHem"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.292287]
 title = "Bears"
@@ -1906,6 +1906,7 @@ title = "Bengt Goes Beer"
 group = "Project Zero"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.27957]
 title = "Benoit"
@@ -1965,7 +1966,7 @@ source = "script"
 title = "Bermuda BBS"
 group = "Patrick Phelan"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.181819]
 title = "Bern Parties Again"
@@ -2263,7 +2264,7 @@ source = "script"
 title = "Big Business 3 Intro"
 group = "Pleasure"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.254146]
 title = "Big Business 4 Intro"
@@ -2840,7 +2841,7 @@ source = "script"
 title = "Black"
 group = "Odbyt Design"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 
 [demozoo.256965]
 title = "Black & Decker v2.1 Intro"
@@ -2997,7 +2998,7 @@ source = "script"
 title = "Blade Disstro"
 group = "End of Century 1999"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.242755]
 title = "Blade Is A Gay Shit"
@@ -3089,7 +3090,7 @@ source = "script"
 title = "Blastromiga"
 group = "nujack / Altraz"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.159767]
 title = "Blaszczykowski"
@@ -3548,8 +3549,7 @@ source = "script"
 title = "Blue House 2"
 group = "Blue House Productions / Sonic Projects / Rebels"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.203704]
 title = "Blue II"
@@ -4084,7 +4084,7 @@ machine = "a1200_fast"
 title = "Bold"
 group = "Banal Projects"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.79942]
 title = "Bolek&Lolek"
@@ -4303,7 +4303,8 @@ result = "unknown"
 title = "Boogienights"
 group = "Spedes"
 source = "script"
-result = "unknown"
+machine = "a1200"
+run = "StartDemo"
 
 [demozoo.243033]
 title = "Boogies New Demo"
@@ -4327,14 +4328,14 @@ machine = "a1200_030"
 title = "Bool Shit"
 group = "Taski"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 run = "tsi-boolshit.exe_unpack"
 
 [demozoo.40328]
 title = "Bool!"
 group = "Taski"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 
 [demozoo.9015]
 title = "Boom"
@@ -4395,7 +4396,7 @@ result = "unknown"
 title = "Boost"
 group = "Focus Design"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.232654]
 title = "Boot block intro"
@@ -4500,6 +4501,7 @@ title = "Boot Intro"
 group = "The Immortal Souls"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.294440]
 title = "Boot Intro"
@@ -5376,7 +5378,7 @@ source = "script"
 title = "Boystory"
 group = "Keso"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.235145]
 title = "Boze and Bobs"
@@ -5566,7 +5568,8 @@ machine = "a1200_fast"
 title = "Brakke 3"
 group = "Hotdog Productions"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
+run = "RunMe"
 
 [demozoo.31458]
 title = "Bramborak"
@@ -5700,7 +5703,7 @@ source = "script"
 title = "Brick"
 group = "Madwizards"
 source = "script"
-result = "unknown"
+machine = "a1200"
 run = "MWI-Brick(2_2).exe"
 
 [demozoo.28183]
@@ -5902,7 +5905,7 @@ source = "script"
 title = "BSEmergency"
 group = "Bad Karma / Crux"
 source = "script"
-result = "unknown"
+machine = "a1200"
 run = "02-BSEmergency-CBK"
 
 [demozoo.39717]
@@ -6005,8 +6008,8 @@ source = "script"
 title = "Buggs'n'Daffy"
 group = "Rape"
 source = "script"
-result = "unknown"
-run = "_negerkuß!!.exe"
+machine = "a1200"
+run = "chexue.depth"
 
 [demozoo.321335]
 title = "Bughouse"
@@ -6072,7 +6075,7 @@ source = "script"
 title = "Bullshit"
 group = "BooZombies"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.252412]
 title = "Bullshit"
@@ -6098,13 +6101,13 @@ source = "script"
 title = "Bump!"
 group = "Reality"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.147742]
 title = "Bumpy"
 group = "Phibrizzo"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 run = "Bumpy"
 
 [demozoo.269062]
@@ -6144,7 +6147,7 @@ result = "unknown"
 title = "Burn!"
 group = "Azure"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.192]
 title = "Burning Chrome"
@@ -6203,9 +6206,8 @@ source = "script"
 title = "Bustro"
 group = "Carnage"
 source = "script"
-boot = "floppy"
 result = "unknown"
-note = "the sweep saw works on a1200_030; no entry of it passed the gate"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.182545]
 title = "Butcher's Newst and Coolest"

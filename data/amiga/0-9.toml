@@ -2,7 +2,7 @@
 title = "000"
 group = "Nevermind"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.68304]
 title = "05135 13 Remix - Ei seiso rmx"
@@ -553,6 +553,7 @@ title = "2 Dayz BBS Intro"
 group = "Software Runners from Hell"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.261197]
 title = "2 Decades"
@@ -671,7 +672,7 @@ result = "unknown"
 title = "2001"
 group = "Impulse"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 run = "2001"
 
 [demozoo.229365]
@@ -857,8 +858,8 @@ machine = "a1200"
 title = "2K Ought To Be Enough For Everyone"
 group = "Cider"
 source = "script"
-result = "unknown"
-run = "dA-fONK.exe"
+machine = "a1200_030"
+run = "40kRekord.exe"
 
 [demozoo.243360]
 title = "2nd"
@@ -1132,7 +1133,7 @@ source = "script"
 title = "3D Demo"
 group = "Anarchy"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.262906]
 title = "3D Demo"
@@ -1452,7 +1453,7 @@ source = "script"
 title = "4092"
 group = "Gunnars Farvebio"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.244260]
 title = "40960 Bytes Intro"
@@ -1706,8 +1707,8 @@ source = "script"
 title = "4K"
 group = "Skulls"
 source = "script"
-result = "unknown"
-run = "LE-window6.12"
+machine = "a1200"
+run = "dxp4kNoAGA"
 
 [demozoo.188448]
 title = "4K"
@@ -1737,8 +1738,8 @@ machine = "a1200"
 title = "4k Intro"
 group = "Mystic"
 source = "script"
-result = "unknown"
-run = "LE-window6.12"
+machine = "a1200"
+run = "NOT_SELECTED.Massive"
 
 [demozoo.96300]
 title = "4K Intro"
@@ -1776,7 +1777,7 @@ source = "script"
 title = "4k Intro"
 group = "Male Chauvinist Pigs"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.163669]
 title = "4k Intro"
@@ -1788,14 +1789,14 @@ machine = "a1200_fast"
 title = "4K Intro"
 group = "Turnips"
 source = "script"
-result = "unknown"
-run = "LE-window6.12"
+machine = "a1200"
+run = "intro"
 
 [demozoo.214159]
 title = "4k Intro"
 group = "Red Rats"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 
 [demozoo.225121]
 title = "4k Intro"
@@ -2336,7 +2337,7 @@ source = "script"
 title = "95"
 group = "Apathy"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.113635]
 title = "99 Boxes"

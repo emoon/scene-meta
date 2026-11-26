@@ -94,7 +94,7 @@ run = "Quagmire.notcrunched"
 title = "Quagmire II Remix"
 group = "Pic Saint Loup / Venus Art"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.20713]
 title = "Quakeroo"
@@ -127,7 +127,7 @@ machine = "a1200_fast"
 title = "Quark"
 group = "Anadune"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.235413]
 title = "Quarterback v3.0 + SuperBack v1.0"
@@ -284,7 +284,7 @@ source = "script"
 title = "Quicktro Preview"
 group = "Capsule"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.39730]
 title = "Quiet"

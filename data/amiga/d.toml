@@ -197,7 +197,8 @@ source = "script"
 title = "Dala Horse"
 group = "Razor 1911"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
+run = "Falukorv"
 
 [demozoo.112774]
 title = "Damage"
@@ -542,7 +543,7 @@ source = "script"
 title = "Das EFX"
 group = "Scoopex"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 
 [demozoo.28908]
 title = "Das Omen"
@@ -643,8 +644,8 @@ source = "script"
 title = "David Whittaker's Music Collection Intro"
 group = "Powerslaves"
 source = "script"
-result = "unknown"
-run = "Demo"
+machine = "a500_ks12"
+run = "executeme.bat"
 
 [demozoo.46067]
 title = "david.exe"
@@ -827,7 +828,8 @@ machine = "a1200_fast"
 title = "Deadline"
 group = "Doom"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
+run = "execute_me"
 
 [demozoo.252330]
 title = "Deadline BBS"
@@ -960,7 +962,7 @@ machine = "a1200_fast"
 title = "Death Track"
 group = "Da'Hoo / uN aMoR"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 run = "death_track.exe"
 
 [demozoo.227993]
@@ -1089,7 +1091,7 @@ source = "script"
 title = "Dedication to Tronix"
 group = "Factor"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.186616]
 title = "Dedykuje Spolce M & M"
@@ -1168,13 +1170,13 @@ machine = "a1200_fast"
 title = "Deep Pan - The Final Slice"
 group = "Efreet"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.242320]
 title = "Deep Pan - The Final Slice (Final Version)"
 group = "Efreet"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.189748]
 title = "Deep Sea"
@@ -1262,7 +1264,7 @@ source = "script"
 title = "DeformatiX"
 group = "Casyopea"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 run = "Deformatix_notPacked"
 
 [demozoo.255377]
@@ -1323,15 +1325,15 @@ source = "script"
 title = "Deja Vu 2"
 group = "Opium"
 source = "script"
-result = "unknown"
-run = "LE-window6.12"
+machine = "a1200"
+run = "DejaVu2"
 
 [demozoo.36158]
 title = "Dejko"
 group = "Pas Maters / Mad Virgin"
 source = "script"
-result = "unknown"
-run = "_negerkuß!!.exe"
+machine = "a1200_030"
+run = "dEjKo"
 
 [demozoo.228495]
 title = "Deka"
@@ -1373,7 +1375,6 @@ source = "script"
 title = "Delicious Fruits 50 Intro"
 group = "Coma"
 source = "script"
-result = "unknown"
 
 [demozoo.233027]
 title = "Delicious Fruits 73 Menu"
@@ -1394,13 +1395,13 @@ source = "script"
 title = "Delight"
 group = "Taski"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 
 [demozoo.35137]
 title = "Delight 2"
 group = "Taski / Madwizards"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 
 [demozoo.271505]
 title = "Delirious"
@@ -2669,7 +2670,7 @@ source = "script"
 title = "Den Första Production"
 group = "Pumpkin Brothers"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.164978]
 title = "Den Gik Sku' Ned"
@@ -2785,6 +2786,7 @@ title = "Dentro no. 1"
 group = "Capital"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.210658]
 title = "Dentro!"
@@ -2846,6 +2848,7 @@ title = "Der Brockhaus"
 group = "Setrox"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.227143]
 title = "Der Computer Club"
@@ -2993,7 +2996,7 @@ source = "script"
 title = "Desperado"
 group = "Przyjaciele Stefana B."
 source = "script"
-result = "unknown"
+machine = "a500_2mb_chip"
 
 [demozoo.223009]
 title = "Dessert Frugt"
@@ -3155,7 +3158,7 @@ source = "script"
 title = "Dewil"
 group = "Moons"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.193820]
 title = "Dexion Party Intro"
@@ -3197,6 +3200,7 @@ title = "Diagonal Insanity"
 group = "Amonia"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.215022]
 title = "Diagonal Obsession"
@@ -3667,7 +3671,7 @@ source = "script"
 title = "Disaster"
 group = "Apathy"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.262962]
 title = "Disc(o)"
@@ -3724,7 +3728,7 @@ machine = "a1200_fast"
 title = "Discotto"
 group = "Nature"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 
 [demozoo.357]
 title = "Discovered A Mean Trojan Horse"
@@ -3982,7 +3986,7 @@ source = "script"
 title = "Do It Right"
 group = "Tomtemaffia"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.229780]
 title = "Do The Grind On My Dicko Bebe!"
@@ -4134,7 +4138,7 @@ source = "script"
 title = "Docs 31 Intro"
 group = "Lloret Free Byte"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.256475]
 title = "Docs Disk 1 Intro"
@@ -4259,7 +4263,8 @@ run = "li-dolor_sit_amet"
 title = "Dolphin's Dream"
 group = "Push Entertainment"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
+boot = "floppy"
 
 [demozoo.2497]
 title = "Domination"
@@ -4357,8 +4362,7 @@ source = "script"
 title = "Doodle"
 group = "Apathy"
 source = "script"
-result = "unknown"
-run = "_negerkuß!!.exe"
+run = "dOODLe"
 
 [demozoo.7158]
 title = "Doodle-Doo"
@@ -4400,7 +4404,7 @@ source = "script"
 title = "DoorMat"
 group = "Dr. Death / Tentacle / Lekman"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.342183]
 title = "Dopamine"
@@ -4455,7 +4459,7 @@ source = "script"
 title = "Dot-32769 Bits"
 group = "Rats"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.256624]
 title = "Dotabolik"
@@ -4656,8 +4660,8 @@ source = "script"
 title = "Dr. Pepper"
 group = "SxT"
 source = "script"
-result = "unknown"
-run = "!yøUnEEEdth¡S!.eXE"
+machine = "a1200"
+run = "drpepper.exe"
 
 [demozoo.20829]
 title = "Dr. Sound is Round"
@@ -5229,13 +5233,13 @@ machine = "a1200_fast"
 title = "Dust"
 group = "Bay-tek"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 
 [demozoo.87432]
 title = "Dust"
 group = "Elude"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 run = "eld-dust"
 
 [demozoo.151442]
@@ -5308,7 +5312,7 @@ source = "script"
 title = "Dynamicstars"
 group = "Pisklak"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.216006]
 title = "Dynamite Fonts 2"

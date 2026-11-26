@@ -111,7 +111,8 @@ source = "script"
 title = "Rabies"
 group = "Rage"
 source = "script"
-result = "unknown"
+machine = "a1200"
+run = "RUNME.BAT"
 
 [demozoo.112788]
 title = "Rabies"
@@ -162,14 +163,14 @@ machine = "a1200_fast"
 title = "Radiateur"
 group = "PURe"
 source = "script"
-result = "unknown"
-run = "rad.3"
+machine = "a1200"
+run = "PURe-Radiateur"
 
 [demozoo.38799]
 title = "Radiation"
 group = "The Camel Drivers"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.152626]
 title = "Radiation"
@@ -254,7 +255,9 @@ machine = "a1200"
 title = "Rahow Paradise"
 group = "P.H. Prod"
 source = "script"
+boot = "floppy"
 result = "unknown"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.245729]
 title = "Rahow Paradise"
@@ -576,7 +579,7 @@ source = "script"
 title = "Raster Intro"
 group = "The New Concept"
 source = "script"
-result = "unknown"
+machine = "a500_ks12_512k"
 
 [demozoo.194951]
 title = "Raster Magic"
@@ -613,7 +616,7 @@ source = "script"
 title = "Ratapik Pulez"
 group = "Illusion"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.234278]
 title = "Rational Prodigy"
@@ -874,9 +877,9 @@ machine = "a1200"
 title = "Rayworld"
 group = "Investation / Deform"
 source = "script"
-result = "unknown"
+machine = "a1200"
 disks = ["Deform&Investation-RayworldA.dms", "Deform&Investation-RayworldB.dms", "Deform&Investation-RayworldC.dms"]
-note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
+events = [{ at = 54.9, disk = 2 }, { at = 347.1, disk = 3 }]
 
 [demozoo.222917]
 title = "Razor 1911 and Illusion Summer Party Invitation"
@@ -898,7 +901,8 @@ result = "unknown"
 title = "Razorback"
 group = "Reason"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
+events = [{ at = 30.0, key = "return" }]
 
 [demozoo.271174]
 title = "Razzle-Dazzle"
@@ -1017,19 +1021,19 @@ source = "script"
 title = "Real Paradise - Paradise@08"
 group = "Push Entertainment"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 
 [demozoo.52593]
 title = "Real Paradize 10"
 group = "Push Entertainment"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 
 [demozoo.211920]
 title = "Real Paradize 8"
 group = "Push Entertainment / 3 Amigos"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 
 [demozoo.262318]
 title = "Real Small Intro"
@@ -1047,7 +1051,6 @@ machine = "a1200_fast"
 title = "Real Thing"
 group = "Flash Light Design"
 source = "script"
-result = "unknown"
 
 [demozoo.265555]
 title = "Real Thing"
@@ -1173,7 +1176,7 @@ source = "script"
 title = "ReAppearance"
 group = "Core"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 run = "ReApp.EXE"
 
 [demozoo.217624]
@@ -1270,7 +1273,7 @@ source = "script"
 title = "Reboxer"
 group = "Elude"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 run = "eld-rbx.exe"
 
 [demozoo.310281]
@@ -1415,7 +1418,7 @@ source = "script"
 title = "Red Stars"
 group = "Mroovek"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.213905]
 title = "Red Storm Rising"
@@ -1471,7 +1474,7 @@ title = "Reductio Ad Absurdum"
 group = "Noice"
 source = "script"
 result = "unknown"
-note = "the sweep saw works on a500_1mb; no entry of it passed the gate"
+note = "the sweep saw works on a500_512k; no entry of it passed the gate"
 
 [demozoo.228020]
 title = "Redundancy Intro"
@@ -1593,8 +1596,8 @@ source = "script"
 title = "Reidars Verden"
 group = "After Eights"
 source = "script"
-result = "unknown"
-run = "friendsonly.exe"
+machine = "a1200_fast"
+run = "ReidarsVerden.EXE"
 
 [demozoo.92620]
 title = "Reincarnation"
@@ -1605,7 +1608,7 @@ source = "script"
 title = "Rejs"
 group = "Rockfor / Brygada RR"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.2193]
 title = "Rejsor"
@@ -1622,8 +1625,8 @@ machine = "a1200"
 title = "Rekord"
 group = "Ephidrena"
 source = "script"
-result = "unknown"
-run = "dA-fONK.exe"
+machine = "a1200_030"
+run = "40kRekord.exe"
 
 [demozoo.18196]
 title = "Rektum Analis"
@@ -1655,7 +1658,7 @@ source = "script"
 title = "Relax and BSS Kick the Shit Out of Sweden"
 group = "Relax"
 source = "script"
-result = "unknown"
+machine = "a500_ks12_512k"
 
 [demozoo.220963]
 title = "Release Intro"
@@ -1915,7 +1918,7 @@ machine = "a1200"
 title = "Rest 2"
 group = "Code Busters"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.9390]
 title = "Restito"
@@ -1927,8 +1930,8 @@ machine = "a1200_fast"
 title = "Restricted"
 group = "Army of Lamers"
 source = "script"
-result = "unknown"
-run = "Restricted.exe"
+machine = "a1200_030"
+run = "StartDemo"
 
 [demozoo.236280]
 title = "Restricted"
@@ -1939,8 +1942,8 @@ source = "script"
 title = "Restricted Rmx"
 group = "Army of Lamers"
 source = "script"
-result = "unknown"
-run = "RestrictedV1.1.EXE"
+machine = "a1200_030"
+run = "StartDemo"
 
 [demozoo.241125]
 title = "Retina Burn One"
@@ -2445,7 +2448,7 @@ result = "unknown"
 title = "RGB Bump"
 group = "Informer / Space"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.302445]
 title = "RGB Cube"
@@ -2602,7 +2605,7 @@ machine = "a1200"
 title = "Ripp 34 intro"
 group = "Arise"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.235105]
 title = "Ripp 40 Intro"
@@ -2734,8 +2737,8 @@ source = "script"
 title = "Robaczek"
 group = "AT-Bus"
 source = "script"
-result = "unknown"
-run = "WHEREFUNROLEZ.EXE"
+machine = "a1200"
+run = "8-Robaczek"
 
 [demozoo.39007]
 title = "Robbo"
@@ -2960,8 +2963,8 @@ source = "script"
 title = "Rootcanal"
 group = "Axis"
 source = "script"
-result = "unknown"
-run = "LE-window6.12"
+machine = "a1200"
+run = "40k.axis.rootcanal"
 
 [demozoo.169901]
 title = "ROOTro"
@@ -3058,7 +3061,7 @@ source = "script"
 title = "Rotating Bobs Boot Intro"
 group = "British Swapping Syndicate"
 source = "script"
-result = "unknown"
+machine = "a500_ks12"
 
 [demozoo.195194]
 title = "Rotating Cheque Board"
@@ -3360,7 +3363,7 @@ group = "Logic System / 2000 A.D."
 source = "script"
 result = "unknown"
 disks = ["2KAD&LS-RunawayA.dms", "2KAD&LS-RunawayB.dms"]
-note = "the sweep saw works on a500; no entry of it passed the gate"
+note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
 
 [demozoo.6582]
 title = "Runaway Brain"
@@ -3464,7 +3467,7 @@ run = "ODB-ROS.005"
 title = "Rydzyk Skurwysynu"
 group = "Socjalistic Union of Scene Youth"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.46978]
 title = "Rymd"

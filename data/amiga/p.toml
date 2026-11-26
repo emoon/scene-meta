@@ -347,8 +347,8 @@ source = "script"
 title = "Paleo"
 group = "Floppy"
 source = "script"
-result = "unknown"
-run = "_negerkuß!!.exe"
+machine = "a1200_fast"
+run = "FLP-Paleo.exe"
 
 [demozoo.40185]
 title = "Palmusunnuntai"
@@ -803,6 +803,7 @@ title = "Party Contribution"
 group = "Cult"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.342919]
 title = "Party Culture"
@@ -1246,7 +1247,7 @@ source = "script"
 title = "Party Intro"
 group = "Independents Group"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.227227]
 title = "Party Intro"
@@ -1681,7 +1682,8 @@ source = "script"
 title = "Partyhall"
 group = "Oxyron"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
+run = "PartyHall"
 
 [demozoo.252534]
 title = "Partyia"
@@ -1760,8 +1762,8 @@ source = "script"
 title = "Paskahor"
 group = "Joga"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+machine = "a500_512k"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.217286]
 title = "Paskalla"
@@ -1787,7 +1789,7 @@ source = "script"
 title = "Passengers"
 group = "3 Little Elks"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 run = "Passengers"
 
 [demozoo.89972]
@@ -1822,7 +1824,7 @@ machine = "a1200_030"
 title = "Past, Present and Future"
 group = "Dip / Mortimer Twang"
 source = "script"
-result = "unknown"
+machine = "a1200"
 run = "LongTrip"
 
 [demozoo.188223]
@@ -1900,14 +1902,13 @@ source = "script"
 title = "PC Demo"
 group = "Phase Truce"
 source = "script"
-result = "unknown"
-run = "pC_DEMO!.exe"
+machine = "a1200"
 
 [demozoo.253829]
 title = "PC Demo"
 group = "Phase Truce"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.29527]
 title = "PC Goes To WC"
@@ -1968,7 +1969,7 @@ source = "script"
 title = "Peace Intro 2"
 group = "Lamerdance"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.236279]
 title = "Peace of Mind Preview"
@@ -2075,7 +2076,7 @@ source = "script"
 title = "Pentium 2"
 group = "Brygada RR"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.226823]
 title = "Pera Spera To The Stars"
@@ -2227,7 +2228,7 @@ source = "script"
 title = "Petrol"
 group = "Madwizards"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.7161]
 title = "Peverly Hills"
@@ -2256,7 +2257,7 @@ source = "script"
 title = "Phalophagia"
 group = "Network"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.247181]
 title = "Phant Demo"
@@ -2610,6 +2611,7 @@ title = "Pill"
 group = "Genetic"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500_1mb_chip; no entry of it passed the gate"
 
 [demozoo.191216]
 title = "Pill"
@@ -2621,8 +2623,8 @@ machine = "a1200"
 title = "Pilot I Tyskland"
 group = "Loonies"
 source = "script"
-result = "unknown"
-run = "LE-window6.12"
+machine = "a1200"
+run = "pit.exe"
 
 [demozoo.111564]
 title = "Pimple Bombin'"
@@ -2828,7 +2830,7 @@ source = "script"
 title = "Pitstop BBS-Mo"
 group = "Gods"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.70701]
 title = "Pix Me"
@@ -3272,7 +3274,7 @@ source = "script"
 title = "Plenum"
 group = "Elcrew"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.173543]
 title = "Plimtro"
@@ -3540,7 +3542,7 @@ source = "script"
 title = "polychrome"
 group = "Madwizards"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 run = "MWI-PLCH.EXE_unpack"
 
 [demozoo.327246]
@@ -3859,8 +3861,7 @@ machine = "a500_1mb"
 title = "Potetgull"
 group = "Apathy"
 source = "script"
-result = "unknown"
-run = "dA-fONK.exe"
+run = "pOTETGULL"
 
 [demozoo.229414]
 title = "Pothead's Beast Demo"
@@ -4631,7 +4632,7 @@ machine = "a1200_fast"
 title = "Profanity"
 group = "Darkside"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 
 [demozoo.270865]
 title = "Professional v4.0"
@@ -4795,7 +4796,7 @@ boot = "floppy"
 title = "Propaganda"
 group = "Team Power Amiga"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.259306]
 title = "Propaganda"
@@ -4966,7 +4967,7 @@ source = "script"
 title = "Psy 3"
 group = "Odbyt Productions"
 source = "script"
-result = "unknown"
+machine = "a1200"
 run = "ODB-PSY.004"
 
 [demozoo.165304]
@@ -5204,7 +5205,8 @@ source = "script"
 title = "Puke 12"
 group = "World Federation of Mad Snickers"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
+events = [{ at = 30.0, key = "lmb" }]
 run = "Puke1.com"
 
 [demozoo.265144]
@@ -5407,9 +5409,8 @@ source = "script"
 title = "Purple"
 group = "Deathless"
 source = "script"
-result = "unknown"
+machine = "a500_1mb"
 run = "MainPart.exe"
-note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
 
 [demozoo.371515]
 title = "Purple"
@@ -5459,7 +5460,7 @@ run = "push030.exe"
 title = "Push (Final)"
 group = "Push Entertainment / Extreme Entertainment"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 
 [demozoo.40669]
 title = "Pusherman"
@@ -5560,7 +5561,7 @@ source = "script"
 title = "Pågadata"
 group = "The Moose Brothers"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 run = "motorAmiga68k"
 
 [demozoo.102218]

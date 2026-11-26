@@ -813,7 +813,7 @@ boot = "floppy"
 title = "Useless"
 group = "Appendix"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.24041]
 title = "Useless"
@@ -860,7 +860,7 @@ source = "script"
 title = "Utan Pengar"
 group = "Deathbringers"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.279567]
 title = "Utilities 1 - intro"

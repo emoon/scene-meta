@@ -567,7 +567,6 @@ source = "script"
 title = "Major Asshole's Bootintro"
 group = "Spaceballs"
 source = "script"
-result = "unknown"
 
 [demozoo.243623]
 title = "Major Delight 1 Intro"
@@ -856,7 +855,7 @@ machine = "a1200_fast"
 title = "Manure"
 group = "3 Amigos"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 
 [demozoo.229400]
 title = "Mapper Demo"
@@ -1236,7 +1235,6 @@ source = "script"
 title = "Matka Natura"
 group = "Marquee Design"
 source = "script"
-result = "unknown"
 
 [demozoo.7738]
 title = "Matrix"
@@ -1511,13 +1509,13 @@ machine = "a1200_030"
 title = "Mech Utilities 1 Intro"
 group = "The Mechanic"
 source = "script"
-result = "unknown"
+machine = "a500_ks12"
 
 [demozoo.225210]
 title = "Mech Utilities 2 Intro"
 group = "The Mechanic"
 source = "script"
-result = "unknown"
+machine = "a500_ks12"
 
 [demozoo.294130]
 title = "MECHMICROBES"
@@ -1750,8 +1748,8 @@ source = "script"
 title = "Meeting Intro"
 group = "Prologic"
 source = "script"
-result = "unknown"
-run = "Intro.main"
+machine = "a1200"
+run = "intro.txt2"
 
 [demozoo.262818]
 title = "Meeting Intro"
@@ -2085,8 +2083,8 @@ source = "script"
 title = "Mega-lo-Mania"
 group = "The Power Connection"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a1200; no entry of it passed the gate"
+machine = "a1200"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.233249]
 title = "Mega-Lomania Demo"
@@ -2237,6 +2235,7 @@ group = "Balloons"
 source = "script"
 result = "unknown"
 disks = ["BALLOONS-MegademoA.dms", "BALLOONS-MegademoB.dms"]
+note = "the sweep saw works on a500_ks12; no entry of it passed the gate"
 
 [demozoo.145642]
 title = "Megademo"
@@ -2313,8 +2312,7 @@ source = "script"
 title = "Megademo"
 group = "Legion 7"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+machine = "a500_512k"
 
 [demozoo.167262]
 title = "Megademo"
@@ -2515,8 +2513,7 @@ events = [{ at = 106.0, disk = 2 }, { at = 111.0, key = "lmb" }]
 title = "Megademo"
 group = "Design House"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+machine = "a500_ks12_512k"
 
 [demozoo.227083]
 title = "Megademo"
@@ -2705,8 +2702,8 @@ source = "script"
 title = "Megademo $B"
 group = "Gunnars Farvebio"
 source = "script"
-result = "unknown"
-run = "_negerkuß!!.exe"
+machine = "a1200_fast"
+run = "4mb.exe"
 
 [demozoo.44911]
 title = "Megademo $c"
@@ -3220,7 +3217,7 @@ source = "script"
 title = "Megademo D Trailer"
 group = "Gunnars Farvebio"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.167567]
 title = "Megademo Disk"
@@ -3273,8 +3270,7 @@ source = "script"
 title = "Megademo II: Think Over The Star"
 group = "Dreamdealers"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+machine = "a500_1mb"
 
 [demozoo.45034]
 title = "Megademo III"
@@ -3644,8 +3640,8 @@ machine = "a500_1mb"
 title = "Melons 2: The Little Render-Engine That Could"
 group = "Smellon Design"
 source = "script"
-result = "unknown"
-run = "LE-window6.12"
+machine = "a1200"
+run = "40k.smellon.melons2"
 
 [demozoo.277864]
 title = "Melt"
@@ -4417,7 +4413,7 @@ group = "Madwizards"
 source = "script"
 result = "unknown"
 run = "mwi-mtag.030"
-note = "the sweep saw works-then-crash on a1200_030; no entry of it passed the gate"
+note = "the sweep saw works on a1200_030; no entry of it passed the gate"
 
 [demozoo.236338]
 title = "Meteli 1"
@@ -4553,8 +4549,8 @@ note = "file_id.diz asks for an A1200 with 8 MB and a 68040 or 68060; the music 
 title = "Mi lett volna ha..."
 group = "W.A.T.T."
 source = "script"
-result = "unknown"
-run = "INFOCHANNEL.GFX"
+machine = "a1200_fast"
+run = "WATT_Start"
 
 [demozoo.9297]
 title = "MI05"
@@ -4710,12 +4706,13 @@ group = "Appendix"
 source = "script"
 result = "unknown"
 run = "Midge"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.151273]
 title = "Midnight Blue"
 group = "Ram Jam"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.241000]
 title = "Midnight Caller BBS Intro"
@@ -4770,7 +4767,7 @@ machine = "a1200"
 title = "Mieso"
 group = "Przyjaciele Kashany P."
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.261390]
 title = "Miggybyte Christmas Intro"
@@ -5309,6 +5306,7 @@ title = "Mini Megademo"
 group = "Doom Uk"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500_1mb; no entry of it passed the gate"
 
 [demozoo.254996]
 title = "Mini Megademo"
@@ -5559,7 +5557,7 @@ source = "script"
 title = "Miracles"
 group = "Stellar"
 source = "script"
-result = "unknown"
+machine = "a1200"
 run = "Miracles.exe"
 
 [demozoo.250903]
@@ -5576,7 +5574,7 @@ source = "script"
 title = "Mirrors -srorriM-"
 group = "Endzeit"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.44892]
 title = "Mirrors 2"
@@ -5730,7 +5728,7 @@ source = "script"
 title = "Mlynek"
 group = "Zeeball"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.59679]
 title = "Mmama Llama"
@@ -5937,7 +5935,7 @@ machine = "a1200"
 title = "mOmentum"
 group = "Nah-Kolor"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 
 [demozoo.240328]
 title = "MomoCompilStuff IV Intro"
@@ -6648,8 +6646,8 @@ machine = "a1200_fast"
 title = "Mr. T vs. Britney Spears"
 group = "Przyjaciele Stefana B."
 source = "script"
-result = "unknown"
-run = "ScalaMM"
+machine = "a1200_fast"
+run = "!!!START!!!"
 
 [demozoo.238415]
 title = "Mr. Wiz's Demo"
@@ -7111,8 +7109,8 @@ source = "script"
 title = "Music For Your Instincts"
 group = "Moods Plateau / Hullabaloo Machinery"
 source = "script"
-result = "unknown"
-run = "moods.exe"
+machine = "a1200"
+run = "mOOdS"
 
 [demozoo.261946]
 title = "Music For Your Tape Recorder"
@@ -7240,7 +7238,7 @@ source = "script"
 title = "Mute 12"
 group = "Madwizards"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.185480]
 title = "Mute 13"
@@ -7386,8 +7384,8 @@ note = "plays two parts with disk B in DF1, then a blank grey screen and silence
 title = "My Pain"
 group = "Planet Jazz"
 source = "script"
-result = "unknown"
-run = "_negerkuß!!.exe"
+machine = "a1200"
+run = "pjz-10k-AGA.exe"
 
 [demozoo.137711]
 title = "My Room"
@@ -7441,8 +7439,8 @@ machine = "a1200_fast"
 title = "Mysterious"
 group = "World Fantasies"
 source = "script"
-result = "unknown"
-run = "LE-window6.12"
+machine = "a1200"
+run = "Mysterious.exe"
 
 [demozoo.186586]
 title = "Mysterious Mixture"
@@ -7522,14 +7520,14 @@ source = "script"
 title = "Mysza"
 group = "Przyjaciele Stefana B."
 source = "script"
-result = "unknown"
+machine = "a1200"
 run = "Mysza.exe"
 
 [demozoo.42058]
 title = "Myth"
 group = "Potion"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.255952]
 title = "Myth"

@@ -476,8 +476,8 @@ source = "script"
 title = "Zoo"
 group = "Puzzle"
 source = "script"
-result = "unknown"
-run = "pzlzoo34.dat"
+machine = "a1200_fast"
+run = "pzlzoo.exe"
 
 [demozoo.318340]
 title = "Zoo-TV"

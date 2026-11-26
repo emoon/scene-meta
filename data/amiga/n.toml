@@ -26,13 +26,13 @@ note = "the sweep only reached disk 1 of 2"
 title = "N.G.M.M.H."
 group = "Axis"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.234780]
 title = "N.G.M.M.H."
 group = "Axis"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.247177]
 title = "N.Z. Sector"
@@ -141,7 +141,7 @@ run = "nameless.exe"
 title = "Nameless"
 group = "Venus Art"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.9020]
 title = "Nano"
@@ -415,8 +415,8 @@ source = "script"
 title = "Nefroni - Remix"
 group = "Rave Network Overscan"
 source = "script"
-result = "unknown"
-run = "x-pLICT.exe"
+machine = "a1200"
+run = "RNO-NefroniRMX.eXE"
 
 [demozoo.236728]
 title = "Negademo"
@@ -571,12 +571,15 @@ title = "Netflex und Chill"
 group = "FLEX"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a1200_060; no entry of it passed the gate"
 
 [demozoo.181975]
 title = "NetHed"
 group = "Embassy"
 source = "script"
+boot = "floppy"
 result = "unknown"
+note = "the sweep saw works-then-crash on a500; no entry of it passed the gate"
 
 [demozoo.385535]
 title = "Netrou"
@@ -604,7 +607,7 @@ source = "script"
 title = "Neue Aldi Intro"
 group = "Aldi"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.242903]
 title = "Neuegiest Demo"
@@ -661,7 +664,7 @@ source = "script"
 title = "Neutron Bootblock Intro"
 group = "Spaceballs"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.157232]
 title = "Never Again"
@@ -713,6 +716,7 @@ title = "Never This Again"
 group = "DGSA / Brainwave"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.36125]
 title = "Nevermind"
@@ -1592,6 +1596,7 @@ title = "New Intro"
 group = "Phase"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.112782]
 title = "New Intro"
@@ -2724,9 +2729,8 @@ source = "script"
 title = "New Stuff"
 group = "Goonies 2041"
 source = "script"
-boot = "floppy"
 result = "unknown"
-note = "the sweep saw works on a1200_060; no entry of it passed the gate"
+note = "the sweep saw works on a500_ks12; no entry of it passed the gate"
 
 [demozoo.216561]
 title = "New Stuff"
@@ -2887,7 +2891,7 @@ source = "script"
 title = "New Stuff"
 group = "Daenzger / The Master of Amiga"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.226827]
 title = "New Stuff"
@@ -2991,6 +2995,7 @@ title = "New Stuff"
 group = "Australian Crackers United"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.235172]
 title = "New Stuff"
@@ -3016,7 +3021,7 @@ source = "script"
 title = "New Stuff"
 group = "Dexion"
 source = "script"
-result = "unknown"
+machine = "a500_ks12"
 
 [demozoo.240668]
 title = "New Stuff"
@@ -3952,7 +3957,6 @@ run = "11-Joker.Focus"
 title = "Nice Dog Part 2"
 group = "Natural Born Killers"
 source = "script"
-result = "unknown"
 
 [demozoo.223691]
 title = "Nice Intro"
@@ -4344,7 +4348,8 @@ source = "script"
 title = "No Code 3"
 group = "Infect"
 source = "script"
-result = "unknown"
+machine = "a1200"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.228442]
 title = "No Curch Demo"
@@ -4536,7 +4541,7 @@ disks = ["CYBERNETICS-noRefundA.DMS", "CYBERNETICS-noRefundB.DMS"]
 title = "No Roxy"
 group = "Oxyron"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.186090]
 title = "No Santa Porn"
@@ -4797,8 +4802,8 @@ machine = "a1200_fast"
 title = "Noname"
 group = "Zomo"
 source = "script"
-result = "unknown"
-run = "LE-window6.12"
+machine = "a1200"
+run = "NOT_SELECTED.Massive"
 
 [demozoo.119685]
 title = "Noname"
@@ -4815,7 +4820,7 @@ source = "script"
 title = "Noname"
 group = "Dream's Day"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.236579]
 title = "Noname"
@@ -5151,13 +5156,13 @@ source = "script"
 title = "Nothing!"
 group = "Apathy"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.252193]
 title = "Notime"
 group = "Nuance"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.87035]
 title = "nOtITLE-pARTYvERSION"
@@ -5267,7 +5272,7 @@ machine = "a1200_fast"
 title = "Nude 3"
 group = "Honoo"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.33738]
 title = "Nude Part 4"
@@ -5324,7 +5329,7 @@ source = "script"
 title = "Numb"
 group = "Dinx Project"
 source = "script"
-result = "unknown"
+machine = "a1200"
 run = "DXP-Numb.exe"
 
 [demozoo.112823]

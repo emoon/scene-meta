@@ -13,7 +13,7 @@ source = "script"
 title = "$623"
 group = "Clique"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.239506]
 title = "(Ass)embler"

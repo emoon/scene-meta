@@ -279,7 +279,7 @@ source = "script"
 title = "Warning - Radioactive Sceners"
 group = "Mellow"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.299]
 title = "Warp 69"
@@ -319,7 +319,7 @@ result = "unknown"
 title = "Waste"
 group = "EMS Design"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.245870]
 title = "Waste Lands pre-tro"
@@ -449,8 +449,8 @@ machine = "a1200"
 title = "Water'n'Fire"
 group = "Therapy"
 source = "script"
-result = "unknown"
-run = "WHEREFUNROLEZ.EXE"
+machine = "a1200_fast"
+run = "WaTeR_n_fIrE_II.eXe"
 
 [demozoo.223876]
 title = "Wateraxion"
@@ -530,7 +530,8 @@ result = "unknown"
 title = "Wave 40%"
 group = "Bizarre Arts / Artwork"
 source = "script"
-result = "unknown"
+machine = "a500_1mb_chip"
+boot = "floppy"
 
 [demozoo.235042]
 title = "Wave 50%"
@@ -733,6 +734,7 @@ title = "We Are Not Dead"
 group = "Frantic"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.256156]
 title = "We Are Retro"
@@ -852,6 +854,7 @@ title = "We Hate Flameduck"
 group = "Cute"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.208707]
 title = "We Hate Kiros"
@@ -873,8 +876,8 @@ boot = "floppy"
 title = "We Have"
 group = "Monar"
 source = "script"
-result = "unknown"
-run = "_negerkuß!!.exe"
+machine = "a1200"
+run = "MONAR-WeHave"
 
 [demozoo.247897]
 title = "We Import All to Finland"
@@ -1199,8 +1202,8 @@ source = "script"
 title = "wektor point"
 group = "Union"
 source = "script"
-result = "unknown"
-run = "LE-window6.12"
+machine = "a1200"
+run = "DejaVu2"
 
 [demozoo.104385]
 title = "Welcome"
@@ -1638,7 +1641,7 @@ machine = "a1200"
 title = "Whizzz!"
 group = "Anadune"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 
 [demozoo.214019]
 title = "Who Are Us?"
@@ -1689,7 +1692,7 @@ source = "script"
 title = "Why?"
 group = "Spoon"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.204896]
 title = "Whydows?"
@@ -1763,13 +1766,13 @@ source = "script"
 title = "wigt"
 group = "koalicija zajedno"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.246998]
 title = "WIGT"
 group = "iq2000 / Nevermind"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.179377]
 title = "Wiiizzz"
@@ -1828,7 +1831,7 @@ source = "script"
 title = "Wild Palms BBStro"
 group = "Effect"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.242622]
 title = "Wild Palms Reopening"
@@ -1887,8 +1890,8 @@ machine = "a1200"
 title = "Willow"
 group = "Ukonx"
 source = "script"
-result = "unknown"
-run = "willow.exe"
+machine = "a1200"
+run = "willow.bat"
 
 [demozoo.24671]
 title = "Willy Bogner"
@@ -1900,7 +1903,7 @@ machine = "a1200_fast"
 title = "Win"
 group = "Majddar"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.255553]
 title = "Win95"
@@ -1925,8 +1928,8 @@ note = "the sweep saw works on a500; no entry of it passed the gate"
 title = "Windowz 4k"
 group = "4th Dimension"
 source = "script"
-result = "unknown"
-run = "sonnencreme.exe"
+machine = "a1200"
+run = "Windows.exe"
 
 [demozoo.346684]
 title = "Windy Day"
@@ -2096,8 +2099,7 @@ source = "script"
 title = "Wit Porter"
 group = "Przyjaciele Stefana B."
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a1200; no entry of it passed the gate"
+machine = "a1200_fast"
 
 [demozoo.70673]
 title = "Wit Premium"
@@ -2216,7 +2218,7 @@ machine = "a1200"
 title = "Wojadzer"
 group = "Symulator"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 run = "inpart"
 
 [demozoo.244482]
@@ -2432,7 +2434,7 @@ source = "script"
 title = "World of Confusion"
 group = "Vomit"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.88611]
 title = "World of Confusion"

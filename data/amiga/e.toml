@@ -496,6 +496,7 @@ title = "ekoJ A"
 group = "Sauron"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.229972]
 title = "Ektoplasma"
@@ -519,6 +520,7 @@ title = "El toro de Okam"
 group = "Goblins"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.166646]
 title = "El-bee"
@@ -616,7 +618,7 @@ source = "script"
 title = "Electricity"
 group = "Appendix"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 run = "APX-Elec.decrunched"
 
 [demozoo.294212]
@@ -694,7 +696,7 @@ machine = "a1200"
 title = "ElefantService"
 group = "After Eights"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 run = "a8s-64k.exe"
 
 [demozoo.240847]
@@ -999,8 +1001,8 @@ source = "script"
 title = "Encore"
 group = "Floppy"
 source = "script"
-result = "unknown"
-run = "_negerkuß!!.exe"
+machine = "a1200_fast"
+run = "flp-encore"
 
 [demozoo.200525]
 title = "End of Maloy"
@@ -1011,7 +1013,7 @@ source = "script"
 title = "End of the Misery"
 group = "Sagazity"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.253765]
 title = "End of Transmission"
@@ -1052,7 +1054,7 @@ source = "script"
 title = "Endolymfa"
 group = "Balance"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.277867]
 title = "Endpart"
@@ -1101,7 +1103,7 @@ machine = "a1200"
 title = "Energie"
 group = "Warp 9"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 
 [demozoo.18870]
 title = "Energy - Fraction II"
@@ -1186,7 +1188,7 @@ source = "script"
 title = "Enigmas Demo"
 group = "Slipstream"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.22463]
 title = "Enjoy The Silents"
@@ -1202,7 +1204,7 @@ source = "script"
 title = "Enlight 96 Invitation"
 group = "Looker House"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.196368]
 title = "Ensignia Bench"
@@ -1429,8 +1431,7 @@ source = "script"
 title = "Ergens in Het Klompenland"
 group = "Conquest"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+machine = "a500_512k"
 
 [demozoo.31952]
 title = "Error - The Intro"
@@ -1737,8 +1738,8 @@ run = "delight"
 title = "Eurotica"
 group = "Erotic Design"
 source = "script"
-result = "unknown"
-run = "LE-window6.12"
+machine = "a1200"
+run = "Eurotica.exe"
 
 [demozoo.274879]
 title = "Eurotop 5 Menu"
@@ -1789,8 +1790,8 @@ note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
 title = "evar_rof"
 group = "iNSANE"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a1200; no entry of it passed the gate"
+machine = "a1200"
+run = "evar_rof"
 
 [demozoo.264760]
 title = "Eve-L I"
@@ -2054,7 +2055,6 @@ source = "script"
 title = "Examination"
 group = "Impulse"
 source = "script"
-result = "unknown"
 
 [demozoo.92998]
 title = "Exasperate"
@@ -2220,8 +2220,8 @@ machine = "a1200"
 title = "Exorcism"
 group = "Oxyron"
 source = "script"
-result = "unknown"
-run = "Exorcism.exe"
+machine = "a1200"
+run = "Exorcism_Start"
 
 [demozoo.233972]
 title = "Exorcist 2nd Demo"
@@ -2244,7 +2244,7 @@ run = "Exotic_1996.50MhzFastRam.exe"
 title = "Exotic NoSound"
 group = "Ram Jam"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.237479]
 title = "Exotic Pack 2 Menu"
@@ -2324,6 +2324,7 @@ title = "Explicid II"
 group = "Xanadu"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.290623]
 title = "Explicit - First Demo"

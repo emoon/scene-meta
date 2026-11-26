@@ -263,8 +263,8 @@ source = "script"
 title = "Sailor Moon aka Smierc Czarodziejce"
 group = "ELC"
 source = "script"
-result = "unknown"
-run = "dA-fONK.exe"
+machine = "a1200"
+run = "SailorMoon"
 
 [demozoo.215486]
 title = "Sailorman"
@@ -458,8 +458,8 @@ source = "script"
 title = "Sanity Turmoil AGA/680X0/HD-Fixed"
 group = "X-Trek"
 source = "script"
-result = "unknown"
-run = "TurmOil.exe"
+machine = "a1200"
+run = "TurmOil"
 
 [demozoo.208782]
 title = "Sanningen om Roxy"
@@ -642,9 +642,8 @@ machine = "a1200"
 title = "Saunaboys"
 group = "Keso"
 source = "script"
-result = "unknown"
+machine = "a1200"
 run = "Keso-sb.exe"
-note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
 
 [demozoo.24201]
 title = "Sauron 20th anniversary"
@@ -854,8 +853,8 @@ source = "script"
 title = "Scene Revolution"
 group = "Kiki Productions"
 source = "script"
-result = "unknown"
-run = "_negerkuß!!.exe"
+machine = "a1200"
+run = "Scene-Revolution"
 
 [demozoo.227329]
 title = "Scene-Intro - New Group"
@@ -1215,6 +1214,7 @@ title = "Scrollium"
 group = "Escape"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.196060]
 title = "Scrollnophobia"
@@ -1487,7 +1487,8 @@ source = "script"
 title = "Second Part"
 group = "Sekhmet"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
+run = "SecondPart"
 
 [demozoo.219464]
 title = "Second Production"
@@ -1533,7 +1534,7 @@ source = "script"
 title = "Secret Part"
 group = "Punikit"
 source = "script"
-result = "unknown"
+boot = "floppy"
 
 [demozoo.236607]
 title = "Secret Sience"
@@ -1835,7 +1836,7 @@ source = "script"
 title = "Seven"
 group = "Depth"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.185209]
 title = "Seven and Counting"
@@ -1897,8 +1898,8 @@ source = "script"
 title = "Sex In A Bubble Gum Factory"
 group = "Movement"
 source = "script"
-result = "unknown"
-run = "WHEREFUNROLEZ.EXE"
+machine = "a1200_fast"
+run = "MOVEMENT-BubbleGumFactory.exe"
 
 [demozoo.237350]
 title = "Sex-Murder-Art"
@@ -2078,7 +2079,7 @@ source = "script"
 title = "Shake off the Dust"
 group = "Elude"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 run = "eld-sotd.exe.lowmem"
 
 [demozoo.114246]
@@ -2412,7 +2413,7 @@ source = "script"
 title = "Short Circuit"
 group = "EMS Design"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.216854]
 title = "Short Demo"
@@ -2771,8 +2772,8 @@ source = "script"
 title = "Silvahball"
 group = "Apathy"
 source = "script"
-result = "unknown"
-run = "_negerkuß!!.exe"
+machine = "a1200"
+run = "sILVAhbALL"
 
 [demozoo.242831]
 title = "Silver And Gold"
@@ -2924,7 +2925,8 @@ source = "script"
 title = "Simply A Demo"
 group = "Pixelmagic"
 source = "script"
-result = "unknown"
+machine = "a1200"
+run = "!runme.exe"
 
 [demozoo.182760]
 title = "Simply For My Contacts"
@@ -3579,7 +3581,7 @@ source = "script"
 title = "Sixtyfuck"
 group = "Paramount Productions"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.279086]
 title = "Sixzty Minutes II"
@@ -3957,7 +3959,6 @@ source = "script"
 title = "Slaughter II Loader Intro Preview"
 group = "Delight"
 source = "script"
-result = "unknown"
 
 [demozoo.259560]
 title = "Slaughter's Egg"
@@ -3983,8 +3984,8 @@ source = "script"
 title = "SLD"
 group = "World Federation of Mad Snickers"
 source = "script"
-result = "unknown"
-run = "OTLUE2Z61.exe"
+machine = "a1200"
+run = "SLD.exe"
 
 [demozoo.264614]
 title = "SLD"
@@ -3995,7 +3996,6 @@ source = "script"
 title = "Sledge Hammer"
 group = "Soc. Brigade"
 source = "script"
-result = "unknown"
 
 [demozoo.173097]
 title = "Sledge Hammer #9 Intro"
@@ -4154,6 +4154,7 @@ title = "Sma Bananbitar och annat kladd"
 group = "Benny Boys / The Suprahackers"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.207120]
 title = "Small"
@@ -4459,7 +4460,7 @@ source = "script"
 title = "Smellonique"
 group = "Lamers"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.235113]
 title = "Smells Like Chanel No.5"
@@ -4496,7 +4497,7 @@ source = "script"
 title = "Smoke"
 group = "Hotdog Productions"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.59938]
 title = "Smoke & Mirrors"
@@ -4525,7 +4526,7 @@ source = "script"
 title = "Smoked"
 group = "Horizontal Lamerz"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.10348]
 title = "Smoker"
@@ -4664,7 +4665,6 @@ machine = "a500_1mb"
 title = "Snoopy"
 group = "Sunlight"
 source = "script"
-result = "unknown"
 
 [demozoo.249155]
 title = "Snoopy's Intro"
@@ -4816,7 +4816,7 @@ source = "script"
 title = "Sober Test"
 group = "Broken Cube"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 run = "SoberTest_NoCrunch"
 
 [demozoo.208205]
@@ -5300,7 +5300,7 @@ source = "script"
 title = "Something"
 group = "Visage"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.174749]
 title = "Something About Silents Makes Me Sick!"
@@ -5488,7 +5488,7 @@ source = "script"
 title = "Sonix Scores Intro"
 group = "Amiga Cracking Service"
 source = "script"
-result = "unknown"
+machine = "a500_ks12_512k"
 
 [demozoo.256421]
 title = "Sony VX-90"
@@ -5951,15 +5951,14 @@ source = "script"
 title = "Space Cake"
 group = "Narmala Pocket"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.151298]
 title = "Space Case"
 group = "Pas Maters"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 run = "Spejs.bre"
-note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.340712]
 title = "Space Dancers"
@@ -6286,8 +6285,8 @@ source = "script"
 title = "Spawn"
 group = "Appendix"
 source = "script"
-result = "unknown"
-run = "OTLUE2Z61.exe"
+machine = "a1200_fast"
+run = "spawn.exe"
 
 [demozoo.255206]
 title = "Spayce Pack Preview"
@@ -6380,7 +6379,8 @@ source = "script"
 title = "Speden Spelit At 470"
 group = "Spedes"
 source = "script"
-result = "unknown"
+machine = "a1200"
+run = "startdemo"
 
 [demozoo.259089]
 title = "Spedes at Scenario"
@@ -6817,7 +6817,8 @@ source = "script"
 title = "Spread by"
 group = "The Web Inc."
 source = "script"
-result = "unknown"
+machine = "a500_ks12_512k"
+boot = "floppy"
 
 [demozoo.233942]
 title = "Spread by Animators in 1990"
@@ -6998,8 +6999,8 @@ source = "script"
 title = "Spring"
 group = "Przyjaciele Stefana B."
 source = "script"
-result = "unknown"
-run = "Relyscully.exe.bak"
+machine = "a1200_fast"
+run = "PSB-Spring.exe"
 
 [demozoo.216539]
 title = "Spring '94"
@@ -7514,7 +7515,7 @@ source = "script"
 title = "State of Fart"
 group = "Collargolls"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.102226]
 title = "State of Health"
@@ -7854,13 +7855,14 @@ source = "script"
 title = "Stoned"
 group = "Polka Brothers"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.241301]
 title = "Stoned Box"
 group = "Divina"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.164411]
 title = "Stonefish"
@@ -8011,8 +8013,7 @@ source = "script"
 title = "Strange Days"
 group = "Venture"
 source = "script"
-result = "unknown"
-run = "movie"
+machine = "a1200_fast"
 
 [demozoo.221439]
 title = "Strange Demo"
@@ -8125,7 +8126,7 @@ source = "script"
 title = "Strip Poker II"
 group = "The Amiga Gang"
 source = "script"
-result = "unknown"
+machine = "a500_ks12_512k"
 
 [demozoo.238053]
 title = "Strip Tease"
@@ -8147,8 +8148,7 @@ source = "script"
 title = "Stroke"
 group = "World Fantasies"
 source = "script"
-result = "unknown"
-run = "WHEREFUNROLEZ.EXE"
+run = "4-4K_StrokeNoAGA"
 
 [demozoo.242615]
 title = "Strophic"
@@ -8299,7 +8299,7 @@ source = "script"
 title = "Støy På Larvefødder"
 group = "TBC"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 
 [demozoo.251807]
 title = "Sub Cirtneck"
@@ -8585,6 +8585,7 @@ title = "Summer Conference Mini Intro"
 group = "Quartz"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.89621]
 title = "Summer Day"
@@ -8747,8 +8748,8 @@ run = "sundance_unpacked"
 [demozoo.31933]
 title = "Sunday"
 source = "script"
-result = "unknown"
-run = "WHEREFUNROLEZ.EXE"
+machine = "a1200"
+run = "9-SUNDAY"
 
 [demozoo.254350]
 title = "Sundemo"
@@ -9035,8 +9036,8 @@ machine = "a1200_fast"
 title = "Superave"
 group = "Creations of the Mind"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a1200; no entry of it passed the gate"
+machine = "a1200"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.675]
 title = "Superbored"
@@ -9053,7 +9054,7 @@ machine = "a1200_fast"
 title = "Superdrunk"
 group = "Squirrelz"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.209970]
 title = "Superfant"
@@ -9150,7 +9151,6 @@ source = "script"
 title = "Support Boards"
 group = "Inferno D-Light"
 source = "script"
-result = "unknown"
 
 [demozoo.252575]
 title = "Support DMA - The Turkish Diskmagazine"
@@ -9408,8 +9408,8 @@ source = "script"
 title = "Swappers For Everyone"
 group = "Instinct"
 source = "script"
-result = "unknown"
-run = "_negerkuß!!.exe"
+machine = "a1200"
+run = "Instinct-AdvertTro.x"
 
 [demozoo.8380]
 title = "Swappers Paradise"
@@ -9437,7 +9437,7 @@ source = "script"
 title = "Swaptro"
 group = "Strife"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.24298]
 title = "Swaptro"
@@ -9917,8 +9917,8 @@ machine = "a1200_fast"
 title = "Synthesis"
 group = "Network"
 source = "script"
-result = "unknown"
-run = "setpatch"
+machine = "a1200_060"
+run = "synt_040.bat"
 
 [demozoo.20954]
 title = "System Crime"

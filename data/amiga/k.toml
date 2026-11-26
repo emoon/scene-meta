@@ -80,8 +80,8 @@ source = "script"
 title = "kah835gb"
 group = "Floppy / Madwizards"
 source = "script"
-result = "unknown"
-run = "_negerkuß!!.exe"
+machine = "a1200_fast"
+run = "kah835gb.exe"
 
 [demozoo.228823]
 title = "Kaikkien Introjen Aiti"
@@ -274,7 +274,8 @@ machine = "a1200"
 title = "Kassademo"
 group = "After Eights"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
+run = "kassadamo.exe"
 
 [demozoo.96297]
 title = "Kastel"
@@ -301,7 +302,7 @@ source = "script"
 title = "Katten Paste"
 group = "Traktor"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.63252]
 title = "Kawaleria Scenowa"
@@ -454,7 +455,7 @@ source = "script"
 title = "KG"
 group = "X-Factor"
 source = "script"
-result = "unknown"
+machine = "a500_512k"
 
 [demozoo.4686]
 title = "Kheper"
@@ -539,9 +540,9 @@ source = "script"
 title = "Kicker"
 group = "Nature"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
+events = [{ at = 30.0, key = "lmb" }]
 run = "Kicker"
-note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
 
 [demozoo.229720]
 title = "Kicki'n Ass Party Raport"
@@ -567,7 +568,7 @@ source = "script"
 title = "Kickstart Intro"
 group = "Black Monks"
 source = "script"
-result = "unknown"
+boot = "floppy"
 
 [demozoo.390683]
 title = "Kickstart Intro"
@@ -618,15 +619,13 @@ machine = "a1200_fast"
 title = "Kikback BBS Intro"
 group = "Talent"
 source = "script"
-boot = "floppy"
-result = "unknown"
-note = "the sweep saw works on a500_2mb_chip; no entry of it passed the gate"
+machine = "a1200"
 
 [demozoo.19436]
 title = "Kikize-tro"
 group = "Kiki Productions"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.97451]
 title = "Kilkenny"
@@ -742,8 +741,8 @@ source = "script"
 title = "Kinderegg"
 group = "Apathy"
 source = "script"
-result = "unknown"
-run = "dA-fONK.exe"
+machine = "a1200"
+run = "KiNdErEGG!"
 
 [demozoo.235079]
 title = "Kinderfreundlich - Kyle Birthday Intro"
@@ -893,7 +892,7 @@ source = "script"
 title = "Kix"
 group = "Gac"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.226953]
 title = "Kjæld Kjæld Pornomodel"
@@ -998,6 +997,7 @@ title = "Knarkzilla"
 group = "Ephidrena / Loonies / Kvasigen"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a1200_030; no entry of it passed the gate"
 
 [demozoo.193]
 title = "Knickelbreaka - Friendchip Promotion Intro"
@@ -1412,7 +1412,8 @@ result = "unknown"
 title = "Kurva Anyad"
 group = "Crimson Jihad"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
+run = "Start"
 
 [demozoo.225403]
 title = "Kusi-Intro"

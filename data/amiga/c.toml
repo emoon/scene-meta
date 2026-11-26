@@ -28,7 +28,7 @@ source = "script"
 title = "C.O.W.'S (In Color)"
 group = "Accession"
 source = "script"
-result = "unknown"
+machine = "a500_ks12_512k"
 
 [demozoo.269268]
 title = "C46"
@@ -418,7 +418,7 @@ source = "script"
 title = "Cardiomyopathia"
 group = "Orbital"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.27850]
 title = "Career"
@@ -502,7 +502,7 @@ machine = "a1200_fast"
 title = "Casper det lösa spöket"
 group = "Keso"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.19190]
 title = "Casting"
@@ -603,6 +603,7 @@ title = "CeBird"
 group = "TCC Design"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.278036]
 title = "Cebit '91"
@@ -721,7 +722,7 @@ run = "part2.exe"
 title = "Cekejte"
 group = "Toayen"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.314956]
 title = "Cele2.run"
@@ -821,8 +822,7 @@ source = "script"
 title = "Cerber 4K"
 group = "Depth"
 source = "script"
-result = "unknown"
-run = "WHEREFUNROLEZ.EXE"
+run = "6-dxp4kb.exe"
 
 [demozoo.260765]
 title = "Cerberos"
@@ -998,12 +998,14 @@ title = "Cheap Demo"
 group = "Phoenix"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.227992]
 title = "Cheap Demo Release 2"
 group = "Phoenix"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.223726]
 title = "Cheap Disks!"
@@ -1550,7 +1552,7 @@ source = "script"
 title = "Chuj"
 group = "Voodka People"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.241269]
 title = "Chunky"
@@ -1924,7 +1926,6 @@ source = "script"
 title = "Coca Cola Commercial"
 group = "Royal Amiga Force"
 source = "script"
-result = "unknown"
 
 [demozoo.226650]
 title = "Coca-Cola Commercial"
@@ -2238,7 +2239,7 @@ result = "unknown"
 title = "Colmix"
 group = "Amnesty"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.277034]
 title = "Colombia"
@@ -2340,6 +2341,8 @@ title = "Colour Me AGA"
 group = "NightWarriors"
 source = "script"
 result = "unknown"
+run = "ColourMeAGA"
+note = "the sweep saw works-then-crash on a1200; no entry of it passed the gate"
 
 [demozoo.238772]
 title = "Colour Scroll"
@@ -2451,7 +2454,7 @@ machine = "a1200_fast"
 title = "Comeback"
 group = "Ludde"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 
 [demozoo.242135]
 title = "Comeback"
@@ -2540,6 +2543,7 @@ title = "Commodore Show Intro"
 group = "Prophecy"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500_1mb_chip; no entry of it passed the gate"
 
 [demozoo.296986]
 title = "Comp 4 Intro"
@@ -2909,7 +2913,7 @@ source = "script"
 title = "Confusion"
 group = "Madwizards"
 source = "script"
-result = "unknown"
+machine = "a1200"
 run = "MWI-ConfusionAGA.exe"
 
 [demozoo.754]
@@ -2921,7 +2925,7 @@ source = "script"
 title = "Congratulation"
 group = "Analog"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.215455]
 title = "Conious Moments"
@@ -3291,7 +3295,8 @@ source = "script"
 title = "Continum"
 group = "Zor"
 source = "script"
-result = "unknown"
+machine = "a1200"
+events = [{ at = 30.0, key = "return" }]
 
 [demozoo.219072]
 title = "Contractro"
@@ -4483,7 +4488,7 @@ source = "script"
 title = "cpubltro v0.4"
 group = "nicode"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.252328]
 title = "Crab Demo 2"
@@ -5363,8 +5368,8 @@ source = "script"
 title = "Ctrl Alt Del 2"
 group = "The Feigling Crew"
 source = "script"
-result = "unknown"
-run = "free.exe"
+machine = "a1200"
+run = "Ctrl Alt Del2"
 
 [demozoo.232504]
 title = "CU Amiga Cover Disk 7 Intro"
@@ -5391,7 +5396,7 @@ machine = "a500_1mb"
 title = "Cube"
 group = "Sulpu"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.242762]
 title = "Cube Frenzy Pack Preview"
@@ -5497,7 +5502,7 @@ source = "script"
 title = "Curro se va ..."
 group = "Lloret Free Byte"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.212972]
 title = "Curvaceous Text"
@@ -5518,7 +5523,7 @@ source = "script"
 title = "Cute Little Monster"
 group = "Outlaws"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.222140]
 title = "Cuteness Is Cute"
@@ -5605,7 +5610,7 @@ machine = "a1200"
 title = "Cybernetic Dreams"
 group = "Alien Adenoids"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.182757]
 title = "Cybernut"
@@ -5785,5 +5790,5 @@ source = "script"
 title = "Czyjest"
 group = "Anadune"
 source = "script"
-result = "unknown"
-run = "OTLUE2Z61.exe"
+machine = "a1200_fast"
+run = "O.K.exe"

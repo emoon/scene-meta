@@ -1243,7 +1243,6 @@ source = "script"
 title = "A Prehistoric Tale"
 group = "Pussy"
 source = "script"
-result = "unknown"
 
 [demozoo.168351]
 title = "A Premium Celebration"
@@ -1471,8 +1470,8 @@ source = "script"
 title = "A500 Gouraud"
 group = "Apathy"
 source = "script"
-result = "unknown"
-run = "sonnencreme.exe"
+machine = "a1200"
+run = "gour_4_A500.exe"
 
 [demozoo.7165]
 title = "A500 Homage"
@@ -1643,7 +1642,7 @@ group = "Virtual Dreams"
 source = "script"
 result = "unknown"
 disks = ["VD-AbsoluteInebriation-A.DMS", "VD-AbsoluteInebriation-B.DMS"]
-note = "the sweep saw works-then-crash on a500; no entry of it passed the gate"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.212656]
 title = "Absolutly First Demo"
@@ -2250,7 +2249,7 @@ machine = "a1200"
 title = "AGA Point of Sale"
 group = "Digital"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.218872]
 title = "AGA Shade Bobs"
@@ -2268,7 +2267,7 @@ machine = "a1200"
 title = "Aga-ta"
 group = "Ozone"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.306477]
 title = "Again A New Crack"
@@ -2391,7 +2390,8 @@ machine = "a1200_fast"
 title = "Air Combat"
 group = "Micro / Phlaton"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
+run = "AirCombat"
 
 [demozoo.259334]
 title = "Airball - Trainer Intro"
@@ -2428,8 +2428,9 @@ machine = "a1200"
 title = "Akira"
 group = "Balance"
 source = "script"
+boot = "floppy"
 result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+note = "the sweep saw works on a500_ks12_512k; no entry of it passed the gate"
 
 [demozoo.212064]
 title = "Alarm"
@@ -2505,7 +2506,7 @@ result = "unknown"
 title = "Alice..."
 group = "Flum"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.158]
 title = "Alien"
@@ -2921,7 +2922,7 @@ machine = "a1200"
 title = "Always"
 group = "Neoplasia"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.194092]
 title = "Always Ultra Micro"
@@ -3128,7 +3129,8 @@ source = "script"
 title = "Amiga Demo Disk 2 Intro"
 group = "The Web Inc."
 source = "script"
-result = "unknown"
+machine = "a500_ks12_512k"
+boot = "floppy"
 
 [demozoo.224810]
 title = "Amiga Disk 4 Intro"
@@ -3267,7 +3269,9 @@ run = "Karate"
 title = "Amiga Rules"
 group = "Amiga Circle"
 source = "script"
+boot = "floppy"
 result = "unknown"
+note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
 
 [demozoo.85898]
 title = "Amiga Rules"
@@ -3791,8 +3795,7 @@ source = "script"
 title = "Anger Is A Gift"
 group = "Kiki Productions"
 source = "script"
-result = "unknown"
-run = "LRJHTKPEK.exe"
+machine = "a1200_fast"
 
 [demozoo.104383]
 title = "Angry"
@@ -3835,7 +3838,6 @@ source = "script"
 title = "Animation"
 group = "The Electric Touch"
 source = "script"
-result = "unknown"
 
 [demozoo.199089]
 title = "Animation Demo"
@@ -3853,7 +3855,7 @@ source = "script"
 title = "Animator"
 group = "Syntex"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.2385]
 title = "Animotion"
@@ -3876,7 +3878,7 @@ source = "script"
 title = "Ankh in Popland"
 group = "Kefrens"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.70676]
 title = "Annaliza"
@@ -4345,8 +4347,6 @@ source = "script"
 title = "Another Crack Intro"
 group = "Genesis Project"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500_ks12; no entry of it passed the gate"
 
 [demozoo.294085]
 title = "Another Creamy Load"
@@ -4859,7 +4859,6 @@ source = "script"
 title = "Another Hot Release"
 group = "R-Soft"
 source = "script"
-result = "unknown"
 
 [demozoo.224998]
 title = "Another Hot Spreading"
@@ -5827,7 +5826,8 @@ source = "script"
 title = "Anti PC"
 group = "Lord / Unreal / Crimson Jihad"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
+run = "QrvaStart"
 
 [demozoo.223499]
 title = "Anti Plexus"
@@ -6342,12 +6342,14 @@ title = "Aroma Color"
 group = "Cirion"
 source = "script"
 result = "unknown"
+run = "start"
+note = "the sweep saw works on a1200_030; no entry of it passed the gate"
 
 [demozoo.39951]
 title = "Around"
 group = "Joker"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.300622]
 title = "Around The Clock"
@@ -6576,7 +6578,7 @@ machine = "a1200"
 title = "Ascii Junkie"
 group = "Juice"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.215505]
 title = "ASCII Mania"
@@ -6588,8 +6590,8 @@ machine = "a1200"
 title = "Ascii Sector"
 group = "Sector 5"
 source = "script"
-result = "unknown"
-run = "LE-window6.12"
+machine = "a1200"
+run = "aSCI!sECT0R.exe"
 
 [demozoo.257731]
 title = "Ascii Sector"
@@ -6606,7 +6608,7 @@ source = "script"
 title = "Ascii/Ansi Collection #01 - Intro"
 group = "Guess Design"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.268867]
 title = "Asimov Intro"
@@ -6946,7 +6948,7 @@ machine = "a1200"
 title = "Atmosphere"
 group = "Joker"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.33598]
 title = "Atmosphere"
@@ -7000,8 +7002,8 @@ source = "script"
 title = "Atome"
 group = "Skarla"
 source = "script"
-result = "unknown"
-run = "BestRequest.EXE"
+machine = "a1200_fast"
+run = "Atome.exe"
 
 [demozoo.269945]
 title = "Atomic Pixels"
@@ -7113,7 +7115,6 @@ result = "unknown"
 title = "Auschwitz 10 - menu"
 group = "Bronx"
 source = "script"
-result = "unknown"
 
 [demozoo.268133]
 title = "Auschwitz 12 Menu"
@@ -7134,7 +7135,7 @@ source = "script"
 title = "Auschwitz BBS Intro"
 group = "Celtics"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.190171]
 title = "Australia Born"

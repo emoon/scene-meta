@@ -84,7 +84,7 @@ source = "script"
 title = "Jaki Tytul?"
 group = "The Crow Team"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.44829]
 title = "Jam"
@@ -297,8 +297,7 @@ machine = "a1200_030"
 title = "Jergen Puckel"
 group = "CP-Dezajn"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+machine = "a500_ks12"
 
 [demozoo.214320]
 title = "Jerry the Jolly Giraffe"
@@ -375,7 +374,7 @@ machine = "a1200"
 title = "JFK"
 group = "EMS Design"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.233826]
 title = "Jim Power - Preview"
@@ -667,7 +666,7 @@ machine = "a1200"
 title = "jOnboCken"
 group = "Candle"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.179632]
 title = "Jones For President"
@@ -1402,8 +1401,8 @@ machine = "a1200"
 title = "Just4fun"
 group = "Effect"
 source = "script"
-result = "unknown"
-run = "LE-window6.12"
+machine = "a1200"
+run = "j4f.exe"
 
 [demozoo.1938]
 title = "Justice"
@@ -1424,7 +1423,7 @@ source = "script"
 title = "Juttu"
 group = "Keso"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.136017]
 title = "Juusto"

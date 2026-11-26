@@ -17,8 +17,8 @@ source = "script"
 title = "T.I.L.T."
 group = "Fun Factory"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+machine = "a1200"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.224462]
 title = "T.P.B. Video Slate BBS"
@@ -254,7 +254,7 @@ source = "script"
 title = "Tasiemiec"
 group = "Floppy"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.92997]
 title = "Taste Of A New Generation"
@@ -754,8 +754,8 @@ machine = "a1200_060"
 title = "Ten Years Of Fun"
 group = "Equinox"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a1200_030; no entry of it passed the gate"
+machine = "a1200_fast"
+boot = "floppy"
 
 [demozoo.28545]
 title = "Tenebra"
@@ -887,8 +887,8 @@ machine = "a500_1mb"
 title = "Terror Pack Mag Preview"
 group = "Infect"
 source = "script"
-result = "unknown"
-run = "fastview"
+machine = "a1200"
+run = "TeRRorPreview"
 
 [demozoo.255644]
 title = "Terror Star"
@@ -1517,6 +1517,7 @@ title = "The Bitch is Hot"
 group = "Creators"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.310315]
 title = "The Bitmap Rasters"
@@ -1621,7 +1622,7 @@ source = "script"
 title = "The Castle"
 group = "Loonies"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 run = "lns-thecastle.exe"
 
 [demozoo.113]
@@ -2439,7 +2440,7 @@ title = "The Gate"
 group = "Artwork"
 source = "script"
 result = "unknown"
-note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
+note = "the sweep saw works-then-crash on a1200_fast; no entry of it passed the gate"
 
 [demozoo.219754]
 title = "The Gate Keeper Demo"
@@ -2501,7 +2502,7 @@ machine = "a1200_fast"
 title = "The Glitch"
 group = "Broken Cube"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 run = "TheGlitch_nopack"
 
 [demozoo.214330]
@@ -2565,7 +2566,7 @@ source = "script"
 title = "The Guilty Ones"
 group = "Diffusion"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.190942]
 title = "The Guy's Demo"
@@ -2694,8 +2695,7 @@ machine = "a1200_fast"
 title = "The Hunt For 7th October"
 group = "Cryptoburners"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+machine = "a1200_fast"
 
 [demozoo.228599]
 title = "The Hunt For Bussemennene"
@@ -2900,7 +2900,7 @@ machine = "a1200"
 title = "The Larch"
 group = "Mystic"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.145269]
 title = "The Last A500"
@@ -2932,7 +2932,7 @@ source = "script"
 title = "The Last Inline"
 group = "Capsule"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 run = "TheLastInline"
 
 [demozoo.204420]
@@ -3070,13 +3070,13 @@ source = "script"
 title = "The Lodge AGA Experience v1.0b"
 group = "The Black Lodge"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.225093]
 title = "The Lodge AGA Experience v1.1"
 group = "The Black Lodge"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.225059]
 title = "The Lonesome Coder"
@@ -3620,6 +3620,7 @@ title = "The Party Massacre"
 group = "The Lynx Crew"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.230406]
 title = "The Party Zone Intro"
@@ -3760,7 +3761,7 @@ run = "The-ProXima"
 title = "The Pub BBS Adtro"
 group = "Sceptic"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.257503]
 title = "The Pub BBS Advert"
@@ -4269,7 +4270,7 @@ source = "script"
 title = "The Squirt"
 group = "3 Amigos"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 
 [demozoo.195729]
 title = "The SRU"
@@ -4332,8 +4333,8 @@ machine = "a1200"
 title = "The Sunrise"
 group = "Anadune"
 source = "script"
-result = "unknown"
-run = "LE-window6.12"
+machine = "a1200_fast"
+run = "The_SunRise_And_demo.exe"
 
 [demozoo.218459]
 title = "The Swaptro"
@@ -4444,7 +4445,7 @@ title = "The Tower BBS"
 group = "Skid Row"
 source = "script"
 result = "unknown"
-note = "the sweep saw works on a500_512k; no entry of it passed the gate"
+note = "the sweep saw works on a500_1mb; no entry of it passed the gate"
 
 [demozoo.261851]
 title = "The Trader 2 Intro"
@@ -4460,8 +4461,8 @@ source = "script"
 title = "The Tree Amigas"
 group = "dumle"
 source = "script"
-result = "unknown"
-run = "LE-window6.12"
+machine = "a1200_fast"
+run = "TTA.exe"
 
 [demozoo.249702]
 title = "The Trip"
@@ -4676,7 +4677,7 @@ source = "script"
 title = "The Wall BBS"
 group = "Darkness"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 
 [demozoo.215839]
 title = "The Wall Demo"
@@ -4749,7 +4750,7 @@ source = "script"
 title = "The We-Were-Present-At-CebIT-Intro"
 group = "Anti Airwolf Crew"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.253521]
 title = "The Wee"
@@ -5022,7 +5023,7 @@ source = "script"
 title = "They"
 group = "ITB"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.5358]
 title = "They Are Here"
@@ -5119,7 +5120,8 @@ source = "script"
 title = "Third Part"
 group = "Sekhmet"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
+run = "ThirdPart"
 
 [demozoo.249127]
 title = "Thirty Balls"
@@ -5151,7 +5153,7 @@ title = "This File Passed Rising Hope BBS"
 group = "Warriors of Art"
 source = "script"
 result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+note = "the sweep saw works-then-crash on a500; no entry of it passed the gate"
 
 [demozoo.223461]
 title = "This Import"
@@ -5357,7 +5359,7 @@ source = "script"
 title = "Thud"
 group = "Madwizards"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.8665]
 title = "Thud Remix"
@@ -5725,16 +5727,11 @@ source = "script"
 title = "Tiny Squares"
 group = "gigabates"
 source = "script"
-result = "unknown"
-disks = ["._tiny-squares.adf"]
 
 [demozoo.367696]
 title = "Tiny Triangles"
 group = "gigabates"
 source = "script"
-boot = "hd"
-result = "unknown"
-note = "the sweep saw works on a500_512k; no entry of it passed the gate"
 
 [demozoo.195136]
 title = "Tiny Tunes 2"
@@ -5805,8 +5802,8 @@ source = "script"
 title = "TLU-4K"
 group = "Tulou"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
+machine = "a1200_fast"
+events = [{ at = 90.0, key = "lmb" }]
 
 [demozoo.142975]
 title = "TMC is jarig"
@@ -5969,7 +5966,8 @@ source = "script"
 title = "Tommy og Toern"
 group = "Paramount Productions"
 source = "script"
-result = "unknown"
+machine = "a1200"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.229223]
 title = "Tommyknockers Norway Born"
@@ -6184,7 +6182,7 @@ machine = "a1200_fast"
 title = "Torskfloppen"
 group = "Spaceballs"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.308361]
 title = "Torture"
@@ -6628,6 +6626,7 @@ title = "Tradomania March 1992"
 group = "Tron / Wayne Mendoza / Phase / Magic Fly / Chaze"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.215267]
 title = "Tradomania Mini"
@@ -6898,8 +6897,8 @@ machine = "a1200"
 title = "Trash"
 group = "Pas Maters"
 source = "script"
-result = "unknown"
-run = "_negerkuß!!.exe"
+machine = "a1200"
+run = "Trash.bre"
 
 [demozoo.70661]
 title = "Trash"
@@ -6990,7 +6989,7 @@ source = "script"
 title = "Trayanda"
 group = "Skid Row / Dinx Project"
 source = "script"
-result = "unknown"
+machine = "a1200"
 run = "Trayanda.exe"
 
 [demozoo.183873]
@@ -7325,6 +7324,7 @@ title = "Trondheim Party Demo"
 group = "The Giants"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
 
 [demozoo.151283]
 title = "Tronic"
@@ -7570,7 +7570,7 @@ machine = "a1200"
 title = "Tun"
 group = "Apathy"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.144316]
 title = "Tune"
@@ -7667,7 +7667,8 @@ source = "script"
 title = "Turbo Tronic"
 group = "Instinct"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
+events = [{ at = 30.0, key = "return" }]
 
 [demozoo.208706]
 title = "Turbo's Intro"
@@ -7867,8 +7868,8 @@ source = "script"
 title = "Twiggy64"
 group = "Pas Maters"
 source = "script"
-result = "unknown"
-run = "_negerkuß!!.exe"
+machine = "a1200"
+run = "tWiggY64.bre"
 
 [demozoo.36162]
 title = "TwiggyXL"
@@ -7973,8 +7974,8 @@ source = "script"
 title = "Twitch"
 group = "Vegas"
 source = "script"
-result = "unknown"
-run = "!Twitch.exe"
+machine = "a1200"
+run = "ABC"
 
 [demozoo.151371]
 title = "Twix"

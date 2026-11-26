@@ -79,8 +79,8 @@ source = "script"
 title = "I Moan"
 group = "Dual Crew Shining"
 source = "script"
-result = "unknown"
-run = "x-pLICT.exe"
+machine = "a1200"
+run = "dcs-Moan.exe"
 
 [demozoo.215383]
 title = "I Must Be Crazy"
@@ -208,6 +208,7 @@ title = "Icarus Joined"
 group = "Alliance"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.88605]
 title = "Ice"
@@ -428,7 +429,6 @@ machine = "a500_1mb"
 title = "Illusion Demo"
 group = "Resolution 101"
 source = "script"
-result = "unknown"
 
 [demozoo.260573]
 title = "Illusion Pictures"
@@ -566,7 +566,7 @@ machine = "a1200"
 title = "Implosion"
 group = "Balance"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.247687]
 title = "Import"
@@ -707,7 +707,7 @@ source = "script"
 title = "Impossible"
 group = "Loonies"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 
 [demozoo.61605]
 title = "Impossible Cube"
@@ -746,7 +746,8 @@ source = "script"
 title = "Impossible Possibility"
 group = "Mystic"
 source = "script"
-result = "unknown"
+machine = "a1200"
+run = "Impossible"
 
 [demozoo.283498]
 title = "Impossible Scrolls"
@@ -793,8 +794,8 @@ events = [{ at = 72.5, disk = 2 }]
 title = "Impulse 3.09"
 group = "Tilt"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a1200; no entry of it passed the gate"
+machine = "a1200_fast"
+boot = "floppy"
 
 [demozoo.177757]
 title = "Impulse Preview"
@@ -868,7 +869,7 @@ group = "KYO Corp"
 source = "script"
 result = "unknown"
 run = "IMoZX.eXe"
-note = "the sweep saw works-then-crash on a1200; no entry of it passed the gate"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.314014]
 title = "In Memory Of Maf"
@@ -1004,7 +1005,7 @@ source = "script"
 title = "Incision"
 group = "Exploder"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 
 [demozoo.277973]
 title = "Incommunicable"
@@ -1096,8 +1097,8 @@ source = "script"
 title = "Industrial"
 group = "Whelpz"
 source = "script"
-result = "unknown"
-run = "OTLUE2Z61.exe"
+machine = "a1200_fast"
+run = "Industrial.exe"
 
 [demozoo.171895]
 title = "Industrial Fudge - The Director's Cut"
@@ -1109,14 +1110,13 @@ machine = "a1200"
 title = "Indvielsen"
 group = "Polka Brothers"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.21849]
 title = "Ines"
 group = "Faque"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a1200; no entry of it passed the gate"
+machine = "a1200_fast"
 
 [demozoo.220770]
 title = "Inf-Tro"
@@ -1746,7 +1746,7 @@ source = "script"
 title = "Inter$+ellarTeknoBrain"
 group = "The Bullshit Artists"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 
 [demozoo.208005]
 title = "Interactive BBS intro"
@@ -2229,7 +2229,6 @@ source = "script"
 title = "Intro"
 group = "Trax Production"
 source = "script"
-result = "unknown"
 
 [demozoo.224911]
 title = "Intro"
@@ -2701,7 +2700,6 @@ source = "script"
 title = "Intro A1"
 group = "Smooth Soft"
 source = "script"
-result = "unknown"
 
 [demozoo.301634]
 title = "Intro A2"
@@ -3142,7 +3140,7 @@ source = "script"
 title = "Introtus"
 group = "Eclipse"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.384971]
 title = "IntroYodel"
@@ -3183,7 +3181,7 @@ source = "script"
 title = "Inv"
 group = "Investation"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.278028]
 title = "Invaders"
@@ -3291,7 +3289,7 @@ title = "IRepoMeiita"
 group = "Harvester"
 source = "script"
 result = "unknown"
-note = "the sweep saw works on a1200_030; no entry of it passed the gate"
+note = "the sweep saw works-then-crash on a1200_030; no entry of it passed the gate"
 
 [demozoo.237017]
 title = "Iris"
@@ -3578,7 +3576,7 @@ source = "script"
 title = "Italian Disco"
 group = "ITB"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.259818]
 title = "Italy Megademo"

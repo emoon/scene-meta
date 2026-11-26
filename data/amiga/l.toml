@@ -18,7 +18,7 @@ source = "script"
 title = "L'Annonce"
 group = "Psykotrope"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.270768]
 title = "L'homme Qui N'aimait Pas Les Réverbères"
@@ -308,8 +308,7 @@ source = "script"
 title = "Lamebomb"
 group = "Lamers"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+machine = "a1200_fast"
 
 [demozoo.215555]
 title = "Lamedemo"
@@ -404,7 +403,7 @@ source = "script"
 title = "Land"
 group = "Sheepity"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.178317]
 title = "Land Beyond Thoughts"
@@ -625,6 +624,7 @@ title = "Last Posthume Demo"
 group = "Papillon"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.224552]
 title = "Last Rites"
@@ -651,7 +651,7 @@ source = "script"
 title = "Lastro"
 group = "Toayen"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.279964]
 title = "Late In The Night"
@@ -898,8 +898,7 @@ run = "dkd-shattered_ks13.exe"
 title = "Laufertro"
 group = "Apex"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+machine = "a1200"
 
 [demozoo.27146]
 title = "Laurent & Anna"
@@ -1520,8 +1519,8 @@ machine = "a1200_fast"
 title = "Life On The Mars"
 group = "The Forcers Team"
 source = "script"
-result = "unknown"
-run = "WHEREFUNROLEZ.EXE"
+machine = "a1200"
+run = "LOTM"
 
 [demozoo.148841]
 title = "Life With A G-String"
@@ -1563,8 +1562,8 @@ machine = "a1200_030"
 title = "Light Army - The Demo"
 group = "Pulse / Nexus"
 source = "script"
-result = "unknown"
-run = "_negerkuß!.exe"
+machine = "a1200_fast"
+run = "NXS-LArmy.exe"
 
 [demozoo.258133]
 title = "Light House BBS"
@@ -2013,7 +2012,7 @@ machine = "a1200"
 title = "Little Fluffy Clouds"
 group = "Maya"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.224656]
 title = "Little Green Teapot"
@@ -2486,7 +2485,7 @@ source = "script"
 title = "Lodge AGA Experience Demo"
 group = "Lodge"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.89241]
 title = "Lofftro"
@@ -2504,8 +2503,8 @@ machine = "a1200_fast"
 title = "Logic"
 group = "Pygmy Projects"
 source = "script"
-result = "unknown"
-run = "logic.exe"
+machine = "a1200_fast"
+run = "runlogic"
 
 [demozoo.307338]
 title = "Logic OS"
@@ -2533,8 +2532,8 @@ boot = "floppy"
 title = "Logo 4K"
 group = "Depth"
 source = "script"
-result = "unknown"
-run = "WHEREFUNROLEZ.EXE"
+machine = "a1200"
+run = "6-dxp4kb.exe"
 
 [demozoo.208119]
 title = "Logo Disk Magazine"
@@ -2594,7 +2593,7 @@ source = "script"
 title = "Long Trip"
 group = "Darkness"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.99237]
 title = "Lonkero"
@@ -3035,7 +3034,7 @@ source = "script"
 title = "LPSTOP"
 group = "mayHem"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.241990]
 title = "LSC Intro 2"
@@ -3094,8 +3093,8 @@ source = "script"
 title = "Luna"
 group = "Frame18"
 source = "script"
-result = "unknown"
-run = "WHEREFUNROLEZ.EXE"
+machine = "a1200"
+run = "luna.exe"
 
 [demozoo.184752]
 title = "Lunar"

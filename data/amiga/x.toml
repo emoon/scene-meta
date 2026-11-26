@@ -343,14 +343,14 @@ source = "script"
 title = "X-movement"
 group = "The Feigling Crew"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.10157]
 title = "X-Orgasm"
 group = "Syndrome"
 source = "script"
-result = "unknown"
-run = "->X-Orgasm<-"
+machine = "a1200"
+run = "X-Orgasm"
 
 [demozoo.237352]
 title = "X-Pack 4 Intro"
@@ -465,7 +465,8 @@ source = "script"
 title = "XIII"
 group = "Oxyron"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
+events = [{ at = 30.0, key = "return" }]
 
 [demozoo.229225]
 title = "Xion Is Back"
@@ -558,7 +559,7 @@ machine = "a1200"
 title = "xmen@p2b"
 group = "X-Men"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.240406]
 title = "Xor Boot v1.1"
@@ -615,7 +616,7 @@ source = "script"
 title = "XXX Video"
 group = "Apathy"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 run = "XXX_Video.exe"
 
 [demozoo.6927]

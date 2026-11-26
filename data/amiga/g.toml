@@ -100,7 +100,7 @@ machine = "a500_1mb"
 title = "GaGyi pro"
 group = "Watt"
 source = "script"
-result = "unknown"
+machine = "a1200"
 run = "GaGyI.eXe"
 
 [demozoo.165381]
@@ -133,7 +133,6 @@ source = "script"
 title = "Galaktyka"
 group = "Marquee Design"
 source = "script"
-result = "unknown"
 
 [demozoo.232752]
 title = "Galaxian Cloud"
@@ -321,13 +320,13 @@ source = "script"
 title = "Gametro 2"
 group = "S2"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.256653]
 title = "Gametro 3"
 group = "S2"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.77354]
 title = "Gamia"
@@ -395,7 +394,7 @@ title = "Garbage Faktory"
 group = "Contraz"
 source = "script"
 result = "unknown"
-note = "the sweep saw works on a1200; no entry of it passed the gate"
+note = "the sweep saw works-then-crash on a1200; no entry of it passed the gate"
 
 [demozoo.217183]
 title = "Garden Party Intro"
@@ -531,8 +530,8 @@ machine = "a1200_fast"
 title = "Gen4 Demo"
 group = "Dragons"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
+machine = "a1200_fast"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.137680]
 title = "Gen4 Demo"
@@ -691,8 +690,8 @@ source = "script"
 title = "Germany in Harmony"
 group = "Infect / Rave Network Overscan"
 source = "script"
-result = "unknown"
-run = "CRYPTVIEW"
+machine = "a1200"
+run = "Germany in Harmony V1.2"
 
 [demozoo.244193]
 title = "Germany Was Born"
@@ -768,7 +767,8 @@ source = "script"
 title = "Get Ready"
 group = "Marquee Design"
 source = "script"
-result = "unknown"
+machine = "a500_ks12"
+boot = "hd"
 
 [demozoo.223975]
 title = "Get Ready For The Fat Man MBR"
@@ -917,7 +917,7 @@ source = "script"
 title = "Gift - Gush 2"
 group = "Potion"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 
 [demozoo.259547]
 title = "Gift of the Gods 1 Menu"
@@ -1612,13 +1612,13 @@ result = "unknown"
 title = "Gore"
 group = "Apathy"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.156021]
 title = "Gore"
 group = "Kiki Productions"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 
 [demozoo.217319]
 title = "Goreback 90"
@@ -1635,7 +1635,6 @@ machine = "a1200"
 title = "Gorski"
 group = "Marquee Design"
 source = "script"
-result = "unknown"
 
 [demozoo.262083]
 title = "Gosh! I Think I Ate My Baby Sister"
@@ -1657,7 +1656,7 @@ machine = "a500_1mb"
 title = "GouraudFace"
 group = "Venus Art"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.19435]
 title = "Govinda"
@@ -2309,8 +2308,8 @@ source = "script"
 title = "Grotesque"
 group = "Venus Art"
 source = "script"
-result = "unknown"
-run = "_negerkuß!!.exe"
+machine = "a1200"
+run = "outofspace.exe"
 
 [demozoo.255992]
 title = "Group Selection Pack"
@@ -2359,14 +2358,14 @@ title = "Grzbiety Rulez Kurwa"
 group = "Vodka People"
 source = "script"
 result = "unknown"
-note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
+note = "the sweep saw works-then-crash on a1200_fast; no entry of it passed the gate"
 
 [demozoo.92780]
 title = "Grzbiety rulez Kurwa!"
 group = "Vodka Projects"
 source = "script"
 result = "unknown"
-note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
+note = "the sweep saw works-then-crash on a1200_fast; no entry of it passed the gate"
 
 [demozoo.227825]
 title = "Grzes Nie Doczekal"
@@ -2460,7 +2459,6 @@ source = "script"
 title = "Guess Who"
 group = "Tronix"
 source = "script"
-result = "unknown"
 
 [demozoo.233405]
 title = "Guest Starring"

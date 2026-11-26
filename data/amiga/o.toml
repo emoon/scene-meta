@@ -8,8 +8,8 @@ machine = "a1200"
 title = "o.k."
 group = "Phace Truce"
 source = "script"
-result = "unknown"
-run = "OTLUE2Z61.exe"
+machine = "a1200_fast"
+run = "O.K.exe"
 
 [demozoo.34783]
 title = "o2"
@@ -50,7 +50,8 @@ machine = "a1200"
 title = "Obeeh Tulo"
 group = "Spedes"
 source = "script"
-result = "unknown"
+machine = "a1200"
+run = "startdemo"
 
 [demozoo.242946]
 title = "Oberheim Power"
@@ -204,7 +205,8 @@ source = "script"
 title = "Odd Gunnar"
 group = "Ephidrena"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
+run = "Odd Gunnar"
 
 [demozoo.223495]
 title = "Odds and Ends"
@@ -355,7 +357,7 @@ source = "script"
 title = "OffShore #1"
 group = "Apathy"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.151502]
 title = "Offworld 1 Intro"
@@ -399,7 +401,7 @@ source = "script"
 title = "Oh No, More Plastic"
 group = "Toayen"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.252532]
 title = "Oh Valentine"
@@ -704,8 +706,8 @@ source = "script"
 title = "On The Knees!"
 group = "Venus Art"
 source = "script"
-result = "unknown"
-run = "LE-window6.12"
+machine = "a1200"
+run = "NOT_SELECTED.Massive"
 
 [demozoo.27965]
 title = "On The Rush"
@@ -993,7 +995,7 @@ source = "script"
 title = "Ooh! It's Obscene II"
 group = "Anarchy"
 source = "script"
-result = "unknown"
+machine = "a500_512k"
 
 [demozoo.234245]
 title = "Ooh! It's Obscene III"
@@ -1022,7 +1024,7 @@ source = "script"
 title = "Oops!"
 group = "Venus Art / Appendix"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.246611]
 title = "Oops!"
@@ -1289,13 +1291,13 @@ source = "script"
 title = "Orneta"
 group = "Vodka Design"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.265149]
 title = "Orneta"
 group = "Vodka People"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.209925]
 title = "Orthodox Meditation"
@@ -1306,8 +1308,8 @@ source = "script"
 title = "Osnisty Fraktal"
 group = "Domel"
 source = "script"
-result = "unknown"
-run = "WHEREFUNROLEZ.EXE"
+machine = "a1200"
+run = "6-dxp4kb.exe"
 
 [demozoo.228637]
 title = "Osnisty Fraktal"
@@ -1348,8 +1350,8 @@ source = "script"
 title = "Oubliette"
 group = "Venus Art"
 source = "script"
-result = "unknown"
-run = "OTLUE2Z61.exe"
+machine = "a1200_fast"
+run = "Oubliette.executable"
 
 [demozoo.89446]
 title = "Our 2nd Intro"
@@ -1521,8 +1523,8 @@ machine = "a1200"
 title = "Out of Space"
 group = "Whelpz"
 source = "script"
-result = "unknown"
-run = "_negerkuß!!.exe"
+machine = "a1200"
+run = "outofspace.exe"
 
 [demozoo.33437]
 title = "Out Of Spice"
@@ -1810,7 +1812,7 @@ source = "script"
 title = "Ozone Cracktro"
 group = "Ozone"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.70700]
 title = "Ozone Friendly"

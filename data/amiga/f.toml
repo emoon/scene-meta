@@ -111,7 +111,7 @@ source = "script"
 title = "Face"
 group = "Joker"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.262581]
 title = "Face Intro"
@@ -659,8 +659,8 @@ source = "script"
 title = "Fast Forward"
 group = "Chrome"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+machine = "a1200"
+run = "FastForward"
 
 [demozoo.102084]
 title = "Fast Import Intro"
@@ -750,7 +750,6 @@ machine = "a1200"
 title = "Fast Trading"
 group = "Frequenz"
 source = "script"
-result = "unknown"
 
 [demozoo.223979]
 title = "Fast-Demo"
@@ -908,7 +907,7 @@ machine = "a1200"
 title = "Fates"
 group = "Zor"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.236500]
 title = "Fatma 2001"
@@ -1056,7 +1055,7 @@ source = "script"
 title = "Feiglight -Summer Garden BBS Info-"
 group = "The Feigling Crew"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.262504]
 title = "Feinbein Joined"
@@ -1124,7 +1123,7 @@ source = "script"
 title = "Fetish"
 group = "Ozone"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.1069]
 title = "Fetish 2"
@@ -1214,7 +1213,7 @@ source = "script"
 title = "Figure Four"
 group = "Nature"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 run = "Nature-FigureFour.nonpal"
 
 [demozoo.256980]
@@ -1598,7 +1597,7 @@ source = "script"
 title = "FireWorks"
 group = "NewWave"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.234517]
 title = "Fireworks Intro 2"
@@ -1866,6 +1865,7 @@ title = "First by Whopper"
 group = "Prologic"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.236502]
 title = "First Cascade Denmark"
@@ -2512,7 +2512,7 @@ machine = "a1200"
 title = "First Digi Slideshow Intro"
 group = "The Amiga Gang"
 source = "script"
-result = "unknown"
+machine = "a500_ks12_512k"
 
 [demozoo.133262]
 title = "First Encounter"
@@ -2828,7 +2828,7 @@ source = "script"
 title = "First Intro"
 group = "Texmac"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.223905]
 title = "First Intro"
@@ -3008,8 +3008,8 @@ source = "script"
 title = "First Intro"
 group = "Cosmic Pirates"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a1200; no entry of it passed the gate"
+machine = "a1200"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.237890]
 title = "First Intro"
@@ -3398,8 +3398,7 @@ source = "script"
 title = "First Realisation"
 group = "Nihondreamers"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500_1mb; no entry of it passed the gate"
+machine = "a1200_fast"
 
 [demozoo.60334]
 title = "First Release"
@@ -3686,7 +3685,7 @@ machine = "a1200"
 title = "FlaminDC"
 group = "Digital Corruption"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.233393]
 title = "Flaschbier Demo"
@@ -4005,8 +4004,8 @@ run = "dCS-fLop.exe"
 title = "Flop hidden part"
 group = "Dual Crew Shining"
 source = "script"
-result = "unknown"
-run = "_negerkuß!!.exe"
+machine = "a1200"
+run = "flop_hp.exe"
 
 [demozoo.137722]
 title = "Floppy"
@@ -4079,6 +4078,7 @@ group = "Drifters"
 source = "script"
 result = "unknown"
 disks = ["dft-flf1.dms", "dft-flf2.dms", "dft-flf3.dms"]
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.246953]
 title = "Flowers"
@@ -4247,6 +4247,7 @@ title = "Fnyrpla One"
 group = "Sirius Cybernetics Corp."
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.40932]
 title = "Foam"
@@ -4484,7 +4485,8 @@ source = "script"
 title = "Foundation"
 group = "Anadune"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
+run = "HD.loader"
 
 [demozoo.241849]
 title = "Foundation Gold"
@@ -5103,7 +5105,7 @@ machine = "a1200_fast"
 title = "Friends"
 group = "Ward"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.247708]
 title = "Friends"
@@ -5171,7 +5173,7 @@ source = "script"
 title = "Frog Intro"
 group = "Level Four"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.228878]
 title = "Frog's 3rd Intro"
@@ -5231,7 +5233,7 @@ source = "script"
 title = "Frontiers of Chaos"
 group = "Dark Millenium"
 source = "script"
-result = "unknown"
+machine = "a500_512k"
 
 [demozoo.209231]
 title = "Frontline Intro"
