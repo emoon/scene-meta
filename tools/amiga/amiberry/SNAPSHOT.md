@@ -259,8 +259,11 @@ its `USE_*` feature off, so removing it breaks the build.
     it never processes `--dbg` commands: the emulation just free-runs in real
     time. `m68k_run_2p` also carries the gate (harmless; kept for any
     compatible-tier config), and so does `m68k_run_2_020` — the 68040/68060
-    fast tier the `a1200_060` machine (68060 + `cpu_speed=max`, no
-    cycle-exact) selects. Plus the `cpu_halt` event and the `cpureset()`
+    fast tier. When JIT is enabled (`cachesize > 0`), `m68k_run()` selects the
+    interpreter whenever `dbgproto_instr_gate` is armed (initial `--dbg`
+    bootstrap, `trace`, `bp`, `watch`) and `update_instr_gate()` signals
+    `SPCFLAG_MODE_CHANGE` so execution switches cleanly into `m68k_run_jit`
+    once the gate clears. Plus the `cpu_halt` event and the `cpureset()`
     reboot count (above).
   - `src/osdep/amiberry.cpp` — non-zero process exit code after a mid-batch
     halt; plus the Esc-to-quit dev convenience (below).

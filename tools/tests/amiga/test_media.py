@@ -171,6 +171,21 @@ class PickExeTest(unittest.TestCase):
         d = self.tree({"helper.exe": EXE * 4, "64k/3/O.K.exe": EXE})
         self.assertEqual(media._pick_exe(d, "o.k.")[0].name, "O.K.exe")
 
+    def test_deprioritizes_numbered_subpart_exes_but_keeps_cpu_suffixes(self):
+        # Captured Dreams (40): tbl-cd.exe (launcher) beats tbl-cd.e03 (part).
+        d = self.tree({"tbl-cd.exe": EXE, "tbl-cd.e03": EXE * 10})
+        self.assertEqual(media._pick_exe(d, "Captured Dreams")[0].name,
+                         "tbl-cd.exe")
+        # CPU suffixes (.060) are NOT demoted.
+        d_cpu = self.tree({"demo.060": EXE * 4, "helper.exe": EXE})
+        self.assertEqual(media._pick_exe(d_cpu, "demo")[0].name, "demo.060")
+
+    def test_launch_script_ignores_doc_files(self):
+        # Luminagia.readme mentions Luminagia on its own line; must not run it.
+        d = self.tree({"Luminagia": EXE,
+                       "Luminagia.readme": b"Luminagia - a demo by ...\n"})
+        self.assertIsNone(media._launch_script(d, "Luminagia"))
+
     def test_join_split_parts(self):
         d = self.tree({"ht-stag.lzx.001": b"ab", "ht-stag.lzx.002": b"cd",
                        "EM.1": b"x", "em.2": b"y", "keep.1": b"k"})

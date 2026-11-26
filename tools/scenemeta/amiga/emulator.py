@@ -100,7 +100,14 @@ FPU_ON_EXE = bytes.fromhex(
     "000003f2")
 
 
-def _uae_config(machine, variant, tmp, drives=1, seed=DEFAULT_SEED):
+def _use_wb_boot(machine):
+    """True when ``machine`` boots hard drives from the standard Workbench
+    boot partition (``config.A1200_BOOT``)."""
+    return machine.wb_boot and config.A1200_BOOT.is_dir()
+
+
+def _uae_config(machine, variant, tmp, drives=1, seed=DEFAULT_SEED,
+                assign=()):
     """The .uae text and the swap list. With ``drives`` > 1 the first disks
     of a set sit in DF0..DF<drives-1> from boot, as on a multi-drive Amiga."""
     lines = [machines.uae_text(machine),
@@ -129,13 +136,20 @@ def _uae_config(machine, variant, tmp, drives=1, seed=DEFAULT_SEED):
     if variant.kind == "hd":
         root = tmp / "hd"
         shutil.copytree(variant.root, root, symlinks=False)
-        if variant.command is not None:
-            command = variant.command
-            if machine.fpu_off:
-                (root / FPU_ON).write_bytes(FPU_ON_EXE)
-                command = f"{FPU_ON}\n{command}"
-            workbench.prepare(root, command, all_libs=True)
-        lines.append(f"filesystem2=rw,DH0:Demo:{root},0\n")
+        if _use_wb_boot(machine):
+            sys_root = tmp / "sys"
+            workbench.prepare_wb_boot(sys_root, variant.command,
+                                      assigns=assign)
+            lines.append(f"filesystem2=ro,DH0:System:{sys_root},0\n")
+            lines.append(f"filesystem2=rw,DH1:Demo:{root},-1\n")
+        else:
+            if variant.command is not None:
+                command = workbench.assign_lines(assign) + variant.command
+                if machine.fpu_off:
+                    (root / FPU_ON).write_bytes(FPU_ON_EXE)
+                    command = f"{FPU_ON}\n{command}"
+                workbench.prepare(root, command, all_libs=True)
+            lines.append(f"filesystem2=rw,DH0:Demo:{root},0\n")
     return "".join(lines), swaps
 
 
@@ -160,14 +174,21 @@ def _bare(machine, kind):
     ROM and memory layout, so measured once by booting it. The boot media
     matter: with Z3 fast RAM, KS3.0 puts ExecBase $20 higher when the hard
     drive is mounted."""
-    key = (machine.name, kind == "hd")
+    wb = kind == "hd" and _use_wb_boot(machine)
+    key = (machine.name, kind == "hd", wb)
     if key not in _bare_cache:
         with tempfile.TemporaryDirectory(prefix="scenemeta-eb-") as t:
             tmp = pathlib.Path(t)
             media = "nr_floppies=1\n"
             if kind == "hd":
                 (tmp / "hd").mkdir()
-                media = f"nr_floppies=0\nfilesystem2=rw,DH0:Demo:{tmp / 'hd'},0\n"
+                if wb:
+                    (tmp / "sys").mkdir()
+                    media = (f"nr_floppies=0\n"
+                             f"filesystem2=ro,DH0:System:{tmp / 'sys'},0\n"
+                             f"filesystem2=rw,DH1:Demo:{tmp / 'hd'},-1\n")
+                else:
+                    media = f"nr_floppies=0\nfilesystem2=rw,DH0:Demo:{tmp / 'hd'},0\n"
             cfg = tmp / "machine.uae"
             cfg.write_text(machines.uae_text(machine)
                            + f"kickstart_rom_file={machines.rom_path(machine)}\n"
@@ -253,6 +274,7 @@ class Options:
     keep: pathlib.Path = None
     keep_permille: int = 20
     area: bool = False
+    assign: tuple = ()
 
     @property
     def detects(self):
@@ -273,7 +295,7 @@ def run(machine, variant, frames, opts=Options(), interval=250, timeout=None):
     with tempfile.TemporaryDirectory(prefix="scenemeta-") as t:
         tmp = pathlib.Path(t)
         text, swaps = _uae_config(machine, variant, tmp, opts.drives,
-                                  opts.seed)
+                                  opts.seed, opts.assign)
         cfg = tmp / "machine.uae"
         cfg.write_text(text)
         shots = tmp / "shots"

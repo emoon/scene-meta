@@ -53,6 +53,23 @@ chipmem_size=4
 bogomem_size=0
 """
 
+# Under warp mode with cpu_speed=max, unlimited warp sets vsynctimebase=1
+# (starving the end-of-frame JIT slice); warp_limit=200 caps warp to 200 Hz
+# (5 ms/frame = 4x realtime) so each frame still gets a full JIT slice.
+_JIT = """\
+cachesize=8192
+comp_trustbyte=direct
+comp_trustword=direct
+comp_trustlong=direct
+comp_trustnaddr=direct
+comp_nf=true
+comp_constjump=true
+comp_flushmode=soft
+compfpu=true
+fpu_strict=true
+warp_limit=200
+"""
+
 
 @dataclasses.dataclass(frozen=True)
 class Machine:
@@ -69,6 +86,10 @@ class Machine:
     # Only tried for productions released after the A1200 came out (see
     # ladder_for): a demo older than that works on a slower rung or on none.
     aga_era: bool = False
+    # Mount the standard A1200 Workbench boot partition (config.A1200_BOOT)
+    # on hard-drive boots when present (SetPatch, 68060.library, DataTypes,
+    # standard WB libraries and C: commands).
+    wb_boot: bool = False
 
     @property
     def fast_ram(self):
@@ -122,8 +143,9 @@ LADDER = (
             aga_era=True),
     Machine("a1200_060", "kick30.rom",
             "cpu_type=68060\ncpu_model=68060\nfpu_model=68060\ncpu_speed=max\n"
-            + _FAST_CPU + "z3mem_size=64\n",
-            True, "A1200 68060, AGA, KS3.0, 2M chip + 64M fast", fpu_off=True, aga_era=True),
+            + _FAST_CPU + _JIT + "z3mem_size=64\n",
+            True, "A1200 68060, AGA, KS3.0, 2M chip + 64M fast",
+            fpu_off=True, aga_era=True, wb_boot=True),
 )
 
 BY_NAME = {m.name: m for m in LADDER}

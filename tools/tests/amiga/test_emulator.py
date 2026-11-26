@@ -90,29 +90,51 @@ class UaeConfigTest(unittest.TestCase):
 
 
 class HdConfigTest(unittest.TestCase):
-    def startup(self, machine):
+    def startup(self, machine, boot_dir=None, assign=()):
         with tempfile.TemporaryDirectory() as t:
             tree, tmp = pathlib.Path(t) / "tree", pathlib.Path(t) / "run"
             tree.mkdir()
             tmp.mkdir()
             (tree / "demo").write_bytes(b"\0\0\3\xf3")
             v = media.Variant("hd", [], root=str(tree), command='"demo"\n')
-            emulator._uae_config(machines.BY_NAME[machine], v, tmp)
+            boot = pathlib.Path(t) / "no-boot" if boot_dir is None else boot_dir
+            with mock.patch.object(emulator.config, "A1200_BOOT", boot):
+                cfg, _ = emulator._uae_config(
+                    machines.BY_NAME[machine], v, tmp, assign=assign)
             tool = tmp / "hd" / emulator.FPU_ON
-            return ((tmp / "hd" / "s" / "startup-sequence").read_text(),
-                    tool.read_bytes() if tool.exists() else None)
+            ss = (tmp / "sys" / "S" / "Startup-Sequence"
+                  if (tmp / "sys").exists()
+                  else tmp / "hd" / "s" / "startup-sequence")
+            return (ss.read_text(),
+                    tool.read_bytes() if tool.exists() else None,
+                    cfg)
 
-    def test_060_switches_its_fpu_on_before_the_demo(self):
-        # Step By Step, Metatag Lock: FPU code Gurus 8000000B on a 060 whose
-        # FPU is still off (no 68060.library).
-        text, tool = self.startup("a1200_060")
+    def test_060_without_wb_boot_switches_its_fpu_on_before_the_demo(self):
+        # Fallback when a1200.boot is not present: FPU code Gurus 8000000B
+        # without 68060.library unless r2-fpu-on clears PCR.DFP.
+        text, tool, _ = self.startup("a1200_060")
         self.assertEqual(text, f'{workbench.SETUP}\n{emulator.FPU_ON}\n"demo"\n')
         self.assertEqual(tool[:4], b"\0\0\3\xf3")
         self.assertEqual(len(tool) % 4, 0)
 
-    def test_other_machines_skip_the_fpu_tool(self):
-        text, tool = self.startup("a1200_030")
-        self.assertEqual((text, tool), (f'{workbench.SETUP}\n"demo"\n', None))
+    def test_060_with_wb_boot_mounts_system_and_demo(self):
+        with tempfile.TemporaryDirectory() as b:
+            boot = pathlib.Path(b)
+            (boot / "C").mkdir()
+            (boot / "Libs").mkdir()
+            text, tool, cfg = self.startup(
+                "a1200_060", boot_dir=boot, assign=(("Foo", "Demo:sub"),))
+        self.assertIsNone(tool)
+        self.assertIn("filesystem2=ro,DH0:System:", cfg)
+        self.assertIn("filesystem2=rw,DH1:Demo:", cfg)
+        self.assertIn("C:SetPatch QUIET\n", text)
+        self.assertIn('CD Demo:\nAssign >NIL: Foo: "Demo:sub"\n"demo"\n', text)
+
+    def test_other_machines_skip_the_fpu_tool_and_apply_assign(self):
+        text, tool, _ = self.startup("a1200_030", assign=(("Data", "SYS:"),))
+        self.assertEqual(
+            (text, tool),
+            (f'{workbench.SETUP}\nAssign >NIL: Data: "SYS:"\n"demo"\n', None))
 
 
 class ScriptTest(unittest.TestCase):

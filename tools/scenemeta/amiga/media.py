@@ -26,6 +26,12 @@ ARCHIVE_EXTS = (".zip", ".lha", ".lzh", ".lzx")
 MAX_VARIANTS = 3
 # Extensions of files that are loaded, not started, even with a hunk header.
 _DATA_EXTS = {".dat", ".data", ".bin", ".ovl"}
+# Numbered sub-part executables (tbl-cd.e01..e04, part.p02) and backups:
+# deprioritized below main launchers, never dropped if sole candidate.
+_SUBPART_EXT = re.compile(r"^\.(?:[a-z]\d{2,3}|bak|old)$", re.I)
+# Documentation files that may mention an executable name on a line.
+_DOC_EXTS = {".readme", ".txt", ".nfo", ".diz", ".doc", ".guide", ".man",
+             ".asc", ".ans", ".html", ".htm", ".md"}
 # Directories that hold system files, never the demo's own executable.
 _SYSTEM_DIRS = {"c", "l", "libs", "devs", "fonts", "system", "prefs",
                 "utilities", "tools", "expansion", "storage", "classes"}
@@ -438,7 +444,8 @@ def _pick_exe(tree, title="", run=None):
     # double-clicks), then the biggest.
     cands.sort(key=lambda p: (run not in (p.name, _rel(p, tree)),
                               _is_bbs_ad(p),
-                              p.suffix.lower() in _DATA_EXTS,
+                              p.suffix.lower() in _DATA_EXTS
+                              or bool(_SUBPART_EXT.match(p.suffix)),
                               not _named_after(p.stem, title),
                               len(p.relative_to(tree).parts),
                               not p.with_name(p.name + ".info").exists(),
@@ -612,7 +619,8 @@ def _launch_script(tree, title=""):
     for p in _walk_files(tree):
         rel = p.relative_to(tree).parts
         if any(part.lower() in _SYSTEM_DIRS | {"s"} for part in rel[:-1]) \
-                or "install" in p.name.lower() or p.suffix.lower() == ".info":
+                or "install" in p.name.lower() \
+                or p.suffix.lower() in _DOC_EXTS | {".info"}:
             continue
         if not _is_script(p):
             continue
@@ -818,8 +826,11 @@ def fallbacks(v, prod_id, title="", run=None):
     # A floppy set that never got going may be a Workbench disk: run its
     # demo directly instead. A set that still does not may be meant to be
     # installed: run it from one directory holding every disk.
-    out = [] if LAUNCH_NOTE in v.note else \
-        [("floppy", lambda: launch_variant(v.disks, prod_id, run=run))]
+    work = config.WORK / "media" / str(prod_id)
+    out = [] if LAUNCH_NOTE in v.note else [
+        ("floppy", lambda: (
+            (m := launch_variant(v.disks, prod_id, run=run))
+            and flag_ffs(m, work)))]
     if len(v.disks) > 1:
         out.append(("hd", lambda: merged_variant(v.disks, prod_id, title, run)))
     return out

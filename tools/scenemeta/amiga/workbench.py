@@ -240,13 +240,49 @@ def require_libs(libs_dir=None):
         raise CannotPlay(f"no {', '.join(missing)} in {libs_dir}")
 
 
+def _is_packer_lib(name):
+    """True for an XPK sub-library (lives in ``LIBS:compressors/``)."""
+    low = name.lower()
+    return low.startswith(PACKER_PREFIX) and low != "xpkmaster.library"
+
+
+def assign_lines(assigns):
+    """AmigaDOS ``Assign`` lines for a mapping or sequence of ``(name, path)``
+    pairs."""
+    if not assigns:
+        return ""
+    items = assigns.items() if isinstance(assigns, dict) else assigns
+    out = []
+    for name, path in items:
+        vol = name.rstrip(":")
+        target = f'"{vol}:"' if " " in vol else f"{vol}:"
+        out.append(f'Assign >NIL: {target} "{path}"\n')
+    return "".join(out)
+
+
+def _iter_libs(libs_dir):
+    """All library files under ``libs_dir`` and its ``compressors/`` subdir."""
+    seen = set()
+    for p in sorted(libs_dir.iterdir()):
+        if p.is_file():
+            seen.add(p.name.lower())
+            yield p
+    comp = _subdir(libs_dir, "compressors")
+    if comp is not None and comp.is_dir():
+        for p in sorted(comp.iterdir()):
+            if p.is_file() and p.name.lower() not in seen:
+                seen.add(p.name.lower())
+                yield p
+
+
 def prepare(root, command, libs_dir=None, all_libs=False):
     """Make ``root`` boot like a Workbench disk into ``command`` (the
     startup-sequence text): the setup program runs first, and libraries
     from ``libs_dir`` the tree does not have go into its libs. When
     ``all_libs`` is True (hard-drive boots), every library in ``libs_dir``
     is copied so packed executables whose library names are compressed still
-    find them."""
+    find them. XPK compressor sub-libraries go into ``libs/compressors/``
+    where ``xpkmaster.library`` opens them."""
     s = _subdir(root, "s")
     if s is None:
         raise CannotPlay("no place for the startup-sequence: the download"
@@ -267,17 +303,88 @@ def prepare(root, command, libs_dir=None, all_libs=False):
     if not libs_dir.is_dir() or libs is None:
         return
     have = {p.name.lower() for p in libs.iterdir()} if libs.is_dir() else set()
-    wanted = ([p for p in libs_dir.iterdir() if p.is_file()] if all_libs
+    comp = _subdir(libs, "compressors") if libs.is_dir() else libs / "compressors"
+    have_comp = ({p.name.lower() for p in comp.iterdir()}
+                 if comp is not None and comp.is_dir() else set())
+    wanted = (list(_iter_libs(libs_dir)) if all_libs
               else _wanted_libs(root, libs_dir))
     for lib in wanted:
-        if lib.name.lower() not in have:
+        if _is_packer_lib(lib.name):
+            if comp is not None and lib.name.lower() not in have_comp:
+                libs.mkdir(exist_ok=True)
+                comp.mkdir(exist_ok=True)
+                shutil.copyfile(lib, comp / lib.name)
+                have_comp.add(lib.name.lower())
+        elif lib.name.lower() not in have:
             libs.mkdir(exist_ok=True)
             shutil.copyfile(lib, libs / lib.name)
+            have.add(lib.name.lower())
+
+
+def prepare_wb_boot(sys_root, command, boot_dir=None, assigns=()):
+    """Build a Workbench boot volume at ``sys_root`` backed by ``boot_dir``
+    (default ``config.A1200_BOOT``), whose ``S/Startup-Sequence`` runs
+    SetPatch (loading 68060.library / enabling FPU and AGA), sets up standard
+    Workbench assigns and DataTypes, adds any ``Demo:`` system dirs and
+    ``assigns``, then ``CD Demo:`` and executes ``command`` (or
+    ``Demo:S/Startup-Sequence`` when ``command`` is None)."""
+    boot_dir = config.A1200_BOOT if boot_dir is None else boot_dir
+    sys_root.mkdir(parents=True, exist_ok=True)
+    for entry in boot_dir.iterdir():
+        if entry.name.lower() == "s":
+            continue
+        os.symlink(entry.resolve(), sys_root / entry.name)
+    s_dst = sys_root / "S"
+    s_dst.mkdir(exist_ok=True)
+    s_src = _subdir(boot_dir, "s")
+    if s_src is not None and s_src.is_dir():
+        for entry in s_src.iterdir():
+            if entry.name.lower() == "startup-sequence":
+                continue
+            os.symlink(entry.resolve(), s_dst / entry.name)
+    if command is None:
+        launch = "If EXISTS Demo:S/Startup-Sequence\n  Execute Demo:S/Startup-Sequence\nEndIf\n"
+    else:
+        body = command
+        if body.startswith(f"{GO_ON}\n"):
+            body = body[len(GO_ON) + 1:]
+        launch = body if body.endswith("\n") else body + "\n"
+    startup = (
+        "FailAt 21\n"
+        "C:SetPatch QUIET\n"
+        "C:MakeDir RAM:T RAM:Clipboards RAM:ENV RAM:ENV/Sys\n"
+        "C:Assign >NIL: ENV: RAM:ENV\n"
+        "C:Assign >NIL: T: RAM:T\n"
+        "C:Assign >NIL: CLIPS: RAM:Clipboards\n"
+        "C:Assign >NIL: REXX: S:\n"
+        "C:Assign >NIL: PRINTERS: DEVS:Printers\n"
+        "C:Assign >NIL: KEYMAPS: DEVS:Keymaps\n"
+        "C:Assign >NIL: LOCALE: SYS:Locale\n"
+        "C:Assign >NIL: PREFS: SYS:Prefs\n"
+        "C:Assign >NIL: LIBS: SYS:Classes ADD\n"
+        "C:AddDataTypes REFRESH QUIET\n"
+        "If EXISTS Demo:Libs\n"
+        "  C:Assign >NIL: LIBS: Demo:Libs ADD\n"
+        "EndIf\n"
+        "If EXISTS Demo:Fonts\n"
+        "  C:Assign >NIL: FONTS: Demo:Fonts ADD\n"
+        "EndIf\n"
+        "If EXISTS Demo:Devs\n"
+        "  C:Assign >NIL: DEVS: Demo:Devs ADD\n"
+        "EndIf\n"
+        "If EXISTS Demo:C\n"
+        "  Path Demo:C ADD\n"
+        "EndIf\n"
+        "CD Demo:\n"
+        + assign_lines(assigns)
+        + launch
+    )
+    (s_dst / "Startup-Sequence").write_text(startup, encoding="latin-1")
 
 
 def _wanted_libs(root, libs_dir):
     """The files of ``libs_dir`` the tree under ``root`` asks for."""
-    avail = [p for p in libs_dir.iterdir() if p.is_file()]
+    avail = list(_iter_libs(libs_dir))
     wanted = {p.name.lower() for p in avail} - ALWAYS_LIBS
     named = set()
     for d, _, files in os.walk(root):

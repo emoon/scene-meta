@@ -354,6 +354,11 @@ class PlayTest(unittest.TestCase):
         self.assertIs(out.log, self.LOG)
         self.assertEqual(out.verdict.verdict, "no-activity")
 
+    def test_assign_is_passed_through_to_emulator(self):
+        entry = {**self.ENTRY, "assign": {"Killer": "SYS:"}}
+        _, run = self.play(entry)
+        self.assertEqual(run.call_args.args[3].assign, (("Killer", "SYS:"),))
+
     def measured(self):
         """The entry played by its Ready, asked for the area."""
         with mock.patch.object(player.media, "variants",

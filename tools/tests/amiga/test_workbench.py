@@ -142,23 +142,55 @@ class WorkbenchTest(unittest.TestCase):
         self.assertEqual(sorted(p.name for p in (root / "libs").iterdir()),
                          ["CrM.library", "mathtrans.library"])
 
-    def test_packer_libs_follow_xpkmaster(self):
+    def test_packer_libs_follow_xpkmaster_into_compressors(self):
         root, libs = self.dir(), self.dir()
         for n in ("xpkmaster.library", "xpkSQSH.library", "asl.library"):
             (libs / n).write_bytes(b"wb")
         (root / "demo").write_bytes(b"xpkmaster.library\0")
         workbench.prepare(root, "demo\n", libs_dir=libs)
         self.assertEqual(sorted(p.name for p in (root / "libs").iterdir()),
-                         ["xpkSQSH.library", "xpkmaster.library"])
+                         ["compressors", "xpkmaster.library"])
+        self.assertEqual(
+            sorted(p.name for p in (root / "libs" / "compressors").iterdir()),
+            ["xpkSQSH.library"])
 
     def test_all_libs_copies_every_library_without_replacing(self):
         root, libs = self.dir(), self.dir()
         (root / "libs").mkdir()
         (root / "libs" / "asl.library").write_bytes(b"own")
-        for n in ("asl.library", "commodities.library", "datatypes.library"):
+        for n in ("asl.library", "commodities.library", "datatypes.library",
+                  "xpkmaster.library", "xpkSHRI.library"):
             (libs / n).write_bytes(b"wb")
         (root / "demo").write_bytes(b"packed binary with no plaintext lib names")
         workbench.prepare(root, "demo\n", libs_dir=libs, all_libs=True)
         self.assertEqual(sorted(p.name for p in (root / "libs").iterdir()),
-                         ["asl.library", "commodities.library", "datatypes.library"])
+                         ["asl.library", "commodities.library", "compressors",
+                          "datatypes.library", "xpkmaster.library"])
+        self.assertEqual(
+            sorted(p.name for p in (root / "libs" / "compressors").iterdir()),
+            ["xpkSHRI.library"])
         self.assertEqual((root / "libs" / "asl.library").read_bytes(), b"own")
+
+    def test_assign_lines_formats_assigns(self):
+        self.assertEqual(
+            workbench.assign_lines({"Killer": "SYS:", "My Disk:": "Demo:d2"}),
+            'Assign >NIL: Killer: "SYS:"\nAssign >NIL: "My Disk:" "Demo:d2"\n')
+
+    def test_prepare_wb_boot_sets_up_startup_and_links_system_dirs(self):
+        boot, sys_root = self.dir(), self.dir()
+        (boot / "C").mkdir()
+        (boot / "Libs").mkdir()
+        (boot / "S").mkdir()
+        (boot / "S" / "Startup-Sequence").write_text("old\n")
+        (boot / "S" / "Shell-Startup").write_text("shell\n")
+        workbench.prepare_wb_boot(
+            sys_root, f"{workbench.GO_ON}\n\"demo\"\n", boot_dir=boot,
+            assigns=[("Data", "Demo:data")])
+        self.assertTrue((sys_root / "C").is_symlink())
+        self.assertTrue((sys_root / "Libs").is_symlink())
+        self.assertTrue((sys_root / "S" / "Shell-Startup").is_symlink())
+        text = (sys_root / "S" / "Startup-Sequence").read_text()
+        self.assertIn("C:SetPatch QUIET\n", text)
+        self.assertIn("C:AddDataTypes REFRESH QUIET\n", text)
+        self.assertIn('CD Demo:\nAssign >NIL: Data: "Demo:data"\n"demo"\n', text)
+        self.assertNotIn(workbench.GO_ON, text)

@@ -61,9 +61,10 @@ class Ready:
         the production draws into (see area.py)."""
         acts = actions(self.entry, keys, patient)
         frames = frames or frames_of(self.entry, patient)
+        assign = tuple((self.entry.get("assign") or {}).items())
         log = emulator.run(self.machine, self.variant, frames, emulator.Options(
             drives=self.entry.get("drives", 1), play=tuple(acts), detect=False,
-            keep=keep, seed=seed, area=area))
+            keep=keep, seed=seed, area=area, assign=assign))
         inserts = [(f, *arg) for f, what, arg in acts if what == "insert"]
         v = verdict.classify(log, frames // 250)
         took = loaded(log.samples, [(f, unit) for f, _, unit in inserts])

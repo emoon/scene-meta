@@ -6972,7 +6972,9 @@ void m68k_run(void)
 	run_func = currprefs.cpu_cycle_exact && currprefs.cpu_model <= 68010 ? m68k_run_1_ce :
 		currprefs.cpu_compatible && currprefs.cpu_model <= 68010 ? m68k_run_1 :
 #ifdef JIT
-		currprefs.cpu_model >= 68020 && currprefs.cachesize ? m68k_run_jit :
+		// Local patch: drop to the interpreter while dbgproto needs
+		// per-instruction hooks (initial --dbg bootstrap, trace, bp, watch).
+		currprefs.cpu_model >= 68020 && currprefs.cachesize && !dbgproto_instr_gate ? m68k_run_jit :
 #endif
 		currprefs.cpu_model == 68030 && currprefs.mmu_model ? m68k_run_mmu030 :
 		currprefs.cpu_model == 68040 && currprefs.mmu_model ? m68k_run_mmu040 :

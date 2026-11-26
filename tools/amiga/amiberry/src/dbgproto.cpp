@@ -395,9 +395,12 @@ static void quit_batch(void)
 static FILE *trace_fp_get(void);
 static void update_instr_gate(void)
 {
+	int prev = dbgproto_instr_gate;
 	dbgproto_instr_gate = dbgproto_active &&
 		(!started || trace_fp_get() || (run_active == RUN_BP && bp_count > 0)
 		 || (run_active == RUN_WATCH && watch_size > 0));
+	if (currprefs.cachesize && dbgproto_instr_gate != prev)
+		set_special(SPCFLAG_MODE_CHANGE);
 }
 
 static void start_run(run_mode mode, long max, const std::string &cmd, int s)

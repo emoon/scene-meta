@@ -16,6 +16,8 @@ DEMOZOO_DIR = NAS / "demozoo"
 AMIBERRY = BUILD / "amiberry" / "amiberry"
 # Libraries from a Workbench disk, put in LIBS: of hard-drive boots (optional).
 LIBS_DIR = pathlib.Path(os.environ.get("SCENEMETA_LIBS", ROOT / "libs"))
+# Standard A1200 Workbench boot partition for 68060 HD boots (optional).
+A1200_BOOT = pathlib.Path(os.environ.get("SCENEMETA_A1200_BOOT", ROOT / "a1200.boot"))
 
 
 def prod_dir(prod_id):

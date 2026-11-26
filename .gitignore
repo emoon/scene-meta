@@ -7,6 +7,7 @@ __pycache__/
 tools/*/work/
 tools/*/roms/
 tools/*/libs/
+tools/amiga/a1200.boot/
 tools/*/*.db
 tools/*/*.db-*
 
