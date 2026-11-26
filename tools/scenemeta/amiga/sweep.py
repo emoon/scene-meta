@@ -122,6 +122,8 @@ def clicks_to_start(a):
 
 def attempt(m, variant, frames, **kw):
     """One run and what it showed. ``kw`` are emulator.Options fields."""
+    if variant.assign and "assign" not in kw:
+        kw["assign"] = tuple(variant.assign.items())
     opts = emulator.Options(**kw)
     log = emulator.run(m, variant, frames, opts)
     return _seen(m, variant, frames, opts, log,
@@ -169,8 +171,11 @@ def _entry(variant, a, presses):
         does.append({"at": frame / FPS, "disk": disk})
         if a.unit:
             does[-1]["drive"] = a.unit + 1
-    return {"drives": a.drives, "disks": variant.disks,
-            "events": events.ordered(does)}
+    e = {"drives": a.drives, "disks": variant.disks,
+         "events": events.ordered(does)}
+    if variant.assign:
+        e["assign"] = dict(variant.assign)
+    return e
 
 
 def _seen(m, variant, frames, opts, log, v):
@@ -520,10 +525,12 @@ def _climb(variant, aga_only, release_date, start, only=None):
 
 def _record(v, attempts, best):
     """Variant ``v`` and its runs as the store keeps them."""
+    detail = {"root": v.root, "command": v.command, "complete": v.complete,
+              "run": v.run, "choice": v.choice}
+    if v.assign:
+        detail["assign"] = dict(v.assign)
     return result.Variant(
-        v.kind, v.disks, v.note,
-        {"root": v.root, "command": v.command, "complete": v.complete,
-         "run": v.run, "choice": v.choice},
+        v.kind, v.disks, v.note, detail,
         [a.record() for a in attempts],
         next(i for i, a in enumerate(attempts) if a is best))
 

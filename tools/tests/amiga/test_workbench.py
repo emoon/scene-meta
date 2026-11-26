@@ -191,6 +191,8 @@ class WorkbenchTest(unittest.TestCase):
         self.assertTrue((sys_root / "S" / "Shell-Startup").is_symlink())
         text = (sys_root / "S" / "Startup-Sequence").read_text()
         self.assertIn("C:SetPatch QUIET\n", text)
+        self.assertIn("C:Copy >NIL: ENVARC: RAM:ENV ALL NOREQ\n", text)
         self.assertIn("C:AddDataTypes REFRESH QUIET\n", text)
+        self.assertIn("C:AddAudioModes >NIL: REFRESH\n", text)
         self.assertIn('CD Demo:\nAssign >NIL: Data: "Demo:data"\n"demo"\n', text)
         self.assertNotIn(workbench.GO_ON, text)

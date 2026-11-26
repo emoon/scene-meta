@@ -229,6 +229,17 @@ static bool event_check_vsync(void)
 		}
 		events_reset_syncline();
 
+	} else if (is_syncline == -13) {
+
+		// Local patch: deterministic per-frame JIT burst budget under warp mode
+		// (set in custom.cpp when turbo_emulation && cachesize && m68k_speed < 0).
+		if (event_wait && is_syncline_end > 0) {
+			is_syncline_end--;
+			pissoff = pissoff_value;
+			return true;
+		}
+		events_reset_syncline();
+
 	} else if (is_syncline < -10) {
 
 		// wait is_syncline_end/vsyncmintime

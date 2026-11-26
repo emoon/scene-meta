@@ -143,6 +143,8 @@ def _entry(title, groups, v, variants, cls, default, failed=False):
         e["events"] = does
     if "run" in named:
         e["run"] = named["run"]
+    if runs and (assign := v.detail.get("assign")):
+        e["assign"] = dict(assign)
     if note:
         e["note"] = note
     elif failed:

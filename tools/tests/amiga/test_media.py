@@ -186,6 +186,39 @@ class PickExeTest(unittest.TestCase):
                        "Luminagia.readme": b"Luminagia - a demo by ...\n"})
         self.assertIsNone(media._launch_script(d, "Luminagia"))
 
+    def test_launch_script_matches_subdir_exe_with_volume_prefix(self):
+        # MindWalker (40318): root `go` script calls `mw:data/mindwalker.exe`.
+        d = self.tree({"go": b"assign mw: \"\"\nmw:data/mindwalker.exe\n",
+                       "data/mindwalker.exe": EXE})
+        self.assertEqual(media._launch_script(d, "MindWalker").name, "go")
+
+    def test_project_icon_default_tool_and_named_roundtrip(self):
+        # Ikke Bare Rabarbra (2938): Workbench WBPROJECT icon with Default Tool.
+        import struct
+        deftool = b"ScalaMMPlayer\0"
+        hdr = bytearray(78)
+        hdr[0:2] = b"\xe3\x10"
+        hdr[48] = 4  # WBPROJECT
+        struct.pack_into(">I", hdr, 50, 1)  # has DefaultTool
+        icon = bytes(hdr) + struct.pack(">I", len(deftool)) + deftool
+        d = self.tree({"ScalaMMPlayer": EXE,
+                       "demo.scala": b"SCALA SCRIPT\n",
+                       "demo.scala.info": icon})
+        pv = media._project_icon(d, "Demo")
+        self.assertEqual((pv.command, pv.run), ('"ScalaMMPlayer" "demo.scala"\n', "demo.scala"))
+        # Round-trip via _tree_variant(..., run="demo.scala")
+        rt = media._tree_variant(d, "Demo", run="demo.scala")
+        self.assertEqual((rt.command, rt.run), ('"ScalaMMPlayer" "demo.scala"\n', "demo.scala"))
+
+    def test_inferred_assigns_from_binary_and_readme(self):
+        d = self.tree({
+            "hate2.exe": EXE + b"\0Hate2:PV.exe\0SYS:Libs\0",
+            "PV.exe": EXE,
+            "readme.txt": b"Please assign CNCD: to this directory.\n",
+        })
+        self.assertEqual(media._inferred_assigns(d),
+                         {"CNCD": "Demo:", "Hate2": "Demo:"})
+
     def test_join_split_parts(self):
         d = self.tree({"ht-stag.lzx.001": b"ab", "ht-stag.lzx.002": b"cd",
                        "EM.1": b"x", "em.2": b"y", "keep.1": b"k"})

@@ -65,6 +65,11 @@ class UaeConfigTest(unittest.TestCase):
             adf.flush()
             text = self.config(media.Variant("floppy", [adf.name]))
         self.assertIn("floppy_write_protect=true\n", text)
+        # Unused floppy slots must be explicitly disabled (-1), else Amiberry
+        # leaves DF1 enabled as DRV_35_DD (breaks Manta / external-drive checks).
+        self.assertIn("floppy1type=-1\n", text)
+        self.assertIn("floppy2type=-1\n", text)
+        self.assertIn("floppy3type=-1\n", text)
 
     def test_random_seed_is_pinned(self):
         # Amiberry seeds its RNG (CPU start delay, floppy rotation phase)

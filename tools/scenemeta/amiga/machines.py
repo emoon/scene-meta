@@ -53,9 +53,6 @@ chipmem_size=4
 bogomem_size=0
 """
 
-# Under warp mode with cpu_speed=max, unlimited warp sets vsynctimebase=1
-# (starving the end-of-frame JIT slice); warp_limit=200 caps warp to 200 Hz
-# (5 ms/frame = 4x realtime) so each frame still gets a full JIT slice.
 _JIT = """\
 cachesize=8192
 comp_trustbyte=direct
@@ -67,7 +64,6 @@ comp_constjump=true
 comp_flushmode=soft
 compfpu=true
 fpu_strict=true
-warp_limit=200
 """
 
 

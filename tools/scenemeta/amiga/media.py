@@ -47,6 +47,7 @@ class Variant:
     ffs: bool = False   # floppy: disk 1 is Fast File System (needs KS2+)
     run: str = None     # the file it starts, as an entry names it
     choice: bool = False  # the media left a choice of it: an entry names it
+    assign: dict = None  # hd: AmigaDOS assigns (name -> path) to set before run
 
     @property
     def label(self):
@@ -360,10 +361,15 @@ def variants(prod_id, title="", run=None):
 def _tree_variant(tree, title="", run=None):
     """A hard-drive variant for an unpacked archive, or None when it holds no
     executable of its own (disk-image-only archives). An entry's ``run``
-    may name a script of the tree in place of an executable."""
-    script = _named_script(tree, run)
-    if script is not None:
-        return _script_variant(script, run)
+    may name a Workbench project icon or a script of the tree in place of an
+    executable."""
+    if run:
+        proj = _named_project(tree, run)
+        if proj is not None:
+            return proj
+        script = _named_script(tree, run)
+        if script is not None:
+            return _script_variant(script, run)
     boot = next((p.parent.parent for p in _walk_files(tree)
                  if p.name.lower() == "startup-sequence"
                  and p.parent.name.lower() == "s"), None)
@@ -611,10 +617,16 @@ def _named_after(name, title):
 
 def _launch_script(tree, title=""):
     """A script that runs the demo's executables in turn (Eternal Madness:
-    em1.exe, em2.exe, em3.exe; Stag: intro.exe then stag.ht), or None. A
-    small text file outside the system directories, not an installer, with
-    a line naming an executable beside it. One named after the production
-    or with an icon wins."""
+    em1.exe, em2.exe, em3.exe; Stag: intro.exe then stag.ht; MindWalker:
+    ``mw:data/mindwalker.exe``), or None. A small text file outside the system
+    directories, not an installer or doc file, with a line naming an executable
+    in ``tree``. One named after the production or with an icon wins."""
+    exes = {q.name.lower() for q in _walk_files(tree)
+            if not any(part.lower() in _SYSTEM_DIRS
+                       for part in q.relative_to(tree).parts[:-1])
+            and sniff(q) == "exe"}
+    if not exes:
+        return None
     cands = []
     for p in _walk_files(tree):
         rel = p.relative_to(tree).parts
@@ -624,15 +636,176 @@ def _launch_script(tree, title=""):
             continue
         if not _is_script(p):
             continue
-        exes = {q.name.lower() for q in p.parent.iterdir()
-                if q.is_file() and sniff(q) == "exe"}
         lines = p.read_text("latin-1").splitlines()
-        if any(ln.split()[0].strip('"').lower() in exes
-               for ln in lines if ln.strip() and not ln.startswith(";")):
-            cands.append(p)
+        for ln in lines:
+            s = ln.strip()
+            if not s or s.startswith(";"):
+                continue
+            tok = s.split()[0].strip('"').lower()
+            base = tok.rsplit("/", 1)[-1].rsplit(":", 1)[-1]
+            if base in exes:
+                cands.append(p)
+                break
     cands.sort(key=lambda p: (not _named_after(p.name, title),
-                              not p.with_name(p.name + ".info").exists()))
+                              not p.with_name(p.name + ".info").exists(),
+                              len(p.relative_to(tree).parts)))
     return cands[0] if cands else None
+
+
+def _info_default_tool(info_path):
+    """Default Tool string of an Amiga Workbench Project icon (``WBPROJECT``,
+    do_Type == 4), or None."""
+    try:
+        data = info_path.read_bytes()
+    except OSError:
+        return None
+    if len(data) < 78 or data[:2] != b"\xe3\x10" or data[48] != 4:
+        return None
+    if struct.unpack(">I", data[50:54])[0] == 0:
+        return None
+    off = 78 + (56 if struct.unpack(">I", data[66:70])[0] else 0)
+    for ptr_off in (22, 26):
+        if struct.unpack(">I", data[ptr_off:ptr_off + 4])[0]:
+            if off + 20 > len(data):
+                return None
+            _, _, w, h, depth = struct.unpack(">hhhhh", data[off:off + 10])
+            if w <= 0 or h <= 0 or depth <= 0 or depth > 8:
+                return None
+            off += 20 + ((w + 15) // 16) * 2 * h * depth
+    if off + 4 > len(data):
+        return None
+    slen = struct.unpack(">I", data[off:off + 4])[0]
+    if slen == 0 or off + 4 + slen > len(data):
+        return None
+    return data[off + 4:off + 4 + slen].rstrip(b"\0").decode("latin-1", "replace").strip() or None
+
+
+def _resolve_project_icon(info_path, tree, run=None):
+    """A hard-drive variant for a Workbench Project ``.info`` icon whose
+    Default Tool is ``IconX`` or an executable in ``tree``, or None."""
+    proj = info_path.with_name(info_path.name[:-5])
+    if not proj.is_file() or proj.suffix.lower() in _DOC_EXTS:
+        return None
+    tool_raw = _info_default_tool(info_path)
+    if not tool_raw:
+        return None
+    tool_base = tool_raw.replace("\\", "/").rsplit(":", 1)[-1].rsplit("/", 1)[-1]
+    rel = _rel(proj, tree)
+    if tool_base.lower() == "iconx" and _is_script(proj):
+        return _script_variant(proj, run or rel, f"IconX script {rel}")
+    # Match an executable in the project's dir first, then anywhere in tree.
+    matches = [q for q in sorted(_walk_files(tree))
+               if q.name.lower() == tool_base.lower() and sniff(q) == "exe"]
+    if not matches:
+        return None
+    matches.sort(key=lambda q: (q.parent != proj.parent, len(q.relative_to(tree).parts)))
+    tool = matches[0]
+    if tool.parent == proj.parent:
+        root, cmd = proj.parent, f'"{tool.name}" "{proj.name}"\n'
+    else:
+        root, cmd = tree, f'"{_rel(tool, tree)}" "{rel}"\n'
+    return Variant("hd", [], root=str(root), command=cmd,
+                   note=f"project icon {rel} -> {tool.name}",
+                   run=run or rel, choice=True)
+
+
+def _named_project(tree, run):
+    """The Workbench Project icon variant ``run`` names in ``tree``, or None."""
+    for p in sorted(_walk_files(tree)):
+        if p.name.lower().endswith(".info"):
+            proj = p.with_name(p.name[:-5])
+            if run in (proj.name, _rel(proj, tree)):
+                v = _resolve_project_icon(p, tree, run=run)
+                if v is not None:
+                    return v
+    return None
+
+
+def _project_icon(tree, title=""):
+    """A Workbench Project icon variant in ``tree`` (ScalaMMPlayer, MoviePlayer,
+    MainActor, IconX), preferring one named after ``title``, or None."""
+    cands = []
+    for p in sorted(_walk_files(tree)):
+        rel = p.relative_to(tree).parts
+        if any(part.lower() in _SYSTEM_DIRS | {"s"} for part in rel[:-1]):
+            continue
+        if not p.name.lower().endswith(".info") or "install" in p.name.lower():
+            continue
+        v = _resolve_project_icon(p, tree)
+        if v is not None:
+            proj = p.with_name(p.name[:-5])
+            cands.append((not _named_after(proj.stem, title),
+                          len(rel), proj.name.lower(), v))
+    cands.sort(key=lambda x: x[:3])
+    return cands[0][3] if cands else None
+
+
+_STD_VOLS = {
+    "ram", "sys", "s", "c", "l", "libs", "devs", "fonts", "env", "envarc",
+    "t", "clips", "rexx", "locale", "prefs", "printers", "keymaps", "help",
+    "nil", "con", "raw", "prt", "ser", "par", "speak", "pipe", "audio", "aux",
+    "df0", "df1", "df2", "df3", "dh0", "dh1", "dh2", "dh3", "rad", "pc0",
+    "pc1", "progdir", "demo", "work", "workbench", "hd0", "hd1",
+    "http", "https", "ftp", "mailto",
+}
+_BIN_VOL_RE = re.compile(rb"([A-Za-z][A-Za-z0-9_.-]{1,20}):([A-Za-z0-9_./+-]{2,40})")
+_TXT_ASSIGN_LINE_RE = re.compile(r"(?im)^\s*(?:c:)?assign\b[^\n]*")
+_TXT_VOL_RE = re.compile(r'"?([A-Za-z][A-Za-z0-9_.-]{1,20}):"?')
+_TXT_ASSIGN_PROSE_RE = re.compile(r'(?i)\bassign(?:ez)?\b[^:\n]{0,40}?"?([A-Za-z][A-Za-z0-9_.-]{1,20}):"?')
+
+
+def _inferred_assigns(root):
+    """Infer non-standard AmigaDOS volume assigns a demo in ``root`` expects
+    (e.g. ``Hate2:PV.exe`` in a binary or ``assign CNCD:`` in a readme),
+    mapped to ``Demo:``. Returns ``{vol: "Demo:"}`` (empty when none found)."""
+    entries = {p.name.lower() for p in root.iterdir()} if root.is_dir() else set()
+    vols = {}
+    for p in sorted(_walk_files(root)):
+        rel = p.relative_to(root).parts
+        if any(part.lower() in _SYSTEM_DIRS | {"s"} for part in rel[:-1]):
+            continue
+        if p.suffix.lower() == ".info":
+            continue
+        try:
+            size = p.stat().st_size
+        except OSError:
+            continue
+        if size == 0 or size > 2_000_000:
+            continue
+        data = p.read_bytes()
+        if b"\0" not in data and size <= 32768:
+            text = data.decode("latin-1", "replace")
+            for m in _TXT_ASSIGN_LINE_RE.finditer(text):
+                for vm in _TXT_VOL_RE.finditer(m.group(0)):
+                    vol = vm.group(1)
+                    if vol.lower() not in _STD_VOLS:
+                        vols.setdefault(vol.lower(), vol)
+            if p.suffix.lower() in _DOC_EXTS or "install" in p.name.lower():
+                for m in _TXT_ASSIGN_PROSE_RE.finditer(text):
+                    vol = m.group(1)
+                    if vol.lower() not in _STD_VOLS:
+                        vols.setdefault(vol.lower(), vol)
+        else:
+            for m in _BIN_VOL_RE.finditer(data):
+                vol = m.group(1).decode("latin-1")
+                if vol.lower() in _STD_VOLS:
+                    continue
+                target_first = m.group(2).decode("latin-1").split("/", 1)[0].lower()
+                if target_first in entries:
+                    vols.setdefault(vol.lower(), vol)
+    if not vols or len(vols) > 8:
+        return {}
+    return {v: "Demo:" for _, v in sorted(vols.items())}
+
+
+def _archive_root(root):
+    """The top-level unpacked archive directory containing ``root`` (under
+    ``work/media/<id>/x/<archive>``), or ``root`` itself."""
+    cur = pathlib.Path(root)
+    for parent in (cur, *cur.parents):
+        if parent.parent.name == "x":
+            return parent
+    return cur
 
 
 MERGED_NOTE = "set merged into one directory"
@@ -814,12 +987,24 @@ def fallbacks(v, prod_id, title="", run=None):
         out = []
         if v.root:
             root = pathlib.Path(v.root)
-            script = _named_script(root, run) if run \
-                else _launch_script(root, title)
-            if script is not None:
-                rel = _rel(script, root)
+            tree = _archive_root(root)
+            proj = _named_project(tree, run) if run \
+                else _project_icon(tree, title)
+            if proj is not None:
+                out.append(("hd", lambda p=proj: p))
+            script = _named_script(tree, run) if run \
+                else _launch_script(tree, title)
+            if script is not None and (proj is None or _rel(script, tree) != proj.run):
+                rel = _rel(script, tree)
                 out.append(("hd", lambda s=script, r=rel: _script_variant(
                     s, run or r, f"runs script {r}")))
+            if not v.assign:
+                inferred = _inferred_assigns(root)
+                if inferred:
+                    tag = "assign " + ", ".join(f"{k}:" for k in inferred)
+                    out.append(("hd", lambda a=inferred, t=tag: dataclasses.replace(
+                        v, assign=a,
+                        note=f"{v.note}; {t}" if v.note else t)))
         # Files a demo loads from DF0: rather than from its directory.
         out.append(("floppy", lambda: floppy_variant(v, prod_id)))
         return out

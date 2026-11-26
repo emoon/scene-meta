@@ -6431,6 +6431,14 @@ static void hsync_handler_post(bool onvsync)
 				vsyncmintime = read_processor_time(); /* end of CPU emulation time */
 				events_reset_syncline();
 				maybe_process_pull_audio();
+			} else if (currprefs.turbo_emulation && currprefs.cachesize && !regs.stopped) {
+				// Local patch: under warp mode with cpu_speed=max + JIT, give each
+				// frame a deterministic, load-independent JIT burst budget
+				// (handled by is_syncline == -13 in events.cpp) so 68060 precalcs
+				// never starve under heavy parallel worker contention.
+				is_syncline_end = 256;
+				is_syncline = -13;
+				maybe_process_pull_audio();
 			} else {
 				vsyncmintime = vsyncmaxtime; /* emulate if still time left */
 				is_syncline_end = read_processor_time() + vsynctimebase; /* far enough in future, we never wait that long */

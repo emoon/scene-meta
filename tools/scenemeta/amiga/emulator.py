@@ -130,9 +130,16 @@ def _uae_config(machine, variant, tmp, drives=1, seed=DEFAULT_SEED,
         lines.append(f"nr_floppies={drives}\n")
         for i in range(drives):
             lines.append(f"floppy{i}={copies[i]}\n")
+        # Amiberry defaults floppy1type to DRV_35_DD even when nr_floppies=1;
+        # explicitly disable unused drives so external-drive-hostile loaders
+        # (e.g. Manta) do not see a ghost DF1:.
+        for i in range(drives, MAX_DRIVES):
+            lines.append(f"floppy{i}type=-1\n")
         swaps = copies[drives:]
     else:
         lines.append("nr_floppies=0\n")
+        for i in range(MAX_DRIVES):
+            lines.append(f"floppy{i}type=-1\n")
     if variant.kind == "hd":
         root = tmp / "hd"
         shutil.copytree(variant.root, root, symlinks=False)

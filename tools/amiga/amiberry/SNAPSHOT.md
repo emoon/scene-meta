@@ -265,6 +265,18 @@ its `USE_*` feature off, so removing it breaks the build.
     `SPCFLAG_MODE_CHANGE` so execution switches cleanly into `m68k_run_jit`
     once the gate clears. Plus the `cpu_halt` event and the `cpureset()`
     reboot count (above).
+  - `src/custom.cpp` + `src/events.cpp` — under warp mode with
+    `cpu_speed=max` and JIT (`cachesize > 0`), `is_syncline = -13` gives each
+    frame a deterministic, load-independent budget of 256 `pissoff_value` JIT
+    bursts (exiting immediately if `regs.stopped`) instead of gating on
+    wall-clock `vsyncmaxtime`, which starved 68060 precalcs to 0 ms under
+    parallel sweep load. No effect on non-JIT machines or interactive
+    (`warp off`) playback.
+  - `src/filesys.cpp` (`handle_packet`) — mask `dp_Type` to the low 16 bits
+    (`& 0xffff`) to match real Commodore ROM FFS packet dispatch (all
+    AmigaDOS `ACTION_*` constants fit in 16 bits; fixes demos such as
+    *Psychedelic* that pass `MODE_OLDFILE` via `move.w #1005,d2` with garbage
+    in the upper word).
   - `src/osdep/amiberry.cpp` — non-zero process exit code after a mid-batch
     halt; plus the Esc-to-quit dev convenience (below).
 - `src/osdep/amiberry.cpp` — Esc quits the emulator when the env var

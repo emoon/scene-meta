@@ -7128,7 +7128,10 @@ static int handle_packet(TrapContext *ctx, Unit *unit, dpacket *pck, uae_u32 msg
 {
 	bool noidle = false;
 	int ret = 1;
-	uae_s32 type = GET_PCK_TYPE (pck);
+	// Local patch: real Commodore ROM FFS dispatches dp_Type on the low 16 bits
+	// (all AmigaDOS ACTION_* IDs fit in 16 bits). Some demos (e.g. Psychedelic)
+	// load MODE_OLDFILE with move.w #1005,d2, leaving garbage in the upper word.
+	uae_s32 type = (uae_s32)(GET_PCK_TYPE (pck) & 0xffff);
 	PUT_PCK_RES2 (pck, 0);
 
 	TRACE((_T("unit=%p packet=%d\n"), unit, type));
