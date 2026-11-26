@@ -144,17 +144,43 @@ class PickExeTest(unittest.TestCase):
 
     def test_deprioritizes_speedhunk_bbs_ad_stubs(self):
         # Like 2944 / 29162 / 2505: BBS advert stub at root tagged HEADDBGV01
-        # must lose to the real demo inside a subdirectory, yet still run if
-        # it is the only executable in the archive.
+        # plus SpeedHunk HUNK_CODE must lose to the real demo inside a
+        # subdirectory, yet still run if it is the only executable.
         bbs_ad = (media.HUNK_MAGIC + b"\0" * 20
                   + b"\x00\x00\x03\xf1\x00\x00\x00\x0b\x00\x00\x00\x00HEADDBGV01"
-                  + b"\0" * 18)   # 64 bytes
+                  + b"\0" * 18 + media._BBS_AD_CODE + b"\0" * 20)
         d = self.tree({"WHEREFUNROLEZ.EXE": bbs_ad,
                        "advertro/Instinct-AdvertTro.x": EXE})
         self.assertEqual(media._pick_exe(d, "Swappers For Everyone")[0].name,
                          "Instinct-AdvertTro.x")
         d_only = self.tree({"ad.exe": bbs_ad})
         self.assertEqual(media._pick_exe(d_only)[0].name, "ad.exe")
+        # Real demos whose linker emitted HEADDBGV01 without the SpeedHunk stub
+        # (Embryo 7474) must NOT be demoted.
+        real_dbg = (media.HUNK_MAGIC + b"\0" * 20
+                    + b"\x00\x00\x03\xf1\x00\x00\x00\x0b\x00\x00\x00\x00HEADDBGV01"
+                    + b"\0" * 58)
+        d_real = self.tree({"embryo.exe": real_dbg, "other": EXE * 4})
+        self.assertEqual(media._pick_exe(d_real, "Embryo")[0].name, "embryo.exe")
+
+    def test_prefers_exe_suffix_and_deprioritizes_ppc_rtg_and_setpatch(self):
+        # Mindprobe (7627): .exe beats larger non-.exe sibling part.
+        d = self.tree({"tbl-mp.exe": EXE, "landtunnel": EXE * 10,
+                       "SetPatch": EXE * 20})
+        self.assertEqual(media._pick_exe(d, "Mindprobe")[0].name, "tbl-mp.exe")
+        # Amsterdam Blessings (9064) & Zero Divide (49455): native 68k/AGA
+        # beats PPC / WarpOS / CGX siblings.
+        d_ppc = self.tree({"mwi-amsbless_final.exe": EXE,
+                           "mwi-amsbless_final.ppc": EXE * 10})
+        self.assertEqual(media._pick_exe(d_ppc, "Amsterdam Blessings")[0].name,
+                         "mwi-amsbless_final.exe")
+        d_cgx = self.tree({"zerodivide.aga": EXE, "zerodivide.cgx": EXE * 10})
+        self.assertEqual(media._pick_exe(d_cgx, "Zero Divide")[0].name,
+                         "zerodivide.aga")
+        # Single-letter and numbered subpart extensions (.f, .dat1, .2) demoted.
+        d_sub = self.tree({"tbl-que.exe": EXE, "tbl-que.f": EXE * 10,
+                           "part.dat1": EXE * 20})
+        self.assertEqual(media._pick_exe(d_sub, "Queue")[0].name, "tbl-que.exe")
 
     def test_hd_fallback_tries_launch_script_beside_exe(self):
         # Karate / Engine demos: a launcher script passes s=... b=... w=320 h=240.

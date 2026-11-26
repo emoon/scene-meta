@@ -106,7 +106,7 @@ class ReportTest(unittest.TestCase):
                                 log=lambda line, **kw: lines.append(line))
         self.assertEqual(errors, 1)
         self.assertEqual(lines, ["7 x: error: no way to press key 'f1': the keys are"
-                                 " lmb, rmb, return, space, p1fire, p2fire"])
+                                 " lmb, rmb, return, space, p1fire, p2fire, lamiga_v"])
         run.assert_not_called()
 
 

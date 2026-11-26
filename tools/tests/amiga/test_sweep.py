@@ -315,26 +315,26 @@ class NeededPressesTest(unittest.TestCase):
     def test_key_before_the_disk_is_asked_for(self):
         # Megademo 2: its credits page only moves on Return, then it wants
         # disk 2. Of the keys pressed in turn every 30 s the nearest to the
-        # insert are tried first (Return at 150 s in the 4-key cycle).
+        # insert are tried first (Return at 180 s in the 5-key cycle).
         entries, tries = self.run_try(
-            [(7600, 2, "poll")], nudge="key_every",
+            [(9100, 2, "poll")], nudge="key_every",
             far=self.loads(lambda s, keys: any(
                 k["key"] == "return" and k["at"] < s["at"] for k in keys)))
         self.assertEqual([self.keys(e) for e in entries], [
-            [], [{"at": 150.0, "key": "return"}]])
-        self.assertEqual(tries[-1].presses, (Press(7500, "return"),))
+            [], [{"at": 180.0, "key": "return"}]])
+        self.assertEqual(tries[-1].presses, (Press(9000, "return"),))
         key, = tries[-1].record().keys
-        self.assertEqual((key.at, key.key), (150.0, "return"))
+        self.assertEqual((key.at, key.key), (180.0, "return"))
 
     def test_a_press_that_gets_no_further_is_not_kept(self):
-        # Space at 180 s is nearer the insert (178 s) than Return at 150 s.
+        # Space at 210 s is nearer the insert (208 s) than Return at 180 s.
         entries, tries = self.run_try(
-            [(8900, 2, "poll")], nudge="key_every",
+            [(10400, 2, "poll")], nudge="key_every",
             far=self.loads(lambda s, keys: any(
                 k["key"] == "return" and k["at"] < s["at"] for k in keys)))
         self.assertEqual([[k["key"] for k in self.keys(e)] for e in entries],
                          [[], ["space"], ["return"]])
-        self.assertEqual(tries[-1].presses, (Press(7500, "return"),))
+        self.assertEqual(tries[-1].presses, (Press(9000, "return"),))
 
     def test_click_that_starts_it(self):
         # "HIT MOUSE!": alive from 35 s on the retry that clicks every 30 s.

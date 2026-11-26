@@ -109,7 +109,8 @@ class ActionsTest(unittest.TestCase):
             player.actions(entry)
 
     def test_every_key_name_before_a_swap_and_after_it(self):
-        for key in ("lmb", "rmb", "space", "return", "p1fire", "p2fire"):
+        for key in ("lmb", "rmb", "space", "return", "p1fire", "p2fire",
+                    "lamiga_v"):
             entry = {"disks": ["a", "b"],
                      "events": [{"at": 1, "key": key}, {"at": 10, "disk": 2},
                                 {"at": 15, "key": key}]}

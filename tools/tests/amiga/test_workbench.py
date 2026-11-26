@@ -105,7 +105,7 @@ class WorkbenchTest(unittest.TestCase):
 
     def test_setup_assigns_env_to_ram(self):
         exe = workbench.setup_exe()
-        self.assertIn(b"dos.library\0RAM:ENV\0ENV\0", exe)
+        self.assertIn(b"dos.library\0RAM:ENV\0ENV\0\n\0", exe)
 
     def test_startup_runs_setup_first(self):
         root = self.dir()
@@ -194,5 +194,5 @@ class WorkbenchTest(unittest.TestCase):
         self.assertIn("C:Copy >NIL: ENVARC: RAM:ENV ALL NOREQ\n", text)
         self.assertIn("C:AddDataTypes REFRESH QUIET\n", text)
         self.assertIn("C:AddAudioModes >NIL: REFRESH\n", text)
-        self.assertIn('CD Demo:\nAssign >NIL: Data: "Demo:data"\n"demo"\n', text)
+        self.assertIn('Echo ""\nCD Demo:\nAssign >NIL: Data: "Demo:data"\n"demo"\n', text)
         self.assertNotIn(workbench.GO_ON, text)

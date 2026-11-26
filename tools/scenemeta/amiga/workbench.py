@@ -51,6 +51,7 @@ PACKER_PREFIX = "xpk"
 #   CloseLibrary(gfx)
 #   if (dos = OpenLibrary("dos.library", 36)):
 #       CreateDir("RAM:ENV"); AssignLock("ENV", Lock("RAM:ENV", SHARED_LOCK))
+#       if (out = Output()): Write(out, "\n", 1)  # open lazy KS2+/3.0 CON: (BPLEN=1)
 #       CloseLibrary(dos)
 #   return 0
 _CODE = bytes.fromhex(
@@ -81,35 +82,42 @@ _CODE = bytes.fromhex(
     "6000001e"      # 48 out: bra.w env
 ) + b"graphics.library\0topaz.font\0" + bytes.fromhex(   # 4c, 5d
     "2c780004"      # 68 env: movea.l 4.w,a6
-    "43fa004c"      # 6c lea     dosname(pc),a1
+    "43fa0060"      # 6c lea     dosname(pc),a1
     "7024"          # 70 moveq   #36,d0
     "4eaefdd8"      # 72 jsr     OpenLibrary(a6)
     "4a80"          # 76 tst.l   d0
-    "673c"          # 78 beq.s   done
+    "6750"          # 78 beq.s   done
     "2a40"          # 7a movea.l d0,a5
     "2c4d"          # 7c movea.l a5,a6
-    "41fa0046"      # 7e lea     ramenv(pc),a0
+    "41fa005a"      # 7e lea     ramenv(pc),a0
     "2208"          # 82 move.l  a0,d1
     "4eaeff88"      # 84 jsr     CreateDir(a6)
     "4a80"          # 88 tst.l   d0              (0 when it exists)
     "6706"          # 8a beq.s   lock
     "2200"          # 8c move.l  d0,d1
     "4eaeffa6"      # 8e jsr     UnLock(a6)
-    "41fa0032"      # 92 lock: lea ramenv(pc),a0
+    "41fa0046"      # 92 lock: lea ramenv(pc),a0
     "2208"          # 96 move.l  a0,d1
     "74fe"          # 98 moveq   #ACCESS_READ,d2
     "4eaeffac"      # 9a jsr     Lock(a6)
     "2400"          # 9e move.l  d0,d2
-    "670a"          # a0 beq.s   close
-    "41fa002a"      # a2 lea     envname(pc),a0
+    "670a"          # a0 beq.s   con
+    "41fa003e"      # a2 lea     envname(pc),a0
     "2208"          # a6 move.l  a0,d1
     "4eaefd9c"      # a8 jsr     AssignLock(a6)
-    "224d"          # ac close: movea.l a5,a1
-    "2c780004"      # ae movea.l 4.w,a6
-    "4eaefe62"      # b2 jsr     CloseLibrary(a6)
-    "7000"          # b6 done: moveq #0,d0
-    "4e75"          # b8 rts
-) + b"dos.library\0RAM:ENV\0ENV\0"   # ba, c6, ce
+    "4eaeffc4"      # ac con: jsr Output(a6)
+    "2200"          # b0 move.l  d0,d1
+    "670c"          # b2 beq.s   close
+    "41fa0030"      # b4 lea     nl(pc),a0
+    "2408"          # b8 move.l  a0,d2
+    "7601"          # ba moveq   #1,d3
+    "4eaeffd0"      # bc jsr     Write(a6)
+    "224d"          # c0 close: movea.l a5,a1
+    "2c780004"      # c2 movea.l 4.w,a6
+    "4eaefe62"      # c6 jsr     CloseLibrary(a6)
+    "7000"          # ca done: moveq #0,d0
+    "4e75"          # cc rts
+) + b"dos.library\0RAM:ENV\0ENV\0\n\0"   # ce, da, e2, e6
 
 
 # 68000 code, position independent. The arguments are ``name: path``, the
@@ -382,6 +390,7 @@ def prepare_wb_boot(sys_root, command, boot_dir=None, assigns=()):
         "If EXISTS Demo:C\n"
         "  Path Demo:C ADD\n"
         "EndIf\n"
+        "Echo \"\"\n"
         "CD Demo:\n"
         + assign_lines(assigns)
         + launch

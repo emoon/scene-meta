@@ -26,9 +26,17 @@ ARCHIVE_EXTS = (".zip", ".lha", ".lzh", ".lzx")
 MAX_VARIANTS = 3
 # Extensions of files that are loaded, not started, even with a hunk header.
 _DATA_EXTS = {".dat", ".data", ".bin", ".ovl"}
-# Numbered sub-part executables (tbl-cd.e01..e04, part.p02) and backups:
-# deprioritized below main launchers, never dropped if sole candidate.
-_SUBPART_EXT = re.compile(r"^\.(?:[a-z]\d{2,3}|bak|old)$", re.I)
+# Numbered sub-part executables (tbl-cd.e01..e04, kilkenny.dat1) and backups:
+# deprioritized below main launchers, never dropped if sole candidate. CPU
+# suffixes (.020/.030/.040/.060/.881/.882) are excluded so they are not treated
+# as part numbers.
+_CPU_EXTS = {".020", ".030", ".040", ".060", ".881", ".882"}
+_SUBPART_EXT = re.compile(r"^\.(?:[a-z]\d{2,3}|dat\d+|data\d+|bak|old)$", re.I)
+# PowerPC / WarpOS / RTG (CyberGraphX / Picasso96) targets: deprioritized below
+# native 68k/AGA siblings when an archive ships both (9064, 49455, 337265).
+_ALT_TARGET_EXTS = {".ppc", ".wos", ".elf", ".mos", ".pup", ".cgx", ".rtg", ".p96", ".vga"}
+_ALT_TARGET_RE = re.compile(
+    r"(?:^|[._-])(?:ppc|wos|warpos|powerup|pup|morphos|cgx|cgxahi|cgfx|rtg|p96)(?:$|[._-])", re.I)
 # Documentation files that may mention an executable name on a line.
 _DOC_EXTS = {".readme", ".txt", ".nfo", ".diz", ".doc", ".guide", ".man",
              ".asc", ".ans", ".html", ".htm", ".md"}
@@ -412,18 +420,32 @@ def _norm(name):
     return "".join(c for c in name.lower() if c.isalnum())
 
 
+# First 20 bytes of SpeedHunk/Exe-Ad BBS advert HUNK_CODE stub
+# (movea.l 4.w,a6; lea $a8,a1; jsr OldOpenLibrary(a6); move.l d0,$a0).
+_BBS_AD_CODE = bytes.fromhex("2c78000443f9000000a84eaefe6823c0000000a0")
+
+
 def _is_bbs_ad(path):
     """True for SpeedHunk/Exe-Ad BBS advert stubs bundled in archive roots
     (``_negerkuß!!.exe``, ``WHEREFUNROLEZ.EXE``, ``LE-win1196.exe``,
-    ``friendsonly.exe``): every one begins with a HUNK_DEBUG block tagged
-    ``HEADDBGV01``. Deprioritized below real executables, never dropped if
-    it is the sole executable in the archive."""
+    ``friendsonly.exe``). Matches both the ``HEADDBGV01`` debug header AND
+    the SpeedHunk ``HUNK_CODE`` stub so real demos whose assembler/linker
+    emitted ``HEADDBGV01`` (e.g. Embryo's ``embryo.exe``) are never flagged."""
     try:
         with open(path, "rb") as f:
-            head = f.read(64)
+            head = f.read(160)
     except OSError:
         return False
-    return b"HEADDBGV01" in head[24:64]
+    return b"HEADDBGV01" in head[24:64] and _BBS_AD_CODE in head[64:160]
+
+
+def _is_data_or_subpart(path):
+    suf = path.suffix.lower()
+    return suf in _DATA_EXTS or (suf not in _CPU_EXTS and bool(_SUBPART_EXT.match(suf)))
+
+
+def _is_alt_target(path):
+    return path.suffix.lower() in _ALT_TARGET_EXTS or bool(_ALT_TARGET_RE.search(path.stem))
 
 
 def _pick_exe(tree, title="", run=None):
@@ -438,23 +460,26 @@ def _pick_exe(tree, title="", run=None):
             continue
         if p.suffix.lower() in (".library", ".device", ".info"):
             continue
-        if "install" in p.name.lower() or p.name.lower().endswith("-handler"):
+        low = p.name.lower()
+        if "install" in low or low.endswith("-handler") or low in ("setpatch", "setpatch.exe"):
             continue
         if sniff(p) == "exe":
             cands.append(p)
     if not cands:
         return None, ""
-    # Explicit ``run`` first, then non-BBS-ad and non-data executables, then
-    # one named after the production (even inside a subdirectory of a party
-    # pack), then shallowest, then one with an icon (what a user
-    # double-clicks), then the biggest.
+    # Explicit ``run`` first, then real native executables (demoting data/subpart
+    # overlays, PPC/RTG targets, and SpeedHunk BBS ads), then one named after
+    # the production, then shallowest, then one with an icon, then ``.exe``
+    # (launcher over effect sub-parts like Mindprobe's ``landtunnel``), then
+    # the biggest.
     cands.sort(key=lambda p: (run not in (p.name, _rel(p, tree)),
                               _is_bbs_ad(p),
-                              p.suffix.lower() in _DATA_EXTS
-                              or bool(_SUBPART_EXT.match(p.suffix)),
+                              _is_data_or_subpart(p),
+                              _is_alt_target(p),
                               not _named_after(p.stem, title),
                               len(p.relative_to(tree).parts),
                               not p.with_name(p.name + ".info").exists(),
+                              p.suffix.lower() != ".exe",
                               -p.stat().st_size))
     exe = cands[0]
     note = f"{len(cands)} executables, picked {exe.name}" if len(cands) > 1 else ""
@@ -919,8 +944,9 @@ def launch_variant(disks, prod_id, only_unbootable=False, run=None):
     patched = work / "launch" / f"{adf.stem}-launch.adf"
     patched.parent.mkdir(parents=True, exist_ok=True)
     shutil.copyfile(adf, patched)
+    setup_bin = box / "scenemeta-setup"
+    setup_bin.write_bytes(workbench.setup_exe())
     script = box / "startup-sequence"
-    script.write_text(f'"{rel}"\n', encoding="latin-1")
 
     def xdf(*args, check=True):
         subprocess.run(["xdftool", str(patched), *args], capture_output=True,
@@ -928,6 +954,15 @@ def launch_variant(disks, prod_id, only_unbootable=False, run=None):
 
     try:
         xdf("makedir", "s", check=False)        # may already exist
+        # Include scenemeta-setup (SetChipRev + topaz 8 + RAM:ENV + CON:) when
+        # it fits so AGA demos on patched floppies (e.g. 228610 Unnamed) see
+        # AGA enabled; fall back to bare launch if the disk has no room.
+        try:
+            xdf("delete", workbench.SETUP, check=False)
+            xdf("write", str(setup_bin), workbench.SETUP)
+            script.write_text(f'{workbench.SETUP}\n"{rel}"\n', encoding="latin-1")
+        except (OSError, subprocess.SubprocessError):
+            script.write_text(f'"{rel}"\n', encoding="latin-1")
         xdf("delete", "s/startup-sequence", check=False)
         xdf("write", str(script), "s/startup-sequence")
         xdf("boot", "install")

@@ -38,10 +38,13 @@ SCHEDULE_PULSE_FRAMES = 1500
 # held a few frames so a poll sees it.
 KEYS = {"lmb": "mouse click 0", "rmb": "mouse click 1",
         "return": "key 68", "space": "key 64",
-        "p1fire": "joy 0 fire", "p2fire": "joy 1 fire"}
+        "p1fire": "joy 0 fire", "p2fire": "joy 1 fire",
+        # Standard AmigaOS Intuition positive-gadget shortcut (Left Amiga + V):
+        # accepts EasyRequest/AutoRequest dialogs ([AGA], [OK], [Start DEMO!]).
+        "lamiga_v": "chord 102 52"}
 KEY_HOLD_FRAMES = 3
 # What a key retry presses, one per nudge in turn.
-NUDGE_KEYS = ("return", "space", "p2fire", "rmb")
+NUDGE_KEYS = ("return", "space", "p2fire", "rmb", "lamiga_v")
 
 
 @dataclasses.dataclass
@@ -436,6 +439,11 @@ def _press(key):
     what = KEYS[key]
     if what.startswith("mouse"):
         return [f"input {what}"], 0
+    if what.startswith("chord "):
+        codes = what.split()[1:]
+        downs = [f"input key {c} down" for c in codes]
+        ups = [f"input key {c} up" for c in reversed(codes)]
+        return downs + [f"run frames={KEY_HOLD_FRAMES}"] + ups, KEY_HOLD_FRAMES
     return [f"input {what} down", f"run frames={KEY_HOLD_FRAMES}",
             f"input {what} up"], KEY_HOLD_FRAMES
 
