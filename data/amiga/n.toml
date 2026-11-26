@@ -43,8 +43,8 @@ source = "script"
 title = "N0t Elka"
 group = "Outsiders"
 source = "script"
-result = "unknown"
-run = "Karate"
+machine = "a1200_060"
+run = "notelka/notelka"
 
 [demozoo.2884]
 title = "N2O"
@@ -56,7 +56,7 @@ machine = "a1200_fast"
 title = "Nadia"
 group = "Floppy"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 run = "FLP-Nadia.exe"
 
 [demozoo.242798]
@@ -134,7 +134,7 @@ source = "script"
 title = "Nameless"
 group = "Ubik / Kiero"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 run = "nameless.exe"
 
 [demozoo.130246]
@@ -533,7 +533,7 @@ source = "script"
 title = "Neonsky"
 group = "Ephidrena"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 
 [demozoo.246997]
 title = "Nerve 15"
@@ -570,8 +570,7 @@ source = "script"
 title = "Netflex und Chill"
 group = "FLEX"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a1200_060; no entry of it passed the gate"
+machine = "a1200_060"
 
 [demozoo.181975]
 title = "NetHed"
@@ -2116,7 +2115,8 @@ source = "script"
 title = "New Law"
 group = "D.T.A. Software Studio"
 source = "script"
-result = "unknown"
+machine = "a1200"
+run = "NewLaw/NewLawHd.exe"
 
 [demozoo.223417]
 title = "New Little Compilation"
@@ -3600,7 +3600,7 @@ source = "script"
 title = "New World Child"
 group = "Mankind"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.281620]
 title = "New World Order"
@@ -3758,7 +3758,7 @@ source = "script"
 title = "Newest Production"
 group = "Finnish Gold"
 source = "script"
-result = "unknown"
+machine = "a500_ks12_512k"
 
 [demozoo.250477]
 title = "Newio 2.0 Developer"
@@ -3861,7 +3861,7 @@ source = "script"
 title = "Newt"
 group = "Focus Design"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.323689]
 title = "NewTek Demo Reel 1"
@@ -4876,7 +4876,7 @@ machine = "a1200_fast"
 title = "Noord - Nordlicht Demoparty 2020 Invitation"
 group = "Titan"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 
 [demozoo.249152]
 title = "Nop"
@@ -5096,7 +5096,7 @@ source = "script"
 title = "Not Yet Phonk"
 group = "Laffik"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.215644]
 title = "Note Box 1"
@@ -5169,7 +5169,8 @@ title = "nOtITLE-pARTYvERSION"
 group = "Mankind / Pure Lam3r"
 source = "script"
 result = "unknown"
-run = "Karate"
+run = "rundemo"
+note = "the sweep saw works on a1200_060; no entry of it passed the gate"
 
 [demozoo.242813]
 title = "Notloesungs-Intro"
@@ -5219,7 +5220,7 @@ source = "script"
 title = "Noxie"
 group = "Loonies"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 run = "Noxie_uae"
 
 [demozoo.70672]

@@ -381,7 +381,7 @@ title = "Handshake Slideshow v1.0 Intro"
 group = "Goonies 2041"
 source = "script"
 result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+note = "the sweep saw works on a500_1mb; no entry of it passed the gate"
 
 [demozoo.225981]
 title = "Hang Em High"
@@ -732,8 +732,8 @@ source = "script"
 title = "Happy-Road"
 group = "Mankind"
 source = "script"
-result = "unknown"
-run = "Karate"
+machine = "a1200_060"
+run = "HappyRoad/HappyRoad!"
 
 [demozoo.24436]
 title = "HappyDemo"
@@ -1060,9 +1060,9 @@ run = "Hate1.dat"
 title = "Hate 2"
 group = "Fanatic"
 source = "script"
-result = "unknown"
-run = "pv.exe"
-note = "the sweep saw works on a1200; no entry of it passed the gate"
+machine = "a1200"
+run = "hate2.exe"
+assign = { Hate2 = "Demo:" }
 
 [demozoo.7483]
 title = "Hauki"
@@ -1141,7 +1141,7 @@ machine = "a1200"
 title = "Hazmix"
 group = "Amnesty"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.196057]
 title = "Hazy Mind Scrollintmo"
@@ -1385,7 +1385,7 @@ source = "script"
 title = "Headwave"
 group = "Mentrax"
 source = "script"
-result = "unknown"
+machine = "a1200"
 run = "Headwave.EXE"
 
 [demozoo.375336]
@@ -1438,7 +1438,7 @@ machine = "a1200"
 title = "Heaven Is Two Dimensional"
 group = "Whelpz"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 
 [demozoo.253347]
 title = "Heaven Pack Intro"
@@ -1572,8 +1572,8 @@ source = "script"
 title = "Hello Bytefest"
 group = "ArtWay"
 source = "script"
-result = "unknown"
-run = "Karate"
+machine = "a1200_060"
+run = "ByteFest"
 
 [demozoo.147744]
 title = "Hello Demo Scene"
@@ -1868,8 +1868,7 @@ source = "script"
 title = "Hexel"
 group = "Ephidrena"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a1200_030; no entry of it passed the gate"
+machine = "a1200_030"
 
 [demozoo.223246]
 title = "Hey Freaks"
@@ -2031,8 +2030,8 @@ machine = "a500_1mb"
 title = "HiFatal"
 group = "Outsiders"
 source = "script"
-result = "unknown"
-run = "Karate"
+machine = "a1200_060"
+run = "HiFatal"
 
 [demozoo.249136]
 title = "Hifi Demo"
@@ -2072,7 +2071,9 @@ source = "script"
 title = "High Frequences"
 group = "Ukonx"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
+run = "HighFrequences.exe"
+assign = { HF = "Demo:" }
 
 [demozoo.246019]
 title = "High Quality Crackings TV Test Card"
@@ -2146,7 +2147,7 @@ source = "script"
 title = "Higher State of Resolution"
 group = "Dekadence"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 
 [demozoo.85702]
 title = "Highlander Re-openingstro"
@@ -2263,9 +2264,8 @@ machine = "a1200"
 title = "Hipnosis"
 group = "Dream's Day"
 source = "script"
-boot = "floppy"
-result = "unknown"
-note = "the sweep saw works on a1200_060; no entry of it passed the gate"
+machine = "a1200_060"
+result = "crashes-later"
 
 [demozoo.232428]
 title = "Hipp-Leif"
@@ -2390,7 +2390,7 @@ source = "script"
 title = "Hiuston"
 group = "Apathy"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.2499]
 title = "Hmmm"
@@ -3170,7 +3170,7 @@ source = "script"
 title = "Hotstyle Takeover"
 group = "Loonies"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 
 [demozoo.219104]
 title = "Hottest Blitter Scroller"
@@ -3193,6 +3193,7 @@ title = "Hovsa"
 group = "Spoon"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.195748]
 title = "How 2 Scan A Kid"

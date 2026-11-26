@@ -902,7 +902,7 @@ note = "the sweep saw works on a500; no entry of it passed the gate"
 title = "Bastardemon"
 group = "Mankind"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.247150]
 title = "Bat Intro"
@@ -998,7 +998,9 @@ source = "script"
 title = "Bato"
 group = "Sector 7"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
+run = "Bato.exe"
+assign = { INTRO = "Demo:", intro2 = "Demo:" }
 
 [demozoo.19431]
 title = "Batteries 1997 - Party NOT Included"
@@ -1545,8 +1547,8 @@ source = "script"
 title = "bdemo"
 group = "Flast"
 source = "script"
-result = "unknown"
-run = "Karate"
+machine = "a1200_060"
+run = "BDEMO"
 
 [demozoo.310454]
 title = "Be a Star"
@@ -2175,7 +2177,7 @@ source = "script"
 title = "Bible Preview"
 group = "Crux"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 
 [demozoo.226857]
 title = "Bicycle Works"
@@ -2484,7 +2486,7 @@ source = "script"
 title = "Binary Roads"
 group = "Software Failure"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 
 [demozoo.234286]
 title = "Binary Stride Pack Preview"
@@ -2818,7 +2820,7 @@ machine = "a1200"
 title = "Bjørsoktn Torns"
 group = "Cider"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.237009]
 title = "Bjørsoktn Tullipans"
@@ -3473,7 +3475,7 @@ source = "script"
 title = "Blue"
 group = "Amnesty"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.28445]
 title = "Blue"
@@ -3699,7 +3701,7 @@ machine = "a1200"
 title = "Blur"
 group = "Apathy"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.7167]
 title = "Blur"
@@ -4102,7 +4104,7 @@ machine = "a500_1mb"
 title = "Bollemus"
 group = "Apathy"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.239508]
 title = "Bollox 2"
@@ -4297,7 +4299,8 @@ run = "Boogie.exe"
 title = "Boogie Nights Final"
 group = "Spedes"
 source = "script"
-result = "unknown"
+machine = "a1200"
+run = "RUNME.bat"
 
 [demozoo.20968]
 title = "Boogienights"
@@ -5118,7 +5121,7 @@ machine = "a1200"
 title = "Borntro"
 group = "Ball"
 source = "script"
-result = "unknown"
+machine = "a500_ks12_512k"
 
 [demozoo.226592]
 title = "Borntro"
@@ -5575,8 +5578,8 @@ run = "RunMe"
 title = "Bramborak"
 group = "Horizontal Lamerz / ArtWay"
 source = "script"
-result = "unknown"
-run = "engine"
+machine = "a1200_060"
+run = "Bramborak/Bramborak"
 
 [demozoo.342182]
 title = "Branching Off"
@@ -5647,7 +5650,7 @@ source = "script"
 title = "Break In Chaos"
 group = "ITB"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.246940]
 title = "Break Your Fucking Arm and Your Joystick Too - The Demo"
@@ -5997,7 +6000,7 @@ machine = "a1200"
 title = "Bugas"
 group = "Amiga Skool"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.366663]
 title = "Bugg Killers"
@@ -6051,8 +6054,8 @@ source = "script"
 title = "bugulmayhem"
 group = "mayHem"
 source = "script"
-result = "unknown"
-run = "mhm-bugulmayhem.vga"
+machine = "a1200_060"
+run = "mhm-bugulmayhem.aga"
 
 [demozoo.255480]
 title = "Bukkake"
@@ -6338,7 +6341,8 @@ source = "script"
 title = "ByteSCApe"
 group = "Swiss Cracking Association"
 source = "script"
-result = "unknown"
+machine = "a1200"
+run = "ByteSCApe"
 
 [demozoo.241102]
 title = "Bzdecik 1"

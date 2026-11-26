@@ -82,8 +82,8 @@ source = "script"
 title = "Ra-wicz"
 group = "Phase Truce"
 source = "script"
-result = "unknown"
-run = "Missed.not_crunched"
+machine = "a1200_fast"
+run = "Nomad.exe"
 
 [demozoo.25673]
 title = "Rabb-It"
@@ -255,9 +255,8 @@ machine = "a1200"
 title = "Rahow Paradise"
 group = "P.H. Prod"
 source = "script"
-boot = "floppy"
 result = "unknown"
-note = "the sweep saw works on a1200; no entry of it passed the gate"
+note = "the sweep saw works on a1200_060; no entry of it passed the gate"
 
 [demozoo.245729]
 title = "Rahow Paradise"
@@ -451,8 +450,7 @@ source = "script"
 title = "Randomized.sheep"
 group = "Loonies"
 source = "script"
-result = "unknown"
-note = "failed the gate: seed 1: never came alive"
+machine = "a1200_060"
 
 [demozoo.164025]
 title = "Randy Recliner"
@@ -590,7 +588,7 @@ source = "script"
 title = "Raster Master"
 group = "Resistance"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.247182]
 title = "Raster Masters First for IBB"
@@ -622,8 +620,6 @@ machine = "a1200"
 title = "Rational Prodigy"
 group = "Analogy"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.233936]
 title = "Ratman's Revenge"
@@ -1818,7 +1814,7 @@ source = "script"
 title = "Res Cogitans"
 group = "Software Failure"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 
 [demozoo.240148]
 title = "Rescue 358"
@@ -1842,15 +1838,15 @@ result = "unknown"
 title = "RESETkání 2012 Invitation"
 group = "AmiGanS"
 source = "script"
-result = "unknown"
-run = "Karate"
+machine = "a1200_060"
+run = "Resetkani"
 
 [demozoo.202820]
 title = "RESETkání 2019 Invitation"
 group = "kLik"
 source = "script"
-result = "unknown"
-run = "Karate"
+machine = "a1200_060"
+run = "RESETkani2019_EN"
 
 [demozoo.218721]
 title = "Resident 2 Intro"
@@ -1894,7 +1890,7 @@ source = "script"
 title = "Respirator Stories"
 group = "Ephidrena"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 
 [demozoo.7237]
 title = "Response"
@@ -1964,8 +1960,9 @@ source = "script"
 title = "Retro"
 group = "Vortex"
 source = "script"
-result = "unknown"
+machine = "a1200"
 run = "retro"
+assign = { Nuretro = "Demo:", retro = "Demo:" }
 
 [demozoo.213258]
 title = "Retro"
@@ -2415,7 +2412,7 @@ source = "script"
 title = "Rex"
 group = "Turnips"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.46724]
 title = "Rex Polyhedron"
@@ -3442,7 +3439,7 @@ source = "script"
 title = "Ryba"
 group = "Przyjaciele Stefana B."
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.95443]
 title = "Rybik & Alien"

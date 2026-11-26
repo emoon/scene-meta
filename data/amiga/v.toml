@@ -912,7 +912,8 @@ title = "Velocity"
 group = "Creative Minds"
 source = "script"
 result = "unknown"
-run = "demo"
+run = "release/playlist.lst"
+note = "the sweep saw works on a1200_060; no entry of it passed the gate"
 
 [demozoo.228689]
 title = "Velvet Creation"
@@ -1014,7 +1015,7 @@ source = "script"
 title = "Vertigo"
 group = "Abyss"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.109183]
 title = "Vertigo"
@@ -1284,7 +1285,7 @@ source = "script"
 title = "Vinner"
 group = "Baseballs"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.342443]
 title = "Vintage Glow"
@@ -1374,7 +1375,7 @@ machine = "a1200_fast"
 title = "Virtual Illusion"
 group = "Illusion"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.1939]
 title = "Virtual Intelligence"
@@ -1575,8 +1576,7 @@ source = "script"
 title = "Vittuliukaste -Vittu, pakko kai tää on julkasta ku tuli tehtyä-"
 group = "Poro"
 source = "script"
-result = "unknown"
-note = "the sweep saw works-then-crash on a1200; no entry of it passed the gate"
+machine = "a1200_060"
 
 [demozoo.247637]
 title = "Vitun Munkit"
@@ -1851,8 +1851,7 @@ source = "script"
 title = "Vrroemm?!"
 group = "Desire"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500_1mb; no entry of it passed the gate"
+machine = "a500_1mb"
 
 [demozoo.2155]
 title = "Vuku"

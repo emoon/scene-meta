@@ -505,7 +505,7 @@ source = "script"
 title = "ParacetaMAZE"
 group = "Capsule"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.250180]
 title = "Paracetamol"
@@ -1936,7 +1936,7 @@ machine = "a1200_fast"
 title = "PC64K"
 group = "The Blue Locomotive"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 
 [demozoo.44888]
 title = "Pchli Targ"
@@ -1948,7 +1948,8 @@ machine = "a1200_fast"
 title = "PcPuke!"
 group = "Procyon"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
+run = "PcPuke!"
 
 [demozoo.221473]
 title = "PCT Intro 3"
@@ -2313,8 +2314,8 @@ result = "unknown"
 title = "Phase One"
 group = "Capsule"
 source = "script"
-result = "unknown"
-run = "PhaseOne.data3"
+machine = "a1200_fast"
+run = "loader"
 
 [demozoo.322355]
 title = "Pheeb"
@@ -2430,8 +2431,8 @@ machine = "a1200_fast"
 title = "Phonkey"
 group = "ArtWay"
 source = "script"
-result = "unknown"
-run = "phonkey"
+machine = "a1200_060"
+run = "phonkey.exe"
 
 [demozoo.22320]
 title = "Phorce"
@@ -3137,7 +3138,7 @@ source = "script"
 title = "Plastic"
 group = "Nah-Kolor / Phase Truce"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 run = "Plastic.exe.notcrunched"
 
 [demozoo.258802]
@@ -3176,6 +3177,7 @@ title = "Plastic toys are forever"
 group = "God / Neuroflip / Skynet"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a1200_030; no entry of it passed the gate"
 
 [demozoo.212161]
 title = "Plastic-dots"
@@ -3454,7 +3456,7 @@ source = "script"
 title = "Poket"
 group = "Zenon"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.109142]
 title = "Polarity"
@@ -4040,7 +4042,8 @@ source = "script"
 title = "PowerDeath"
 group = "Procyon"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
+run = "PowerDeath"
 
 [demozoo.217332]
 title = "Powerdisk 1 Intro"
@@ -4114,7 +4117,8 @@ source = "script"
 title = "Powertronik"
 group = "Ihana / Pontus"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
+run = "runme"
 
 [demozoo.226504]
 title = "PowerUp!!!"
@@ -4136,8 +4140,8 @@ source = "script"
 title = "Prase Party Story"
 group = "ArtWay"
 source = "script"
-result = "unknown"
-run = "Karate"
+machine = "a1200_060"
+run = "Prase Party Story"
 
 [demozoo.221025]
 title = "Prawda Preview Intro"
@@ -4534,7 +4538,7 @@ machine = "a1200"
 title = "Prism"
 group = "Absurd"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.20490]
 title = "Prism Part 2"
@@ -4989,7 +4993,8 @@ source = "script"
 title = "Psychedelic"
 group = "Virtual Dreams"
 source = "script"
-result = "unknown"
+machine = "a1200"
+run = "start"
 
 [demozoo.211535]
 title = "Psychedelic"
@@ -5341,7 +5346,7 @@ source = "script"
 title = "Puppets"
 group = "Ephidrena"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.18192]
 title = "Pure"

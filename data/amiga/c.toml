@@ -288,8 +288,8 @@ source = "script"
 title = "Canaille"
 group = "Outsiders"
 source = "script"
-result = "unknown"
-run = "Karate"
+machine = "a1200_060"
+run = "start"
 
 [demozoo.269063]
 title = "Canarian Puffmother"
@@ -373,8 +373,8 @@ source = "script"
 title = "Captured Dreams"
 group = "The Black Lotus"
 source = "script"
-result = "unknown"
-run = "tbl-cd.e03"
+machine = "a1200_fast"
+run = "tbl-cd.exe"
 
 [demozoo.185940]
 title = "Car Intro"
@@ -1569,7 +1569,6 @@ title = "Chunky Tubular Bells"
 group = "Goblins"
 source = "script"
 machine = "a1200"
-result = "crashes-later"
 
 [demozoo.236703]
 title = "Chutchpah"
@@ -1848,8 +1847,9 @@ machine = "a1200"
 title = "Closer"
 group = "CNCD"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 run = "closer_fix.exe"
+assign = { CNCD = "Demo:" }
 
 [demozoo.8735]
 title = "Clot"
@@ -2173,7 +2173,8 @@ source = "script"
 title = "Coketro"
 group = "Comedy"
 source = "script"
-result = "unknown"
+run = "shit"
+assign = { SHIT = "Demo:" }
 
 [demozoo.256968]
 title = "Cola Intro"
@@ -2839,8 +2840,8 @@ source = "script"
 title = "Concept A"
 group = "Division Zero"
 source = "script"
-result = "unknown"
-run = "Karate"
+machine = "a1200_060"
+run = "div0-ConceptA"
 
 [demozoo.23430]
 title = "Concrete"
@@ -4095,7 +4096,7 @@ machine = "a1200"
 title = "CopperRulz"
 group = "NewWave"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.249882]
 title = "Coppers"
@@ -4700,7 +4701,7 @@ source = "script"
 title = "Crap"
 group = "World Federation of Mad Snickers"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 
 [demozoo.207256]
 title = "Crap House 17 - menu"
@@ -5184,7 +5185,7 @@ machine = "a1200"
 title = "Cronoscopium"
 group = "Software Failure"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 
 [demozoo.363]
 title = "Crooked Intro"

@@ -1624,7 +1624,7 @@ source = "script"
 title = "Absinth"
 group = "Nature"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 
 [demozoo.168663]
 title = "Absolut Newest Stuff"
@@ -2500,7 +2500,7 @@ source = "script"
 title = "Alice Copper"
 group = "Ephidrena / Scarab"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 
 [demozoo.227405]
 title = "Alice..."
@@ -3269,9 +3269,8 @@ run = "Karate"
 title = "Amiga Rules"
 group = "Amiga Circle"
 source = "script"
-boot = "floppy"
 result = "unknown"
-note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
+note = "the sweep saw works on a1200_060; no entry of it passed the gate"
 
 [demozoo.85898]
 title = "Amiga Rules"
@@ -3429,7 +3428,7 @@ machine = "a1200_030"
 title = "AMIversary"
 group = "The Collective"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 
 [demozoo.260766]
 title = "Amnesia"
@@ -3542,8 +3541,8 @@ machine = "a1200_fast"
 title = "Amsterdam Blessings"
 group = "Madwizards"
 source = "script"
-result = "unknown"
-run = "mwi-amsbless_final.ppc"
+machine = "a1200_060"
+run = "mwi-amsbless_final.exe"
 
 [demozoo.70677]
 title = "Amused To Death"
@@ -6065,7 +6064,7 @@ source = "script"
 title = "Any One Of These Suckers"
 group = "Ephidrena"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 
 [demozoo.195859]
 title = "Anzax First"
@@ -6086,8 +6085,8 @@ source = "script"
 title = "Aomi"
 group = "ArtWay"
 source = "script"
-result = "unknown"
-run = "Karate"
+machine = "a1200_060"
+run = ">>> START <<<"
 
 [demozoo.223606]
 title = "Apache Flight"
@@ -6190,8 +6189,8 @@ machine = "a1200"
 title = "Arabs"
 group = "Outsiders"
 source = "script"
-result = "unknown"
-run = "Karate"
+machine = "a1200_060"
+run = "start"
 
 [demozoo.274572]
 title = "Arachnid Cycle"
@@ -6222,13 +6221,13 @@ source = "script"
 title = "Arcane Lugter"
 group = "Depth"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.2830]
 title = "Arcane Sleeps"
 group = "Loaderror"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.241608]
 title = "Arch Ed v1.0"
@@ -6517,8 +6516,8 @@ source = "script"
 title = "ArtWay 2006 Invite"
 group = "AmiGanS / ArtWay"
 source = "script"
-result = "unknown"
-run = "Engine"
+machine = "a1200_060"
+run = "AW06invite"
 
 [demozoo.217255]
 title = "As Cold as Ice"
@@ -6926,7 +6925,7 @@ source = "script"
 title = "Atlantica"
 group = "Nukleus"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 
 [demozoo.139038]
 title = "Atlantis"
@@ -7109,7 +7108,7 @@ machine = "a1200"
 title = "Aurum Intra Computatrum"
 group = "Software Failure"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 
 [demozoo.238939]
 title = "Auschwitz 10 - menu"
@@ -7368,5 +7367,5 @@ source = "script"
 title = "Azuli"
 group = "Mystic"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 run = "mst-azl.exe"

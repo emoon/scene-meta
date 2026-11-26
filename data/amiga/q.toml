@@ -165,8 +165,8 @@ machine = "a1200_fast"
 title = "Que?"
 group = "The Black Lotus"
 source = "script"
-result = "unknown"
-run = "tbl-que.f"
+machine = "a1200"
+run = "tbl-que.exe"
 
 [demozoo.233713]
 title = "Queen"

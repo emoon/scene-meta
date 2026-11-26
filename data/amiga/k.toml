@@ -103,7 +103,7 @@ source = "script"
 title = "Kakao"
 group = "Elude"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 run = "eld-kakao"
 
 [demozoo.141366]
@@ -232,22 +232,22 @@ source = "script"
 title = "Karate Pills"
 group = "Schitzophrenic"
 source = "script"
-result = "unknown"
-run = "Karate"
+machine = "a1200_060"
+run = "Karatepills/Schitzo-KPills"
 
 [demozoo.228873]
 title = "Karate Pills 2"
 group = "Schitzophrenic"
 source = "script"
-result = "unknown"
-run = "Karate"
+machine = "a1200_060"
+run = "Karatepills2/Schitzo-KPills2"
 
 [demozoo.81972]
 title = "Karatepills"
 group = "Schitzo"
 source = "script"
-result = "unknown"
-run = "Karate"
+machine = "a1200_060"
+run = "Schitzo-KPills"
 
 [demozoo.209612]
 title = "Karbad - Megademo 1"
@@ -631,8 +631,8 @@ machine = "a1200_fast"
 title = "Kilkenny"
 group = "Iris"
 source = "script"
-result = "unknown"
-run = "kilkenny.dat1"
+machine = "a1200_030"
+run = "kilkenny.exe"
 
 [demozoo.193510]
 title = "Kill 'em All"
@@ -903,7 +903,7 @@ source = "script"
 title = "Kkkk"
 group = "Apathy"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.40324]
 title = "Kkube"
@@ -1265,8 +1265,8 @@ source = "script"
 title = "Krava"
 group = "ArtWay"
 source = "script"
-result = "unknown"
-run = "Karate"
+machine = "a1200_060"
+run = "--> HERE <--"
 
 [demozoo.234224]
 title = "Kreator's First Demo"
@@ -1366,7 +1366,6 @@ title = "Kuchmistrz"
 group = "Lamers"
 source = "script"
 machine = "a1200_fast"
-result = "crashes-later"
 
 [demozoo.26031]
 title = "Kuck I Rompa"
@@ -1406,7 +1405,7 @@ machine = "a500_1mb"
 title = "Kup pEntiuma"
 group = "Illusion"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.33713]
 title = "Kurva Anyad"

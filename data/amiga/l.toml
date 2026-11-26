@@ -1550,7 +1550,7 @@ machine = "a1200_030"
 title = "Light"
 group = "Apathy"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.3150]
 title = "Light 2"
@@ -1634,6 +1634,7 @@ group = "Elude"
 source = "script"
 result = "unknown"
 run = "eld-lightshaft.exe"
+note = "the sweep saw works on a1200_060; no entry of it passed the gate"
 
 [demozoo.32898]
 title = "Lightwave Demo"
@@ -2374,7 +2375,7 @@ machine = "a1200"
 title = "Live Axxion - The Showdown"
 group = "Up Rough"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 
 [demozoo.18517]
 title = "Live In Himmerland"
@@ -2955,7 +2956,9 @@ machine = "a1200"
 title = "Low"
 group = "Lamers"
 source = "script"
-result = "unknown"
+machine = "a1200"
+run = "low"
+assign = { LOW = "Demo:" }
 
 [demozoo.254811]
 title = "Low Budget"
@@ -3077,7 +3080,7 @@ source = "script"
 title = "Luminagia"
 group = "Loonies"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 
 [demozoo.249896]
 title = "Luminious Pack 10 Intro"
@@ -3173,7 +3176,7 @@ machine = "a1200_030"
 title = "Lvis"
 group = "Scarab"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 
 [demozoo.279577]
 title = "Lysbilder"

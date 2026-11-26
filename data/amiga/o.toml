@@ -515,7 +515,7 @@ source = "script"
 title = "old'scool"
 group = "Resistance"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.44910]
 title = "Old.Skool"
@@ -658,7 +658,7 @@ machine = "a1200_fast"
 title = "Omnimetatheorem"
 group = "Software Failure"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 
 [demozoo.167485]
 title = "Omnipotent"
@@ -759,8 +759,8 @@ machine = "a500_ks12"
 title = "One Christmas night"
 group = "Prophesy"
 source = "script"
-result = "unknown"
-run = "Merry"
+machine = "a1200"
+run = "xmasdemo.exe"
 
 [demozoo.203]
 title = "One Day"
@@ -977,14 +977,14 @@ source = "script"
 title = "Ontoclasia"
 group = "Software Failure"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 
 [demozoo.133632]
 title = "oo"
 group = "Mankind"
 source = "script"
-result = "unknown"
-run = "Karate"
+machine = "a1200_060"
+run = "Oo"
 
 [demozoo.232528]
 title = "Ooby Dooby"
@@ -1260,7 +1260,7 @@ source = "script"
 title = "Origins"
 group = "Unique"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 
 [demozoo.222805]
 title = "Origo"
@@ -1648,7 +1648,7 @@ machine = "a1200"
 title = "Outside Planet Earth"
 group = "Australian Drug Foundation"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 
 [demozoo.394286]
 title = "Outsider"
@@ -1743,8 +1743,8 @@ machine = "a500_ks12"
 title = "Overt Enemy"
 group = "Harvester"
 source = "script"
-result = "unknown"
-run = "!tunnel"
+machine = "a1200"
+run = "HVROvert.exe"
 
 [demozoo.185214]
 title = "Overtone"
@@ -1762,7 +1762,7 @@ machine = "a1200"
 title = "Overview 9 - Delirium 2001 Edition"
 group = "Madwizards"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 run = "mwi-ove9.exe"
 
 [demozoo.96643]

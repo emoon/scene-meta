@@ -122,8 +122,8 @@ source = "script"
 title = "Easter Egg"
 group = "FartBay"
 source = "script"
-result = "unknown"
-run = "Karate"
+machine = "a1200_060"
+run = "egg_here"
 
 [demozoo.196089]
 title = "Easter Egg"
@@ -171,7 +171,8 @@ title = "Eat Candies"
 group = "WoodTower"
 source = "script"
 result = "unknown"
-run = "Karate"
+run = "2K4"
+note = "the sweep saw works on a1200_060; no entry of it passed the gate"
 
 [demozoo.242697]
 title = "Eat Carrots"
@@ -445,8 +446,8 @@ source = "script"
 title = "Ei Seiso - Remix"
 group = "Spedes"
 source = "script"
-result = "unknown"
-run = "EiSeiso-ReMix.exe"
+machine = "a1200"
+run = "startdemo"
 
 [demozoo.118076]
 title = "eierschaukel"
@@ -495,8 +496,7 @@ source = "script"
 title = "ekoJ A"
 group = "Sauron"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a1200; no entry of it passed the gate"
+machine = "a1200"
 
 [demozoo.229972]
 title = "Ektoplasma"
@@ -663,7 +663,7 @@ machine = "a1200_030"
 title = "Electromathesis"
 group = "Software Failure"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 
 [demozoo.218058]
 title = "Electronic Erection"
@@ -893,8 +893,9 @@ source = "script"
 title = "Embryo"
 group = "Balance"
 source = "script"
-result = "unknown"
+machine = "a1200"
 run = "embryo.exe"
+assign = { embryo = "Demo:" }
 
 [demozoo.228131]
 title = "Emerald Cruncher One"
@@ -1080,7 +1081,7 @@ source = "script"
 title = "Enemy"
 group = "Phase Truce"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.20271]
 title = "Enemy of Referee"
@@ -1131,7 +1132,7 @@ source = "script"
 title = "Enforcing the Law"
 group = "Powerline"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 
 [demozoo.32984]
 title = "Engine"
@@ -1170,7 +1171,7 @@ source = "script"
 title = "Eniac"
 group = "Floppy"
 source = "script"
-result = "unknown"
+machine = "a1200"
 run = "FLP-Eniac4kFV.exe"
 
 [demozoo.241128]
@@ -1507,8 +1508,10 @@ source = "script"
 title = "Eternal Madness"
 group = "Digital Dreams"
 source = "script"
+boot = "hd"
 result = "unknown"
-disks = ["DIGITAL_DREAMS-EtnMad-A.DMS", "DIGITAL_DREAMS-EtnMad-B.DMS"]
+run = "Eternal Madness"
+note = "the sweep saw works on a1200_060; no entry of it passed the gate"
 
 [demozoo.207022]
 title = "Eternal Terror preview"
@@ -1813,7 +1816,7 @@ source = "script"
 title = "Evening At Basrah"
 group = "Australian Drug Foundation"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 
 [demozoo.229405]
 title = "Every Joke Is Deadly"
@@ -1838,7 +1841,7 @@ run = "jesus.exe"
 title = "Everything Dies"
 group = "Venus Art"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 
 [demozoo.326956]
 title = "Everything Turns"
@@ -1905,8 +1908,8 @@ source = "script"
 title = "Evil Starter"
 group = "ArtWay"
 source = "script"
-result = "unknown"
-run = "Karate"
+machine = "a1200_060"
+run = "Evil/starter"
 
 [demozoo.232038]
 title = "Evilings 11 - Intro"
@@ -2127,8 +2130,6 @@ source = "script"
 title = "Existenz"
 group = "Existenz"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.139100]
 title = "Existro"

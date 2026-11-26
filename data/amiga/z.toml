@@ -167,7 +167,7 @@ machine = "a1200_fast"
 title = "Zeebeeking"
 group = "Apathy"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.92783]
 title = "Zemsta Robola"
@@ -234,8 +234,8 @@ source = "script"
 title = "Zero Divide"
 group = "Grim Project / Intense"
 source = "script"
-result = "unknown"
-run = "zerodivide.cgx"
+machine = "a1200_fast"
+run = "zerodivide.aga"
 
 [demozoo.50583]
 title = "Zero Divide RMX"

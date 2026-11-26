@@ -119,8 +119,7 @@ source = "script"
 title = "Walec"
 group = "Odbyt Design"
 source = "script"
-result = "unknown"
-note = "the sweep saw works-then-crash on a1200_fast; no entry of it passed the gate"
+machine = "a1200_060"
 
 [demozoo.163834]
 title = "Waleczne Maciory w Akcji II"
@@ -178,8 +177,8 @@ source = "script"
 title = "Walpurgisnacht"
 group = "Outsiders / Russian Prestige"
 source = "script"
-result = "unknown"
-run = "Karate"
+machine = "a1200_060"
+run = "start"
 
 [demozoo.225119]
 title = "Wanker Demo"
@@ -524,7 +523,7 @@ source = "script"
 title = "Wave 2000%"
 group = "Azure / Platon"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.19452]
 title = "Wave 40%"
@@ -537,8 +536,7 @@ boot = "floppy"
 title = "Wave 50%"
 group = "Artwork / Bizarre Arts"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a1200; no entry of it passed the gate"
+machine = "a1200"
 
 [demozoo.367752]
 title = "Wave Coupling"
@@ -623,8 +621,8 @@ source = "script"
 title = "Waynedemo"
 group = "ArtWay"
 source = "script"
-result = "unknown"
-run = "engine"
+machine = "a1200_060"
+run = "WayneDemoV0.8/320x256"
 
 [demozoo.7475]
 title = "Wc Goes To WC"
@@ -804,7 +802,7 @@ result = "unknown"
 title = "We Come In Peace"
 group = "Elude"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 run = "eld-wcip_uae"
 
 [demozoo.30651]
@@ -1462,8 +1460,8 @@ source = "script"
 title = "What You Say?"
 group = "Mankind"
 source = "script"
-result = "unknown"
-run = "Karate"
+machine = "a1200_060"
+run = "WhatYouSay!"
 
 [demozoo.213852]
 title = "What!?"
@@ -2016,7 +2014,9 @@ source = "script"
 title = "WinTunnel"
 group = "Inikep"
 source = "script"
+boot = "floppy"
 result = "unknown"
+note = "the sweep saw works on a1200_060; no entry of it passed the gate"
 
 [demozoo.32376]
 title = "Wipe"

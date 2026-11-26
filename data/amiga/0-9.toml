@@ -8,8 +8,8 @@ machine = "a1200"
 title = "05135 13 Remix - Ei seiso rmx"
 group = "Spedes"
 source = "script"
-result = "unknown"
-run = "EiSeiso-ReMix.exe"
+machine = "a1200"
+run = "startdemo"
 
 [demozoo.192496]
 title = "0xF Anniversary"
@@ -756,7 +756,9 @@ source = "script"
 title = "242DL75"
 group = "Rage"
 source = "script"
+boot = "floppy"
 result = "unknown"
+note = "the sweep saw works on a1200_060; no entry of it passed the gate"
 
 [demozoo.229366]
 title = "24th Demo VII Edition"
@@ -797,7 +799,7 @@ source = "script"
 title = "27+1"
 group = "Loonies"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.136546]
 title = "28kbs"
@@ -1855,7 +1857,7 @@ source = "script"
 title = "4kb"
 group = "Amnesty"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.9384]
 title = "4kb"
@@ -1891,7 +1893,7 @@ machine = "a1200"
 title = "4KTorus"
 group = "Amnesty"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.5110]
 title = "4TFT"
@@ -1940,7 +1942,7 @@ source = "script"
 title = "4tris"
 group = "Nexus Team"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.222557]
 title = "4x4 Off Road Racing"

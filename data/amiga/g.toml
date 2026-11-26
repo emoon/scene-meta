@@ -352,8 +352,6 @@ source = "script"
 title = "Gammelheter 2"
 group = "Senex"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.221304]
 title = "Gang-Maker"
@@ -1348,7 +1346,7 @@ boot = "floppy"
 title = "GOD IS NO MORE"
 group = "mayHem"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 run = "mhm-GodIsNoMore.aga"
 
 [demozoo.233403]
@@ -1431,8 +1429,8 @@ source = "script"
 title = "Gold"
 group = "Floppy"
 source = "script"
-result = "unknown"
-run = "LE-window6.12"
+machine = "a1200"
+run = "4kB_GOLD.EXE"
 
 [demozoo.261210]
 title = "Gold Scroll"
@@ -1606,7 +1604,8 @@ machine = "a500_1mb"
 title = "Gorau"
 group = "Sector 5"
 source = "script"
-result = "unknown"
+machine = "a1200"
+run = "garou"
 
 [demozoo.64106]
 title = "Gore"
@@ -2118,7 +2117,7 @@ source = "script"
 title = "Greetro"
 group = "Rødsprit"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.338630]
 title = "Greetro From Space"
@@ -2357,15 +2356,13 @@ source = "script"
 title = "Grzbiety Rulez Kurwa"
 group = "Vodka People"
 source = "script"
-result = "unknown"
-note = "the sweep saw works-then-crash on a1200_fast; no entry of it passed the gate"
+machine = "a1200_060"
 
 [demozoo.92780]
 title = "Grzbiety rulez Kurwa!"
 group = "Vodka Projects"
 source = "script"
-result = "unknown"
-note = "the sweep saw works-then-crash on a1200_fast; no entry of it passed the gate"
+machine = "a1200_060"
 
 [demozoo.227825]
 title = "Grzes Nie Doczekal"

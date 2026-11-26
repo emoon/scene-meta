@@ -60,8 +60,6 @@ machine = "a500_1mb"
 title = "F/A-18 Interceptor - import"
 group = "Trilogy / 7up Crew"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.229566]
 title = "F16 Intro"
@@ -214,7 +212,9 @@ source = "script"
 title = "Fade Deeper Inside"
 group = "Melting Pot"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
+run = "Fade.Exe"
+assign = { Fade = "Demo:" }
 
 [demozoo.17982]
 title = "Fade To Black"
@@ -308,7 +308,7 @@ source = "script"
 title = "Fake Electronic Lightshow"
 group = "Ephidrena"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 
 [demozoo.326628]
 title = "Fake One"
@@ -633,7 +633,7 @@ machine = "a1200_fast"
 title = "Fast"
 group = "Jim"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.235069]
 title = "Fast"
@@ -765,7 +765,7 @@ source = "script"
 title = "Fast0xb"
 group = "Unity FR"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.143741]
 title = "Faster Than Hell"
@@ -4054,7 +4054,8 @@ run = "kng-flow_uncr.exe"
 title = "Flow My Programs"
 group = "Software Failure"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
+boot = "floppy"
 
 [demozoo.35339]
 title = "Flower"
@@ -4345,7 +4346,7 @@ source = "script"
 title = "For Real"
 group = "Spaceballs"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 
 [demozoo.144365]
 title = "For The First Time In Human History... An Intro!"
@@ -5256,7 +5257,7 @@ source = "script"
 title = "Frostbyte"
 group = "Core Productions"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.184478]
 title = "Frosties Contact"

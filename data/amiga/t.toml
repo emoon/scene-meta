@@ -335,7 +335,7 @@ source = "script"
 title = "Tchawica"
 group = "Apathy"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.63598]
 title = "Tchi-Tchi"
@@ -984,7 +984,7 @@ source = "script"
 title = "Tetris Expansion"
 group = "Unity"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.188122]
 title = "Tetris Pro Intro"
@@ -2439,8 +2439,7 @@ source = "script"
 title = "The Gate"
 group = "Artwork"
 source = "script"
-result = "unknown"
-note = "the sweep saw works-then-crash on a1200_fast; no entry of it passed the gate"
+machine = "a1200_060"
 
 [demozoo.219754]
 title = "The Gate Keeper Demo"
@@ -3028,8 +3027,8 @@ source = "script"
 title = "The Life At The Farm"
 group = "Mankind"
 source = "script"
-result = "unknown"
-run = "engine"
+machine = "a1200_060"
+run = "LifeAtTheFarm"
 
 [demozoo.227222]
 title = "The Light Gets Brighter"
@@ -3178,6 +3177,7 @@ title = "The Martini Effect"
 group = "FLEX"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a1200_060; no entry of it passed the gate"
 
 [demozoo.241357]
 title = "The Marvellous Ture Sventon Demo"
@@ -3647,7 +3647,7 @@ source = "script"
 title = "The Persistence of Noise"
 group = "Software Failure"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 
 [demozoo.141635]
 title = "The Pest"
@@ -3706,7 +3706,6 @@ source = "script"
 title = "The Power of Kefrens"
 group = "Kefrens"
 source = "script"
-result = "unknown"
 
 [demozoo.6952]
 title = "The Prey"
@@ -4383,7 +4382,7 @@ source = "script"
 title = "The Tetris Expansion"
 group = "Unity FR"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.5334]
 title = "The Tetris Intro (Legalize It 3)"
@@ -4707,7 +4706,7 @@ machine = "a1200_fast"
 title = "The Wank-tro"
 group = "Team Extreme"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 
 [demozoo.228739]
 title = "The Wanted Intro"
@@ -5179,8 +5178,8 @@ source = "script"
 title = "This Is Not A Fish"
 group = "Sardonyx"
 source = "script"
-result = "unknown"
-run = "fish.f"
+machine = "a1200"
+run = "fish.exe"
 
 [demozoo.206463]
 title = "This is not a Melon Production"
@@ -5393,7 +5392,7 @@ source = "script"
 title = "Thunder"
 group = "Scoopex"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.134641]
 title = "Thunder Storm"
@@ -5509,7 +5508,9 @@ source = "script"
 title = "Time of Wind 3"
 group = "Deathbringers"
 source = "script"
-result = "unknown"
+machine = "a1200"
+run = "TimeOfWind3.Exe"
+assign = { Tow3 = "Demo:" }
 
 [demozoo.241956]
 title = "Time Race  - Preview"
@@ -5653,7 +5654,7 @@ source = "script"
 title = "Timur Lenk"
 group = "Ephidrena / Spaceballs"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 
 [demozoo.255884]
 title = "Ting Man Aldrig Maa Goere"
@@ -5769,7 +5770,7 @@ source = "script"
 title = "Titan 20th Birthday 40k Intro"
 group = "Titan"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 
 [demozoo.230502]
 title = "Titus The Fox: To Marrakech And Back"
@@ -5780,8 +5781,8 @@ source = "script"
 title = "Tivee"
 group = "PURe"
 source = "script"
-result = "unknown"
-run = "Tivee.2"
+machine = "a1200"
+run = "pure.tivee/Tivee.Pure"
 
 [demozoo.233510]
 title = "TJ-MasterSeka v1.93 Intro"
@@ -5872,8 +5873,7 @@ source = "script"
 title = "Together"
 group = "Phase Truce"
 source = "script"
-result = "unknown"
-run = "Together.exe"
+machine = "a1200"
 
 [demozoo.40179]
 title = "Together"
@@ -5885,7 +5885,7 @@ result = "unknown"
 title = "Together Remix"
 group = "Phase Truce"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.27322]
 title = "Toilet Human Excrement"
@@ -6380,7 +6380,7 @@ source = "script"
 title = "Tour de Scene"
 group = "Tulou"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 
 [demozoo.223599]
 title = "Tour de Scene 100%"
@@ -6437,7 +6437,7 @@ source = "script"
 title = "Toxic"
 group = "Amnesty"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.181786]
 title = "Toxic BBS"
@@ -7125,7 +7125,7 @@ machine = "a1200_fast"
 title = "Tribute to Acid"
 group = "Nature"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 
 [demozoo.29337]
 title = "Tribute To Björk"
@@ -7159,8 +7159,8 @@ run = "TrickorTreat.exe"
 title = "Trick or Treat 2"
 group = "Prophesy"
 source = "script"
-result = "unknown"
-run = "play"
+machine = "a1200"
+run = "TOT2.exe"
 
 [demozoo.39284]
 title = "Triintrotolueno"
@@ -7226,7 +7226,7 @@ machine = "a1200_fast"
 title = "Trip Trough Your 64"
 group = "The Feigling Crew"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 run = "Part2"
 
 [demozoo.223125]
@@ -7432,13 +7432,13 @@ source = "script"
 title = "true dreams 1x1"
 group = "Floppy"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.9381]
 title = "True Dreams 2x2"
 group = "Floppy"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.193958]
 title = "True Spirit"
@@ -7615,7 +7615,7 @@ source = "script"
 title = "Tunnel of Mandel"
 group = "Neural"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.269064]
 title = "Tunnel Vision"

@@ -146,8 +146,7 @@ source = "script"
 title = "JamJam"
 group = "Incal"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
+machine = "a1200_060"
 
 [demozoo.181]
 title = "Jammin"
@@ -285,7 +284,7 @@ source = "script"
 title = "Jenna Loves EPH"
 group = "Ephidrena"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 
 [demozoo.10175]
 title = "Jenny Thinks"
@@ -318,8 +317,8 @@ source = "script"
 title = "Jessica Demo"
 group = "ArtWay"
 source = "script"
-result = "unknown"
-run = "Karate"
+machine = "a1200_060"
+run = "start"
 
 [demozoo.5117]
 title = "Jesus Christ Motocross"
@@ -454,7 +453,7 @@ source = "script"
 title = "John Lowe's Ultimate Darts"
 group = "Telstar"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.25796]
 title = "John Thaw"
@@ -602,8 +601,8 @@ source = "script"
 title = "Jointro 2008"
 group = "AmiGanS"
 source = "script"
-result = "unknown"
-run = "k3d.Fx"
+machine = "a1200_060"
+run = "jointro2008/Jointro.exe"
 
 [demozoo.239970]
 title = "Joinus"
@@ -813,7 +812,7 @@ source = "script"
 title = "Journey to VIP"
 group = "Unity"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.45800]
 title = "Joy"

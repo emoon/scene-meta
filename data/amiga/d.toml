@@ -774,6 +774,7 @@ title = "Dead Ahead"
 group = "Ephidrena / FLEX"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a1200_060; no entry of it passed the gate"
 
 [demozoo.208970]
 title = "Dead Bang"
@@ -1135,7 +1136,7 @@ source = "script"
 title = "Deep - The Psilocybin Mix"
 group = "CNCD / Parallax"
 source = "script"
-result = "unknown"
+machine = "a1200"
 run = "Music2"
 
 [demozoo.247284]
@@ -1658,6 +1659,7 @@ title = "Demo"
 group = "Taurus 1"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500_512k; no entry of it passed the gate"
 
 [demozoo.223247]
 title = "Demo"
@@ -3169,7 +3171,7 @@ source = "script"
 title = "Dexterity"
 group = "Ephidrena"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 
 [demozoo.262471]
 title = "Dezed's First Amiga Demo"
@@ -3408,6 +3410,7 @@ title = "Digital Dreams Intro 1"
 group = "Synergy Design"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.214746]
 title = "Digital Dreams Intro 2"
@@ -3839,8 +3842,8 @@ machine = "a1200_fast"
 title = "Distortion"
 group = "Spaceballs"
 source = "script"
-result = "unknown"
-run = "_1_Slummy"
+machine = "a1200"
+run = "SpB-Dist.exe"
 
 [demozoo.254907]
 title = "Distortion"
@@ -4256,7 +4259,7 @@ source = "script"
 title = "Dolor Sit Amet"
 group = "Lorem Ipsum"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 run = "li-dolor_sit_amet"
 
 [demozoo.26037]
@@ -4591,8 +4594,7 @@ source = "script"
 title = "Down to the molecular hexagons and cube chains"
 group = "Nah-Kolor"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a1200_030; no entry of it passed the gate"
+machine = "a1200_060"
 
 [demozoo.237629]
 title = "Down With the Blue"

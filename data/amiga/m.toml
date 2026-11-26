@@ -85,14 +85,16 @@ machine = "a1200_fast"
 title = "Machinist"
 group = "Elude"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 run = "eld-machinist"
 
 [demozoo.32592]
 title = "Macho Man 3"
 group = "Syndrome"
 source = "script"
-result = "unknown"
+machine = "a1200"
+run = "MachoManIII.exe"
+assign = { mm3 = "Demo:" }
 
 [demozoo.357726]
 title = "Macintrash Simulator"
@@ -159,8 +161,8 @@ source = "script"
 title = "Mad Vibe"
 group = "Outsiders"
 source = "script"
-result = "unknown"
-run = "Karate"
+machine = "a1200_060"
+run = "start"
 
 [demozoo.228360]
 title = "Mad-Balls"
@@ -749,7 +751,7 @@ source = "script"
 title = "Manel"
 group = "NewWave"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.215918]
 title = "Manhattan Dealers"
@@ -814,8 +816,8 @@ boot = "hd"
 title = "Mankind suckz"
 group = "iq2000"
 source = "script"
-result = "unknown"
-run = "ms-05.iq2k"
+machine = "a1200"
+run = "mankind_suckz/iq2k-ms"
 
 [demozoo.179935]
 title = "Mankind's Big Sprite Demo 100%"
@@ -843,7 +845,6 @@ source = "script"
 title = "Manta"
 group = "Corpse"
 source = "script"
-result = "unknown"
 
 [demozoo.7241]
 title = "Manual Override"
@@ -907,7 +908,7 @@ source = "script"
 title = "Mare"
 group = "Ephidrena / Loonies / Skuggimadr"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 
 [demozoo.263720]
 title = "Maria's Christmas Box"
@@ -1347,7 +1348,7 @@ source = "script"
 title = "Maximum Superprocess"
 group = "Software Failure"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 
 [demozoo.170158]
 title = "Maximum Taste - No Sugar"
@@ -4269,7 +4270,7 @@ result = "unknown"
 title = "Message Center Editor II V1.1E Intro"
 group = "Addonic"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.353131]
 title = "Message To The Wankers"
@@ -4411,9 +4412,8 @@ source = "script"
 title = "Metatag Lock K-231277"
 group = "Madwizards"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 run = "mwi-mtag.030"
-note = "the sweep saw works on a1200_030; no entry of it passed the gate"
 
 [demozoo.236338]
 title = "Meteli 1"
@@ -4431,6 +4431,7 @@ title = "Meteli 3"
 group = "Byterapers"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.236341]
 title = "Meteli 4 - Jumala Special"
@@ -4500,7 +4501,7 @@ source = "script"
 title = "Metropolice"
 group = "Rave Network Overscan / Ghostown"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 
 [demozoo.222847]
 title = "Metsaerules"
@@ -4697,8 +4698,8 @@ source = "script"
 title = "Mid School Demo"
 group = "Latex"
 source = "script"
-result = "unknown"
-run = "Greets.ltx"
+machine = "a1200"
+run = "Loket.exe"
 
 [demozoo.9560]
 title = "Midge"
@@ -4935,7 +4936,7 @@ source = "script"
 title = "Mind Floating Palace"
 group = "Software Failure"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 
 [demozoo.248669]
 title = "Mind Flux"
@@ -5049,8 +5050,8 @@ source = "script"
 title = "Mindprobe"
 group = "The Black Lotus"
 source = "script"
-result = "unknown"
-run = "landtunnel"
+machine = "a1200_fast"
+run = "tbl-mp.exe"
 
 [demozoo.285207]
 title = "Mindsurfin'"
@@ -5061,8 +5062,8 @@ source = "script"
 title = "MindWalker"
 group = "Vegas"
 source = "script"
-result = "unknown"
-run = "mindwalker.exe"
+machine = "a1200_030"
+run = "go"
 
 [demozoo.218877]
 title = "Mindworks Intro"
@@ -5636,8 +5637,8 @@ source = "script"
 title = "Missed"
 group = "Madwizards"
 source = "script"
-result = "unknown"
-run = "Missed.not_crunched"
+machine = "a1200"
+run = "Missed.exe"
 
 [demozoo.209615]
 title = "Missing Link"
@@ -5659,8 +5660,6 @@ source = "script"
 title = "Mission Nostromo"
 group = "Focus Design"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.178224]
 title = "Mission Nostromo II"
@@ -5922,8 +5921,8 @@ machine = "a1200"
 title = "mOmento"
 group = "Nah-Kolor"
 source = "script"
-result = "unknown"
-run = "mOmento.nocrunched"
+machine = "a1200_030"
+run = "mOmento.exe"
 
 [demozoo.42072]
 title = "Moments"
@@ -6134,7 +6133,7 @@ machine = "a1200"
 title = "Moon City"
 group = "Apathy"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.232321]
 title = "Moon Intro"

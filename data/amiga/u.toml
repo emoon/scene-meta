@@ -64,6 +64,7 @@ group = "Broken Cube"
 source = "script"
 result = "unknown"
 run = "BC_Ugly-NoCrunch"
+note = "the sweep saw works on a1200_060; no entry of it passed the gate"
 
 [demozoo.112463]
 title = "Ugly Faces"
@@ -262,7 +263,7 @@ machine = "a1200"
 title = "Umbilicus Mundi"
 group = "Software Failure"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 
 [demozoo.152871]
 title = "Umbra Et Imago"
@@ -580,7 +581,7 @@ source = "script"
 title = "Unnamed"
 group = "Delta 9"
 source = "script"
-result = "unknown"
+machine = "a1200"
 run = "__2"
 
 [demozoo.219578]

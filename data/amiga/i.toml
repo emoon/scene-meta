@@ -39,8 +39,8 @@ note = "the sweep saw works on a500; no entry of it passed the gate"
 title = "I Has A Demomaker"
 group = "Salami Tactics"
 source = "script"
-result = "unknown"
-run = "karate"
+machine = "a1200_060"
+run = "Salami/salami"
 
 [demozoo.123674]
 title = "I Have A Dog!"
@@ -102,7 +102,8 @@ machine = "a1200"
 title = "I Want To Be Machine"
 group = "Appendix"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
+run = "start"
 
 [demozoo.32609]
 title = "I Want To Believe"
@@ -350,8 +351,7 @@ source = "script"
 title = "Ihana Elamae"
 group = "Snus"
 source = "script"
-result = "unknown"
-note = "the sweep saw works-then-crash on a1200_030; no entry of it passed the gate"
+machine = "a1200_060"
 
 [demozoo.115246]
 title = "IKA I Rutan"
@@ -363,7 +363,7 @@ machine = "a1200_fast"
 title = "Ikadalawampu"
 group = "Loonies"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 
 [demozoo.3574]
 title = "Ikanim"
@@ -381,8 +381,8 @@ source = "script"
 title = "Ikke Bare Rabarbra"
 group = "Team Karbis"
 source = "script"
-result = "unknown"
-run = "friendsonly.exe"
+machine = "a1200_fast"
+run = "TeamKarbis_IkkeBareRabarbara/ikkebare.scala"
 
 [demozoo.240465]
 title = "Il Scuros 1st"
@@ -480,7 +480,9 @@ machine = "a1200"
 title = "Ilyad"
 group = "Asphyxia Design / Alcatraz"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
+run = "Ilyad"
+assign = { Ilyad1 = "Demo:", Ilyad2 = "Demo:", Ilyad3 = "Demo:", Ilyad4 = "Demo:" }
 
 [demozoo.170749]
 title = "Imacennial"
@@ -1544,7 +1546,7 @@ note = "the sweep saw works on a1200; no entry of it passed the gate"
 title = "Insomnia"
 group = "Union"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.190895]
 title = "Insomnia"
@@ -1700,7 +1702,8 @@ source = "script"
 title = "Intel Outside"
 group = "Gorzyga / Dzez"
 source = "script"
-result = "unknown"
+machine = "a1200"
+run = "Start"
 
 [demozoo.163596]
 title = "Intel Outside 2"
@@ -2001,8 +2004,8 @@ source = "script"
 title = "Intro"
 group = "Wayne"
 source = "script"
-result = "unknown"
-run = "engine"
+machine = "a1200_060"
+run = "640x512"
 
 [demozoo.131928]
 title = "Intro"
@@ -3129,7 +3132,8 @@ source = "script"
 title = "Introscope"
 group = "D.T.A. Software Studio"
 source = "script"
-result = "unknown"
+machine = "a1200"
+run = "Introscope/IntroscopeHD.exe"
 
 [demozoo.208713]
 title = "Introspective"
@@ -3259,8 +3263,9 @@ machine = "a1200_fast"
 title = "IOI!"
 group = "Magic Owls"
 source = "script"
-result = "unknown"
+machine = "a1200"
 run = "Yoj.exe"
+assign = { Yoj = "Demo:" }
 
 [demozoo.391865]
 title = "Ionah"
@@ -3288,8 +3293,7 @@ source = "script"
 title = "IRepoMeiita"
 group = "Harvester"
 source = "script"
-result = "unknown"
-note = "the sweep saw works-then-crash on a1200_030; no entry of it passed the gate"
+machine = "a1200_060"
 
 [demozoo.237017]
 title = "Iris"
