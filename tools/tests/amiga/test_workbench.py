@@ -215,3 +215,14 @@ class WorkbenchTest(unittest.TestCase):
         workbench.prepare(root3, "demo\n", libs_dir=libs, all_libs=True, ks1=False, stack=65536)
         self.assertEqual((root3 / "libs" / "diskfont.library").read_bytes(), b"v39")
         self.assertIn("Stack 65536\n", (root3 / "s" / "startup-sequence").read_text())
+
+    def test_file_named_c_puts_assign_in_s(self):
+        root = self.dir()
+        (root / "c").write_bytes(b"data file named c")
+        self.assertEqual(workbench.assign_cmd(root), workbench.ASSIGN)
+        self.assertEqual(
+            workbench.assign_lines({"PREY": "Demo:"}, workbench.assign_cmd(root)),
+            's/scenemeta-assign >NIL: PREY: "Demo:"\n')
+        workbench.prepare(root, "0\n", libs_dir=self.dir())
+        self.assertEqual((root / "s" / "scenemeta-assign").read_bytes(),
+                         workbench.assign_exe())

@@ -166,7 +166,8 @@ def _uae_config(machine, variant, tmp, drives=1, seed=DEFAULT_SEED,
             lines.append(f"filesystem2=rw,DH1:Demo:{root},-1\n")
         else:
             if variant.command is not None:
-                command = workbench.assign_lines(assign) + variant.command
+                command = (workbench.assign_lines(assign, workbench.assign_cmd(root))
+                           + variant.command)
                 if machine.fpu_off:
                     (root / FPU_ON).write_bytes(FPU_ON_EXE)
                     command = f"{FPU_ON}\n{command}"

@@ -3703,10 +3703,10 @@ source = "script"
 title = "The Prey"
 group = "Polka Brothers"
 source = "ai"
+machine = "a1200"
 boot = "hd"
-result = "unknown"
 run = "0"
-note = "PB-ThePrey.LHA holds both disks (run \"lorte land\"); floppy wants PREY2: in with no prompt"
+assign = { PREY = "Demo:", PREY2 = "Demo:" }
 
 [demozoo.5681]
 title = "The Prison Intro"

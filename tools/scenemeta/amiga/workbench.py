@@ -37,6 +37,9 @@ SETUP = "s/scenemeta-setup"
 # than 21: one the download lacks (the author's own fadeout) fails with 10.
 # Kickstart 2 and later.
 GO_ON = "s/scenemeta-go-on"
+# Fallback location for our Assign binary when the download has a regular file
+# named C (e.g. The Prey's data files a..e), blocking creation of C/Assign.
+ASSIGN = "s/scenemeta-assign"
 
 # Copied even when no file names them: packed executables hide the names.
 ALWAYS_LIBS = {"mathtrans.library", "mathieeedoubbas.library",
@@ -254,7 +257,13 @@ def _is_packer_lib(name):
     return low.startswith(PACKER_PREFIX) and low != "xpkmaster.library"
 
 
-def assign_lines(assigns):
+def assign_cmd(root):
+    """Command name to invoke Assign under ``root``: ``ASSIGN`` when a file
+    named ``c`` blocks creating ``c/Assign``, else ``Assign``."""
+    return ASSIGN if _subdir(root, "c") is None else "Assign"
+
+
+def assign_lines(assigns, cmd="Assign"):
     """AmigaDOS ``Assign`` lines for a mapping or sequence of ``(name, path)``
     pairs."""
     if not assigns:
@@ -264,7 +273,7 @@ def assign_lines(assigns):
     for name, path in items:
         vol = name.rstrip(":")
         target = f'"{vol}:"' if " " in vol else f"{vol}:"
-        out.append(f'Assign >NIL: {target} "{path}"\n')
+        out.append(f'{cmd} >NIL: {target} "{path}"\n')
     return "".join(out)
 
 
@@ -311,9 +320,9 @@ def prepare(root, command, libs_dir=None, all_libs=False, ks1=False, stack=0):
     (s / "startup-sequence").write_text(
         f"{SETUP}\n{stack_line}{command}", encoding="latin-1")   # AmigaDOS charset
     c = _subdir(root, "c")
-    if c is not None and (not c.is_dir()
-                          or "assign" not in {p.name.lower()
-                                              for p in c.iterdir()}):
+    if c is None:
+        (s / ASSIGN.split("/")[1]).write_bytes(assign_exe())
+    elif not c.is_dir() or "assign" not in {p.name.lower() for p in c.iterdir()}:
         c.mkdir(exist_ok=True)
         (c / "Assign").write_bytes(assign_exe())
     libs_dir = config.LIBS_DIR if libs_dir is None else libs_dir
