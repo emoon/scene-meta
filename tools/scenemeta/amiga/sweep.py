@@ -398,8 +398,8 @@ def _next_press(best, got, kept, left):
     ``best`` with the presses ``kept`` to get further; None when it is not
     short of anything a press is known to give. For a disk that did not
     load: its own key first, then the nearest press since the disk before
-    it. For a run that never came alive: the last press before ``best``
-    did."""
+    it. For a run that never came alive (or crashed where ``best`` did not):
+    the last press before ``best`` came alive past where ``got`` stopped."""
     short = next((i for i, s in enumerate(got.play.swaps) if not s.loaded),
                  None)
     if short is not None:
@@ -412,11 +412,42 @@ def _next_press(best, got, kept, left):
         return min(near, key=lambda p: (p.swap is None, abs(p.frame - at)),
                    default=None)
     if got.play.ran:
+        if got.play.crash and not best.verdict.crash:
+            return _press_for_alive(best, got, left,
+                                    after_crash=got.verdict.crash_frame)
         return None
-    flags = verdict.alive_flags(best.log.samples)
-    alive = next((s.frame for f, s in zip(flags, best.log.samples) if f), 0)
-    return max((p for p in left if p.swap is None and p.frame < alive),
-               key=lambda p: p.frame, default=None)
+    return _press_for_alive(best, got, left)
+
+
+def _press_for_alive(best, got, left, after_crash=None):
+    """The next standalone press of ``left`` that could have woken ``best``
+    past where ``got`` stalled (or avoided/cleared ``got``'s crash): latest
+    press before the earliest alive sample of ``best`` not already seen in
+    ``got`` that still has an untried press before it."""
+    free = [p for p in left if p.swap is None]
+    if not free:
+        return None
+    best_alive = [s.frame for f, s in zip(
+        verdict.alive_flags(best.log.samples), best.log.samples) if f]
+    if not best_alive:
+        return None
+    if after_crash is not None:
+        targets = [f for f in best_alive if f > after_crash] or [best_alive[-1]]
+    else:
+        got_alive = [s.frame for f, s in zip(
+            verdict.alive_flags(got.log.samples), got.log.samples) if f]
+        limit = best_alive[min(verdict.WORKS_ALIVE, len(best_alive)) - 1]
+        targets = [f for f in best_alive if f <= limit and not any(
+            abs(f - g) < SAMPLE_FRAMES // 2 for g in got_alive)]
+        if not targets:
+            after = got_alive[-1] if got_alive else 0
+            first_after = next((f for f in best_alive if f > after), 0)
+            targets = [first_after] if first_after else [best_alive[-1]]
+    for target in targets:
+        cand = [p for p in free if p.frame < target]
+        if cand:
+            return max(cand, key=lambda p: p.frame)
+    return None
 
 
 def _try_clicks_only(t):

@@ -346,6 +346,79 @@ class NeededPressesTest(unittest.TestCase):
                          [[], [{"at": 30.0, "key": "lmb"}]])
         self.assertEqual(tries[-1].presses, (Press(1500, "lmb"),))
 
+    def test_press_after_initial_splash_screen_is_kept(self):
+        # Boot/credits splash gives alive samples at 500..750 before stalling
+        # until a press at 3000 wakes the demo at 3250..5000.
+        def mk_samples(alive_frames):
+            return [Sample(frame=f, pc=0, bplcon0=0, resets=0, df0="",
+                           shot="s", dmacon=0x20F if f in alive_frames
+                           else 0x200) for f in range(250, 5250, 250)]
+
+        splash = {500, 750}
+        full = splash | set(range(3250, 5250, 250))
+        best = sweep.Attempt(
+            "a500", 9000, verdict.Verdict("works", len(full)),
+            RunLog(mk_samples(full), [], 0, False, ""), [], key_every=1500)
+        got = sweep.Attempt(
+            "a500", 9000, verdict.Verdict("no-activity", len(splash)),
+            RunLog(mk_samples(splash), [], 0, False, ""), [],
+            play=gate.Play(False))
+        left = [Press(1500, "return"), Press(3000, "space"),
+                Press(4500, "p2fire")]
+        # First picks 3000 (latest before 3250), not None (1500 < 500 was False).
+        self.assertEqual(sweep._next_press(best, got, [], left),
+                         Press(3000, "space"))
+        # If 3000 is removed, falls back to 1500.
+        self.assertEqual(sweep._next_press(best, got, [], [left[0], left[2]]),
+                         Press(1500, "return"))
+
+    def test_press_skips_stray_echo_sample_to_find_real_start(self):
+        # Press at 1500 produces one stray alive sample at 1750; press at 3000
+        # actually starts the demo at 3250..5000.
+        def mk_samples(alive_frames):
+            return [Sample(frame=f, pc=0, bplcon0=0, resets=0, df0="",
+                           shot="s", dmacon=0x20F if f in alive_frames
+                           else 0x200) for f in range(250, 5250, 250)]
+
+        splash = {500, 750}
+        full = splash | {1750} | set(range(3250, 5250, 250))
+        best = sweep.Attempt(
+            "a500", 9000, verdict.Verdict("works", len(full)),
+            RunLog(mk_samples(full), [], 0, False, ""), [], key_every=1500)
+        got = sweep.Attempt(
+            "a500", 9000, verdict.Verdict("no-activity", len(splash)),
+            RunLog(mk_samples(splash), [], 0, False, ""), [],
+            play=gate.Play(False))
+        left = [Press(1500, "return"), Press(3000, "space"),
+                Press(4500, "p2fire")]
+        self.assertEqual(sweep._next_press(best, got, [], left),
+                         Press(1500, "return"))
+        # Once 1500 fails and is removed, advances past 1750 to 3250 -> 3000.
+        self.assertEqual(sweep._next_press(best, got, [], left[1:]),
+                         Press(3000, "space"))
+
+    def test_press_after_mid_demo_crash_is_tried(self):
+        # Without the click, demo runs 8+ samples then hits a fake Guru at 4000;
+        # with click at 4500, best stays alive past 4750 without crashing.
+        def mk_samples(alive_frames):
+            return [Sample(frame=f, pc=0, bplcon0=0, resets=0, df0="",
+                           shot="s", dmacon=0x20F if f in alive_frames
+                           else 0x200) for f in range(250, 5500, 250)]
+
+        early = set(range(500, 2750, 250))
+        full = early | set(range(4750, 5500, 250))
+        best = sweep.Attempt(
+            "a500", 9000, verdict.Verdict("works", len(full)),
+            RunLog(mk_samples(full), [], 0, False, ""), [], click_every=1500)
+        got = sweep.Attempt(
+            "a500", 9000, verdict.Verdict("works-then-crash", len(early),
+                                          "guru", 4000),
+            RunLog(mk_samples(early), [], 0, False, ""), [],
+            play=gate.Play(True, crash="guru"))
+        left = [Press(1500, "lmb"), Press(3000, "lmb"), Press(4500, "lmb")]
+        self.assertEqual(sweep._next_press(best, got, [], left),
+                         Press(4500, "lmb"))
+
     def test_a_run_the_player_does_not_repeat_stays_with_what_was_kept(self):
         # The click has the disk loaded, and the run then crashes.
         def far(entry):
