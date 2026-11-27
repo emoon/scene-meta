@@ -82,7 +82,7 @@ appears once per platform, as a key or as a cross-reference.
 | `boot` | `floppy` or `hd`: what to start it from, when that is not the first thing the download offers (an executable that only runs from a floppy, a disk set better run from its hard-drive archive) |
 | `kind` | `collection`, `standalone`, `separate-disks`, `menu`, `boot_fresh` |
 | `disks` | file names in disk order: a multi-disk production's, or the one disk meant where the download has several |
-| `events` | what is done while it plays, in the order it happens: each has `at`, optionally `until`, and is a disk that goes in (`disk`, and optionally `drive`) or a key pressed (`key`) |
+| `events` | what is done while it plays, in the order it happens: each has `at`, optionally `until`, and is a disk that goes in (`disk`, and optionally `drive`) or a key pressed (`key`, and optionally `pos = [x, y]` for a positioned mouse click) |
 | `run` | the file to start, when the obvious one is wrong or ambiguous: an executable, or the download's launcher script (see below) |
 | `boot_disk`, `boot_file` | the disk (1-based) and file to boot, when not the first |
 | `assign` | AmigaDOS assigns, e.g. `{ Killer = "SYS:" }` |

@@ -61,8 +61,9 @@ void dbgproto_display_line(int line, int x0, int x1, int res, bool lace,
 struct dbgproto_custom_state {
 	uae_u16 dmacon, intena, intreq, bplcon0;
 	int ddfstrt, ddfstop, diwstrt, diwstop;
-	uae_u32 coppc, cop1lc;
+	uae_u32 coppc, cop1lc, cop2lc;
 	int vpos;
+	int bpl_active;
 };
 void dbgproto_custom_status(struct dbgproto_custom_state *out);
 

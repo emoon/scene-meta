@@ -30,6 +30,7 @@ class Press:
     frame: int
     key: str
     swap: int = None    # index of the swap whose disk it follows; None: on its own
+    pos: tuple = None   # optional (x, y) pointer coordinates for mouse clicks
 
 
 @dataclasses.dataclass
@@ -51,7 +52,7 @@ class Attempt:
 
     @property
     def ran(self):
-        return self.verdict.verdict in ("works", "works-then-crash")
+        return self.verdict.verdict in ("works", "works-short", "works-then-crash")
 
     @property
     def rank(self):
@@ -65,7 +66,8 @@ class Attempt:
         # Last, among runs that got equally far: a rung with fast RAM, which
         # a hunk wanting MEMF_FAST needs ("not enough memory" on an a1200),
         # over the rungs that stop at the same screen for lack of it.
-        return (self.ran, self.reached, not crashed, self.verdict.alive,
+        return (self.ran, self.reached, not crashed, self.verdict.works,
+                self.verdict.alive,
                 verdict.progress(self.log.samples),
                 machines.BY_NAME[self.machine].fast_ram)
 
@@ -86,11 +88,12 @@ class Attempt:
                          until=seconds(dict(enumerate(self.untils)).get(i)))
              for i, (frame, disk, how) in enumerate(self.swaps)],
             {"returncode": log.returncode, "events": log.events}, log.last_shot,
-            [result.Key(seconds(p.frame), p.key) for p in self.presses
+            [result.Key(seconds(p.frame), p.key, p.pos) for p in self.presses
              if p.swap is None])
 
 
 CLICK_EVERY = 1500    # 30 s between nudges on the click retry
+KEY_EVERY = 500       # 10 s between key nudges so every key fires before DEAD_FRAMES
 
 
 def waits_for_click(tries):
@@ -115,7 +118,7 @@ def clicks_to_start(a):
     and no more lets it play."""
     if not a.click_every or a.verdict.crash is None:
         return 0
-    flags = verdict.alive_flags(a.log.samples)
+    flags = verdict.alive_flags(a.log.samples, a.log.system_copper)
     first = next((s.frame for f, s in zip(flags, a.log.samples) if f), None)
     return 0 if first is None else (first - 1) // a.click_every
 
@@ -166,7 +169,8 @@ def windows(m, variant, a):
 def _entry(variant, a, presses):
     """The entry of attempt ``a`` with ``presses``, as far as the player
     reads one."""
-    does = [{"at": p.frame / FPS, "key": p.key} for p in presses]
+    does = [{"at": p.frame / FPS, "key": p.key,
+             **({"pos": list(p.pos)} if p.pos else {})} for p in presses]
     for frame, disk, _ in a.swaps:
         does.append({"at": frame / FPS, "disk": disk})
         if a.unit:
@@ -244,6 +248,7 @@ def try_machine(m, variant, frames):
     is the best."""
     t = _Tries(m, variant, frames)
     _try_external_drives(t, _try_triggers_and_nudges(t))
+    _try_fake_guru_click(t)
     _try_clicks_only(t)
     _try_scheduled_swaps(t)
     best = _best(t)
@@ -269,23 +274,33 @@ def _try_triggers_and_nudges(t):
     if t.short() or t.stalled():
         # "Click mouse button to continue" (AMOS PD intros, "HIT MOUSE!").
         first.append(dict(triggers="reread", click_every=CLICK_EVERY))
-        # Return, Space and fire in turn (Megademo 2's credits page).
-        first.append(dict(triggers="reread", key_every=CLICK_EVERY))
+        # Return, Space, requester shortcuts, fire, F-keys in turn.
+        first.append(dict(triggers="reread", key_every=KEY_EVERY))
     got = t.wave(*first)
     if not any(a.verdict.works for a in t.tries):
-        t.wave(*[dict(kw, max_clicks=limit, seed=a.seed)
-                 for kw, a in zip(first, got) if (limit := clicks_to_start(a))])
+        follow = [dict(kw, max_clicks=limit, seed=a.seed)
+                  for kw, a in zip(first, got) if (limit := clicks_to_start(a))]
+        # A multi-page slideshow waiting on Return (e.g. sextovka) advances once
+        # per Return press in key_every without reaching WORKS_ALIVE.
+        key_run = next((a for a in got if a.key_every), None)
+        if (key_run and key_run.verdict.crash is None
+                and key_run.verdict.alive > t.tries[0].verdict.alive
+                and t.tries[0].verdict.crash is None):
+            follow.append(dict(triggers="reread", key_every=KEY_EVERY,
+                               nudge_keys=("return",)))
+        t.wave(*follow)
     return list(zip(first, got))
 
 
 def _nudge_that_helped(t, got, field):
-    """CLICK_EVERY when the attempts among ``got`` that pressed ``field``
+    """The nudge period when the attempts among ``got`` that pressed ``field``
     (click_every or key_every) got further than every attempt without."""
     pressed = [a for a in got if getattr(a, field)]
     if not pressed:
         return 0
     without = max(a.rank for a in t.tries if not getattr(a, field))
-    return CLICK_EVERY if max(a.rank for a in pressed) > without else 0
+    period = KEY_EVERY if field == "key_every" else CLICK_EVERY
+    return period if max(a.rank for a in pressed) > without else 0
 
 
 def _try_external_drives(t, first):
@@ -378,19 +393,69 @@ def _best(t):
     left = presses_made(best, t.asked[i])
     if not left or not best.ran:
         return best
+    orig = list(left)
     kept, got = [], t.played(best, [])
-    for _ in range(NEEDED_RUNS):
+    tried = {()}
+    runs = 0
+    while runs < NEEDED_RUNS:
         press = _next_press(best, got, kept, left)
         if press is None:
             break
         left.remove(press)
-        more = t.played(best, kept + [press])
+        cand = sorted(kept + [press], key=lambda p: p.frame)
+        key = tuple(cand)
+        if key in tried:
+            continue
+        tried.add(key)
+        runs += 1
+        more = t.played(best, cand)
         if gate.far(more.play) > gate.far(got.play):
-            kept, got = kept + [press], more
-    if gate.judge(got.play).passed and got.ran >= best.ran:
+            kept, got = cand, more
+    # A production that needs two or more presses together (two ASL requesters,
+    # sequential LMB prompts, return + f1) shows no progress on any single
+    # press alone: try all standalone presses before best reached WORKS_ALIVE,
+    # then drop whichever ones are not needed.
+    if (not got.play.ran or (not got.verdict.works and best.verdict.works)) \
+            and runs < NEEDED_RUNS:
+        kept, got = _minimize_group(t, best, orig, kept, got, tried,
+                                    NEEDED_RUNS - runs)
+    if gate.judge(got.play).passed and got.ran >= best.ran and got.verdict.works >= best.verdict.works:
         return t.replace(got, swaps=best.swaps, reached=best.reached,
                          presses=tuple(kept))
     return t.replace(best, presses=tuple(kept))
+
+
+def _minimize_group(t, best, orig, kept, got, tried, budget):
+    """Try all standalone presses up to best's WORKS_ALIVE sample together,
+    then prune unnecessary presses one at a time within ``budget`` runs."""
+    best_alive = [s.frame for f, s in zip(
+        verdict.alive_flags(best.log.samples, best.log.system_copper),
+        best.log.samples) if f]
+    if not best_alive:
+        return kept, got
+    cutoff = best_alive[min(verdict.WORKS_ALIVE, len(best_alive)) - 1]
+    group = [p for p in orig if p.swap is None and p.frame < cutoff]
+    if len(group) < 2 or tuple(group) in tried:
+        return kept, got
+    tried.add(tuple(group))
+    budget -= 1
+    more = t.played(best, group)
+    if not gate.judge(more.play).passed:
+        return kept, got
+    kept, got = group, more
+    for p in list(reversed(group)):
+        if budget <= 0 or len(kept) <= 1:
+            break
+        less = [q for q in kept if q != p]
+        key = tuple(less)
+        if key in tried:
+            continue
+        tried.add(key)
+        budget -= 1
+        attempt_less = t.played(best, less)
+        if gate.judge(attempt_less.play).passed:
+            kept, got = less, attempt_less
+    return kept, got
 
 
 def _next_press(best, got, kept, left):
@@ -415,6 +480,8 @@ def _next_press(best, got, kept, left):
         if got.play.crash and not best.verdict.crash:
             return _press_for_alive(best, got, left,
                                     after_crash=got.verdict.crash_frame)
+        if not got.verdict.works and best.verdict.works:
+            return _press_for_alive(best, got, left)
         return None
     return _press_for_alive(best, got, left)
 
@@ -428,14 +495,16 @@ def _press_for_alive(best, got, left, after_crash=None):
     if not free:
         return None
     best_alive = [s.frame for f, s in zip(
-        verdict.alive_flags(best.log.samples), best.log.samples) if f]
+        verdict.alive_flags(best.log.samples, best.log.system_copper),
+        best.log.samples) if f]
     if not best_alive:
         return None
     if after_crash is not None:
         targets = [f for f in best_alive if f > after_crash] or [best_alive[-1]]
     else:
         got_alive = [s.frame for f, s in zip(
-            verdict.alive_flags(got.log.samples), got.log.samples) if f]
+            verdict.alive_flags(got.log.samples, got.log.system_copper),
+            got.log.samples) if f]
         limit = best_alive[min(verdict.WORKS_ALIVE, len(best_alive)) - 1]
         targets = [f for f in best_alive if f <= limit and not any(
             abs(f - g) < SAMPLE_FRAMES // 2 for g in got_alive)]
@@ -448,6 +517,25 @@ def _press_for_alive(best, got, left, after_crash=None):
         if cand:
             return max(cand, key=lambda p: p.frame)
     return None
+
+
+def _try_fake_guru_click(t):
+    """A run that hit a Guru box without resetting may be a fake-Guru gag
+    that waits for a left mouse click (Axel 20th, Rising Hope BBS). Click
+    once after the box appears; reject any run that resets (a real Guru)."""
+    first = t.tries[0]
+    if (any(a.verdict.works for a in t.tries)
+            or first.verdict.crash != "guru"
+            or first.verdict.crash_frame is None
+            or any(s.resets for s in first.log.samples)):
+        return
+    m, variant, _ = t._run
+    click = Press(first.verdict.crash_frame + SAMPLE_FRAMES, "lmb")
+    got = played(m, variant, _entry(variant, first, (click,)), first.seed)
+    if got.verdict.works and not any(s.resets for s in got.log.samples):
+        t.tries.append(dataclasses.replace(got, unit=first.unit,
+                                           presses=(click,)))
+        t.asked.append(dict(seed=first.seed))
 
 
 def _try_clicks_only(t):
@@ -546,8 +634,11 @@ def _climb(variant, aga_only, release_date, start, only=None):
     ran = [a for a in chosen if a.ran]
     if n > 1 and ran:
         return attempts, max(ran, key=lambda a: (a.reached, a.verdict.works))
-    # Nothing worked cleanly: the cheapest machine that ran for a while before
-    # crashing, else the one that got furthest.
+    # Nothing worked cleanly for the full budget: prefer a clean short run
+    # (works-short) over a run that crashed later, else the one that got furthest.
+    for a in chosen:
+        if a.verdict.verdict == "works-short":
+            return attempts, a
     for a in chosen:
         if a.verdict.verdict == "works-then-crash":
             return attempts, a
@@ -574,7 +665,7 @@ def _climbed(prod, variants, start=None, only=None):
     results = [climb(v, aga_only, prod.release_date, start, only)
                for v in variants]
     for v, (_, best) in list(zip(variants, results)):
-        if best.verdict.works:
+        if best.verdict.verdict in ("works", "works-short"):
             continue
         for _, make in media.fallbacks(v, prod.id, prod.title):
             fv = make()
@@ -582,7 +673,7 @@ def _climbed(prod, variants, start=None, only=None):
                 variants.append(fv)
                 results.append(climb(fv, aga_only, prod.release_date, start,
                                      only))
-                if results[-1][1].verdict.works:
+                if results[-1][1].verdict.verdict in ("works", "works-short"):
                     break
     return variants, results
 

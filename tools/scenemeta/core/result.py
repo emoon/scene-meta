@@ -29,6 +29,7 @@ class Key:
     """A key press the production needs that no disk change goes with."""
     at: float
     key: str
+    pos: tuple = None
 
 
 @dataclasses.dataclass(frozen=True)

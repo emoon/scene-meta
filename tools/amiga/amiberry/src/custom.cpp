@@ -781,7 +781,12 @@ static int copper_enabled_thisline;
 
 // Local patch: chipset-state snapshot for the batch debug protocol's
 // `status` command (dbgproto.cpp) — these are file statics, so the reader
-// lives here.
+// lives here. dbgproto_bpl_frame latches whether any active scanline of the
+// current frame fetched bitplanes (catches copper-gated mid-frame BPLEN such
+// as AMOS Pro, where BPLEN is off again by the VBLANK status snapshot).
+static bool dbgproto_bpl_frame = false;
+static bool dbgproto_bpl_latched = false;
+
 void dbgproto_custom_status(struct dbgproto_custom_state *out)
 {
 	out->dmacon = dmacon;
@@ -794,7 +799,9 @@ void dbgproto_custom_status(struct dbgproto_custom_state *out)
 	out->diwstop = diwstop;
 	out->coppc = cop_state.ip;
 	out->cop1lc = cop1lc;
+	out->cop2lc = cop2lc;
 	out->vpos = vpos;
+	out->bpl_active = dbgproto_bpl_latched ? 1 : 0;
 }
 
 /*
@@ -4946,8 +4953,11 @@ static void vsync_handler_render(void)
 	}
 
 	// Local patch: batch debug protocol frame hook (see dbgproto.cpp).
-	if (dbgproto_active)
+	if (dbgproto_active) {
+		dbgproto_bpl_latched = dbgproto_bpl_frame;
+		dbgproto_bpl_frame = false;
 		dbgproto_vsync();
+	}
 
 	bool frameok = framewait();
 
@@ -5552,8 +5562,14 @@ static void dbgproto_note_line(void)
 // this finishes current line
 static void hsync_handler_pre(bool onvsync)
 {
-	if (dbgproto_display_on) {
-		dbgproto_note_line();
+	if (dbgproto_active) {
+		if (bplcon0_planes && dmaen(DMA_BITPLANE) && !agnus_vb_active
+			&& vdiwstate == diw_states::DIW_waiting_stop && fetchunit) {
+			dbgproto_bpl_frame = true;
+		}
+		if (dbgproto_display_on) {
+			dbgproto_note_line();
+		}
 	}
 
 	if (!custom_disabled) {
@@ -7401,7 +7417,10 @@ static int custom_wput_agnus(int addr, uae_u32 value, int noget)
 	case 0x030: SERDAT(value); break;
 	case 0x032: SERPER(value); break;
 #else
-	case 0x030: break;
+	// Local patch: still raise Paula TBE (INTREQ bit 0) on SERDAT writes when
+	// built without libserialport so serial.device CMD_WRITE completes instead
+	// of blocking forever waiting for TBE (e.g. Seedy Amidi).
+	case 0x030: if (value) INTREQ_INT(0, 1); break;
 	case 0x032: break;
 #endif
 	case 0x034: POTGO(value); break;

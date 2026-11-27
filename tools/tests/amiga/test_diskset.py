@@ -18,6 +18,8 @@ class GroupTest(unittest.TestCase):
     def test_disk_n_of_m(self):
         self.check(["reel-disk-2-of-2.adf", "reel-disk-1-of-2.adf"],
                    [["reel-disk-1-of-2.adf", "reel-disk-2-of-2.adf"]])
+        self.check(["Demo (Disk 2 of 2).adf", "Demo (Disk 1 of 2).adf"],
+                   [["Demo (Disk 1 of 2).adf", "Demo (Disk 2 of 2).adf"]])
 
     def test_unmarked_first_disk(self):
         self.check(["demo-d2.adf", "demo.adf"], [["demo.adf", "demo-d2.adf"]])

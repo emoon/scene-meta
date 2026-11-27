@@ -72,7 +72,8 @@ def _run_of_note(note, command):
 def _events(swaps, keys):
     """The result.Swap and result.Key of a run as an entry says them: a
     swap's key is an event of its own, after its disk."""
-    out = [{"at": round(k.at, 1), "key": k.key} for k in keys]
+    out = [{"at": round(k.at, 1), "key": k.key,
+            **({"pos": list(k.pos)} if k.pos else {})} for k in keys]
     for s in swaps:
         at = round(s.at, 1)
         out.append({"at": at, "disk": s.disk})

@@ -32,6 +32,7 @@ cpu_cycle_exact=true
 cpu_memory_cycle_exact=true
 blitter_cycle_exact=true
 chipset=aga
+chipset_compatible=A1200
 chipmem_size=4
 bogomem_size=0
 """
@@ -49,6 +50,7 @@ blitter_cycle_exact=false
 cpu_no_unimplemented=false
 fpu_no_unimplemented=false
 chipset=aga
+chipset_compatible=A1200
 chipmem_size=4
 bogomem_size=0
 """
@@ -142,6 +144,20 @@ LADDER = (
             + _FAST_CPU + _JIT + "z3mem_size=64\n",
             True, "A1200 68060, AGA, KS3.0, 2M chip + 64M fast",
             fpu_off=True, aga_era=True, wb_boot=True),
+    # Optional Kickstart 3.1 rungs (V40 graphics.library: WriteChunkyPixels /
+    # LORESSDBL_KEY). Kept at the top of the ladder so existing KS3.0 entries
+    # stay untouched; skipped when kick31.rom is absent.
+    Machine("a1200_ks31", "kick31.rom",
+            _A1200.replace("cpu_24bit_addressing=true",
+                           "cpu_24bit_addressing=false")
+            + "z3mem_size=8\n",
+            True, "A1200 68020, AGA, KS3.1, 2M chip + 8M fast",
+            optional=True, aga_era=True),
+    Machine("a1200_060_ks31", "kick31.rom",
+            "cpu_type=68060\ncpu_model=68060\nfpu_model=68060\ncpu_speed=max\n"
+            + _FAST_CPU + _JIT + "z3mem_size=64\n",
+            True, "A1200 68060, AGA, KS3.1, 2M chip + 64M fast",
+            optional=True, fpu_off=True, aga_era=True, wb_boot=True),
 )
 
 BY_NAME = {m.name: m for m in LADDER}

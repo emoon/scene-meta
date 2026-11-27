@@ -16,6 +16,7 @@ import dataclasses
 import os
 
 DMA_MASTER, DMA_AUDIO = 0x200, 0x00F
+DMA_COPPER = 0x280       # DMAEN + COPEN
 DMA_BITPLANES = 0x300   # DMAEN + BPLEN
 WORKS_ALIVE = 8      # alive samples (x 250 frames = 40 s of activity)
 SHORT_ALIVE = 3      # alive samples that make a short run more than a flicker
@@ -41,25 +42,59 @@ def audio_on(dmacon):
     return bool(dmacon & DMA_MASTER) and bool(dmacon & DMA_AUDIO)
 
 
-def bitplane_dma(dmacon):
-    """Bitplane DMA is on. Not bplcon0: the snapshot is taken at the frame
-    boundary, before the copper has loaded it, so a copper-driven demo
-    reads 0 there for its whole run."""
-    return dmacon & DMA_BITPLANES == DMA_BITPLANES
-
-
-def alive_flags(samples):
-    flags, prev = [], None
-    for s in samples:
-        changed = prev is not None and s.shot and s.shot != prev
-        flags.append(not s.box and (audio_on(s.dmacon) or bool(
-            changed and bitplane_dma(s.dmacon))))
-        prev = s.shot or prev
-    return flags
+def bitplane_dma(dmacon, bpl_active=False):
+    """Bitplane DMA is on, either at the frame-boundary snapshot or on an
+    active scanline during the frame (copper-gated AMOS Pro / mid-frame
+    BPLEN). Not bplcon0: the snapshot is taken before the copper loads it."""
+    return bpl_active or (dmacon & DMA_BITPLANES == DMA_BITPLANES)
 
 
 DISPLAY_DMA = 0x300      # DMAEN | BPLEN
 ROM_START = 0xE00000     # extended ROM and Kickstart; the CLI idles in here
+ROM_END = 0xFFFFFF       # above this is Zorro III Fast RAM (0x40000000+)
+
+
+def _in_rom(pc):
+    return ROM_START <= pc <= ROM_END
+
+
+def _custom_copper(s, system_copper):
+    """True when the production replaced Kickstart's copper list (COP1LC):
+    CLI, Workbench, EasyRequest, and ASL screens all keep COP1LC at
+    GfxBase->copinit (``system_copper``), whereas custom-copper intros write
+    $dff080 directly (and may call WaitTOF(), leaving PC in ROM at VBLANK)."""
+    return (bool(system_copper)
+            and s.cop1lc not in (0, system_copper)
+            and not s.box
+            and (s.dmacon & DMA_COPPER) == DMA_COPPER)
+
+
+def alive_flags(samples, system_copper=0):
+    flags, prev = [], None
+    os_silent = []
+    for s in samples:
+        changed = prev is not None and s.shot and s.shot != prev
+        audio = audio_on(s.dmacon)
+        alive = not s.box and (audio or bool(
+            changed and (bitplane_dma(s.dmacon, s.bpl_active)
+                         or _custom_copper(s, system_copper))))
+        flags.append(alive)
+        # Silent screen change on Kickstart's own copper list: isolated
+        # single-sample blips are CLI key-nudge echoes (1> v). Do not gate on
+        # _in_rom(s.pc) because SetPatch/68060.library relocates Exec's idle
+        # loop into Zorro III Fast RAM on wb_boot rungs.
+        os_silent.append(bool(
+            alive and not audio and system_copper
+            and s.cop1lc == system_copper))
+        prev = s.shot or prev
+    orig = list(flags)
+    for i, is_os in enumerate(os_silent):
+        if is_os:
+            prev_alive = i > 0 and orig[i - 1]
+            next_alive = i + 1 < len(orig) and orig[i + 1]
+            if not prev_alive and not next_alive:
+                flags[i] = False
+    return flags
 
 
 def progress(samples):
@@ -70,14 +105,14 @@ def progress(samples):
     if not samples:
         return 0, 0
     last = samples[-1]
-    return (int(last.pc < ROM_START),
+    return (int(not _in_rom(last.pc)),
             int((last.dmacon & DISPLAY_DMA) == DISPLAY_DMA))
 
 
 def quiet_tail(log):
     """True when the run ends silent and still: finished, or waiting at a
     prompt (which may be its very first screen)."""
-    flags = alive_flags(log.samples)
+    flags = alive_flags(log.samples, log.system_copper)
     return len(flags) >= ENDED_QUIET and not any(flags[-ENDED_QUIET:])
 
 
@@ -145,7 +180,7 @@ def crash_signal(log):
     for e in log.events:
         if e.get("event") == "halt":
             return "halt", e.get("frame")
-    flags = alive_flags(log.samples)
+    flags = alive_flags(log.samples, log.system_copper)
     rebooted = False
     first = {}   # (alert, boot) -> sample index it first showed up at
     for i, s in enumerate(log.samples):
@@ -172,7 +207,7 @@ def classify(log, expected_samples):
     if not log.samples:
         why = "timeout" if log.timed_out else f"exit {log.returncode}"
         return Verdict("error", 0, crash=f"no-samples ({why})")
-    flags = alive_flags(log.samples)
+    flags = alive_flags(log.samples, log.system_copper)
     crash, crash_frame = crash_signal(log)
     if crash is None and len(log.samples) < expected_samples and log.timed_out:
         crash, crash_frame = "timeout", log.samples[-1].frame
@@ -188,8 +223,24 @@ def classify(log, expected_samples):
     if len(flags) > ENDED_QUIET and not any(flags[-ENDED_QUIET:]) and any(flags):
         last = max(i for i, f in enumerate(flags) if f)
         ended = log.samples[last].frame
-        if v == "no-activity" and alive_before >= SHORT_ALIVE and any(
-                audio_on(s.dmacon) for s in log.samples):
+        if v == "no-activity" and alive_before >= SHORT_ALIVE and (
+                any(audio_on(s.dmacon) for s in log.samples)
+                or any(_custom_copper(s, log.system_copper)
+                       for f, s in zip(flags, log.samples) if f)):
+            v = "works-short"
+    if v == "no-activity" and crash is None and log.system_copper:
+        # Ultra-short silent custom-copper intro that exited cleanly back to ROM/CLI.
+        if (alive_before >= 1
+                and any(_custom_copper(s, log.system_copper) for s in log.samples)
+                and _in_rom(log.samples[-1].pc)
+                and log.samples[-1].cop1lc == log.system_copper):
+            v = "works-short"
+        # Sustained silent static custom-copper display (CPU running in RAM
+        # with bitplanes on a non-OS copper list after changing from boot).
+        elif (sum(_custom_copper(s, log.system_copper)
+                  and bitplane_dma(s.dmacon, s.bpl_active)
+                  for s in log.samples) >= WORKS_ALIVE
+              and len({s.shot for s in log.samples if s.shot}) >= 2):
             v = "works-short"
     wants = any(e.get("event") == "autoswap-exhausted" for e in log.events)
     return Verdict(v, alive_before, crash, crash_frame, ended, wants)
@@ -218,7 +269,7 @@ def played_swaps(log, swaps, v):
              if any(s.last_dma > sw[0] for s in log.samples)]
     if v.crash is None:
         return swaps
-    flags = alive_flags(log.samples)
+    flags = alive_flags(log.samples, log.system_copper)
     return [sw for sw in swaps
             if sum(f for f, s in zip(flags, log.samples)
                    if sw[0] < s.frame <= v.crash_frame) >= WORKS_ALIVE]

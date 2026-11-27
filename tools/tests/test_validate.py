@@ -142,6 +142,13 @@ class ValidateTest(unittest.TestCase):
         self.assertEqual(self.event('{ at = 9.0, key = "lmb", drive = 2 }'),
                          ["[demozoo.5] events drive is of a disk"])
 
+    def test_positioned_mouse_click_event(self):
+        self.assertEqual(self.event('{ at = 9.0, key = "lmb", pos = [150, 390] }'), [])
+        self.assertEqual(self.event('{ at = 9.0, disk = 2, pos = [10, 20] }'),
+                         ["[demozoo.5] events pos is of a key"])
+        self.assertEqual(self.event('{ at = 9.0, key = "lmb", pos = [-1, 20] }'),
+                         ["[demozoo.5] events pos must be [x, y] pointer coordinates"])
+
     def test_a_key_has_a_window_as_a_disk_has(self):
         self.assertEqual(self.event('{ at = 9.0, until = 12.0, key = "lmb" }'),
                          [])

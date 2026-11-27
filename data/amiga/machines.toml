@@ -105,3 +105,22 @@ kickstart = "3.0"
 chip = "2M"
 drives = 1
 fast = "64M"
+
+[a1200_ks31]
+description = "A1200 with Kickstart 3.1 and 8M fast"
+cpu = "68020"
+chipset = "aga"
+kickstart = "3.1"
+chip = "2M"
+drives = 1
+fast = "8M"
+
+[a1200_060_ks31]
+description = "A1200 with 68060, Kickstart 3.1, 64M fast"
+cpu = "68060"
+fpu = "68060"
+chipset = "aga"
+kickstart = "3.1"
+chip = "2M"
+drives = 1
+fast = "64M"

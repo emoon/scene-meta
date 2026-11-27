@@ -252,6 +252,87 @@ class ClassifyTest(unittest.TestCase):
         v = verdict.classify(raised("aaaa" + "." * 10, 0x8000000B, 5), 14)
         self.assertEqual(v.verdict, "crash")
 
+    def test_midframe_bpl_active_counts_even_with_vblank_bplen_off(self):
+        # AMOS Pro / copper-gated BPLEN turns BPLEN off during VBLANK (dmacon=0x280),
+        # but bpl_active latches active-scanline bitplane DMA.
+        lg = log("c" * 14)
+        for s in lg.samples:
+            s.dmacon = 0x280
+            s.bpl_active = True
+        self.assertEqual(classify_verdict(lg), "works")
+
+    def test_copper_only_changing_screen_with_custom_copper_works(self):
+        # Copper-only COLOR00 raster intro (BPLEN=0, COPEN=1, custom cop1lc, RAM PC).
+        lg = log("c" * 14)
+        lg.system_copper = 0x420
+        for s in lg.samples:
+            s.dmacon = 0x280
+            s.cop1lc = 0x30000
+        self.assertEqual(classify_verdict(lg), "works")
+
+    def test_silent_short_custom_copper_intro_is_works_short(self):
+        lg = shown(".cccc" + "." * 10)
+        lg.system_copper = 0x420
+        for s in lg.samples[1:5]:
+            s.cop1lc = 0x30000
+            s.dmacon = 0x3F0
+        self.assertEqual(classify_verdict(lg), "works-short")
+
+    def test_silent_short_cli_screen_stays_no_activity(self):
+        # Kickstart's own copper list (or PC idling in ROM) is never works-short.
+        lg = shown(".cccc" + "." * 10)
+        lg.system_copper = 0x420
+        for s in lg.samples:
+            s.cop1lc = 0x420
+            s.pc = 0xF80100
+        self.assertEqual(classify_verdict(lg), "no-activity")
+
+    def test_ultrashort_custom_copper_that_exits_to_rom_is_works_short(self):
+        lg = shown(".cc" + "." * 10)
+        lg.system_copper = 0x420
+        for s in lg.samples[:3]:
+            s.cop1lc = 0x30000
+            s.dmacon = 0x3F0
+        for s in lg.samples[3:]:
+            s.cop1lc = 0x420
+            s.pc = 0xF80100
+        self.assertEqual(classify_verdict(lg), "works-short")
+
+    def test_sustained_static_custom_copper_is_works_short(self):
+        lg = shown("c" + "." * 12)
+        lg.system_copper = 0x420
+        lg.samples[0].cop1lc = 0x420
+        for s in lg.samples[1:]:
+            s.cop1lc = 0x30000
+            s.dmacon = 0x3F0
+            s.pc = 0xFE5918  # WaitTOF() in ROM while custom copperlist is active
+        self.assertEqual(classify_verdict(lg), "works-short")
+        # OS requester / CLI keeps cop1lc == system_copper -> NOT works-short.
+        for s in lg.samples[1:]:
+            s.cop1lc = 0x420
+        self.assertEqual(classify_verdict(lg), "no-activity")
+
+    def test_isolated_cli_echo_blips_under_key_nudge_are_ignored(self):
+        # Under key_every=500, each echoed key at the 1> CLI prompt changes
+        # every other sample while cop1lc == system_copper (even when SetPatch
+        # relocates Exec's idle loop into Z3 Fast RAM at 0x400352aa).
+        for idle_pc in (0xF848E0, 0x400352AA):
+            lg = shown("." * 24)
+            lg.system_copper = 0x420
+            for i, s in enumerate(lg.samples):
+                s.shot = f"cli{i // 2}"
+                s.cop1lc = 0x420
+                s.pc = idle_pc
+            v = verdict.classify(lg, len(lg.samples))
+            self.assertEqual((v.verdict, v.alive), ("no-activity", 0))
+        # Consecutive OS animation (not isolated echoes) still counts as alive.
+        lg2 = shown("c" * 12)
+        lg2.system_copper = 0x420
+        for s in lg2.samples:
+            s.cop1lc = 0x420
+            s.pc = 0xF848E0
+        self.assertEqual(classify_verdict(lg2), "works")
+
     def test_swaps(self):
         ev = [{"event": "swap-poll", "frame": 4727},
               {"event": "autoswap", "frame": 4727, "disk": 2},

@@ -114,14 +114,6 @@ class HdConfigTest(unittest.TestCase):
                     tool.read_bytes() if tool.exists() else None,
                     cfg)
 
-    def test_060_without_wb_boot_switches_its_fpu_on_before_the_demo(self):
-        # Fallback when a1200.boot is not present: FPU code Gurus 8000000B
-        # without 68060.library unless r2-fpu-on clears PCR.DFP.
-        text, tool, _ = self.startup("a1200_060")
-        self.assertEqual(text, f'{workbench.SETUP}\n{emulator.FPU_ON}\n"demo"\n')
-        self.assertEqual(tool[:4], b"\0\0\3\xf3")
-        self.assertEqual(len(tool) % 4, 0)
-
     def test_060_with_wb_boot_mounts_system_and_demo(self):
         with tempfile.TemporaryDirectory() as b:
             boot = pathlib.Path(b)
@@ -133,13 +125,23 @@ class HdConfigTest(unittest.TestCase):
         self.assertIn("filesystem2=ro,DH0:System:", cfg)
         self.assertIn("filesystem2=rw,DH1:Demo:", cfg)
         self.assertIn("C:SetPatch QUIET\n", text)
+        self.assertIn("Stack 131072\n", text)
         self.assertIn('Echo ""\nCD Demo:\nAssign >NIL: Foo: "Demo:sub"\n"demo"\n', text)
 
     def test_other_machines_skip_the_fpu_tool_and_apply_assign(self):
         text, tool, _ = self.startup("a1200_030", assign=(("Data", "SYS:"),))
         self.assertEqual(
             (text, tool),
-            (f'{workbench.SETUP}\nAssign >NIL: Data: "SYS:"\n"demo"\n', None))
+            (f'{workbench.SETUP}\nStack 131072\nAssign >NIL: Data: "SYS:"\n"demo"\n', None))
+
+    def test_060_without_wb_boot_switches_its_fpu_on_before_the_demo(self):
+        # Fallback when a1200.boot is not present: FPU code Gurus 8000000B
+        # without 68060.library unless r2-fpu-on clears PCR.DFP.
+        text, tool, _ = self.startup("a1200_060")
+        self.assertEqual(
+            text, f'{workbench.SETUP}\nStack 131072\n{emulator.FPU_ON}\n"demo"\n')
+        self.assertEqual(tool[:4], b"\0\0\3\xf3")
+        self.assertEqual(len(tool) % 4, 0)
 
 
 class ScriptTest(unittest.TestCase):
@@ -157,16 +159,29 @@ class ScriptTest(unittest.TestCase):
 
     def test_keys_cycle_every_period(self):
         # 257354's credits page only moves on Return; others want Space,
-        # the fire button, or Left Amiga + V: one retry tries each in turn.
-        cmds = self.script(frames=2500, key_every=500)
+        # requester shortcuts, fire, RMB, F-keys, or Esc: one retry tries
+        # each in turn.
+        cmds = self.script(frames=4500, key_every=500)
         presses = [c for c in cmds if c.startswith("input")]
         self.assertEqual(presses, [
             "input key 68 down", "input key 68 up",
             "input key 64 down", "input key 64 up",
+            "input key 102 down", "input key 52 down",
+            "input key 52 up", "input key 102 up",
+            "input key 103 down", "input key 24 down",
+            "input key 24 up", "input key 103 up",
             "input joy 1 fire down", "input joy 1 fire up",
             "input mouse click 1",
-            "input key 102 down", "input key 52 down",
-            "input key 52 up", "input key 102 up"])
+            "input key 80 down", "input key 80 up",
+            "input key 81 down", "input key 81 up",
+            "input key 69 down", "input key 69 up"])
+
+    def test_custom_nudge_keys(self):
+        cmds = self.script(frames=1000, key_every=500, nudge_keys=("return",))
+        presses = [c for c in cmds if c.startswith("input")]
+        self.assertEqual(presses, [
+            "input key 68 down", "input key 68 up",
+            "input key 68 down", "input key 68 up"])
 
     def test_key_is_held_across_a_few_frames(self):
         cmds = self.script(frames=500, key_every=500)
@@ -197,10 +212,12 @@ class PressedTest(unittest.TestCase):
                                                     max_clicks=1)),
             [(500, "lmb", None)])
         self.assertEqual(
-            emulator.pressed(2500, emulator.Options(key_every=500)),
+            emulator.pressed(4500, emulator.Options(key_every=500)),
             [(500, "return", None), (1000, "space", None),
-             (1500, "p2fire", None), (2000, "rmb", None),
-             (2500, "lamiga_v", None)])
+             (1500, "lamiga_v", None), (2000, "ramiga_o", None),
+             (2500, "p2fire", None), (3000, "rmb", None),
+             (3500, "f1", None), (4000, "f2", None),
+             (4500, "esc", None)])
 
     def test_a_pulse_s_click_names_its_disk_left_and_right_in_turn(self):
         got = emulator.pressed(4500, emulator.Options(schedule=(500, 1000)))
@@ -235,6 +252,7 @@ class PlayTest(unittest.TestCase):
             return [c for c in self.play([(100, "press", key)])
                     if c.startswith("input")]
         self.assertEqual(inputs("rmb"), ["input mouse click 1"])
+        self.assertEqual(inputs("lmb2"), ["input mouse doubleclick 0"])
         for key, what in (("return", "key 68"), ("space", "key 64"),
                           ("p1fire", "joy 0 fire"), ("p2fire", "joy 1 fire")):
             self.assertEqual(inputs(key), [f"input {what} down",
@@ -242,9 +260,30 @@ class PlayTest(unittest.TestCase):
         self.assertEqual(inputs("lamiga_v"), [
             "input key 102 down", "input key 52 down",
             "input key 52 up", "input key 102 up"])
+        self.assertEqual(inputs("ramiga_o"), [
+            "input key 103 down", "input key 24 down",
+            "input key 24 up", "input key 103 up"])
+        for key, what in (("esc", "key 69"), ("f1", "key 80"), ("f2", "key 81"),
+                          ("f3", "key 82"), ("f4", "key 83"), ("f5", "key 84"),
+                          ("down", "key 77")):
+            self.assertEqual(inputs(key), [f"input {what} down",
+                                           f"input {what} up"])
         self.assertEqual(set(emulator.KEYS),
-                         {"lmb", "rmb", "return", "space", "p1fire", "p2fire",
-                          "lamiga_v"})
+                         {"lmb", "lmb2", "rmb", "return", "space", "p1fire",
+                          "p2fire", "lamiga_v", "ramiga_o", "esc",
+                          "f1", "f2", "f3", "f4", "f5", "down"})
+
+    def test_positioned_mouse_click_moves_waits_then_clicks(self):
+        cmds = self.play([(100, "click", ("lmb", (150, 390)))], frames=500)
+        moves = [c for c in cmds if c.startswith(("run", "input"))]
+        wait = emulator._move_frames(150, 390)
+        self.assertEqual(moves, [
+            "run frames=100",
+            "input mouse move 150 390",
+            f"run frames={wait}",
+            "input mouse click 0",
+            f"run frames={250 - 100 - wait}",
+            "run frames=250"])
 
     def test_a_held_key_does_not_move_what_comes_after(self):
         cmds = self.play([(100, "press", "return"), (101, "press", "space"),
@@ -266,12 +305,15 @@ class ParseTest(unittest.TestCase):
     def test_head_cylinders_of_a_sample(self):
         out = "\n".join([
             '{"cmd": "status", "result": {"frame": 250, "pc": "0", "dmacon": 0,'
-            ' "bplcon0": 0}}',
+            ' "bplcon0": 0, "cop1lc": "30000", "cop2lc": "40000", "bpl_active": 1}}',
             '{"cmd": "disk status", "result": {"units": [{"cyl": 12, "motor": 1},'
             ' {"cyl": 0, "motor": 0}]}}'])
         log = emulator._parse((out, "", 0, False), pathlib.Path("/none"), {},
-                              0, "peek x 4")
+                              0, "peek x 4", sys_copper=0x420)
         self.assertEqual(log.samples[0].cyls, [12, 0])
+        self.assertEqual((log.samples[0].cop1lc, log.samples[0].cop2lc,
+                          log.samples[0].bpl_active, log.system_copper),
+                         (0x30000, 0x40000, True, 0x420))
 
     def test_the_last_display_status_and_the_box_of_each_picture(self):
         def status(frames, screen):

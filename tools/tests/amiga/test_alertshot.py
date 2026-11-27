@@ -12,13 +12,22 @@ def png(name):
     return (DATA / name).read_bytes()
 
 
-def black(width, height):
-    """A black 8-bit RGB PNG."""
+def make_rgb(width, height, draw):
+    """Build an 8-bit RGB PNG calling ``draw(x, y) -> (r, g, b)`` or sparse rows."""
     def chunk(kind, body):
         return struct.pack(">I", len(body)) + kind + body + b"\0\0\0\0"
+    raw = bytearray()
+    for y in range(height):
+        raw.append(0)
+        raw.extend(draw(y))
     return (b"\x89PNG\r\n\x1a\n"
             + chunk(b"IHDR", struct.pack(">IIBBBBB", width, height, 8, 2, 0, 0, 0))
-            + chunk(b"IDAT", zlib.compress(bytes(1 + 3 * width) * height)))
+            + chunk(b"IDAT", zlib.compress(bytes(raw))))
+
+
+def black(width, height):
+    """A black 8-bit RGB PNG."""
+    return make_rgb(width, height, lambda y: bytes(3 * width))
 
 
 class AlertScreenTest(unittest.TestCase):
@@ -48,6 +57,30 @@ class AlertScreenTest(unittest.TestCase):
     def test_unreadable_png_is_not_an_alert(self):
         self.assertEqual("", alertshot.box(b""))
         self.assertEqual("", alertshot.box(b"\x89PNG\r\n\x1a\nxx"))
+
+    def test_solid_red_intuition_title_bar_is_not_a_guru(self):
+        # Colour Me AGA exits to a black Intuition screen with a solid red title bar.
+        w, h = 320, 256
+        red_row = bytes([200, 0, 0]) * w
+        blk_row = bytes(3 * w)
+        img = make_rgb(w, h, lambda y: red_row if 10 <= y < 30 else blk_row)
+        self.assertEqual("", alertshot.box(img))
+
+    def test_red_top_box_with_bottom_half_scroller_is_not_a_guru(self):
+        # Parody Guru box in top quarter + animated scroller in bottom half.
+        w, h = 320, 256
+        blk_row = bytes(3 * w)
+        red_text = bytes([0, 0, 0]) * 80 + bytes([200, 0, 0]) * 100 + bytes([0, 0, 0]) * 140
+        img = make_rgb(w, h, lambda y: red_text if (20 <= y < 24 or 200 <= y < 205) else blk_row)
+        self.assertEqual("", alertshot.box(img))
+
+    def test_red_text_on_dark_night_sky_is_not_a_guru(self):
+        # Xmas Lights: bright red text in top band over dark teal (r+g+b=20) sky.
+        w, h = 320, 256
+        sky_row = bytes([0, 10, 10]) * w
+        red_text = bytes([0, 10, 10]) * 80 + bytes([200, 0, 0]) * 100 + bytes([0, 10, 10]) * 140
+        img = make_rgb(w, h, lambda y: red_text if 20 <= y < 25 else sky_row)
+        self.assertEqual("", alertshot.box(img))
 
 
 class TaskHeldTest(unittest.TestCase):

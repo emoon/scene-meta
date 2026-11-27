@@ -36,15 +36,23 @@ SCHEDULE_PULSE_FRAMES = 1500
 # command takes them: a mouse button is clicked; a key (its rawkey code, in
 # decimal) or the fire button of a port (the Amiga's port 1 is port 0) is
 # held a few frames so a poll sees it.
-KEYS = {"lmb": "mouse click 0", "rmb": "mouse click 1",
+KEYS = {"lmb": "mouse click 0", "lmb2": "mouse doubleclick 0",
+        "rmb": "mouse click 1",
         "return": "key 68", "space": "key 64",
         "p1fire": "joy 0 fire", "p2fire": "joy 1 fire",
         # Standard AmigaOS Intuition positive-gadget shortcut (Left Amiga + V):
         # accepts EasyRequest/AutoRequest dialogs ([AGA], [OK], [Start DEMO!]).
-        "lamiga_v": "chord 102 52"}
+        "lamiga_v": "chord 102 52",
+        # Standard AmigaOS ASL ScreenModeRequester / FileRequester OK shortcut.
+        "ramiga_o": "chord 103 24",
+        "esc": "key 69",
+        "f1": "key 80", "f2": "key 81", "f3": "key 82",
+        "f4": "key 83", "f5": "key 84",
+        "down": "key 77"}
 KEY_HOLD_FRAMES = 3
 # What a key retry presses, one per nudge in turn.
-NUDGE_KEYS = ("return", "space", "p2fire", "rmb", "lamiga_v")
+NUDGE_KEYS = ("return", "space", "lamiga_v", "ramiga_o",
+              "p2fire", "rmb", "f1", "f2", "esc")
 
 
 @dataclasses.dataclass
@@ -61,6 +69,9 @@ class Sample:
     box: str = ""  # what alertshot sees on screen: guru | task-held | ""
     # Head cylinder of each drive (runs that ask for "disk status" only).
     cyls: list = dataclasses.field(default_factory=list)
+    cop1lc: int = 0
+    cop2lc: int = 0
+    bpl_active: bool = False  # mid-frame active-scanline bitplane DMA
 
 
 @dataclasses.dataclass
@@ -78,6 +89,7 @@ class RunLog:
     # sample's picture shows drawn (None: nothing).
     display: dict = None
     boxes: list = dataclasses.field(default_factory=list)
+    system_copper: int = 0  # Kickstart's own COP1LC on this machine/kind
 
 
 MAX_DRIVES = 4
@@ -158,7 +170,9 @@ def _uae_config(machine, variant, tmp, drives=1, seed=DEFAULT_SEED,
                 if machine.fpu_off:
                     (root / FPU_ON).write_bytes(FPU_ON_EXE)
                     command = f"{FPU_ON}\n{command}"
-                workbench.prepare(root, command, all_libs=True)
+                workbench.prepare(
+                    root, command, all_libs=True, ks1=not machine.aga,
+                    stack=131072 if (machine.aga and machine.fast_ram) else 0)
             lines.append(f"filesystem2=rw,DH0:Demo:{root},0\n")
     return "".join(lines), swaps
 
@@ -279,6 +293,7 @@ class Options:
     detect: bool = True
     max_clicks: int = 0
     key_every: int = 0
+    nudge_keys: tuple = ()
     seed: int = DEFAULT_SEED
     play: tuple = ()
     keep: pathlib.Path = None
@@ -325,7 +340,8 @@ def run(machine, variant, frames, opts=Options(), interval=250, timeout=None):
         # Swap-list path -> 1-based disk number of the set.
         first_swap = len(variant.disks) - len(swaps) + 1
         names = {str(d): first_swap + i for i, d in enumerate(swaps)}
-        return _parse(ran, shots, names, eb, alert_peek)
+        return _parse(ran, shots, names, eb, alert_peek,
+                      system_copper(machine, variant.kind))
 
 
 def _autoswap(opts):
@@ -379,7 +395,8 @@ def _inputs(frames, interval, opts):
             key = "lmb"
             periodic += 1
         elif opts.key_every and frame % opts.key_every == 0:
-            key = NUDGE_KEYS[keys % len(NUDGE_KEYS)]
+            cycle = opts.nudge_keys or NUDGE_KEYS
+            key = cycle[keys % len(cycle)]
             keys += 1
         inserts = []
         while pending and frame >= pending[0][0]:
@@ -411,6 +428,11 @@ def _play(frames, interval, alert_peek, shots, swaps, opts):
             if what == "insert":
                 k, unit = arg
                 cmds.append(f"disk insert {unit} {swaps[k]}")
+            elif what == "click":
+                key, pos = arg
+                press, held = _press(key, pos=pos)
+                cmds += press
+                at += held
             else:
                 press, held = _press(arg)
                 cmds += press
@@ -433,11 +455,24 @@ def _sample(i, alert_peek, shots, disk_status, opts):
     return cmds + ["disk status"] if disk_status else cmds
 
 
-def _press(key):
-    """``(commands, frames)``: what presses ``key`` of KEYS, and the frames
-    the run goes on while it is held."""
+def _move_frames(x, y):
+    """Frames Amiberry's ``input mouse move X Y`` needs to home (-2048) and
+    walk to ``(x, y)`` at 100 units/frame plus settle margin."""
+    walk = max(1, (max(x, y) + 99) // 100) if max(x, y) > 0 else 1
+    return 25 + walk
+
+
+def _press(key, pos=None):
+    """``(commands, frames)``: what presses ``key`` of KEYS (optionally moving
+    the pointer to ``pos = (x, y)`` first for mouse buttons), and the frames
+    the run goes on while it executes."""
     what = KEYS[key]
     if what.startswith("mouse"):
+        if pos is not None:
+            x, y = pos
+            wait = _move_frames(x, y)
+            return [f"input mouse move {x} {y}", f"run frames={wait}",
+                    f"input {what}"], wait
         return [f"input {what}"], 0
     if what.startswith("chord "):
         codes = what.split()[1:]
@@ -517,7 +552,10 @@ class _Reader:
                                    res["dmacon"], res["bplcon0"],
                                    res.get("resets", 0),
                                    os.path.basename(res.get("df0", "")), shot,
-                                   box=_box(png, shot, self._box_cache)))
+                                   box=_box(png, shot, self._box_cache),
+                                   cop1lc=int(res["cop1lc"], 16) if "cop1lc" in res else 0,
+                                   cop2lc=int(res["cop2lc"], 16) if "cop2lc" in res else 0,
+                                   bpl_active=bool(res.get("bpl_active"))))
 
     def _last_dma(self, res):
         if self.samples:
@@ -554,7 +592,7 @@ class _Reader:
             self.samples[-1].alert = _peek_long(res)
 
 
-def _parse(ran, shots, names, eb, alert_peek):
+def _parse(ran, shots, names, eb, alert_peek, sys_copper=0):
     """The RunLog of a finished run. ``ran`` is what _invoke returned,
     ``names`` the disk number of each swap-list path."""
     stdout, stderr, rc, timed_out = ran
@@ -564,7 +602,8 @@ def _parse(ran, shots, names, eb, alert_peek):
     pngs = sorted(shots.glob("*.png"))
     last = pngs[-1].read_bytes() if pngs else b""
     return RunLog(reader.samples, reader.events, rc, timed_out, stderr[-600:],
-                  last, reader.max_cyl, reader.display, reader.boxes)
+                  last, reader.max_cyl, reader.display, reader.boxes,
+                  sys_copper)
 
 
 # An alert box is mostly black: its PNG is a few KB, a demo's screen is not.

@@ -69,11 +69,14 @@ class Ready:
         v = verdict.classify(log, frames // 250)
         took = loaded(log.samples, [(f, unit) for f, _, unit in inserts])
         first = self.entry.get("drives", 1) + 1
+        far = last_read(log.samples)
+        if v.verdict == "works-short":
+            far -= 1e-3
         return Outcome(self.machine.name, v, took, log, gate.Play(
             v.verdict in RAN, v.crash,
             tuple(gate.SwapTaken(first + k, ok)
                   for (_, k, _), ok in zip(inserts, took)),
-            last_read(log.samples)), areas.measured(log))
+            far), areas.measured(log))
 
 
 def ready(prod, entry, default):
@@ -141,7 +144,15 @@ def actions(entry, keys=True, patient=False):
         frame = round(event["at"] * FPS)
         if "key" in event:
             if keys:
-                out.append((frame, "press", _key(event["key"])))
+                key = _key(event["key"])
+                if "pos" in event:
+                    if not emulator.KEYS[key].startswith("mouse"):
+                        raise BadEntry(
+                            f"pos is only valid for mouse buttons, not {key!r}")
+                    x, y = event["pos"]
+                    out.append((frame, "click", (key, (int(x), int(y)))))
+                else:
+                    out.append((frame, "press", key))
             continue
         if "disk" not in event:
             raise BadEntry(f"an event at {event['at']:g} that is neither a"

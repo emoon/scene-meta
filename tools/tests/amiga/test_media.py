@@ -238,12 +238,59 @@ class PickExeTest(unittest.TestCase):
 
     def test_inferred_assigns_from_binary_and_readme(self):
         d = self.tree({
-            "hate2.exe": EXE + b"\0Hate2:PV.exe\0SYS:Libs\0",
+            "hate2.exe": EXE + b"\0Hate2:PV.exe\0SYS:Libs\0Nuprogdir:PV.exe\0work:PV.exe\0",
             "PV.exe": EXE,
             "readme.txt": b"Please assign CNCD: to this directory.\n",
+            "font/XEN.font": b"x",
         })
         self.assertEqual(media._inferred_assigns(d),
-                         {"CNCD": "Demo:", "Hate2": "Demo:"})
+                         {"CNCD": "Demo:", "FONTS": "Demo:font",
+                          "Hate2": "Demo:", "work": "Demo:"})
+
+    def test_excludes_slave_bitmap_fonts_and_demotes_starter_and_cli_tools(self):
+        d = self.tree({
+            "Game.Slave": EXE * 20,
+            "aed2.font": b"font",
+            "aed2/8f": EXE * 10,
+            "S_MDIB_starter": EXE,
+            "S_MDIB_starter.info": b"",
+            "S_MDIB.exe": EXE * 5,
+            "list": EXE * 4,
+            "2": EXE,
+            "sg2": EXE * 2,
+        })
+        self.assertEqual(media._pick_exe(d, "Silicon Gfx 2")[0].name, "S_MDIB.exe")
+        d2 = self.tree({"2": EXE, "sg2": EXE * 2})
+        self.assertEqual(media._pick_exe(d2, "Silicon Gfx 2")[0].name, "sg2")
+        # Bare .info does not crash _project_icon / _named_project.
+        d3 = self.tree({".info": b"\xe3\x10" + b"\0" * 80, "demo": EXE})
+        self.assertIsNone(media._project_icon(d3))
+        self.assertIsNone(media._named_project(d3, "demo"))
+        # Overlay hunk with size % 4 != 0 is sniffed as exe.
+        ovl = media.HUNK_MAGIC + b"\0" * 24 + b"\x00\x00\x03\xf5" + b"\0" * 30
+        d4 = self.tree({"fallen_angels": ovl})
+        self.assertEqual(media.sniff(d4 / "fallen_angels"), "exe")
+
+    def test_fold_case_dirs_and_merge_disk_dirs(self):
+        d = self.tree({"YACS/engine": EXE, "yacs/yacs": b"engine\n"})
+        media._fold_case_dirs(d)
+        self.assertEqual(len([p for p in d.iterdir() if p.is_dir()]), 1)
+        sub = next(p for p in d.iterdir() if p.is_dir())
+        self.assertEqual(sorted(p.name for p in sub.iterdir()), ["engine", "yacs"])
+
+        d2 = self.tree({"DISK1/demo": EXE, "DISK2/data.bin": b"hi"})
+        media._merge_disk_dirs(d2)
+        self.assertTrue((d2 / "DISK1" / "data.bin").is_file())
+
+    def test_ramos_pairs_with_amos_file_and_copies_ancestor_fonts(self):
+        d = self.tree({
+            "fonts/foo.font": b"f",
+            "sub/RAMOS1.2": EXE,
+            "sub/MyDemo.AMOS": b"AMOS Basic V1.00" + b"\0" * 100,
+        })
+        v = media._tree_variant(d)
+        self.assertEqual(v.command, '"RAMOS1.2" MyDemo.AMOS\n')
+        self.assertTrue((d / "sub" / "fonts" / "foo.font").is_file())
 
     def test_join_split_parts(self):
         d = self.tree({"ht-stag.lzx.001": b"ab", "ht-stag.lzx.002": b"cd",

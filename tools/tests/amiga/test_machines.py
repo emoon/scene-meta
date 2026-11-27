@@ -84,6 +84,17 @@ class LadderTest(unittest.TestCase):
         n = names(machines.ladder_for(True, self.roms(), "1993-01-01"))
         self.assertEqual(n[0], "a1200")
 
+    def test_ks31_rungs_are_optional_at_top_of_ladder(self):
+        without = names(machines.ladder_for(True, self.roms()))
+        self.assertEqual(without, ["a1200", "a1200_fast", "a1200_030", "a1200_060"])
+        with_31 = names(machines.ladder_for(True, self.roms("kick31.rom")))
+        self.assertEqual(with_31, ["a1200", "a1200_fast", "a1200_030", "a1200_060",
+                                   "a1200_ks31", "a1200_060_ks31"])
+        self.assertIn("chipset_compatible=A1200\n",
+                      machines.uae_text(machines.BY_NAME["a1200"]))
+        self.assertIn("chipset_compatible=A1200\n",
+                      machines.uae_text(machines.BY_NAME["a1200_060_ks31"]))
+
 
 if __name__ == "__main__":
     unittest.main()

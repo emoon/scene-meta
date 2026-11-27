@@ -37,6 +37,13 @@ _SUBPART_EXT = re.compile(r"^\.(?:[a-z]\d{2,3}|dat\d+|data\d+|bak|old)$", re.I)
 _ALT_TARGET_EXTS = {".ppc", ".wos", ".elf", ".mos", ".pup", ".cgx", ".rtg", ".p96", ".vga"}
 _ALT_TARGET_RE = re.compile(
     r"(?:^|[._-])(?:ppc|wos|warpos|powerup|pup|morphos|cgx|cgxahi|cgfx|rtg|p96)(?:$|[._-])", re.I)
+# Helper/launcher/config/low-res executables and standard AmigaDOS CLI tools:
+# deprioritized below the main demo binary, never dropped if sole candidate.
+_HELPER_RE = re.compile(
+    r"(?:^|[._-])(?:starter|launcher|prefs|setup|config|writer)$", re.I)
+_CLI_TOOLS = {"list", "wait", "echo", "copy", "assign", "run", "type", "dir",
+              "delete", "makedir", "avail", "version", "cd", "setmap", "endcli"}
+_DISK_DIR_RE = re.compile(r"^disk[ _-]?([1-9])$", re.I)
 # Documentation files that may mention an executable name on a line.
 _DOC_EXTS = {".readme", ".txt", ".nfo", ".diz", ".doc", ".guide", ".man",
              ".asc", ".ans", ".html", ".htm", ".md"}
@@ -131,7 +138,17 @@ def sniff(path):
         return None
     if head[:4] == HUNK_MAGIC:
         size = path.stat().st_size
-        return "exe" if size >= 28 and size % 4 == 0 else None
+        if size < 28:
+            return None
+        if size % 4 == 0:
+            return "exe"
+        # Overlay executables (HUNK_OVERLAY = 0x3f5) may carry unaligned
+        # appended overlay data after HUNK_END (e.g. fallen_angels).
+        try:
+            with open(path, "rb") as f:
+                return "exe" if b"\x00\x00\x03\xf5" in f.read(65536) else None
+        except OSError:
+            return None
     if head[:4] == b"DMS!":
         return "disk"
     if head[:2] == b"PK" or head[2:5] in (b"-lh", b"-lz"):
@@ -188,8 +205,47 @@ def unpack(archive, dest):
     except Exception as e:  # noqa: BLE001 - reported per archive
         return f"unpack-error:{type(e).__name__}"
     _latin1_names_to_utf8(dest)
+    _fold_case_dirs(dest)
     _make_owner_rwx(dest)
     return None
+
+
+def _fold_case_dirs(top):
+    """Merge sibling directories whose names differ only by case (mimicking
+    AmigaDOS case-insensitivity, e.g. ``YACS/`` and ``yacs/``)."""
+    for root, dirs, _ in os.walk(top, topdown=True):
+        root_p = pathlib.Path(root)
+        by_low = {}
+        merged = set()
+        for d in sorted(dirs):
+            low = d.lower()
+            if low in by_low:
+                src = root_p / d
+                dst = root_p / by_low[low]
+                shutil.copytree(src, dst, dirs_exist_ok=True)
+                _rmtree(src)
+                merged.add(d)
+            else:
+                by_low[low] = d
+        if merged:
+            dirs[:] = [d for d in dirs if d not in merged]
+
+
+def _merge_disk_dirs(top):
+    """When an unpacked archive contains sibling ``DISK1/``, ``DISK2/``, ...
+    directories, copy the files of ``DISK2..`` into ``DISK1/`` so the demo
+    finds every disk's data from a single HD volume."""
+    for root, dirs, _ in os.walk(top, topdown=True):
+        matched = sorted(
+            ((int(m.group(1)), d) for d in dirs
+             if (m := _DISK_DIR_RE.match(d))),
+            key=lambda x: x[0])
+        if len(matched) >= 2:
+            root_p = pathlib.Path(root)
+            primary = root_p / matched[0][1]
+            for _, d in matched[1:]:
+                src = root_p / d
+                shutil.copytree(src, primary, dirs_exist_ok=True)
 
 
 def unpack_into(archive, dest):
@@ -272,10 +328,28 @@ class _Found:
             if err:
                 self.problems.append(f"{a.name}: {err}")
                 return
+        _merge_disk_dirs(out)
         self.trees.append(out)
+        nested_archives = []
         for f in sorted(_walk_files(out)):
-            if sniff(f) != "exe":
+            kind = sniff(f)
+            if kind == "archive":
+                nested_archives.append(f)
+            elif kind != "exe":
                 self.take(f, depth + 1)
+        if nested_archives and depth + 1 < 2:
+            by_dir = {}
+            for f in nested_archives:
+                by_dir.setdefault(f.parent, []).append(f)
+            for parent, files in sorted(by_dir.items()):
+                parts_map = {}
+                for grp in diskset.group([f.name for f in files]):
+                    parts_map[grp[0]] = [parent / n for n in grp[1:]]
+                    parts_map.update((n, None) for n in grp[1:])
+                for f in files:
+                    p = parts_map.get(f.name, ())
+                    if p is not None:
+                        self.take(f, depth + 1, p)
 
 
 def _download(src):
@@ -316,7 +390,7 @@ def _seen_before(shas, seen):
     return shas in seen or (len(shas) == 1 and any(shas[0] in s for s in seen))
 
 
-def _disk_variants(disks, prod_id, work, run=None):
+def _disk_variants(disks, prod_id, work, run=None, title=""):
     """A floppy variant for each disk set among ``disks``."""
     # Group by name first, then drop byte-identical repeats: the same disk is
     # often mirrored under two names (Oxygene-ControlA = control1), and only
@@ -332,7 +406,7 @@ def _disk_variants(disks, prod_id, work, run=None):
         if joined:
             paths = [joined]
         out.append(flag_ffs(launch_variant(paths, prod_id, only_unbootable=True,
-                                           run=run)
+                                           run=run, title=title)
                             or Variant("floppy", paths), work))
     return out
 
@@ -343,6 +417,47 @@ def require_mirror():
     if not config.DEMOZOO_DIR.is_dir():
         raise CannotPlay(f"no Demozoo mirror at {config.DEMOZOO_DIR}"
                          " (is the share mounted?)")
+
+
+def _tree_fingerprint(root):
+    """Content digest of an HD root directory, to drop duplicate trees."""
+    h = hashlib.sha1()
+    r = pathlib.Path(root)
+    if not r.is_dir():
+        return ""
+    for p in sorted(_walk_files(r), key=lambda q: _rel(q, r).lower()):
+        h.update(_rel(p, r).lower().encode("utf-8", "replace"))
+        h.update(b"\0")
+        h.update(_sha1(p).encode())
+        h.update(b"\n")
+    return h.hexdigest()
+
+
+def _hd_dedup_key(v):
+    """Deduplication key for HD variants that ``player._variant_of`` cannot
+    tell apart (same ``run`` and ``command`` pointing at the exact same
+    executable, e.g. a .zip wrapping an identical .lha)."""
+    if v.root and v.run:
+        target = pathlib.Path(v.root) / v.run
+        if target.is_file():
+            return (v.run, v.command, _sha1(target))
+    return (v.run, v.command, _tree_fingerprint(v.root))
+
+
+def _bootblock_variant(trees, work):
+    """A floppy ADF padded from a standalone 1024-byte bootable DOS bootblock
+    file inside an unpacked archive (e.g. Delight-TheBoot's DLTBOOT1)."""
+    for tree in trees:
+        for p in sorted(_walk_files(tree)):
+            if p.stat().st_size == 1024:
+                data = p.read_bytes()
+                if bootable(data):
+                    out = work / "adf" / f"{p.name}-bootblock.adf"
+                    out.parent.mkdir(parents=True, exist_ok=True)
+                    out.write_bytes(data + b"\0" * (CYLINDERS * CYL_BYTES - 1024))
+                    return Variant("floppy", [str(out)],
+                                   note=f"bootblock {p.name}")
+    return None
 
 
 def variants(prod_id, title="", run=None):
@@ -358,12 +473,68 @@ def variants(prod_id, title="", run=None):
     for f, parts in _release_files(src):
         found.take(f, 0, parts)
 
-    out = _disk_variants(found.disks, prod_id, work, run)
-    out += [v for v in (_tree_variant(t, title, run) for t in found.trees) if v]
+    out = _disk_variants(found.disks, prod_id, work, run, title=title)
+    seen_hd = set()
+    for t in found.trees:
+        v = _tree_variant(t, title, run)
+        if v is None:
+            continue
+        fp = _hd_dedup_key(v)
+        if fp in seen_hd:
+            continue
+        seen_hd.add(fp)
+        out.append(v)
     out += [_exe_variant(exe, work) for exe in found.exes]
+    if not out and found.trees:
+        bb = _bootblock_variant(found.trees, work)
+        if bb is not None:
+            out.append(bb)
     if not out and not found.problems:
         found.problems.append("no-bootable-media")
     return out[:MAX_VARIANTS], found.problems
+
+
+def _copy_ancestor_sysdirs(tree, target):
+    """When ``target`` is a subdirectory of ``tree``, copy sibling system
+    directories (``fonts``, ``libs``, ``devs``) from ancestor directories inside
+    ``tree`` when ``target`` lacks them (e.g. Lunatic-Sounds)."""
+    if target == tree:
+        return
+    have = {p.name.lower() for p in target.iterdir()} if target.is_dir() else set()
+    for anc in target.parents:
+        for p in anc.iterdir():
+            if p.is_dir() and p.name.lower() in ("fonts", "libs", "devs") \
+                    and p.name.lower() not in have:
+                shutil.copytree(p, target / p.name, dirs_exist_ok=True)
+                have.add(p.name.lower())
+        if anc == tree:
+            break
+
+
+def _ramos_script(exe):
+    """For a bare RAMOS/AMOS interpreter executable, find the largest AMOS
+    Basic V1.00 / ``.amos`` file beside it, or None."""
+    low = exe.name.lower()
+    if not (low.startswith("ramos") or low in ("amos", "amos.exe")):
+        return None
+    cands = []
+    for p in exe.parent.iterdir():
+        if not p.is_file() or p == exe or p.suffix.lower() == ".info":
+            continue
+        try:
+            head = p.read_bytes()[:16]
+        except OSError:
+            continue
+        if p.suffix.lower() == ".amos" or head.startswith(b"AMOS Basic V1."):
+            cands.append(p)
+    return max(cands, key=lambda p: p.stat().st_size, default=None)
+
+
+def _startup_script(tree):
+    """Find ``s/startup-sequence`` (or DOS 8.3 ``s/startup-``) in ``tree``."""
+    return next((p for p in sorted(_walk_files(tree))
+                 if p.parent.name.lower() == "s"
+                 and p.name.lower() in ("startup-sequence", "startup-")), None)
 
 
 def _tree_variant(tree, title="", run=None):
@@ -378,16 +549,21 @@ def _tree_variant(tree, title="", run=None):
         script = _named_script(tree, run)
         if script is not None:
             return _script_variant(script, run)
-    boot = next((p.parent.parent for p in _walk_files(tree)
-                 if p.name.lower() == "startup-sequence"
-                 and p.parent.name.lower() == "s"), None)
+    boot_script = _startup_script(tree)
+    boot = boot_script.parent.parent if boot_script is not None else None
     exe, note = _pick_exe(tree, title, run)
     if exe is None:
         if boot is not None:
+            if boot_script.name.lower() != "startup-sequence":
+                return _script_variant(boot_script, _rel(boot_script, tree),
+                                       "own startup-sequence")
             return Variant("hd", [], root=str(boot), command=None,
                            note="own startup-sequence")
         return None
-    return Variant("hd", [], root=str(exe.parent), command=f'"{exe.name}"\n',
+    _copy_ancestor_sysdirs(tree, exe.parent)
+    amos = _ramos_script(exe)
+    cmd = f'"{exe.name}" {amos.name}\n' if amos is not None else f'"{exe.name}"\n'
+    return Variant("hd", [], root=str(exe.parent), command=cmd,
                    note=note, run=exe.name, choice=bool(note))
 
 
@@ -448,34 +624,60 @@ def _is_alt_target(path):
     return path.suffix.lower() in _ALT_TARGET_EXTS or bool(_ALT_TARGET_RE.search(path.stem))
 
 
-def _pick_exe(tree, title="", run=None):
+def _is_helper_exe(path):
+    low = path.name.lower()
+    return (path.suffix.lower() == ".low"
+            or low in _CLI_TOOLS
+            or bool(_HELPER_RE.search(path.stem)))
+
+
+def _is_bitmap_font(path):
+    """True for AmigaOS bitmap font files (e.g. ``aed2/8f`` beside ``aed2.font``):
+    font files are hunk executables starting with MOVEQ #-1,D0; RTS."""
+    parent = path.parent
+    if not parent.parent.is_dir():
+        return False
+    want = (parent.name + ".font").lower()
+    return any(q.name.lower() == want for q in parent.parent.iterdir())
+
+
+def _pick_exe(tree, title="", run=None, exclude=()):
     """The executable a user would start in an unpacked tree, plus a note
     when there was a choice: ``(path | None, note)``. ``run`` is the one
     an entry names, by its name or its path in the tree: it is the one
     started when it is there."""
+    excl = set(exclude)
     cands = []
     for p in _walk_files(tree):
         rel = p.relative_to(tree).parts
-        if any(part.lower() in _SYSTEM_DIRS for part in rel[:-1]):
-            continue
-        if p.suffix.lower() in (".library", ".device", ".info"):
-            continue
-        low = p.name.lower()
-        if "install" in low or low.endswith("-handler") or low in ("setpatch", "setpatch.exe"):
+        explicit = run in (p.name, _rel(p, tree))
+        if not explicit:
+            if any(part.lower() in _SYSTEM_DIRS for part in rel[:-1]):
+                continue
+            if p.suffix.lower() in (".library", ".device", ".info", ".slave"):
+                continue
+            low = p.name.lower()
+            if ("install" in low or "instal." in low or low.endswith("instal")
+                    or low.endswith("-handler")
+                    or low in ("setpatch", "setpatch.exe")):
+                continue
+            if _is_bitmap_font(p):
+                continue
+        if p.name in excl or _rel(p, tree) in excl:
             continue
         if sniff(p) == "exe":
             cands.append(p)
     if not cands:
         return None, ""
     # Explicit ``run`` first, then real native executables (demoting data/subpart
-    # overlays, PPC/RTG targets, and SpeedHunk BBS ads), then one named after
-    # the production, then shallowest, then one with an icon, then ``.exe``
-    # (launcher over effect sub-parts like Mindprobe's ``landtunnel``), then
-    # the biggest.
+    # overlays, PPC/RTG targets, helper/starter tools, and SpeedHunk BBS ads),
+    # then one named after the production, then shallowest, then one with an
+    # icon, then ``.exe`` (launcher over effect sub-parts), then the biggest.
     cands.sort(key=lambda p: (run not in (p.name, _rel(p, tree)),
                               _is_bbs_ad(p),
                               _is_data_or_subpart(p),
                               _is_alt_target(p),
+                              _is_helper_exe(p),
                               not _named_after(p.stem, title),
                               len(p.relative_to(tree).parts),
                               not p.with_name(p.name + ".info").exists(),
@@ -548,6 +750,13 @@ def _as_adf(disk, work):
             else:
                 subprocess.run(["xdms", "-q", "u", str(disk), "+" + str(out)],
                                capture_output=True, timeout=60)
+                # Strip DmsChecker prepended banner track 0 (81 cylinders,
+                # DOS root block shifted from sector 880 to sector 902).
+                if out.exists() and out.stat().st_size == (CYLINDERS + 1) * CYL_BYTES:
+                    raw = out.read_bytes()
+                    if (raw[880 * 512:880 * 512 + 4] != b"\0\0\0\x02"
+                            and raw[902 * 512:902 * 512 + 4] == b"\0\0\0\x02"):
+                        out.write_bytes(raw[CYL_BYTES:])
         except (OSError, subprocess.SubprocessError, EOFError):
             return None
     return out if out.exists() else None
@@ -579,7 +788,9 @@ def volume_name(adf_bytes):
 def _unpack_disk(adf, box):
     """The files of a DOS disk image, unpacked into ``box``/files (wiped
     first), or None. xdftool also writes .xdfmeta/.bootcode/.blkdev next to
-    the tree and refuses to overwrite them, hence a folder of its own."""
+    the tree and refuses to overwrite them, hence a folder of its own.
+    Falls back to per-file extraction when a single corrupt file or bad-block
+    sentinel aborts full ``xdftool unpack``."""
     if box.exists():
         shutil.rmtree(box)
     box.mkdir(parents=True)
@@ -587,9 +798,36 @@ def _unpack_disk(adf, box):
     try:
         subprocess.run(["xdftool", str(adf), "unpack", str(tree)],
                        capture_output=True, timeout=60, check=True)
+        return tree
+    except (OSError, subprocess.SubprocessError):
+        pass
+    # Per-file fallback: list entries and read each intact file individually.
+    try:
+        ls = subprocess.run(["xdftool", str(adf), "list"],
+                            capture_output=True, text=True, timeout=60,
+                            check=True)
     except (OSError, subprocess.SubprocessError):
         return None
-    return tree
+    if tree.exists():
+        shutil.rmtree(tree)
+    tree.mkdir(parents=True)
+    extracted = 0
+    for line in ls.stdout.splitlines():
+        parts = line.split()
+        if len(parts) < 2 or parts[1] == "DIR":
+            continue
+        rel = parts[0].strip("/")
+        if not rel or rel.startswith("__BadBlocks"):
+            continue
+        dst = tree / rel
+        dst.parent.mkdir(parents=True, exist_ok=True)
+        try:
+            subprocess.run(["xdftool", str(adf), "read", rel, str(dst)],
+                           capture_output=True, timeout=30, check=True)
+            extracted += 1
+        except (OSError, subprocess.SubprocessError):
+            dst.unlink(missing_ok=True)
+    return tree if extracted else None
 
 
 # x.001, x.lzx.002, EM.1, M.data2
@@ -637,7 +875,11 @@ def _join_split_parts(tree):
 
 def _named_after(name, title):
     n, t = _norm(name), _norm(title)
-    return bool(t and n) and (n in t or t in n)
+    if not (t and n):
+        return False
+    if len(n) < 2 or n.isdigit():
+        return n == t
+    return n in t or t in n
 
 
 def _launch_script(tree, title=""):
@@ -708,6 +950,8 @@ def _info_default_tool(info_path):
 def _resolve_project_icon(info_path, tree, run=None):
     """A hard-drive variant for a Workbench Project ``.info`` icon whose
     Default Tool is ``IconX`` or an executable in ``tree``, or None."""
+    if info_path.name.lower() == ".info":
+        return None
     proj = info_path.with_name(info_path.name[:-5])
     if not proj.is_file() or proj.suffix.lower() in _DOC_EXTS:
         return None
@@ -737,7 +981,7 @@ def _resolve_project_icon(info_path, tree, run=None):
 def _named_project(tree, run):
     """The Workbench Project icon variant ``run`` names in ``tree``, or None."""
     for p in sorted(_walk_files(tree)):
-        if p.name.lower().endswith(".info"):
+        if p.name.lower().endswith(".info") and p.name.lower() != ".info":
             proj = p.with_name(p.name[:-5])
             if run in (proj.name, _rel(proj, tree)):
                 v = _resolve_project_icon(p, tree, run=run)
@@ -770,7 +1014,7 @@ _STD_VOLS = {
     "t", "clips", "rexx", "locale", "prefs", "printers", "keymaps", "help",
     "nil", "con", "raw", "prt", "ser", "par", "speak", "pipe", "audio", "aux",
     "df0", "df1", "df2", "df3", "dh0", "dh1", "dh2", "dh3", "rad", "pc0",
-    "pc1", "progdir", "demo", "work", "workbench", "hd0", "hd1",
+    "pc1", "progdir", "demo", "workbench", "hd0", "hd1",
     "http", "https", "ftp", "mailto",
 }
 _BIN_VOL_RE = re.compile(rb"([A-Za-z][A-Za-z0-9_.-]{1,20}):([A-Za-z0-9_./+-]{2,40})")
@@ -813,14 +1057,20 @@ def _inferred_assigns(root):
         else:
             for m in _BIN_VOL_RE.finditer(data):
                 vol = m.group(1).decode("latin-1")
-                if vol.lower() in _STD_VOLS:
+                vlow = vol.lower()
+                if vlow in _STD_VOLS or vlow.endswith("progdir"):
                     continue
                 target_first = m.group(2).decode("latin-1").split("/", 1)[0].lower()
                 if target_first in entries:
-                    vols.setdefault(vol.lower(), vol)
-    if not vols or len(vols) > 8:
-        return {}
-    return {v: "Demo:" for _, v in sorted(vols.items())}
+                    vols.setdefault(vlow, vol)
+    out = {v: "Demo:" for _, v in sorted(vols.items())} if len(vols) <= 8 else {}
+    # Singular ``font/`` directory (when no ``fonts/`` dir exists) -> FONTS: Demo:font.
+    if root.is_dir() and "fonts" not in entries:
+        font_dir = next((p for p in root.iterdir()
+                         if p.is_dir() and p.name.lower() == "font"), None)
+        if font_dir is not None:
+            out["FONTS"] = f"Demo:{font_dir.name}"
+    return out
 
 
 def _archive_root(root):
@@ -896,7 +1146,7 @@ def merged_variant(disks, prod_id, title, run=None):
     for _ in range(2):
         _join_split_parts(root)
         for p in list(_walk_files(root)):
-            if sniff(p) == "archive" and unpack(p, p.parent) is None:
+            if sniff(p) == "archive" and unpack_into(p, p.parent) is None:
                 p.unlink()
     # Booted from the directory of what runs, as _tree_variant does:
     # Kickstart 1.3 has no resident cd.
@@ -915,7 +1165,7 @@ def merged_variant(disks, prod_id, title, run=None):
                    run=rel, choice=True)
 
 
-def launch_variant(disks, prod_id, only_unbootable=False, run=None):
+def launch_variant(disks, prod_id, only_unbootable=False, run=None, title=""):
     """A floppy variant whose disk 1 is a patched copy that boots straight
     into the demo: a bootblock plus an s/startup-sequence running the
     executable a user would start. For sets whose first disk cannot boot
@@ -937,7 +1187,7 @@ def launch_variant(disks, prod_id, only_unbootable=False, run=None):
     tree = _unpack_disk(adf, box)
     if tree is None:
         return None
-    exe, note = _pick_exe(tree, run=run)
+    exe, note = _pick_exe(tree, title=title, run=run)
     if exe is None:
         return None
     rel = _rel(exe, tree)
@@ -1012,6 +1262,18 @@ def floppy_variant(v, prod_id):
                    run=v.run)
 
 
+def _with_assign(v):
+    """``v`` with inferred assigns applied, or None if none are inferred."""
+    if v.assign or not v.root:
+        return None
+    inferred = _inferred_assigns(pathlib.Path(v.root))
+    if not inferred:
+        return None
+    tag = "assign " + ", ".join(f"{k}:" for k in inferred)
+    return dataclasses.replace(
+        v, assign=inferred, note=f"{v.note}; {tag}" if v.note else tag)
+
+
 def fallbacks(v, prod_id, title="", run=None):
     """Other ways to run variant ``v``, in the order a sweep tries them when
     it did not work: ``(kind, make)`` each, where ``make()`` gives a variant
@@ -1026,31 +1288,52 @@ def fallbacks(v, prod_id, title="", run=None):
             proj = _named_project(tree, run) if run \
                 else _project_icon(tree, title)
             if proj is not None:
-                out.append(("hd", lambda p=proj: p))
+                p_best = _with_assign(proj) or proj
+                out.append(("hd", lambda p=p_best: p))
             script = _named_script(tree, run) if run \
                 else _launch_script(tree, title)
             if script is not None and (proj is None or _rel(script, tree) != proj.run):
                 rel = _rel(script, tree)
-                out.append(("hd", lambda s=script, r=rel: _script_variant(
-                    s, run or r, f"runs script {r}")))
-            if not v.assign:
-                inferred = _inferred_assigns(root)
-                if inferred:
-                    tag = "assign " + ", ".join(f"{k}:" for k in inferred)
-                    out.append(("hd", lambda a=inferred, t=tag: dataclasses.replace(
-                        v, assign=a,
-                        note=f"{v.note}; {t}" if v.note else t)))
+                sv = _script_variant(script, run or rel, f"runs script {rel}")
+                s_best = _with_assign(sv) or sv
+                out.append(("hd", lambda s=s_best: s))
+            va = _with_assign(v)
+            if va is not None:
+                out.append(("hd", lambda x=va: x))
+            # Archive's own s/startup-sequence (or DOS 8.3 s/startup-) when
+            # running the picked executable directly without its CLI args failed.
+            ss = _startup_script(tree)
+            if ss is not None:
+                ss_rel = _rel(ss, tree)
+                out.append(("hd", lambda s=ss, r=ss_rel: (
+                    _script_variant(s, run or r, "own startup-sequence")
+                    if s.name.lower() != "startup-sequence"
+                    else Variant("hd", [], root=str(s.parent.parent),
+                                 command=None, note="own startup-sequence"))))
+            # Small-launcher sibling executable fallback: when the primary pick
+            # is a small (<32 KB) launcher/stub that failed, try a larger sibling.
+            if not run and v.run:
+                cur_exe = root / v.run
+                cur_size = cur_exe.stat().st_size if cur_exe.is_file() else 0
+                if 0 < cur_size < 32768:
+                    alt_exe, alt_note = _pick_exe(tree, title, exclude=(v.run,))
+                    if alt_exe is not None and alt_exe.stat().st_size > cur_size:
+                        alt_rel = _rel(alt_exe, tree)
+                        out.append(("hd", lambda e=alt_exe, r=alt_rel, n=alt_note: (
+                            Variant("hd", [], root=str(e.parent),
+                                    command=f'"{e.name}"\n',
+                                    note=n or f"sibling exe {r}",
+                                    run=r, choice=True))))
         # Files a demo loads from DF0: rather than from its directory.
         out.append(("floppy", lambda: floppy_variant(v, prod_id)))
         return out
     # A floppy set that never got going may be a Workbench disk: run its
-    # demo directly instead. A set that still does not may be meant to be
-    # installed: run it from one directory holding every disk.
+    # demo directly instead. A disk or set that still does not may be meant
+    # to be installed or need HD Workbench libraries: run from one directory.
     work = config.WORK / "media" / str(prod_id)
     out = [] if LAUNCH_NOTE in v.note else [
         ("floppy", lambda: (
-            (m := launch_variant(v.disks, prod_id, run=run))
+            (m := launch_variant(v.disks, prod_id, run=run, title=title))
             and flag_ffs(m, work)))]
-    if len(v.disks) > 1:
-        out.append(("hd", lambda: merged_variant(v.disks, prod_id, title, run)))
+    out.append(("hd", lambda: merged_variant(v.disks, prod_id, title, run)))
     return out

@@ -268,29 +268,38 @@ def assign_lines(assigns):
     return "".join(out)
 
 
-def _iter_libs(libs_dir):
-    """All library files under ``libs_dir`` and its ``compressors/`` subdir."""
-    seen = set()
+def _iter_libs(libs_dir, ks1=False):
+    """All library files under ``libs_dir`` and its ``compressors/`` subdir.
+    When ``ks1`` is True, files in ``libs_dir/ks1/`` override same-named
+    libraries (e.g. KS 1.3-compatible diskfont.library v34 and xpkmaster v2.4)."""
+    by_name = {}
+    if ks1:
+        ks1_dir = _subdir(libs_dir, "ks1")
+        if ks1_dir is not None and ks1_dir.is_dir():
+            for p in sorted(ks1_dir.iterdir()):
+                if p.is_file():
+                    by_name[p.name.lower()] = p
     for p in sorted(libs_dir.iterdir()):
         if p.is_file():
-            seen.add(p.name.lower())
-            yield p
+            by_name.setdefault(p.name.lower(), p)
     comp = _subdir(libs_dir, "compressors")
     if comp is not None and comp.is_dir():
         for p in sorted(comp.iterdir()):
-            if p.is_file() and p.name.lower() not in seen:
-                seen.add(p.name.lower())
-                yield p
+            if p.is_file():
+                by_name.setdefault(p.name.lower(), p)
+    yield from sorted(by_name.values(), key=lambda p: p.name.lower())
 
 
-def prepare(root, command, libs_dir=None, all_libs=False):
+def prepare(root, command, libs_dir=None, all_libs=False, ks1=False, stack=0):
     """Make ``root`` boot like a Workbench disk into ``command`` (the
     startup-sequence text): the setup program runs first, and libraries
     from ``libs_dir`` the tree does not have go into its libs. When
     ``all_libs`` is True (hard-drive boots), every library in ``libs_dir``
     is copied so packed executables whose library names are compressed still
     find them. XPK compressor sub-libraries go into ``libs/compressors/``
-    where ``xpkmaster.library`` opens them."""
+    where ``xpkmaster.library`` opens them. When ``ks1`` is True, KS 1.x
+    overrides in ``libs_dir/ks1/`` take precedence. When ``stack`` > 0 (KS 2+
+    fast-RAM boots), ``Stack <stack>`` is run before ``command``."""
     s = _subdir(root, "s")
     if s is None:
         raise CannotPlay("no place for the startup-sequence: the download"
@@ -298,8 +307,9 @@ def prepare(root, command, libs_dir=None, all_libs=False):
     s.mkdir(exist_ok=True)
     (s / SETUP.split("/")[1]).write_bytes(setup_exe())
     (s / GO_ON.split("/")[1]).write_bytes(go_on_exe())
+    stack_line = f"Stack {stack}\n" if stack else ""
     (s / "startup-sequence").write_text(
-        f"{SETUP}\n{command}", encoding="latin-1")   # AmigaDOS charset
+        f"{SETUP}\n{stack_line}{command}", encoding="latin-1")   # AmigaDOS charset
     c = _subdir(root, "c")
     if c is not None and (not c.is_dir()
                           or "assign" not in {p.name.lower()
@@ -308,25 +318,40 @@ def prepare(root, command, libs_dir=None, all_libs=False):
         (c / "Assign").write_bytes(assign_exe())
     libs_dir = config.LIBS_DIR if libs_dir is None else libs_dir
     libs = _subdir(root, "libs")
-    if not libs_dir.is_dir() or libs is None:
+    if not libs_dir.is_dir():
         return
-    have = {p.name.lower() for p in libs.iterdir()} if libs.is_dir() else set()
-    comp = _subdir(libs, "compressors") if libs.is_dir() else libs / "compressors"
-    have_comp = ({p.name.lower() for p in comp.iterdir()}
-                 if comp is not None and comp.is_dir() else set())
-    wanted = (list(_iter_libs(libs_dir)) if all_libs
-              else _wanted_libs(root, libs_dir))
-    for lib in wanted:
-        if _is_packer_lib(lib.name):
-            if comp is not None and lib.name.lower() not in have_comp:
+    if libs is not None:
+        have = {p.name.lower() for p in libs.iterdir()} if libs.is_dir() else set()
+        comp = _subdir(libs, "compressors") if libs.is_dir() else libs / "compressors"
+        have_comp = ({p.name.lower() for p in comp.iterdir()}
+                     if comp is not None and comp.is_dir() else set())
+        wanted = (list(_iter_libs(libs_dir, ks1=ks1)) if all_libs
+                  else _wanted_libs(root, libs_dir, ks1=ks1))
+        for lib in wanted:
+            if _is_packer_lib(lib.name):
+                if comp is not None and lib.name.lower() not in have_comp:
+                    libs.mkdir(exist_ok=True)
+                    comp.mkdir(exist_ok=True)
+                    shutil.copyfile(lib, comp / lib.name)
+                    have_comp.add(lib.name.lower())
+            elif lib.name.lower() not in have:
                 libs.mkdir(exist_ok=True)
-                comp.mkdir(exist_ok=True)
-                shutil.copyfile(lib, comp / lib.name)
-                have_comp.add(lib.name.lower())
-        elif lib.name.lower() not in have:
-            libs.mkdir(exist_ok=True)
-            shutil.copyfile(lib, libs / lib.name)
-            have.add(lib.name.lower())
+                shutil.copyfile(lib, libs / lib.name)
+                have.add(lib.name.lower())
+    # Optional system devices (e.g. narrator.device in libs_dir/devs/).
+    src_devs = _subdir(libs_dir, "devs")
+    dst_devs = _subdir(root, "devs")
+    if src_devs is not None and src_devs.is_dir() and dst_devs is not None:
+        have_devs = ({p.name.lower() for p in dst_devs.iterdir()}
+                     if dst_devs.is_dir() else set())
+        avail_devs = [p for p in sorted(src_devs.iterdir()) if p.is_file()]
+        if not all_libs:
+            avail_devs = _wanted_files(root, avail_devs)
+        for dev in avail_devs:
+            if dev.name.lower() not in have_devs:
+                dst_devs.mkdir(exist_ok=True)
+                shutil.copyfile(dev, dst_devs / dev.name)
+                have_devs.add(dev.name.lower())
 
 
 def prepare_wb_boot(sys_root, command, boot_dir=None, assigns=()):
@@ -378,8 +403,16 @@ def prepare_wb_boot(sys_root, command, boot_dir=None, assigns=()):
         "If EXISTS C:AddAudioModes\n"
         "  C:AddAudioModes >NIL: REFRESH\n"
         "EndIf\n"
+        "If EXISTS DEVS:Monitors/PAL\n"
+        "  DEVS:Monitors/PAL >NIL:\n"
+        "EndIf\n"
+        "If EXISTS DEVS:Monitors/NTSC\n"
+        "  DEVS:Monitors/NTSC >NIL:\n"
+        "EndIf\n"
         "If EXISTS Demo:Libs\n"
-        "  C:Assign >NIL: LIBS: Demo:Libs ADD\n"
+        "  C:Assign >NIL: LIBS: Demo:Libs\n"
+        "  C:Assign >NIL: LIBS: SYS:Libs ADD\n"
+        "  C:Assign >NIL: LIBS: SYS:Classes ADD\n"
         "EndIf\n"
         "If EXISTS Demo:Fonts\n"
         "  C:Assign >NIL: FONTS: Demo:Fonts ADD\n"
@@ -390,6 +423,7 @@ def prepare_wb_boot(sys_root, command, boot_dir=None, assigns=()):
         "If EXISTS Demo:C\n"
         "  Path Demo:C ADD\n"
         "EndIf\n"
+        "Stack 131072\n"
         "Echo \"\"\n"
         "CD Demo:\n"
         + assign_lines(assigns)
@@ -398,9 +432,21 @@ def prepare_wb_boot(sys_root, command, boot_dir=None, assigns=()):
     (s_dst / "Startup-Sequence").write_text(startup, encoding="latin-1")
 
 
-def _wanted_libs(root, libs_dir):
+def _wanted_files(root, avail):
+    """The files in ``avail`` whose names appear anywhere under ``root``."""
+    wanted = {p.name.lower() for p in avail}
+    named = set()
+    for d, _, files in os.walk(root):
+        for f in files:
+            data = (pathlib.Path(d) / f).read_bytes().lower()
+            named |= {n for n in wanted if n.encode() in data}
+            wanted -= named
+    return [p for p in avail if p.name.lower() in named]
+
+
+def _wanted_libs(root, libs_dir, ks1=False):
     """The files of ``libs_dir`` the tree under ``root`` asks for."""
-    avail = list(_iter_libs(libs_dir))
+    avail = list(_iter_libs(libs_dir, ks1=ks1))
     wanted = {p.name.lower() for p in avail} - ALWAYS_LIBS
     named = set()
     for d, _, files in os.walk(root):

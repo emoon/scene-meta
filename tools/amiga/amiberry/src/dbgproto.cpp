@@ -502,14 +502,17 @@ static void cmd_status(int s, const std::string &cmd)
 	snprintf(body, sizeof body,
 		"{\"frame\":%ld,\"pc\":\"%x\",\"halt\":%d,\"stopped\":%d,"
 		"\"dmacon\":%u,\"intena\":%u,\"intreq\":%u,\"bplcon0\":%u,"
+		"\"bpl_active\":%d,"
 		"\"ddfstrt\":%u,\"ddfstop\":%u,\"diwstrt\":%u,\"diwstop\":%u,"
-		"\"coppc\":\"%x\",\"cop1lc\":\"%x\",\"vpos\":%d,"
+		"\"coppc\":\"%x\",\"cop1lc\":\"%x\",\"cop2lc\":\"%x\",\"vpos\":%d,"
 		"\"motor\":%d,\"cyl\":%d,\"df0\":\"%s\",\"warp\":%d,"
 		"\"resets\":%d}",
 		frame_counter, m68k_getpc(), regs.halted, regs.stopped ? 1 : 0,
 		(unsigned)cs.dmacon, (unsigned)cs.intena, (unsigned)cs.intreq,
-		(unsigned)cs.bplcon0, (unsigned)cs.ddfstrt, (unsigned)cs.ddfstop,
-		(unsigned)cs.diwstrt, (unsigned)cs.diwstop, cs.coppc, cs.cop1lc, cs.vpos,
+		(unsigned)cs.bplcon0, cs.bpl_active,
+		(unsigned)cs.ddfstrt, (unsigned)cs.ddfstop,
+		(unsigned)cs.diwstrt, (unsigned)cs.diwstop, cs.coppc, cs.cop1lc,
+		cs.cop2lc, cs.vpos,
 		d0->drive_motor ? 1 : 0, d0->drive_track, df0,
 		currprefs.turbo_emulation ? 1 : 0,
 		reset_counter);

@@ -235,9 +235,10 @@ class NeededPressesTest(unittest.TestCase):
         entries = []
 
         def samples(alive):
+            end = max(3250, alive_from + 2500)
             return [Sample(frame=f, pc=0, bplcon0=0, resets=0, df0="",
                            shot="s", dmacon=0x20F if alive and f >= alive_from
-                           else 0x200) for f in range(250, 3250, 250)]
+                           else 0x200) for f in range(250, end, 250)]
 
         def fake(m, variant, frames, **kw):
             ok = bool(nudge is None or kw.get(nudge))
@@ -314,27 +315,27 @@ class NeededPressesTest(unittest.TestCase):
 
     def test_key_before_the_disk_is_asked_for(self):
         # Megademo 2: its credits page only moves on Return, then it wants
-        # disk 2. Of the keys pressed in turn every 30 s the nearest to the
-        # insert are tried first (Return at 180 s in the 5-key cycle).
+        # disk 2. Of the keys pressed in turn every 10 s the nearest to the
+        # insert are tried first (Return at 100 s in the 9-key cycle).
         entries, tries = self.run_try(
-            [(9100, 2, "poll")], nudge="key_every",
+            [(5100, 2, "poll")], nudge="key_every",
             far=self.loads(lambda s, keys: any(
                 k["key"] == "return" and k["at"] < s["at"] for k in keys)))
         self.assertEqual([self.keys(e) for e in entries], [
-            [], [{"at": 180.0, "key": "return"}]])
-        self.assertEqual(tries[-1].presses, (Press(9000, "return"),))
+            [], [{"at": 100.0, "key": "return"}]])
+        self.assertEqual(tries[-1].presses, (Press(5000, "return"),))
         key, = tries[-1].record().keys
-        self.assertEqual((key.at, key.key), (180.0, "return"))
+        self.assertEqual((key.at, key.key), (100.0, "return"))
 
     def test_a_press_that_gets_no_further_is_not_kept(self):
-        # Space at 210 s is nearer the insert (208 s) than Return at 180 s.
+        # Space at 110 s is nearer the insert (108 s) than Return at 100 s.
         entries, tries = self.run_try(
-            [(10400, 2, "poll")], nudge="key_every",
+            [(5400, 2, "poll")], nudge="key_every",
             far=self.loads(lambda s, keys: any(
                 k["key"] == "return" and k["at"] < s["at"] for k in keys)))
         self.assertEqual([[k["key"] for k in self.keys(e)] for e in entries],
                          [[], ["space"], ["return"]])
-        self.assertEqual(tries[-1].presses, (Press(9000, "return"),))
+        self.assertEqual(tries[-1].presses, (Press(5000, "return"),))
 
     def test_click_that_starts_it(self):
         # "HIT MOUSE!": alive from 35 s on the retry that clicks every 30 s.
@@ -419,6 +420,20 @@ class NeededPressesTest(unittest.TestCase):
         self.assertEqual(sweep._next_press(best, got, [], left),
                          Press(4500, "lmb"))
 
+    def test_multi_press_group_is_found_and_pruned(self):
+        # Two sequential LMB clicks required together (e.g. Apathy-Attention):
+        # neither click alone starts the demo, both together do, and a third
+        # click before WORKS_ALIVE is pruned.
+        entries, tries = self.run_try(
+            [],
+            lambda entry: gate.Play(
+                sum(1 for e in entry["events"] if e.get("key") == "lmb"
+                    and e["at"] <= 60.0) >= 2),
+            variant=media.Variant("floppy", ["a.adf"]),
+            nudge="click_every", alive_from=3250)
+        self.assertEqual(tries[-1].presses,
+                         (Press(1500, "lmb"), Press(3000, "lmb")))
+
     def test_a_run_the_player_does_not_repeat_stays_with_what_was_kept(self):
         # The click has the disk loaded, and the run then crashes.
         def far(entry):
@@ -453,6 +468,52 @@ class NeededPressesTest(unittest.TestCase):
             "events": [{"at": 80.0, "disk": 3, "drive": 2}]}])
         self.assertEqual((tries[-1].unit, tries[-1].presses), (1, ()))
         self.assertEqual(tries[-1].record().swaps[0].drive, 2)
+
+
+class FakeGuruClickTest(unittest.TestCase):
+    """A Guru box with resets == 0 gets one post-crash LMB click retry;
+    rejected if clicking resets the machine (a real Guru)."""
+
+    VARIANT = media.Variant("hd", [], root="/tmp", command='"demo"\n')
+
+    def run_guru(self, click_resets):
+        samples = [Sample(frame=f, pc=0x20000, dmacon=0x300, bplcon0=0,
+                          resets=0, df0="", shot=f"s{f}",
+                          box="guru" if f >= 2000 else "")
+                   for f in range(250, 3000, 250)]
+        first = sweep.Attempt(
+            "a500", 9000, verdict.Verdict("crash", 0, "guru", 2000),
+            RunLog(samples, [], 0, False, ""), [])
+        called = []
+
+        def fake_played(m, variant, entry, seed):
+            called.append(entry)
+            ok_samples = [Sample(frame=f, pc=0x20000, dmacon=0x30F, bplcon0=0,
+                                 resets=click_resets if f >= 2500 else 0,
+                                 df0="", shot="s")
+                          for f in range(250, 5000, 250)]
+            return sweep.Attempt(
+                "a500", 9000, verdict.Verdict("works", 16),
+                RunLog(ok_samples, [], 0, False, ""), [],
+                play=gate.Play(True))
+
+        with mock.patch.object(sweep, "attempt", return_value=first), \
+                mock.patch.object(sweep, "played", fake_played):
+            tries = sweep.try_machine(machines.BY_NAME["a500"], self.VARIANT, 9000)
+        return called, tries[-1]
+
+    def test_fake_guru_without_reset_works(self):
+        called, best = self.run_guru(click_resets=0)
+        self.assertEqual(len(called), 1)
+        self.assertEqual(called[0]["events"], [{"at": 45.0, "key": "lmb"}])
+        self.assertTrue(best.verdict.works)
+        self.assertEqual(best.presses, (Press(2250, "lmb"),))
+
+    def test_real_guru_that_resets_is_rejected(self):
+        called, best = self.run_guru(click_resets=1)
+        self.assertEqual(len(called), 1)
+        self.assertFalse(best.verdict.works)
+        self.assertEqual(best.verdict.crash, "guru")
 
 
 class PressesMadeTest(unittest.TestCase):
@@ -635,10 +696,9 @@ class WindowsTest(unittest.TestCase):
 
 class RungsTest(unittest.TestCase):
     def test_ffs_boot_disk_skips_kickstart_1(self):
-        from scenemeta.amiga import media
+        from scenemeta.amiga import media, machines
         v = media.Variant("floppy", ["x.adf"], ffs=True)
-        names = [m.name for m in sweep.rungs(v, False)]
-        self.assertEqual(names, ["a1200", "a1200_fast", "a1200_030", "a1200_060"])
+        self.assertEqual(sweep.rungs(v, False), machines.ladder_for(True))
 
     def test_ordinary_disk_keeps_the_ladder(self):
         from scenemeta.amiga import media, machines

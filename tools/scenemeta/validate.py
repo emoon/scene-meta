@@ -82,6 +82,12 @@ def _sha256(v):
         return "must be 64 lowercase hex digits"
 
 
+def _coords(v):
+    if not isinstance(v, list) or len(v) != 2 \
+            or any(_number_from(0)(x) for x in v):
+        return "must be [x, y] pointer coordinates"
+
+
 def _events(v):
     if problem := _EVENT_ROWS(v):
         return problem
@@ -90,6 +96,8 @@ def _events(v):
             return "an event is a disk or a key, one of them"
         if "drive" in event and "disk" not in event:
             return "drive is of a disk"
+        if "pos" in event and "key" not in event:
+            return "pos is of a key"
         if "until" in event and event["until"] < event["at"]:
             return "until is before at"
     if v != events.ordered(v):
@@ -100,7 +108,7 @@ def _events(v):
 # A production booted from a later disk can ask for disk 1.
 _EVENT_ROWS = _rows((("at", _seconds),),
                     (("disk", _number_from(1)), ("drive", _number_from(2)),
-                     ("until", _seconds), ("key", _text)))
+                     ("until", _seconds), ("key", _text), ("pos", _coords)))
 
 # What a production needs to run. A variant may restate any of them.
 SETTINGS = {

@@ -15,7 +15,7 @@ _FORMAT_RANK = {".adf": 0, ".adz": 1, ".dms": 2}
 
 _SEP = r"[-_ .]*"
 _PATTERNS = (
-    re.compile(rf"^(.*?){_SEP}(?:disk|disc){_SEP}0?([1-9])(?:{_SEP}of{_SEP}\d)?$"),
+    re.compile(rf"^(.*?){_SEP}\(?(?:disk|disc){_SEP}0?([1-9])(?:{_SEP}of{_SEP}\d)?\)?$"),
     re.compile(rf"^(.*?){_SEP}side{_SEP}([a-d1-4])$"),
     re.compile(r"^(.*?)[-_ .]d([1-9])$"),
     re.compile(rf"^(.*?){_SEP}0?([1-9])(?:{_SEP}of{_SEP}\d)?$"),

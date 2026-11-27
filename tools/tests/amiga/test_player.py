@@ -101,16 +101,24 @@ class ActionsTest(unittest.TestCase):
 
     def test_a_key_it_cannot_press_is_an_error_naming_the_key(self):
         entry = {"disks": ["a", "b"],
-                 "events": [{"at": 10, "disk": 2}, {"at": 15, "key": "f1"}]}
-        with self.assertRaisesRegex(CannotPlay, "'f1': the keys are lmb, rmb"):
+                 "events": [{"at": 10, "disk": 2}, {"at": 15, "key": "bogus"}]}
+        with self.assertRaisesRegex(CannotPlay, "'bogus': the keys are lmb, lmb2, rmb"):
             player.actions(entry)
         entry = {"events": [{"at": 10, "key": "Return"}]}
         with self.assertRaisesRegex(CannotPlay, "'Return'"):
             player.actions(entry)
 
+    def test_positioned_mouse_click_actions(self):
+        entry = {"events": [{"at": 30.0, "key": "lmb", "pos": [150, 390]}]}
+        self.assertEqual(player.actions(entry), [(1500, "click", ("lmb", (150, 390)))])
+        self.assertEqual(player.actions(entry, keys=False), [])
+        with self.assertRaisesRegex(BadEntry, "only valid for mouse buttons"):
+            player.actions({"events": [{"at": 10.0, "key": "space", "pos": [1, 2]}]})
+
     def test_every_key_name_before_a_swap_and_after_it(self):
         for key in ("lmb", "rmb", "space", "return", "p1fire", "p2fire",
-                    "lamiga_v"):
+                    "lamiga_v", "ramiga_o", "esc", "f1", "f2", "f3", "f4",
+                    "f5", "down"):
             entry = {"disks": ["a", "b"],
                      "events": [{"at": 1, "key": key}, {"at": 10, "disk": 2},
                                 {"at": 15, "key": key}]}
@@ -437,7 +445,7 @@ class PlayTest(unittest.TestCase):
                 out, _ = self.play({"title": "x", "disks": ["a.adf", "b.adf"]})
             return out.record
         self.assertEqual(record("works"), Play(True, far=22.0))
-        self.assertEqual(record("works-short"), Play(True, far=22.0))
+        self.assertEqual(record("works-short"), Play(True, far=22.0 - 1e-3))
         self.assertEqual(record("works-then-crash", "guru"), Play(True, "guru", far=22.0))
         self.assertEqual(record("crash", "halt"), Play(False, "halt", far=22.0))
         self.assertEqual(record("no-activity"), Play(False, far=22.0))
@@ -493,8 +501,8 @@ class PlayTest(unittest.TestCase):
                     "c.adf")
 
     def test_a_key_it_cannot_press_is_found_before_the_download_is_unpacked(self):
-        entry = {**self.ENTRY, "events": [{"at": 10, "disk": 2}, {"at": 15, "key": "f1"}]}
-        self.cannot(entry, BadEntry, "'f1'").assert_not_called()
+        entry = {**self.ENTRY, "events": [{"at": 10, "disk": 2}, {"at": 15, "key": "bogus"}]}
+        self.cannot(entry, BadEntry, "'bogus'").assert_not_called()
 
     def test_a_machine_it_does_not_have_is_an_error_naming_it(self):
         self.cannot({**self.ENTRY, "machine": "a600"}, BadEntry,

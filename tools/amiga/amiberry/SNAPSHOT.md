@@ -248,7 +248,10 @@ its `USE_*` feature off, so removing it breaks the build.
   - `src/main.cpp` — `--dbg` argv parsing.
   - `src/custom.cpp` — `dbgproto_vsync` frame counting in the vsync render
     path, audio-DMA detection in `DMACON`, `dbgproto_custom_status` chipset
-    snapshot.
+    snapshot (including `cop2lc` and `bpl_active`, which latches mid-frame
+    active-scanline bitplane DMA so copper-gated displays such as AMOS Pro are
+    detected even when `BPLEN` is off at VBLANK), and raising Paula `TBE`
+    (`INTREQ_INT(0, 1)`) on `SERDAT` writes when built without `SERIAL_PORT`.
   - `src/newcpu.cpp` — per-instruction breakpoint/dispatch gate in the CPU
     run loops our configs actually select: `m68k_run_1_ce` (A500 68000
     cycle-exact tier) and `m68k_run_2ce` (A1200 68EC020 tier — selected by

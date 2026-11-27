@@ -26,7 +26,8 @@ import zlib
 
 BAND = 0.25       # the alert sits in the top quarter of the screen
 MIN_PIXELS = 150  # fewer lit pixels than a line of text is not an alert
-LIT = 60          # r+g+b above this is not black
+BLACK = 15        # r+g+b above this is not pure black (real Guru background is 0,0,0)
+MAX_SOLID_ROWS = 10  # real Guru border is 6 rows; Intuition title bars are 18+ rows
 
 
 def _rows(png):
@@ -242,27 +243,40 @@ def _says(rows, area, mask):
 
 
 def _is_guru(rows, height):
-    """True when everything lit in the top half of the screen is alert-red
-    and sits in the top band."""
-    lit = red = 0
+    """True when everything non-black on the screen is alert-red, sits in the
+    top band, and is not a solid filled Intuition title bar."""
+    if not rows:
+        return False
+    width = len(rows[0]) // 3
+    band = BAND * height
+    lit = red = consec_solid = 0
     for y, row in enumerate(rows):
+        row_red = 0
         for r, g, b in zip(row[0::3], row[1::3], row[2::3]):
-            if r + g + b > LIT:
-                if y >= BAND * height:
+            if r + g + b > BLACK:
+                if y >= band:
                     return False
                 lit += 1
-                red += _alert_red(r, g, b)
+                if _alert_red(r, g, b):
+                    red += 1
+                    row_red += 1
+        if y < band:
+            if row_red > 0.5 * width:
+                consec_solid += 1
+                if consec_solid > MAX_SOLID_ROWS:
+                    return False
+            else:
+                consec_solid = 0
     return lit >= MIN_PIXELS and red >= 0.97 * lit
 
 
 def box(png):
     """Which alert box the screenshot shows: "guru", "task-held" or "" for
-    none. A png it cannot read shows none. Only the top half is decoded: it
-    is all either box needs, and the check runs on every sample of a run."""
+    none. A png it cannot read shows none."""
     try:
         decoded = _rows(png)
         height = next(decoded)
-        rows = list(itertools.islice(decoded, height // 2))
+        rows = list(decoded)
     except (ValueError, zlib.error, struct.error, StopIteration):
         return ""
     if _is_guru(rows, height) or _says(rows, GURU_BOX, GURU_MASK):
