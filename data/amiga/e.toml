@@ -171,7 +171,7 @@ title = "Eat Candies"
 group = "WoodTower"
 source = "script"
 result = "unknown"
-run = "2K4"
+run = "EatCandies/2K4"
 note = "the sweep saw works on a1200_060; no entry of it passed the gate"
 
 [demozoo.242697]
@@ -519,8 +519,8 @@ machine = "a1200"
 title = "El toro de Okam"
 group = "Goblins"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a1200; no entry of it passed the gate"
+machine = "a1200"
+events = [{ at = 60.0, key = "space" }]
 
 [demozoo.166646]
 title = "El-bee"
@@ -1371,8 +1371,7 @@ source = "script"
 title = "Equations"
 group = "Cyberstate"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.352330]
 title = "Equilibrium"
@@ -1508,10 +1507,10 @@ source = "script"
 title = "Eternal Madness"
 group = "Digital Dreams"
 source = "script"
+machine = "a1200_060"
 boot = "hd"
-result = "unknown"
+events = [{ at = 30.0, key = "lmb" }]
 run = "Eternal Madness"
-note = "the sweep saw works on a1200_060; no entry of it passed the gate"
 
 [demozoo.207022]
 title = "Eternal Terror preview"
@@ -1786,8 +1785,8 @@ source = "script"
 title = "Euskal Party 5 Invitation"
 group = "Network"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
+machine = "a1200_fast"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.173805]
 title = "evar_rof"
@@ -1822,8 +1821,6 @@ machine = "a1200_060"
 title = "Every Joke Is Deadly"
 group = "Abandon"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500_1mb; no entry of it passed the gate"
 
 [demozoo.115697]
 title = "Everybody Dance"
@@ -2324,8 +2321,8 @@ source = "script"
 title = "Explicid II"
 group = "Xanadu"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a1200; no entry of it passed the gate"
+machine = "a1200"
+events = [{ at = 30.0, key = "return" }]
 
 [demozoo.290623]
 title = "Explicit - First Demo"

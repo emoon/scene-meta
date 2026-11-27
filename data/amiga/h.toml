@@ -272,8 +272,7 @@ source = "script"
 title = "HAM"
 group = "Securitate"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 60.0, key = "lmb" }]
 
 [demozoo.326645]
 title = "Ham bootblock"
@@ -381,7 +380,7 @@ title = "Handshake Slideshow v1.0 Intro"
 group = "Goonies 2041"
 source = "script"
 result = "unknown"
-note = "the sweep saw works on a500_1mb; no entry of it passed the gate"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.225981]
 title = "Hang Em High"
@@ -1346,8 +1345,8 @@ source = "script"
 title = "Head Quest"
 group = "Escape"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500_ks12; no entry of it passed the gate"
+machine = "a500_ks12"
+events = [{ at = 120.0, key = "rmb" }]
 
 [demozoo.81780]
 title = "Headache"
@@ -1454,8 +1453,7 @@ source = "script"
 title = "Heavy Ball"
 group = "Brainstorm"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.154542]
 title = "Heavy Ball"
@@ -1482,8 +1480,7 @@ source = "script"
 title = "Hedgehog"
 group = "Racoon"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.265275]
 title = "Hein Design Party Gfx"
@@ -1525,8 +1522,7 @@ source = "script"
 title = "Heliopolis"
 group = "EMT Design"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.177737]
 title = "Helis - 2nd Demo"
@@ -2001,8 +1997,7 @@ source = "script"
 title = "Hidden Rats"
 group = "Abandon"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.214003]
 title = "Hidden Vectors"
@@ -2596,8 +2591,7 @@ source = "script"
 title = "Holy Thing"
 group = "Road Riders"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.171248]
 title = "Home"
@@ -2695,8 +2689,7 @@ machine = "a1200_fast"
 title = "Hoppy Demo"
 group = "Ipec Elite"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "return" }]
 
 [demozoo.227994]
 title = "Hoppydemo -Totaly Waste of Chip Mem and or Brainpain-"
@@ -3192,8 +3185,8 @@ machine = "a500_2mb_chip"
 title = "Hovsa"
 group = "Spoon"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a1200; no entry of it passed the gate"
+machine = "a1200"
+events = [{ at = 150.0, key = "lamiga_v" }]
 
 [demozoo.195748]
 title = "How 2 Scan A Kid"
@@ -3534,8 +3527,7 @@ source = "script"
 title = "Huunous"
 group = "TBB Productions"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.252354]
 title = "Hvor Er Min Bikini?"

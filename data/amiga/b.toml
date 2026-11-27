@@ -708,7 +708,6 @@ title = "Banana BBS Intro"
 group = "Paradise"
 source = "script"
 result = "unknown"
-note = "the sweep saw works on a500_ks12_512k; no entry of it passed the gate"
 
 [demozoo.185208]
 title = "Banana Jones"
@@ -895,8 +894,7 @@ machine = "a1200_fast"
 title = "Basstro #1"
 group = "Basstech"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 120.0, key = "rmb" }]
 
 [demozoo.110395]
 title = "Bastardemon"
@@ -1121,8 +1119,7 @@ source = "script"
 title = "BBS Dentro"
 group = "Dual Crew"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.233922]
 title = "BBS Dentro"
@@ -1886,8 +1883,7 @@ source = "script"
 title = "Beneath A Steel Sky Explanation"
 group = "Mellow"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.150058]
 title = "Bengt"
@@ -1907,8 +1903,8 @@ run = "Keso-Bengt2.exe"
 title = "Bengt Goes Beer"
 group = "Project Zero"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a1200; no entry of it passed the gate"
+machine = "a1200"
+events = [{ at = 120.0, key = "rmb" }]
 
 [demozoo.27957]
 title = "Benoit"
@@ -3166,7 +3162,6 @@ group = "Ukonx"
 source = "script"
 result = "unknown"
 disks = ["Ukonx-BlissOut1.DMS", "Ukonx-BlissOut2.DMS"]
-note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.189783]
 title = "Blit it"
@@ -4503,8 +4498,7 @@ source = "script"
 title = "Boot Intro"
 group = "The Immortal Souls"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 120.0, key = "rmb" }]
 
 [demozoo.294440]
 title = "Boot Intro"
@@ -5855,8 +5849,7 @@ run = "teo_-_moonlight.exe"
 title = "Brume"
 group = "New Generation Crew"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }, { at = 60.0, key = "lmb" }]
 
 [demozoo.183588]
 title = "Bruno Carette Tribute"
@@ -6209,8 +6202,7 @@ source = "script"
 title = "Bustro"
 group = "Carnage"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.182545]
 title = "Butcher's Newst and Coolest"

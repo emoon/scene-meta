@@ -168,8 +168,7 @@ source = "script"
 title = "Pack Preview"
 group = "Psycho"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+machine = "a500_512k"
 
 [demozoo.230927]
 title = "Pack Preview"
@@ -720,8 +719,7 @@ boot = "floppy"
 title = "Partro"
 group = "Appendix"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.231277]
 title = "Partro"
@@ -909,8 +907,7 @@ source = "script"
 title = "Party Demo"
 group = "Ascension"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.222390]
 title = "Party Demo"
@@ -2611,8 +2608,7 @@ source = "script"
 title = "Pill"
 group = "Genetic"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500_1mb_chip; no entry of it passed the gate"
+machine = "a1200"
 
 [demozoo.191216]
 title = "Pill"
@@ -3479,8 +3475,8 @@ result = "unknown"
 title = "Polish Autumn 1993 Invitation Demo"
 group = "Mad Elks"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500_2mb_chip; no entry of it passed the gate"
+machine = "a500_1mb"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.194475]
 title = "Polish Autumn Party Intro"
@@ -4364,8 +4360,7 @@ source = "script"
 title = "Prevail Pack Preview 4"
 group = "Effect"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.242613]
 title = "Prevail Pack Trainer"
@@ -4748,8 +4743,7 @@ machine = "a1200"
 title = "Prolog"
 group = "Experience"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.254530]
 title = "Promax Demo 2"
@@ -4771,7 +4765,6 @@ title = "Promax Intro 1"
 group = "Atomic Team"
 source = "script"
 result = "unknown"
-note = "the sweep saw works on a500_512k; no entry of it passed the gate"
 
 [demozoo.61932]
 title = "Promille"
@@ -5239,8 +5232,7 @@ source = "script"
 title = "Pulling The Trigger"
 group = "Palace"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.18877]
 title = "Pulp"
@@ -5401,9 +5393,9 @@ source = "script"
 title = "Purgatory"
 group = "The Black Lotus"
 source = "script"
-result = "unknown"
+machine = "a500_1mb"
 disks = ["TBL-PurgatoryA.adf", "TBL-PurgatoryB.adf"]
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 300.0, disk = 2, until = 330.0 }, { at = 300.0, key = "lmb" }]
 
 [demozoo.167894]
 title = "Purple"

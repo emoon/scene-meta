@@ -510,8 +510,7 @@ source = "script"
 title = "Zoom Parallax Demo"
 group = "Balance"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.28443]
 title = "Zoombi"

@@ -310,8 +310,7 @@ source = "script"
 title = "A Little Intro"
 group = "Phantasm"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.196032]
 title = "A Little Intro"
@@ -605,8 +604,7 @@ source = "script"
 title = "A New Dentro"
 group = "Pleasure"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.261198]
 title = "A New Dentro"
@@ -647,8 +645,7 @@ source = "script"
 title = "A New Group Has Entered The Scene"
 group = "Curse"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.123602]
 title = "A New Group Is Born"
@@ -751,8 +748,7 @@ run = "Intro.exe"
 title = "A New Intro"
 group = "Curse"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.114803]
 title = "A New Intro"
@@ -1794,8 +1790,7 @@ source = "script"
 title = "Acid Demo"
 group = "Piranhas"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.229213]
 title = "Acid Demo"
@@ -2167,8 +2162,8 @@ source = "script"
 title = "After Dark"
 group = "Cyberdreams"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500_1mb; no entry of it passed the gate"
+machine = "a500_1mb"
+events = [{ at = 30.0, key = "lmb" }, { at = 60.0, key = "lmb" }, { at = 120.0, key = "lmb" }]
 
 [demozoo.222843]
 title = "After Easter Demo"
@@ -2428,9 +2423,8 @@ machine = "a1200"
 title = "Akira"
 group = "Balance"
 source = "script"
-boot = "floppy"
 result = "unknown"
-note = "the sweep saw works on a500_ks12_512k; no entry of it passed the gate"
+note = "the sweep saw works-then-crash on a500; no entry of it passed the gate"
 
 [demozoo.212064]
 title = "Alarm"
@@ -2847,8 +2841,7 @@ events = [{ at = 57.4, disk = 2 }, { at = 294.3, disk = 3 }]
 title = "Alpha Complex Meeting Demo"
 group = "Lynx / PowerDrive"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.220922]
 title = "Alphalats"
@@ -3269,8 +3262,9 @@ run = "Karate"
 title = "Amiga Rules"
 group = "Amiga Circle"
 source = "script"
+boot = "floppy"
 result = "unknown"
-note = "the sweep saw works on a1200_060; no entry of it passed the gate"
+note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
 
 [demozoo.85898]
 title = "Amiga Rules"
@@ -3309,8 +3303,7 @@ source = "script"
 title = "Amiga Smile"
 group = "Bohema"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 120.0, key = "rmb" }]
 
 [demozoo.254588]
 title = "Amiga Summit 91 Party Slideshow"
@@ -3554,8 +3547,7 @@ machine = "a1200"
 title = "Amusing IV"
 group = "Razor 1911"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.229065]
 title = "Amy Putt"
@@ -3842,8 +3834,8 @@ source = "script"
 title = "Animation Demo"
 group = "Accuracy"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500_1mb_chip; no entry of it passed the gate"
+machine = "a500_1mb"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.237646]
 title = "Animation Rulez -Star-"
@@ -3865,8 +3857,7 @@ source = "script"
 title = "Ankara Section Contact Intro"
 group = "Bronx"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.261346]
 title = "Ankeborg BBS Intro"
@@ -6340,9 +6331,9 @@ source = "script"
 title = "Aroma Color"
 group = "Cirion"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
+events = [{ at = 30.0, key = "return" }]
 run = "start"
-note = "the sweep saw works on a1200_030; no entry of it passed the gate"
 
 [demozoo.39951]
 title = "Around"
@@ -6731,8 +6722,7 @@ source = "script"
 title = "Assembly 92 Partyinfo Intro"
 group = "Rebels"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.7486]
 title = "Assembly 95 40k Intro"

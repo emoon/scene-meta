@@ -1801,8 +1801,7 @@ source = "script"
 title = "Meetro"
 group = "Reflectors"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.194040]
 title = "Meetro"
@@ -1906,8 +1905,7 @@ source = "script"
 title = "Mega Demo 1"
 group = "Robots"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.230493]
 title = "Mega Dycpers"
@@ -2234,9 +2232,8 @@ note = "the sweep only reached disk 1 of 2"
 title = "Megademo"
 group = "Balloons"
 source = "script"
-result = "unknown"
+result = "broken"
 disks = ["BALLOONS-MegademoA.dms", "BALLOONS-MegademoB.dms"]
-note = "the sweep saw works on a500_ks12; no entry of it passed the gate"
 
 [demozoo.145642]
 title = "Megademo"
@@ -2749,9 +2746,8 @@ source = "script"
 title = "Megademo - Masters At Work"
 group = "Flash Production"
 source = "script"
-result = "unknown"
 disks = ["FP-MastersAtWorkA.adf", "FP-MastersAtWorkB.adf"]
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }, { at = 60.0, key = "lmb" }, { at = 81.5, disk = 2, until = 111.5 }, { at = 86.5, key = "lmb" }]
 
 [demozoo.356965]
 title = "Megademo - Part 4"
@@ -3092,9 +3088,9 @@ source = "script"
 title = "Megademo 4"
 group = "Fanatix"
 source = "script"
-result = "unknown"
+drives = 2
 disks = ["Fanatix-Megademo4A.adf", "Fanatix-Megademo4B.adf"]
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }, { at = 60.0, key = "lmb" }]
 
 [demozoo.5322]
 title = "Megademo 4 - Bogøfærgerne II"
@@ -3161,9 +3157,10 @@ machine = "a1200"
 title = "Megademo 7"
 group = "Fanatix"
 source = "script"
-result = "unknown"
+drives = 3
 disks = ["Fanatix-Megademo7_D1.adf", "Fanatix-Megademo7_D2.adf", "Fanatix-Megademo7_D3.adf"]
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
+note = "the sweep only reached disk 2 of 3"
 
 [demozoo.71940]
 title = "Megademo 8"
@@ -3259,8 +3256,8 @@ source = "script"
 title = "Megademo II"
 group = "Cybornetics"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500_2mb_chip; no entry of it passed the gate"
+machine = "a500_512k"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.167365]
 title = "Megademo II - Back to the Roots"
@@ -3763,8 +3760,7 @@ source = "script"
 title = "Members Wanted"
 group = "Gate"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.256012]
 title = "Members Wanted"
@@ -4105,8 +4101,7 @@ source = "script"
 title = "Merry Christmas"
 group = "Goonies 2041"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.224581]
 title = "Merry Christmas"
@@ -4430,8 +4425,7 @@ result = "unknown"
 title = "Meteli 3"
 group = "Byterapers"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "return" }, { at = 60.0, key = "space" }]
 
 [demozoo.236341]
 title = "Meteli 4 - Jumala Special"
@@ -4446,8 +4440,8 @@ note = "part list under the Meteli IV logo, scroller"
 title = "Meteli 5"
 group = "Byterapers"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+machine = "a500_512k"
+events = [{ at = 30.0, key = "return" }]
 
 [demozoo.236343]
 title = "Meteli 6"
@@ -4719,8 +4713,7 @@ machine = "a1200"
 title = "Midnight Caller BBS Intro"
 group = "Digital Access"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "return" }]
 
 [demozoo.294225]
 title = "Midnight Madness"
@@ -5306,8 +5299,8 @@ source = "script"
 title = "Mini Megademo"
 group = "Doom Uk"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500_1mb; no entry of it passed the gate"
+machine = "a500_1mb"
+events = [{ at = 120.0, key = "rmb" }]
 
 [demozoo.254996]
 title = "Mini Megademo"
@@ -5697,8 +5690,9 @@ machine = "a1200"
 title = "Mitä Hirmu sanoo?"
 group = "Poro Productions"
 source = "script"
-result = "unknown"
+machine = "a1200"
 run = "demo.exe"
+assign = { poro = "Demo:" }
 
 [demozoo.17993]
 title = "Mixed Emotions"
@@ -5715,8 +5709,7 @@ source = "script"
 title = "Mixin Mach II"
 group = "Flash Production"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 60.0, key = "space" }]
 
 [demozoo.268123]
 title = "Mixture 12 Menu"

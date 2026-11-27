@@ -796,8 +796,7 @@ source = "script"
 title = "Dead Meat"
 group = "Silicon Limited"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.258250]
 title = "Dead Of"
@@ -1429,8 +1428,7 @@ source = "script"
 title = "Delirium"
 group = "Fraxion"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.143750]
 title = "Delirium"
@@ -1659,7 +1657,6 @@ title = "Demo"
 group = "Taurus 1"
 source = "script"
 result = "unknown"
-note = "the sweep saw works on a500_512k; no entry of it passed the gate"
 
 [demozoo.223247]
 title = "Demo"
@@ -2031,8 +2028,7 @@ source = "script"
 title = "Demo Compil"
 group = "Joker"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.217537]
 title = "Demo Compilation 2 Intro"
@@ -2787,8 +2783,7 @@ source = "script"
 title = "Dentro no. 1"
 group = "Capital"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 120.0, key = "rmb" }]
 
 [demozoo.210658]
 title = "Dentro!"
@@ -2849,8 +2844,7 @@ run = "DepthCharge"
 title = "Der Brockhaus"
 group = "Setrox"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 120.0, key = "rmb" }]
 
 [demozoo.227143]
 title = "Der Computer Club"
@@ -3121,8 +3115,7 @@ source = "script"
 title = "Devil's Inn BBS"
 group = "Unlimited"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.223714]
 title = "Devils Chapel BBS Intro 1"
@@ -3409,8 +3402,7 @@ source = "script"
 title = "Digital Dreams Intro 1"
 group = "Synergy Design"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a1200; no entry of it passed the gate"
+machine = "a1200"
 
 [demozoo.214746]
 title = "Digital Dreams Intro 2"
@@ -3496,8 +3488,7 @@ source = "script"
 title = "Digital Orgasm"
 group = "Cubic"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.286333]
 title = "Digital Orgasm 2"
@@ -4020,8 +4011,7 @@ events = [{ at = 30.9, disk = 2 }]
 title = "Do You Like Triangles Pre-Release"
 group = "Italian Bad Boys"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.210468]
 title = "Do! Run Run"
@@ -4856,8 +4846,7 @@ source = "script"
 title = "Dreamfucker"
 group = "Soviet Hogs"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 60.0, key = "lmb" }]
 
 [demozoo.143755]
 title = "Dreamin'"

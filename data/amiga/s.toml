@@ -924,8 +924,7 @@ machine = "a1200"
 title = "Schmoovy"
 group = "Kefrens / Melon Dezign"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.233467]
 title = "Schokovectors"
@@ -1213,8 +1212,7 @@ machine = "a500_1mb"
 title = "Scrollium"
 group = "Escape"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.196060]
 title = "Scrollnophobia"
@@ -1348,8 +1346,7 @@ source = "script"
 title = "Searchtro"
 group = "Uco"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.231052]
 title = "Searchtro"
@@ -2251,8 +2248,7 @@ source = "script"
 title = "Shiny Bubbles"
 group = "Dual Crew"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 60.0, key = "space" }]
 
 [demozoo.371371]
 title = "Shinya 1986"
@@ -3026,8 +3022,7 @@ source = "script"
 title = "Sine Demo"
 group = "Future Mirror"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.214337]
 title = "Sine Demo"
@@ -4055,8 +4050,7 @@ machine = "a1200"
 title = "Slemming"
 group = "Eon"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.118468]
 title = "Sliced & Diced"
@@ -4153,8 +4147,7 @@ machine = "a1200_030"
 title = "Sma Bananbitar och annat kladd"
 group = "Benny Boys / The Suprahackers"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 120.0, key = "rmb" }]
 
 [demozoo.207120]
 title = "Small"
@@ -4886,8 +4879,7 @@ source = "script"
 title = "Software Make The Dance Foam Oil"
 group = "Ephidrena / Rave Network Overscan / Kvasigen / Cellfish"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a1200_030; no entry of it passed the gate"
+machine = "a1200_060"
 
 [demozoo.228799]
 title = "Softwave"
@@ -5284,8 +5276,7 @@ source = "script"
 title = "Some Vectors"
 group = "Starline"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.196271]
 title = "Some Vectors"
@@ -5970,8 +5961,7 @@ source = "script"
 title = "Space Deliria"
 group = "Crusaders"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.248754]
 title = "Space Demo"
@@ -5987,8 +5977,7 @@ source = "script"
 title = "Space Dots Norway Import"
 group = "Razor 1911"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.208758]
 title = "Space Drop"
@@ -7865,8 +7854,7 @@ machine = "a1200"
 title = "Stoned Box"
 group = "Divina"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 120.0, key = "rmb" }]
 
 [demozoo.164411]
 title = "Stonefish"
@@ -8588,8 +8576,7 @@ source = "script"
 title = "Summer Conference Mini Intro"
 group = "Quartz"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 120.0, key = "rmb" }]
 
 [demozoo.89621]
 title = "Summer Day"
@@ -8878,8 +8865,7 @@ note = "the sweep only reached disk 1 of 2"
 title = "Sunstone Announctro"
 group = "Half Brains Team"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.33982]
 title = "Suoli"
@@ -9424,8 +9410,7 @@ source = "script"
 title = "Swapping Logos"
 group = "The Special Brothers"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.231733]
 title = "Swappit v2.0 Intro"

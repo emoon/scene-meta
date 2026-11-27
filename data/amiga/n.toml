@@ -714,8 +714,7 @@ source = "script"
 title = "Never This Again"
 group = "DGSA / Brainwave"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 120.0, key = "rmb" }]
 
 [demozoo.36125]
 title = "Nevermind"
@@ -1029,8 +1028,7 @@ machine = "a500_ks12"
 title = "New Demo"
 group = "Axxis"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.214288]
 title = "New Demo"
@@ -1441,8 +1439,7 @@ source = "script"
 title = "New Generation Part 1"
 group = "XXX International"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.218965]
 title = "New Generations of Hot Stuff"
@@ -1594,8 +1591,7 @@ source = "script"
 title = "New Intro"
 group = "Phase"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 120.0, key = "rmb" }]
 
 [demozoo.112782]
 title = "New Intro"
@@ -2729,8 +2725,8 @@ source = "script"
 title = "New Stuff"
 group = "Goonies 2041"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500_ks12; no entry of it passed the gate"
+machine = "a1200"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.216561]
 title = "New Stuff"
@@ -2994,8 +2990,7 @@ source = "script"
 title = "New Stuff"
 group = "Australian Crackers United"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 120.0, key = "rmb" }]
 
 [demozoo.235172]
 title = "New Stuff"
@@ -4225,8 +4220,7 @@ machine = "a1200"
 title = "Nippon Taste"
 group = "Coppersky"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a1200; no entry of it passed the gate"
+machine = "a1200_030"
 
 [demozoo.19455]
 title = "Nitro 97"
@@ -4760,8 +4754,7 @@ source = "script"
 title = "Noisy Dreams"
 group = "The Twainstein Team"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.238420]
 title = "Nokian Nuoriso Ohjaaja Demu Part II"
@@ -5169,8 +5162,7 @@ title = "nOtITLE-pARTYvERSION"
 group = "Mankind / Pure Lam3r"
 source = "script"
 result = "unknown"
-run = "rundemo"
-note = "the sweep saw works on a1200_060; no entry of it passed the gate"
+run = "Karate"
 
 [demozoo.242813]
 title = "Notloesungs-Intro"

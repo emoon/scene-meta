@@ -154,8 +154,7 @@ source = "script"
 title = "Galaxy Love"
 group = "Enigma"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.234522]
 title = "Gale 1"
@@ -798,15 +797,13 @@ source = "script"
 title = "Getno 1"
 group = "ISCH Crew"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.212075]
 title = "Getno 2"
 group = "ISCH Crew"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.230486]
 title = "Getting In Deep"
@@ -995,8 +992,7 @@ source = "script"
 title = "Gintro"
 group = "Hellrazor"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.323002]
 title = "Giralda - Batman Vuelve Advert Intro"
@@ -1167,8 +1163,7 @@ source = "script"
 title = "Global Gathering '94 Invitation"
 group = "The Studio"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 60.0, key = "space" }]
 
 [demozoo.28710]
 title = "Global Hazard"

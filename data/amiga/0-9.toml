@@ -137,8 +137,7 @@ source = "script"
 title = "1024 Bobs"
 group = "Avoid"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.250376]
 title = "10k"
@@ -553,7 +552,6 @@ title = "2 Dayz BBS Intro"
 group = "Software Runners from Hell"
 source = "script"
 result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.261197]
 title = "2 Decades"
@@ -1674,8 +1672,7 @@ source = "script"
 title = "4840"
 group = "Gunnars Farvebio"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.244729]
 title = "4am Finish"

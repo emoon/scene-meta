@@ -996,8 +996,8 @@ source = "script"
 title = "Knarkzilla"
 group = "Ephidrena / Loonies / Kvasigen"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a1200_030; no entry of it passed the gate"
+machine = "a1200_030"
+events = [{ at = 30.0, key = "return" }]
 
 [demozoo.193]
 title = "Knickelbreaka - Friendchip Promotion Intro"
@@ -1025,8 +1025,7 @@ result = "unknown"
 title = "Knin Peaks"
 group = "Reality"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.5120]
 title = "Knitfellas"

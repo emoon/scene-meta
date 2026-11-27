@@ -3,7 +3,7 @@ title = "Y"
 group = "iq2000 / Nevermind"
 source = "script"
 result = "unknown"
-note = "the sweep saw works on a1200_060; no entry of it passed the gate"
+note = "the sweep saw works-then-crash on a1200_060; no entry of it passed the gate"
 
 [demozoo.9403]
 title = "Y'aga"

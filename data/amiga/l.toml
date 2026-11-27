@@ -623,8 +623,7 @@ source = "script"
 title = "Last Posthume Demo"
 group = "Papillon"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 120.0, key = "rmb" }]
 
 [demozoo.224552]
 title = "Last Rites"
@@ -1634,7 +1633,6 @@ group = "Elude"
 source = "script"
 result = "unknown"
 run = "eld-lightshaft.exe"
-note = "the sweep saw works on a1200_060; no entry of it passed the gate"
 
 [demozoo.32898]
 title = "Lightwave Demo"
@@ -2326,8 +2324,7 @@ source = "script"
 title = "Little Thing"
 group = "Goonies 2041"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.247315]
 title = "Little Toons Story"

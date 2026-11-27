@@ -46,8 +46,7 @@ run = "Salami/salami"
 title = "I Have A Dog!"
 group = "Enemy"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.145669]
 title = "I Like Traffic Lights"
@@ -208,8 +207,7 @@ source = "script"
 title = "Icarus Joined"
 group = "Alliance"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 120.0, key = "rmb" }]
 
 [demozoo.88605]
 title = "Ice"
@@ -871,7 +869,7 @@ group = "KYO Corp"
 source = "script"
 result = "unknown"
 run = "IMoZX.eXe"
-note = "the sweep saw works on a1200; no entry of it passed the gate"
+note = "the sweep saw works-then-crash on a1200; no entry of it passed the gate"
 
 [demozoo.314014]
 title = "In Memory Of Maf"
@@ -1428,8 +1426,7 @@ source = "script"
 title = "Innovation - Preversion"
 group = "Axxis"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.154112]
 title = "Innovation Part Two"
@@ -1440,8 +1437,7 @@ source = "script"
 title = "Innuendo"
 group = "Rednex"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 60.0, key = "lmb" }]
 
 [demozoo.18187]
 title = "Insane"
@@ -1516,8 +1512,7 @@ source = "script"
 title = "Inside Anarchy"
 group = "23 Celsius Crew"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.151400]
 title = "Inside Deluxe"

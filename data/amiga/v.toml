@@ -12,8 +12,7 @@ source = "script"
 title = "Vaaleansininen huivi"
 group = "Carillon"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.342445]
 title = "VAAU"
@@ -1422,8 +1421,7 @@ result = "unknown"
 title = "Virtual World"
 group = "TomSoft"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.197374]
 title = "Virus Boot"
@@ -1505,8 +1503,7 @@ source = "script"
 title = "Visions"
 group = "Ram Jam"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 120.0, key = "rmb" }]
 
 [demozoo.322615]
 title = "Visor Beams"

@@ -125,8 +125,7 @@ source = "script"
 title = "Face of The Lord"
 group = "Protestor / Miwe"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.20356]
 title = "Face Off (2)"
@@ -1864,8 +1863,7 @@ machine = "a500_ks12"
 title = "First by Whopper"
 group = "Prologic"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 120.0, key = "rmb" }]
 
 [demozoo.236502]
 title = "First Cascade Denmark"
@@ -3968,8 +3966,7 @@ machine = "a1200"
 title = "Floedeskum"
 group = "Atomic Intelligence"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.134951]
 title = "Floodland"
@@ -4247,8 +4244,7 @@ source = "script"
 title = "Fnyrpla One"
 group = "Sirius Cybernetics Corp."
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 120.0, key = "rmb" }]
 
 [demozoo.40932]
 title = "Foam"
@@ -4641,8 +4637,7 @@ source = "script"
 title = "Fractalia"
 group = "Avenger"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.258406]
 title = "Fractals"
@@ -5973,8 +5968,7 @@ source = "script"
 title = "Future Shock"
 group = "Top Swap"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.233218]
 title = "Future Show Music Disc Intro"

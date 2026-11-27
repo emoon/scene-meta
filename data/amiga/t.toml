@@ -588,8 +588,7 @@ machine = "a500_1mb"
 title = "Teenage Magnetic Fields Ninja Turtles Big Intro"
 group = "Magnetic Fields"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.218734]
 title = "Teenage Mutant Ninja Turtle Demo"
@@ -1377,8 +1376,7 @@ source = "script"
 title = "The B.I.G. Demo (Amiga Port)"
 group = "The Exceptions / Mr Styckx"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500_1mb; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.176240]
 title = "The Bad Tongue #3 Announcement"
@@ -1477,8 +1475,7 @@ source = "script"
 title = "The Best Demos From the Cryptoburners Party"
 group = "Razor 1911 / Cryptoburners"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 120.0, key = "rmb" }]
 
 [demozoo.222326]
 title = "The Best of Stryxx"
@@ -1516,8 +1513,7 @@ machine = "a1200"
 title = "The Bitch is Hot"
 group = "Creators"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.310315]
 title = "The Bitmap Rasters"
@@ -1702,8 +1698,7 @@ source = "script"
 title = "The Clairvoyant-Iron Maiden 4"
 group = "Commando Frontier"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.241356]
 title = "The Clinic BBS Intro"
@@ -1939,7 +1934,6 @@ title = "The Deep Dentro"
 group = "After Eights"
 source = "script"
 result = "unknown"
-note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
 
 [demozoo.342447]
 title = "The Deep Meet"
@@ -2681,8 +2675,8 @@ source = "script"
 title = "The Huib Demo"
 group = "Mellow"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500_1mb; no entry of it passed the gate"
+machine = "a500_1mb"
+events = [{ at = 90.0, key = "p2fire" }]
 
 [demozoo.3778]
 title = "The Human Body Is A Curious Contraption"
@@ -3357,8 +3351,7 @@ source = "script"
 title = "The Museum BBS Intro"
 group = "Delight"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.220091]
 title = "The Music From Fantasy World Dizzy"
@@ -3619,8 +3612,7 @@ source = "script"
 title = "The Party Massacre"
 group = "The Lynx Crew"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 120.0, key = "rmb" }]
 
 [demozoo.230406]
 title = "The Party Zone Intro"
@@ -4444,7 +4436,7 @@ title = "The Tower BBS"
 group = "Skid Row"
 source = "script"
 result = "unknown"
-note = "the sweep saw works on a500_1mb; no entry of it passed the gate"
+note = "the sweep saw works on a500_ks12; no entry of it passed the gate"
 
 [demozoo.261851]
 title = "The Trader 2 Intro"
@@ -4877,8 +4869,8 @@ result = "unknown"
 title = "The Yard BBS Intro"
 group = "Up Rough"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a1200; no entry of it passed the gate"
+machine = "a1200"
+events = [{ at = 30.0, key = "return" }]
 
 [demozoo.210398]
 title = "The-Star-With-The-Hole-Intro"
@@ -4889,9 +4881,9 @@ source = "script"
 title = "TheBYOOT"
 group = "Apathy"
 source = "script"
-result = "unknown"
+machine = "a500_512k"
+events = [{ at = 30.0, key = "lmb" }]
 run = "TheByoot.exe"
-note = "the sweep saw works on a500_512k; no entry of it passed the gate"
 
 [demozoo.258714]
 title = "Their 2nd Rebirth"
@@ -6625,8 +6617,7 @@ source = "script"
 title = "Tradomania March 1992"
 group = "Tron / Wayne Mendoza / Phase / Magic Fly / Chaze"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 120.0, key = "rmb" }]
 
 [demozoo.215267]
 title = "Tradomania Mini"

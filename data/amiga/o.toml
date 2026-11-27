@@ -135,8 +135,7 @@ source = "script"
 title = "Obvious Disaster - Final"
 group = "Phenomena"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.251803]
 title = "Obviousness"
@@ -239,8 +238,7 @@ source = "script"
 title = "Odelsgutt 2"
 group = "Paramount Productions"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a1200; no entry of it passed the gate"
+machine = "a1200_fast"
 
 [demozoo.202306]
 title = "Odelsgutt 3"
@@ -487,8 +485,8 @@ source = "script"
 title = "Old Prod"
 group = "Intense"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a1200; no entry of it passed the gate"
+machine = "a1200"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.6592]
 title = "Old School"
@@ -909,8 +907,7 @@ source = "script"
 title = "Onkel Vanja"
 group = "neXus"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.257746]
 title = "Online Box BBS intro"
@@ -1612,8 +1609,7 @@ machine = "a1200_fast"
 title = "Outland"
 group = "Rebels"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }, { at = 60.0, key = "lmb" }]
 
 [demozoo.177745]
 title = "Outland"
