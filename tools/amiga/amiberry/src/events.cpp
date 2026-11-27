@@ -328,6 +328,10 @@ void do_cycles_slow(int cycles_to_add)
 #endif
 
 	if (is_syncline) {
+		if (is_syncline == -13 && cycles_to_add > 0 && pissoff > 0) {
+			if ((pissoff -= cycles_to_add) >= 0)
+				return;
+		}
 		if (syncline_cnt > 0) {
 			syncline_cnt--;
 			return;

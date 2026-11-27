@@ -273,7 +273,11 @@ its `USE_*` feature off, so removing it breaks the build.
     frame a deterministic, load-independent budget of 256 `pissoff_value` JIT
     bursts (exiting immediately if `regs.stopped`) instead of gating on
     wall-clock `vsyncmaxtime`, which starved 68060 precalcs to 0 ms under
-    parallel sweep load. No effect on non-JIT machines or interactive
+    parallel sweep load. In `do_cycles_slow()`, `is_syncline == -13` drains
+    positive `pissoff` before decrementing `syncline_cnt` so uncompiled JIT
+    fallback instructions (`exec_nostats`) consume their cycle budget instead
+    of burning a full burst every 3 instructions (e.g. *Gush*'s
+    `mathffp.library` calls). No effect on non-JIT machines or interactive
     (`warp off`) playback.
   - `src/filesys.cpp` (`handle_packet`) — mask `dp_Type` to the low 16 bits
     (`& 0xffff`) to match real Commodore ROM FFS packet dispatch (all
