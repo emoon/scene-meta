@@ -414,7 +414,7 @@ source = "script"
 title = "1kofDTA"
 group = "D.T.A. Software Studio"
 source = "script"
-result = "unknown"
+machine = "a1200_ks31"
 
 [demozoo.232650]
 title = "1St"
@@ -551,7 +551,7 @@ machine = "a1200_fast"
 title = "2 Dayz BBS Intro"
 group = "Software Runners from Hell"
 source = "script"
-result = "unknown"
+events = [{ at = 60.0, key = "rmb" }]
 
 [demozoo.261197]
 title = "2 Decades"
@@ -612,7 +612,6 @@ source = "script"
 title = "2 New Productions"
 group = "Titanics"
 source = "script"
-result = "unknown"
 
 [demozoo.216821]
 title = "2 Parts Mini Mega Demo"
@@ -664,7 +663,7 @@ source = "script"
 title = "2001"
 group = "X-Cited"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 
 [demozoo.178229]
 title = "2001"
@@ -754,9 +753,7 @@ source = "script"
 title = "242DL75"
 group = "Rage"
 source = "script"
-boot = "floppy"
-result = "unknown"
-note = "the sweep saw works on a1200_060; no entry of it passed the gate"
+machine = "a1200_fast"
 
 [demozoo.229366]
 title = "24th Demo VII Edition"
@@ -1055,7 +1052,7 @@ machine = "a1200"
 title = "32 Bit AGA Sprite"
 group = "BrainChild"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.121303]
 title = "32 shades of LAX"
@@ -1254,7 +1251,7 @@ source = "script"
 title = "3D-Boing"
 group = "B.H.L."
 source = "script"
-result = "unknown"
+machine = "a1200_ks31"
 
 [demozoo.251930]
 title = "3D-Demo"
@@ -1571,8 +1568,7 @@ machine = "a1200"
 title = "40k Too Little?"
 group = "After Eights"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a1200; no entry of it passed the gate"
+machine = "a1200"
 
 [demozoo.221570]
 title = "40k With Built-In Musicdisk"

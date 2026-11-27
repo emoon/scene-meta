@@ -781,9 +781,8 @@ source = "script"
 [demozoo.281940]
 title = "Maniac demo down"
 group = "Crazy Maniacs of Hades"
-source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+source = "ai"
+events = [{ at = 90.0, key = "lmb" }]
 
 [demozoo.263721]
 title = "Maniac Mansion"
@@ -986,13 +985,13 @@ source = "script"
 title = "Marsuladian Onnenpaeivae"
 group = "Larit"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
+events = [{ at = 40.0, key = "ramiga_o" }]
 
 [demozoo.255771]
 title = "Martin Galway Music Show"
 group = "Red Sector Inc."
 source = "script"
-result = "unknown"
 
 [demozoo.251623]
 title = "Marvelous"
@@ -1397,7 +1396,8 @@ source = "script"
 title = "Mayhem"
 group = "Appendix"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
+events = [{ at = 40.0, key = "ramiga_o" }]
 
 [demozoo.192368]
 title = "Mazinger Z Slideshow"
@@ -2144,8 +2144,7 @@ source = "script"
 title = "Megacrash"
 group = "Avalanche"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 25.0, key = "lmb" }]
 
 [demozoo.287286]
 title = "Megadef Downsmashing Intro"
@@ -2652,7 +2651,8 @@ boot = "hd"
 title = "Megademo"
 group = "Abyss"
 source = "script"
-result = "unknown"
+machine = "a500_1mb"
+run = "2"
 
 [demozoo.270574]
 title = "Megademo"
@@ -2820,7 +2820,7 @@ source = "script"
 title = "Megademo 1"
 group = "Fanatix"
 source = "script"
-result = "unknown"
+events = [{ at = 30.0, key = "lmb" }]
 run = "ramos1.2"
 
 [demozoo.221472]
@@ -3194,7 +3194,6 @@ machine = "a1200"
 title = "Megademo Ad"
 group = "Sirocco"
 source = "script"
-result = "unknown"
 
 [demozoo.244394]
 title = "Megademo Advertising"
@@ -3281,7 +3280,8 @@ events = [{ at = 85.6, key = "lmb" }]
 title = "Megademo III"
 group = "Cybornetics"
 source = "script"
-result = "unknown"
+machine = "a1200"
+events = [{ at = 30.0, key = "lmb" }, { at = 60.0, key = "lmb" }]
 
 [demozoo.219790]
 title = "Megademo In Fall"
@@ -3534,7 +3534,7 @@ source = "script"
 title = "Megastrobo 1.8"
 group = "Degens"
 source = "script"
-result = "unknown"
+machine = "a1200"
 run = "MEGA-STROBO"
 
 [demozoo.232915]
@@ -3589,8 +3589,9 @@ note = "the sweep only reached disk 1 of 2"
 title = "Melba"
 group = "Appendix"
 source = "script"
-result = "unknown"
-run = "Melba.uncrunched"
+machine = "a1200_fast"
+events = [{ at = 40.0, key = "ramiga_o" }]
+run = "Melba.exe"
 
 [demozoo.246668]
 title = "Melchior"
@@ -3621,7 +3622,7 @@ machine = "a500_1mb"
 title = "Melody"
 group = "Ramses"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.250550]
 title = "Melon Is To Rent"
@@ -3766,7 +3767,7 @@ events = [{ at = 30.0, key = "lmb" }]
 title = "Members Wanted"
 group = "Resistance"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.263290]
 title = "Members Wanted"
@@ -4305,8 +4306,10 @@ source = "script"
 [demozoo.191218]
 title = "Meta Brain"
 group = "DATAMAN"
-source = "script"
-result = "unknown"
+source = "ai"
+machine = "a1200_060"
+events = [{ at = 42.0, key = "lmb", pos = [246, 400] }]
+run = "metabrain/start_metabrain"
 
 [demozoo.313254]
 title = "METAdemo"
@@ -4419,7 +4422,7 @@ source = "script"
 title = "Meteli 2"
 group = "Byterapers"
 source = "script"
-result = "unknown"
+events = [{ at = 70.0, key = "f1" }, { at = 80.0, key = "f2" }]
 
 [demozoo.236340]
 title = "Meteli 3"
@@ -4447,7 +4450,7 @@ events = [{ at = 30.0, key = "return" }]
 title = "Meteli 6"
 group = "Byterapers"
 source = "script"
-result = "unknown"
+events = [{ at = 20.0, key = "space" }, { at = 80.0, key = "f2" }]
 
 [demozoo.244270]
 title = "Methylate"
@@ -4523,8 +4526,6 @@ source = "script"
 title = "MFD"
 group = "CMD / 8BitError"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.261898]
 title = "MGF - JOY Megaintrodisk Trainer Intro"
@@ -4699,9 +4700,8 @@ run = "Loket.exe"
 title = "Midge"
 group = "Appendix"
 source = "script"
-result = "unknown"
+machine = "a1200"
 run = "Midge"
-note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.151273]
 title = "Midnight Blue"
@@ -4913,7 +4913,6 @@ source = "script"
 title = "Mind Expanding"
 group = "Melon Dezign"
 source = "script"
-result = "unknown"
 
 [demozoo.234979]
 title = "Mind Field - Demo"
@@ -5237,7 +5236,6 @@ source = "script"
 title = "Mini Intro"
 group = "Slipstream"
 source = "script"
-result = "unknown"
 
 [demozoo.258672]
 title = "Mini Intro"
@@ -6092,8 +6090,9 @@ source = "script"
 [demozoo.375022]
 title = "Monster"
 group = "Woorlic"
-source = "script"
-result = "unknown"
+source = "ai"
+machine = "a1200_060"
+events = [{ at = 42.0, key = "lmb", pos = [246, 400] }]
 run = "motorAmiga68k"
 
 [demozoo.237901]
@@ -6855,7 +6854,6 @@ run = "2"
 title = "Multimedia Megademo 1"
 group = "Spedes"
 source = "script"
-result = "unknown"
 
 [demozoo.33853]
 title = "Multimedialna zwora"
@@ -7299,8 +7297,8 @@ source = "script"
 title = "My Definition in Blue"
 group = "Scarab"
 source = "script"
-result = "unknown"
-run = "S_MDIB_starter"
+machine = "a1200_030"
+run = "S_MDIB.exe"
 
 [demozoo.219452]
 title = "My Dog Ben"

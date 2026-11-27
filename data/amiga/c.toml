@@ -1527,7 +1527,6 @@ source = "script"
 title = "Chuck Rock Cheats"
 group = "Supplex"
 source = "script"
-result = "unknown"
 
 [demozoo.222191]
 title = "Chuck Rock Intro"
@@ -1911,7 +1910,6 @@ source = "script"
 title = "Cobras Demo"
 group = "Alpha Flight"
 source = "script"
-result = "unknown"
 
 [demozoo.263838]
 title = "Coca Cola"
@@ -2320,8 +2318,10 @@ source = "script"
 title = "Colorz"
 group = "Civitas"
 source = "script"
-result = "unknown"
-run = "FILE_ID.DIZ"
+machine = "a1200_060"
+events = [{ at = 40.0, key = "ramiga_o" }]
+run = "colorz/START.EXE"
+assign = { VER = "Demo:" }
 
 [demozoo.214333]
 title = "Colour Bar Demo"
@@ -2337,9 +2337,9 @@ source = "script"
 title = "Colour Me AGA"
 group = "NightWarriors"
 source = "script"
-result = "unknown"
+machine = "a1200"
 run = "ColourMeAGA"
-note = "the sweep saw works-then-crash on a1200; no entry of it passed the gate"
+assign = { colourme = "Demo:" }
 
 [demozoo.238772]
 title = "Colour Scroll"
@@ -3446,7 +3446,6 @@ source = "script"
 title = "Cool Co-Op Intro"
 group = "Endless Piracy / Pulse"
 source = "script"
-result = "unknown"
 
 [demozoo.201140]
 title = "Cool Compilation of Routines Ideas And Graphical Upgrading"
@@ -4106,7 +4105,6 @@ source = "script"
 title = "Coppershit"
 group = "Extend"
 source = "script"
-result = "unknown"
 
 [demozoo.179794]
 title = "Coppershock"
@@ -5201,7 +5199,6 @@ machine = "a500_1mb"
 title = "Cruel Summer 2014"
 group = "Axel Retro-Software"
 source = "script"
-result = "unknown"
 
 [demozoo.234801]
 title = "Cruel Summer 2015"
@@ -5212,7 +5209,7 @@ source = "script"
 title = "Cruel Summer 2016"
 group = "Axel Retro-Software"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.234803]
 title = "Cruel Summer 2017"
@@ -5234,7 +5231,8 @@ machine = "a500_1mb"
 title = "Cruisin II - Cruise In"
 group = "Abyss"
 source = "script"
-result = "unknown"
+machine = "a1200"
+events = [{ at = 30.0, key = "lamiga_v" }]
 
 [demozoo.9304]
 title = "Cruisin'"
@@ -5415,7 +5413,7 @@ source = "script"
 title = "Cube-o-Matic"
 group = "Spreadpoint"
 source = "script"
-result = "unknown"
+events = [{ at = 30.0, key = "lamiga_v" }]
 
 [demozoo.1994]
 title = "Cube-Slow-Matic Demo"
@@ -5438,6 +5436,7 @@ group = "Tristar and Red Sector Inc."
 source = "script"
 result = "unknown"
 disks = ["TRSI-CubicDream-A.DMS", "TRSI-CubicDream-B.DMS"]
+note = "the sweep saw works-then-crash on a1200; no entry of it passed the gate"
 
 [demozoo.277033]
 title = "Cubic Meditation"

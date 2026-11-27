@@ -96,8 +96,8 @@ source = "script"
 title = "Yet Another Compo Starter"
 group = "ArtWay"
 source = "script"
-result = "unknown"
-run = "engine"
+machine = "a1200_060"
+run = "YACS/yacs"
 
 [demozoo.190281]
 title = "Yet Another Cool Intro and Compilation Disk"

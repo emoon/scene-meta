@@ -973,7 +973,7 @@ source = "script"
 title = "Leading-Fucking"
 group = "Intense"
 source = "script"
-result = "unknown"
+events = [{ at = 70.0, key = "f1" }]
 
 [demozoo.176937]
 title = "Leaflet of Gedan 3"
@@ -2017,7 +2017,7 @@ machine = "a1200_fast"
 title = "Little Green Teapot"
 group = "Revolutionary Design Inc."
 source = "script"
-result = "unknown"
+events = [{ at = 30.0, key = "lmb" }]
 
 [demozoo.222499]
 title = "Little Greetings Intro"
@@ -2858,6 +2858,7 @@ title = "Love"
 group = "Virtual Dreams"
 source = "script"
 result = "unknown"
+run = "love.exe"
 
 [demozoo.27272]
 title = "Love & Anarchy"
@@ -2873,7 +2874,7 @@ source = "script"
 title = "love copper"
 group = "valeureux"
 source = "script"
-result = "unknown"
+machine = "a500_512k"
 
 [demozoo.20280]
 title = "Love Data"
@@ -2981,7 +2982,6 @@ source = "script"
 title = "Low Budget Multro"
 group = "Amonia"
 source = "script"
-result = "unknown"
 
 [demozoo.149829]
 title = "Low Budjetti"
@@ -3110,7 +3110,7 @@ source = "script"
 title = "Lunatic Sounds"
 group = "Loonies"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.242654]
 title = "Lunch Pak 13 Menu"

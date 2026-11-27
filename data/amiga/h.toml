@@ -865,8 +865,7 @@ run = "HardCORE.exe"
 title = "Hardcore"
 group = "Deathless"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
+machine = "a1200_fast"
 
 [demozoo.258876]
 title = "Hardcore"
@@ -1584,8 +1583,9 @@ source = "script"
 [demozoo.79192]
 title = "Hello Pussy"
 group = "Rave Network Overscan"
-source = "script"
-result = "unknown"
+source = "ai"
+machine = "a1200_060"
+events = [{ at = 84.0, key = "lmb", pos = [124, 162] }, { at = 88.0, key = "lmb", pos = [68, 398] }]
 
 [demozoo.155046]
 title = "Hello Sofa"
@@ -1818,8 +1818,7 @@ machine = "a500_1mb"
 title = "Hetero Sapiens"
 group = "Traktor"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a1200_030; no entry of it passed the gate"
+machine = "a1200_030"
 
 [demozoo.21840]
 title = "Heureka"
@@ -1947,8 +1946,8 @@ source = "script"
 [demozoo.234276]
 title = "Hi-Tech Party Invitation"
 group = "Analogy"
-source = "script"
-result = "unknown"
+source = "ai"
+events = [{ at = 34.0, key = "lmb", pos = [450, 255] }]
 
 [demozoo.234277]
 title = "Hi-Tech Party Invitation 2"
@@ -2424,9 +2423,6 @@ machine = "a500_1mb"
 title = "Hobbits Second Demo"
 group = "Sky Voyagers"
 source = "script"
-boot = "floppy"
-result = "unknown"
-note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.131921]
 title = "Hodor"
@@ -2500,9 +2496,7 @@ source = "script"
 title = "Hole in Space"
 group = "Void"
 source = "script"
-result = "unknown"
-run = "Void-Hole in Space.exe"
-note = "the sweep saw works on a1200; no entry of it passed the gate"
+machine = "a1200"
 
 [demozoo.222388]
 title = "Holiday"
@@ -3450,7 +3444,8 @@ run = "humus4.exe"
 title = "Hunden Behövs"
 group = "Birgittas Group"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
+events = [{ at = 30.0, key = "lamiga_v" }]
 
 [demozoo.70698]
 title = "Hunger"
@@ -3710,7 +3705,7 @@ machine = "a1200"
 title = "hypotrain"
 group = "Losso"
 source = "script"
-result = "unknown"
+run = "hypotrain"
 
 [demozoo.251421]
 title = "Hypra Demo"

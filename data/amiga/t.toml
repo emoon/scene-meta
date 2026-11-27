@@ -115,7 +115,8 @@ machine = "a1200_fast"
 title = "Take A Bath With Tulou 2"
 group = "Tulou"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
+events = [{ at = 30.0, key = "lamiga_v" }]
 
 [demozoo.291569]
 title = "Take Em In"
@@ -206,7 +207,7 @@ source = "script"
 title = "Tangalanga Remix"
 group = "El Traductor"
 source = "script"
-result = "unknown"
+run = "1"
 
 [demozoo.5338]
 title = "Tangentopolis"
@@ -232,8 +233,6 @@ source = "script"
 title = "Tanzen"
 group = "Frost"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.205954]
 title = "Targoor's Demo"
@@ -362,8 +361,9 @@ source = "script"
 [demozoo.28185]
 title = "Tear Down The Wall"
 group = "Union"
-source = "script"
-result = "unknown"
+source = "ai"
+machine = "a1200_fast"
+events = [{ at = 25.0, key = "lmb", pos = [150, 390] }]
 
 [demozoo.185207]
 title = "Teasetro"
@@ -782,8 +782,8 @@ source = "script"
 title = "Teras Polska"
 group = "Ocet Drinkers"
 source = "script"
-result = "unknown"
-run = "jbplay"
+machine = "a1200"
+run = "TerasPolska/TerasPolska"
 
 [demozoo.196128]
 title = "Termina-Tro 2"
@@ -1812,8 +1812,8 @@ source = "script"
 title = "The Crows"
 group = "Frater Sinister / Ozzyboshi / Dr. Procton"
 source = "script"
-result = "unknown"
-run = "TheCrows.Slave"
+machine = "a500_1mb"
+run = "the_crows_dual_pf"
 
 [demozoo.180411]
 title = "The Cube"
@@ -1933,7 +1933,7 @@ source = "script"
 title = "The Deep Dentro"
 group = "After Eights"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.342447]
 title = "The Deep Meet"
@@ -2461,7 +2461,7 @@ machine = "a1200"
 title = "The Gathering 1997 Invitation"
 group = "Digital Predators"
 source = "script"
-result = "unknown"
+machine = "a500_2mb_chip"
 
 [demozoo.219609]
 title = "The Gathering 1999 Invitation"
@@ -2616,8 +2616,8 @@ source = "script"
 [demozoo.348885]
 title = "The History"
 group = "Spreadpoint"
-source = "script"
-result = "unknown"
+source = "ai"
+events = [{ at = 70.0, key = "f1" }]
 
 [demozoo.221765]
 title = "The Hobbit's First"
@@ -4436,7 +4436,7 @@ title = "The Tower BBS"
 group = "Skid Row"
 source = "script"
 result = "unknown"
-note = "the sweep saw works on a500_ks12; no entry of it passed the gate"
+note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.261851]
 title = "The Trader 2 Intro"
@@ -4729,8 +4729,9 @@ source = "script"
 [demozoo.37725]
 title = "The Way"
 group = "Zenon"
-source = "script"
-result = "unknown"
+source = "ai"
+machine = "a1200_060"
+events = [{ at = 30.0, key = "lamiga_v" }, { at = 40.0, key = "ramiga_o" }]
 
 [demozoo.65537]
 title = "The Way We Want To Walk"
@@ -5003,7 +5004,8 @@ source = "script"
 title = "TheWall"
 group = "Nukleus"
 source = "script"
-result = "unknown"
+machine = "a1200"
+events = [{ at = 40.0, key = "ramiga_o" }]
 
 [demozoo.229526]
 title = "Thexder"
@@ -5143,8 +5145,6 @@ source = "script"
 title = "This File Passed Rising Hope BBS"
 group = "Warriors of Art"
 source = "script"
-result = "unknown"
-note = "the sweep saw works-then-crash on a500; no entry of it passed the gate"
 
 [demozoo.223461]
 title = "This Import"
@@ -5871,7 +5871,8 @@ machine = "a1200"
 title = "Together"
 group = "Sensible"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
+events = [{ at = 40.0, key = "ramiga_o" }]
 
 [demozoo.8570]
 title = "Together Remix"
@@ -7315,7 +7316,6 @@ title = "Trondheim Party Demo"
 group = "The Giants"
 source = "script"
 result = "unknown"
-note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
 
 [demozoo.151283]
 title = "Tronic"
@@ -7412,7 +7412,6 @@ source = "script"
 title = "TRSI logo"
 group = "Tristar and Red Sector Inc. / Uno"
 source = "script"
-result = "unknown"
 
 [demozoo.96194]
 title = "True Blue Slintro"

@@ -183,6 +183,7 @@ title = "Galerie"
 group = "Stellar"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
 
 [demozoo.31996]
 title = "Galerie Remix"
@@ -504,7 +505,7 @@ machine = "a1200_030"
 title = "GCS Revival"
 group = "The Special Brothers"
 source = "script"
-result = "unknown"
+result = "broken"
 
 [demozoo.233400]
 title = "Geil Intro"
@@ -559,7 +560,7 @@ source = "script"
 title = "Generation X"
 group = "Haujobb"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 run = "Generation-X"
 
 [demozoo.390028]
@@ -848,7 +849,7 @@ source = "script"
 title = "Ghost In The Machine"
 group = "Venus Art"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.85900]
 title = "Ghost In The Shell"
@@ -2040,7 +2041,6 @@ source = "script"
 title = "Greetings Boot Intro"
 group = "Abnormal Data"
 source = "script"
-result = "unknown"
 
 [demozoo.210690]
 title = "Greetings Demo"
@@ -2499,8 +2499,7 @@ source = "script"
 title = "Gulf War"
 group = "Dominators"
 source = "script"
-result = "unknown"
-note = "the sweep saw works-then-crash on a500; no entry of it passed the gate"
+machine = "a500_1mb"
 
 [demozoo.213042]
 title = "Gulf War"
@@ -2554,8 +2553,10 @@ source = "script"
 [demozoo.191215]
 title = "Gurkan"
 group = "DATAMAN"
-source = "script"
-result = "unknown"
+source = "ai"
+machine = "a1200_030"
+events = [{ at = 20.0, key = "lmb", pos = [242, 402] }]
+run = "gurkan/start_gurkan"
 
 [demozoo.226631]
 title = "Gurkomvandling"
@@ -2572,8 +2573,6 @@ run = "TLU-GURU.exe"
 title = "Guru"
 group = "Majic 12"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.249893]
 title = "Guru"

@@ -346,8 +346,9 @@ source = "script"
 [demozoo.161272]
 title = "Dansk Lokal"
 group = "Søhesten"
-source = "script"
-result = "unknown"
+source = "ai"
+machine = "a1200_fast"
+events = [{ at = 25.0, key = "lmb", pos = [95, 385] }]
 run = "DanskLokal.Exe"
 
 [demozoo.18019]
@@ -774,7 +775,6 @@ title = "Dead Ahead"
 group = "Ephidrena / FLEX"
 source = "script"
 result = "unknown"
-note = "the sweep saw works on a1200_060; no entry of it passed the gate"
 
 [demozoo.208970]
 title = "Dead Bang"
@@ -2307,7 +2307,7 @@ run = "DemoStop.exe"
 title = "Demo Tape #1 - Bonus Disk"
 group = "Dr. Awesome"
 source = "script"
-result = "unknown"
+events = [{ at = 20.0, key = "space" }, { at = 80.0, key = "f2" }]
 
 [demozoo.241441]
 title = "Demo-Contribution for the Prime 90 Contest"
@@ -2365,7 +2365,7 @@ source = "script"
 title = "Demodisk"
 group = "Hell Order Team"
 source = "script"
-result = "unknown"
+events = [{ at = 70.0, key = "f1" }]
 
 [demozoo.260990]
 title = "Demodisk"
@@ -2706,9 +2706,7 @@ source = "script"
 title = "Denmine 11"
 group = "De Bond"
 source = "script"
-boot = "floppy"
-result = "unknown"
-note = "the sweep saw works on a500_512k; no entry of it passed the gate"
+machine = "a500_1mb_chip"
 
 [demozoo.223320]
 title = "Denmine 3"
@@ -2925,19 +2923,16 @@ source = "script"
 title = "Designer Disk 1"
 group = "The Band"
 source = "script"
-result = "unknown"
 
 [demozoo.260917]
 title = "Designer Disk 2"
 group = "The Band"
 source = "script"
-result = "unknown"
 
 [demozoo.260916]
 title = "Designer Disk 3"
 group = "The Band"
 source = "script"
-result = "unknown"
 
 [demozoo.88615]
 title = "Designer Intro"
@@ -3183,7 +3178,7 @@ run = "DGC-Karaoke.exe"
 title = "Dh73 20th Anniversary On Amiga Scene"
 group = "Axel Retro-Software"
 source = "script"
-result = "unknown"
+machine = "a500_1mb"
 
 [demozoo.258062]
 title = "Diabolika BBStro"
@@ -3194,8 +3189,6 @@ source = "script"
 title = "Diagonal Insanity"
 group = "Amonia"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.215022]
 title = "Diagonal Obsession"
@@ -4435,8 +4428,7 @@ machine = "a1200"
 title = "Dose"
 group = "Mellow Chips"
 source = "script"
-result = "unknown"
-run = "_negerkuß!!.exe"
+machine = "a1200_fast"
 
 [demozoo.10314]
 title = "Dot Demo II"
@@ -5102,7 +5094,6 @@ source = "script"
 title = "Dual Crube"
 group = "Scoopex"
 source = "script"
-result = "unknown"
 
 [demozoo.292295]
 title = "Dual Panoply"

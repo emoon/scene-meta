@@ -12,7 +12,7 @@ source = "script"
 title = "Zajawka (Anty wojna)"
 group = "Zack Team"
 source = "script"
-result = "unknown"
+events = [{ at = 70.0, key = "f1" }]
 
 [demozoo.324613]
 title = "Zajawka AmiParty (Bulbmaster)"
@@ -28,7 +28,9 @@ source = "script"
 title = "zakazany owoc"
 group = "MaxSoft"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
+run = "ZakazanyOwoc"
+assign = { ScalaMMPlayer = "Demo:", tfonts = "Demo:", ZakazanyOwoc = "Demo:" }
 
 [demozoo.215646]
 title = "Zantifancy Intro"
@@ -151,6 +153,7 @@ title = "Zdzich"
 group = "Roger / Kylo / Booshman"
 source = "script"
 result = "unknown"
+run = "ScalaMMPlayer"
 
 [demozoo.247810]
 title = "Ze Intro"
@@ -376,7 +379,6 @@ source = "script"
 title = "Zine Title Page"
 group = "Brainstorm"
 source = "script"
-result = "unknown"
 
 [demozoo.224645]
 title = "Zini Zine Sine Intro"

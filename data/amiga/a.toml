@@ -1636,9 +1636,9 @@ source = "script"
 title = "Absolute Inebriation"
 group = "Virtual Dreams"
 source = "script"
-result = "unknown"
+machine = "a500_1mb"
 disks = ["VD-AbsoluteInebriation-A.DMS", "VD-AbsoluteInebriation-B.DMS"]
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 65.0, disk = 2, until = 95.0 }]
 
 [demozoo.212656]
 title = "Absolutly First Demo"
@@ -1673,7 +1673,7 @@ source = "script"
 title = "Abuse"
 group = "Dahlia / Monolith Resistor"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.212247]
 title = "Abused"
@@ -1894,7 +1894,7 @@ source = "script"
 title = "Acme Sucks (Amiga)"
 group = "Acme"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.108697]
 title = "Acoustic Silence Preview"
@@ -2320,6 +2320,7 @@ title = "Agitation!"
 group = "Team PowerAmiga"
 source = "script"
 result = "unknown"
+note = "the sweep saw works-then-crash on a1200_060; no entry of it passed the gate"
 
 [demozoo.223605]
 title = "Agony"
@@ -2423,8 +2424,7 @@ machine = "a1200"
 title = "Akira"
 group = "Balance"
 source = "script"
-result = "unknown"
-note = "the sweep saw works-then-crash on a500; no entry of it passed the gate"
+events = [{ at = 85.0, key = "lmb" }]
 
 [demozoo.212064]
 title = "Alarm"
@@ -3065,7 +3065,7 @@ source = "script"
 title = "Amiga 500 Chatbot"
 group = "Toolkitman"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 run = "AMIGA500CHATBOT"
 
 [demozoo.140851]
@@ -3262,9 +3262,7 @@ run = "Karate"
 title = "Amiga Rules"
 group = "Amiga Circle"
 source = "script"
-boot = "floppy"
-result = "unknown"
-note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
+machine = "a1200_fast"
 
 [demozoo.85898]
 title = "Amiga Rules"
@@ -3334,13 +3332,14 @@ source = "script"
 title = "Amiga-blast"
 group = "Kiki Productions"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
+events = [{ at = 40.0, key = "ramiga_o" }]
 
 [demozoo.18012]
 title = "Amiga.exe"
 group = "Braindead"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.226503]
 title = "AmigaBoy"
@@ -3365,8 +3364,8 @@ source = "script"
 [demozoo.224431]
 title = "Amigamagic"
 group = "Commodore Business Machines (UK) Ltd."
-source = "script"
-result = "unknown"
+source = "ai"
+events = [{ at = 32.0, key = "lmb" }, { at = 42.0, key = "lmb2", pos = [300, 320] }]
 
 [demozoo.342057]
 title = "AmigaMeeting-Demo"
@@ -3986,7 +3985,8 @@ machine = "a1200_fast"
 title = "Annuaire Intro"
 group = "PureLamers"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
+events = [{ at = 40.0, key = "ramiga_o" }]
 run = "karate"
 
 [demozoo.222614]
@@ -4874,7 +4874,6 @@ source = "script"
 title = "Another Import"
 group = "Factor 4"
 source = "script"
-result = "unknown"
 
 [demozoo.219111]
 title = "Another Import"
@@ -5795,7 +5794,6 @@ source = "script"
 title = "Anti Nazi Intro"
 group = "Black Jack"
 source = "script"
-result = "unknown"
 
 [demozoo.253524]
 title = "Anti Ozzy/2000AD Demo"
@@ -6479,7 +6477,8 @@ source = "script"
 title = "Artifictional"
 group = "Secretly!"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
+events = [{ at = 30.0, key = "lamiga_v" }]
 
 [demozoo.348318]
 title = "Artillery"
@@ -6799,7 +6798,7 @@ source = "script"
 title = "Astrology"
 group = "Whelpz"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.218928]
 title = "Astronut Game Disk 31"
@@ -7035,8 +7034,8 @@ source = "script"
 title = "Attention"
 group = "Apathy"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a1200; no entry of it passed the gate"
+machine = "a1200"
+events = [{ at = 30.0, key = "lmb" }, { at = 60.0, key = "lmb" }]
 
 [demozoo.282731]
 title = "AUD"
@@ -7047,8 +7046,6 @@ source = "script"
 title = "Audio Power 2 Intro"
 group = "Zigag / Destiny"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.212814]
 title = "Audio Visual Paradise"
@@ -7304,8 +7301,7 @@ source = "script"
 title = "Axel's 20th Demo"
 group = "Axel Retro-Software"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 45.0, key = "lmb" }]
 
 [demozoo.234798]
 title = "Axel's 25th Demo"

@@ -32,8 +32,8 @@ machine = "a1200"
 title = "I Got Busted"
 group = "Mrs. King"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+machine = "a500_1mb"
+boot = "floppy"
 
 [demozoo.4322]
 title = "I Has A Demomaker"
@@ -867,9 +867,9 @@ source = "script"
 title = "In Memorium Of ZX"
 group = "KYO Corp"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 run = "IMoZX.eXe"
-note = "the sweep saw works-then-crash on a1200; no entry of it passed the gate"
+assign = { FONTS = "Demo:font" }
 
 [demozoo.314014]
 title = "In Memory Of Maf"
@@ -967,7 +967,7 @@ source = "script"
 title = "In Your Face"
 group = "Chrilles Cracking Crew"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.278071]
 title = "Incantation"
@@ -1487,7 +1487,7 @@ machine = "a1200"
 title = "Inside"
 group = "Phase Truce"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 run = "Inside.exe.notcrunched"
 
 [demozoo.31951]
@@ -1535,7 +1535,6 @@ title = "Insipid Injection"
 group = "Anathema"
 source = "script"
 result = "unknown"
-note = "the sweep saw works on a1200; no entry of it passed the gate"
 
 [demozoo.35145]
 title = "Insomnia"
@@ -1721,8 +1720,7 @@ machine = "a1200"
 title = "Intel Toilet 2"
 group = "T.C.W"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a1200; no entry of it passed the gate"
+machine = "a1200"
 
 [demozoo.212098]
 title = "Intel Toilet 2"
@@ -2615,7 +2613,7 @@ source = "script"
 title = "Intro 2"
 group = "The Light Circle"
 source = "script"
-result = "unknown"
+run = "intro2"
 
 [demozoo.214342]
 title = "Intro 2"
@@ -3523,7 +3521,7 @@ source = "script"
 title = "It's Mental 1"
 group = "British Swapping Syndicate"
 source = "script"
-result = "unknown"
+events = [{ at = 80.0, key = "f2" }]
 
 [demozoo.216973]
 title = "It's Never Too Late"

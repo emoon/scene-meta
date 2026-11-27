@@ -335,7 +335,7 @@ source = "script"
 title = "Pakarat"
 group = "Rave Network Overscan"
 source = "script"
-result = "unknown"
+machine = "a1200_060_ks31"
 
 [demozoo.189729]
 title = "Pal-O-Vision"
@@ -396,7 +396,7 @@ machine = "a1200_fast"
 title = "Panda Power"
 group = "Desire"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.226731]
 title = "Pandemonium"
@@ -447,7 +447,7 @@ machine = "a1200_fast"
 title = "Paolochan"
 group = "Incanto"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.23613]
 title = "Papadeo"
@@ -549,7 +549,7 @@ run = "PARADISI.EXE"
 title = "Paradox Bootblock"
 group = "The Frog Buds"
 source = "script"
-result = "unknown"
+machine = "a500_1mb"
 
 [demozoo.157424]
 title = "Paradox Doc Disk 3 Intro"
@@ -800,8 +800,7 @@ source = "script"
 title = "Party Contribution"
 group = "Cult"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 60.0, key = "rmb" }]
 
 [demozoo.342919]
 title = "Party Culture"
@@ -1856,7 +1855,8 @@ machine = "a1200"
 title = "Paukku"
 group = "Larit / raina"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
+events = [{ at = 40.0, key = "ramiga_o" }]
 run = "demo"
 
 [demozoo.18516]
@@ -3172,8 +3172,7 @@ source = "script"
 title = "Plastic toys are forever"
 group = "God / Neuroflip / Skynet"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a1200_030; no entry of it passed the gate"
+machine = "a1200_060"
 
 [demozoo.212161]
 title = "Plastic-dots"
@@ -3469,7 +3468,6 @@ source = "script"
 title = "Poliittinen kannanotto"
 group = "Limbo"
 source = "script"
-result = "unknown"
 
 [demozoo.28181]
 title = "Polish Autumn 1993 Invitation Demo"
@@ -4283,7 +4281,6 @@ boot = "floppy"
 title = "Presents"
 group = "The Bitstoppers"
 source = "script"
-result = "unknown"
 
 [demozoo.353197]
 title = "Presents..."
@@ -4671,7 +4668,9 @@ machine = "a500_ks12"
 title = "Prohibition"
 group = "Whelpz"
 source = "script"
-result = "unknown"
+machine = "a500_2mb_chip"
+boot = "hd"
+run = "Prohibition.exe"
 
 [demozoo.163573]
 title = "Project A"
@@ -4681,8 +4680,10 @@ source = "script"
 [demozoo.212635]
 title = "Project Breath"
 group = "Figa Production"
-source = "script"
-result = "unknown"
+source = "ai"
+machine = "a1200_fast"
+events = [{ at = 30.0, key = "lamiga_v" }, { at = 40.0, key = "ramiga_o" }]
+run = "projectbreath-figa/Project_Breath"
 
 [demozoo.24196]
 title = "Project Edis"
@@ -4860,9 +4861,7 @@ machine = "a500_ks12"
 title = "Prot"
 group = "Nevermind"
 source = "script"
-result = "unknown"
-run = "Prot.exe"
-note = "the sweep saw works on a1200; no entry of it passed the gate"
+machine = "a1200"
 
 [demozoo.53957]
 title = "Proton"
@@ -5073,8 +5072,7 @@ source = "script"
 title = "PsychoBass"
 group = "Deathless"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
+machine = "a1200_fast"
 
 [demozoo.232054]
 title = "Psychomania"
@@ -5172,7 +5170,8 @@ source = "script"
 title = "PubTro"
 group = "Bluebox Cinematique Gmbh"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
+events = [{ at = 30.0, key = "lamiga_v" }]
 run = "bx-pubtro.not_compressed"
 
 [demozoo.254513]
@@ -5191,7 +5190,7 @@ source = "script"
 title = "Pukamat"
 group = "Tundrah"
 source = "script"
-result = "unknown"
+machine = "a1200_ks31"
 run = "pukamat.com"
 
 [demozoo.237743]

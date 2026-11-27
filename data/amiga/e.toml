@@ -13,7 +13,8 @@ machine = "a1200"
 title = "E!"
 group = "Bluebox Cinematique Gmbh"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
+events = [{ at = 30.0, key = "lamiga_v" }]
 run = "bx-etro.not_compressed"
 
 [demozoo.20362]
@@ -170,9 +171,9 @@ source = "script"
 title = "Eat Candies"
 group = "WoodTower"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 run = "EatCandies/2K4"
-note = "the sweep saw works on a1200_060; no entry of it passed the gate"
+assign = { VER = "Demo:" }
 
 [demozoo.242697]
 title = "Eat Carrots"
@@ -1767,14 +1768,15 @@ machine = "a1200"
 [demozoo.251773]
 title = "Euskal 3 Vote Disk"
 group = "Necropolis"
-source = "script"
-result = "unknown"
+source = "ai"
+events = [{ at = 72.0, key = "lmb", pos = [517, 246] }]
 
 [demozoo.251774]
 title = "Euskal 4 Vote Disk"
 group = "Necropolis"
-source = "script"
-result = "unknown"
+source = "ai"
+machine = "a1200"
+events = [{ at = 36.0, key = "lmb", pos = [508, 228] }]
 
 [demozoo.235048]
 title = "Euskal Amiga Party Invitation"
@@ -2289,7 +2291,7 @@ source = "script"
 title = "Experiment"
 group = "Ramses"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.255386]
 title = "Experiment"
@@ -2471,7 +2473,8 @@ source = "script"
 title = "Extralife"
 group = "Abyss"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
+events = [{ at = 30.0, key = "lamiga_v" }]
 
 [demozoo.377512]
 title = "Extrema BBS"
@@ -2542,7 +2545,7 @@ source = "script"
 title = "Eye Qlazer"
 group = "Scoopex"
 source = "script"
-result = "unknown"
+machine = "a500_ks12_512k"
 
 [demozoo.279554]
 title = "Eye to Eye"

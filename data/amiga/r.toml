@@ -18,7 +18,6 @@ source = "script"
 title = "R-Soft IntroA"
 group = "R-Soft"
 source = "script"
-result = "unknown"
 
 [demozoo.234951]
 title = "R-Type Demo"
@@ -70,8 +69,7 @@ machine = "a1200"
 title = "R4aCPC"
 group = "Virgill"
 source = "script"
-result = "unknown"
-run = "Virgill-R4aCPC_writer.exe"
+run = "Virgill-R4aCPC.exe"
 
 [demozoo.307940]
 title = "R4CraptroFiller"
@@ -199,7 +197,6 @@ title = "Radio Gargaj"
 group = "Scoopex"
 source = "script"
 result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.8669]
 title = "Radio In Your Eyes"
@@ -255,9 +252,7 @@ machine = "a1200"
 title = "Rahow Paradise"
 group = "P.H. Prod"
 source = "script"
-boot = "floppy"
-result = "unknown"
-note = "the sweep saw works on a1200; no entry of it passed the gate"
+machine = "a1200"
 
 [demozoo.245729]
 title = "Rahow Paradise"
@@ -856,7 +851,7 @@ source = "script"
 title = "Rays"
 group = "Whelpz"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 
 [demozoo.119229]
 title = "Raytracing"
@@ -891,7 +886,7 @@ source = "script"
 title = "Razor Party Demo"
 group = "Scientific Cracking Team"
 source = "script"
-result = "unknown"
+result = "broken"
 
 [demozoo.94019]
 title = "Razorback"
@@ -1067,8 +1062,6 @@ source = "script"
 title = "Real Time is Fucked up Preview"
 group = "Divina"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.228633]
 title = "Real Time Raytracing Demo"
@@ -2825,7 +2818,7 @@ source = "script"
 title = "ROCKet"
 group = "Ronan / Noogman / Deelite"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.184244]
 title = "Rodeo"
@@ -3039,7 +3032,7 @@ machine = "a1200"
 title = "Roswell"
 group = "Ramses"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 
 [demozoo.223652]
 title = "Rot2-1"
@@ -3090,7 +3083,7 @@ source = "script"
 title = "Rotator"
 group = "Klone"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 
 [demozoo.30439]
 title = "Rotator"
@@ -3260,9 +3253,7 @@ source = "script"
 title = "Rubber Boys First"
 group = "Phoenix"
 source = "script"
-boot = "floppy"
-result = "unknown"
-note = "the sweep saw works-then-crash on a500_ks12_512k; no entry of it passed the gate"
+events = [{ at = 40.0, key = "lmb" }]
 
 [demozoo.229221]
 title = "Rubber Goonies"
@@ -3332,7 +3323,7 @@ machine = "a500_ks12"
 title = "Rulez"
 group = "Brygada RR"
 source = "script"
-result = "unknown"
+result = "broken"
 
 [demozoo.27136]
 title = "Rumble Rubble"

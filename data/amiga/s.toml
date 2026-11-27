@@ -25,7 +25,6 @@ machine = "a500_1mb"
 title = "S.M.A.S.H The Beast - intro"
 group = "Complex"
 source = "script"
-result = "unknown"
 
 [demozoo.288]
 title = "S.M.U.D.O.-tro"
@@ -896,7 +895,8 @@ machine = "a500_1mb"
 title = "Schade"
 group = "Harmasan"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
+events = [{ at = 40.0, key = "ramiga_o" }]
 run = "Karate"
 
 [demozoo.215667]
@@ -1029,6 +1029,7 @@ title = "Scotch-Blitter"
 group = "Purple's Studios"
 source = "script"
 result = "unknown"
+note = "the sweep saw works-then-crash on a500; no entry of it passed the gate"
 
 [demozoo.214443]
 title = "Scottie is Lame"
@@ -1590,7 +1591,6 @@ source = "script"
 title = "Seedy Amidi"
 group = "iNSANE"
 source = "script"
-result = "unknown"
 
 [demozoo.1916]
 title = "Seeing Is Believing"
@@ -1755,7 +1755,7 @@ source = "script"
 title = "Sepulka"
 group = "Dinx Project"
 source = "script"
-result = "unknown"
+machine = "a1200_060_ks31"
 
 [demozoo.213261]
 title = "Sepultura Reply"
@@ -2151,8 +2151,9 @@ source = "script"
 [demozoo.8578]
 title = "Shedule One"
 group = "Nah-Kolor / Phase Truce"
-source = "script"
-result = "unknown"
+source = "ai"
+machine = "a1200_060"
+events = [{ at = 42.0, key = "lmb", pos = [124, 176] }, { at = 46.0, key = "lmb", pos = [68, 398] }]
 
 [demozoo.44914]
 title = "Sheep Dictionary"
@@ -2535,7 +2536,7 @@ machine = "a1200_fast"
 title = "Shs10"
 group = "Spy"
 source = "script"
-result = "unknown"
+machine = "a1200_060_ks31"
 
 [demozoo.254896]
 title = "Shuffle 100%"
@@ -2630,8 +2631,8 @@ source = "script"
 title = "Signals"
 group = "Haujobb"
 source = "script"
-result = "unknown"
-run = "signals.low"
+machine = "a1200_060"
+run = "signals"
 
 [demozoo.227270]
 title = "Sikaintro"
@@ -2647,7 +2648,6 @@ source = "script"
 title = "Silence"
 group = "Spaceballs"
 source = "script"
-result = "unknown"
 
 [demozoo.222485]
 title = "Silence is Broken"
@@ -2708,7 +2708,7 @@ title = "Silicon Gfx 2"
 group = "World Federation of Mad Hackers"
 source = "script"
 result = "unknown"
-run = "2"
+run = "11"
 
 [demozoo.158258]
 title = "Silicon Implosion"
@@ -3355,8 +3355,9 @@ machine = "a1200_fast"
 [demozoo.151171]
 title = "Singularity Is Just The Beginning"
 group = "Singular Crew"
-source = "script"
-result = "unknown"
+source = "ai"
+machine = "a1200_030"
+events = [{ at = 15.0, key = "lmb", pos = [302, 92] }]
 
 [demozoo.214031]
 title = "Sinko Intro"
@@ -3696,10 +3697,9 @@ source = "script"
 [demozoo.244877]
 title = "Skizzo Demo"
 group = "Gnu Design"
-source = "script"
-result = "unknown"
+source = "ai"
 disks = ["GNU_DESIGN_SkizzoDemoI-A.adf", "GNU_DESIGN_SkizzoDemoI-B.adf"]
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }, { at = 338.7, disk = 2, until = 368.7 }]
 
 [demozoo.244878]
 title = "Skizzo Demo 2"
@@ -4525,7 +4525,6 @@ machine = "a1200"
 title = "Smoker"
 group = "Anarchy"
 source = "script"
-result = "unknown"
 
 [demozoo.205851]
 title = "Smoker"
@@ -4592,7 +4591,6 @@ source = "script"
 title = "Snake Game"
 group = "Infect"
 source = "script"
-result = "unknown"
 
 [demozoo.221157]
 title = "Snake Rider"
@@ -5464,7 +5462,6 @@ source = "script"
 title = "Sonic Triptro"
 group = "De Bond"
 source = "script"
-result = "unknown"
 
 [demozoo.225112]
 title = "Sonic-Surfers - Beat of Zen"
@@ -6741,7 +6738,8 @@ machine = "a1200"
 title = "Spor 2 Blaa Trappe II"
 group = "Loonies"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
+events = [{ at = 30.0, key = "lamiga_v" }]
 
 [demozoo.7737]
 title = "Spor 2 Blå Trappe"
@@ -7683,9 +7681,7 @@ machine = "a1200"
 title = "Steve Vizard Demo"
 group = "Decay"
 source = "script"
-result = "unknown"
-run = "stevevizard"
-note = "the sweep saw works on a500_2mb_chip; no entry of it passed the gate"
+machine = "a500_2mb_chip"
 
 [demozoo.182225]
 title = "Stick men, dance!"
@@ -7696,7 +7692,7 @@ source = "script"
 title = "Stick With Me"
 group = "Mongolian Prods"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.322356]
 title = "Sticker"
@@ -9007,8 +9003,6 @@ run = "superunknown.exe"
 title = "Super-Giga-Turbo-Overdrive-MEGADEMO ZW3000XL"
 group = "Daniel Bryde"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.19429]
 title = "Superautodrome"
@@ -9513,8 +9507,8 @@ machine = "a500_1mb"
 [demozoo.307668]
 title = "Swaptro V2"
 group = "Haujobb"
-source = "script"
-result = "unknown"
+source = "ai"
+events = [{ at = 30.0, key = "lmb", pos = [130, 390] }]
 
 [demozoo.33206]
 title = "Sway"
@@ -9998,7 +9992,8 @@ machine = "a1200"
 title = "Sömnlös i Sala"
 group = "Tulou"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
+events = [{ at = 30.0, key = "lamiga_v" }]
 
 [demozoo.52046]
 title = "Sönc"

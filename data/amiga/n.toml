@@ -74,8 +74,10 @@ machine = "a500_1mb"
 title = "NaIntro 2004"
 group = "WoodTower"
 source = "script"
-result = "unknown"
-run = "Karate"
+machine = "a1200_060"
+events = [{ at = 40.0, key = "ramiga_o" }]
+run = "Naintro/Run_AllSystems_AHI_DBM"
+assign = { VER = "Demo:" }
 
 [demozoo.32003]
 title = "Naked Ace"
@@ -2514,7 +2516,6 @@ source = "script"
 title = "New Quality Release"
 group = "R-Soft"
 source = "script"
-result = "unknown"
 
 [demozoo.223917]
 title = "New Release"
@@ -2551,7 +2552,6 @@ source = "script"
 title = "New Shit Intro 1992"
 group = "Obsession"
 source = "script"
-result = "unknown"
 
 [demozoo.229379]
 title = "New Short Intro"
@@ -3274,7 +3274,6 @@ events = [{ at = 30.0, key = "lmb" }]
 title = "New Stuff"
 group = "R-Soft"
 source = "script"
-result = "unknown"
 
 [demozoo.262808]
 title = "New Stuff !!!"
@@ -3868,7 +3867,7 @@ title = "NewTek Demo Reel 3"
 group = "NewTek"
 source = "script"
 result = "unknown"
-disks = ["Demo Reel 3 (1989)(Newtek)(Disk 1 of 2).adf"]
+disks = ["Demo Reel 3 (1989)(Newtek)(Disk 1 of 2).adf", "Demo Reel 3 (1989)(Newtek)(Disk 2 of 2).adf"]
 
 [demozoo.243407]
 title = "Next Generation"
@@ -4100,7 +4099,7 @@ source = "script"
 title = "Night Shift is BACK!"
 group = "Mellow"
 source = "script"
-result = "unknown"
+events = [{ at = 90.0, key = "esc" }]
 
 [demozoo.111805]
 title = "Nightcrawler BBS"
@@ -4224,7 +4223,7 @@ machine = "a1200_030"
 title = "Nitro 97"
 group = "Artificial People"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 run = "nitro.exe"
 
 [demozoo.228092]
@@ -4954,7 +4953,7 @@ source = "script"
 title = "Northern Xposure BBS"
 group = "Fear"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.249270]
 title = "Northro"
@@ -5159,8 +5158,9 @@ machine = "a1200"
 title = "nOtITLE-pARTYvERSION"
 group = "Mankind / Pure Lam3r"
 source = "script"
-result = "unknown"
-run = "Karate"
+machine = "a1200_060"
+run = "nOtITLE-pARTYvERSION/rundemo"
+assign = { VER = "Demo:" }
 
 [demozoo.242813]
 title = "Notloesungs-Intro"

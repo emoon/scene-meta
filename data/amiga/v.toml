@@ -18,7 +18,7 @@ events = [{ at = 30.0, key = "lmb" }]
 title = "VAAU"
 group = "Numpties"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 
 [demozoo.70702]
 title = "Vabank"
@@ -41,9 +41,8 @@ machine = "a1200_fast"
 title = "Vach"
 group = "Deathless"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
 run = "vach.exe"
-note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
 
 [demozoo.156633]
 title = "Vactro 2"
@@ -377,7 +376,7 @@ source = "script"
 title = "Vector Dreams"
 group = "Ksylitol"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.229889]
 title = "Vector Dreams 1"
@@ -975,7 +974,7 @@ source = "script"
 title = "Venue BBS"
 group = "Genetics"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.229774]
 title = "Verdict Pack 17 Intro"
@@ -1177,8 +1176,7 @@ source = "script"
 title = "Vibes"
 group = "Oops!"
 source = "script"
-result = "unknown"
-note = "the sweep saw works-then-crash on a1200; no entry of it passed the gate"
+machine = "a1200"
 
 [demozoo.214163]
 title = "Vibrating Arrow"
@@ -1361,7 +1359,7 @@ note = "tested on a 68030 by its info; the music plays and the screen stays blac
 title = "Virtual Conspiracy 95 Party Invitation"
 group = "Moment 22"
 source = "script"
-result = "unknown"
+events = [{ at = 30.0, key = "lamiga_v" }]
 
 [demozoo.29784]
 title = "Virtual Conspiracy Intro"
@@ -1447,8 +1445,6 @@ source = "script"
 title = "Virus Terminator 2.0"
 group = "Bamiga Sector One"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.262736]
 title = "Viruskiller Update Intro"
@@ -1758,7 +1754,8 @@ source = "script"
 title = "Vote For Evilbot! Amiga Edition"
 group = "Czhulhu"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
+events = [{ at = 30.0, key = "lamiga_v" }]
 
 [demozoo.8388]
 title = "Vote Now"

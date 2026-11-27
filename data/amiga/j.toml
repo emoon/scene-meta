@@ -618,7 +618,6 @@ source = "script"
 title = "Joke Intro"
 group = "Black Jack"
 source = "script"
-result = "unknown"
 
 [demozoo.213053]
 title = "Joke Intro 2"
@@ -1269,7 +1268,6 @@ source = "script"
 title = "Just Another Fast Download by Control"
 group = "Tristar and Red Sector Inc."
 source = "script"
-result = "unknown"
 
 [demozoo.204899]
 title = "Just Another Intro"
@@ -1428,8 +1426,7 @@ machine = "a1200"
 title = "Juusto"
 group = "Artificial People"
 source = "script"
-result = "unknown"
-run = "645K3QJAA.exe"
+machine = "a1200_060"
 
 [demozoo.21513]
 title = "Juusto 2"

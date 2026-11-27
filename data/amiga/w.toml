@@ -312,7 +312,6 @@ source = "script"
 title = "Wasp Pack 8 Intro"
 group = "Wizzcat"
 source = "script"
-result = "unknown"
 
 [demozoo.380103]
 title = "Waste"
@@ -795,7 +794,7 @@ source = "script"
 title = "We Can Code Again"
 group = "Whelpz"
 source = "script"
-result = "unknown"
+machine = "a1200_060_ks31"
 
 [demozoo.1066]
 title = "We Come In Peace"
@@ -850,8 +849,9 @@ source = "script"
 title = "We Hate Flameduck"
 group = "Cute"
 source = "script"
+boot = "floppy"
 result = "unknown"
-note = "the sweep saw works on a1200; no entry of it passed the gate"
+note = "the sweep saw works on a1200_060; no entry of it passed the gate"
 
 [demozoo.208707]
 title = "We Hate Kiros"
@@ -1918,8 +1918,6 @@ machine = "a1200_fast"
 title = "Windows '95 Demo"
 group = "Allman"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.46923]
 title = "Windowz 4k"
@@ -2013,9 +2011,7 @@ source = "script"
 title = "WinTunnel"
 group = "Inikep"
 source = "script"
-boot = "floppy"
 result = "unknown"
-note = "the sweep saw works on a1200_060; no entry of it passed the gate"
 
 [demozoo.32376]
 title = "Wipe"

@@ -216,8 +216,7 @@ source = "script"
 title = "Ode to ATCW"
 group = "Ghost / Dimension X"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [{ at = 30.0, key = "lmb" }, { at = 60.0, key = "lmb" }]
 
 [demozoo.221213]
 title = "Ode to Sonic"
@@ -367,7 +366,7 @@ machine = "a1200_fast"
 title = "Oh"
 group = "Whelpz"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 run = "wpz-oh.exe.uncrunched"
 
 [demozoo.1927]
@@ -597,7 +596,8 @@ source = "script"
 title = "Olympic Intro"
 group = "Powerslaves"
 source = "script"
-result = "unknown"
+boot = "hd"
+run = "Command-0-T01"
 
 [demozoo.386470]
 title = "Ome Henk Demo"
@@ -998,7 +998,7 @@ machine = "a500_512k"
 title = "Ooh! It's Obscene III"
 group = "Anarchy"
 source = "script"
-result = "unknown"
+events = [{ at = 80.0, key = "f2" }]
 
 [demozoo.234246]
 title = "Ooh! It's Obscene IV"

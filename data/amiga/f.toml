@@ -130,8 +130,9 @@ events = [{ at = 30.0, key = "lmb" }]
 [demozoo.20356]
 title = "Face Off (2)"
 group = "Venture"
-source = "script"
-result = "unknown"
+source = "ai"
+machine = "a1200_060"
+events = [{ at = 30.0, key = "lmb", pos = [169, 378] }]
 run = "face-off.030"
 
 [demozoo.233805]
@@ -346,7 +347,8 @@ source = "script"
 title = "Fallen Angels"
 group = "Venture"
 source = "script"
-result = "unknown"
+machine = "a1200_fast"
+events = [{ at = 30.0, key = "lamiga_v" }]
 
 [demozoo.43855]
 title = "Falling"
@@ -700,8 +702,7 @@ machine = "a500_1mb"
 [demozoo.260187]
 title = "Fast Intro"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+machine = "a1200"
 
 [demozoo.6112]
 title = "Fast Intro 1993"
@@ -4074,9 +4075,9 @@ source = "script"
 title = "Flowers"
 group = "Drifters"
 source = "script"
-result = "unknown"
-disks = ["dft-flf1.dms", "dft-flf2.dms", "dft-flf3.dms"]
-note = "the sweep saw works on a1200; no entry of it passed the gate"
+machine = "a1200_fast"
+boot = "hd"
+run = "flowers!/Flowers"
 
 [demozoo.246953]
 title = "Flowers"
@@ -4135,7 +4136,7 @@ source = "script"
 title = "Flurk (birthday intro to Booger/Factor^UP)"
 group = "Nukleus"
 source = "script"
-result = "unknown"
+machine = "a1200"
 
 [demozoo.20779]
 title = "Flushed"
@@ -4164,7 +4165,6 @@ source = "script"
 title = "Fly with us Through Stars"
 group = "Pepsi Drinkers Inc"
 source = "script"
-result = "unknown"
 
 [demozoo.259726]
 title = "Flying Bubbles"
@@ -4955,7 +4955,6 @@ source = "script"
 title = "Freedom Crack 7 Intro"
 group = "Vega"
 source = "script"
-result = "unknown"
 
 [demozoo.265549]
 title = "Freedom Crack 8 Intro"
@@ -4988,8 +4987,6 @@ source = "script"
 title = "French Axel"
 group = "Axel Retro-Software"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.2017]
 title = "French Section Is Now Dead"
@@ -5212,8 +5209,6 @@ source = "script"
 title = "Front Pack Preview"
 group = "Exalis"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.216449]
 title = "Front-Demo"
@@ -5239,8 +5234,9 @@ source = "script"
 [demozoo.274529]
 title = "Frost Demon Hunter"
 group = "The Moose Brothers"
-source = "script"
-result = "unknown"
+source = "ai"
+machine = "a1200_060"
+events = [{ at = 50.0, key = "lmb", pos = [246, 400] }]
 run = "motor68k"
 
 [demozoo.224236]

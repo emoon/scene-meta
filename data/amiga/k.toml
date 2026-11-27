@@ -183,8 +183,9 @@ machine = "a1200"
 [demozoo.57277]
 title = "Kannuswurst"
 group = "Zenon"
-source = "script"
-result = "unknown"
+source = "ai"
+machine = "a1200_060"
+events = [{ at = 36.0, key = "lamiga_v" }, { at = 44.0, key = "lmb", pos = [68, 397] }]
 
 [demozoo.150134]
 title = "Kansainvalta"
@@ -331,7 +332,7 @@ machine = "a500_512k"
 title = "Keep Cool"
 group = "German Spreading Crew"
 source = "script"
-result = "unknown"
+result = "broken"
 
 [demozoo.238966]
 title = "Keep Cool"
@@ -380,7 +381,6 @@ source = "script"
 title = "Kei Pack 14 - intro"
 group = "Cyberdreams"
 source = "script"
-result = "unknown"
 
 [demozoo.190941]
 title = "Kein Flanner"
@@ -860,6 +860,7 @@ title = "Kiss My Jazz Intro"
 group = "Pic Saint Loup / Appendix"
 source = "script"
 result = "unknown"
+note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
 
 [demozoo.378211]
 title = "Kitten Mittens"
@@ -1019,7 +1020,7 @@ source = "script"
 title = "Knight Rider Demo 1"
 group = "Knightrider"
 source = "script"
-result = "unknown"
+result = "broken"
 
 [demozoo.230492]
 title = "Knin Peaks"

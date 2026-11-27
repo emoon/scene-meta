@@ -545,6 +545,7 @@ title = "Ball Scroll"
 group = "Wild Copper"
 source = "script"
 result = "unknown"
+run = "loader"
 
 [demozoo.252587]
 title = "Ball Scroller"
@@ -758,7 +759,7 @@ source = "script"
 title = "Bane Swap Intro"
 group = "Whelpz"
 source = "script"
-result = "unknown"
+result = "broken"
 
 [demozoo.40176]
 title = "Bangcock"
@@ -1596,8 +1597,9 @@ source = "script"
 [demozoo.250954]
 title = "Beam Control"
 group = "Morbid Visions"
-source = "script"
-result = "unknown"
+source = "ai"
+machine = "a1200"
+events = [{ at = 25.0, key = "lmb", pos = [194, 490] }]
 
 [demozoo.179518]
 title = "Beam Riders"
@@ -1793,7 +1795,7 @@ run = "Bees.exe"
 title = "Beetle"
 group = "Mystic"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
 
 [demozoo.219]
 title = "Before"
@@ -1918,7 +1920,6 @@ events = [{ at = 68.5, disk = 2 }]
 title = "Benoît"
 group = "Orb"
 source = "script"
-result = "unknown"
 
 [demozoo.233583]
 title = "Benson Pack 2 Intro"
@@ -2461,7 +2462,7 @@ machine = "a1200"
 title = "BillyBones Compact"
 group = "LSD"
 source = "script"
-result = "unknown"
+result = "broken"
 
 [demozoo.280562]
 title = "Binary Bill"
@@ -2822,7 +2823,6 @@ machine = "a1200"
 title = "Bjørsoktn Tullipans"
 group = "Cider"
 source = "script"
-result = "unknown"
 
 [demozoo.18523]
 title = "Bla Bla Bla"
@@ -3131,7 +3131,6 @@ title = "Blerkenwiegel"
 group = "Scoopex"
 source = "script"
 result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
 
 [demozoo.250190]
 title = "Bleu de Prusse"
@@ -3141,8 +3140,9 @@ source = "script"
 [demozoo.161273]
 title = "Blind Af Druk"
 group = "Søhesten"
-source = "script"
-result = "unknown"
+source = "ai"
+machine = "a1200_fast"
+events = [{ at = 25.0, key = "lmb", pos = [95, 385] }]
 
 [demozoo.240014]
 title = "Blip Verts 1"
@@ -3160,8 +3160,8 @@ run = "44"
 title = "Bliss Out"
 group = "Ukonx"
 source = "script"
-result = "unknown"
 disks = ["Ukonx-BlissOut1.DMS", "Ukonx-BlissOut2.DMS"]
+events = [{ at = 558.1, disk = 2, until = 588.1 }]
 
 [demozoo.189783]
 title = "Blit it"
@@ -3678,7 +3678,8 @@ source = "script"
 title = "Blumen Kraft"
 group = "Bluebox Cinematique Gmbh"
 source = "script"
-result = "unknown"
+machine = "a1200_030"
+events = [{ at = 30.0, key = "lamiga_v" }]
 run = "bx-blumenkraft.not_compressed"
 
 [demozoo.183626]
@@ -4068,7 +4069,7 @@ machine = "a1200_fast"
 title = "Bol Boller"
 group = "Depth"
 source = "script"
-result = "unknown"
+machine = "a1200"
 run = "Depth.BolBoller.exe"
 
 [demozoo.18879]
@@ -4431,6 +4432,7 @@ title = "Boot Intro"
 group = "Random Access"
 source = "script"
 result = "unknown"
+note = "the sweep saw works-short on a500; no entry of it passed the gate"
 
 [demozoo.221470]
 title = "Boot Intro"
@@ -4461,7 +4463,6 @@ source = "script"
 title = "Boot Intro"
 group = "Association Of Fanatic Computer Freaks"
 source = "script"
-result = "unknown"
 
 [demozoo.246582]
 title = "Boot Intro"
@@ -4519,7 +4520,6 @@ source = "script"
 title = "Boot Intro"
 group = "Oracle"
 source = "script"
-result = "unknown"
 
 [demozoo.341082]
 title = "Boot Intro"
@@ -4600,7 +4600,6 @@ source = "script"
 title = "Boot-Intro"
 group = "Creeps"
 source = "script"
-result = "unknown"
 
 [demozoo.328662]
 title = "Boot-Intro"
@@ -4668,7 +4667,6 @@ source = "script"
 title = "Bootro"
 group = "The Electronic Knights"
 source = "script"
-result = "unknown"
 
 [demozoo.274425]
 title = "bootro0"
@@ -5065,9 +5063,7 @@ source = "script"
 title = "BornTro"
 group = "Unity"
 source = "script"
-result = "unknown"
-run = "Unity_BornTro"
-note = "the sweep saw works on a1200; no entry of it passed the gate"
+machine = "a1200"
 
 [demozoo.176291]
 title = "Borntro"
@@ -5820,8 +5816,9 @@ machine = "a1200_fast"
 [demozoo.5124]
 title = "BRS 20 YR"
 group = "Brainstorm / Zenon"
-source = "script"
-result = "unknown"
+source = "ai"
+machine = "a1200_060"
+events = [{ at = 35.0, key = "lamiga_v" }, { at = 42.0, key = "lmb", pos = [124, 225] }, { at = 46.0, key = "lmb", pos = [69, 390] }]
 
 [demozoo.260084]
 title = "Bruce and ABG Picture Intro"
@@ -5884,7 +5881,7 @@ machine = "a1200_060"
 title = "Brygada"
 group = "Brygada RR"
 source = "script"
-result = "unknown"
+machine = "a1200"
 run = "DajMiTenMocz"
 
 [demozoo.393539]

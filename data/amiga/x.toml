@@ -326,8 +326,9 @@ source = "script"
 [demozoo.8465]
 title = "X-Mastro"
 group = "Zenon"
-source = "script"
-result = "unknown"
+source = "ai"
+machine = "a1200_060"
+events = [{ at = 36.0, key = "lamiga_v" }, { at = 44.0, key = "lmb", pos = [124, 182] }, { at = 48.0, key = "lmb", pos = [69, 397] }]
 
 [demozoo.223393]
 title = "X-Mastro"
@@ -523,8 +524,7 @@ source = "script"
 title = "Xmas Lights"
 group = "Void"
 source = "script"
-result = "unknown"
-note = "the sweep saw works on a1200; no entry of it passed the gate"
+machine = "a1200"
 
 [demozoo.379688]
 title = "XMas Quick Intro"

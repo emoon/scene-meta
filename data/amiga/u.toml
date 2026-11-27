@@ -62,9 +62,8 @@ source = "script"
 title = "Ugly"
 group = "Broken Cube"
 source = "script"
-result = "unknown"
+machine = "a1200_060"
 run = "BC_Ugly-NoCrunch"
-note = "the sweep saw works on a1200_060; no entry of it passed the gate"
 
 [demozoo.112463]
 title = "Ugly Faces"
@@ -394,15 +393,15 @@ source = "script"
 [demozoo.236585]
 title = "UnderSheet"
 group = "Candle"
-source = "script"
-result = "unknown"
+source = "ai"
+events = [{ at = 34.0, key = "lmb", pos = [194, 273] }]
 
 [demozoo.7671]
 title = "Underworld"
 group = "Dreamline Designs"
 source = "script"
-result = "unknown"
-run = "UnderWorld"
+machine = "a1200_fast"
+run = "UnderWorld/Intro.exe"
 
 [demozoo.215231]
 title = "Underworld"
