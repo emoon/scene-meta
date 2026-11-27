@@ -1177,7 +1177,6 @@ source = "script"
 title = "Vibes"
 group = "Oops!"
 source = "script"
-boot = "floppy"
 result = "unknown"
 note = "the sweep saw works-then-crash on a1200; no entry of it passed the gate"
 

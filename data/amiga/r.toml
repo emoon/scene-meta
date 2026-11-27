@@ -3046,6 +3046,7 @@ title = "Rot2-1"
 group = "Dream's Day"
 source = "script"
 result = "unknown"
+note = "the sweep saw works-then-crash on a1200; no entry of it passed the gate"
 
 [demozoo.28208]
 title = "Rotate Mania"

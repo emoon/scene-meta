@@ -391,7 +391,7 @@ title = "Garbage Faktory"
 group = "Contraz"
 source = "script"
 result = "unknown"
-note = "the sweep saw works-then-crash on a1200; no entry of it passed the gate"
+note = "the sweep saw works on a1200_060; no entry of it passed the gate"
 
 [demozoo.217183]
 title = "Garden Party Intro"

@@ -576,9 +576,7 @@ machine = "a1200_060"
 title = "NetHed"
 group = "Embassy"
 source = "script"
-boot = "floppy"
 result = "unknown"
-note = "the sweep saw works-then-crash on a500; no entry of it passed the gate"
 
 [demozoo.385535]
 title = "Netrou"
