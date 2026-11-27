@@ -150,6 +150,7 @@ class GateCommandsTest(unittest.TestCase):
         self.assertEqual(kw, {
             "ids": [142], "jobs": 4, "frames": 12000, "out": "/tmp/rec",
             "again": True, "machine": "a500_ks12_512k", "patient": True,
+            "area": False,
         })
 
     def test_end_judge_runs_without_database(self):

@@ -6447,11 +6447,13 @@ static void hsync_handler_post(bool onvsync)
 				vsyncmintime = read_processor_time(); /* end of CPU emulation time */
 				events_reset_syncline();
 				maybe_process_pull_audio();
-			} else if (currprefs.turbo_emulation && currprefs.cachesize && !regs.stopped) {
+			} else if (currprefs.turbo_emulation && currprefs.cachesize
+					&& !dbgproto_instr_gate && !regs.stopped) {
 				// Local patch: under warp mode with cpu_speed=max + JIT, give each
 				// frame a deterministic, load-independent JIT burst budget
 				// (handled by is_syncline == -13 in events.cpp) so 68060 precalcs
-				// never starve under heavy parallel worker contention.
+				// never starve under heavy parallel worker contention. Skip when
+				// dbgproto_instr_gate has dropped the CPU to the interpreter.
 				is_syncline_end = 256;
 				is_syncline = -13;
 				maybe_process_pull_audio();

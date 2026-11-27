@@ -91,6 +91,9 @@ def main(argv=None):
                    help="override the entry's machine preset")
     p.add_argument("--patient", action="store_true",
                    help="every event at its until, not its at")
+    p.add_argument("--area", action="store_true",
+                   help="also measure the display area (resolution) in the"
+                   " same pass and store it in scene.db")
     p = sub.add_parser("end-judge", help="re-analyze an existing directory of"
                        " recorded traces")
     p.add_argument("rec", help="directory containing <id>/trace.csv recordings")
@@ -152,7 +155,7 @@ def _command(args):
             return min(1, enddetect.run(
                 db, ids=args.ids, jobs=args.jobs, frames=args.frames,
                 out=args.out, again=args.again, machine=args.machine,
-                patient=args.patient))
+                patient=args.patient, area=args.area))
     finally:
         db.close()
 

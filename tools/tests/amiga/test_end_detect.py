@@ -79,6 +79,25 @@ class TestRecordCommands(unittest.TestCase):
             elapsed=12.3,
         )
         self.assertEqual(line, "142 Desert Dream: end-loop 632.0s [text>trace] (12s)")
+        line_area = runner.format_result(
+            142, "Desert Dream",
+            {"ending": "end-loop", "end": 632.0,
+             "area": {"width": 320, "height": 256, "drawn_width": 320, "drawn_height": 256}},
+            elapsed=12.3,
+        )
+        self.assertEqual(line_area, "142 Desert Dream: end-loop 632.0s; area 320x256 (12s)")
+
+    def test_build_commands_click_and_area(self):
+        out = pathlib.Path("/tmp/rec/1")
+        acts = [(250, "click", ("lmb", (150, 390)))]
+        cmds = runner.build_commands(acts, 0, 1000, out / "trace.csv", out,
+                                     os_cop=0x420, area_step=500)
+        self.assertIn("display measure on os=420", cmds)
+        self.assertIn("input mouse move 150 390", cmds)
+        self.assertIn("input mouse click 0", cmds)
+        self.assertEqual(cmds.count("display status"), 2)
+        total = sum(int(c.split("=")[1]) for c in cmds if c.startswith("run frames="))
+        self.assertEqual(total, 1000)
 
     def test_store_ending_roundtrip(self):
         with tempfile.TemporaryDirectory() as tmp:
