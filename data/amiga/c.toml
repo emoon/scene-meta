@@ -1780,8 +1780,7 @@ source = "script"
 [demozoo.5320]
 title = "Claustrophobia"
 group = "Future Mirror"
-source = "script"
-result = "unknown"
+source = "ai"
 
 [demozoo.307281]
 title = "Clear"

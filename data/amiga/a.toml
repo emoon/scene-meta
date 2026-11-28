@@ -2452,8 +2452,9 @@ source = "script"
 [demozoo.26906]
 title = "Alchemy"
 group = "Rage"
-source = "script"
-result = "unknown"
+source = "ai"
+drives = 2
+disks = ["Rage-Alchemy-A.dms", "Rage-Alchemy-B.dms"]
 
 [demozoo.180609]
 title = "Alchemy In 1992"

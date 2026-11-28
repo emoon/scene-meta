@@ -6058,8 +6058,11 @@ machine = "a1200"
 [demozoo.253]
 title = "Toothbrush Part 3"
 group = "Cryptoburners / Dreamdealers"
-source = "script"
-result = "unknown"
+source = "ai"
+machine = "a1200_030"
+boot = "hd"
+run = "toothbrush.exe"
+assign = { toothbrush3 = "Demo:" }
 
 [demozoo.18522]
 title = "Toothpaste"

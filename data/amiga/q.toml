@@ -348,8 +348,9 @@ machine = "a1200_fast"
 [demozoo.29521]
 title = "Qurea"
 group = "Embassy"
-source = "script"
-result = "unknown"
+source = "ai"
+machine = "a1200_030"
+run = "QuReA.exe"
 
 [demozoo.29524]
 title = "QuU"

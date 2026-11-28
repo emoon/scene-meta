@@ -177,8 +177,7 @@ source = "script"
 [demozoo.349335]
 title = "Made In Austria"
 group = "Scoopex"
-source = "script"
-result = "unknown"
+source = "ai"
 
 [demozoo.110590]
 title = "Made In Croatia"
@@ -4983,9 +4982,9 @@ run = "mindtraveller.exe"
 [demozoo.18185]
 title = "Mindabuse"
 group = "Limited Edition"
-source = "script"
-result = "unknown"
-run = "Mindabuse.ex1"
+source = "ai"
+machine = "a1200_030"
+run = "LED-Mindabuse"
 
 [demozoo.288559]
 title = "Mindblaster Dentro"
@@ -5366,8 +5365,7 @@ source = "script"
 [demozoo.22216]
 title = "Mini-Sine Intro aka English Lessons"
 group = "Share and Enjoy / Scoopex"
-source = "script"
-result = "unknown"
+source = "ai"
 
 [demozoo.242891]
 title = "Mini-Vector Intro"

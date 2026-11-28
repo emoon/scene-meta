@@ -1876,8 +1876,9 @@ source = "script"
 [demozoo.29093]
 title = "Severed"
 group = "Mellow Chips"
-source = "script"
-result = "unknown"
+source = "ai"
+machine = "a1200_030"
+run = "Severed.exe"
 
 [demozoo.218920]
 title = "Seveseal is Back With New Warez"
@@ -8694,8 +8695,10 @@ machine = "a1200"
 [demozoo.28358]
 title = "Sun Always Shines On TV"
 group = "Super Mario Brothers"
-source = "script"
-result = "unknown"
+source = "ai"
+machine = "a1200_030"
+boot = "hd"
+run = "demo.exe"
 
 [demozoo.174201]
 title = "Sun and Fun '92 Demo"

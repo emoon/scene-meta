@@ -411,9 +411,8 @@ run = "ramontic_getaway_uncrunched.exe"
 [demozoo.111386]
 title = "Rampage"
 group = "The Electronic Knights"
-source = "script"
-result = "unknown"
-run = "Rampage"
+source = "ai"
+disks = ["TEK-Rampage.DMS"]
 
 [demozoo.294825]
 title = "Rampage Announcement"
@@ -2732,9 +2731,9 @@ run = "8-Robaczek"
 [demozoo.39007]
 title = "Robbo"
 group = "Spaceballs"
-source = "script"
-result = "unknown"
-run = "10.dat"
+source = "ai"
+machine = "a1200_030"
+run = "Robbo.exe"
 
 [demozoo.336543]
 title = "Robert the Mercenary 2"

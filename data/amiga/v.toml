@@ -649,8 +649,7 @@ machine = "a1200"
 [demozoo.168271]
 title = "Vectordance"
 group = "Cult"
-source = "script"
-result = "unknown"
+source = "ai"
 
 [demozoo.168272]
 title = "Vectordance 2"

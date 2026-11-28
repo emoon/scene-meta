@@ -1218,9 +1218,9 @@ machine = "a1200"
 [demozoo.31859]
 title = "Glow"
 group = "The Black Lotus"
-source = "script"
-result = "unknown"
-run = "TBL-GLOW.E01"
+source = "ai"
+machine = "a1200_fast"
+run = "TBL-GLOW.EXE"
 
 [demozoo.224546]
 title = "Glow"

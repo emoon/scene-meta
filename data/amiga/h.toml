@@ -675,8 +675,7 @@ machine = "a1200_fast"
 [demozoo.303755]
 title = "Happy New Year 2022"
 group = "Agima"
-source = "script"
-result = "unknown"
+source = "ai"
 
 [demozoo.364463]
 title = "Happy New Year 2025"
@@ -940,8 +939,12 @@ machine = "a500_1mb"
 [demozoo.1913]
 title = "Hardwired"
 group = "The Silents / Crionics"
-source = "script"
-result = "unknown"
+source = "ai"
+disks = ["Hardwired1.adf", "Hardwired2.adf"]
+events = [
+  { at = 95, disk = 2 },
+  { at = 100, key = "rmb" },
+]
 
 [demozoo.97459]
 title = "Haribo Mapping"
@@ -1087,8 +1090,7 @@ source = "script"
 [demozoo.357304]
 title = "Hauptsache Fixed"
 group = "Fixoholics"
-source = "script"
-result = "unknown"
+source = "ai"
 
 [demozoo.245569]
 title = "Have a Beer"

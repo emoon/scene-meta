@@ -2801,8 +2801,8 @@ source = "script"
 [demozoo.279087]
 title = "Departure"
 group = "Twilight"
-source = "script"
-result = "unknown"
+source = "ai"
+machine = "a500_1mb"
 
 [demozoo.112696]
 title = "Depeche Code"

@@ -80,8 +80,9 @@ machine = "a1200_030"
 [demozoo.166612]
 title = "Faar K & Finsprit"
 group = "Loonies"
-source = "script"
-result = "unknown"
+source = "ai"
+machine = "a1200_030"
+run = "faark-finsprit"
 
 [demozoo.147489]
 title = "Faar K 10"

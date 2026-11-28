@@ -2304,8 +2304,7 @@ machine = "a1200_fast"
 [demozoo.359802]
 title = "Phase 1"
 group = "Hypnos"
-source = "script"
-result = "unknown"
+source = "ai"
 
 [demozoo.37213]
 title = "Phase One"
@@ -3563,8 +3562,7 @@ machine = "a1200_fast"
 [demozoo.279088]
 title = "Polygons Dream"
 group = "Twilight"
-source = "script"
-result = "unknown"
+source = "ai"
 
 [demozoo.193944]
 title = "Polymorf"

@@ -5756,9 +5756,9 @@ source = "script"
 [demozoo.33436]
 title = "Broken Promises"
 group = "Zenon"
-source = "script"
-result = "unknown"
-run = "2.exe"
+source = "ai"
+machine = "a1200_060"
+run = "main.exe"
 
 [demozoo.371520]
 title = "Broken Sword"
@@ -6133,8 +6133,7 @@ machine = "a1200_fast"
 [demozoo.8997]
 title = "Burger Hill"
 group = "D-Tect / Coma"
-source = "script"
-result = "unknown"
+source = "ai"
 
 [demozoo.151275]
 title = "Burn!"
