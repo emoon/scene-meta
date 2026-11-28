@@ -1,7 +1,8 @@
 """Classify one run from its samples: did the demo work on this machine?
 
 A sample is *alive* when audio DMA is on, or the screen changed since the
-previous sample and bitplane DMA is on. Kickstart's own screens (insert-disk,
+previous sample and display DMA is on, or a visible CPU-driven color raster
+changes with display DMA off. Kickstart's own screens (insert-disk,
 a CLI saying "not enough memory") are static and silent, so a failed start
 never stays alive; a running demo does. A Guru Meditation box blinks, which
 changes the screen: it is never alive. A run *works* when it collects
@@ -77,14 +78,15 @@ def alive_flags(samples, system_copper=0):
         audio = audio_on(s.dmacon)
         alive = not s.box and (audio or bool(
             changed and (bitplane_dma(s.dmacon, s.bpl_active)
-                         or _custom_copper(s, system_copper))))
+                         or _custom_copper(s, system_copper)
+                         or s.color_raster)))
         flags.append(alive)
         # Silent screen change on Kickstart's own copper list: isolated
         # single-sample blips are CLI key-nudge echoes (1> v). Do not gate on
         # _in_rom(s.pc) because SetPatch/68060.library relocates Exec's idle
         # loop into Zorro III Fast RAM on wb_boot rungs.
         os_silent.append(bool(
-            alive and not audio and system_copper
+            alive and not audio and not s.color_raster and system_copper
             and s.cop1lc == system_copper))
         prev = s.shot or prev
     orig = list(flags)
@@ -232,15 +234,19 @@ def classify(log, expected_samples):
     if v == "no-activity" and crash is None and log.system_copper:
         # Ultra-short silent custom-copper intro that exited cleanly back to ROM/CLI.
         if (alive_before >= 1
-                and any(_custom_copper(s, log.system_copper) for s in log.samples)
+                and any(f and _custom_copper(s, log.system_copper)
+                        for f, s in zip(flags, log.samples))
                 and _in_rom(log.samples[-1].pc)
                 and log.samples[-1].cop1lc == log.system_copper):
             v = "works-short"
-        # Sustained silent static custom-copper display (CPU running in RAM
-        # with bitplanes on a non-OS copper list after changing from boot).
-        elif (sum(_custom_copper(s, log.system_copper)
-                  and bitplane_dma(s.dmacon, s.bpl_active)
-                  for s in log.samples) >= WORKS_ALIVE
+        # Sustained silent static custom-copper display through the end of
+        # this boot. Early OS boot lists differ from the bare baseline too;
+        # they cannot prove that a later OS failure screen is an intro.
+        elif (len(log.samples) >= WORKS_ALIVE
+              and all(_custom_copper(s, log.system_copper)
+                      and bitplane_dma(s.dmacon, s.bpl_active)
+                      and s.resets == log.samples[-1].resets
+                      for s in log.samples[-WORKS_ALIVE:])
               and len({s.shot for s in log.samples if s.shot}) >= 2):
             v = "works-short"
     wants = any(e.get("event") == "autoswap-exhausted" for e in log.events)

@@ -15,7 +15,7 @@ import subprocess
 import tempfile
 
 from ..core import errors
-from . import alertshot, config, machines, workbench
+from . import alertshot, config, machines, rastershot, workbench
 
 # Idle trigger for "press mouse button / insert disk" prompts that never touch
 # the drive (seconds without disk activity with the head parked).
@@ -72,6 +72,7 @@ class Sample:
     cop1lc: int = 0
     cop2lc: int = 0
     bpl_active: bool = False  # mid-frame active-scanline bitplane DMA
+    color_raster: bool = False  # visible multicolor output without bitplanes/sprites
 
 
 @dataclasses.dataclass
@@ -571,7 +572,8 @@ class _Reader:
                                    box=_box(png, shot, self._box_cache),
                                    cop1lc=int(res["cop1lc"], 16) if "cop1lc" in res else 0,
                                    cop2lc=int(res["cop2lc"], 16) if "cop2lc" in res else 0,
-                                   bpl_active=bool(res.get("bpl_active"))))
+                                   bpl_active=bool(res.get("bpl_active")),
+                                   color_raster=_color_raster(png, res)))
 
     def _last_dma(self, res):
         if self.samples:
@@ -635,6 +637,18 @@ def _box(png, shot, cache):
         cache[shot] = (alertshot.box(data)
                        if 0 < len(data) <= BOX_MAX_PNG else "")
     return cache[shot]
+
+
+def _color_raster(png, status):
+    """Color-register graphics need no sprite or bitplane DMA.
+
+    Mid-frame bitplanes disqualify the snapshot too. Measure pixels only
+    for this unusual DMA state; ordinary OS screens use bitplane DMA.
+    """
+    display_dma = 0x100 | 0x20  # BPLEN | SPREN
+    return (not status.get("bpl_active")
+            and not status.get("dmacon", 0) & display_dma
+            and png.exists() and rastershot.multicolor(png.read_bytes()))
 
 
 def _peek_long(res):
