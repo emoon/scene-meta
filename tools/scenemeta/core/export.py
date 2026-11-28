@@ -105,3 +105,24 @@ def run(data, entries):
           f" as edited; {report.files} files written")
     for line in report.disagreements:
         print("differs:", line)
+
+
+def gated(store, data, entries, to_gate, first, jobs=None, log=print):
+    """Complete export proposals through the gate. Missing inputs leave an
+    existing entry alone; failed candidates use the supplied unknown entry.
+    ``to_gate`` maps ids to (candidate entries, fallback entry).
+    """
+    errors = 0
+    for prod, ok, got in first(
+            [(p, tries) for p, (tries, _) in sorted(to_gate.items())],
+            store, data, jobs):
+        if not ok:
+            errors += 1
+            log(got, flush=True)
+            continue
+        passed, said = got
+        entries[prod] = passed or to_gate[prod][1]
+        if said:
+            log(f"{prod} {entries[prod]['title']}: "
+                + ", then ".join(map(str, said)), flush=True)
+    return entries, errors

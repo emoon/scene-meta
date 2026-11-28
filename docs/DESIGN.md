@@ -177,7 +177,7 @@ touches `ai` or `verified` ones. Where it disagrees with one of those, the
 disagreement goes into a report for a person to look at.
 
 The export writes a working entry only when that entry passed the gate
-(Amiga; the C64 has no gate yet). When the sweep's best run does not, its
+(Amiga and C64). When the sweep's best run does not, its
 next best are tried, three in all; then the production is written as
 `result = "unknown"`.
 

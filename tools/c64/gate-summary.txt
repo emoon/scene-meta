@@ -1,0 +1,5 @@
+Entries by what the gate last saw of them.
+
+pass      2
+fail      0
+error     1

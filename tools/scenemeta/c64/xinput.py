@@ -14,6 +14,7 @@ import sys
 import time
 
 from ..core.config import TOOLS
+from . import keymap
 
 _x = ctypes.CDLL(ctypes.util.find_library("X11"))
 _t = ctypes.CDLL(ctypes.util.find_library("Xtst"))
@@ -84,10 +85,7 @@ class Keys:
     """Presses for the emulator ``vice`` (a running ``vice.Vice``)."""
 
     JOYSTICK = {"p1fire": 1, "p2fire": 2}      # key name -> joystick port
-    SYMS = {"space": "space", "Return": "Return", "Left": "Left",
-            "p1fire": "KP_0", "p2fire": "KP_0",
-            **{k: k for k in "0123456789abcdefghijklmnopqrstuvwxyz"},
-            **{f"F{n}": f"F{n}" for n in range(1, 9)}}
+    SYMS = keymap.SYMS
 
     def __init__(self, vice):
         self.vice = vice

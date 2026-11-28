@@ -1,0 +1,11 @@
+# C64 gate corpus: literal entries from data/c64, with and without swaps.
+# Run `python3 -m scenemeta c64 expected --jobs 1` to replay and score them.
+# This file is test data, separate from the production settings.
+
+[demozoo.363222] # A (Lame) Short Intro
+expect = "plays"
+note = "Single disk, default PAL/6581 hardware, no input events."
+
+[demozoo.303527] # Median (final)
+expect = "plays"
+note = "Two named disk sides, swap at 100.4 seconds, PAL/8580 preset."

@@ -93,7 +93,12 @@ python3 -m scenemeta c64 sweep --ids 324781 6309     # specific productions
 python3 -m scenemeta c64 sweep --multi --jobs 64     # resumable
 python3 -m scenemeta c64 report
 python3 -m scenemeta c64 manual                      # load manual.json (hand observations)
-python3 -m scenemeta c64 export                      # the same, then merge into ../data/c64
+python3 -m scenemeta c64 export --jobs 1             # gate working script entries, then merge
+python3 -m scenemeta c64 gate --ids 363222 303527 --jobs 1
+python3 -m scenemeta c64 gate                        # resume entries without a current judgement
+python3 -m scenemeta c64 gate-summary                # write gate-summary.txt
+python3 -m scenemeta c64 gate-stale                  # changed player or source download
+python3 -m scenemeta c64 expected --jobs 1           # replay expected.toml, write expected-score.txt
 python3 -m scenemeta c64 migrate                     # convert an older scene.db
 python3 -m unittest discover -s tests -t .
 ```
@@ -108,6 +113,34 @@ Tools: `python3 -m scenemeta.c64.tools.pilot <id>` runs one production and print
 flips (`--shots dir` saves the prompts), `scenemeta.c64.tools.trace` prints the
 raw drive/screen samples of a disk set (no flipping), `scenemeta.c64.tools.sheet`
 makes a contact sheet of screenshots.
+
+## Player, gate and corpus
+
+`scenemeta/c64/player.py` resolves the named preset and hardware overrides
+(video, SID, 1541 and REU), selects exactly the named disks/program/cartridge
+and boot file, and plays only the entry's events. It never uses the sweep's
+automatic answers, swap guesses, hardware ladder or retries. Input and media
+errors stop before VICE starts. Disk writes go to temporary copies.
+
+`entryrunner.py` schedules events on the emulated cycle clock. A disk event
+is its insert time; the drive is detached about three seconds before it.
+Monitor polling and X keyboard events have finite timing precision. A swap
+counts when the drive stepper moves after insertion, before the next insert;
+motor-only presence polling and write-protect sensor flicker do not count.
+The observed animation, crashes and swaps become `core.gate.Play`.
+
+The core gate checks the same seeds, patient windows and omitted-key runs as
+Amiga. Shared orchestration bounds emulator concurrency, stores a record per
+seed with the entry digest, source SHA-256 and player version, and produces
+the summary. The C64 commands default to one emulator. A missing prerequisite
+is an error, distinct from a run that fails. Changed source downloads or
+player versions invalidate cached judgements.
+
+`expected.toml` starts with a single disk and a two-disk swap on an 8580
+preset; `expected-score.txt` records what the gate actually saw. The checked-in
+scoreboard is validated by the unit suite, and `expected` regenerates it.
+The corpus is deliberately small; it is a baseline, not a coverage claim for
+all releases or hardware combinations.
 
 ## Export (`../scenemeta/c64/export.py`)
 
@@ -129,6 +162,12 @@ makes a contact sheet of screenshots.
   or `sid = "8580"` on a machine that has no such preset. A 6581 is the
   default and says nothing.
 - `note`: the hand notes of the production and of each disk.
+
+Working script proposals are gated, chosen run first and up to three distinct
+settings in all. Only a passing candidate is written as working; if all fail,
+the entry becomes `unknown` without playback settings. Missing inputs leave
+existing entries alone. Edited entries and hand observations keep the same
+merge policy as Amiga. `export --ids` limits the productions considered.
 
 A hand observation is of a disk set. Where the media now finds a single disk
 for the production it is not applied.
@@ -155,6 +194,6 @@ for the production it is not applied.
 - The SID model is not swept: sound is off and a run cannot tell. The export
   takes it from Demozoo's `6581` and `8580` tags (`../scenemeta/c64/sid.py`).
 - Only 1541 + PAL/NTSC is tried, and a REU for a demo that asks: no 1541-II. Cartridge
-  and PRG-only releases are not picked up (disk images only).
+  and PRG-only releases are not swept; the literal player can play them.
 - The insert happens 20-30 s after the demo asked (the detector needs the drive quiet that long);
   `waiting_since` is the better "asked at" estimate.

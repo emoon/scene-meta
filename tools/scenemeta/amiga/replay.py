@@ -5,9 +5,8 @@ An entry with keys is played a second time without them: a key is needed only wh
 """
 
 import os
-import tomllib
 
-from .. import machines as presets
+from ..core.entries import all_entries
 
 from ..core.export import default_machine
 from . import config, player
@@ -22,17 +21,6 @@ def judge(written, plain):
     if not all(written):
         return "does not replay"
     return "replays" if plain is None else "keys needed"
-
-
-def all_entries(data):
-    """``{id: entry}`` of every Demozoo production in the data files."""
-    out = {}
-    for path in sorted(data.glob("*.toml")):
-        if path.name != presets.FILE:
-            for key, e in tomllib.loads(path.read_text("utf-8")) \
-                    .get("demozoo", {}).items():
-                out[int(key)] = e
-    return out
 
 
 def entries(data):

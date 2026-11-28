@@ -11,13 +11,11 @@ Asked for the area, the MEASURED run of each entry measures it (see
 area.py), and that of an entry that passes is kept in the log too.
 """
 
-import concurrent.futures as cf
 import dataclasses
-import os
 
 from ..core import demote as core_demote
-from ..core import export, gate, gatelog
-from ..core.errors import BadEntry, CannotPlay
+from ..core import export, gate, gatelog, gaterunner
+from ..core.errors import CannotPlay
 from . import config, media, player, replay
 
 
@@ -55,119 +53,20 @@ def _one(prod, entry, default, each=map, areas=None):
                       each), sha256
 
 
-def _by_prod(records):
-    out = {}
-    for r in records:
-        out.setdefault(r.prod, []).append(r)
-    return out
+def _runner(data):
+    return gaterunner.Runner(_one, player.each_played, media.download_sha256,
+                             player.VERSION, export.default_machine(data))
 
 
 def each(todo, db, data, jobs=None, again=True, areas=None):
-    """Gate every ``(prod, entry)`` of ``todo``, entries of the data files
-    ``data``, ``jobs`` emulators at a time. Yields of each, as it ends,
-    ``(prod, True, judgement)``, what the gate saw then being in the store
-    ``db``, or ``(prod, False, line)`` with the line that reports why it
-    could not be played, which is stored as its error. Without ``again``
-    an entry the log holds a judgement of is not played, and not
-    yielded. ``areas``: a dict that gets the area measured of each entry
-    that passes, by id, which is stored too; None, and none is measured."""
-    default = export.default_machine(data)
-    jobs = jobs or max(1, (os.cpu_count() or 4) // 2)
-    todo = list(todo)
-    entries = dict(todo)
-    records = {} if again else _by_prod(db.gated())
-    held = {} if areas is None else db.areas()
-    why, seen = {}, {}
-
-    def one(prod, entry):
-        if _judged(records.get(prod), entry) and not _wants_area(
-                records[prod], entry, held.get(prod), areas is not None):
-            return None
-        try:
-            seen[prod] = None if areas is None else []
-            return _one(prod, entry, default, pool.map, seen[prod])
-        except CannotPlay as e:
-            why[prod] = str(e)
-            raise
-
-    # The runs of every entry share one pool; an entry's thread only waits.
-    with cf.ThreadPoolExecutor(jobs) as pool:
-        for prod, ok, got in player.each_played(todo, one, jobs):
-            if ok and got is None:
-                continue
-            if ok:
-                got, sha256 = got
-                db.put_gate(prod, entries[prod], got, sha256, player.VERSION)
-                if got.passed and seen.get(prod):
-                    areas[prod] = seen[prod][0]
-                    db.put_area(prod, entries[prod], areas[prod], sha256,
-                                player.VERSION)
-            else:
-                db.put_gate_error(prod, entries[prod], why[prod])
-            yield prod, ok, got
-
-
-def _judged(records, entry):
-    """Do ``records``, the log of one production, hold a judgement of
-    ``entry`` by today's player from today's download?"""
-    return gatelog.held(records, entry) and not gatelog.stale(
-        records, media.download_sha256, player.VERSION)
-
-
-def _wants_area(records, entry, held, asked):
-    """Is the area asked for of ``entry``, which ``records`` say passed,
-    and not held of it? ``held``: ``(entry, Area)`` or None."""
-    return asked and gatelog.passes(records, entry) and (
-        not held or held[0] != gatelog.name(entry))
-
-
-def _stands(records, entry):
-    """Do ``records`` hold a pass of ``entry`` (see ``_judged``)?"""
-    return gatelog.passes(records, entry) and _judged(records, entry)
-
-
-def _first(prod, entries, default, records, each=map):
-    """``(entry, seen)``: the first of ``entries`` that passes, or None,
-    and ``(entry, judgement, sha256)`` of each one played. A pass the log
-    holds is taken with nothing seen, so the log stays of that entry; a
-    BadEntry is a fail with no SHA-256."""
-    seen = []
-    for entry in entries:
-        if _stands(records, entry):
-            return entry, []
-        try:
-            said, sha256 = _one(prod, entry, default, each)
-        except BadEntry as e:
-            said, sha256 = gate.Judgement(False, f"cannot be played: {e}"), None
-        seen.append((entry, said, sha256))
-        if said.passed:
-            return entry, seen
-    return None, seen
+    """Gate entries and keep their judgements and optional measured areas."""
+    yield from _runner(data).each(todo, db, jobs, again, areas)
 
 
 def first(todo, db, data, jobs=None):
-    """Of every ``(prod, entries)`` of ``todo``, entries best first and
-    not empty: ``(prod, True, (entry, said))``, the first entry that passes
-    (or None) and the judgement of each one played, now in ``db``; or
-    ``(prod, False, line)`` when it could not be played."""
-    if not todo:
-        return
-    default = export.default_machine(data)
-    jobs = jobs or max(1, (os.cpu_count() or 4) // 2)
-    records = _by_prod(db.gated())
-    entries = dict(todo)
-    with cf.ThreadPoolExecutor(jobs) as pool:
-        for prod, ok, got in player.each_played(
-                [(p, es[0]) for p, es in todo],
-                lambda p, _: _first(p, entries[p], default, records.get(p),
-                                    pool.map), jobs):
-            if ok:
-                entry, seen = got
-                for played, said, sha256 in seen:
-                    if sha256:
-                        db.put_gate(prod, played, said, sha256, player.VERSION)
-                got = entry, [said for _, said, _ in seen]
-            yield prod, ok, got
+    """The first passing export candidate of each production, kept in db."""
+    if todo:
+        yield from _runner(data).first(todo, db, jobs)
 
 
 def _area_said(a):
@@ -182,29 +81,15 @@ def run(ids, db, data=None, jobs=None, log=print, area=False):
     not be played. With ``area`` the area of each entry that passes is
     measured (see ``each``), and its line says it."""
     data = data or config.DATA_DIR
-    found = replay.all_entries(data)
-    for p in sorted(set(ids or ()) - set(found)):
-        log(f"{p}: no entry in the data files")
-    todo = sorted((p, e) for p, e in found.items() if ids is None or p in ids)
-    errors = 0
     areas = {} if area else None
-    for prod, ok, got in each(todo, db, data, jobs, again=ids is not None,
-                              areas=areas):
-        errors += not ok
-        line = got
-        if ok:
-            line = f"{prod} {found[prod]['title']}: {got}"
-            if area:
-                line += _area_said(areas.get(prod))
-        log(line, flush=True)
-    return errors
+    return gaterunner.run(ids, db, data, replay.all_entries(data), each, jobs,
+                           log, areas, lambda p: _area_said(areas.get(p))
+                           if area else "")
 
 
 def write_summary(db, path=None):
     """Write the counts of what the gate saw to the summary file."""
-    path = path or config.GATE_SUMMARY
-    path.write_text(gatelog.summary(db.gated(), db.gate_errors()), "utf-8")
-    return path
+    return gaterunner.write_summary(db, path or config.GATE_SUMMARY)
 
 
 def demote(db, data=None, write=False, log=print):

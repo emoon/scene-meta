@@ -192,19 +192,8 @@ def run(store, data=None, ids=None, jobs=None, log=print):
             if e.get("source") != "script"}
     entries, to_gate = proposals(store, classes.load(),
                                  export.default_machine(data), kept, ids)
-    errors = 0
-    for prod, ok, got in gate.first(
-            [(p, tries) for p, (tries, _) in sorted(to_gate.items())],
-            store, data, jobs):
-        if not ok:
-            errors += 1
-            log(got, flush=True)
-            continue
-        passed, said = got
-        entries[prod] = passed or to_gate[prod][1]
-        if said:
-            log(f"{prod} {entries[prod]['title']}: "
-                + ", then ".join(map(str, said)), flush=True)
+    entries, errors = export.gated(store, data, entries, to_gate, gate.first,
+                                   jobs, log)
     areas = store.areas()
     export.run(data, (("demozoo", p, with_area(e, areas.get(p)))
                       for p, e in sorted(entries.items())))

@@ -5,11 +5,10 @@ of its event, and returns what happened. Nothing is detected and nothing retried
 entry says, not what a sweep can find.
 """
 
-import concurrent.futures as cf
 import dataclasses
 
 from .. import events
-from ..core import gate
+from ..core import gate, playback
 from ..core.errors import BadEntry, CannotPlay
 from . import area as areas
 from . import emulator, machines, media, verdict, workbench
@@ -103,40 +102,9 @@ def play(prod, entry, default, keys=True, keep=None, patient=False):
 
 
 def each_played(todo, one, jobs):
-    """Play every ``(prod, entry)`` of ``todo``, ``jobs`` at a time. Yields
-    of each, as it ends, ``(prod, True, one(prod, entry))``, or ``(prod,
-    False, line)`` with the line that reports why it cannot be played.
-    Raises CannotPlay when there is no mirror to play any of them from."""
+    """Dispatch entries through the core after checking the media mirror."""
     media.require_mirror()
-
-    def report(prod, entry):
-        try:
-            return prod, True, one(prod, entry)
-        except CannotPlay as e:
-            return prod, False, f"{prod} {entry['title']}: error: {e}"
-
-    pool = cf.ThreadPoolExecutor(jobs)
-    it = iter(todo)
-    pending = set()
-    try:
-        for _ in range(max(1, jobs)):
-            pe = next(it, None)
-            if pe is None:
-                break
-            pending.add(pool.submit(report, *pe))
-        while pending:
-            done, pending = cf.wait(pending, return_when=cf.FIRST_COMPLETED)
-            for fut in done:
-                res = fut.result()
-                pe = next(it, None)
-                if pe is not None:
-                    pending.add(pool.submit(report, *pe))
-                yield res
-    except BaseException:
-        pool.shutdown(wait=False, cancel_futures=True)
-        raise
-    else:
-        pool.shutdown(wait=True)
+    yield from playback.each_played(todo, one, jobs)
 
 
 def play_each(todo, one, jobs, log=print):

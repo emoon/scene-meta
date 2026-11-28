@@ -13,3 +13,7 @@ ASSEMBLY64_CATALOGUE = NAS / "meta" / "assembly64" / "catalogue.jsonl"
 SCENEORG_DIR = NAS / "mirrors" / "sceneorg"
 
 VICE = os.environ.get("SCENEMETA_VICE") or shutil.which("x64sc") or "x64sc"
+
+GATE_SUMMARY = ROOT / "gate-summary.txt"
+EXPECTED = ROOT / "expected.toml"
+EXPECTED_SCORE = ROOT / "expected-score.txt"

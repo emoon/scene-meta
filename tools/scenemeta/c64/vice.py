@@ -36,9 +36,10 @@ class StartError(ViceError):
 class Vice:
     """A running emulator. Use as a context manager."""
 
-    def __init__(self, machine, images, workdir, port, boot_file=""):
+    def __init__(self, machine, images, workdir, port, boot_file="", seed=None):
         self.machine = machine
         self.boot_file = boot_file
+        self.seed = seed
         self.images = [str(i) for i in images]
         self.workdir = pathlib.Path(workdir)
         self.port = port
@@ -59,13 +60,20 @@ class Vice:
                 "-default", *self.machine.args(config.ROM_DIR),
                 "-remotemonitor",
                 "-remotemonitoraddress", f"ip4://127.0.0.1:{self.port}",
-                "-autostart", self.images[0] + (f":{self.boot_file}" if self.boot_file else "")]
+                "-cartcrt" if pathlib.Path(self.images[0]).suffix.lower() == ".crt" else "-autostart",
+                self.images[0] + (f":{self.boot_file}" if self.boot_file else "")]
+        if self.seed is not None:
+            argv += ["-seed", str(self.seed)]
         self.proc = subprocess.Popen(
             argv, cwd=self.workdir, env=env, stdin=subprocess.DEVNULL,
             stdout=open(self.workdir / "vice.log", "w"),
             stderr=subprocess.STDOUT, start_new_session=True)
-        self.sock = self._connect()
-        self.stop()
+        try:
+            self.sock = self._connect()
+            self.stop()
+        except BaseException:
+            self.__exit__()
+            raise
         return self
 
     def __exit__(self, *exc):

@@ -12,7 +12,9 @@ import json
 import sys
 
 from ..core import cli
-from . import catalog, config, export, migrate, store, sweep
+from ..core.errors import CannotPlay
+from ..core.expected import Invalid
+from . import catalog, config, expected, export, gate, migrate, store, sweep
 
 MANUAL = config.ROOT / "manual.json"
 
@@ -29,8 +31,19 @@ def main(argv=None):
     p.add_argument("--boot", action="store_true",
                    help="boot the file whose name matches the title, not the first")
     sub.add_parser("manual", help="rebuild windows and collections, load manual.json")
-    sub.add_parser("export", help="the same, then merge the results into the data files")
+    p = sub.add_parser("export", help="gate working results, then merge data files")
+    p.add_argument("--ids", type=int, nargs="*")
+    p.add_argument("--jobs", type=int, default=1)
+    p = sub.add_parser("gate", help="check entries as written")
+    p.add_argument("--ids", type=int, nargs="*")
+    p.add_argument("--jobs", type=int, default=1)
+    sub.add_parser("gate-summary", help="write the gate counts")
+    sub.add_parser("gate-stale", help="list entries to gate again")
+    p = sub.add_parser("expected", help="gate the C64 corpus and write its scoreboard")
+    p.add_argument("--jobs", type=int, default=1)
     args = ap.parse_args(argv)
+    if hasattr(args, "jobs") and args.jobs is not None and args.jobs < 1:
+        ap.error("--jobs must be positive")
 
     if args.cmd == "migrate":
         return cli.migrate(migrate.run, args.db or config.RESULTS_DB)
@@ -44,9 +57,21 @@ def main(argv=None):
             load_manual(db)
         elif args.cmd == "export":
             load_manual(db)
-            export.run(db)
+            return int(bool(export.run(db, ids=args.ids, jobs=args.jobs)))
+        elif args.cmd == "gate":
+            return int(bool(gate.run(args.ids, db, jobs=args.jobs)))
+        elif args.cmd == "gate-summary":
+            print(f"wrote {gate.write_summary(db)}")
+        elif args.cmd == "gate-stale":
+            gate.stale(db)
+        elif args.cmd == "expected":
+            return int(bool(expected.run(db, jobs=args.jobs)))
         elif args.cmd == "report":
             report(db)
+    except CannotPlay as error:
+        sys.exit(str(error))
+    except Invalid as error:
+        sys.exit(f"{config.EXPECTED}:\n{error}")
     finally:
         db.close()
 

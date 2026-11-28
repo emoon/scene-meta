@@ -202,7 +202,12 @@ def answer_key(screen):
 
 
 def _sample(v, shot_path, log):
-    cycles, pc = v.run_for(STEP)
+    return observe(v, shot_path, log, v.run_for(STEP))
+
+
+def observe(v, shot_path, log, now):
+    """Capture a stopped emulator without advancing its clock."""
+    cycles, pc = now
     drive = v.peek("8", 0x1C00)[0]
     v.screenshot(shot_path)
     data = shot_path.read_bytes() if shot_path.exists() else b""

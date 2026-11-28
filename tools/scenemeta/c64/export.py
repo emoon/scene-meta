@@ -12,7 +12,8 @@ import os
 
 from .. import events, machines
 from ..core import export
-from . import config, sid
+from ..core.entries import all_entries
+from . import config, gate, sid
 
 _RESULT = {"works-then-crash": "crashes-later", "crash": "broken"}
 _KIND = ("collection", "standalone", "boot_fresh")
@@ -145,6 +146,43 @@ def entries(store, models, presets):
                                      models.get(prod), presets)
 
 
-def run(store, data=None):
+def _rank(v):
+    return v.chosen, v.verdict == "works", v.reached, -v.idx
+
+
+def proposals(store, models, presets, kept, ids=None):
+    """Finished runs best first, gated before script entries claim to run."""
+    entries, to_gate = {}, {}
+    for prod, title, groups, variants in export.productions(store, every=True):
+        if ids is not None and prod not in ids:
+            continue
+        ranked = sorted(variants, key=_rank, reverse=True)
+        best = ranked[0]
+        observed = seen(store, prod, best)
+        model = models.get(prod)
+        proposed = entry(title, groups, best, observed, model, presets)
+        candidates = []
+        if not observed.manual and prod not in kept:
+            candidates = export.tries([
+                entry(title, groups, v, seen(store, prod, v), model, presets)
+                for v in ranked if v.verdict in ("works", "works-then-crash")])
+        if candidates:
+            fallback = {k: v for k, v in proposed.items()
+                        if k not in ("machine", "events", "sid")}
+            fallback.update(presets.fields(presets.default, model))
+            fallback.update(result="unknown", note="no entry of it passed the gate")
+            to_gate[prod] = candidates, fallback
+        else:
+            entries[prod] = proposed
+    return entries, to_gate
+
+
+def run(store, data=None, ids=None, jobs=None, log=print):
     data = data or config.DATA_DIR
-    export.run(data, entries(store, sid.models(), Presets(*export.presets(data))))
+    kept = {p for p, e in all_entries(data).items() if e.get("source") != "script"}
+    entries, to_gate = proposals(store, sid.models(),
+                                 Presets(*export.presets(data)), kept, ids)
+    entries, errors = export.gated(store, data, entries, to_gate, gate.first,
+                                   jobs or 1, log)
+    export.run(data, (("demozoo", p, e) for p, e in sorted(entries.items())))
+    return errors
