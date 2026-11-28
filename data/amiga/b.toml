@@ -2427,9 +2427,9 @@ machine = "a1200"
 [demozoo.2983]
 title = "Bill Gates"
 group = "Stoney"
-source = "script"
-result = "unknown"
-run = "MainActor"
+source = "ai"
+machine = "a1200_fast"
+run = "Runme!"
 
 [demozoo.227195]
 title = "Bill Gates"

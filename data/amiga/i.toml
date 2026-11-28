@@ -1630,9 +1630,8 @@ machine = "a500_1mb"
 [demozoo.174307]
 title = "Instant Thing"
 group = "Visdom"
-source = "script"
-result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+source = "ai"
+machine = "a500_1mb_chip"
 
 [demozoo.148840]
 title = "Instinct"

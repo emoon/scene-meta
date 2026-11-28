@@ -3423,9 +3423,12 @@ source = "script"
 [demozoo.34748]
 title = "Points SO"
 group = "PURe"
-source = "script"
-result = "unknown"
-run = "Karate"
+source = "ai"
+machine = "a1200_060_ks31"
+run = "PointsSO"
+events = [
+  { at = 20, key = "ramiga_o" },
+]
 
 [demozoo.5911]
 title = "Poison"

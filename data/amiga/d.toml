@@ -3675,8 +3675,9 @@ machine = "a1200_fast"
 [demozoo.229228]
 title = "Disco"
 group = "Public Enemies"
-source = "script"
-result = "unknown"
+source = "ai"
+boot = "floppy"
+run = "2"
 
 [demozoo.243553]
 title = "Disco"

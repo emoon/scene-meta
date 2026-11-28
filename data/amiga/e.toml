@@ -1311,10 +1311,8 @@ machine = "a1200_fast"
 title = "Episode"
 group = "Nah-Kolor"
 source = "ai"
-machine = "a1200"
-result = "unknown"
+machine = "a1200_060"
 run = "episode/Episode.exe"
-note = "the script Episode.exe assigns Episode: and starts the demo; the music plays and the screen stays black on a 68EC020, a 68020 with 8M and a 68030"
 
 [demozoo.219658]
 title = "Epson Scanner"

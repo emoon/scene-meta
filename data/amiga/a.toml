@@ -3719,8 +3719,11 @@ source = "script"
 [demozoo.224096]
 title = "Anchormix '93"
 group = "John Crawford"
-source = "script"
-result = "unknown"
+source = "ai"
+machine = "a500_2mb_chip"
+events = [
+  { at = 30, key = "f2" },
+]
 
 [demozoo.153470]
 title = "Ancient"

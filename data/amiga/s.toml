@@ -1027,9 +1027,8 @@ machine = "a1200"
 [demozoo.310923]
 title = "Scotch-Blitter"
 group = "Purple's Studios"
-source = "script"
-result = "unknown"
-note = "the sweep saw works-then-crash on a500; no entry of it passed the gate"
+source = "ai"
+machine = "a1200_ks31"
 
 [demozoo.214443]
 title = "Scottie is Lame"
@@ -1915,8 +1914,22 @@ source = "script"
 [demozoo.137485]
 title = "Sextovka"
 group = "MarK"
-source = "script"
-result = "unknown"
+source = "ai"
+machine = "a1200_060_ks31"
+events = [
+  { at = 20, key = "return" },
+  { at = 25, key = "return" },
+  { at = 30, key = "return" },
+  { at = 35, key = "return" },
+  { at = 40, key = "return" },
+  { at = 45, key = "return" },
+  { at = 50, key = "return" },
+  { at = 55, key = "return" },
+  { at = 60, key = "return" },
+  { at = 65, key = "return" },
+  { at = 70, key = "return" },
+  { at = 75, key = "return" },
+]
 
 [demozoo.224357]
 title = "Sexvens"
@@ -2706,9 +2719,9 @@ source = "script"
 [demozoo.28188]
 title = "Silicon Gfx 2"
 group = "World Federation of Mad Hackers"
-source = "script"
-result = "unknown"
-run = "11"
+source = "ai"
+machine = "a1200_fast"
+run = "sg2"
 
 [demozoo.158258]
 title = "Silicon Implosion"

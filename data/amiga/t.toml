@@ -2647,9 +2647,10 @@ source = "script"
 [demozoo.216162]
 title = "The Hottest Stuff"
 group = "Blasters"
-source = "script"
-result = "unknown"
-run = "blasters_inc"
+source = "ai"
+machine = "a500_ks12_512k"
+boot = "floppy"
+run = "bla1"
 
 [demozoo.217195]
 title = "The Hottest Stuff"
@@ -5663,10 +5664,9 @@ machine = "a1200_fast"
 title = "Tint"
 group = "The Black Lotus"
 source = "ai"
+machine = "a1200_fast"
 boot = "hd"
-result = "unknown"
-run = "tbl-tint.e01"
-note = "TBL-Tint.LHA; the 6 floppies are installer disks (disk 1 does not boot)"
+run = "tbl-tint.exe"
 
 [demozoo.28143]
 title = "Tintin Inside"

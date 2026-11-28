@@ -414,8 +414,11 @@ source = "script"
 [demozoo.45342]
 title = "OK, Komputer"
 group = "Industry / Mindnever / iq2000"
-source = "script"
-result = "unknown"
+source = "ai"
+machine = "a1200_030"
+events = [
+  { at = 15, key = "lmb", pos = [318, 390] },
+]
 
 [demozoo.311017]
 title = "Oklagija"

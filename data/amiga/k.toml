@@ -858,9 +858,12 @@ machine = "a1200_fast"
 [demozoo.9557]
 title = "Kiss My Jazz Intro"
 group = "Pic Saint Loup / Appendix"
-source = "script"
-result = "unknown"
-note = "the sweep saw works on a1200_fast; no entry of it passed the gate"
+source = "ai"
+machine = "a1200_fast"
+events = [
+  { at = 20, key = "ramiga_o" },
+  { at = 30, key = "ramiga_o" },
+]
 
 [demozoo.378211]
 title = "Kitten Mittens"
