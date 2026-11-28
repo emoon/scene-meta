@@ -6,7 +6,7 @@ NAMESPACES = ("demozoo", "csdb")
 # How an entry was found, least trusted first.
 SOURCES = ("script", "ai", "verified")
 
-RESULTS = ("broken", "crashes-later", "unknown")
+RESULTS = ("broken", "crashes-later", "unknown", "unsupported")
 
 KINDS = ("collection", "standalone", "separate-disks", "menu", "boot_fresh")
 

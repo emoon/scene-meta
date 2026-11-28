@@ -2274,8 +2274,9 @@ machine = "a1200_fast"
 [demozoo.199290]
 title = "Ship Trip"
 group = "Los Angeles Lamers"
-source = "script"
-result = "unknown"
+source = "ai"
+result = "broken"
+note = "corrupt HUNK executable: misaligned HUNK_END at 668 (bad loadfile hunk)"
 
 [demozoo.232533]
 title = "Shit"

@@ -2245,8 +2245,9 @@ source = "script"
 [demozoo.147101]
 title = "Megademo"
 group = "Mirage"
-source = "script"
-result = "unknown"
+source = "ai"
+result = "unsupported"
+note = "WHDLoad-only release (Prime90.Slave + RawDIC Disk.1; no bootable disk)"
 
 [demozoo.153782]
 title = "Megademo"

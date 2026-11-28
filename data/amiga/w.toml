@@ -1437,8 +1437,9 @@ source = "script"
 [demozoo.385265]
 title = "What Might Have Been"
 group = "Wrangler"
-source = "script"
-result = "unknown"
+source = "ai"
+result = "unsupported"
+note = "requires AA3000/AA3000+ DSP3210 coprocessor"
 
 [demozoo.2493]
 title = "What The Hell Was I Thinking"
@@ -2148,8 +2149,9 @@ source = "script"
 [demozoo.263683]
 title = "Wizax's Demo"
 group = "Trilogy"
-source = "script"
-result = "unknown"
+source = "ai"
+result = "broken"
+note = "explicitly tagged [b]; Software Failure #80000004 / task held on all tested presets"
 
 [demozoo.233271]
 title = "Wizball"

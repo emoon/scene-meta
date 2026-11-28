@@ -4255,8 +4255,9 @@ source = "script"
 [demozoo.242335]
 title = "Nix Miz Mee 02"
 group = "Effect"
-source = "script"
-result = "unknown"
+source = "ai"
+result = "broken"
+note = "corrupt HUNK executable: truncated before HUNK_END (5 bytes short)"
 
 [demozoo.242336]
 title = "Nix Miz Mee 03"
@@ -4461,9 +4462,9 @@ source = "script"
 [demozoo.155359]
 title = "No Name"
 group = "Stop"
-source = "script"
-result = "unknown"
-run = "wildplayer"
+source = "ai"
+result = "broken"
+note = "incomplete archive: missing Demo:System/infochannel.msg required by wildplayer"
 
 [demozoo.177795]
 title = "No Name"

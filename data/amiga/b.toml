@@ -4388,8 +4388,9 @@ source = "script"
 [demozoo.156024]
 title = "Booring Trip"
 group = "Fresh"
-source = "script"
-result = "unknown"
+source = "ai"
+result = "unsupported"
+note = "requires PowerPC / WarpOS (powerpc.library, chunkyppc.library)"
 
 [demozoo.24234]
 title = "Boost"

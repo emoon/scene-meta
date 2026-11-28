@@ -1720,8 +1720,9 @@ source = "script"
 [demozoo.198501]
 title = "Access Denied"
 group = "Abyss"
-source = "script"
-result = "unknown"
+source = "ai"
+result = "broken"
+note = "corrupt HUNK executable: 197 CR bytes stripped inside HUNK_CODE (ASCII transfer damage)"
 
 [demozoo.215511]
 title = "Access X - BBS Intro"
@@ -2964,8 +2965,9 @@ source = "script"
 [demozoo.233576]
 title = "Amazing Pack 53 Menu"
 group = "Amaze"
-source = "script"
-result = "unknown"
+source = "ai"
+result = "broken"
+note = "broken executable: HUNK_CODE starts with 60 FE (unconditional BRA.S self loop)"
 
 [demozoo.230058]
 title = "Amazing Vector Analyser Demo"
@@ -3371,8 +3373,9 @@ events = [{ at = 32.0, key = "lmb" }, { at = 42.0, key = "lmb2", pos = [300, 320
 [demozoo.342057]
 title = "AmigaMeeting-Demo"
 group = "Xymox Project"
-source = "script"
-result = "unknown"
+source = "ai"
+result = "broken"
+note = "corrupt HUNK executable: invalid hunk 0x1e541f2a at 32384 (bad loadfile hunk)"
 
 [demozoo.166543]
 title = "AmigaMega Fast Intro"
@@ -3582,8 +3585,9 @@ source = "script"
 [demozoo.244261]
 title = "An Intro"
 group = "Focus Design"
-source = "script"
-result = "unknown"
+source = "ai"
+result = "broken"
+note = "broken executable: HUNK_CODE starts with 60 FE (unconditional BRA.S self loop)"
 
 [demozoo.230077]
 title = "An Intro Based On a Cool Sine Dot Scroller"

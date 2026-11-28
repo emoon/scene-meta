@@ -208,8 +208,9 @@ source = "script"
 [demozoo.249190]
 title = "Packoide"
 group = "Liquid"
-source = "script"
-result = "unknown"
+source = "ai"
+result = "broken"
+note = "corrupt HUNK executable: final HUNK_END zeroed at 23468 (Error code 121)"
 
 [demozoo.240985]
 title = "Packtro"
@@ -520,8 +521,9 @@ machine = "a500_1mb"
 [demozoo.51661]
 title = "Paradise"
 group = "Universe"
-source = "script"
-result = "unknown"
+source = "ai"
+result = "unsupported"
+note = "requires CyberGraphX V4 320x200 16-bit RTG and AHI V4"
 
 [demozoo.247327]
 title = "Paradise"
@@ -2874,8 +2876,9 @@ machine = "a500_1mb"
 [demozoo.248931]
 title = "Place To Be"
 group = "Legend"
-source = "script"
-result = "unknown"
+source = "ai"
+result = "broken"
+note = "corrupt HUNK executable: HUNK_CODE 4 bytes short, missing HUNK_END"
 
 [demozoo.97458]
 title = "Placebo"
@@ -4569,8 +4572,9 @@ source = "script"
 [demozoo.250135]
 title = "Pro Gear Spectacular"
 group = "Mankind"
-source = "script"
-result = "unknown"
+source = "ai"
+result = "unsupported"
+note = "requires PowerPC / WarpOS (powerpc.library)"
 
 [demozoo.251805]
 title = "Pro Ripper v1.9 Intro"
@@ -5015,8 +5019,9 @@ source = "script"
 [demozoo.242614]
 title = "Psychic - secret part"
 group = "Effect"
-source = "script"
-result = "unknown"
+source = "ai"
+result = "broken"
+note = "corrupt HUNK executable: invalid hunk 0x00000000 at 160928 (HUNK_RELOC32 misaligned)"
 
 [demozoo.139993]
 title = "Psycho"

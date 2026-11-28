@@ -61,8 +61,9 @@ machine = "a1200"
 [demozoo.31678]
 title = "Jaded Lights"
 group = "JazzCat"
-source = "script"
-result = "unknown"
+source = "ai"
+result = "broken"
+note = "corrupt HUNK executable: invalid hunk 0x65786500 at 21492 (Error code 121)"
 
 [demozoo.5122]
 title = "Jaegertime"

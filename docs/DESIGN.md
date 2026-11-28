@@ -78,7 +78,7 @@ appears once per platform, as a key or as a cross-reference.
 | `source` | how the entry was found, see below; required |
 | `machine` | preset name; omitted when it is the platform default |
 | hardware fields | overrides on the preset |
-| `result` | only when the production does not simply work: `broken`, `crashes-later`, `unknown` |
+| `result` | only when the production does not simply work: `broken`, `crashes-later`, `unknown`, `unsupported` |
 | `boot` | `floppy` or `hd`: what to start it from, when that is not the first thing the download offers (an executable that only runs from a floppy, a disk set better run from its hard-drive archive) |
 | `kind` | `collection`, `standalone`, `separate-disks`, `menu`, `boot_fresh` |
 | `disks` | file names in disk order: a multi-disk production's, or the one disk meant where the download has several |

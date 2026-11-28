@@ -1493,14 +1493,16 @@ source = "script"
 
 [demozoo.370107]
 title = "fioniadata-partyscroller2025"
-source = "script"
-result = "unknown"
+source = "ai"
+result = "broken"
+note = "corrupt HUNK executable: truncated before final HUNK_END (duplicate of 370108)"
 
 [demozoo.370108]
 title = "Fioniadata-partyscroller2025"
 group = "Proton"
-source = "script"
-result = "unknown"
+source = "ai"
+result = "broken"
+note = "corrupt HUNK executable: truncated before final HUNK_END (duplicate of 370107)"
 
 [demozoo.208974]
 title = "Fiorina 161"
@@ -4045,9 +4047,9 @@ source = "script"
 [demozoo.61264]
 title = "Flow"
 group = "Kangooroo"
-source = "script"
-result = "unknown"
-run = "kng-flow_uncr.exe"
+source = "ai"
+result = "unsupported"
+note = "requires PowerPC board (powerpc.library)"
 
 [demozoo.118352]
 title = "Flow My Programs"
@@ -4094,8 +4096,9 @@ machine = "a1200"
 [demozoo.172978]
 title = "Fluffy Bunny Thank You Dinner"
 group = "Gazzmaniac"
-source = "script"
-result = "unknown"
+source = "ai"
+result = "broken"
+note = "corrupt ADF: root block 880 is all zeros (Invalid Root Block)"
 
 [demozoo.168111]
 title = "Fluid Fire"

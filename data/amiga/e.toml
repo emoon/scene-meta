@@ -463,8 +463,9 @@ source = "script"
 [demozoo.313091]
 title = "Eighteen"
 group = "Triad"
-source = "script"
-result = "unknown"
+source = "ai"
+result = "unsupported"
+note = "requires Vampire V4 Standalone (Apollo 68080 / SAGA)"
 
 [demozoo.287221]
 title = "Eihpos"

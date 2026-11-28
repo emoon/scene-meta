@@ -148,8 +148,9 @@ machine = "a1200_030"
 [demozoo.234201]
 title = "Da Madman's Return 28 - Menu"
 group = "Anarchy"
-source = "script"
-result = "unknown"
+source = "ai"
+result = "broken"
+note = "broken executable: HUNK_CODE starts with 60 FE (unconditional BRA.S self loop)"
 
 [demozoo.229105]
 title = "Da New Member Status"
@@ -582,9 +583,9 @@ machine = "a1200_fast"
 [demozoo.18479]
 title = "Data World 2"
 group = "Infect"
-source = "script"
+source = "ai"
 result = "unknown"
-run = "yp"
+note = "missing dw2_* continuation archives (33 mirrored DW_* archives are Dataworld I, not II)"
 
 [demozoo.212974]
 title = "Data's Quick BBS"

@@ -907,10 +907,9 @@ machine = "a1200"
 [demozoo.24867]
 title = "Velocity"
 group = "Creative Minds"
-source = "script"
-result = "unknown"
-run = "release/playlist.lst"
-note = "the sweep saw works on a1200_060; no entry of it passed the gate"
+source = "ai"
+result = "unsupported"
+note = "requires PowerPC / PowerUP and CyberGraphX RTG (ELF e_machine=0x14)"
 
 [demozoo.228689]
 title = "Velvet Creation"
@@ -1322,8 +1321,9 @@ source = "script"
 [demozoo.23772]
 title = "Violent Dumb (The Demo)"
 group = "Mankind"
-source = "script"
-result = "unknown"
+source = "ai"
+result = "unsupported"
+note = "requires PowerPC / WarpOS (powerpc.library)"
 
 [demozoo.231190]
 title = "Violin Power"

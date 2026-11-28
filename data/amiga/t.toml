@@ -4121,8 +4121,9 @@ source = "script"
 [demozoo.226912]
 title = "The Simpsons"
 group = "Sorehead"
-source = "script"
-result = "unknown"
+source = "ai"
+result = "broken"
+note = "incomplete ADF: startup-sequence invokes absent simpsons.exe"
 
 [demozoo.26519]
 title = "The Simpsons Demo"
@@ -4864,8 +4865,9 @@ source = "script"
 [demozoo.245072]
 title = "The XXX Intro"
 group = "Grasshopper Developments"
-source = "script"
-result = "unknown"
+source = "ai"
+result = "broken"
+note = "corrupt HUNK executable: invalid trailer hunk 0x00000001 at 311380 (Error code 121)"
 
 [demozoo.8675]
 title = "The Yard BBS Intro"
@@ -6150,8 +6152,9 @@ source = "script"
 [demozoo.199293]
 title = "Topmodell"
 group = "Los Angeles Lamers"
-source = "script"
-result = "unknown"
+source = "ai"
+result = "broken"
+note = "corrupt HUNK executable: invalid hunk 0x00406502 at 12312 (bad loadfile hunk)"
 
 [demozoo.21939]
 title = "Toptronics"
