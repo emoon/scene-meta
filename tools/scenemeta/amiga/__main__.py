@@ -24,7 +24,7 @@ import os
 import sys
 
 from ..core import cli
-from . import (catalog, classes, config, enddetect, expected, export, fetch,
+from . import (catalog, classes, config, enddetect, endings, expected, export, fetch,
                gate, machines, media, migrate, replay, shots, store, sweep)
 from ..core.expected import Invalid
 from ..core.errors import CannotPlay
@@ -49,6 +49,9 @@ def main(argv=None):
                        " files, the entries that pass the gate")
     p.add_argument("--ids", type=int, nargs="*")
     p.add_argument("--jobs", type=int)
+    p = sub.add_parser("export-endings", help="review confident stored endings")
+    p.add_argument("--ids", type=int, nargs="*")
+    p.add_argument("--write", action="store_true", help="merge into script entries")
     p = sub.add_parser("replay", help="play data-file entries as written")
     p.add_argument("--ids", type=int, nargs="*")
     p.add_argument("--jobs", type=int)
@@ -115,6 +118,8 @@ def main(argv=None):
 def _command(args):
     # replay and shots read the data files, not the database; an entry
     # that could not be played fails the command.
+    if args.cmd == "export-endings":
+        return endings.run(ids=args.ids, write=args.write)
     if args.cmd == "replay":
         return min(1, replay.run(args.ids, jobs=args.jobs,
                                  patient=args.patient))

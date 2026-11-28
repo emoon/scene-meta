@@ -3,6 +3,7 @@
     python3 -m scenemeta.validate [data-dir]
 """
 
+import math
 import pathlib
 import re
 import sys
@@ -24,6 +25,25 @@ def _text(v):
 def _seconds(v):
     if isinstance(v, bool) or not isinstance(v, (int, float)) or not v >= 0:
         return "must be a time in seconds"
+
+
+def _finite_seconds(v):
+    if _seconds(v) or not math.isfinite(v):
+        return "must be a finite time in seconds"
+
+
+def _timing(table):
+    """Relations between valid timing fields, after variant inheritance."""
+    if any(k in table and SETTINGS[k](table[k]) for k in schema.TIMING_FIELDS):
+        return
+    end, ending = table.get("end"), table.get("ending")
+    if ending == "interactive":
+        if end is not None:
+            yield "interactive ending must not have end"
+    elif (end is None) != (ending is None):
+        yield "end and ending must be given together"
+    if end is not None and end <= table.get("start", 0):
+        yield "end must be after start (or power-on)"
 
 
 def _one_of(names):
@@ -122,6 +142,9 @@ SETTINGS = {
     "boot_disk": _number_from(1),
     "boot_file": _text,
     "assign": _assign,
+    "start": _finite_seconds,
+    "end": _finite_seconds,
+    "ending": _one_of(schema.ENDINGS),
     "area": _pixels,
     "aspect": _one_of(schema.ASPECTS),
     "note": _text,
@@ -167,6 +190,8 @@ def _production(namespace, entry, presets):
         yield f"{namespace} repeats the key"
     yield from _settings(entry, PRODUCTION.keys() | {"variant"}, presets)
 
+    yield from _timing(entry)
+
     variants = entry.get("variant", [])
     if not isinstance(variants, list) or \
             any(not isinstance(v, dict) for v in variants):
@@ -179,6 +204,8 @@ def _production(namespace, entry, presets):
             elif problem := check(variant[name]):
                 yield f"variant {name} {problem}"
         for problem in _settings(variant, VARIANT.keys(), presets):
+            yield f"variant {problem}"
+        for problem in _timing({**entry, **variant}):
             yield f"variant {problem}"
 
 

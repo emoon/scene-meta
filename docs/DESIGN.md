@@ -86,6 +86,9 @@ appears once per platform, as a key or as a cross-reference.
 | `run` | the file to start, when the obvious one is wrong or ambiguous: an executable, or the download's launcher script (see below) |
 | `boot_disk`, `boot_file` | the disk (1-based) and file to boot, when not the first |
 | `assign` | AmigaDOS assigns, e.g. `{ Killer = "SYS:" }` |
+| `start` | optional time the production itself begins, when long after power-on |
+| `end` | time by which the production has shown everything, only when known |
+| `ending` | `exit`, `loop`, `still`, or `interactive` (waits for input, with no end) |
 | `area` | `[width, height]` of the part of the screen the production draws into, when it was measured (see below) |
 | `aspect` | `16:9` when that part of the screen has that shape, whatever the pixels: 320x180, and 640x180 in hires; no other shape is said |
 | `note` | free text |
@@ -147,6 +150,35 @@ usually still 4:3, so a player may cut the borders away but must not
 stretch the picture. How a production is shown is the player's choice.
 Neither field changes how the production is run, so an entry with them
 plays as the same entry without.
+
+`start` and `end` are finite, nonnegative seconds since power-on, not a
+play duration. `end` must be later than `start` (or zero when start is
+omitted). A known end is paired with `ending = "exit"`, `"loop"`, or
+`"still"`. An interactive production has `ending = "interactive"` and no
+`end`. A guess stays in the detector log. Timing, like area, describes
+playback and does not change its settings or invalidate a gate record.
+Variants inherit timing from the production and may override it.
+
+`scenemeta amiga export-endings [--ids ...]` reviews stored ending evidence
+without running an emulator or writing the database. `--write` adds timing
+only to working `script` entries with matching playback settings and no
+existing end/ending; hand entries and existing timing are reported and kept.
+A later sweep of the same playback settings keeps that timing; changed
+settings drop it. No production start is inferred by the current detector.
+
+The conservative automatic projection maps `exits` to `exit`, `stops` to
+`still`, and `loops`/`end-loop` to `loop` with a detected video, song, or
+landmark period, with known song/video completion timestamps no later than
+the end. It requires a finite end of at least 10 seconds, 30 seconds
+of trace after that end, and at least 30 seconds after the last new code.
+Any alert, unfinished text, unreached swap, end before a swap, or recorded
+text/data beyond the end withholds timing. `restarts` stays in the log
+because its current end is a period rather than a power-on timestamp;
+`open`, `held`, `crashed`, and `not-started` also stay there. In particular,
+`held` does not establish that a production waits for input. These checks
+exclude known uncertainties; a detector can still misclassify a run and
+its proposals require review. Area and drawn dimensions are independent
+of these ending decisions; drawn dimensions remain in the run log.
 
 Settings sit on the production. A variant appears only when one specific
 download needs different settings; it is identified by file name and SHA-256

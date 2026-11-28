@@ -19,6 +19,11 @@ BOOTS = ("floppy", "hd")
 ASPECT_16_9 = "16:9"
 ASPECTS = (ASPECT_16_9,)
 
+# Measurements describe playback; they never change how an entry is run.
+TIMING_FIELDS = ("start", "end", "ending")
+ANNOTATIONS = ("area", "aspect") + TIMING_FIELDS
+ENDINGS = ("exit", "loop", "still", "interactive")
+
 
 def bucket(title):
     """The file a production is kept in: the first character of its title."""

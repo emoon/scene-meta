@@ -12,7 +12,7 @@ from . import document, machines, schema
 
 # Fields that say nothing of how a production is run: a difference there is
 # not a disagreement.
-_NOT_COMPARED = ("title", "group", "source", "note", "area", "aspect")
+_NOT_COMPARED = ("title", "group", "source", "note") + schema.ANNOTATIONS
 
 
 @dataclasses.dataclass
@@ -26,7 +26,8 @@ class Report:
 
 def settings(entry):
     """What ``entry`` sets: its fields that say how the production is run."""
-    return {k: v for k, v in entry.items() if k not in _NOT_COMPARED}
+    return {k: [settings(row) for row in v] if k == "variant" else v
+            for k, v in entry.items() if k not in _NOT_COMPARED}
 
 
 def _differences(old, new):
@@ -63,6 +64,10 @@ def merge(directory, new):
             report.disagreements += [f"[{namespace}.{id_}] {old[0].get('title')}: {d}"
                                      for d in _differences(old[0], entry)]
             continue
+        if old and settings(old[0]) == settings(entry):
+            # A fresh sweep of the same playback must keep its known timing.
+            entry = {**{k: old[0][k] for k in schema.TIMING_FIELDS if k in old[0]},
+                     **entry}
         block = document.render(namespace, id_, entry)
         if not old:
             report.added += 1
