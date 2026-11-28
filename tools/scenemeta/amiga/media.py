@@ -10,6 +10,7 @@ WORK; NAS files are read only.
 
 import dataclasses
 import hashlib
+import itertools
 import os
 import pathlib
 import re
@@ -560,6 +561,11 @@ def _tree_variant(tree, title="", run=None):
             return Variant("hd", [], root=str(boot), command=None,
                            note="own startup-sequence")
         return None
+    if not run:
+        launcher = _preferred_launcher(tree, title, exe)
+        if launcher is not None:
+            return _script_variant(launcher, _rel(launcher, tree),
+                                   f"runs script {_rel(launcher, tree)}")
     _copy_ancestor_sysdirs(tree, exe.parent)
     amos = _ramos_script(exe)
     cmd = f'"{exe.name}" {amos.name}\n' if amos is not None else f'"{exe.name}"\n'
@@ -882,18 +888,16 @@ def _named_after(name, title):
     return n in t or t in n
 
 
-def _launch_script(tree, title=""):
-    """A script that runs the demo's executables in turn (Eternal Madness:
-    em1.exe, em2.exe, em3.exe; Stag: intro.exe then stag.ht; MindWalker:
-    ``mw:data/mindwalker.exe``), or None. A small text file outside the system
-    directories, not an installer or doc file, with a line naming an executable
-    in ``tree``. One named after the production or with an icon wins."""
+def _launcher_scripts(tree, title=""):
+    """Small text files outside system directories, installers and docs,
+    with a line naming an executable in ``tree``. Those named after the
+    production or with an icon come first."""
     exes = {q.name.lower() for q in _walk_files(tree)
             if not any(part.lower() in _SYSTEM_DIRS
                        for part in q.relative_to(tree).parts[:-1])
             and sniff(q) == "exe"}
     if not exes:
-        return None
+        return []
     cands = []
     for p in _walk_files(tree):
         rel = p.relative_to(tree).parts
@@ -916,6 +920,61 @@ def _launch_script(tree, title=""):
     cands.sort(key=lambda p: (not _named_after(p.name, title),
                               not p.with_name(p.name + ".info").exists(),
                               len(p.relative_to(tree).parts)))
+    return cands
+
+
+def _launch_script(tree, title=""):
+    """The first launcher candidate, for a fallback or merged disk set."""
+    return next(iter(_launcher_scripts(tree, title)), None)
+
+
+_LAUNCH_NAME = re.compile(
+    r"(?:^|[._! -])(?:runme|start|go|run|execute|demo)(?:$|[._! -])", re.I)
+
+
+def _command_base(token):
+    """An Amiga command's filename without its volume or directory."""
+    return token.rsplit("/", 1)[-1].rsplit(":", 1)[-1].lower()
+
+
+def _preferred_launcher(tree, title, exe):
+    """A recognizable launcher that adds parts, arguments or setup to the
+    bare executable. Plain wrappers and unrelated scripts stay fallbacks;
+    RequestChoice needs an interactive Workbench, so is not preferred."""
+    exes = {p.name.lower() for p in _walk_files(tree)
+            if not any(part.lower() in _SYSTEM_DIRS
+                       for part in p.relative_to(tree).parts[:-1])
+            and p.name.lower() not in _CLI_TOOLS | {"cpu", "setpatch"}
+            and sniff(p) == "exe"}
+    cands = []
+    for script in _launcher_scripts(tree, title):
+        if script.suffix.lower() == ".ascii":
+            continue
+        if not (_named_after(script.stem, title)
+                or _LAUNCH_NAME.search(script.stem)
+                or script.suffix.lower() == ".bat"
+                or script.stem.isdigit()):
+            continue
+        commands = [re.findall(r'"[^"]*"|\S+', ln.strip())
+                    for ln in script.read_text("latin-1").splitlines()
+                    if ln.strip() and not ln.lstrip().startswith(";")]
+        commands = [[tok.strip('"') for tok in itertools.takewhile(
+            lambda tok: not tok.startswith(";"), cmd)] for cmd in commands]
+        if any(_command_base(cmd[0]) == "requestchoice" for cmd in commands):
+            continue
+        calls = [cmd for cmd in commands if _command_base(cmd[0]) in exes]
+        names = {_command_base(cmd[0]) for cmd in calls}
+        setup = any(_command_base(cmd[0]) in ("assign", "cd") for cmd in commands)
+        arguments = any(any(not tok.startswith((">", "<", ";"))
+                            for tok in cmd[1:]) for cmd in calls)
+        if (len(names) > 1 or setup or arguments
+                or names and exe.name.lower() not in names
+                and _named_after(script.stem, title)):
+            cands.append(script)
+    # A root launcher establishes assigns/cwd needed by a nested project icon
+    # (Bill Gates' Runme! vs BillGates/Bill Gates).
+    cands.sort(key=lambda p: (len(p.relative_to(tree).parts),
+                              not _named_after(p.stem, title)))
     return cands[0] if cands else None
 
 

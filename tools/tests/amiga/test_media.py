@@ -75,6 +75,54 @@ class PickExeTest(unittest.TestCase):
             self.assertEqual((v.root, v.run), (str(d / "sub"), run))
             self.assertTrue(media.fits(v, {"run": run}, "hd"))
 
+    def test_auto_prefers_multipart_launcher_before_a_successful_part(self):
+        d = self.tree({"part1.exe": EXE, "part2.exe": EXE * 4,
+                       "MyKing.bat": b"part1.exe\npart2.exe\n"})
+        v = media._tree_variant(d, "My Kingdom")
+        self.assertEqual(v.run, "MyKing.bat")
+        self.assertEqual(v.command, GO_ON + "part1.exe\npart2.exe\n")
+        self.assertEqual(media._tree_variant(d, "My Kingdom", "part2.exe").run,
+                         "part2.exe")
+
+    def test_auto_prefers_root_launcher_that_sets_up_a_viewer(self):
+        d = self.tree({"MainActor": EXE, "mainactor/MainView": EXE,
+                       "Runme!": b"assign MainActor: mainactor\ncd BillGates\nMainActor:MainView Bill.anim\n",
+                       "BillGates/Bill Gates": b"MainActor:MainView Bill.anim\n"})
+        v = media._tree_variant(d, "Bill Gates")
+        self.assertEqual((v.run, v.root), ("Runme!", str(d)))
+
+    def test_auto_preserves_interpreter_arguments(self):
+        d = self.tree({"Karate": EXE, "PointsSO": b"Karate s=SOscroll.txt\n"})
+        self.assertEqual(media._tree_variant(d, "Points SO").run, "PointsSO")
+
+    def test_auto_leaves_plain_single_exe_and_unrelated_launchers_alone(self):
+        d = self.tree({"Demo": EXE, "runme": b"Demo\n",
+                       "other": EXE, "Other.bat": b"other\n"})
+        self.assertEqual(media._tree_variant(d, "Demo").run, "Demo")
+        d = self.tree({"PlayMusique": EXE, "0init.dat": EXE,
+                       "Ukonx": b"0init.dat\nrun PlayMusique\n"})
+        self.assertEqual(media._tree_variant(d, "Acid O'Zine").run,
+                         "PlayMusique")
+
+    def test_auto_does_not_execute_documentation_or_requestchoice(self):
+        d = self.tree({"Demo.exe": EXE, "read_me_now!.ascii": b"Demo.exe\nDemo.exe\n",
+                       "StartMe": b'RequestChoice >env:c "Choose" "Start"\nDemo.exe\n'})
+        self.assertEqual(media._tree_variant(d, "Demo").run, "Demo.exe")
+
+    def test_auto_numeric_script_keeps_viewer_arguments(self):
+        d = self.tree({"Easy": EXE, "2": b"Easy >nil: Demo2\n"})
+        self.assertEqual(media._tree_variant(d, "Disco").run, "2")
+
+    def test_system_commands_and_inline_comments_are_not_more_parts(self):
+        d = self.tree({"sustain.exe": EXE, "C/cpu": EXE,
+                       "runme": b"cpu cache burst\nsustain.exe ; the demo\n"})
+        self.assertEqual(media._tree_variant(d, "Sustain").run, "sustain.exe")
+
+    def test_no_executables_means_no_launcher_candidates(self):
+        d = self.tree({"readme": b"Hello\n"})
+        self.assertIsNone(media._launch_script(d))
+        self.assertIsNone(media._tree_variant(d))
+
     def test_only_a_text_file_is_a_script(self):
         d = self.tree({"demo": EXE, "data": b"a\0b", "empty": b"",
                        "big": b"x" * 20000})
@@ -541,7 +589,9 @@ class ArchiveSetTest(unittest.TestCase):
                             "demo.bat": b"intro.exe\nend.exe\n"}.items():
                 z.writestr(n, data)
         (today,), _ = media.variants(44911, "Demo")
-        self.assertEqual(today.command, '"end.exe"\n')
+        self.assertEqual(today.command, GO_ON + "intro.exe\nend.exe\n")
+        (bare,), _ = media.variants(44911, "Demo", "end.exe")
+        self.assertEqual(bare.command, '"end.exe"\n')
         (asked,), _ = media.variants(44911, "Demo", "demo.bat")
         self.assertEqual((asked.run, asked.command),
                          ("demo.bat", GO_ON + "intro.exe\nend.exe\n"))
