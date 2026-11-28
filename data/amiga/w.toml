@@ -146,8 +146,16 @@ source = "script"
 [demozoo.193399]
 title = "Walker Demo (Amiga)"
 group = "Imaginetics"
-source = "script"
-result = "unknown"
+source = "ai"
+machine = "a500_2mb_chip"
+drives = 2
+boot = "floppy"
+disks = ["Walker_B.adf", "Walker_A.adf"]
+events = [
+  { at = 125, key = "return" },
+  { at = 215, key = "return" },
+  { at = 260, key = "return" },
+]
 
 [demozoo.193400]
 title = "Walker Demo 2 Trailer"

@@ -543,9 +543,10 @@ boot = "floppy"
 [demozoo.264766]
 title = "Ball Scroll"
 group = "Wild Copper"
-source = "script"
-result = "unknown"
+source = "ai"
+machine = "a500_1mb_chip"
 run = "loader"
+assign = { WILD = "Demo:" }
 
 [demozoo.252587]
 title = "Ball Scroller"
@@ -1488,8 +1489,9 @@ machine = "a1200_fast"
 [demozoo.194065]
 title = "BBSTro"
 group = "Aussie Alliance"
-source = "script"
+source = "ai"
 result = "unknown"
+note = "a500_2mb_chip shows Guru 00000003. A1200 KS3.1 raises 80000003. a500_ks12_512k stays at CLI."
 
 [demozoo.203703]
 title = "BBStro"
@@ -3735,9 +3737,9 @@ run = "Giulia"
 [demozoo.41901]
 title = "Blurya"
 group = "Phibrizzo"
-source = "script"
+source = "ai"
 result = "unknown"
-run = "Blurya"
+note = "Both bundled native executables display a static white rectangle on a1200_060_ks31."
 
 [demozoo.229633]
 title = "Blåvitt Cannabisgröt"
@@ -4207,8 +4209,9 @@ source = "script"
 [demozoo.32603]
 title = "Bonometro"
 group = "Syndrome"
-source = "script"
+source = "ai"
 result = "unknown"
+note = "Reports Font not available on a1200_030 and a1200_060_ks31, including with FONTS=SYS:Fonts."
 
 [demozoo.196083]
 title = "Bontro"
@@ -4990,8 +4993,9 @@ run = "BornDead_V1x2.exe"
 [demozoo.89155]
 title = "Born Fat"
 group = "Contraz"
-source = "script"
+source = "ai"
 result = "unknown"
+note = "a1200_030 and a1200_fast show only the AmigaDOS window. No intro graphics were observed."
 
 [demozoo.158695]
 title = "Born in Savo"
@@ -5596,8 +5600,9 @@ machine = "a1200"
 [demozoo.224642]
 title = "Brand New Intro"
 group = "Idiosyncatris"
-source = "script"
+source = "ai"
 result = "unknown"
+note = "a500 and a500_1mb_chip show decompression stripes then CLI. A1200 KS3.1 floppy returns to CLI as well."
 
 [demozoo.248062]
 title = "Brand New Intro"

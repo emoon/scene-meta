@@ -207,9 +207,9 @@ source = "script"
 [demozoo.158654]
 title = "Narium"
 group = "GHH"
-source = "script"
+source = "ai"
 result = "unknown"
-run = "Karate"
+note = "Selecting PAL Low Res in Narium's ASL requester briefly shows Loading, then stays black through 65s."
 
 [demozoo.307285]
 title = "Narkotyki"
@@ -577,8 +577,9 @@ machine = "a1200_060"
 [demozoo.181975]
 title = "NetHed"
 group = "Embassy"
-source = "script"
-result = "unknown"
+source = "ai"
+result = "crashes-later"
+note = "Plays the checkerboard effect with audio, then halts at ~34–35s on a1200_030 and a1200_ks31."
 
 [demozoo.385535]
 title = "Netrou"
@@ -645,8 +646,9 @@ machine = "a1200_fast"
 [demozoo.242768]
 title = "Neuron-137 (Dentro 2)"
 group = "End of Century 1999"
-source = "script"
+source = "ai"
 result = "unknown"
+note = "A500 HD and generated floppy print the N-137 release banner, then return to CLI."
 
 [demozoo.27972]
 title = "Neuroscan"
@@ -1038,8 +1040,9 @@ source = "script"
 [demozoo.214310]
 title = "New Demo"
 group = "Falcon Team"
-source = "script"
+source = "ai"
 result = "unknown"
+note = "Falcon-Demo opens a task-held requester on a500_ks12_512k and Software Failure 00000005 on A1200 KS3.1."
 
 [demozoo.215684]
 title = "New Demo"
@@ -2941,8 +2944,9 @@ boot = "floppy"
 [demozoo.230006]
 title = "New Stuff"
 group = "The Guide"
-source = "script"
+source = "ai"
 result = "unknown"
+note = "DD&TheGuide-NewStuff returns code 20 on a500_512k and A1200 KS3.1."
 
 [demozoo.230043]
 title = "New Stuff"
@@ -3865,9 +3869,15 @@ disks = ["NEWTEK-DemoReel_A.DMS", "NEWTEK-DemoReel_B.DMS"]
 [demozoo.323690]
 title = "NewTek Demo Reel 3"
 group = "NewTek"
-source = "script"
-result = "unknown"
+source = "ai"
+machine = "a500_2mb_chip"
+drives = 2
+boot = "floppy"
 disks = ["Demo Reel 3 (1989)(Newtek)(Disk 1 of 2).adf", "Demo Reel 3 (1989)(Newtek)(Disk 2 of 2).adf"]
+events = [
+  { at = 100, key = "lmb2", pos = [490, 49] },
+  { at = 115, key = "lmb2", pos = [350, 77] },
+]
 
 [demozoo.243407]
 title = "Next Generation"

@@ -879,9 +879,9 @@ source = "script"
 [demozoo.84408]
 title = "In Memory Of..."
 group = "PuReL4m3rs"
-source = "script"
+source = "ai"
 result = "unknown"
-run = "karate"
+note = "InMemoryOf... accepts PAL Low Res, then stays black through 90s on a1200_060_ks31."
 
 [demozoo.49760]
 title = "In Monaco"
@@ -1533,8 +1533,9 @@ source = "script"
 [demozoo.234142]
 title = "Insipid Injection"
 group = "Anathema"
-source = "script"
+source = "ai"
 result = "unknown"
+note = "Original floppy stays black on a500_1mb_chip. A1200 KS3.1 flashes STANDARD CPU ONLY."
 
 [demozoo.35145]
 title = "Insomnia"
@@ -2400,8 +2401,9 @@ source = "script"
 [demozoo.252056]
 title = "Intro"
 group = "New Wave"
-source = "script"
-result = "unknown"
+source = "ai"
+result = "broken"
+note = "The intro prints “Yo, Dude!!!”, then asks for scroll.text. The incomplete mirror contains only the executable."
 
 [demozoo.253848]
 title = "Intro"
@@ -3449,9 +3451,9 @@ source = "script"
 [demozoo.225207]
 title = "It Takes a Nation of Millions to Hold Us Back Part 2"
 group = "New Style Inc"
-source = "script"
+source = "ai"
 result = "unknown"
-run = "demo2"
+note = "Direct demo2 shows loader stripes then CLI. execute_me under Workbench starts ram:2, then shows Software Failure 80000008."
 
 [demozoo.214785]
 title = "It Used To Be My Playground"

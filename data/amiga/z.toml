@@ -151,9 +151,9 @@ source = "script"
 [demozoo.326330]
 title = "Zdzich"
 group = "Roger / Kylo / Booshman"
-source = "script"
+source = "ai"
 result = "unknown"
-run = "ScalaMMPlayer"
+note = "The launcher stays black. The Scala script expects its assets in RAM:Zdzich, as the supplied readme instructs."
 
 [demozoo.247810]
 title = "Ze Intro"
@@ -500,8 +500,9 @@ machine = "a1200_fast"
 [demozoo.253819]
 title = "Zoom"
 group = "Phenomena"
-source = "script"
+source = "ai"
 result = "unknown"
+note = "A1200 KS3.1 HD and A500 floppy stay at AmigaDOS. The sole executable references df0:3dobj, absent from the mirror."
 
 [demozoo.262692]
 title = "Zoom"

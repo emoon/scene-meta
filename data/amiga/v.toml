@@ -1028,8 +1028,9 @@ run = "Vertus.exe"
 [demozoo.247702]
 title = "Very Angry"
 group = "Katharsis"
-source = "script"
-result = "unknown"
+source = "ai"
+result = "broken"
+note = "The floppy asks to reinstall the original system-configuration and reboot. The mirror supplies only the executable."
 
 [demozoo.2883]
 title = "Very Best Demo"
@@ -1349,10 +1350,8 @@ source = "script"
 title = "Virtual"
 group = "Skahn-X"
 source = "ai"
-machine = "a1200_030"
-result = "unknown"
-run = "virtual.exe"
-note = "tested on a 68030 by its info; the music plays and the screen stays black on a 68020, a 68030 and a 68060, and it exits at about 190 s"
+result = "crashes-later"
+note = "a1200_ks31 stays white with audio after ~170s. a1200_060_ks31 shows Software Failure #80000005 at ~70s."
 
 [demozoo.250792]
 title = "Virtual Conspiracy 95 Party Invitation"
@@ -1410,8 +1409,9 @@ machine = "a1200"
 [demozoo.21612]
 title = "Virtual Pancakes"
 group = "Artificial People"
-source = "script"
+source = "ai"
 result = "unknown"
+note = "Both 68060 ROMs report Unable to open V39 libraries after the banner. The ASL open path is implicated."
 
 [demozoo.88603]
 title = "Virtual World"
@@ -1707,9 +1707,9 @@ machine = "a1200"
 [demozoo.92793]
 title = "Volta10000"
 group = "Mankind"
-source = "script"
+source = "ai"
 result = "unknown"
-run = "volta1oooo.exe"
+note = "volta1oooo.exe returns code 20 on a1200_ks31 and drops to a blank DOS prompt on a1200_060_ks31."
 
 [demozoo.122376]
 title = "Vomit Visions"

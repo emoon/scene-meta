@@ -195,8 +195,7 @@ source = "script"
 [demozoo.257404]
 title = "Radio Gargaj"
 group = "Scoopex"
-source = "script"
-result = "unknown"
+source = "ai"
 
 [demozoo.8669]
 title = "Radio In Your Eyes"
@@ -1704,8 +1703,9 @@ source = "script"
 [demozoo.218092]
 title = "Remarkable Intro"
 group = "The Outrunners"
-source = "script"
-machine = "a500_512k"
+source = "ai"
+result = "unknown"
+note = "Guru on a500_512k/a500_1mb_chip/a500/a500_ks12_512k; Program failed #8000000B on a1200/a1200_fast"
 
 [demozoo.223668]
 title = "Remedy"
@@ -1843,8 +1843,9 @@ run = "RESETkani2019_EN"
 [demozoo.218721]
 title = "Resident 2 Intro"
 group = "Angelica"
-source = "script"
+source = "ai"
 result = "unknown"
+note = "a500_1mb_chip shows a task-held requester. A1200/030 stays gray. A1200/060 KS3.1 returns to CLI."
 
 [demozoo.36805]
 title = "Resist"
@@ -1959,8 +1960,9 @@ assign = { Nuretro = "Demo:", retro = "Demo:" }
 [demozoo.213258]
 title = "Retro"
 group = "LSD"
-source = "script"
+source = "ai"
 result = "unknown"
+note = "LSD-Retro shows Guru 00000004 on a500_512k. Both linked versions stay black on A1200 KS3.1."
 
 [demozoo.40852]
 title = "Retro 64k"
@@ -3036,9 +3038,9 @@ machine = "a1200_fast"
 [demozoo.223652]
 title = "Rot2-1"
 group = "Dream's Day"
-source = "script"
-result = "unknown"
-note = "the sweep saw works-then-crash on a1200; no entry of it passed the gate"
+source = "ai"
+result = "crashes-later"
+note = "A1200 KS3.1 shows animated water/plasma, then Software Failure 80000004 at 50–60 s on 020 and 060."
 
 [demozoo.28208]
 title = "Rotate Mania"

@@ -663,10 +663,9 @@ run = "AceMan - Unstable Traktor (68000).exe"
 [demozoo.244841]
 title = "Unswerving"
 group = "Gods"
-source = "script"
-boot = "floppy"
-result = "unknown"
-note = "the sweep saw works-then-crash on a1200_030; no entry of it passed the gate"
+source = "ai"
+result = "crashes-later"
+note = "A1200/060 KS3.1 floppy shows the Unswerving title and 3D scenes, then halts at 43 s. A1200/030 floppy also halts."
 
 [demozoo.35437]
 title = "Untitled"
@@ -818,8 +817,11 @@ machine = "a1200"
 [demozoo.24041]
 title = "Useless"
 group = "Bleifrei"
-source = "script"
-result = "unknown"
+source = "ai"
+machine = "a1200_060_ks31"
+boot = "hd"
+run = "starten"
+note = "short silent text intro; holds final AMIGA!! screen as in reference capture"
 
 [demozoo.237351]
 title = "User Analysis System 1"

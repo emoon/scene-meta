@@ -391,8 +391,9 @@ source = "script"
 [demozoo.311015]
 title = "Lametro"
 group = "Fuck"
-source = "script"
+source = "ai"
 result = "unknown"
+note = "A500 with 1 MB chip and A1200 KS3.1 stay on the AmigaDOS console."
 
 [demozoo.336168]
 title = "Lametro"
@@ -1280,8 +1281,13 @@ source = "script"
 [demozoo.225117]
 title = "Let Me Be Your Fantasy"
 group = "Fantasys Software"
-source = "script"
-result = "unknown"
+source = "ai"
+machine = "a1200_060_ks31"
+boot = "floppy"
+events = [
+  { at = 14, key = "lmb2", pos = [36, 122] },
+  { at = 28, key = "lmb2", pos = [288, 191] },
+]
 
 [demozoo.233731]
 title = "Let the Base Kick"
@@ -1630,9 +1636,9 @@ source = "script"
 [demozoo.5118]
 title = "Lightshaft"
 group = "Elude"
-source = "script"
+source = "ai"
 result = "unknown"
-run = "eld-lightshaft.exe"
+note = "The red LOADING screen remains through 100s on a1200_030 and 60s on a1200_060_ks31."
 
 [demozoo.32898]
 title = "Lightwave Demo"
@@ -1842,8 +1848,9 @@ source = "script"
 [demozoo.312850]
 title = "Lissajou"
 group = "The Power Boys"
-source = "script"
+source = "ai"
 result = "unknown"
+note = "HD asks for a DOS disk in DF0. Kickstart 1.3 floppy shows task-held. Kickstart 1.2 floppy stays on the AmigaDOS console."
 
 [demozoo.250928]
 title = "List of 2005"
@@ -2856,9 +2863,11 @@ machine = "a1200"
 [demozoo.119665]
 title = "Love"
 group = "Virtual Dreams"
-source = "script"
-result = "unknown"
+source = "ai"
+machine = "a1200_030"
+boot = "hd"
 run = "love.exe"
+assign = { LOVE = "Demo:" }
 
 [demozoo.27272]
 title = "Love & Anarchy"

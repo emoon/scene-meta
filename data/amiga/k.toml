@@ -840,8 +840,8 @@ source = "script"
 [demozoo.249055]
 title = "Kirbys Lokeland"
 group = "Lemon."
-source = "script"
-result = "unknown"
+source = "ai"
+machine = "a1200"
 
 [demozoo.254506]
 title = "Kishone Ogoorki Intro"

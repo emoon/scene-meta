@@ -4737,8 +4737,9 @@ source = "script"
 [demozoo.215968]
 title = "Franz Fonts Disk"
 group = "Digitech / The Knight Hawks / Italian Bad Boys"
-source = "script"
+source = "ai"
 result = "unknown"
+note = "IBBintro reboots repeatedly on a500_ks12_512k. A1200 KS3.1 HD stays on a bare AmigaDOS window."
 
 [demozoo.215024]
 title = "Fraud 3 Intro"

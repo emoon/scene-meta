@@ -257,8 +257,9 @@ source = "script"
 [demozoo.45794]
 title = "Eclipse"
 group = "Madwizards"
-source = "script"
+source = "ai"
 result = "unknown"
+note = "Both 68060 ROMs freeze on a vortex at ~105s after PAL selection, with audio DMA active. Reference playback continues."
 
 [demozoo.258783]
 title = "Ecstasy"
@@ -1349,8 +1350,9 @@ source = "script"
 [demozoo.258638]
 title = "Equalogo"
 group = "Slipstream"
-source = "script"
+source = "ai"
 result = "unknown"
+note = "Colored raster stripes cover AmigaDOS, then a task-held requester appears. With 2 MB chip it appears at 50 s."
 
 [demozoo.169222]
 title = "Equalogo 2"

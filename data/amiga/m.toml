@@ -414,8 +414,9 @@ source = "script"
 [demozoo.253357]
 title = "Magical Zone 1 Menu"
 group = "Paradise"
-source = "script"
+source = "ai"
 result = "unknown"
+note = "A500 HD with 1 MB chip and Kickstart 1.2 floppy both stay on the AmigaDOS console."
 
 [demozoo.253365]
 title = "Magical Zone 20 Intro"
@@ -1445,8 +1446,9 @@ source = "script"
 [demozoo.263464]
 title = "McDisk 4 Spread Intro"
 group = "Tristar and Red Sector Inc."
-source = "script"
+source = "ai"
 result = "unknown"
+note = "A500 HD with 1 MB chip and Kickstart 1.2 floppy both stay on the AmigaDOS console."
 
 [demozoo.272371]
 title = "McDisk 5 Intro"
@@ -1874,10 +1876,9 @@ source = "script"
 [demozoo.153780]
 title = "Mega Demo"
 group = "Deathstar"
-source = "script"
+source = "ai"
 result = "unknown"
-disks = ["Deathstar-MegademoA.dms", "Deathstar-MegademoB.dms"]
-note = "the sweep saw works on a500; no entry of it passed the gate"
+note = "A500 reaches the magazine and animated artwork. Disk B inserted at 295 s was unread after Space."
 
 [demozoo.153783]
 title = "Mega Demo"
@@ -2050,10 +2051,9 @@ source = "script"
 [demozoo.263299]
 title = "Mega-Demo"
 group = "Treacl"
-source = "script"
+source = "ai"
 result = "unknown"
-disks = ["Treacl-MegademoA.dms", "Treacl-MegademoB.dms", "Treacl-MegademoC.dms"]
-note = "the sweep saw works on a500; no entry of it passed the gate"
+note = "Stock A500 plays disk A. Disk B in DF1 stays unread through 150 s. The disks have separate reset boot blocks."
 
 [demozoo.19014]
 title = "Mega-Demo Preview"
@@ -3290,8 +3290,9 @@ source = "script"
 [demozoo.20360]
 title = "Megademo IV 2"
 group = "Artwork"
-source = "script"
+source = "ai"
 result = "unknown"
+note = "Both 68060 ROMs reach the ARTWORKS MEGADEMO IV 2 title. Return and Space leave it on the title through 85s."
 
 [demozoo.116196]
 title = "Megademo IV: Devil's Key"
@@ -4258,8 +4259,9 @@ source = "script"
 [demozoo.232316]
 title = "Message Center 6 Intro"
 group = "Addonic"
-source = "script"
+source = "ai"
 result = "unknown"
+note = "Addonic-MessageCenter6Intro stays at CLI on a 512K HD boot and on a500_ks12_512k floppy."
 
 [demozoo.232319]
 title = "Message Center Editor II V1.1E Intro"
@@ -4827,9 +4829,10 @@ note = "the CPU halts at 35 s on a 68030 and a 68060, with Mime!_030.exe and Mim
 [demozoo.101067]
 title = "Mimosa House"
 group = "PSY-S"
-source = "script"
-result = "unknown"
-run = "Kyoko"
+source = "ai"
+machine = "a1200_030"
+boot = "hd"
+run = "---Mimosa.exe"
 
 [demozoo.223627]
 title = "Min Andra Demo"
@@ -4935,8 +4938,9 @@ source = "script"
 [demozoo.261947]
 title = "Mind Funk Preview"
 group = "The Electronic Knights"
-source = "script"
+source = "ai"
 result = "unknown"
+note = "A500 with 1 MB chip and A1200 KS3.1 stay on the AmigaDOS console."
 
 [demozoo.366040]
 title = "Mind Illusions"
@@ -5769,8 +5773,9 @@ source = "script"
 [demozoo.24871]
 title = "Moca"
 group = "Floppy"
-source = "script"
+source = "ai"
 result = "unknown"
+note = "FLP-MOCAP.EXE exits with return code -2 on a1200_060_ks31."
 
 [demozoo.241747]
 title = "Modeler Converter"

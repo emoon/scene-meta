@@ -1095,8 +1095,9 @@ source = "script"
 [demozoo.235191]
 title = "Party Demodisk"
 group = "The Arcadia Team"
-source = "script"
+source = "ai"
 result = "unknown"
+note = "A1200/060 KS3.1 HD opens S2 Gametro. The production folder lacks the other disk-pack members."
 
 [demozoo.218176]
 title = "Party Dentro"
@@ -1759,9 +1760,8 @@ source = "script"
 [demozoo.127517]
 title = "Paskahor"
 group = "Joga"
-source = "script"
-machine = "a500_512k"
-events = [{ at = 30.0, key = "lmb" }]
+source = "ai"
+note = "runs COLOR00 raster effect without click; LMB exits into greeting text and crashes"
 
 [demozoo.217286]
 title = "Paskalla"
@@ -1793,8 +1793,13 @@ run = "Passengers"
 [demozoo.89972]
 title = "Passengers 2 - The Tale of Sir Henry"
 group = "3 Little Elks"
-source = "script"
-result = "unknown"
+source = "ai"
+machine = "a1200_030"
+boot = "hd"
+run = "3LE-TheTale.exe"
+events = [
+  { at = 15, key = "lmb", pos = [290, 295] },
+]
 
 [demozoo.168675]
 title = "Passionate"
@@ -2918,9 +2923,10 @@ source = "script"
 [demozoo.141618]
 title = "Plane Zero"
 group = "Vector"
-source = "script"
-result = "unknown"
-run = "vtr-plz.001"
+source = "ai"
+machine = "a1200_030"
+boot = "hd"
+run = "vtr-plz.exe"
 
 [demozoo.239714]
 title = "Planet 1 Intro"
@@ -4155,8 +4161,9 @@ machine = "a1200"
 [demozoo.235098]
 title = "Precious Metal Preview"
 group = "Arise"
-source = "script"
-result = "unknown"
+source = "ai"
+machine = "a1200_060_ks31"
+boot = "hd"
 
 [demozoo.242816]
 title = "Precious Stones 1 Intro"
@@ -4704,8 +4711,9 @@ source = "script"
 [demozoo.19444]
 title = "Project N"
 group = "Nuance"
-source = "script"
+source = "ai"
 result = "unknown"
+note = "Returns to a blank DOS prompt on a1200, a1200_030 and a1200_060_ks31."
 
 [demozoo.262422]
 title = "Project T"
@@ -4722,10 +4730,9 @@ machine = "a1200"
 [demozoo.393412]
 title = "Project W"
 group = "The Planet of Leather Moomins"
-source = "script"
-boot = "floppy"
+source = "ai"
 result = "unknown"
-note = "the sweep saw works-then-crash on a1200_030; no entry of it passed the gate"
+note = "Both 68060 HD boots stay at CLI. a1200_060 floppy boot gives #8000000b at ~10s."
 
 [demozoo.45604]
 title = "Project42"
@@ -5008,8 +5015,9 @@ run = "2"
 [demozoo.232798]
 title = "Psychedelic Dreams"
 group = "Titanics"
-source = "script"
+source = "ai"
 result = "unknown"
+note = "a500_1mb_chip HD stays at CLI after left click and Space. a500_ks12_512k floppy stays at AmigaDOS."
 
 [demozoo.166444]
 title = "Psychedelic Invation"

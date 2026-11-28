@@ -390,9 +390,9 @@ machine = "a1200_fast"
 [demozoo.237537]
 title = "Garbage Faktory"
 group = "Contraz"
-source = "script"
-result = "unknown"
-note = "the sweep saw works on a1200_060; no entry of it passed the gate"
+source = "ai"
+result = "crashes-later"
+note = "Crashes at ~100s on a1200_060 (#80000004) and a1200_060_ks31 (#80000006)."
 
 [demozoo.217183]
 title = "Garden Party Intro"
@@ -964,8 +964,9 @@ source = "script"
 [demozoo.7537]
 title = "Gimme Alcohol"
 group = "Bonzai Bros."
-source = "script"
-result = "unknown"
+source = "ai"
+result = "broken"
+note = "Two four-byte words in the NAS executable are zeroed versus both original party copies. a1200_030 reports #80000004."
 
 [demozoo.2738]
 title = "Gin And Tronic"
@@ -1206,8 +1207,12 @@ source = "script"
 [demozoo.139084]
 title = "Glory Stars II Paramount's Revenge"
 group = "Scoopex"
-source = "script"
-result = "unknown"
+source = "ai"
+machine = "a500_1mb_chip"
+events = [
+  { at = 40, key = "1" },
+  { at = 50, key = "return" },
+]
 
 [demozoo.46066]
 title = "Glory To AMOS Pro"
@@ -1902,8 +1907,9 @@ source = "script"
 [demozoo.247684]
 title = "Great Import as Usual"
 group = "Katharsis"
-source = "script"
-result = "unknown"
+source = "ai"
+result = "broken"
+note = "The floppy asks to reinstall the original system-configuration and reboot. The mirror supplies only the executable."
 
 [demozoo.361]
 title = "Great Intro"

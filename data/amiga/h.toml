@@ -378,9 +378,9 @@ source = "script"
 [demozoo.215903]
 title = "Handshake Slideshow v1.0 Intro"
 group = "Goonies 2041"
-source = "script"
+source = "ai"
 result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+note = "HD briefly changes CLI colors on a500. Generated floppy on a500_1mb stays at the blue AmigaDOS screen."
 
 [demozoo.225981]
 title = "Hang Em High"
@@ -1597,9 +1597,9 @@ source = "script"
 [demozoo.84409]
 title = "Hello World"
 group = "Pure Nooobz"
-source = "script"
+source = "ai"
 result = "unknown"
-run = "Karate"
+note = "Launcher reports missing mpega.library and Karate: Unknown command because Karate is outside the mounted directory."
 
 [demozoo.294589]
 title = "Hello World, again..."
@@ -2235,15 +2235,16 @@ source = "script"
 [demozoo.254605]
 title = "Hip-Hop Pack 10 Intro"
 group = "Prologic"
-source = "script"
+source = "ai"
 result = "unknown"
+note = "A500 HD briefly changes the CLI palette. The Kickstart 1.2 floppy stays on the AmigaDOS console."
 
 [demozoo.254606]
 title = "Hip-Hop Pack 13 Intro"
 group = "Prologic"
-source = "script"
+source = "ai"
 result = "unknown"
-run = "Intro.main"
+note = "Archive CRC passes. Intro.load stays black on HD. Both launchers remain at AmigaDOS on Kickstart 1.2 floppy."
 
 [demozoo.5913]
 title = "Hiplash"

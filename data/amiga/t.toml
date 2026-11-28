@@ -1167,8 +1167,9 @@ source = "script"
 [demozoo.220863]
 title = "The -Under New Management- BBS Intro"
 group = "Alliance"
-source = "script"
+source = "ai"
 result = "unknown"
+note = "a500_2mb_chip stays at CLI after left click and Space. A1200 KS3.1 HD stays on a bare AmigaDOS window."
 
 [demozoo.390098]
 title = "The 1990 Demo"
@@ -2780,10 +2781,14 @@ source = "script"
 [demozoo.172671]
 title = "The Intruder"
 group = "Syntex"
-source = "script"
-result = "unknown"
+source = "ai"
+boot = "floppy"
 disks = ["Syntex-TheIntruderA.dms", "Syntex-TheIntruderB.dms"]
-note = "the sweep saw works on a500; no entry of it passed the gate"
+events = [
+  { at = 60, key = "lmb" },
+  { at = 480, disk = 2 },
+  { at = 485, key = "lmb" },
+]
 
 [demozoo.245242]
 title = "The Jam"
@@ -3170,9 +3175,9 @@ source = "script"
 [demozoo.292543]
 title = "The Martini Effect"
 group = "FLEX"
-source = "script"
+source = "ai"
 result = "unknown"
-note = "the sweep saw works on a1200_060; no entry of it passed the gate"
+note = "On both KS3.0 and KS3.1 68060 presets, completes loading and stays black through 300s."
 
 [demozoo.241357]
 title = "The Marvellous Ture Sventon Demo"
@@ -4436,9 +4441,9 @@ source = "script"
 [demozoo.258219]
 title = "The Tower BBS"
 group = "Skid Row"
-source = "script"
+source = "ai"
 result = "unknown"
-note = "the sweep saw works on a500; no entry of it passed the gate"
+note = "Kickstart 1.2 floppy shows the title and credits on seed 1. Seed 2 stays at AmigaDOS. Kickstart 1.3 floppy stalls on both."
 
 [demozoo.261851]
 title = "The Trader 2 Intro"
@@ -4627,8 +4632,9 @@ source = "script"
 [demozoo.231987]
 title = "The Very First"
 group = "Academy"
-source = "script"
+source = "ai"
 result = "unknown"
+note = "Original floppy requests write access to Academy. a500_ks12 HD run=1st.bat flashes green at the CLI, then stays blue."
 
 [demozoo.142597]
 title = "The Virus Exterminator Disk V3.0"
@@ -7320,8 +7326,14 @@ source = "script"
 [demozoo.262309]
 title = "Trondheim Party Demo"
 group = "The Giants"
-source = "script"
-result = "unknown"
+source = "ai"
+machine = "a500_ks12_512k"
+boot = "floppy"
+events = [
+  { at = 15, key = "f4" },
+  { at = 25, key = "space" },
+  { at = 52, key = "lmb" },
+]
 
 [demozoo.151283]
 title = "Tronic"
@@ -7902,9 +7914,10 @@ source = "script"
 [demozoo.8968]
 title = "Twin Peaks"
 group = "Tristar and Red Sector Inc."
-source = "script"
-result = "unknown"
-run = "bumpmapping.exe"
+source = "ai"
+machine = "a1200_030"
+boot = "hd"
+run = "Tp.exe"
 
 [demozoo.262959]
 title = "Twin Peaks Vol. 4 Intro"

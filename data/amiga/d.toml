@@ -774,8 +774,9 @@ events = [{ at = 247.0, disk = 2 }]
 [demozoo.372606]
 title = "Dead Ahead"
 group = "Ephidrena / FLEX"
-source = "script"
+source = "ai"
 result = "unknown"
+note = "Reports missing data/intro.txt and stops at Loading 39.7% on a1200_060_ks31."
 
 [demozoo.208970]
 title = "Dead Bang"
@@ -1656,8 +1657,9 @@ source = "script"
 [demozoo.222990]
 title = "Demo"
 group = "Taurus 1"
-source = "script"
+source = "ai"
 result = "unknown"
+note = "Taurus1-Demo returns to CLI with code 3248 on a500_ks12, a500_2mb_chip and A1200 KS3.1."
 
 [demozoo.223247]
 title = "Demo"
@@ -1949,8 +1951,9 @@ source = "script"
 [demozoo.215552]
 title = "Demo 7"
 group = "Tec"
-source = "script"
+source = "ai"
 result = "unknown"
+note = "Mirrored TEC-Demo7 fails to launch. Separately linked TEC-Demo7p plays on A500 floppy and is absent from the production folder."
 
 [demozoo.1902]
 title = "Demo 90"
@@ -4950,8 +4953,9 @@ machine = "a1200"
 [demozoo.202824]
 title = "Driftwood"
 group = "Almagest"
-source = "script"
+source = "ai"
 result = "unknown"
+note = "a1200_060_ks31 exits at ASSERTION common.c 1828. The no-FPU a1200_ks31 shows Software Failure #8000000b."
 
 [demozoo.96488]
 title = "Driidirijia"
@@ -5306,8 +5310,9 @@ source = "script"
 [demozoo.242772]
 title = "Dynamite Fonts 3 Intro"
 group = "End of Century 1999"
-source = "script"
+source = "ai"
 result = "unknown"
+note = "The 1 MB memory warning persists on a500 HD, 1 MB and 2 MB chip, and A1200 fast RAM."
 
 [demozoo.246680]
 title = "Dynasty Wars Trainer - Spreading Intro"

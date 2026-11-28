@@ -428,8 +428,13 @@ source = "script"
 [demozoo.29830]
 title = "Sancho Panza Con..."
 group = "Asimmoff"
-source = "script"
-result = "unknown"
+source = "ai"
+machine = "a1200_ks31"
+boot = "hd"
+events = [
+  { at = 40, key = "lmb" },
+]
+note = "renders silent corridor still; left click at 40s exits cleanly to AmigaDOS"
 
 [demozoo.265565]
 title = "Sandwich 31 Intro"
@@ -500,9 +505,9 @@ machine = "a500_ks12"
 [demozoo.80314]
 title = "SAP2k4slide"
 group = "ArtWay"
-source = "script"
+source = "ai"
 result = "unknown"
-run = "Engine"
+note = "Bundled sap2k4slide launcher holds on the ARTWAY loading bar on both 68060 ROMs, through 85s on KS3.0."
 
 [demozoo.252374]
 title = "Sarcophaser Music"
@@ -2832,8 +2837,9 @@ source = "script"
 
 [demozoo.353]
 title = "Simcity BBS Intro"
-source = "script"
+source = "ai"
 result = "unknown"
+note = "a500_2mb_chip stays at CLI after left click and Space. A1200 KS3.1 HD stays on a bare AmigaDOS window."
 
 [demozoo.277874]
 title = "Simmerl - Slayers Intro"
@@ -4486,10 +4492,10 @@ run = "dxp4kAGA"
 [demozoo.252283]
 title = "Smells Like Peanuts"
 group = "Noxious"
-source = "script"
-result = "unknown"
-disks = ["Noxious-SmellsLikePeanutsA.adf", "Noxious-SmellsLikePeanutsB.adf", "Noxious-SmellsLikePeanutsC.adf", "Noxious-SmellsLikePeanutsD.adf", "Noxious-SmellsLikePeanutsE.adf", "Noxious-SmellsLikePeanutsF.adf"]
-note = "the sweep saw works on a500; no entry of it passed the gate"
+source = "ai"
+boot = "hd"
+run = "Peanuts.HD"
+assign = { Peanuts = "Demo:" }
 
 [demozoo.257078]
 title = "Smile Or Die"
@@ -7297,9 +7303,9 @@ source = "script"
 [demozoo.158533]
 title = "Star Truk Cow do you really think you are"
 group = "PureLamers"
-source = "script"
+source = "ai"
 result = "unknown"
-run = "Karate"
+note = "Both StarTruk launchers go black after screen selection. The main launcher stays black through 70s in PAL Low Res."
 
 [demozoo.377258]
 title = "Star War Intro"

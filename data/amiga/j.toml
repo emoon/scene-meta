@@ -191,8 +191,9 @@ source = "script"
 [demozoo.18194]
 title = "Japani"
 group = "Kanisteri"
-source = "script"
-result = "unknown"
+source = "ai"
+result = "broken"
+note = "Incomplete mirror. japani.exe returns code 20 and the four AMOS data banks from the original archive are missing."
 
 [demozoo.196958]
 title = "Japanische Loecher Intro"
@@ -1002,8 +1003,9 @@ machine = "a1200"
 [demozoo.265608]
 title = "Juletro 1994"
 group = "Vanity"
-source = "script"
+source = "ai"
 result = "unknown"
+note = "A1200 KS3.1 asks for a December day (01–24) at the CLI. The player has no numeric key events."
 
 [demozoo.216664]
 title = "Julpiltens Stora Och Lilla Scroll"
@@ -1145,8 +1147,9 @@ machine = "a500_1mb"
 [demozoo.250132]
 title = "Jurassic Love - Jurassic Pack 8 Intro"
 group = "Mankind"
-source = "script"
-result = "unknown"
+source = "ai"
+result = "broken"
+note = "Incomplete standalone mirror. The original pack launcher needs stoldata/s and companion assets from Jurassic Pack 8."
 
 [demozoo.264383]
 title = "Jurassic Pack 14 Intro"
@@ -1201,8 +1204,10 @@ source = "script"
 [demozoo.128085]
 title = "Just A Dream"
 group = "Blitz"
-source = "script"
-result = "unknown"
+source = "ai"
+machine = "a500_1mb"
+boot = "floppy"
+run = "19"
 
 [demozoo.248668]
 title = "Just a Fast Intro"

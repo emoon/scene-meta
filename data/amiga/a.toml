@@ -2136,8 +2136,10 @@ source = "script"
 [demozoo.249260]
 title = "Aflyseren"
 group = "Loonies"
-source = "script"
-result = "unknown"
+source = "ai"
+machine = "a1200_030"
+boot = "hd"
+note = "short silent intro; reaches and holds closing Livitas credits"
 
 [demozoo.233199]
 title = "After 11 Month's"
@@ -2319,9 +2321,9 @@ source = "script"
 [demozoo.56214]
 title = "Agitation!"
 group = "Team PowerAmiga"
-source = "script"
-result = "unknown"
-note = "the sweep saw works-then-crash on a1200_060; no entry of it passed the gate"
+source = "ai"
+result = "crashes-later"
+note = "Requires AHI and mpega.library. Plays silently and halts at ~232s on both 68060 presets."
 
 [demozoo.223605]
 title = "Agony"
@@ -6099,8 +6101,9 @@ machine = "a1200"
 [demozoo.242751]
 title = "Aphex"
 group = "End of Century 1999"
-source = "script"
+source = "ai"
 result = "unknown"
+note = "A500 HD and generated floppy print the Aphex release banner and return to CLI. A1200_fast does the same."
 
 [demozoo.216]
 title = "Aphrodisiae"
@@ -6350,8 +6353,17 @@ machine = "a1200_fast"
 [demozoo.300622]
 title = "Around The Clock"
 group = "Avatars"
-source = "script"
-result = "unknown"
+source = "ai"
+events = [
+  { at = 30, key = "f2" },
+  { at = 40, key = "f3" },
+  { at = 50, key = "f1" },
+  { at = 55, key = "down" },
+  { at = 60, key = "space" },
+  { at = 65, key = "return" },
+  { at = 70, key = "esc" },
+  { at = 75, key = "f4" },
+]
 
 [demozoo.157429]
 title = "Around the World"

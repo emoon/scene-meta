@@ -1246,8 +1246,9 @@ source = "script"
 [demozoo.155226]
 title = "Chip Tuner"
 group = "Unity"
-source = "script"
+source = "ai"
 result = "unknown"
+note = "A1200/060 KS3.0 and KS3.1 show the Lazarus loader, then solid gray and white. A1200/030 stays gray."
 
 [demozoo.254147]
 title = "Chip's 18th Birthday"
@@ -2210,8 +2211,9 @@ source = "script"
 [demozoo.211377]
 title = "Collection 12 Intro"
 group = "Rigor Mortis"
-source = "script"
+source = "ai"
 result = "unknown"
+note = "a500 HD asks for a DOS disk in DF0. Generated floppies return to CLI on a500 and A1200 KS3.1."
 
 [demozoo.255746]
 title = "Collection 15 Intro"
@@ -2226,8 +2228,9 @@ source = "script"
 [demozoo.211379]
 title = "Collection 30 Intro"
 group = "Rigor Mortis"
-source = "script"
+source = "ai"
 result = "unknown"
+note = "a500 HD asks for a DOS disk in DF0. The generated floppy stays blue on a500 and returns to CLI on A1200 KS3.1."
 
 [demozoo.10242]
 title = "Colmix"
@@ -2537,9 +2540,9 @@ source = "script"
 [demozoo.254578]
 title = "Commodore Show Intro"
 group = "Prophecy"
-source = "script"
+source = "ai"
 result = "unknown"
-note = "the sweep saw works on a500_ks12_512k; no entry of it passed the gate"
+note = "Kickstart 1.2 HD shows a task-held requester with or without slow RAM. The floppy fallback stays blue."
 
 [demozoo.296986]
 title = "Comp 4 Intro"
@@ -4186,8 +4189,9 @@ boot = "floppy"
 [demozoo.252140]
 title = "Copy Party in Fredius Home '94"
 group = "Nivel 7"
-source = "script"
+source = "ai"
 result = "unknown"
+note = "512K reports LoadSeg error 108. A500 with 2 MB chip gives Guru 8000000B. A1200/030 gives Software Failure 8000000E."
 
 [demozoo.215020]
 title = "Copy Party Invitation"
@@ -5433,10 +5437,9 @@ source = "script"
 [demozoo.263553]
 title = "Cubic Dream"
 group = "Tristar and Red Sector Inc."
-source = "script"
-result = "unknown"
-disks = ["TRSI-CubicDream-A.DMS", "TRSI-CubicDream-B.DMS"]
-note = "the sweep saw works-then-crash on a1200; no entry of it passed the gate"
+source = "ai"
+result = "crashes-later"
+note = "Both stock A1200 and a1200_030 reach the dragon crest, then raise #8000000a by ~45s."
 
 [demozoo.277033]
 title = "Cubic Meditation"
