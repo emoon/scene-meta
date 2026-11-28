@@ -22,8 +22,22 @@ def load_cells(path):
     """The screen-cell hashes of a trace: array [frame, cell]."""
     with open(path) as f:
         r = csv.reader(f)
-        at = next(r).index("v0")
-        return np.array([[int(x, 16) for x in row[at:]] for row in r], dtype=np.uint64)
+        head = next(r, None)
+        if not head or "v0" not in head:
+            return np.empty((0, 0), dtype=np.uint64)
+        at = head.index("v0")
+        ncols = len(head) - at
+        out = []
+        for row in r:
+            if len(row) != len(head):
+                continue
+            try:
+                out.append([int(x, 16) for x in row[at:]])
+            except ValueError:
+                continue
+        if not out:
+            return np.empty((0, ncols), dtype=np.uint64)
+        return np.array(out, dtype=np.uint64)
 
 
 def candidates(a, changes, end):

@@ -19,6 +19,7 @@ import threading
 import time
 
 from ...core import gatelog, result
+from ...core.errors import CannotPlay
 from ...core.export import default_machine
 from .. import alertshot, area as areas, config, emulator, media, player, replay
 from . import analyze, notes
@@ -265,10 +266,15 @@ def run(db, ids=None, data=None, jobs=None, frames=DEFAULT_FRAMES,
 
     def _one(prod, entry):
         t0 = time.time()
-        v = detect(prod, entry, default, out_dir=out, frames=frames,
-                   patient=patient, area=area)
-        sha256 = media.download_sha256(prod) if (area and v.get("area")) else None
-        return v, sha256, time.time() - t0
+        try:
+            v = detect(prod, entry, default, out_dir=out, frames=frames,
+                       patient=patient, area=area)
+            sha256 = media.download_sha256(prod) if (area and v.get("area")) else None
+            return v, sha256, time.time() - t0
+        except CannotPlay:
+            raise
+        except Exception as e:
+            raise CannotPlay(f"{type(e).__name__}: {e}") from e
 
     errors = 0
     for prod, ok, got in player.each_played(todo, _one, jobs):

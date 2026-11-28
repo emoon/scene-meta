@@ -558,6 +558,21 @@ class PlayEachTest(unittest.TestCase):
                 player.play_each([(1, {"title": "a"})], one, 1)
         one.assert_not_called()
 
+    def test_unhandled_exception_does_not_run_remaining_queue(self):
+        ran = []
+
+        def one(prod, entry):
+            ran.append(prod)
+            if prod == 1:
+                raise ValueError("boom")
+            return f"{prod} fine"
+
+        todo = [(i, {"title": f"d{i}"}) for i in range(1, 20)]
+        with mock.patch.object(player.media, "require_mirror"):
+            with self.assertRaisesRegex(ValueError, "boom"):
+                list(player.each_played(todo, one, 1))
+        self.assertEqual(ran, [1])
+
 
 if __name__ == "__main__":
     unittest.main()

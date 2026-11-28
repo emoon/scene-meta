@@ -20,29 +20,44 @@ FPS = 50
 
 def load(path):
     """``(rows, cells)``: the per-frame signals, and the screen-cell hashes
-    as an array [frame, cell]."""
-    rows = []
+    as an array [frame, cell]. Skips any truncated/corrupt trailing row so
+    ``len(rows) == len(cells)`` even when the emulator died mid-write."""
+    rows, cells = [], []
     with open(path) as f:
         r = csv.reader(f)
         # (traces recorded before the alert/newram/solid/bplcon0/cop1lc columns have none)
-        head = next(r)
+        head = next(r, None)
+        if not head or "v0" not in head:
+            return [], np.empty((0, 0), dtype=np.uint64)
+        expected = len(head)
+        v0 = head.index("v0")
+        ncols = expected - v0
         alert = head.index("alert") if "alert" in head else None
         newram = head.index("newram") if "newram" in head else None
         solid = head.index("solid") if "solid" in head else None
         bplcon0 = head.index("bplcon0") if "bplcon0" in head else None
         cop1lc = head.index("cop1lc") if "cop1lc" in head else None
         for x in r:
-            rows.append(dict(
-                frame=int(x[0]), dmacon=int(x[1], 16), aw=x[2], awrites=int(x[3]),
-                aenergy=int(x[4]), apeak=int(x[5]), newpc=int(x[7]),
-                instr=int(x[8]), rom=int(x[9]), lastdma=int(x[10]),
-                resets=int(x[11]), chan=x[13],
-                alert=int(x[alert], 16) if alert is not None else 0,
-                newram=int(x[newram]) if newram is not None else None,
-                solid=int(x[solid]) if solid is not None else None,
-                bplcon0=int(x[bplcon0], 16) if bplcon0 is not None else None,
-                cop1lc=int(x[cop1lc], 16) if cop1lc is not None else None))
-    return rows, load_cells(path)
+            if len(x) != expected:
+                continue
+            try:
+                row = dict(
+                    frame=int(x[0]), dmacon=int(x[1], 16), aw=x[2], awrites=int(x[3]),
+                    aenergy=int(x[4]), apeak=int(x[5]), newpc=int(x[7]),
+                    instr=int(x[8]), rom=int(x[9]), lastdma=int(x[10]),
+                    resets=int(x[11]), chan=x[13],
+                    alert=int(x[alert], 16) if alert is not None else 0,
+                    newram=int(x[newram]) if newram is not None else None,
+                    solid=int(x[solid]) if solid is not None else None,
+                    bplcon0=int(x[bplcon0], 16) if bplcon0 is not None else None,
+                    cop1lc=int(x[cop1lc], 16) if cop1lc is not None else None)
+                c = [int(h, 16) for h in x[v0:]]
+            except ValueError:
+                continue
+            rows.append(row)
+            cells.append(c)
+    arr = np.array(cells, dtype=np.uint64) if cells else np.empty((0, ncols), dtype=np.uint64)
+    return rows, arr
 
 
 def lags(keys, min_lag=1):

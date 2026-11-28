@@ -643,6 +643,29 @@ class TestAnalyze(unittest.TestCase):
         self.assertEqual(vp2, 7200)
         self.assertGreaterEqual(vshown2, 31000)
 
+    def test_load_skips_truncated_trailing_trace_row(self):
+        with tempfile.TemporaryDirectory() as td:
+            p = pathlib.Path(td) / "trace.csv"
+            p.write_text(
+                "frame,dmacon,aw,awrites,aenergy,apeak,vhash,newpc,instr,rom,"
+                "lastdma,resets,chan_raw,chan,alert,newram,solid,bplcon0,cop1lc,"
+                "v0,v1,v2,v3\n"
+                "2,820f,0,0,0,0,0,10,1000,0,-1,0,0,SSSS,0,1,0,4200,10000,a,b,c,d\n"
+                "3,820f,0,0,0,0,0,0,1000,0,-1,0,0,SSSS,0,0,0,4200,10000,1,2,3,4\n"
+                "4,820f,0,0,0,0,0,0,1000,0,-1,0,0,SSSS,0,0,0,4200,10000,1,2\n"
+            )
+            rows, cells = analyze.load(str(p))
+            self.assertEqual(len(rows), 2)
+            self.assertEqual(cells.shape, (2, 4))
+            self.assertEqual(video.load_cells(str(p)).shape, (2, 4))
+            # Empty / header-only trace does not raise
+            empty = pathlib.Path(td) / "empty.csv"
+            empty.write_text("frame,v0,v1\n")
+            erows, ecells = analyze.load(str(empty))
+            self.assertEqual(erows, [])
+            self.assertEqual(ecells.shape, (0, 2))
+            self.assertEqual(video.load_cells(str(empty)).shape, (0, 2))
+
 
 if __name__ == "__main__":
     unittest.main()
