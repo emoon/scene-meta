@@ -14,6 +14,7 @@ import itertools
 import os
 import pathlib
 import re
+import shlex
 import shutil
 import struct
 import subprocess
@@ -205,9 +206,9 @@ def unpack(archive, dest):
                                check=True, capture_output=True, timeout=120)
     except Exception as e:  # noqa: BLE001 - reported per archive
         return f"unpack-error:{type(e).__name__}"
+    _make_owner_rwx(dest)
     _latin1_names_to_utf8(dest)
     _fold_case_dirs(dest)
-    _make_owner_rwx(dest)
     return None
 
 
@@ -219,17 +220,34 @@ def _fold_case_dirs(top):
         by_low = {}
         merged = set()
         for d in sorted(dirs):
-            low = d.lower()
+            low = d.casefold()
             if low in by_low:
                 src = root_p / d
                 dst = root_p / by_low[low]
-                shutil.copytree(src, dst, dirs_exist_ok=True)
+                _overlay_tree(src, dst)
                 _rmtree(src)
                 merged.add(d)
             else:
                 by_low[low] = d
         if merged:
             dirs[:] = [d for d in dirs if d not in merged]
+
+
+def _overlay_tree(src, dest):
+    """Copy another part into an Amiga tree using the first spelling
+    of each path and the latest part's content."""
+    by_name = {}
+    for path in sorted(dest.iterdir()):
+        by_name.setdefault(path.name.casefold(), path)
+    for path in sorted(src.iterdir()):
+        dest_path = by_name.setdefault(path.name.casefold(), dest / path.name)
+        if path.is_dir():
+            dest_path.mkdir(exist_ok=True)
+            _overlay_tree(path, dest_path)
+        else:
+            if dest_path.is_dir():
+                raise IsADirectoryError(dest_path)
+            shutil.copy2(path, dest_path)
 
 
 def _merge_disk_dirs(top):
@@ -258,9 +276,11 @@ def unpack_into(archive, dest):
     if part.exists():
         _rmtree(part)
     err = unpack(archive, part)
-    if err is None:
-        shutil.copytree(part, dest, dirs_exist_ok=True)
-    _rmtree(part)
+    try:
+        if err is None:
+            _overlay_tree(part, dest)
+    finally:
+        _rmtree(part)
     return err
 
 
@@ -330,6 +350,7 @@ class _Found:
                 self.problems.append(f"{a.name}: {err}")
                 return
         _merge_disk_dirs(out)
+        _apply_local_joins(out)
         self.trees.append(out)
         nested_archives = []
         for f in sorted(_walk_files(out)):
@@ -391,12 +412,13 @@ def _seen_before(shas, seen):
     return shas in seen or (len(shas) == 1 and any(shas[0] in s for s in seen))
 
 
-def _disk_variants(disks, prod_id, work, run=None, title=""):
+def _disk_variants(disks, prod_id, work, run=None, title="", disk_order=()):
     """A floppy variant for each disk set among ``disks``."""
     # Group by name first, then drop byte-identical repeats: the same disk is
     # often mirrored under two names (Oxygene-ControlA = control1), and only
     # one of them may belong to a complete set.
     out, seen = [], set()
+    requested = sorted(disk_order)
     for group in diskset.group(list(disks)):
         shas = tuple(disks[n][0] for n in group)
         if _seen_before(shas, seen):
@@ -406,6 +428,8 @@ def _disk_variants(disks, prod_id, work, run=None, title=""):
         joined = _join_dms_parts(paths, work)
         if joined:
             paths = [joined]
+        elif requested == sorted(group):
+            paths = [str(disks[n][1]) for n in disk_order]
         out.append(flag_ffs(launch_variant(paths, prod_id, only_unbootable=True,
                                            run=run, title=title)
                             or Variant("floppy", paths), work))
@@ -461,11 +485,12 @@ def _bootblock_variant(trees, work):
     return None
 
 
-def variants(prod_id, title="", run=None):
+def variants(prod_id, title="", run=None, *, disk_order=()):
     """``(variants, problems)`` for one production. Problems are short
     reason strings for files that produced nothing. ``title`` picks the
     executable named after the production in an unpacked archive; ``run``
-    is the file an entry says to start, which goes before any pick."""
+    is the file an entry says to start, which goes before any pick.
+    ``disk_order`` can reorder an entire identified floppy set."""
     src = config.prod_dir(prod_id)
     if not src.is_dir():
         return [], ["no-files-on-nas"]
@@ -474,10 +499,13 @@ def variants(prod_id, title="", run=None):
     for f, parts in _release_files(src):
         found.take(f, 0, parts)
 
-    out = _disk_variants(found.disks, prod_id, work, run, title=title)
+    out = _disk_variants(found.disks, prod_id, work, run, title, disk_order)
     seen_hd = set()
+    companion = None
     for t in found.trees:
         v = _tree_variant(t, title, run)
+        if len(found.trees) == 1 and not found.disks:
+            companion = pathlib.Path(v.root) if v is not None else t
         if v is None:
             continue
         fp = _hd_dedup_key(v)
@@ -485,7 +513,7 @@ def variants(prod_id, title="", run=None):
             continue
         seen_hd.add(fp)
         out.append(v)
-    out += [_exe_variant(exe, work) for exe in found.exes]
+    out += [_exe_variant(exe, work, companion) for exe in found.exes]
     if not out and found.trees:
         bb = _bootblock_variant(found.trees, work)
         if bb is not None:
@@ -573,12 +601,17 @@ def _tree_variant(tree, title="", run=None):
                    note=note, run=exe.name, choice=bool(note))
 
 
-def _is_script(path):
-    """Is ``path`` a small text file, as an AmigaDOS script is?"""
+def _script_text(path):
+    """Text of a small script or document, or None for other files."""
     if path.stat().st_size > 16384:
-        return False
+        return None
     data = path.read_bytes()
-    return bool(data) and data[:4] != HUNK_MAGIC and b"\0" not in data
+    if data and b"\0" not in data:
+        return data.decode("latin-1")
+
+
+def _is_script(path):
+    return _script_text(path) is not None
 
 
 def _named_script(tree, run):
@@ -699,9 +732,17 @@ def _rel(path, tree):
     return "/".join(path.relative_to(tree).parts)
 
 
-def _exe_variant(exe, work):
+def _exe_variant(exe, work, companion=None):
+    """Place a standalone launcher beside the files of an unambiguous
+    companion archive, when that directory has no same-named entry."""
     root = work / "exe" / exe.name
-    root.mkdir(parents=True, exist_ok=True)
+    if root.exists():
+        _rmtree(root)
+    if companion is not None and not any(
+            p.name.casefold() == exe.name.casefold() for p in companion.iterdir()):
+        shutil.copytree(companion, root)
+    else:
+        root.mkdir(parents=True)
     shutil.copyfile(exe, root / exe.name)
     return Variant("hd", [], root=str(root), command=f'"{exe.name}"\n',
                    run=exe.name)
@@ -834,6 +875,77 @@ def _unpack_disk(adf, box):
         except (OSError, subprocess.SubprocessError):
             dst.unlink(missing_ok=True)
     return tree if extracted else None
+
+
+_JOIN_LINE = re.compile(r"^join\s+(?:>\s*nil:\s+)?(.+)$", re.I)
+_JOIN_NAME = re.compile(r'[^/:\\*#?()\[\]|~%<>"$]+')
+
+
+def _join_arguments(line):
+    """Literal local operands of an AmigaDOS Join line, in source order
+    with the destination last. Also accept a quoted readme example."""
+    line = line.strip()
+    if line.startswith('"') and line.endswith('"'):
+        line = line[1:-1]
+    match = _JOIN_LINE.fullmatch(line)
+    if not match:
+        return ()
+    lexer = shlex.shlex(match[1], posix=True)
+    lexer.whitespace_split = True
+    lexer.quotes = '"'
+    lexer.escape = ""
+    lexer.commenters = ";"
+    try:
+        args = list(lexer)
+    except ValueError:
+        return ()
+    if len(args) < 4 or args[-2].lower() not in ("to", "as"):
+        return ()
+    names = args[:-2] + args[-1:]
+    if any(n in (".", "..") or not _JOIN_NAME.fullmatch(n) for n in names):
+        return ()
+    return names
+
+
+def _apply_local_joins(tree):
+    """Recreate the literal Join operations described by archive installers
+    and readmes. Read operands in the same directory and keep the originals."""
+    for directory, dirs, files in os.walk(tree):
+        if len(files) < 2:
+            continue
+        root = pathlib.Path(directory)
+        by_name = {}
+        for name in dirs + files:
+            key = name.casefold()
+            by_name[key] = None if key in by_name else root / name
+        for *names, output in _join_commands(root, files):
+            key = output.casefold()
+            if key in by_name:
+                continue
+            sources = [by_name.get(n.casefold()) for n in names]
+            if any(p is None or p.is_symlink() or not p.is_file() for p in sources):
+                continue
+            target = root / output
+            stream = target.open("xb")
+            try:
+                with stream:
+                    for source in sources:
+                        with source.open("rb") as part:
+                            shutil.copyfileobj(part, stream)
+            except OSError:
+                target.unlink()
+                raise
+            by_name[key] = target
+
+
+def _join_commands(root, files):
+    for name in sorted(files):
+        script = root / name
+        if script.is_symlink() or not script.is_file():
+            continue
+        for line in (_script_text(script) or "").splitlines():
+            if args := _join_arguments(line):
+                yield args
 
 
 # x.001, x.lzx.002, EM.1, M.data2

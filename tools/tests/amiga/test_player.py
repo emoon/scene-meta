@@ -181,7 +181,7 @@ class VariantOfTest(unittest.TestCase):
                      lambda f=f: self.made.append(f) or f)
                     for f in fallbacks] if v is variants[0] else []
 
-        def found(prod, title, run):
+        def found(prod, title, run, *, disk_order=()):
             return (forced if run and forced else variants), list(problems)
 
         with mock.patch.object(player.media, "variants",
@@ -216,7 +216,7 @@ class VariantOfTest(unittest.TestCase):
             "hd", [], root="/o", run="demo.exe", choice=True)]
         self.assertIs(self.pick([self.HD, outer], {"run": "demo.exe"},
                                 forced=forced), self.HD)
-        self.found.assert_called_once_with(1, "x", None)
+        self.found.assert_called_once_with(1, "x", None, disk_order=())
 
     def test_an_entry_may_say_more_than_an_export_would(self):
         # The only executable, the kind of the first variant, the one disk.

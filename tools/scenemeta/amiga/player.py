@@ -229,7 +229,8 @@ def _fitting(prod, title, said, run):
     download gave no variant. The download's own variants are looked at
     first; the other ways to run them (see media.fallbacks) when none of
     those fits, and of them only the kind the entry is of."""
-    variants, problems = media.variants(prod, title, run)
+    disk_order = said.get("disks", ())
+    variants, problems = media.variants(prod, title, run, disk_order=disk_order)
     if not variants:
         raise CannotPlay("no media: " + "; ".join(problems))
     first = variants[0].kind

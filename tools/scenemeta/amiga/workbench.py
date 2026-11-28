@@ -317,7 +317,12 @@ def prepare(root, command, libs_dir=None, all_libs=False, ks1=False, stack=0):
     (s / SETUP.split("/")[1]).write_bytes(setup_exe())
     (s / GO_ON.split("/")[1]).write_bytes(go_on_exe())
     stack_line = f"Stack {stack}\n" if stack else ""
-    (s / "startup-sequence").write_text(
+    startup = s / "startup-sequence"
+    # AmigaDOS can open either spelling when both exist on the host.
+    for entry in s.iterdir():
+        if entry.name.lower() == startup.name and entry != startup:
+            entry.unlink()
+    startup.write_text(
         f"{SETUP}\n{stack_line}{command}", encoding="latin-1")   # AmigaDOS charset
     c = _subdir(root, "c")
     if c is None:

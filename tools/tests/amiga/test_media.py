@@ -8,7 +8,8 @@ import unittest
 import unittest.mock
 import zipfile
 
-from scenemeta.amiga import media
+from scenemeta.amiga import media, player
+from scenemeta.core.errors import CannotPlay
 
 EXE = media.HUNK_MAGIC + b"\0" * 60
 GO_ON = media.workbench.GO_ON + "\n"
@@ -552,23 +553,145 @@ class FloppyVariantTest(unittest.TestCase):
 
 
 class ArchiveSetTest(unittest.TestCase):
+    def setUp(self):
+        self.top = pathlib.Path(self.enterContext(tempfile.TemporaryDirectory()))
+        for name in ("DEMOZOO_DIR", "WORK"):
+            self.enterContext(unittest.mock.patch.object(
+                media.config, name, self.top / name.lower()))
+        self.src = media.config.prod_dir(1)
+        self.src.mkdir(parents=True)
+
+    def archive(self, name, files):
+        with zipfile.ZipFile(self.src / name, "w") as z:
+            for filename, data in files.items():
+                z.writestr(filename, data)
+
+    def test_installer_join_resolves_split_numeric_files_in_casefolded_tree(self):
+        self.archive("release1.zip", {
+            "demo/sub/1": EXE[:32],
+            "demo/sub/Install.script": b"jOiN >NIL: 1 2 AS Demo.exe\n",
+            "demo/sub/ReadMe": b"old",
+        })
+        self.archive("release2.zip", {"Demo/Sub/2": EXE[32:],
+                                     "Demo/Sub/README": b"new"})
+        variants, problems = media.variants(1, "Demo")
+        self.assertEqual(problems, [])
+        variant, = variants
+        self.assertEqual(variant.run, "Demo.exe")
+        root = pathlib.Path(variant.root)
+        self.assertEqual((root / "Demo.exe").read_bytes(), EXE)
+        self.assertEqual((root / "1").read_bytes(), EXE[:32])
+        self.assertEqual((root / "2").read_bytes(), EXE[32:])
+        self.assertEqual((root / "ReadMe").read_bytes(), b"new")
+        self.assertFalse((root / "README").exists())
+        self.assertEqual([p.name for p in root.parent.iterdir()], ["sub"])
+
+    def test_documented_join_supports_a_quoted_command_and_casefolded_names(self):
+        self.archive("release.zip", {
+            "Demo.001": EXE[:32],
+            "Demo.002": EXE[32:],
+            "Demo.readme": b'  "Join demo.001 DEMO.002 TO Demo.exe"\r\n',
+        })
+        (variant,), _ = media.variants(1, "Demo")
+        self.assertEqual(variant.run, "Demo.exe")
+        self.assertEqual((pathlib.Path(variant.root) / "Demo.exe").read_bytes(), EXE)
+
+    def test_join_uses_literal_names_and_the_order_in_the_command(self):
+        self.archive("release.zip", {
+            "part two": b"second",
+            "part one": b"first ",
+            "part three": b" third",
+            "Install": (b'Join "Part One" "Part Two" "Part Three" '
+                        b'TO "Output data" ; install data\n'),
+            "main.exe": EXE,
+        })
+        (variant,), _ = media.variants(1)
+        self.assertEqual((pathlib.Path(variant.root) / "Output data").read_bytes(),
+                         b"first second third")
+
+    def test_join_skips_missing_parts_and_existing_or_nonlocal_destinations(self):
+        (self.top / "outside").write_bytes(b"outside")
+        self.archive("release.zip", {
+            "file1": b"a", "file2": b"b", "Existing": b"keep",
+            "Install": (b"Join file1 missing AS missing.exe\n"
+                        b"Join file1 file2 TO existing\n"
+                        b"Join file1 file2 TO ../outside\n"
+                        b"Join file1 file2 TO SYS:startup-sequence\n"
+                        b"Join file1 #? TO wildcard\n"),
+            "main.exe": EXE,
+        })
+        (variant,), _ = media.variants(1)
+        root = pathlib.Path(variant.root)
+        self.assertEqual((root / "Existing").read_bytes(), b"keep")
+        for name in ("existing", "missing.exe", "../outside", "wildcard",
+                     "SYS:startup-sequence"):
+            self.assertFalse((root / name).exists())
+        self.assertEqual((self.top / "outside").read_bytes(), b"outside")
+
+    def test_standalone_launcher_shares_the_companion_archive_boot_directory(self):
+        self.archive("effects.zip", {"Release/part": EXE, "Release/data": b"123"})
+        (self.src / "Main.exe").write_bytes(EXE)
+        variants, problems = media.variants(1, "Main")
+        self.assertEqual(problems, [])
+        archived, standalone = variants
+        self.assertEqual(standalone.run, "Main.exe")
+        root = pathlib.Path(standalone.root)
+        self.assertEqual((root / "Main.exe").read_bytes(), EXE)
+        self.assertEqual((root / "part").read_bytes(), EXE)
+        self.assertEqual((root / "data").read_bytes(), b"123")
+        self.assertFalse((pathlib.Path(archived.root) / "Main.exe").exists())
+
+    def test_standalone_without_a_unique_companion_remains_independent(self):
+        self.archive("effects.zip", {"effects/part": EXE})
+        self.archive("other.zip", {"other/part2": EXE})
+        (self.src / "Main.exe").write_bytes(EXE)
+        variants, _ = media.variants(1)
+        variant = next(v for v in variants if v.run == "Main.exe")
+        self.assertEqual([p.name for p in pathlib.Path(variant.root).iterdir()],
+                         ["Main.exe"])
+
+    def test_standalone_launcher_can_use_a_data_only_archive(self):
+        self.archive("data.zip", {"data/picture": b"picture"})
+        (self.src / "Main.exe").write_bytes(EXE)
+        (variant,), _ = media.variants(1)
+        self.assertEqual(variant.run, "Main.exe")
+        self.assertEqual((pathlib.Path(variant.root) / "data/picture").read_bytes(),
+                         b"picture")
+
+    def test_standalone_does_not_overwrite_case_insensitive_archive_name(self):
+        self.archive("release.zip", {"MAIN.EXE": EXE + EXE, "data": b"123"})
+        (self.src / "main.exe").write_bytes(EXE)
+        variants, _ = media.variants(1)
+        archived, standalone = variants
+        self.assertEqual([p.name for p in pathlib.Path(standalone.root).iterdir()],
+                         ["main.exe"])
+        self.assertEqual((pathlib.Path(archived.root) / "MAIN.EXE").read_bytes(),
+                         EXE + EXE)
+
+    def test_player_uses_explicit_boot_order_of_a_whole_set(self):
+        first, second = "Demo-A.adf", "Demo-B.adf"
+        (self.src / first).write_bytes(bytes(media.CYL_BYTES))
+        (self.src / second).write_bytes(b"DOS\1" + bytes(media.CYL_BYTES - 4))
+        with unittest.mock.patch.object(media, "launch_variant",
+                                        return_value=None) as launch:
+            (default,), _ = media.variants(1)
+            self.assertEqual(media._disk_names(default), [first, second])
+            self.assertFalse(default.ffs)
+            entry = {"title": "Demo", "disks": [second, first]}
+            ordered = player._variant_of(1, entry)
+            self.assertEqual(media._disk_names(ordered), [second, first])
+            self.assertTrue(ordered.ffs)
+            self.assertTrue(ordered.complete)
+            self.assertEqual([pathlib.Path(p).name for p in launch.call_args.args[0]],
+                             [second, first])
+            with self.assertRaisesRegex(CannotPlay, "fits none"):
+                player._variant_of(1, {**entry, "disks": [second, second]})
+
     def test_numbered_archives_unpack_into_one_tree(self):
         # Repugnance: pwl-rpg1.lha holds the demo, rpg2 and rpg3 its data.
-        top = pathlib.Path(tempfile.mkdtemp())
-        self.addCleanup(media._rmtree, top)
-        for k, v in {"DEMOZOO_DIR": top / "nas", "WORK": top / "work"}.items():
-            patch = unittest.mock.patch.object(media.config, k, v)
-            patch.start()
-            self.addCleanup(patch.stop)
-        src = media.config.prod_dir(35337)
-        src.mkdir(parents=True)
-        for name, files in {"pwl-rpg1.zip": {"Repugnance": EXE,
-                                             "data/rep-001.data": b"1"},
-                            "pwl-rpg2.zip": {"data/rep-002.data": b"2"}}.items():
-            with zipfile.ZipFile(src / name, "w") as z:
-                for n, data in files.items():
-                    z.writestr(n, data)
-        vs, problems = media.variants(35337, "Repugnance")
+        self.archive("pwl-rpg1.zip", {"Repugnance": EXE, "data/rep-001.data": b"1"})
+        self.archive("pwl-rpg2.zip", {"data/rep-002.data": b"2"})
+        vs, problems = media.variants(1, "Repugnance")
         self.assertEqual(problems, [])
         self.assertEqual(len(vs), 1)
         root = pathlib.Path(vs[0].root)
@@ -576,23 +699,13 @@ class ArchiveSetTest(unittest.TestCase):
                          ["rep-001.data", "rep-002.data"])
 
     def test_a_download_asked_to_start_its_script(self):
-        top = pathlib.Path(tempfile.mkdtemp())
-        self.addCleanup(media._rmtree, top)
-        for k, v in {"DEMOZOO_DIR": top / "nas", "WORK": top / "work"}.items():
-            patch = unittest.mock.patch.object(media.config, k, v)
-            patch.start()
-            self.addCleanup(patch.stop)
-        src = media.config.prod_dir(44911)
-        src.mkdir(parents=True)
-        with zipfile.ZipFile(src / "demo.zip", "w") as z:
-            for n, data in {"intro.exe": EXE, "end.exe": EXE * 2,
-                            "demo.bat": b"intro.exe\nend.exe\n"}.items():
-                z.writestr(n, data)
-        (today,), _ = media.variants(44911, "Demo")
+        self.archive("demo.zip", {"intro.exe": EXE, "end.exe": EXE * 2,
+                                  "demo.bat": b"intro.exe\nend.exe\n"})
+        (today,), _ = media.variants(1, "Demo")
         self.assertEqual(today.command, GO_ON + "intro.exe\nend.exe\n")
-        (bare,), _ = media.variants(44911, "Demo", "end.exe")
+        (bare,), _ = media.variants(1, "Demo", "end.exe")
         self.assertEqual(bare.command, '"end.exe"\n')
-        (asked,), _ = media.variants(44911, "Demo", "demo.bat")
+        (asked,), _ = media.variants(1, "Demo", "demo.bat")
         self.assertEqual((asked.run, asked.command),
                          ("demo.bat", GO_ON + "intro.exe\nend.exe\n"))
 

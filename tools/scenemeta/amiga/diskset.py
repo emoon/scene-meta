@@ -14,13 +14,14 @@ DISK_EXTS = (".adf", ".adz", ".dms")
 _FORMAT_RANK = {".adf": 0, ".adz": 1, ".dms": 2}
 
 _SEP = r"[-_ .]*"
+_COMPACT_LETTER = re.compile(r"^(.*?)([a-h])$")
 _PATTERNS = (
     re.compile(rf"^(.*?){_SEP}\(?(?:disk|disc){_SEP}0?([1-9])(?:{_SEP}of{_SEP}\d)?\)?$"),
     re.compile(rf"^(.*?){_SEP}side{_SEP}([a-d1-4])$"),
     re.compile(r"^(.*?)[-_ .]d([1-9])$"),
     re.compile(rf"^(.*?){_SEP}0?([1-9])(?:{_SEP}of{_SEP}\d)?$"),
-    re.compile(r"^(.*?[^a-z])([a-f])$"),       # ...-A, ...-a
-    re.compile(r"^(.*?)([a-f])$"),             # ...DreamA (needs set agreement)
+    re.compile(r"^(.*?[^a-z])([a-h])$"),       # ...-A, ...-a
+    _COMPACT_LETTER,                         # ...DreamA (needs set agreement)
 )
 
 
@@ -30,15 +31,42 @@ def _norm(stem):
 
 def parse(name):
     """``(stem_key, disk_number)`` for a file name; number is None when the
-    name carries no marker. Letters map to numbers (a=1)."""
-    stem = os.path.splitext(os.path.basename(name))[0].lower()
+    name carries no marker. Letters map to numbers (a=1). A compact G/H
+    may be part of the name, which ``group`` resolves using siblings."""
+    key, mark, _ = _marker(name)
+    return key, _number(mark)
+
+
+def _stem(name):
+    return os.path.splitext(os.path.basename(name))[0].lower()
+
+
+def _number(mark):
+    if mark:
+        return ord(mark) - ord("a") + 1 if mark.isalpha() else int(mark)
+    return None
+
+
+def _marker(name):
+    stem = _stem(name)
     for pat in _PATTERNS:
         m = pat.match(stem)
-        if m and len(_norm(m.group(1))) >= 2:
+        if m and len(key := _norm(m.group(1))) >= 2:
             mark = m.group(2)
-            num = ord(mark) - ord("a") + 1 if mark.isalpha() else int(mark)
-            return _norm(m.group(1)), num
-    return _norm(stem), None
+            return key, mark, pat is _COMPACT_LETTER and mark in "gh"
+    return _norm(stem), "", False
+
+
+def _markers(names):
+    candidates = [(name, *_marker(name)) for name in names]
+    letter_stems = {key for _, key, mark, weak in candidates
+                    if mark.isalpha() and not weak}
+    for name, key, mark, weak in candidates:
+        # A bare final G/H needs a sibling with another letter marker.
+        if weak and key not in letter_stems:
+            yield name, _norm(_stem(name)), None
+        else:
+            yield name, key, _number(mark)
 
 
 def is_disk_image(name):
@@ -54,8 +82,7 @@ def group(names):
     """
     by_stem = {}
     unmarked = []
-    for n in names:
-        key, num = parse(n)
+    for n, key, num in _markers(names):
         if num is None:
             unmarked.append((key, n))
         else:
@@ -82,12 +109,12 @@ def group(names):
 
 def numbers(disk_set):
     """The disk numbers of an ordered set, for a completeness check."""
-    return [parse(n)[1] or 1 for n in disk_set]
+    return [num or 1 for _, _, num in _markers(disk_set)]
 
 
 def is_complete(disk_set):
     """True when the set's markers run 1..n without a gap."""
-    nums = numbers(disk_set)
+    nums = sorted(numbers(disk_set))
     return len(disk_set) == 1 or nums == list(range(1, len(nums) + 1))
 
 

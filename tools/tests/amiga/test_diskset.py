@@ -15,6 +15,23 @@ class GroupTest(unittest.TestCase):
         self.check(["Spaceballs-9Fingers-A.dms", "Spaceballs-9Fingers-B.dms"],
                    [["Spaceballs-9Fingers-A.dms", "Spaceballs-9Fingers-B.dms"]])
 
+    def test_letters_through_h(self):
+        for letters in ("ABCDEFG", "abcdefgh", "-A -B -C -D -E -F -G -H".split()):
+            with self.subTest(letters=letters):
+                names = [f"SomeDemo{letter}.adf" for letter in letters]
+                self.check(names[::-1], [names])
+                self.assertTrue(diskset.is_complete(names))
+
+    def test_extended_letter_needs_a_set(self):
+        self.check(["Sing.adf", "Sinh.adf", "Sin.adf", "Sin-2.adf", "Rush.adf"],
+                   [["Sin.adf", "Sin-2.adf"], ["Rush.adf"], ["Sing.adf"], ["Sinh.adf"]])
+        self.check(["Sing.adf", "Sing-d2.adf"], [["Sing.adf", "Sing-d2.adf"]])
+        self.assertTrue(diskset.is_complete(["Sing.adf", "Sing-d2.adf"]))
+
+    def test_disk_completeness_is_independent_of_boot_order(self):
+        self.assertTrue(diskset.is_complete(["demo-B.adf", "demo-A.adf"]))
+        self.assertFalse(diskset.is_complete(["demo-C.adf", "demo-A.adf"]))
+
     def test_disk_n_of_m(self):
         self.check(["reel-disk-2-of-2.adf", "reel-disk-1-of-2.adf"],
                    [["reel-disk-1-of-2.adf", "reel-disk-2-of-2.adf"]])

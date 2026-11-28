@@ -114,6 +114,20 @@ class WorkbenchTest(unittest.TestCase):
                          f'{workbench.SETUP}\n"demo"\n')
         self.assertTrue((root / workbench.SETUP).exists())
 
+    def test_startup_replaces_case_aliases(self):
+        root = self.dir()
+        s = root / "S"
+        s.mkdir()
+        (s / "StartUp-Sequence").write_text("Type S:Info.Txt\n")
+        (s / "Info.Txt").write_bytes(b"info")
+        workbench.prepare(root, '"demo"\n', libs_dir=root / "none")
+        self.assertEqual([p.name for p in s.iterdir()
+                          if p.name.lower() == "startup-sequence"],
+                         ["startup-sequence"])
+        self.assertEqual((s / "startup-sequence").read_text(),
+                         f'{workbench.SETUP}\n"demo"\n')
+        self.assertEqual((s / "Info.Txt").read_bytes(), b"info")
+
     def test_startup_is_latin1(self):
         root = self.dir()
         workbench.prepare(root, '"tlu-pdva.ex\u00e9"\n', libs_dir=root / "none")

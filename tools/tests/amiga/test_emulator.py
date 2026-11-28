@@ -134,6 +134,16 @@ class HdConfigTest(unittest.TestCase):
             (text, tool),
             (f'{workbench.SETUP}\nStack 131072\nAssign >NIL: Data: "SYS:"\n"demo"\n', None))
 
+    def test_ks1_uses_the_requested_root_volume_name(self):
+        text, _, cfg = self.startup("a500", assign=(("Archive:", "Demo:"),))
+        self.assertIn("filesystem2=rw,DH0:Archive:", cfg)
+        self.assertEqual(text, f'{workbench.SETUP}\n"demo"\n')
+
+    def test_ks3_uses_assign_for_a_root_alias(self):
+        text, _, cfg = self.startup("a1200", assign=(("Archive", "Demo:"),))
+        self.assertIn("filesystem2=rw,DH0:Demo:", cfg)
+        self.assertIn('Assign >NIL: Archive: "Demo:"\n', text)
+
     def test_060_without_wb_boot_switches_its_fpu_on_before_the_demo(self):
         # Fallback when a1200.boot is not present: FPU code Gurus 8000000B
         # without 68060.library unless r2-fpu-on clears PCR.DFP.

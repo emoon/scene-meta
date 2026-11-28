@@ -121,6 +121,18 @@ def _use_wb_boot(machine):
     return machine.wb_boot and config.A1200_BOOT.is_dir()
 
 
+def _root_volume(assign, ks1):
+    """The boot volume and startup assigns. Kickstart 1.x lacks AssignLock,
+    but a single name for the boot root can be supplied as its volume name."""
+    if ks1 and len(assign) == 1:
+        (name, path), = assign.items() if isinstance(assign, dict) else assign
+        name = name.rstrip(":")
+        if path.lower() == "demo:" and name.strip() and not any(
+                char in name for char in ':/,\\"\n\r\0'):
+            return name, ()
+    return "Demo", assign
+
+
 def _uae_config(machine, variant, tmp, drives=1, seed=DEFAULT_SEED,
                 assign=()):
     """The .uae text and the swap list. With ``drives`` > 1 the first disks
@@ -165,16 +177,19 @@ def _uae_config(machine, variant, tmp, drives=1, seed=DEFAULT_SEED,
             lines.append(f"filesystem2=ro,DH0:System:{sys_root},0\n")
             lines.append(f"filesystem2=rw,DH1:Demo:{root},-1\n")
         else:
+            volume = "Demo"
             if variant.command is not None:
+                ks1 = not machine.aga
+                volume, assign = _root_volume(assign, ks1)
                 command = (workbench.assign_lines(assign, workbench.assign_cmd(root))
                            + variant.command)
                 if machine.fpu_off:
                     (root / FPU_ON).write_bytes(FPU_ON_EXE)
                     command = f"{FPU_ON}\n{command}"
                 workbench.prepare(
-                    root, command, all_libs=True, ks1=not machine.aga,
+                    root, command, all_libs=True, ks1=ks1,
                     stack=131072 if (machine.aga and machine.fast_ram) else 0)
-            lines.append(f"filesystem2=rw,DH0:Demo:{root},0\n")
+            lines.append(f"filesystem2=rw,DH0:{volume}:{root},0\n")
     return "".join(lines), swaps
 
 
