@@ -281,7 +281,9 @@ class PlayTest(unittest.TestCase):
         self.assertEqual(set(emulator.KEYS),
                          {"lmb", "lmb2", "rmb", "return", "space", "p1fire",
                           "p2fire", "lamiga_v", "ramiga_o", "esc",
-                          "f1", "f2", "f3", "f4", "f5", "down"})
+                          "f1", "f2", "f3", "f4", "f5", "down"}
+                         | set("0123456789abcdefghijklmnopqrstuvwxyz")
+                         | {"f6", "f7", "f8", "f9", "f10"})
 
     def test_positioned_mouse_click_moves_waits_then_clicks(self):
         cmds = self.play([(100, "click", ("lmb", (150, 390)))], frames=500)

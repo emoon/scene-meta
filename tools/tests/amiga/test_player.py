@@ -27,11 +27,11 @@ class ActionsTest(unittest.TestCase):
 
     def test_as_written(self):
         self.assertEqual(player.actions(self.ENTRY), [
-            (3305, "insert", (0, 0)), (3555, "press", "lmb"), (6000, "insert", (1, 0))])
+            (3305, "insert", (1, 0)), (3555, "press", "lmb"), (6000, "insert", (2, 0))])
 
     def test_without_the_keys(self):
         self.assertEqual(player.actions(self.ENTRY, keys=False),
-                         [(3305, "insert", (0, 0)), (6000, "insert", (1, 0))])
+                         [(3305, "insert", (1, 0)), (6000, "insert", (2, 0))])
 
     WINDOWS = {"disks": ["a.adf", "b.adf"],
                "events": [{"at": 66.1, "until": 96.1, "disk": 2},
@@ -40,32 +40,32 @@ class ActionsTest(unittest.TestCase):
 
     def test_eager_every_event_is_at_its_at(self):
         self.assertEqual(player.actions(self.WINDOWS), [
-            (3305, "insert", (0, 0)), (3555, "press", "lmb"),
+            (3305, "insert", (1, 0)), (3555, "press", "lmb"),
             (6000, "press", "space")])
 
     def test_patient_at_its_until_and_the_later_ones_as_much_later(self):
         wait = round(player.PATIENCE * 50)
         self.assertEqual(player.actions(self.WINDOWS, patient=True), [
-            (4805, "insert", (0, 0)), (5055 + wait, "press", "lmb"),
+            (4805, "insert", (1, 0)), (5055 + wait, "press", "lmb"),
             (7500 + wait, "press", "space")])
 
     def test_a_disk_goes_in_before_a_key_of_the_same_moment(self):
         entry = {"disks": ["a", "b"],
                  "events": [{"at": 10, "disk": 2}, {"at": 10, "key": "lmb"}]}
         self.assertEqual(player.actions(entry),
-                         [(500, "insert", (0, 0)), (500, "press", "lmb")])
+                         [(500, "insert", (1, 0)), (500, "press", "lmb")])
 
-    def test_disks_in_the_other_drives_are_not_on_the_swap_list(self):
-        # With two drives disk 3 is the first one swapped in.
+    def test_disk_indices_do_not_depend_on_boot_drive_count(self):
+        # With two drives disk 3 keeps its production index.
         entry = {"drives": 2, "disks": ["a", "b", "c"],
                  "events": [{"at": 10, "disk": 3}]}
-        self.assertEqual(player.actions(entry), [(500, "insert", (0, 0))])
+        self.assertEqual(player.actions(entry), [(500, "insert", (2, 0))])
 
     def test_a_swap_goes_into_the_drive_it_names(self):
         # Soho: disk 2 sits in DF1 from the start, disk 3 goes in there.
         entry = {"drives": 2, "disks": ["a", "b", "c"],
                  "events": [{"at": 10, "disk": 3, "drive": 2}]}
-        self.assertEqual(player.actions(entry), [(500, "insert", (0, 1))])
+        self.assertEqual(player.actions(entry), [(500, "insert", (2, 1))])
 
     def test_a_drive_the_machine_has_not_got_is_an_error(self):
         entry = {"disks": ["a", "b"],
@@ -77,13 +77,9 @@ class ActionsTest(unittest.TestCase):
         def swap(disk, **entry):
             return {"disks": ["a", "b", "c"], **entry,
                     "events": [{"at": 10, "disk": disk}]}
-        # Disk 1 sits in the drive, and with two drives so does disk 2.
-        with self.assertRaisesRegex(BadEntry, "disk 1: .* are 2 to 3"):
-            player.actions(swap(1))
-        with self.assertRaisesRegex(BadEntry, "disk 2: .* are 3 to 3"):
-            player.actions(swap(2, drives=2))
-        with self.assertRaisesRegex(BadEntry, "disk 4: .* are 2 to 3"):
-            player.actions(swap(4))
+        for disk in (0, 4):
+            with self.assertRaisesRegex(BadEntry, f"disk {disk}: .* are 1 to 3"):
+                player.actions(swap(disk))
         # One disk, or a hard drive: nothing to swap.
         with self.assertRaisesRegex(BadEntry, "disk 2: there is none"):
             player.actions({"events": [{"at": 10, "disk": 2}]})
@@ -123,7 +119,7 @@ class ActionsTest(unittest.TestCase):
                      "events": [{"at": 1, "key": key}, {"at": 10, "disk": 2},
                                 {"at": 15, "key": key}]}
             self.assertEqual(player.actions(entry), [
-                (50, "press", key), (500, "insert", (0, 0)), (750, "press", key)])
+                (50, "press", key), (500, "insert", (1, 0)), (750, "press", key)])
 
 
 class LoadedTest(unittest.TestCase):
@@ -357,7 +353,7 @@ class PlayTest(unittest.TestCase):
         self.assertIs(machine, machines.BY_NAME["a1200"])
         self.assertIs(variant, self.SET)
         self.assertEqual(frames, 1250 + player.TAIL_FRAMES)
-        self.assertEqual(opts.play, ((1000, "insert", (0, 0)), (1250, "press", "lmb")))
+        self.assertEqual(opts.play, ((1000, "insert", (1, 0)), (1250, "press", "lmb")))
         self.assertFalse(opts.detects)
         self.assertEqual((out.machine, out.loaded), ("a1200", [True]))
         self.assertIs(out.log, self.LOG)
@@ -397,11 +393,11 @@ class PlayTest(unittest.TestCase):
         out, run = self.play(entry, patient=True)
         _, _, frames, opts = run.call_args.args
         self.assertEqual(frames, 1250 + player.TAIL_FRAMES)
-        self.assertEqual(opts.play, ((1000, "insert", (0, 0)), (1250, "press", "lmb")))
+        self.assertEqual(opts.play, ((1000, "insert", (1, 0)), (1250, "press", "lmb")))
         self.assertEqual(out.loaded, [True])
         out, run = self.play(entry)
         self.assertEqual(run.call_args.args[3].play,
-                         ((750, "insert", (0, 0)), (1000, "press", "lmb")))
+                         ((750, "insert", (1, 0)), (1000, "press", "lmb")))
 
     def test_the_run_is_reported_as_the_record_of_every_platform(self):
         out, _ = self.play(self.ENTRY)
@@ -420,7 +416,7 @@ class PlayTest(unittest.TestCase):
                 mock.patch.object(player.emulator, "run",
                                   return_value=log) as run:
             out = player.play(7, entry, "a500")
-        self.assertEqual(run.call_args.args[3].play, ((1000, "insert", (0, 1)),))
+        self.assertEqual(run.call_args.args[3].play, ((1000, "insert", (2, 1)),))
         self.assertEqual(out.record.swaps, (SwapTaken(3, True),))
 
     def test_how_far_is_the_last_read_of_a_disk(self):
@@ -454,7 +450,7 @@ class PlayTest(unittest.TestCase):
         _, run = self.play(self.ENTRY, keys=False)
         _, _, frames, opts = run.call_args.args
         self.assertEqual(frames, 1250 + player.TAIL_FRAMES)
-        self.assertEqual(opts.play, ((1000, "insert", (0, 0)),))
+        self.assertEqual(opts.play, ((1000, "insert", (1, 0)),))
 
     def test_a_run_is_as_long_as_the_caller_says(self):
         with mock.patch.object(player.emulator, "run",

@@ -46,9 +46,13 @@ KEYS = {"lmb": "mouse click 0", "lmb2": "mouse doubleclick 0",
         # Standard AmigaOS ASL ScreenModeRequester / FileRequester OK shortcut.
         "ramiga_o": "chord 103 24",
         "esc": "key 69",
-        "f1": "key 80", "f2": "key 81", "f3": "key 82",
-        "f4": "key 83", "f5": "key 84",
-        "down": "key 77"}
+        "down": "key 77",
+        # US keyboard positions: Amiga Hardware Reference Manual, ch. 8.
+        **{key: f"key {base + i}"
+           for row, base in (("1234567890", 0x01), ("qwertyuiop", 0x10),
+                             ("asdfghjkl", 0x20), ("zxcvbnm", 0x31))
+           for i, key in enumerate(row)},
+        **{f"f{i}": f"key {0x4f + i}" for i in range(1, 11)}}
 KEY_HOLD_FRAMES = 3
 # What a key retry presses, one per nudge in turn.
 NUDGE_KEYS = ("return", "space", "lamiga_v", "ramiga_o",
@@ -136,15 +140,14 @@ def _root_volume(assign, ks1):
 
 def _uae_config(machine, variant, tmp, drives=1, seed=DEFAULT_SEED,
                 assign=()):
-    """The .uae text and the swap list. With ``drives`` > 1 the first disks
-    of a set sit in DF0..DF<drives-1> from boot, as on a multi-drive Amiga."""
+    """The .uae text and every copied disk in production order. With
+    ``drives`` > 1 the first disks sit in DF0..DF<drives-1> from boot."""
     lines = [machines.uae_text(machine),
              f"kickstart_rom_file={machines.rom_path(machine)}\n",
              f"rndseed={seed}\n"]
-    swaps = []
+    copies = []
     if variant.kind == "floppy":
         # The emulator writes floppy changes back to the image: use copies.
-        copies = []
         for i, d in enumerate(variant.disks):
             dst = tmp / "df" / f"{i}-{os.path.basename(d)}"
             dst.parent.mkdir(parents=True, exist_ok=True)
@@ -163,7 +166,6 @@ def _uae_config(machine, variant, tmp, drives=1, seed=DEFAULT_SEED,
         # (e.g. Manta) do not see a ghost DF1:.
         for i in range(drives, MAX_DRIVES):
             lines.append(f"floppy{i}type=-1\n")
-        swaps = copies[drives:]
     else:
         lines.append("nr_floppies=0\n")
         for i in range(MAX_DRIVES):
@@ -173,14 +175,15 @@ def _uae_config(machine, variant, tmp, drives=1, seed=DEFAULT_SEED,
         shutil.copytree(variant.root, root, symlinks=False)
         if _use_wb_boot(machine):
             sys_root = tmp / "sys"
+            workbench.prepare_libraries(root)
             workbench.prepare_wb_boot(sys_root, variant.command,
                                       assigns=assign)
             lines.append(f"filesystem2=ro,DH0:System:{sys_root},0\n")
             lines.append(f"filesystem2=rw,DH1:Demo:{root},-1\n")
         else:
             volume = "Demo"
+            ks1 = not machine.aga
             if variant.command is not None:
-                ks1 = not machine.aga
                 volume, assign = _root_volume(assign, ks1)
                 command = (workbench.assign_lines(assign, workbench.assign_cmd(root))
                            + variant.command)
@@ -190,8 +193,10 @@ def _uae_config(machine, variant, tmp, drives=1, seed=DEFAULT_SEED,
                 workbench.prepare(
                     root, command, all_libs=True, ks1=ks1,
                     stack=131072 if (machine.aga and machine.fast_ram) else 0)
+            else:
+                workbench.prepare_libraries(root, all_libs=True, ks1=ks1)
             lines.append(f"filesystem2=rw,DH0:{volume}:{root},0\n")
-    return "".join(lines), swaps
+    return "".join(lines), copies
 
 
 LAST_ALERT = 0x202   # ExecBase->LastAlert
@@ -336,27 +341,30 @@ def run(machine, variant, frames, opts=Options(), interval=250, timeout=None):
     alert_peek = f"peek {eb + LAST_ALERT:x} 4"
     with tempfile.TemporaryDirectory(prefix="scenemeta-") as t:
         tmp = pathlib.Path(t)
-        text, swaps = _uae_config(machine, variant, tmp, opts.drives,
+        text, disks = _uae_config(machine, variant, tmp, opts.drives,
                                   opts.seed, opts.assign)
         cfg = tmp / "machine.uae"
         cfg.write_text(text)
         shots = tmp / "shots"
         shots.mkdir()
 
+        # Detection/schedules consume only disks not mounted at boot.
+        # Explicit actions address the full set, including boot disks.
+        swaps = disks[min(opts.drives, len(disks)):]
         script = _play if opts.play else _script
+        media = disks if opts.play else swaps
         cmds = ["warp on", _autoswap(opts)]
         if opts.area:
             cmds.append("display measure on"
                         f" os={system_copper(machine, variant.kind):x}")
-        cmds += script(frames, interval, alert_peek, shots, swaps, opts)
+        cmds += script(frames, interval, alert_peek, shots, media, opts)
         argv = [str(config.AMIBERRY), "-f", str(cfg)]
         argv += [f"-diskswapper={d}" for d in swaps]
         for c in cmds:
             argv += ["--dbg", c]
         ran = _invoke(argv, tmp, timeout)
-        # Swap-list path -> 1-based disk number of the set.
-        first_swap = len(variant.disks) - len(swaps) + 1
-        names = {str(d): first_swap + i for i, d in enumerate(swaps)}
+        # Copied path -> the production's 1-based disk number.
+        names = {str(d): i + 1 for i, d in enumerate(disks)}
         return _parse(ran, shots, names, eb, alert_peek,
                       system_copper(machine, variant.kind))
 
@@ -429,7 +437,7 @@ def pressed(frames, opts, interval=250):
         _inputs(frames, interval, opts)) if key]
 
 
-def _play(frames, interval, alert_peek, shots, swaps, opts):
+def _play(frames, interval, alert_peek, shots, disks, opts):
     """The batch commands of a run that does ``opts.play`` at its frames: a
     sample every ``interval`` as in any run, the frames between split
     where an action falls."""
@@ -444,7 +452,7 @@ def _play(frames, interval, alert_peek, shots, swaps, opts):
                 at = frame
             if what == "insert":
                 k, unit = arg
-                cmds.append(f"disk insert {unit} {swaps[k]}")
+                cmds.append(f"disk insert {unit} {disks[k]}")
             elif what == "click":
                 key, pos = arg
                 press, held = _press(key, pos=pos)

@@ -19,7 +19,7 @@ that a demo can depend on to a boot directory:
   has no room for them all), apart from the math libraries.
 - C:Assign, when the tree has none: a launcher script assigns a name its
   parts load from (J: ``assign dev: ""``). Ours takes ``name: path`` only
-  and needs Kickstart 2.
+  on Kickstart 1.2 and later.
 
 It also puts GO_ON there, for a script to run first.
 """
@@ -123,69 +123,27 @@ _CODE = bytes.fromhex(
 ) + b"dos.library\0RAM:ENV\0ENV\0\n\0"   # ce, da, e2, e6
 
 
-# 68000 code, position independent. The arguments are ``name: path``, the
-# path in quotes or not:
-#   if !(dos = OpenLibrary("dos.library", 36)): return 20
-#   ok = (lock = Lock(path, SHARED_LOCK)) && AssignLock(name, lock)
-#   CloseLibrary(dos)
-#   return ok ? 0 : 20
+# Generated from assign.s: 68000, position independent, KS1.2+.
+# V36+ uses AssignLock; KS1.x publishes/updates a DLT_DIRECTORY node.
 _ASSIGN_CODE = bytes.fromhex(
-    "2448"          # 00 movea.l a0,a2
-    "2c780004"      # 02 movea.l 4.w,a6
-    "43fa008a"      # 06 lea     dosname(pc),a1
-    "7024"          # 0a moveq   #36,d0
-    "4eaefdd8"      # 0c jsr     OpenLibrary(a6)
-    "4a80"          # 10 tst.l   d0
-    "677a"          # 12 beq.s   nodos
-    "2c40"          # 14 movea.l d0,a6
-    "0c1a0020"      # 16 name: cmpi.b #' ',(a2)+
-    "67fa"          # 1a beq.s   name
-    "538a"          # 1c subq.l  #1,a2
-    "260a"          # 1e move.l  a2,d3
-    "101a"          # 20 colon: move.b (a2)+,d0
-    "0c000020"      # 22 cmpi.b  #' ',d0
-    "6552"          # 26 bcs.s   bad             (the line ends: no name)
-    "0c00003a"      # 28 cmpi.b  #':',d0
-    "66f2"          # 2c bne.s   colon
-    "422affff"      # 2e clr.b   -1(a2)
-    "0c1a0020"      # 32 path: cmpi.b #' ',(a2)+
-    "67fa"          # 36 beq.s   path
-    "538a"          # 38 subq.l  #1,a2
-    "0c120022"      # 3a cmpi.b  #'"',(a2)
-    "6614"          # 3e bne.s   bare
-    "528a"          # 40 addq.l  #1,a2
-    "220a"          # 42 move.l  a2,d1
-    "101a"          # 44 quoted: move.b (a2)+,d0
-    "0c000020"      # 46 cmpi.b  #' ',d0
-    "6510"          # 4a bcs.s   end
-    "0c000022"      # 4c cmpi.b  #'"',d0
-    "66f2"          # 50 bne.s   quoted
-    "6008"          # 52 bra.s   end
-    "220a"          # 54 bare: move.l a2,d1
-    "0c1a0020"      # 56 word: cmpi.b #' ',(a2)+
-    "62fa"          # 5a bhi.s   word
-    "422affff"      # 5c end: clr.b -1(a2)
-    "74fe"          # 60 moveq   #ACCESS_READ,d2
-    "4eaeffac"      # 62 jsr     Lock(a6)
-    "2400"          # 66 move.l  d0,d2
-    "6710"          # 68 beq.s   bad
-    "2203"          # 6a move.l  d3,d1
-    "4eaefd9c"      # 6c jsr     AssignLock(a6)
-    "4a80"          # 70 tst.l   d0
-    "660a"          # 72 bne.s   ok
-    "2202"          # 74 move.l  d2,d1           (the lock is still ours)
-    "4eaeffa6"      # 76 jsr     UnLock(a6)
-    "7814"          # 7a bad: moveq #20,d4
-    "6002"          # 7c bra.s   close
-    "7800"          # 7e ok: moveq #0,d4
-    "224e"          # 80 close: movea.l a6,a1
-    "2c780004"      # 82 movea.l 4.w,a6
-    "4eaefe62"      # 86 jsr     CloseLibrary(a6)
-    "2004"          # 8a move.l  d4,d0
-    "4e75"          # 8c rts
-    "7014"          # 8e nodos: moveq #20,d0
-    "4e75"          # 90 rts
-) + b"dos.library\0"   # 92
+    "48e73f3e24482c78000443fa020270004eaefdd82c00670001cc2c400c1a0020"
+    "67fa538a78000c12002266047822528a264a7e007000101ab03c003a6724b03c"
+    "00206500018c66064a0467000184b03c00226700017c5247be7c00ff63d66000"
+    "01704a476700016a422affff4a046706b81a6600015c0c1a002067fa538a0c12"
+    "00226616528a220a101ab03c00226712b03c002064f260000138220a0c1a0020"
+    "62fa422affff74fe4eaeffac2a00670001200c6e002400146512220b24054eae"
+    "fd9c4a806600010e600000fe2c780004702c223c000100014eaeff3a28404a80"
+    "670000e670003007548072014eaeff3a2a404a80670000ca204d10c7224b10d9"
+    "66fc200de48829400028297c0000000100042945000c2005e58820402968000c"
+    "00084eaeff7c20462068002220280018e5882440242a00044a8267502002e588"
+    "204020280028e5882240be1966102a4b101d670e121961000094b20067f22410"
+    "60d60ca800000001000466322a28000c216c000c000c216c000800084eaeff76"
+    "61242c4622054eaeffa6604828aa0004200ce488254000044eaeff7660364eae"
+    "ff7661026022202c0028e58822407000300754804eaeff2e224c702c4eeeff2e"
+    "224c702c4eaeff2e2c4622054eaeffa67e1460027e0022462c7800044eaefe62"
+    "2007600270144cdf7cfc4e75b03c0061650ab03c007a6204903c0020b23c0061"
+    "650ab23c007a6204923c00204e75646f732e6c69627261727900"
+)
 
 # 68000 code, position independent: FailAt 21. A program, as a ``failat``
 # line is itself an unknown command on Kickstart 1.x and ends the script
@@ -330,28 +288,10 @@ def prepare(root, command, libs_dir=None, all_libs=False, ks1=False, stack=0):
     elif not c.is_dir() or "assign" not in {p.name.lower() for p in c.iterdir()}:
         c.mkdir(exist_ok=True)
         (c / "Assign").write_bytes(assign_exe())
+    prepare_libraries(root, libs_dir, all_libs=all_libs, ks1=ks1)
     libs_dir = config.LIBS_DIR if libs_dir is None else libs_dir
-    libs = _subdir(root, "libs")
     if not libs_dir.is_dir():
         return
-    if libs is not None:
-        have = {p.name.lower() for p in libs.iterdir()} if libs.is_dir() else set()
-        comp = _subdir(libs, "compressors") if libs.is_dir() else libs / "compressors"
-        have_comp = ({p.name.lower() for p in comp.iterdir()}
-                     if comp is not None and comp.is_dir() else set())
-        wanted = (list(_iter_libs(libs_dir, ks1=ks1)) if all_libs
-                  else _wanted_libs(root, libs_dir, ks1=ks1))
-        for lib in wanted:
-            if _is_packer_lib(lib.name):
-                if comp is not None and lib.name.lower() not in have_comp:
-                    libs.mkdir(exist_ok=True)
-                    comp.mkdir(exist_ok=True)
-                    shutil.copyfile(lib, comp / lib.name)
-                    have_comp.add(lib.name.lower())
-            elif lib.name.lower() not in have:
-                libs.mkdir(exist_ok=True)
-                shutil.copyfile(lib, libs / lib.name)
-                have.add(lib.name.lower())
     # Optional system devices (e.g. narrator.device in libs_dir/devs/).
     src_devs = _subdir(libs_dir, "devs")
     dst_devs = _subdir(root, "devs")
@@ -366,6 +306,35 @@ def prepare(root, command, libs_dir=None, all_libs=False, ks1=False, stack=0):
                 dst_devs.mkdir(exist_ok=True)
                 shutil.copyfile(dev, dst_devs / dev.name)
                 have_devs.add(dev.name.lower())
+
+
+def prepare_libraries(root, libs_dir=None, all_libs=False, ks1=False):
+    """Stage libraries without changing the boot script or system assigns."""
+    libs_dir = config.LIBS_DIR if libs_dir is None else libs_dir
+    libs = _subdir(root, "libs")
+    if libs is not None:
+        have = {p.name.lower() for p in libs.iterdir()} if libs.is_dir() else set()
+        comp = _subdir(libs, "compressors") if libs.is_dir() else libs / "compressors"
+        have_comp = ({p.name.lower() for p in comp.iterdir()}
+                     if comp is not None and comp.is_dir() else set())
+        # Download libraries win over supplied Workbench libraries, just as
+        # libraries already in Libs do. Keep originals at their launch paths.
+        wanted = [p for p in sorted(root.iterdir())
+                  if p.is_file() and p.suffix.lower() == ".library"]
+        if libs_dir.is_dir():
+            wanted += (list(_iter_libs(libs_dir, ks1=ks1)) if all_libs
+                       else _wanted_libs(root, libs_dir, ks1=ks1))
+        for lib in wanted:
+            if _is_packer_lib(lib.name):
+                if comp is not None and lib.name.lower() not in have_comp:
+                    libs.mkdir(exist_ok=True)
+                    comp.mkdir(exist_ok=True)
+                    shutil.copyfile(lib, comp / lib.name)
+                    have_comp.add(lib.name.lower())
+            elif lib.name.lower() not in have:
+                libs.mkdir(exist_ok=True)
+                shutil.copyfile(lib, libs / lib.name)
+                have.add(lib.name.lower())
 
 
 def prepare_wb_boot(sys_root, command, boot_dir=None, assigns=()):

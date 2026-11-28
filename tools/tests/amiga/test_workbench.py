@@ -28,18 +28,17 @@ class WorkbenchTest(unittest.TestCase):
         self.assertEqual(exe[-4:], b"\0\0\x03\xf2")
         self.assertIn(b"dos.library\0", exe)
 
-    def test_assign_branches_land_on_instructions(self):
-        # Every short branch of the hand-assembled code, by its offset.
+    def test_assign_opens_legacy_dos_and_preserves_callee_registers(self):
         code = workbench._ASSIGN_CODE
-        want = {0x12: 0x8e, 0x1a: 0x16, 0x26: 0x7a, 0x2c: 0x20, 0x36: 0x32,
-                0x3e: 0x54, 0x4a: 0x5c, 0x50: 0x44, 0x52: 0x5c, 0x5a: 0x56,
-                0x68: 0x7a, 0x72: 0x7e, 0x7c: 0x80}
-        got = {at: at + 2 + struct.unpack(">b", code[at + 1:at + 2])[0]
-               for at in want}
-        self.assertEqual(got, want)
-        # lea dosname(pc),a1
-        at = 0x06 + 2 + struct.unpack(">h", code[0x08:0x0a])[0]
-        self.assertEqual(code[at:], b"dos.library\0")
+        # MOVEM d2-d7/a2-a6; OpenLibrary(name,0); conditional v36 API.
+        self.assertTrue(code.startswith(bytes.fromhex("48e73f3e")))
+        self.assertIn(bytes.fromhex("70004eaefdd8"), code)
+        self.assertIn(bytes.fromhex("0c6e00240014"), code)
+        self.assertIn(bytes.fromhex("4eaefd9c"), code)  # AssignLock
+        self.assertIn(bytes.fromhex("4eaeff7c"), code)  # Forbid
+        self.assertIn(bytes.fromhex("4eaeff76"), code)  # Permit
+        self.assertIn(bytes.fromhex("4cdf7cfc4e75"), code)
+        self.assertIn(b"dos.library\0", code)
 
     def test_a_script_can_be_told_to_go_on(self):
         root = self.dir()

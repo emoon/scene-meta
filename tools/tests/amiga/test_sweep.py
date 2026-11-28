@@ -602,7 +602,7 @@ class ClicksOnlyTest(unittest.TestCase):
             a = sweep.played(machines.BY_NAME["a500"], self.SET, entry, 5,
                              patient=True)
         _, _, frames, opts = run.call_args.args
-        self.assertEqual(opts.play, ((6500, "insert", (0, 0)),))
+        self.assertEqual(opts.play, ((6500, "insert", (1, 0)),))
         self.assertEqual(frames, 6500 + emulator.AUTOSWAP_TAIL_FRAMES)
         self.assertEqual(a.frames, frames)
 

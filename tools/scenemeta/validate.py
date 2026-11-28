@@ -105,7 +105,8 @@ def _events(v):
                 " the same moment")
 
 
-# A production booted from a later disk can ask for disk 1.
+# Every production disk can be reinserted, including those mounted at boot.
+# Key names remain platform-specific; the player checks its input vocabulary.
 _EVENT_ROWS = _rows((("at", _seconds),),
                     (("disk", _number_from(1)), ("drive", _number_from(2)),
                      ("until", _seconds), ("key", _text), ("pos", _coords)))

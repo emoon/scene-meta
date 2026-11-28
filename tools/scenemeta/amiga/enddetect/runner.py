@@ -116,7 +116,7 @@ def record(prod, entry, default, out_dir, frames=DEFAULT_FRAMES,
     out.mkdir(parents=True, exist_ok=True)
     shutil.rmtree(out / "hd", ignore_errors=True)
     assign = tuple((entry.get("assign") or {}).items())
-    text, swaps = emulator._uae_config(
+    text, disks = emulator._uae_config(
         machine, v, out, entry.get("drives", 1), seed, assign=assign)
     # Per-frame tracing forces the interpreter (dbgproto_instr_gate), which
     # hangs if JIT (cachesize/comp*) stays enabled in the UAE config.
@@ -133,7 +133,7 @@ def record(prod, entry, default, out_dir, frames=DEFAULT_FRAMES,
     for f, what, arg in player.actions(entry, patient=patient):
         if what == "insert":
             k, unit = arg
-            acts.append((f, "cmd", f"disk insert {unit} {swaps[k]}"))
+            acts.append((f, "cmd", f"disk insert {unit} {disks[k]}"))
         elif what == "click":
             acts.append((f, "click", arg))
         else:

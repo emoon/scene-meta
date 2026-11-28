@@ -67,13 +67,12 @@ class Ready:
         inserts = [(f, *arg) for f, what, arg in acts if what == "insert"]
         v = verdict.classify(log, frames // 250)
         took = loaded(log.samples, [(f, unit) for f, _, unit in inserts])
-        first = self.entry.get("drives", 1) + 1
         far = last_read(log.samples)
         if v.verdict == "works-short":
             far -= 1e-3
         return Outcome(self.machine.name, v, took, log, gate.Play(
             v.verdict in RAN, v.crash,
-            tuple(gate.SwapTaken(first + k, ok)
+            tuple(gate.SwapTaken(k + 1, ok)
                   for (_, k, _), ok in zip(inserts, took)),
             far), areas.measured(log))
 
@@ -119,12 +118,13 @@ def play_each(todo, one, jobs, log=print):
 
 def actions(entry, keys=True, patient=False):
     """What to do when, for emulator.Options' ``play``. Without ``keys`` the
-    disks go in and nothing is pressed. ``patient``: see events.patient.
+    disks go in and nothing is pressed. Insert arguments index the full
+    disk set from zero, independently of boot drives. ``patient``: see
+    events.patient.
     Raises BadEntry for a key that cannot be pressed and for a swap of a
     disk that cannot go in, or into a drive the machine has not got."""
     out = []
     drives = entry.get("drives", 1)
-    first = drives + 1      # the first disk that is swapped in
     last = len(entry.get("disks", ()))
     does = entry.get("events", [])
     for event in events.patient(does, PATIENCE) if patient else does:
@@ -145,17 +145,16 @@ def actions(entry, keys=True, patient=False):
             raise BadEntry(f"an event at {event['at']:g} that is neither a"
                            " disk nor a key")
         swap = event
-        if not first <= swap["disk"] <= last:
-            # A disk that sits in a drive from the start is not swapped in.
+        if not 1 <= swap["disk"] <= last:
             raise BadEntry(
                 f"no way to put in disk {swap['disk']}: " + (
-                    f"the disks to put in are {first} to {last}"
-                    if first <= last else "there is none to put in"))
+                    f"the disks to put in are 1 to {last}"
+                    if last else "there is none to put in"))
         drive = swap.get("drive", 1)
-        if drive > drives:
+        if not 1 <= drive <= drives:
             raise BadEntry(f"no drive {drive} to put disk {swap['disk']} in: "
                            f"the entry has drives = {drives}")
-        out.append((frame, "insert", (swap["disk"] - first, drive - 1)))
+        out.append((frame, "insert", (swap["disk"] - 1, drive - 1)))
     return sorted(out)
 
 
