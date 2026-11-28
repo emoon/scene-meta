@@ -155,9 +155,10 @@ def alert_onset(samples, flags, i):
 
 def box_onset(samples, flags, i):
     """Is sample ``i`` where a Guru Meditation box first shows? The box
-    is the evidence where LastAlert is not (Kickstart 1.x leaves it -1 for
-    a "Software Failure"). A demo that goes on playing after its own alert
-    box (a prompt it draws with DisplayAlert) did not crash."""
+    is also evidence when LastAlert's onset was followed by activity:
+    without recognizing the box, its blinks look like recovery. A demo
+    that goes on playing after its own alert box (a prompt it draws with
+    DisplayAlert) did not crash."""
     if not samples[i].box or (i and samples[i - 1].box == samples[i].box):
         return False
     return not alive_after(samples, flags, i)

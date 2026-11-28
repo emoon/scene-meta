@@ -302,6 +302,21 @@ class PlayTest(unittest.TestCase):
 
 
 class ParseTest(unittest.TestCase):
+    def test_last_alert_is_read_at_both_chip_and_slow_ram_execbases(self):
+        for eb in (0x676, 0xC00276):
+            with self.subTest(execbase=hex(eb)):
+                alert_peek = f"peek {eb + emulator.LAST_ALERT:x} 4"
+                records = [
+                    {"cmd": "status", "result": {"frame": 750, "pc": "fe5830",
+                                                 "dmacon": 0x3D0, "bplcon0": 0x200}},
+                    {"cmd": "peek 4 4", "result": {"hex": f"{eb:08x}"}},
+                    {"cmd": alert_peek, "result": {"hex": "0b03800c"}},
+                ]
+                out = "\n".join(json.dumps(r) for r in records)
+                log = emulator._parse((out, "", 0, False), pathlib.Path("/none"),
+                                      {}, eb, alert_peek)
+                self.assertEqual(log.samples[0].alert, 0x0B03800C)
+
     def test_head_cylinders_of_a_sample(self):
         out = "\n".join([
             '{"cmd": "status", "result": {"frame": 250, "pc": "0", "dmacon": 0,'

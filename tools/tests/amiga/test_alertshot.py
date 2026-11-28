@@ -51,6 +51,25 @@ class AlertScreenTest(unittest.TestCase):
         # Tankstellenbande!: its credits, taller than exec's box.
         self.assertEqual("", alertshot.box(png("display_alert_text.png")))
 
+    def test_wide_guru_on_a_dark_grey_background(self):
+        # Copy Party 252140: KS1.3's post-reset Guru, 752x576, grey #101010.
+        for name in ("guru_wide_grey.png", "guru_wide_grey_blink_off.png"):
+            with self.subTest(name=name):
+                self.assertEqual("guru", alertshot.box(png(name)))
+
+    def test_red_top_band_without_execs_words_is_not_a_guru(self):
+        # Red credits in the same band must not be mistaken for exec.
+        w, h = 752, 574
+        red = bytes([240, 0, 0]) * 100
+        row = bytes(3 * 200) + red + bytes(3 * (w - 300))
+        image = make_rgb(w, h, lambda y: row if 56 <= y < 62 else bytes(3 * w))
+        self.assertEqual("", alertshot.box(image))
+
+    def test_real_display_alert_messages_are_not_exec_alerts(self):
+        for prod in (8590, 221531, 378045):
+            with self.subTest(prod=prod):
+                self.assertEqual("", alertshot.box(png(f"display_alert_{prod}.png")))
+
     def test_demo_screen_is_not_an_alert(self):
         self.assertEqual("", alertshot.box(png("demo_screen.png")))
 

@@ -1,4 +1,7 @@
+import pathlib
 import unittest
+
+from scenemeta.amiga import alertshot
 
 from scenemeta.amiga.emulator import NO_ALERT, RunLog, Sample
 from scenemeta.amiga import verdict
@@ -425,3 +428,45 @@ class ScheduledSwapAcceptedTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class GuruScreenshotRegressionTest(unittest.TestCase):
+    def test_copy_party_post_reset_guru_cannot_pass_as_a_short_intro(self):
+        image = (pathlib.Path(__file__).parent / "data" / "guru_wide_grey.png").read_bytes()
+        guru = alertshot.box(image)
+        lg = log("..aaa" + "." * 13)
+        # Copy Party's captured KS1.3 trace: LastAlert is already present
+        # before the reset, then its blinking Guru was counted as activity.
+        for i, s in enumerate(lg.samples):
+            s.alert = 0xB if i >= 3 else NO_ALERT
+            if i >= 5:
+                s.resets = 1
+                s.dmacon = 0x3D0 if i % 3 else 0x23D0
+                s.shot = f"guru{i % 2}"
+                s.box = guru
+        got = verdict.classify(lg, len(lg.samples))
+        self.assertEqual((got.verdict, got.crash, got.crash_frame),
+                         ("crash", "guru", 1500))
+
+    def test_guru_over_shell_with_no_last_alert_never_passes(self):
+        image = (pathlib.Path(__file__).parent / "data" / "guru_over_cli.png").read_bytes()
+        guru = alertshot.box(image)
+        lg = shown("c" * 24)
+        for s in lg.samples:
+            s.alert = NO_ALERT
+            s.box = guru
+        got = verdict.classify(lg, len(lg.samples))
+        self.assertEqual((got.verdict, got.alive, got.crash), ("crash", 0, "guru"))
+
+
+    def test_recognized_blink_cannot_make_last_alert_look_survived(self):
+        image = (pathlib.Path(__file__).parent / "data" / "guru_over_cli.png").read_bytes()
+        guru = alertshot.box(image)
+        lg = shown("." * 2 + "c" * 22)
+        for i, s in enumerate(lg.samples):
+            s.alert = NO_ALERT if i < 2 else 0x0B03800C
+            if i >= 2:
+                s.box = guru
+        got = verdict.classify(lg, len(lg.samples))
+        self.assertEqual((got.verdict, got.crash, got.crash_frame, got.alive),
+                         ("crash", "alert:0b03800c", 750, 0))

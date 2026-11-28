@@ -1,11 +1,11 @@
 """Is a screenshot a Guru Meditation, or the "Software error - task held"
 requester?
 
-exec's alert box is red text on black in the top band of the screen, and it
+exec's alert box is red text on a dark background in the top band of the screen, and it
 blinks: the screen changes every second or so with bitplanes on, which the
-verdict would otherwise count as a demo playing. LastAlert is no help on
-Kickstart 1.x (it stays -1 for a "Software Failure"), so the picture is the
-only evidence.
+verdict would otherwise count as a demo playing. That false activity can
+also make the verdict disregard a correctly read LastAlert as an alert
+the demo survived. Both screen layouts are recognized by their words.
 
 Kickstart 1.x shows a recoverable alert above the screen it found, pushed
 down: the AmigaDOS window is still there. A demo's own picture can be red on
@@ -23,11 +23,6 @@ import collections
 import itertools
 import struct
 import zlib
-
-BAND = 0.25       # the alert sits in the top quarter of the screen
-MIN_PIXELS = 150  # fewer lit pixels than a line of text is not an alert
-BLACK = 15        # r+g+b above this is not pure black (real Guru background is 0,0,0)
-MAX_SOLID_ROWS = 10  # real Guru border is 6 rows; Intuition title bars are 18+ rows
 
 
 def _rows(png):
@@ -73,7 +68,7 @@ def _rows(png):
 
 
 GURU_BOX = (216, 86, 352, 100)  # x0, y0, x1, y1 around "Guru Meditation #"
-ALERT_MATCH = 0.8               # share of the template's ink the screen must reproduce
+ALERT_MATCH = 0.8               # intersection / union of red ink and template
 # One row per line of the words as they are above a screen (a box with
 # nothing beneath is drawn wider), one bit per pixel, 1 = ink.
 GURU_MASK = tuple(int(row, 16) for row in (
@@ -92,6 +87,28 @@ GURU_MASK = tuple(int(row, 16) for row in (
     "0f8efc0ec0318f0ecf030ec30f0f19801b",
     "0f8efc0ec0318f0ecf030ec30f0f19801b",
 ))
+
+# The same words on the standalone Guru screen: ten output pixels per
+# character rather than eight. Captured from Copy Party (252140) on KS1.3;
+# its post-reset background is #101010, not black.
+GURU_WIDE_BOX = (216, 86, 386, 100)
+GURU_WIDE_MASK = tuple(int(row, 16) for row in (
+    "01f00000000001020001c0c010000100c0000000033",
+    "01f00000000001020001c0c010000100c0000000033",
+    "03180000000001860000c0003000030000000000033",
+    "03180000000001860000c0003000030000000000033",
+    "06018c7718c001ce1f0ec1c07c3e07c1c07c3f0007f",
+    "06018c7718c001ce1f0ec1c07c3e07c1c07c3f0007f",
+    "06398c3998c001fe3199c0c030030300c0c63180033",
+    "06398c3998c001fe3199c0c030030300c0c63180033",
+    "06198c3198c001b63f98c0c0301f0300c0c6318007f",
+    "06198c3198c001b63f98c0c0301f0300c0c6318007f",
+    "03198c3018c001863018c0c032630320c0c63180033",
+    "03198c3018c001863018c0c032630320c0c63180033",
+    "01f8f6780f6001861f0f61e01c3d81c1e07c3180033",
+    "01f8f6780f6001861f0f61e01c3d81c1e07c3180033",
+))
+GURU_TEMPLATES = ((GURU_BOX, GURU_MASK), (GURU_WIDE_BOX, GURU_WIDE_MASK))
 
 # Kickstart 1.x's other alert above a screen, for a task that crashed: its
 # first line, "Software error - task held".
@@ -242,32 +259,10 @@ def _says(rows, area, mask):
                                  ALERT_MATCH)
 
 
-def _is_guru(rows, height):
-    """True when everything non-black on the screen is alert-red, sits in the
-    top band, and is not a solid filled Intuition title bar."""
-    if not rows:
-        return False
-    width = len(rows[0]) // 3
-    band = BAND * height
-    lit = red = consec_solid = 0
-    for y, row in enumerate(rows):
-        row_red = 0
-        for r, g, b in zip(row[0::3], row[1::3], row[2::3]):
-            if r + g + b > BLACK:
-                if y >= band:
-                    return False
-                lit += 1
-                if _alert_red(r, g, b):
-                    red += 1
-                    row_red += 1
-        if y < band:
-            if row_red > 0.5 * width:
-                consec_solid += 1
-                if consec_solid > MAX_SOLID_ROWS:
-                    return False
-            else:
-                consec_solid = 0
-    return lit >= MIN_PIXELS and red >= 0.97 * lit
+def _says_guru(rows):
+    """Recognize exec's words at both pixel widths, independent of the
+    border blink, the background colour, and the screen underneath."""
+    return any(_says(rows, area, mask) for area, mask in GURU_TEMPLATES)
 
 
 def box(png):
@@ -275,11 +270,11 @@ def box(png):
     none. A png it cannot read shows none."""
     try:
         decoded = _rows(png)
-        height = next(decoded)
+        next(decoded)  # height; matching uses the decoded rows
         rows = list(decoded)
     except (ValueError, zlib.error, struct.error, StopIteration):
         return ""
-    if _is_guru(rows, height) or _says(rows, GURU_BOX, GURU_MASK):
+    if _says_guru(rows):
         return "guru"
     held = _task_held(rows) or _says(rows, HELD_ALERT_BOX, HELD_ALERT_MASK)
     return "task-held" if held else ""
